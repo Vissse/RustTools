@@ -46,10 +46,12 @@
         color: var(--text-bright);
         font-family: var(--font-ui);
         min-height: 100vh;
+        height: 100vh; /* Přidej toto */
+        overflow: hidden; /* Přidej toto - zamezí scrollování celé stránky */
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 16px 48px; /* Upraveno odsazení kvůli navigaci */
+        padding: 0 16px 20px; /* Zmenšil jsem spodní padding */
         gap: 20px;
       }
       body::before {
@@ -111,6 +113,8 @@
         transition:
           color 0.2s,
           text-shadow 0.2s;
+        display: flex;
+        align-items: center;
       }
 
       .nav-item:hover {
@@ -131,6 +135,22 @@
         height: 3px;
         background: var(--rust);
         box-shadow: 0 -2px 8px var(--rust);
+      }
+
+      /* Soon Badge */
+      .nav-badge {
+        font-family: var(--font-ui);
+        font-size: 9px;
+        font-weight: 700;
+        color: var(--text-bright);
+        background: var(--rust);
+        padding: 2px 4px 1px;
+        border-radius: 2px;
+        margin-left: 6px;
+        letter-spacing: 0.05em;
+        position: relative;
+        top: -1px;
+        box-shadow: 0 0 6px var(--rust-glow);
       }
 
       .nav-brand {
@@ -184,6 +204,7 @@
       .calc-wrap {
         width: 100%;
         max-width: 1100px;
+        max-height: 85vh;
         position: relative;
         z-index: 1;
         background: linear-gradient(170deg, #171512 0%, #131210 100%);
@@ -347,6 +368,8 @@
         flex-direction: column;
         gap: 24px;
         border-right: 1px solid var(--border2);
+        overflow-y: auto;
+        flex-grow: 1;
       }
       .panel-right {
         flex: 0 0 50%;
@@ -386,6 +409,27 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 6px;
+        max-height: 250px; /* Omezení výšky gridu pro zapnutí scrollování */
+        overflow-y: auto; /* Zapne scrollování, pokud je obsah větší */
+        padding-right: 4px; /* Místo pro scrollbar */
+        padding-bottom: 4px; /* Aby se neseřízly stíny na spodku */
+        margin-right: -4px;
+      }
+
+      /* Upravený scrollbar speciálně pro gridy s tlačítky */
+      .btn-grid::-webkit-scrollbar {
+        width: 6px;
+      }
+      .btn-grid::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+      .btn-grid::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 4px;
+      }
+      .btn-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--rust);
       }
 
       .item-btn {
@@ -401,6 +445,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-between;
         gap: 6px;
         transition:
           border-color 0.1s,
@@ -469,13 +514,12 @@
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-dim);
-        line-height: 1;
+        line-height: 1.2;
+        text-align: center;
       }
       .btn-name.small {
         font-size: 9px;
         letter-spacing: 0.06em;
-        text-align: center;
-        line-height: 1.25;
       }
       .item-btn.active .btn-name {
         color: var(--rust);
@@ -486,6 +530,7 @@
         font-weight: 700;
         color: var(--text-dim);
         letter-spacing: 0.04em;
+        margin-top: auto;
       }
       .item-btn.active .btn-hp {
         color: var(--text-bright);
@@ -497,6 +542,7 @@
         align-items: center;
         justify-content: center;
         height: 200px;
+        margin: 10px 0;
       }
       #wall-preview img {
         width: 200px;
@@ -838,7 +884,7 @@
         text-shadow: 0 0 20px rgba(138, 125, 110, 0.35);
       }
 
-      /* Scrollbar */
+      /* Hlavní scrollbar pro stránku */
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -883,7 +929,7 @@
           flex: unset;
         }
         .btn-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
       }
     </style>
@@ -892,7 +938,10 @@
     <nav class="top-navbar">
       <div class="nav-group left">
         <a href="#" class="nav-item active">Raid Calculator</a>
-        <a href="#" class="nav-item">Incoming</a>
+        <a href="#" class="nav-item">
+          Recycling Calculator
+          <span class="nav-badge">SOON</span>
+        </a>
       </div>
 
       <div class="nav-brand">
@@ -901,7 +950,10 @@
       </div>
 
       <div class="nav-group right">
-        <a href="#" class="nav-item">Incoming</a>
+        <a href="#" class="nav-item">
+          Cupboard Calculator
+          <span class="nav-badge">SOON</span>
+        </a>
         <a href="#" class="nav-item">Incoming</a>
       </div>
     </nav>
@@ -918,7 +970,7 @@
         <div class="header-left">
           <div class="header-bar"></div>
           <span class="header-title">RAID <span>CALCULATOR</span></span>
-          <span class="header-ver">v2.4</span>
+          <span class="header-ver">V1.0</span>
         </div>
         <div class="header-status">
           <span class="status-lbl">SYSTEM ONLINE</span>
@@ -935,7 +987,7 @@
           </div>
 
           <div id="wall-preview">
-            <div class="wall-placeholder">No wall<br />selected</div>
+            <div class="wall-placeholder">No structure<br />selected</div>
           </div>
 
           <div>
@@ -947,7 +999,7 @@
         <div class="panel-right">
           <div id="empty-state">
             <span class="icon">◈</span>
-            Select a wall type<br />and at least one<br />explosive to proceed
+            Select a target<br />and at least one<br />explosive to proceed
           </div>
           <div id="results" style="display: none"></div>
         </div>
@@ -957,29 +1009,91 @@
     <script>
       /* ── DATA ──────────────────────────────────────────────────────────── */
       const W = {
-        Wooden: {
+        "Wooden Wall": {
           hp: 250,
-          img: "https://www.rustedit.io/images/imagelibrary/wall.frame.png",
+          material: "Wooden",
+          img: "./images/wood-wall.png",
         },
-        Stone: {
+        "Stone Wall": {
           hp: 500,
-          img: "https://www.rustedit.io/images/imagelibrary/wall.stone.png",
+          material: "Stone",
+          img: "./images/stone-wall.png",
         },
-        Metal: {
+        "Metal Wall": {
           hp: 1000,
-          img: "https://www.rustedit.io/images/imagelibrary/wall.metal.png",
+          material: "Metal",
+          img: "./images/metal-wall.png",
         },
-        Armored: {
+        "Armored Wall": {
           hp: 2000,
-          img: "https://www.rustedit.io/images/imagelibrary/wall.frame.garagedoor.png",
+          material: "Armored",
+          img: "./images/armored-wall.png",
         },
-      };
-
-      const WALL_IMGS = {
-        Wooden: "./images/wood-wall.png",
-        Stone: "./images/stone-wall.png",
-        Metal: "./images/metal-wall.png",
-        Armored: "./images/armored-wall.png",
+        "Wood Double Door": {
+          hp: 200,
+          material: "Wooden",
+          img: "./images/wood-double-door.png",
+        },
+        "Sheet Metal Double Door": {
+          hp: 250,
+          material: "Metal",
+          img: "./images/sheet-metal-double-door.png",
+        },
+        "Armored Double Door": {
+          hp: 800,
+          material: "Armored",
+          img: "./images/armored-double-door.png",
+        },
+        "Garage Door": {
+          hp: 600,
+          material: "Metal",
+          img: "./images/garage-door.png",
+        },
+        "Ladder Hatch": {
+          hp: 250,
+          material: "Metal",
+          img: "./images/ladder-hatch.png",
+        },
+        "Metal Shop Front": {
+          hp: 750,
+          material: "Metal",
+          img: "./images/metal-shop-front.png",
+        },
+        "Metal Window Bars": {
+          hp: 500,
+          material: "Metal",
+          img: "./images/metal-window-bars.png",
+        },
+        "Reinforced Glass Window": {
+          hp: 500,
+          material: "Metal",
+          img: "./images/reinforced-glass-window.png",
+        },
+        "Metal H|V Embrasure": {
+          hp: 500,
+          material: "Metal",
+          img: "./images/metal-embrasure.png",
+        },
+        "Strengthened Glass Window": {
+          hp: 250,
+          material: "Metal",
+          img: "./images/strengthened-glass-window.png",
+        },
+        "High External Wooden Wall": {
+          hp: 500,
+          material: "Wooden",
+          img: "./images/high-external-wooden-wall.png",
+        },
+        "High External Stone Wall": {
+          hp: 500,
+          material: "Stone",
+          img: "./images/high-external-stone-wall.png",
+        },
+        "Metal Barricade": {
+          hp: 500,
+          material: "Metal",
+          img: "./images/metal-barricade.png",
+        },
       };
 
       const EXP = [
@@ -1046,16 +1160,19 @@
       let numWalls = 1;
 
       /* ── ALGORITHM (DP) ─────────────────────────────────────────────────── */
-      function cheapestCombo(totalHp, wallType, exps) {
-        const viable = exps.filter((e) => e.dmg[wallType] > 0);
+      function cheapestCombo(totalHp, structureName, exps) {
+        const material = W[structureName].material;
+        const viable = exps.filter((e) => e.dmg[material] > 0);
+
         if (!viable.length) return [];
         const MAX = Math.ceil(totalHp * 1.5);
         const dp = new Array(MAX + 1).fill(null);
         dp[0] = { s: 0, m: 0, c: 0, dmg: 0, use: new Map() };
+
         for (let d = 0; d <= MAX; d++) {
           if (!dp[d]) continue;
           for (const e of viable) {
-            const dmg = Math.round(e.dmg[wallType] * 100) / 100;
+            const dmg = Math.round(e.dmg[material] * 100) / 100;
             const newDmg = dp[d].dmg + dmg;
             const idx = Math.min(MAX, Math.floor(newDmg));
             const ns = dp[d].s + e.cost.s;
@@ -1069,14 +1186,17 @@
             }
           }
         }
+
         const valid = [];
         for (let i = 0; i <= MAX; i++)
           if (dp[i] && dp[i].dmg >= totalHp) valid.push(dp[i]);
         valid.sort((a, b) =>
           a.s !== b.s ? a.s - b.s : a.dmg - totalHp - (b.dmg - totalHp),
         );
+
         const best = valid[0];
         if (!best) return [];
+
         const combo = [];
         for (const [name, qty] of best.use) {
           const e = EXP.find((x) => x.name === name);
@@ -1098,7 +1218,7 @@
         btn.className = "item-btn";
         btn.dataset.wall = name;
         btn.innerHTML = `
-    <img src="${WALL_IMGS[name]}" alt="${name}" onerror="this.style.opacity='.3'">
+    <img src="${data.img}" alt="${name}" onerror="this.style.opacity='.3'">
     <span class="btn-name">${name}</span>
     <span class="btn-hp">${data.hp.toLocaleString()} HP</span>
   `;
@@ -1142,9 +1262,9 @@
         const preview = document.getElementById("wall-preview");
         if (!selWall) {
           preview.innerHTML =
-            '<div class="wall-placeholder">No wall<br>selected</div>';
+            '<div class="wall-placeholder">No structure<br>selected</div>';
         } else {
-          preview.innerHTML = `<img src="${WALL_IMGS[selWall]}" alt="${selWall}" style="width:200px;height:200px;object-fit:contain" onerror="this.style.opacity='.3'">`;
+          preview.innerHTML = `<img src="${W[selWall].img}" alt="${selWall}" style="width:200px;height:200px;object-fit:contain" onerror="this.style.opacity='.3'">`;
         }
       }
 
@@ -1166,7 +1286,7 @@
         const combo = cheapestCombo(totalHp, selWall, exps);
 
         const totalDmg = combo.reduce(
-          (s, c) => s + c.exp.dmg[selWall] * c.qty,
+          (s, c) => s + c.exp.dmg[W[selWall].material] * c.qty,
           0,
         );
         const dmgDone = Math.min(totalDmg, totalHp);
@@ -1181,7 +1301,7 @@
 
         results.innerHTML = `
     <div>
-      <div class="sec-label">Wall Count</div>
+      <div class="sec-label">Structure Count</div>
       <div class="counter-wrap">
         <button class="counter-btn" id="btn-minus">−</button>
         <div id="wall-count">${numWalls}</div>
