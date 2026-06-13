@@ -2,6 +2,7 @@ import { memo, useCallback, useMemo, useState } from 'react'
 import sumBy from 'lodash/sumBy'
 import { CalcShell } from './CalcShell'
 import { Img } from './Img'
+import { useTooltip } from './useTooltip'
 import {
   ALWAYS_RESOURCES,
   CATEGORIES,
@@ -46,6 +47,7 @@ export function RecyclingCalculator() {
   )
   const [recycler, setRecycler] = useState<RecyclerKind>('radtown')
   const [search, setSearch] = useState('')
+  const tip = useTooltip()
 
   const totalItems = useMemo(() => sumBy(Object.values(inventory)), [inventory])
 
@@ -175,8 +177,12 @@ export function RecyclingCalculator() {
   const adjust = useCallback((id: string, delta: number) => {
     setInventory((prev) => ({
       ...prev,
-      [id]: Math.max(0, prev[id] + delta),
+      [id]: Math.min(9999, Math.max(0, prev[id] + delta)),
     }))
+  }, [])
+
+  const setCount = useCallback((id: string, value: number) => {
+    setInventory((prev) => ({ ...prev, [id]: value }))
   }, [])
 
   function clearAll() {
@@ -194,7 +200,7 @@ export function RecyclingCalculator() {
       headerRest="CALCULATOR"
       variant="recycling"
     >
-      <div className="panel-left">
+      <div className="panel-left" {...tip}>
         <div className="input-toolbar">
           <input
             type="text"
@@ -219,6 +225,7 @@ export function RecyclingCalculator() {
                   img={item.img}
                   count={inventory[item.id]}
                   onAdjust={adjust}
+                  onSet={setCount}
                 />
               ))}
             </div>
@@ -226,7 +233,7 @@ export function RecyclingCalculator() {
         ))}
       </div>
 
-      <div className="panel-right">
+      <div className="panel-right" {...tip}>
         <div>
           <div className="sec-label">Recycler Type</div>
           <div className="recycler-toggle">
@@ -336,11 +343,15 @@ export function RecyclingCalculator() {
                     <div className="bd-divider" />
                     <div className="bd-outputs">
                       {row.outputs.map((o) => (
-                        <div className="bd-out-item" key={o.key}>
+                        <div
+                          className="bd-out-item"
+                          key={o.key}
+                          data-tip={o.title}
+                        >
                           {o.chancePct != null && (
                             <span className="rnd-badge">{o.chancePct}%</span>
                           )}
-                          <Img src={o.img} alt={o.title} title={o.title} />
+                          <Img src={o.img} alt={o.title} />
                           <span>×{o.amount}</span>
                         </div>
                       ))}
@@ -372,23 +383,38 @@ const InvItem = memo(function InvItem({
   img,
   count,
   onAdjust,
+  onSet,
 }: {
   id: string
   name: string
   img: string
   count: number
   onAdjust: (id: string, delta: number) => void
+  onSet: (id: string, value: number) => void
 }) {
   return (
     <div className={`inv-item${count > 0 ? ' active' : ''}`}>
-      <div className="inv-item-img" title={name}>
+      <div className="inv-item-img" data-tip={name}>
         <Img src={img} alt={name} loading="lazy" decoding="async" />
       </div>
       <div className="inv-controls">
         <button className="ctrl-btn minus" onClick={() => onAdjust(id, -1)}>
           −
         </button>
-        <div className="ctrl-val">{count}</div>
+        <input
+          type="text"
+          inputMode="numeric"
+          className="ctrl-val"
+          value={count}
+          aria-label={`${name} quantity`}
+          onChange={(e) => {
+            // Integers 0–9999 only: strip everything non-digit, then clamp.
+            const digits = e.target.value.replace(/\D/g, '')
+            const n = digits === '' ? 0 : Math.min(9999, parseInt(digits, 10))
+            onSet(id, n)
+          }}
+          onFocus={(e) => e.target.select()}
+        />
         <button className="ctrl-btn plus" onClick={() => onAdjust(id, 1)}>
           +
         </button>
