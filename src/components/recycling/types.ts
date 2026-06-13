@@ -25,6 +25,7 @@ export interface RandomTotal {
   id: string
   img: string
   name: string
+  min: number
   avg: number
   max: number
 }

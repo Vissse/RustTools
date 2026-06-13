@@ -31,6 +31,10 @@ export function buildResults(
     [...ALWAYS_RESOURCES, ...OPTIONAL_RESOURCES].map((r) => [r, 0])
   ) as Record<RecycleResource, number>
   const randomTotals: Record<string, RandomTotal> = {}
+  // Guaranteed yield of component (non-resource) ids, summed across all items.
+  // Folded into the matching random-drop lines so their Min/Avg/Max reflect the
+  // guaranteed portion (resources are excluded — they show in the total cards).
+  const componentGuaranteed: Record<string, number> = {}
   const rows: BreakdownRow[] = []
 
   for (const item of ITEMS) {
@@ -55,6 +59,7 @@ export function buildResults(
       const amount = Math.floor(base * count * multiplier) // Rust rounds down.
       const mapped = RES_MAP[res]
       if (mapped) totals[mapped] += amount
+      else componentGuaranteed[res] = (componentGuaranteed[res] ?? 0) + amount
       outputs.push({
         key: res,
         img: mapped ? RESOURCE_ICONS[mapped] : (COMPONENT_INFO[res]?.img ?? ''),
@@ -86,17 +91,17 @@ export function buildResults(
           chancePct: chancePct < 100 ? chancePct : undefined,
         })
 
-        if (chancePct < 100) {
-          const acc = (randomTotals[rnd.id] ??= {
-            id: rnd.id,
-            img,
-            name,
-            avg: 0,
-            max: 0,
-          })
-          acc.max += maxAmount
-          acc.avg += maxAmount * rnd.chance
-        }
+        const acc = (randomTotals[rnd.id] ??= {
+          id: rnd.id,
+          img,
+          name,
+          min: 0,
+          avg: 0,
+          max: 0,
+        })
+        acc.max += maxAmount
+        acc.avg += maxAmount * rnd.chance
+        if (rnd.chance >= 1) acc.min += maxAmount // guaranteed roll
       }
     }
 
@@ -108,6 +113,16 @@ export function buildResults(
       outputs,
       penalty: isSafezone && !hasSafezoneYield,
     })
+  }
+
+  // Fold guaranteed component amounts into their matching random-drop lines.
+  for (const id in randomTotals) {
+    const g = componentGuaranteed[id]
+    if (g) {
+      randomTotals[id].min += g
+      randomTotals[id].avg += g
+      randomTotals[id].max += g
+    }
   }
 
   const timePerItem = isSafezone ? 8 : 5

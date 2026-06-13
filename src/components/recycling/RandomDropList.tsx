@@ -19,7 +19,7 @@ export function RandomDropList({ randomTotals }: RandomDropListProps) {
             <div className="rnd-stats">
               <div className="stat-block">
                 <span className="stat-lbl">Min</span>
-                <span className="stat-val">0</span>
+                <span className="stat-val">{rt.min}</span>
               </div>
               <div className="stat-line" />
               <div className="stat-block">
