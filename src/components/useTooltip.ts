@@ -62,3 +62,6 @@ export function useTooltip() {
     onMouseLeave: hide,
   }
 }
+
+/** Handlers returned by {@link useTooltip}; spread onto a container element. */
+export type TooltipProps = ReturnType<typeof useTooltip>
