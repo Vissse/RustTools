@@ -58,7 +58,7 @@ export const STRUCTURES: Record<string, Structure> = {
   "Metal H|V Embrasure": {
     hp: 500,
     material: "Metal",
-    img: "/images/shutter.metal.embrasure.png",
+    img: "/images/shutter.metal.embrasure.a.png",
   },
   "Strengthened Glass Window": {
     hp: 250,
