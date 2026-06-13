@@ -12,8 +12,7 @@ export function RaidCalculator() {
     () => new Set(),
   );
   const [structureCount, setStructureCount] = useState<number | "">(1);
-  // Nový stav pro přepínání Mixing Table
-  const [useMixingTable, setUseMixingTable] = useState<boolean>(false);
+  const [discountActive, setDiscountActive] = useState<boolean>(false);
 
   const ready = selectedStructure !== null && selectedExplosives.size > 0;
 
@@ -37,7 +36,6 @@ export function RaidCalculator() {
     const pct = Math.min(100, (dmgDone / totalHp) * 100);
     const destroyed = totalDmg >= totalHp;
 
-    // Základní charcoal z výpočtu solveru
     const baseCharcoal = comboTotal(combo, "totalCharcoal");
 
     return {
@@ -48,13 +46,12 @@ export function RaidCalculator() {
       destroyed,
       totalSulfur: comboTotal(combo, "totalSulfur"),
       totalMetal: comboTotal(combo, "totalMetal"),
-      // Pokud je zapnutý Mixing Table, ponížíme uhlí na 2/3 (z 30 na 20)
-      totalCharcoal: useMixingTable
+      totalCharcoal: discountActive
         ? Math.round(baseCharcoal * (2 / 3))
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
     };
-  }, [selectedStructure, selectedExplosives, structureCount, useMixingTable]);
+  }, [selectedStructure, selectedExplosives, structureCount, discountActive]);
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
@@ -85,6 +82,43 @@ export function RaidCalculator() {
         }
         .invisible-num-input {
           -moz-appearance: textfield;
+        }
+
+        /* Vertikální Slider Toggle (ON / OFF) */
+        .vertical-craft-toggle {
+          position: relative;
+          width: 22px;
+          height: 44px;
+          background: #121212; /* Mírně tmavší pozadí při vypnutí */
+          border: 1px solid #2a2a2a; /* Ztlumený rámeček */
+          border-radius: 11px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex-shrink: 0;
+          opacity: 0.5; /* Výrazné ztlumení celého slideru ve vypnutém stavu */
+          transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .vertical-craft-toggle.active {
+          opacity: 1; /* Plná viditelnost při zapnutí */
+          background: #181818;
+          border-color: #333;
+        }
+        .vertical-craft-toggle-thumb {
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: #555; /* Tmavší šedá pro neaktivní palec */
+          border-radius: 50%;
+          left: 3px;
+          bottom: 4px; /* Výchozí pozice dole = OFF */
+          transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        /* Pozice nahoře = ON */
+        .vertical-craft-toggle.active .vertical-craft-toggle-thumb {
+          bottom: 24px;
+          background: #d25a32; /* Rozsvícená oranžová */
         }
       `}</style>
 
@@ -152,7 +186,6 @@ export function RaidCalculator() {
           </div>
         ) : (
           <div id="results">
-            {/* Sekce s nastavením počtu a metody craftingu vedle sebe / pod sebou */}
             <div style={{ display: "flex", gap: "20px" }}>
               <div style={{ flex: 1 }}>
                 <div className="sec-label">Structure Count</div>
@@ -220,48 +253,92 @@ export function RaidCalculator() {
                 </div>
               </div>
 
-              {/* NOVÉ: Výběr craftovací stanice */}
+              {/* Sekce Crafting Method s upravenou viditelností a třídou pro font */}
               <div style={{ flex: 1 }}>
                 <div className="sec-label">Crafting Method</div>
-                <div style={{ display: "flex", gap: "6px", height: "40px" }}>
-                  <button
-                    type="button"
-                    className={`item-btn small ${!useMixingTable ? "active" : ""}`}
-                    onClick={() => setUseMixingTable(false)}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                    paddingTop: "4px",
+                  }}
+                >
+                  {/* Levá strana: Mixing Table */}
+                  <div
+                    onClick={() => setDiscountActive(!discountActive)}
                     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      opacity: discountActive ? 1 : 0.3,
+                      transition: "opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)",
                       flex: 1,
-                      justifyContent: "center",
-                      padding: 0,
-                      margin: 0,
-                      height: "100%",
                     }}
                   >
-                    <span className="btn-name small" style={{ margin: 0 }}>
-                      Standard
+                    <Img
+                      src="images/mixingtable.png"
+                      alt="Mixing Table"
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        objectFit: "contain",
+                      }}
+                    />
+                    <span
+                      className="btn-name"
+                      style={{ marginTop: "6px", textAlign: "center" }}
+                    >
+                      MIXING TABLE
                     </span>
-                  </button>
-                  <button
-                    type="button"
-                    className={`item-btn small ${useMixingTable ? "active" : ""}`}
-                    onClick={() => setUseMixingTable(true)}
+                  </div>
+
+                  {/* Střed: Vertikální Slider */}
+                  <div
+                    className={`vertical-craft-toggle ${discountActive ? "active" : ""}`}
+                    onClick={() => setDiscountActive(!discountActive)}
+                  >
+                    <div className="vertical-craft-toggle-thumb" />
+                  </div>
+
+                  {/* Pravá strana: Cooking Workbench */}
+                  <div
+                    onClick={() => setDiscountActive(!discountActive)}
                     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      opacity: discountActive ? 1 : 0.3,
+                      transition: "opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)",
                       flex: 1,
-                      justifyContent: "center",
-                      padding: 0,
-                      margin: 0,
-                      height: "100%",
                     }}
                   >
-                    <span className="btn-name small" style={{ margin: 0 }}>
-                      Mixing Table | Cooking Workbench
+                    <Img
+                      src="images/cookingworkbench.png"
+                      alt="Cooking Workbench"
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        objectFit: "contain",
+                      }}
+                    />
+                    <span
+                      className="btn-name"
+                      style={{ marginTop: "6px", textAlign: "center" }}
+                    >
+                      COOKING WORKBENCH
                     </span>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="sec-label">Structural Integrity</div>
+              <div className="sec-label" style={{ marginTop: "16px" }}>
+                Structural Integrity
+              </div>
               <div className="hp-readout">
                 <span id="hp-value">
                   {Math.round(result.dmgDone).toLocaleString()}
@@ -354,8 +431,7 @@ export function RaidCalculator() {
                               style={{ width: "16px", height: "16px" }}
                             />
                             <span style={{ color: "#8b8c89", fontWeight: 600 }}>
-                              {/* Zde se hodnota přepočítává dynamicky pro konkrétní řádek */}
-                              {(useMixingTable
+                              {(discountActive
                                 ? Math.round(c.totalCharcoal * (2 / 3))
                                 : c.totalCharcoal
                               ).toLocaleString()}
