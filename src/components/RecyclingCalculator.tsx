@@ -3,18 +3,41 @@ import sumBy from 'lodash/sumBy'
 import { CalcShell } from './CalcShell'
 import { Img } from './Img'
 import {
+  ALWAYS_RESOURCES,
+  CATEGORIES,
+  COMPONENT_INFO,
   ITEMS,
+  OPTIONAL_RESOURCES,
   RESOURCE_ICONS,
-  RESOURCE_ORDER,
+  RESOURCE_LABELS,
+  RES_MAP,
 } from '../lib/data/recycling-data'
 import type { RecycleResource, RecyclerKind } from '../lib/types'
+
+interface OutputCell {
+  key: string
+  img: string
+  title: string
+  amount: number
+  /** Drop chance in %, only set for sub-100% random drops (renders a badge). */
+  chancePct?: number
+}
 
 interface BreakdownRow {
   id: string
   name: string
   img: string
   count: number
-  outputs: { res: RecycleResource; amount: number }[]
+  outputs: OutputCell[]
+  penalty: boolean
+}
+
+interface RandomTotal {
+  id: string
+  img: string
+  name: string
+  avg: number
+  max: number
 }
 
 export function RecyclingCalculator() {
@@ -29,43 +52,124 @@ export function RecyclingCalculator() {
   const results = useMemo(() => {
     if (totalItems === 0) return null
 
-    // Standard recycler = 1.0 (60% in-game yield); Safe Zone = 2/3 (40% yield).
-    const multiplier = recycler === 'radtown' ? 1.0 : 2 / 3
-    const totals: Record<RecycleResource, number> = {
-      scrap: 0,
-      metal: 0,
-      hqm: 0,
-      cloth: 0,
-    }
+    const isSafezone = recycler === 'safezone'
+    const totals = Object.fromEntries(
+      [...ALWAYS_RESOURCES, ...OPTIONAL_RESOURCES].map((r) => [r, 0])
+    ) as Record<RecycleResource, number>
+    const randomTotals: Record<string, RandomTotal> = {}
     const rows: BreakdownRow[] = []
 
     for (const item of ITEMS) {
       const count = inventory[item.id]
-      if (count === 0) continue
+      if (!count) continue
 
-      const outputs: BreakdownRow['outputs'] = []
-      for (const res of RESOURCE_ORDER) {
-        const baseYield = item.yield[res]
-        if (baseYield === 0) continue
-        // Rust rounds recycler output down.
-        const actualYield = Math.floor(baseYield * count * multiplier)
-        totals[res] += actualYield
-        outputs.push({ res, amount: actualYield })
+      const hasSafezoneYield =
+        !!item.safezone_yield && Object.keys(item.safezone_yield).length > 0
+      // With a dedicated safezone yield we use it as-is; otherwise the standard
+      // recycler is 100% and the safe zone takes the flat 2/3 (-33%) penalty.
+      const currentYield =
+        isSafezone && hasSafezoneYield ? item.safezone_yield : item.yield
+      const multiplier = isSafezone && !hasSafezoneYield ? 2 / 3 : 1
+      const currentRandom =
+        isSafezone && item.safezone_random
+          ? item.safezone_random
+          : item.random
+
+      const outputs: OutputCell[] = []
+
+      // Guaranteed output.
+      for (const [res, base] of Object.entries(currentYield)) {
+        if (!base) continue
+        const amount = Math.floor(base * count * multiplier) // Rust rounds down.
+        const mapped = RES_MAP[res]
+        if (mapped) totals[mapped] += amount
+        outputs.push({
+          key: res,
+          img: mapped ? RESOURCE_ICONS[mapped] : COMPONENT_INFO[res]?.img ?? '',
+          title: mapped
+            ? RESOURCE_LABELS[mapped]
+            : COMPONENT_INFO[res]?.label ?? res,
+          amount,
+        })
       }
-      rows.push({ id: item.id, name: item.name, img: item.img, count, outputs })
+
+      // Chance-based output.
+      if (currentRandom) {
+        for (const rnd of currentRandom) {
+          const chancePct = Math.round(rnd.chance * 100)
+          const mapped = RES_MAP[rnd.id]
+          const img = mapped
+            ? RESOURCE_ICONS[mapped]
+            : COMPONENT_INFO[rnd.id]?.img ?? ''
+          const name = mapped
+            ? RESOURCE_LABELS[mapped]
+            : COMPONENT_INFO[rnd.id]?.label ?? rnd.id
+          const maxAmount = rnd.amount * count
+
+          outputs.push({
+            key: `rnd:${rnd.id}`,
+            img,
+            title: name,
+            amount: maxAmount,
+            chancePct: chancePct < 100 ? chancePct : undefined,
+          })
+
+          if (chancePct < 100) {
+            const acc = (randomTotals[rnd.id] ??= {
+              id: rnd.id,
+              img,
+              name,
+              avg: 0,
+              max: 0,
+            })
+            acc.max += maxAmount
+            acc.avg += maxAmount * rnd.chance
+          }
+        }
+      }
+
+      rows.push({
+        id: item.id,
+        name: item.name,
+        img: item.img,
+        count,
+        outputs,
+        penalty: isSafezone && !hasSafezoneYield,
+      })
     }
 
-    const timePerItem = recycler === 'radtown' ? 5 : 8
+    const timePerItem = isSafezone ? 8 : 5
     const totalSeconds = totalItems * timePerItem
     const mins = Math.floor(totalSeconds / 60)
     const secs = totalSeconds % 60
     const time = mins > 0 ? `${mins}M ${secs}S` : `${secs}S`
 
-    return { totals, rows, time }
+    const visibleResources = [
+      ...ALWAYS_RESOURCES,
+      ...OPTIONAL_RESOURCES.filter((r) => totals[r] > 0),
+    ]
+
+    return {
+      totals,
+      rows,
+      time,
+      visibleResources,
+      randomTotals: Object.values(randomTotals),
+    }
   }, [inventory, recycler, totalItems])
 
-  const visibleItems = ITEMS.filter(
-    (item) => !search || item.name.toLowerCase().includes(search.toLowerCase())
+  const query = search.trim().toLowerCase()
+  const categories = useMemo(
+    () =>
+      CATEGORIES.map((cat) => ({
+        cat,
+        items: ITEMS.filter(
+          (i) =>
+            i.category === cat &&
+            (!query || i.name.toLowerCase().includes(query))
+        ),
+      })).filter((c) => c.items.length > 0),
+    [query]
   )
 
   function adjust(id: string, delta: number) {
@@ -103,36 +207,41 @@ export function RecyclingCalculator() {
             Remove All
           </button>
         </div>
-        <div className="inv-grid">
-          {visibleItems.map((item) => {
-            const count = inventory[item.id]
-            return (
-              <div
-                key={item.id}
-                className={`inv-item${count > 0 ? ' active' : ''}`}
-              >
-                <div className="inv-item-img" title={item.name}>
-                  <Img src={item.img} alt={item.name} />
-                </div>
-                <div className="inv-controls">
-                  <button
-                    className="ctrl-btn minus"
-                    onClick={() => adjust(item.id, -1)}
+        {categories.map(({ cat, items }) => (
+          <div className="cat-wrap" key={cat}>
+            <div className="sec-label">{cat.toUpperCase()}</div>
+            <div className="inv-grid">
+              {items.map((item) => {
+                const count = inventory[item.id]
+                return (
+                  <div
+                    key={item.id}
+                    className={`inv-item${count > 0 ? ' active' : ''}`}
                   >
-                    −
-                  </button>
-                  <div className="ctrl-val">{count}</div>
-                  <button
-                    className="ctrl-btn plus"
-                    onClick={() => adjust(item.id, 1)}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+                    <div className="inv-item-img" title={item.name}>
+                      <Img src={item.img} alt={item.name} />
+                    </div>
+                    <div className="inv-controls">
+                      <button
+                        className="ctrl-btn minus"
+                        onClick={() => adjust(item.id, -1)}
+                      >
+                        −
+                      </button>
+                      <div className="ctrl-val">{count}</div>
+                      <button
+                        className="ctrl-btn plus"
+                        onClick={() => adjust(item.id, 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="panel-right">
@@ -146,9 +255,9 @@ export function RecyclingCalculator() {
               <Img
                 src="/images/recycler.png"
                 className="rec-icon-img"
-                alt="Radtown Recycler"
+                alt="Standard Recycler"
               />
-              <span className="rec-name">Radtown Recycler</span>
+              <span className="rec-name">Standard Recycler</span>
               <span className="rec-rate">60% YIELD • 5s / ITEM</span>
             </div>
             <div
@@ -191,27 +300,46 @@ export function RecyclingCalculator() {
               </div>
 
               <div className="res-grid" style={{ marginTop: 10 }}>
-                <ResCard
-                  kind="scrap"
-                  label="Scrap"
-                  value={results.totals.scrap}
-                />
-                <ResCard
-                  kind="metal"
-                  label="Metal"
-                  value={results.totals.metal}
-                />
-                <ResCard
-                  kind="hqm"
-                  label="High Qual"
-                  value={results.totals.hqm}
-                />
-                <ResCard
-                  kind="cloth"
-                  label="Cloth"
-                  value={results.totals.cloth}
-                />
+                {results.visibleResources.map((res) => (
+                  <ResCard
+                    key={res}
+                    kind={res}
+                    label={RESOURCE_LABELS[res]}
+                    value={results.totals[res]}
+                  />
+                ))}
               </div>
+
+              {results.randomTotals.length > 0 && (
+                <div className="rnd-wrap">
+                  <div className="rnd-title">plus a random amount of...</div>
+                  <div className="rnd-grid">
+                    {results.randomTotals.map((rt) => (
+                      <div className="rnd-row" key={rt.id}>
+                        <Img className="rnd-icon" src={rt.img} alt={rt.name} />
+                        <div className="rnd-stats">
+                          <div className="stat-block">
+                            <span className="stat-lbl">Min</span>
+                            <span className="stat-val">0</span>
+                          </div>
+                          <div className="stat-line" />
+                          <div className="stat-block">
+                            <span className="stat-lbl">Avg</span>
+                            <span className="stat-val">
+                              ~{Math.round(rt.avg * 10) / 10}
+                            </span>
+                          </div>
+                          <div className="stat-line" />
+                          <div className="stat-block">
+                            <span className="stat-lbl">Max</span>
+                            <span className="stat-val">{rt.max}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div>
@@ -226,14 +354,15 @@ export function RecyclingCalculator() {
                     <div className="bd-divider" />
                     <div className="bd-outputs">
                       {row.outputs.map((o) => (
-                        <div className="bd-out-item" key={o.res}>
-                          <Img src={RESOURCE_ICONS[o.res]} alt={o.res} />
+                        <div className="bd-out-item" key={o.key}>
+                          {o.chancePct != null && (
+                            <span className="rnd-badge">{o.chancePct}%</span>
+                          )}
+                          <Img src={o.img} alt={o.title} title={o.title} />
                           <span>×{o.amount}</span>
                         </div>
                       ))}
-                      {recycler === 'safezone' && (
-                        <span className="penalty-tag">-33%</span>
-                      )}
+                      {row.penalty && <span className="penalty-tag">-33%</span>}
                     </div>
                   </div>
                 ))}

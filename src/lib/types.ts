@@ -28,15 +28,41 @@ export interface ComboItem {
   totalCharcoal: number;
 }
 
-export type RecycleResource = "scrap" | "metal" | "hqm" | "cloth";
+export type RecycleResource =
+  | "scrap"
+  | "metal"
+  | "hqm"
+  | "cloth"
+  | "wood"
+  | "stone"
+  | "lgf"
+  | "gp"
+  | "leather"
+  | "sulfur";
 
-export type ResourceYield = Record<RecycleResource, number>;
+/**
+ * Raw recycler output keyed by JSON yield id. Keys are usually base resources
+ * (normalized to a RecycleResource via RES_MAP) but may also be component item
+ * ids (e.g. "gears", "metalpipe") that resolve to their own item image.
+ */
+export type RecycleYield = Record<string, number>;
+
+/** A chance-based extra output produced by recycling an item. */
+export interface RecycleRandomDrop {
+  id: string;
+  amount: number;
+  chance: number;
+}
 
 export interface RecycleItem {
   id: string;
   name: string;
+  category: string;
   img: string;
-  yield: ResourceYield;
+  yield: RecycleYield;
+  safezone_yield: RecycleYield;
+  random?: RecycleRandomDrop[];
+  safezone_random?: RecycleRandomDrop[];
 }
 
 export type RecyclerKind = "radtown" | "safezone";
