@@ -1,41 +1,45 @@
-import { useMemo, useState } from "react";
-import { CalcShell } from "./CalcShell";
-import { Img } from "./Img";
-import { MAX_SLOTS } from "../lib/data/cupboard-data";
-import { calculateOptimalTC, formatTime, generateStacks } from "../lib/cupboard-logic";
-import type { Stack } from "../lib/types";
+import { useMemo, useState } from 'react'
+import { CalcShell } from './CalcShell'
+import { Img } from './Img'
+import { MAX_SLOTS } from '../lib/data/cupboard-data'
+import {
+  calculateOptimalTC,
+  formatTime,
+  generateStacks,
+} from '../lib/cupboard-logic'
+import type { Stack } from '../lib/types'
 
 const RESOURCES = [
-  { key: "wood", img: "/images/wood.png", alt: "Wood" },
-  { key: "stone", img: "/images/stones.png", alt: "Stone" },
-  { key: "metal", img: "/images/metal-fragments.png", alt: "Metal Fragments" },
-  { key: "hqm", img: "/images/hq-metal.png", alt: "High Quality Metal" },
-] as const;
+  { key: 'wood', img: '/images/wood.png', alt: 'Wood' },
+  { key: 'stone', img: '/images/stones.png', alt: 'Stone' },
+  { key: 'metal', img: '/images/metal.fragments.png', alt: 'Metal Fragments' },
+  { key: 'hqm', img: '/images/metal.refined.png', alt: 'High Quality Metal' },
+] as const
 
-type Inputs = Record<(typeof RESOURCES)[number]["key"], string>;
+type Inputs = Record<(typeof RESOURCES)[number]['key'], string>
 
-const EMPTY: Inputs = { wood: "", stone: "", metal: "", hqm: "" };
+const EMPTY: Inputs = { wood: '', stone: '', metal: '', hqm: '' }
 
 export function CupboardCalculator() {
-  const [inputs, setInputs] = useState<Inputs>(EMPTY);
+  const [inputs, setInputs] = useState<Inputs>(EMPTY)
 
   const result = useMemo(() => {
-    const wood = parseInt(inputs.wood) || 0;
-    const stone = parseInt(inputs.stone) || 0;
-    const metal = parseInt(inputs.metal) || 0;
-    const hqm = parseInt(inputs.hqm) || 0;
+    const wood = parseInt(inputs.wood) || 0
+    const stone = parseInt(inputs.stone) || 0
+    const metal = parseInt(inputs.metal) || 0
+    const hqm = parseInt(inputs.hqm) || 0
 
-    const tc = calculateOptimalTC(wood, stone, metal, hqm);
-    if (!tc) return null;
+    const tc = calculateOptimalTC(wood, stone, metal, hqm)
+    if (!tc) return null
 
     const stacks: Stack[] = [
-      ...generateStacks(tc.wood, "wood"),
-      ...generateStacks(tc.stone, "stone"),
-      ...generateStacks(tc.metal, "metal"),
-      ...generateStacks(tc.hqm, "hqm"),
-    ];
-    return { time: formatTime(tc.daysFloat), stacks };
-  }, [inputs]);
+      ...generateStacks(tc.wood, 'wood'),
+      ...generateStacks(tc.stone, 'stone'),
+      ...generateStacks(tc.metal, 'metal'),
+      ...generateStacks(tc.hqm, 'hqm'),
+    ]
+    return { time: formatTime(tc.daysFloat), stacks }
+  }, [inputs])
 
   return (
     <CalcShell
@@ -77,7 +81,7 @@ export function CupboardCalculator() {
 
         <div className="tc-image-container">
           <Img
-            src="/images/tool-cupboard.png"
+            src="/images/cupboard.tool.png"
             alt="Tool Cupboard"
             className="tc-image"
           />
@@ -93,7 +97,7 @@ export function CupboardCalculator() {
             <div className="tc-grid-container">
               <div className="tc-grid">
                 {Array.from({ length: MAX_SLOTS }).map((_, i) => {
-                  const stack = result.stacks[i];
+                  const stack = result.stacks[i]
                   return (
                     <div className="tc-slot" key={i}>
                       {stack && (
@@ -105,7 +109,7 @@ export function CupboardCalculator() {
                         </>
                       )}
                     </div>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -120,5 +124,5 @@ export function CupboardCalculator() {
         )}
       </div>
     </CalcShell>
-  );
+  )
 }
