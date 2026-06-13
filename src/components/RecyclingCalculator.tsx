@@ -305,7 +305,12 @@ export function RecyclingCalculator() {
                   <div className="rnd-grid">
                     {results.randomTotals.map((rt) => (
                       <div className="rnd-row" key={rt.id}>
-                        <Img className="rnd-icon" src={rt.img} alt={rt.name} />
+                        <Img
+                          className="rnd-icon"
+                          src={rt.img}
+                          alt={rt.name}
+                          data-tip={rt.name}
+                        />
                         <div className="rnd-stats">
                           <div className="stat-block">
                             <span className="stat-lbl">Min</span>
@@ -337,7 +342,7 @@ export function RecyclingCalculator() {
                 {results.rows.map((row) => (
                   <div className="bd-row" key={row.id}>
                     <div className="bd-input">
-                      <Img src={row.img} alt={row.name} />
+                      <Img src={row.img} alt={row.name} data-tip={row.name} />
                       <span className="bd-input-txt">{row.count}×</span>
                     </div>
                     <div className="bd-divider" />
