@@ -11,14 +11,19 @@ export function RaidCalculator() {
   const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
     () => new Set(),
   );
-  const [structureCount, setStructureCount] = useState(1);
+  const [structureCount, setStructureCount] = useState<number | "">(1);
 
   const ready = selectedStructure !== null && selectedExplosives.size > 0;
 
   const result = useMemo(() => {
     if (!selectedStructure || selectedExplosives.size === 0) return null;
 
-    const totalHp = STRUCTURES[selectedStructure].hp * structureCount;
+    const safeCount =
+      typeof structureCount === "number" && structureCount > 0
+        ? structureCount
+        : 1;
+
+    const totalHp = STRUCTURES[selectedStructure].hp * safeCount;
     const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name));
     const combo = cheapestCombo(totalHp, selectedStructure, exps);
 
@@ -39,7 +44,7 @@ export function RaidCalculator() {
       totalSulfur: comboTotal(combo, "totalSulfur"),
       totalMetal: comboTotal(combo, "totalMetal"),
       totalCharcoal: comboTotal(combo, "totalCharcoal"),
-      segCount: Math.min(20, structureCount * 4),
+      segCount: Math.min(20, safeCount * 4),
     };
   }, [selectedStructure, selectedExplosives, structureCount]);
 
@@ -63,6 +68,18 @@ export function RaidCalculator() {
       headerRest="CALCULATOR"
       variant="raid"
     >
+      {/* CSS pro skrytí výchozích prohlížečových šipek u input type="number" */}
+      <style>{`
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type="number"] {
+          -moz-appearance: textfield;
+        }
+      `}</style>
+
       <div className="panel-left">
         <div>
           <div className="sec-label">Target Structure</div>
@@ -133,15 +150,48 @@ export function RaidCalculator() {
                 <button
                   className="counter-btn"
                   onClick={() =>
-                    setStructureCount((c) => Math.max(1, c - 1))
+                    setStructureCount((c) =>
+                      Math.max(1, (typeof c === "number" ? c : 1) - 1),
+                    )
                   }
                 >
                   −
                 </button>
-                <div id="wall-count">{structureCount}</div>
+                <input
+                  id="wall-count"
+                  type="number"
+                  min="1"
+                  value={structureCount}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === "") {
+                      setStructureCount("");
+                    } else {
+                      const parsed = parseInt(val, 10);
+                      if (!isNaN(parsed) && parsed > 0) {
+                        setStructureCount(parsed);
+                      }
+                    }
+                  }}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "inherit",
+                    textAlign: "center",
+                    width: "60px",
+                    fontFamily: "inherit",
+                    fontSize: "inherit",
+                    fontWeight: "inherit",
+                    outline: "none",
+                  }}
+                />
                 <button
                   className="counter-btn"
-                  onClick={() => setStructureCount((c) => c + 1)}
+                  onClick={() =>
+                    setStructureCount(
+                      (c) => (typeof c === "number" ? c : 1) + 1,
+                    )
+                  }
                 >
                   +
                 </button>
@@ -151,23 +201,13 @@ export function RaidCalculator() {
             <div>
               <div className="sec-label">Structural Integrity</div>
               <div className="hp-readout">
-                <span id="hp-value" className={result.destroyed ? "breached" : ""}>
+                <span id="hp-value">
                   {Math.round(result.dmgDone).toLocaleString()}
                 </span>
                 <span id="hp-max">/ {result.totalHp.toLocaleString()} HP</span>
-                <span
-                  id="hp-badge"
-                  className={result.destroyed ? "breached" : ""}
-                >
-                  {result.destroyed ? "BREACHED" : "INTACT"}
-                </span>
               </div>
               <div className="hp-bar-outer">
-                <div
-                  id="hp-bar-fill"
-                  className={result.destroyed ? "breached" : ""}
-                  style={{ width: `${result.pct}%` }}
-                />
+                <div id="hp-bar-fill" style={{ width: `${result.pct}%` }} />
                 <div id="hp-segments">
                   {Array.from({ length: result.segCount }).map((_, i) => (
                     <span key={i} />
@@ -187,11 +227,75 @@ export function RaidCalculator() {
                       <Img src={c.exp.img} alt={c.exp.name} />
                       <span className="combo-qty">{c.qty}×</span>
                       <span className="combo-name">{c.exp.name}</span>
-                      <div className="combo-sulfur">
-                        <span className="combo-dot" />
-                        <span className="combo-sval">
-                          {c.totalSulfur.toLocaleString()}
-                        </span>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "16px",
+                          marginLeft: "auto",
+                          alignItems: "center",
+                          fontSize: "13px",
+                        }}
+                      >
+                        {c.totalSulfur > 0 && (
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "6px",
+                            }}
+                            title="Sulfur"
+                          >
+                            <Img
+                              src={RESOURCE_ICONS.sulfur}
+                              alt="Sulfur"
+                              style={{ width: "16px", height: "16px" }}
+                            />
+                            <span style={{ color: "#d25a32", fontWeight: 600 }}>
+                              {c.totalSulfur.toLocaleString()}
+                            </span>
+                          </div>
+                        )}
+
+                        {c.totalMetal > 0 && (
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "6px",
+                            }}
+                            title="Metal"
+                          >
+                            <Img
+                              src={RESOURCE_ICONS.metal}
+                              alt="Metal"
+                              style={{ width: "16px", height: "16px" }}
+                            />
+                            <span style={{ color: "#a5b4c0", fontWeight: 600 }}>
+                              {c.totalMetal.toLocaleString()}
+                            </span>
+                          </div>
+                        )}
+
+                        {c.totalCharcoal > 0 && (
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "6px",
+                            }}
+                            title="Coal"
+                          >
+                            <Img
+                              src={RESOURCE_ICONS.coal}
+                              alt="Coal"
+                              style={{ width: "16px", height: "16px" }}
+                            />
+                            <span style={{ color: "#8b8c89", fontWeight: 600 }}>
+                              {c.totalCharcoal.toLocaleString()}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
