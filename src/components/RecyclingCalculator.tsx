@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import sumBy from 'lodash/sumBy'
 import { CalcShell } from './CalcShell'
 import { Img } from './Img'
@@ -71,9 +71,7 @@ export function RecyclingCalculator() {
         isSafezone && hasSafezoneYield ? item.safezone_yield : item.yield
       const multiplier = isSafezone && !hasSafezoneYield ? 2 / 3 : 1
       const currentRandom =
-        isSafezone && item.safezone_random
-          ? item.safezone_random
-          : item.random
+        isSafezone && item.safezone_random ? item.safezone_random : item.random
 
       const outputs: OutputCell[] = []
 
@@ -85,10 +83,12 @@ export function RecyclingCalculator() {
         if (mapped) totals[mapped] += amount
         outputs.push({
           key: res,
-          img: mapped ? RESOURCE_ICONS[mapped] : COMPONENT_INFO[res]?.img ?? '',
+          img: mapped
+            ? RESOURCE_ICONS[mapped]
+            : (COMPONENT_INFO[res]?.img ?? ''),
           title: mapped
             ? RESOURCE_LABELS[mapped]
-            : COMPONENT_INFO[res]?.label ?? res,
+            : (COMPONENT_INFO[res]?.label ?? res),
           amount,
         })
       }
@@ -100,10 +100,10 @@ export function RecyclingCalculator() {
           const mapped = RES_MAP[rnd.id]
           const img = mapped
             ? RESOURCE_ICONS[mapped]
-            : COMPONENT_INFO[rnd.id]?.img ?? ''
+            : (COMPONENT_INFO[rnd.id]?.img ?? '')
           const name = mapped
             ? RESOURCE_LABELS[mapped]
-            : COMPONENT_INFO[rnd.id]?.label ?? rnd.id
+            : (COMPONENT_INFO[rnd.id]?.label ?? rnd.id)
           const maxAmount = rnd.amount * count
 
           outputs.push({
@@ -172,12 +172,12 @@ export function RecyclingCalculator() {
     [query]
   )
 
-  function adjust(id: string, delta: number) {
+  const adjust = useCallback((id: string, delta: number) => {
     setInventory((prev) => ({
       ...prev,
       [id]: Math.max(0, prev[id] + delta),
     }))
-  }
+  }, [])
 
   function clearAll() {
     setInventory(Object.fromEntries(ITEMS.map((i) => [i.id, 0])))
@@ -211,34 +211,16 @@ export function RecyclingCalculator() {
           <div className="cat-wrap" key={cat}>
             <div className="sec-label">{cat.toUpperCase()}</div>
             <div className="inv-grid">
-              {items.map((item) => {
-                const count = inventory[item.id]
-                return (
-                  <div
-                    key={item.id}
-                    className={`inv-item${count > 0 ? ' active' : ''}`}
-                  >
-                    <div className="inv-item-img" title={item.name}>
-                      <Img src={item.img} alt={item.name} />
-                    </div>
-                    <div className="inv-controls">
-                      <button
-                        className="ctrl-btn minus"
-                        onClick={() => adjust(item.id, -1)}
-                      >
-                        −
-                      </button>
-                      <div className="ctrl-val">{count}</div>
-                      <button
-                        className="ctrl-btn plus"
-                        onClick={() => adjust(item.id, 1)}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                )
-              })}
+              {items.map((item) => (
+                <InvItem
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  img={item.img}
+                  count={inventory[item.id]}
+                  onAdjust={adjust}
+                />
+              ))}
             </div>
           </div>
         ))}
@@ -381,6 +363,39 @@ export function RecyclingCalculator() {
     </CalcShell>
   )
 }
+
+// Memoized so a +/- click only re-renders the one cell whose count changed,
+// instead of all 700+ items. `onAdjust` must be a stable reference (useCallback).
+const InvItem = memo(function InvItem({
+  id,
+  name,
+  img,
+  count,
+  onAdjust,
+}: {
+  id: string
+  name: string
+  img: string
+  count: number
+  onAdjust: (id: string, delta: number) => void
+}) {
+  return (
+    <div className={`inv-item${count > 0 ? ' active' : ''}`}>
+      <div className="inv-item-img" title={name}>
+        <Img src={img} alt={name} loading="lazy" decoding="async" />
+      </div>
+      <div className="inv-controls">
+        <button className="ctrl-btn minus" onClick={() => onAdjust(id, -1)}>
+          −
+        </button>
+        <div className="ctrl-val">{count}</div>
+        <button className="ctrl-btn plus" onClick={() => onAdjust(id, 1)}>
+          +
+        </button>
+      </div>
+    </div>
+  )
+})
 
 function ResCard({
   kind,
