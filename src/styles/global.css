@@ -413,7 +413,7 @@ h1.page-title span {
 }
 [data-variant="recycling"] .panel-left {
   flex: 0 0 55%;
-  padding: 22px;
+  padding-bottom: 22px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -954,10 +954,11 @@ h1.page-title span {
   line-height: 1.9;
 }
 
-.input-toolbar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 5px;
+.search-box-b {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(170deg, #171512 0%, #131210 100%);
+  border-bottom: 1px solid var(--border2);
 }
 .search-box {
   flex: 1;
@@ -1669,6 +1670,10 @@ h1.page-title span {
     1px -1px 0 #000,
     -1px 1px 0 #000;
   letter-spacing: 0.05em;
+}
+
+.search-box-bg { 
+  background: linear-gradient(170deg, #171512 0%, #131210 100%);
 }
 
 /* ════════════════════════════════════════════════════════════════════════

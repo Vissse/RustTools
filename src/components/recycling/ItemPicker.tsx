@@ -26,7 +26,8 @@ export function ItemPicker({
 }: ItemPickerProps) {
   return (
     <div className="panel-left" {...tipProps}>
-      <div className="input-toolbar">
+      {/* <div className="w-full h-full "> */}
+      <div className="flex gap-2.5 !mb-[5px]  z-50 w-full search-box-b !px-[22px] !pt-[22px] !pb-5.5">
         <input
           type="text"
           className="search-box"
@@ -37,9 +38,10 @@ export function ItemPicker({
         <button className="btn-remove-all" onClick={onClear}>
           Remove All
         </button>
+        {/* </div> */}
       </div>
       {categories.map(({ cat, items }) => (
-        <div className="cat-wrap" key={cat}>
+        <div className="cat-wrap z-40 !px-[22px] !pt-[22px]" key={cat}>
           <div className="sec-label">{cat.toUpperCase()}</div>
           <div className="inv-grid">
             {items.map((item) => (
