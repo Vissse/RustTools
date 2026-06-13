@@ -1,81 +1,82 @@
-import { useMemo, useState } from "react";
-import sumBy from "lodash/sumBy";
-import { CalcShell } from "./CalcShell";
-import { Img } from "./Img";
-import { ITEMS, RESOURCE_ICONS, RESOURCE_ORDER } from "../lib/data/recycling-data";
-import type { RecycleResource, RecyclerKind } from "../lib/types";
+import { useMemo, useState } from 'react'
+import sumBy from 'lodash/sumBy'
+import { CalcShell } from './CalcShell'
+import { Img } from './Img'
+import {
+  ITEMS,
+  RESOURCE_ICONS,
+  RESOURCE_ORDER,
+} from '../lib/data/recycling-data'
+import type { RecycleResource, RecyclerKind } from '../lib/types'
 
 interface BreakdownRow {
-  id: string;
-  name: string;
-  img: string;
-  count: number;
-  outputs: { res: RecycleResource; amount: number }[];
+  id: string
+  name: string
+  img: string
+  count: number
+  outputs: { res: RecycleResource; amount: number }[]
 }
 
 export function RecyclingCalculator() {
   const [inventory, setInventory] = useState<Record<string, number>>(() =>
-    Object.fromEntries(ITEMS.map((i) => [i.id, 0])),
-  );
-  const [recycler, setRecycler] = useState<RecyclerKind>("radtown");
-  const [search, setSearch] = useState("");
+    Object.fromEntries(ITEMS.map((i) => [i.id, 0]))
+  )
+  const [recycler, setRecycler] = useState<RecyclerKind>('radtown')
+  const [search, setSearch] = useState('')
 
-  const totalItems = useMemo(
-    () => sumBy(Object.values(inventory)),
-    [inventory],
-  );
+  const totalItems = useMemo(() => sumBy(Object.values(inventory)), [inventory])
 
   const results = useMemo(() => {
-    if (totalItems === 0) return null;
+    if (totalItems === 0) return null
 
     // Standard recycler = 1.0 (60% in-game yield); Safe Zone = 2/3 (40% yield).
-    const multiplier = recycler === "radtown" ? 1.0 : 2 / 3;
+    const multiplier = recycler === 'radtown' ? 1.0 : 2 / 3
     const totals: Record<RecycleResource, number> = {
       scrap: 0,
       metal: 0,
       hqm: 0,
       cloth: 0,
-    };
-    const rows: BreakdownRow[] = [];
+    }
+    const rows: BreakdownRow[] = []
 
     for (const item of ITEMS) {
-      const count = inventory[item.id];
-      if (count === 0) continue;
+      const count = inventory[item.id]
+      if (count === 0) continue
 
-      const outputs: BreakdownRow["outputs"] = [];
+      const outputs: BreakdownRow['outputs'] = []
       for (const res of RESOURCE_ORDER) {
-        const baseYield = item.yield[res];
-        if (baseYield === 0) continue;
+        const baseYield = item.yield[res]
+        if (baseYield === 0) continue
         // Rust rounds recycler output down.
-        const actualYield = Math.floor(baseYield * count * multiplier);
-        totals[res] += actualYield;
-        outputs.push({ res, amount: actualYield });
+        const actualYield = Math.floor(baseYield * count * multiplier)
+        totals[res] += actualYield
+        outputs.push({ res, amount: actualYield })
       }
-      rows.push({ id: item.id, name: item.name, img: item.img, count, outputs });
+      rows.push({ id: item.id, name: item.name, img: item.img, count, outputs })
     }
 
-    const timePerItem = recycler === "radtown" ? 5 : 8;
-    const totalSeconds = totalItems * timePerItem;
-    const mins = Math.floor(totalSeconds / 60);
-    const secs = totalSeconds % 60;
-    const time = mins > 0 ? `${mins}M ${secs}S` : `${secs}S`;
+    const timePerItem = recycler === 'radtown' ? 5 : 8
+    const totalSeconds = totalItems * timePerItem
+    const mins = Math.floor(totalSeconds / 60)
+    const secs = totalSeconds % 60
+    const time = mins > 0 ? `${mins}M ${secs}S` : `${secs}S`
 
-    return { totals, rows, time };
-  }, [inventory, recycler, totalItems]);
+    return { totals, rows, time }
+  }, [inventory, recycler, totalItems])
 
   const visibleItems = ITEMS.filter(
-    (item) => !search || item.name.toLowerCase().includes(search.toLowerCase()),
-  );
+    (item) => !search || item.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   function adjust(id: string, delta: number) {
     setInventory((prev) => ({
       ...prev,
       [id]: Math.max(0, prev[id] + delta),
-    }));
+    }))
   }
 
   function clearAll() {
-    setInventory(Object.fromEntries(ITEMS.map((i) => [i.id, 0])));
+    setInventory(Object.fromEntries(ITEMS.map((i) => [i.id, 0])))
   }
 
   return (
@@ -104,11 +105,11 @@ export function RecyclingCalculator() {
         </div>
         <div className="inv-grid">
           {visibleItems.map((item) => {
-            const count = inventory[item.id];
+            const count = inventory[item.id]
             return (
               <div
                 key={item.id}
-                className={`inv-item${count > 0 ? " active" : ""}`}
+                className={`inv-item${count > 0 ? ' active' : ''}`}
               >
                 <div className="inv-item-img" title={item.name}>
                   <Img src={item.img} alt={item.name} />
@@ -129,7 +130,7 @@ export function RecyclingCalculator() {
                   </button>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
@@ -139,8 +140,8 @@ export function RecyclingCalculator() {
           <div className="sec-label">Recycler Type</div>
           <div className="recycler-toggle">
             <div
-              className={`rec-btn${recycler === "radtown" ? " active" : ""}`}
-              onClick={() => setRecycler("radtown")}
+              className={`rec-btn${recycler === 'radtown' ? ' active' : ''}`}
+              onClick={() => setRecycler('radtown')}
             >
               <Img
                 src="/images/recycler.png"
@@ -151,8 +152,8 @@ export function RecyclingCalculator() {
               <span className="rec-rate">60% YIELD • 5s / ITEM</span>
             </div>
             <div
-              className={`rec-btn${recycler === "safezone" ? " active" : ""}`}
-              onClick={() => setRecycler("safezone")}
+              className={`rec-btn${recycler === 'safezone' ? ' active' : ''}`}
+              onClick={() => setRecycler('safezone')}
             >
               <Img
                 src="/images/safezone-recycler.png"
@@ -166,7 +167,7 @@ export function RecyclingCalculator() {
         </div>
 
         {results ? (
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div>
               <div className="sec-label-wrapper">
                 <div className="sec-label" style={{ marginBottom: 0 }}>
@@ -174,16 +175,16 @@ export function RecyclingCalculator() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "var(--font-ui)",
+                    fontFamily: 'var(--font-ui)',
                     fontSize: 11,
                     fontWeight: 700,
-                    color: "var(--rust)",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
+                    color: 'var(--rust)',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
                   }}
                 >
-                  Time:{" "}
-                  <span style={{ color: "var(--text-bright)" }}>
+                  Time:{' '}
+                  <span style={{ color: 'var(--text-bright)' }}>
                     {results.time}
                   </span>
                 </div>
@@ -230,7 +231,7 @@ export function RecyclingCalculator() {
                           <span>×{o.amount}</span>
                         </div>
                       ))}
-                      {recycler === "safezone" && (
+                      {recycler === 'safezone' && (
                         <span className="penalty-tag">-33%</span>
                       )}
                     </div>
@@ -249,7 +250,7 @@ export function RecyclingCalculator() {
         )}
       </div>
     </CalcShell>
-  );
+  )
 }
 
 function ResCard({
@@ -257,9 +258,9 @@ function ResCard({
   label,
   value,
 }: {
-  kind: RecycleResource;
-  label: string;
-  value: number;
+  kind: RecycleResource
+  label: string
+  value: number
 }) {
   return (
     <div className={`res-card ${kind}`}>
@@ -269,5 +270,5 @@ function ResCard({
       </div>
       <span className="res-val">{value}</span>
     </div>
-  );
+  )
 }
