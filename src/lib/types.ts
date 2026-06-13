@@ -90,3 +90,8 @@ export interface RaidItem {
   quantity: string;
   time: string;
 }
+
+export interface CraftingRequirement {
+  name: string;
+  quantity: number;
+}

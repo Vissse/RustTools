@@ -1,0 +1,11 @@
+<div id="сraft-footer">
+<span class="item-box">
+				<img src="/img/items40/metal.refined.png" alt="High Quality Metal"><span class="text-in-icon">×2</span>
+				</span><span class="item-box">
+				<img src="/img/items40/scrap.png" alt="Scrap"><span class="text-in-icon">×20</span>
+				</span><span class="item-box">
+				<img src="/img/items40/charcoal.png" alt="Charcoal"><span class="text-in-icon">×900</span>
+				</span><span class="item-box">
+				<img src="/img/items40/sulfur.png" alt="Sulfur"><span class="text-in-icon">×600</span>
+				</span>
+</div>
