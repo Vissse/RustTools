@@ -12,6 +12,8 @@ export function RaidCalculator() {
     () => new Set(),
   );
   const [structureCount, setStructureCount] = useState<number | "">(1);
+  // Nový stav pro přepínání Mixing Table
+  const [useMixingTable, setUseMixingTable] = useState<boolean>(false);
 
   const ready = selectedStructure !== null && selectedExplosives.size > 0;
 
@@ -35,6 +37,9 @@ export function RaidCalculator() {
     const pct = Math.min(100, (dmgDone / totalHp) * 100);
     const destroyed = totalDmg >= totalHp;
 
+    // Základní charcoal z výpočtu solveru
+    const baseCharcoal = comboTotal(combo, "totalCharcoal");
+
     return {
       totalHp,
       combo,
@@ -43,10 +48,13 @@ export function RaidCalculator() {
       destroyed,
       totalSulfur: comboTotal(combo, "totalSulfur"),
       totalMetal: comboTotal(combo, "totalMetal"),
-      totalCharcoal: comboTotal(combo, "totalCharcoal"),
+      // Pokud je zapnutý Mixing Table, ponížíme uhlí na 2/3 (z 30 na 20)
+      totalCharcoal: useMixingTable
+        ? Math.round(baseCharcoal * (2 / 3))
+        : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
     };
-  }, [selectedStructure, selectedExplosives, structureCount]);
+  }, [selectedStructure, selectedExplosives, structureCount, useMixingTable]);
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
@@ -144,69 +152,111 @@ export function RaidCalculator() {
           </div>
         ) : (
           <div id="results">
-            <div>
-              <div className="sec-label">Structure Count</div>
-              <div className="counter-wrap">
-                <button
-                  className="counter-btn"
-                  onClick={() =>
-                    setStructureCount((c) =>
-                      Math.max(1, (typeof c === "number" ? c : 1) - 1),
-                    )
-                  }
-                >
-                  −
-                </button>
+            {/* Sekce s nastavením počtu a metody craftingu vedle sebe / pod sebou */}
+            <div style={{ display: "flex", gap: "20px" }}>
+              <div style={{ flex: 1 }}>
+                <div className="sec-label">Structure Count</div>
+                <div className="counter-wrap">
+                  <button
+                    className="counter-btn"
+                    onClick={() =>
+                      setStructureCount((c) =>
+                        Math.max(1, (typeof c === "number" ? c : 1) - 1),
+                      )
+                    }
+                  >
+                    −
+                  </button>
 
-                <div
-                  id="wall-count"
-                  style={{
-                    padding: 0,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <input
-                    type="number"
-                    min="1"
-                    className="invisible-num-input"
-                    value={structureCount}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      if (val === "") {
-                        setStructureCount("");
-                      } else {
-                        const parsed = parseInt(val, 10);
-                        if (!isNaN(parsed) && parsed > 0) {
-                          setStructureCount(parsed);
-                        }
-                      }
-                    }}
+                  <div
+                    id="wall-count"
                     style={{
-                      width: "60px" /* Fixní šířka zabrání roztahování */,
-                      background: "transparent",
-                      border: "none",
-                      color: "inherit",
-                      textAlign: "center",
-                      fontFamily: "inherit",
-                      fontSize: "inherit",
-                      fontWeight: "inherit",
-                      outline: "none",
-                      boxShadow: "none",
+                      padding: 0,
+                      display: "flex",
+                      justifyContent: "center",
                     }}
-                  />
-                </div>
+                  >
+                    <input
+                      type="number"
+                      min="1"
+                      className="invisible-num-input"
+                      value={structureCount}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val === "") {
+                          setStructureCount("");
+                        } else {
+                          const parsed = parseInt(val, 10);
+                          if (!isNaN(parsed) && parsed > 0) {
+                            setStructureCount(parsed);
+                          }
+                        }
+                      }}
+                      style={{
+                        width: "60px",
+                        background: "transparent",
+                        border: "none",
+                        color: "inherit",
+                        textAlign: "center",
+                        fontFamily: "inherit",
+                        fontSize: "inherit",
+                        fontWeight: "inherit",
+                        outline: "none",
+                        boxShadow: "none",
+                      }}
+                    />
+                  </div>
 
-                <button
-                  className="counter-btn"
-                  onClick={() =>
-                    setStructureCount(
-                      (c) => (typeof c === "number" ? c : 1) + 1,
-                    )
-                  }
-                >
-                  +
-                </button>
+                  <button
+                    className="counter-btn"
+                    onClick={() =>
+                      setStructureCount(
+                        (c) => (typeof c === "number" ? c : 1) + 1,
+                      )
+                    }
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* NOVÉ: Výběr craftovací stanice */}
+              <div style={{ flex: 1 }}>
+                <div className="sec-label">Crafting Method</div>
+                <div style={{ display: "flex", gap: "6px", height: "40px" }}>
+                  <button
+                    type="button"
+                    className={`item-btn small ${!useMixingTable ? "active" : ""}`}
+                    onClick={() => setUseMixingTable(false)}
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      padding: 0,
+                      margin: 0,
+                      height: "100%",
+                    }}
+                  >
+                    <span className="btn-name small" style={{ margin: 0 }}>
+                      Standard
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`item-btn small ${useMixingTable ? "active" : ""}`}
+                    onClick={() => setUseMixingTable(true)}
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      padding: 0,
+                      margin: 0,
+                      height: "100%",
+                    }}
+                  >
+                    <span className="btn-name small" style={{ margin: 0 }}>
+                      Mixing Table | Cooking Workbench
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -304,7 +354,11 @@ export function RaidCalculator() {
                               style={{ width: "16px", height: "16px" }}
                             />
                             <span style={{ color: "#8b8c89", fontWeight: 600 }}>
-                              {c.totalCharcoal.toLocaleString()}
+                              {/* Zde se hodnota přepočítává dynamicky pro konkrétní řádek */}
+                              {(useMixingTable
+                                ? Math.round(c.totalCharcoal * (2 / 3))
+                                : c.totalCharcoal
+                              ).toLocaleString()}
                             </span>
                           </div>
                         )}
@@ -338,8 +392,8 @@ export function RaidCalculator() {
                 </div>
                 <div className="res-card coal">
                   <div className="res-header">
-                    <Img src={RESOURCE_ICONS.coal} alt="Charcoal" />
-                    <span className="res-lbl">Charcoal</span>
+                    <Img src={RESOURCE_ICONS.coal} alt="Coal" />
+                    <span className="res-lbl">Coal</span>
                   </div>
                   <span className="res-val">
                     {result.totalCharcoal.toLocaleString()}
