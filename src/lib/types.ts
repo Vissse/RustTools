@@ -82,3 +82,11 @@ export interface Stack {
   img: string;
   amount: number;
 }
+
+export interface RaidItem {
+  name: string;
+  side: "soft" | "hard" | "both";
+  damage: string;
+  quantity: string;
+  time: string;
+}
