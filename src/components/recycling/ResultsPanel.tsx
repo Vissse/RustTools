@@ -11,6 +11,7 @@ interface ResultsPanelProps {
   recycler: RecyclerKind
   onRecyclerChange: (kind: RecyclerKind) => void
   results: RecycleResults | null
+  onSet: (id: string, value: number) => void
   tipProps: TooltipProps
 }
 
@@ -19,6 +20,7 @@ export function ResultsPanel({
   recycler,
   onRecyclerChange,
   results,
+  onSet,
   tipProps,
 }: ResultsPanelProps) {
   return (
@@ -63,7 +65,7 @@ export function ResultsPanel({
             <RandomDropList randomTotals={results.randomTotals} />
           </div>
 
-          <Breakdown rows={results.rows} />
+          <Breakdown rows={results.rows} onSet={onSet} />
         </div>
       ) : (
         <div className="empty-state">

@@ -63,6 +63,7 @@ export function RecyclingCalculator() {
         recycler={recycler}
         onRecyclerChange={setRecycler}
         results={results}
+        onSet={setCount}
         tipProps={tip}
       />
     </CalcShell>

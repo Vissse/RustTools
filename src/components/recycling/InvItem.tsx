@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { Img } from '../Img'
+import { QtyInput } from './QtyInput'
 
 interface InvItemProps {
   id: string
@@ -29,19 +30,11 @@ export const InvItem = memo(function InvItem({
         <button className="ctrl-btn minus" onClick={() => onAdjust(id, -1)}>
           −
         </button>
-        <input
-          type="text"
-          inputMode="numeric"
+        <QtyInput
           className="ctrl-val"
           value={count}
-          aria-label={`${name} quantity`}
-          onChange={(e) => {
-            // Integers 0–9999 only: strip everything non-digit, then clamp.
-            const digits = e.target.value.replace(/\D/g, '')
-            const n = digits === '' ? 0 : Math.min(9999, parseInt(digits, 10))
-            onSet(id, n)
-          }}
-          onFocus={(e) => e.target.select()}
+          ariaLabel={`${name} quantity`}
+          onChange={(n) => onSet(id, n)}
         />
         <button className="ctrl-btn plus" onClick={() => onAdjust(id, 1)}>
           +

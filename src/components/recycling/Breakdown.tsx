@@ -1,12 +1,14 @@
 import { Img } from '../Img'
+import { QtyInput } from './QtyInput'
 import type { BreakdownRow } from './types'
 
 interface BreakdownProps {
   rows: BreakdownRow[]
+  onSet: (id: string, value: number) => void
 }
 
-/** Per-item recycler output breakdown. */
-export function Breakdown({ rows }: BreakdownProps) {
+/** Per-item recycler output breakdown (only items currently selected). */
+export function Breakdown({ rows, onSet }: BreakdownProps) {
   return (
     <div>
       <div className="sec-label">Breakdown</div>
@@ -15,7 +17,21 @@ export function Breakdown({ rows }: BreakdownProps) {
           <div className="bd-row" key={row.id}>
             <div className="bd-input">
               <Img src={row.img} alt={row.name} data-tip={row.name} />
-              <span className="bd-input-txt">{row.count}×</span>
+              <QtyInput
+                className="bd-qty"
+                value={row.count}
+                ariaLabel={`${row.name} quantity`}
+                deferZero
+                onChange={(n) => onSet(row.id, n)}
+              />
+              <button
+                className="bd-remove"
+                onClick={() => onSet(row.id, 0)}
+                data-tip="Remove"
+                aria-label={`Remove ${row.name}`}
+              >
+                ✕
+              </button>
             </div>
             <div className="bd-divider" />
             <div className="bd-outputs">

@@ -1319,8 +1319,8 @@ h1.page-title span {
 .bd-input {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100px;
+  gap: 8px;
+  width: 124px;
   flex-shrink: 0;
 }
 .bd-input img {
@@ -1328,11 +1328,53 @@ h1.page-title span {
   height: 28px;
   object-fit: contain;
 }
-.bd-input-txt {
-  font-family: var(--font-d);
-  font-size: 14px;
-  font-weight: 500;
+.bd-qty {
+  width: 42px;
+  flex-shrink: 0;
+  text-align: center;
+  background: var(--panel3);
+  border: 1px solid var(--border2);
   color: var(--text-bright);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 2px;
+  outline: none;
+  appearance: none;
+  -moz-appearance: textfield;
+}
+.bd-qty:focus {
+  border-color: var(--rust);
+  background: rgba(206, 66, 43, 0.1);
+}
+.bd-qty::-webkit-outer-spin-button,
+.bd-qty::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.bd-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+.bd-remove:hover {
+  background: rgba(206, 66, 43, 0.18);
+  border-color: var(--rust);
+  color: var(--rust);
 }
 .bd-divider {
   flex: 1;
