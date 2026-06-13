@@ -1312,81 +1312,77 @@
 
       function renderInputGrid() {
         const panelLeft = document.querySelector(".panel-left");
-        // Zachováme toolbar
         const toolbar = document.querySelector(".input-toolbar");
-        panelLeft.innerHTML = "";
-        panelLeft.appendChild(toolbar);
 
-        // Definice prioritního pořadí kategorií, aby to vypadalo hezky
-        const categoryOrder = [
-          "components",
-          "weapons",
-          "attire",
-          "deployables",
-          "ammo",
-          "other",
-        ];
+        // Pokud panel ještě nemá kategorie (první načtení), vygenerujeme je
+        if (!panelLeft.querySelector(".cat-wrap")) {
+          panelLeft.innerHTML = "";
+          panelLeft.appendChild(toolbar);
 
-        // Seskupení itemů podle kategorií
-        const grouped = ITEMS.reduce((acc, item) => {
-          const cat = item.category || "other";
-          if (!acc[cat]) acc[cat] = [];
-          acc[cat].push(item);
-          return acc;
-        }, {});
+          const allCategories = [
+            ...new Set(ITEMS.map((i) => i.category || "other")),
+          ];
+          allCategories.sort((a, b) =>
+            a === "other" ? 1 : b === "other" ? -1 : a.localeCompare(b),
+          );
 
-        // Vykreslení
-        categoryOrder.forEach((cat) => {
-          if (!grouped[cat]) return;
+          allCategories.forEach((cat) => {
+            const catWrap = document.createElement("div");
+            catWrap.className = "cat-wrap";
+            catWrap.dataset.category = cat;
+            catWrap.style.marginTop = "20px";
+            catWrap.innerHTML = `<div class="sec-label">${cat.toUpperCase()}</div><div class="inv-grid"></div>`;
 
-          const catWrap = document.createElement("div");
-          catWrap.style.marginTop = "20px";
+            const grid = catWrap.querySelector(".inv-grid");
 
-          const label = document.createElement("div");
-          label.className = "sec-label";
-          label.textContent = cat.toUpperCase();
-          catWrap.appendChild(label);
-
-          const grid = document.createElement("div");
-          grid.className = "inv-grid";
-
-          grouped[cat].forEach((item) => {
-            if (searchFilter && !item.name.toLowerCase().includes(searchFilter))
-              return;
-
-            const count = inventory[item.id] || 0;
-            const div = document.createElement("div");
-            div.className = `inv-item ${count > 0 ? "active" : ""}`;
-            div.innerHTML = `
-              <div class="inv-item-img" title="${item.name}">
-                <img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'">
-              </div>
-              <div class="inv-controls">
-                <button class="ctrl-btn minus">−</button>
-                <div class="ctrl-val">${count}</div>
-                <button class="ctrl-btn plus">+</button>
-              </div>
-            `;
-
-            div.querySelector(".minus").onclick = () => {
-              if (inventory[item.id] > 0) {
-                inventory[item.id]--;
-                renderInputGrid();
-                renderResults();
-              }
-            };
-            div.querySelector(".plus").onclick = () => {
-              inventory[item.id]++;
-              renderInputGrid();
-              renderResults();
-            };
-
-            grid.appendChild(div);
+            ITEMS.filter((i) => (i.category || "other") === cat).forEach(
+              (item) => {
+                const div = document.createElement("div");
+                div.className = "inv-item";
+                div.dataset.id = item.id;
+                div.dataset.name = item.name.toLowerCase();
+                div.innerHTML = `
+                <div class="inv-item-img" title="${item.name}"><img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'"></div>
+                <div class="inv-controls">
+                  <button class="ctrl-btn minus">−</button>
+                  <div class="ctrl-val">0</div>
+                  <button class="ctrl-btn plus">+</button>
+                </div>
+              `;
+                div.querySelector(".minus").onclick = () =>
+                  updateCount(item.id, -1);
+                div.querySelector(".plus").onclick = () =>
+                  updateCount(item.id, 1);
+                grid.appendChild(div);
+              },
+            );
+            panelLeft.appendChild(catWrap);
           });
+        }
 
-          catWrap.appendChild(grid);
-          panelLeft.appendChild(catWrap);
+        // TADY SE DĚJE TO HLAVNÍ: Vyhledávání, které nemaže DOM
+        document.querySelectorAll(".inv-item").forEach((div) => {
+          const name = div.dataset.name;
+          const isVisible = !searchFilter || name.includes(searchFilter);
+          div.style.display = isVisible ? "flex" : "none";
         });
+
+        // Schováme/zobrazíme prázdné kategorie
+        document.querySelectorAll(".cat-wrap").forEach((catWrap) => {
+          const hasVisible = Array.from(
+            catWrap.querySelectorAll(".inv-item"),
+          ).some((i) => i.style.display !== "none");
+          catWrap.style.display = hasVisible ? "block" : "none";
+        });
+      }
+
+      // Pomocná funkce pro aktualizaci stavu bez přerenderování celého gridu
+      function updateCount(id, delta) {
+        inventory[id] = Math.max(0, (inventory[id] || 0) + delta);
+        const el = document.querySelector(`.inv-item[data-id="${id}"]`);
+        el.className = `inv-item ${inventory[id] > 0 ? "active" : ""}`;
+        el.querySelector(".ctrl-val").textContent = inventory[id];
+        renderResults();
       }
       /* ── RENDER RESULTS ────────────────────────────────────────────────── */
       function renderResults() {
