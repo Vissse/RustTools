@@ -68,14 +68,14 @@ export function RaidCalculator() {
       headerRest="CALCULATOR"
       variant="raid"
     >
-      {/* CSS pro skrytí výchozích prohlížečových šipek u input type="number" */}
       <style>{`
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
+        /* Skrytí výchozích prohlížečových šipek u čísla */
+        .invisible-num-input::-webkit-inner-spin-button,
+        .invisible-num-input::-webkit-outer-spin-button {
           -webkit-appearance: none;
           margin: 0;
         }
-        input[type="number"] {
+        .invisible-num-input {
           -moz-appearance: textfield;
         }
       `}</style>
@@ -157,34 +157,46 @@ export function RaidCalculator() {
                 >
                   −
                 </button>
-                <input
+
+                <div
                   id="wall-count"
-                  type="number"
-                  min="1"
-                  value={structureCount}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (val === "") {
-                      setStructureCount("");
-                    } else {
-                      const parsed = parseInt(val, 10);
-                      if (!isNaN(parsed) && parsed > 0) {
-                        setStructureCount(parsed);
-                      }
-                    }
-                  }}
                   style={{
-                    background: "transparent",
-                    border: "none",
-                    color: "inherit",
-                    textAlign: "center",
-                    width: "60px",
-                    fontFamily: "inherit",
-                    fontSize: "inherit",
-                    fontWeight: "inherit",
-                    outline: "none",
+                    padding: 0,
+                    display: "flex",
+                    justifyContent: "center",
                   }}
-                />
+                >
+                  <input
+                    type="number"
+                    min="1"
+                    className="invisible-num-input"
+                    value={structureCount}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === "") {
+                        setStructureCount("");
+                      } else {
+                        const parsed = parseInt(val, 10);
+                        if (!isNaN(parsed) && parsed > 0) {
+                          setStructureCount(parsed);
+                        }
+                      }
+                    }}
+                    style={{
+                      width: "60px" /* Fixní šířka zabrání roztahování */,
+                      background: "transparent",
+                      border: "none",
+                      color: "inherit",
+                      textAlign: "center",
+                      fontFamily: "inherit",
+                      fontSize: "inherit",
+                      fontWeight: "inherit",
+                      outline: "none",
+                      boxShadow: "none",
+                    }}
+                  />
+                </div>
+
                 <button
                   className="counter-btn"
                   onClick={() =>
@@ -326,8 +338,8 @@ export function RaidCalculator() {
                 </div>
                 <div className="res-card coal">
                   <div className="res-header">
-                    <Img src={RESOURCE_ICONS.coal} alt="Coal" />
-                    <span className="res-lbl">Coal</span>
+                    <Img src={RESOURCE_ICONS.coal} alt="Charcoal" />
+                    <span className="res-lbl">Charcoal</span>
                   </div>
                   <span className="res-val">
                     {result.totalCharcoal.toLocaleString()}
