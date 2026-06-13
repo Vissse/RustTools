@@ -28,6 +28,12 @@
         --metal-col: #8bafc8;
         --hqm-col: #d8e5e8;
         --cloth-col: #a0977c;
+        --wood-col: #8b7355;
+        --stone-col: #a9a9a9;
+        --lgf-col: #c1a87c;
+        --gp-col: #696969;
+        --leather-col: #8b5a2b;
+        --sulfur-col: #c8b64e; /* Přidána barva pro síru */
 
         --text: #c8b99a;
         --text-dim: #6b5f52;
@@ -133,20 +139,6 @@
         height: 3px;
         background: var(--rust);
         box-shadow: 0 -2px 8px var(--rust);
-      }
-      .nav-badge {
-        font-family: var(--font-ui);
-        font-size: 9px;
-        font-weight: 700;
-        color: var(--text-bright);
-        background: var(--rust);
-        padding: 2px 4px 1px;
-        border-radius: 2px;
-        margin-left: 6px;
-        letter-spacing: 0.05em;
-        position: relative;
-        top: -1px;
-        box-shadow: 0 0 6px var(--rust-glow);
       }
       .nav-brand {
         display: flex;
@@ -404,7 +396,6 @@
         height: 1px;
         background: linear-gradient(90deg, var(--border2) 0%, transparent 100%);
       }
-      /* Úprava pro flex kontejnery v labelu */
       .sec-label-wrapper {
         display: flex;
         justify-content: space-between;
@@ -573,7 +564,6 @@
         background: var(--rust);
         box-shadow: 0 0 8px var(--rust);
       }
-
       .rec-icon-img {
         height: 38px;
         object-fit: contain;
@@ -583,7 +573,6 @@
       .rec-btn.active .rec-icon-img {
         filter: drop-shadow(0 0 8px var(--rust-glow)) saturate(1.2);
       }
-
       .rec-name {
         font-family: var(--font-d);
         font-size: 14px;
@@ -609,7 +598,7 @@
       /* Results */
       .res-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 6px;
       }
       .res-card {
@@ -625,17 +614,85 @@
         gap: 5px;
         position: relative;
       }
+
       .res-card.scrap {
         border-bottom: 2px solid var(--scrap-col);
       }
+      .res-card.scrap .res-val {
+        color: var(--scrap-col);
+        text-shadow: 0 0 15px rgba(139, 146, 100, 0.3);
+      }
+
       .res-card.metal {
         border-bottom: 2px solid var(--metal-col);
       }
+      .res-card.metal .res-val {
+        color: var(--metal-col);
+        text-shadow: 0 0 15px rgba(139, 175, 200, 0.3);
+      }
+
       .res-card.hqm {
         border-bottom: 2px solid var(--hqm-col);
       }
+      .res-card.hqm .res-val {
+        color: var(--hqm-col);
+        text-shadow: 0 0 15px rgba(216, 229, 232, 0.3);
+      }
+
       .res-card.cloth {
         border-bottom: 2px solid var(--cloth-col);
+      }
+      .res-card.cloth .res-val {
+        color: var(--cloth-col);
+        text-shadow: 0 0 15px rgba(160, 151, 124, 0.3);
+      }
+
+      .res-card.wood {
+        border-bottom: 2px solid var(--wood-col);
+      }
+      .res-card.wood .res-val {
+        color: var(--wood-col);
+        text-shadow: 0 0 15px rgba(139, 115, 85, 0.3);
+      }
+
+      .res-card.stone {
+        border-bottom: 2px solid var(--stone-col);
+      }
+      .res-card.stone .res-val {
+        color: var(--stone-col);
+        text-shadow: 0 0 15px rgba(169, 169, 169, 0.3);
+      }
+
+      .res-card.lgf {
+        border-bottom: 2px solid var(--lgf-col);
+      }
+      .res-card.lgf .res-val {
+        color: var(--lgf-col);
+        text-shadow: 0 0 15px rgba(193, 168, 124, 0.3);
+      }
+
+      .res-card.gp {
+        border-bottom: 2px solid var(--gp-col);
+      }
+      .res-card.gp .res-val {
+        color: var(--gp-col);
+        text-shadow: 0 0 15px rgba(105, 105, 105, 0.3);
+      }
+
+      .res-card.leather {
+        border-bottom: 2px solid var(--leather-col);
+      }
+      .res-card.leather .res-val {
+        color: var(--leather-col);
+        text-shadow: 0 0 15px rgba(139, 90, 43, 0.3);
+      }
+
+      .res-card.sulfur {
+        border-bottom: 2px solid var(--sulfur-col);
+      }
+      .res-card.sulfur .res-val {
+        color: var(--sulfur-col);
+        text-shadow: 0 0 15px rgba(200, 182, 78, 0.3);
       }
 
       .res-header {
@@ -663,21 +720,71 @@
         line-height: 1;
         letter-spacing: 0.04em;
       }
-      .res-card.scrap .res-val {
-        color: var(--scrap-col);
-        text-shadow: 0 0 15px rgba(139, 146, 100, 0.3);
+
+      /* Random Loot Section */
+      .rnd-wrap {
+        border-top: 1px dashed var(--border-hi);
+        padding-top: 15px;
+        margin-top: 15px;
       }
-      .res-card.metal .res-val {
-        color: var(--metal-col);
-        text-shadow: 0 0 15px rgba(139, 175, 200, 0.3);
+      .rnd-title {
+        font-family: var(--font-ui);
+        font-size: 11px;
+        color: var(--text-dim);
+        text-align: center;
+        margin-bottom: 12px;
       }
-      .res-card.hqm .res-val {
-        color: var(--hqm-col);
-        text-shadow: 0 0 15px rgba(216, 229, 232, 0.3);
+      .rnd-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
-      .res-card.cloth .res-val {
-        color: var(--cloth-col);
-        text-shadow: 0 0 15px rgba(160, 151, 124, 0.3);
+      .rnd-row {
+        display: flex;
+        align-items: center;
+        background: var(--panel2);
+        border: 1px solid var(--border2);
+        padding: 8px 12px;
+        gap: 15px;
+      }
+      .rnd-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+      .rnd-stats {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .stat-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+      }
+      .stat-lbl {
+        font-size: 9px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .stat-val {
+        font-family: var(--font-d);
+        font-size: 16px;
+        color: var(--text-bright);
+      }
+      .stat-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border2);
+        margin: 0 10px;
+        position: relative;
+        top: 6px;
       }
 
       /* Breakdown List */
@@ -693,6 +800,7 @@
         border: 1px solid var(--border2);
         padding: 6px 12px;
         gap: 15px;
+        flex-wrap: wrap;
       }
       .bd-input {
         display: flex;
@@ -717,6 +825,7 @@
         flex: 1;
         border-bottom: 1px dashed var(--border-hi);
         position: relative;
+        min-width: 20px;
       }
       .bd-divider::after {
         content: "♺";
@@ -732,26 +841,40 @@
 
       .bd-outputs {
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
         justify-content: flex-end;
+        align-items: center;
       }
       .bd-out-item {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: 2px;
+        position: relative;
       }
       .bd-out-item img {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
       }
       .bd-out-item span {
         font-family: var(--font-ui);
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 700;
         color: var(--text);
       }
 
-      /* Penalty Tag pro Safezone */
+      .rnd-badge {
+        font-family: var(--font-ui);
+        font-size: 8px;
+        color: var(--rust);
+        font-weight: 700;
+        position: absolute;
+        top: -12px;
+        white-space: nowrap;
+        text-shadow: 0 0 4px var(--bg);
+      }
       .penalty-tag {
         font-family: var(--font-ui);
         font-size: 9px;
@@ -814,9 +937,6 @@
         .panel-left {
           border-bottom: 1px solid var(--border2);
         }
-        .res-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
       }
     </style>
   </head>
@@ -852,7 +972,7 @@
         <div class="header-left">
           <div class="header-bar"></div>
           <span class="header-title">RECYCLING <span>CALCULATOR</span></span>
-          <span class="header-ver">V1.0</span>
+          <span class="header-ver">V2.0</span>
         </div>
         <div class="header-status">
           <span class="status-lbl">SYSTEM ONLINE</span>
@@ -872,7 +992,16 @@
             />
             <button class="btn-remove-all" id="btn-clear">Remove All</button>
           </div>
-          <div class="inv-grid" id="inv-grid"></div>
+
+          <div id="cat-components-wrap" style="display: none">
+            <div class="sec-label" style="margin-top: 10px">Components</div>
+            <div class="inv-grid" id="inv-grid-components"></div>
+          </div>
+
+          <div id="cat-items-wrap" style="margin-top: 20px; display: none">
+            <div class="sec-label">Items</div>
+            <div class="inv-grid" id="inv-grid-items"></div>
+          </div>
         </div>
 
         <div class="panel-right">
@@ -883,11 +1012,11 @@
                 <img
                   src="./images/recycler.png"
                   class="rec-icon-img"
-                  alt="Radtown Recycler"
+                  alt="Standard Recycler"
                   onerror="this.style.opacity = '.3'"
                 />
-                <span class="rec-name">Radtown Recycler</span>
-                <span class="rec-rate">60% YIELD • 5s / ITEM</span>
+                <span class="rec-name">Standard Recycler</span>
+                <span class="rec-rate">60% YIELD • 5S / ITEM</span>
               </div>
               <div class="rec-btn" data-rec="safezone">
                 <img
@@ -897,7 +1026,7 @@
                   onerror="this.style.opacity = '.3'"
                 />
                 <span class="rec-name">Safe Zone Recycler</span>
-                <span class="rec-rate">40% YIELD • 8s / ITEM</span>
+                <span class="rec-rate">40% YIELD • 8S / ITEM</span>
               </div>
             </div>
           </div>
@@ -929,7 +1058,7 @@
               </div>
 
               <div class="res-grid" style="margin-top: 10px">
-                <div class="res-card scrap">
+                <div class="res-card scrap" id="card-scrap">
                   <div class="res-header">
                     <img
                       src="./images/scrap.png"
@@ -940,7 +1069,8 @@
                   </div>
                   <span class="res-val" id="tot-scrap">0</span>
                 </div>
-                <div class="res-card metal">
+
+                <div class="res-card metal" id="card-metal">
                   <div class="res-header">
                     <img
                       src="./images/metal-fragments.png"
@@ -951,7 +1081,8 @@
                   </div>
                   <span class="res-val" id="tot-metal">0</span>
                 </div>
-                <div class="res-card hqm">
+
+                <div class="res-card hqm" id="card-hqm">
                   <div class="res-header">
                     <img
                       src="./images/hq-metal.png"
@@ -962,7 +1093,8 @@
                   </div>
                   <span class="res-val" id="tot-hqm">0</span>
                 </div>
-                <div class="res-card cloth">
+
+                <div class="res-card cloth" id="card-cloth">
                   <div class="res-header">
                     <img
                       src="./images/cloth.png"
@@ -973,6 +1105,95 @@
                   </div>
                   <span class="res-val" id="tot-cloth">0</span>
                 </div>
+
+                <div class="res-card wood" id="card-wood" style="display: none">
+                  <div class="res-header">
+                    <img
+                      src="./images/wood.png"
+                      alt="Wood"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">Wood</span>
+                  </div>
+                  <span class="res-val" id="tot-wood">0</span>
+                </div>
+
+                <div
+                  class="res-card stone"
+                  id="card-stone"
+                  style="display: none"
+                >
+                  <div class="res-header">
+                    <img
+                      src="./images/stones.png"
+                      alt="Stone"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">Stone</span>
+                  </div>
+                  <span class="res-val" id="tot-stone">0</span>
+                </div>
+
+                <div class="res-card lgf" id="card-lgf" style="display: none">
+                  <div class="res-header">
+                    <img
+                      src="./images/low-grade-fuel.png"
+                      alt="LGF"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">LGF</span>
+                  </div>
+                  <span class="res-val" id="tot-lgf">0</span>
+                </div>
+
+                <div class="res-card gp" id="card-gp" style="display: none">
+                  <div class="res-header">
+                    <img
+                      src="./images/gunpowder.png"
+                      alt="Gunpowder"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">Gunpowder</span>
+                  </div>
+                  <span class="res-val" id="tot-gp">0</span>
+                </div>
+
+                <div
+                  class="res-card leather"
+                  id="card-leather"
+                  style="display: none"
+                >
+                  <div class="res-header">
+                    <img
+                      src="./images/leather.png"
+                      alt="Leather"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">Leather</span>
+                  </div>
+                  <span class="res-val" id="tot-leather">0</span>
+                </div>
+
+                <div
+                  class="res-card sulfur"
+                  id="card-sulfur"
+                  style="display: none"
+                >
+                  <div class="res-header">
+                    <img
+                      src="./images/sulfur.png"
+                      alt="Sulfur"
+                      onerror="this.style.opacity = '.3'"
+                    />
+                    <span class="res-lbl">Sulfur</span>
+                  </div>
+                  <span class="res-val" id="tot-sulfur">0</span>
+                </div>
+              </div>
+
+              <div class="rnd-wrap" id="random-output" style="display: none">
+                <div class="rnd-title">plus a random amount of...</div>
+                <div class="rnd-grid" id="random-grid"></div>
               </div>
             </div>
 
@@ -992,136 +1213,82 @@
 
     <script>
       /* ── DATA ──────────────────────────────────────────────────────────── */
-      const ITEMS = [
-        {
-          id: "sheetmetal",
-          name: "Sheet Metal",
-          img: "./images/sheet-metal.png",
-          yield: { metal: 100, scrap: 8, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "gears",
-          name: "Gears",
-          img: "./images/gears.png",
-          yield: { metal: 50, scrap: 10, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "metalpipe",
-          name: "Metal Pipe",
-          img: "./images/metal-pipe.png",
-          yield: { metal: 50, scrap: 5, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "propanetank",
-          name: "Empty Propane Tank",
-          img: "./images/propane-tank.png",
-          yield: { metal: 50, scrap: 1, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "roadsigns",
-          name: "Road Signs",
-          img: "./images/road-signs.png",
-          yield: { metal: 50, scrap: 5, hqm: 1, cloth: 0 },
-        },
-        {
-          id: "spring",
-          name: "Metal Spring",
-          img: "./images/metal-spring.png",
-          yield: { metal: 50, scrap: 10, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "semibody",
-          name: "Semi-Auto Body",
-          img: "./images/semi-auto-body.png",
-          yield: { metal: 75, scrap: 15, hqm: 2, cloth: 0 },
-        },
-        {
-          id: "smgbody",
-          name: "SMG Body",
-          img: "./images/smg-body.png",
-          yield: { metal: 75, scrap: 15, hqm: 2, cloth: 0 },
-        },
-        {
-          id: "riflebody",
-          name: "Rifle Body",
-          img: "./images/rifle-body.png",
-          yield: { metal: 250, scrap: 25, hqm: 2, cloth: 0 },
-        },
-        {
-          id: "techtrash",
-          name: "Tech Trash",
-          img: "./images/tech-trash.png",
-          yield: { metal: 0, scrap: 20, hqm: 1, cloth: 0 },
-        },
-        {
-          id: "tarp",
-          name: "Tarp",
-          img: "./images/tarp.png",
-          yield: { metal: 0, scrap: 0, hqm: 0, cloth: 50 },
-        },
-        {
-          id: "sewingkit",
-          name: "Sewing Kit",
-          img: "./images/sewing-kit.png",
-          yield: { metal: 0, scrap: 0, hqm: 0, cloth: 10 },
-        },
-        {
-          id: "rope",
-          name: "Rope",
-          img: "./images/rope.png",
-          yield: { metal: 0, scrap: 0, hqm: 0, cloth: 15 },
-        },
-        {
-          id: "blade",
-          name: "Metal Blade",
-          img: "./images/metal-blade.png",
-          yield: { metal: 15, scrap: 2, hqm: 0, cloth: 0 },
-        },
-
-        {
-          id: "cctv",
-          name: "CCTV Camera",
-          img: "./images/cctv-camera.png",
-          yield: { metal: 0, scrap: 40, hqm: 4, cloth: 0 },
-        },
-        {
-          id: "fuse",
-          name: "Electric Fuse",
-          img: "./images/electric-fuse.png",
-          yield: { metal: 0, scrap: 20, hqm: 0, cloth: 0 },
-        },
-        {
-          id: "computer",
-          name: "Targeting Computer",
-          img: "./images/targeting-computer.png",
-          yield: { metal: 50, scrap: 70, hqm: 4, cloth: 0 },
-        },
-      ];
+      let ITEMS = [];
+      let ITEM_MAP = {};
 
       const RESOURCE_ICONS = {
         scrap: "./images/scrap.png",
         metal: "./images/metal-fragments.png",
         hqm: "./images/hq-metal.png",
         cloth: "./images/cloth.png",
+        wood: "./images/wood.png",
+        stone: "./images/stones.png",
+        lgf: "./images/low-grade-fuel.png",
+        gp: "./images/gunpowder.png",
+        leather: "./images/leather.png",
+        sulfur: "./images/sulfur.png",
+      };
+
+      // Mapování pro správné propojení různých názvů JSON klíčů na klíče kódu
+      const RES_MAP = {
+        scrap: "scrap",
+        metal: "metal",
+        metal_fragments: "metal",
+        "metal-fragments": "metal",
+        hqm: "hqm",
+        hq_metal: "hqm",
+        high_quality_metal: "hqm",
+        "high-quality-metal": "hqm",
+        cloth: "cloth",
+        wood: "wood",
+        stone: "stone",
+        stones: "stone",
+        lgf: "lgf",
+        low_grade_fuel: "lgf",
+        "low-grade-fuel": "lgf",
+        gp: "gp",
+        gunpowder: "gp",
+        "gun-powder": "gp",
+        leather: "leather",
+        sulfur: "sulfur",
       };
 
       /* ── STATE ─────────────────────────────────────────────────────────── */
-      let inventory = {}; // { itemId: count }
-      let currentRecycler = "radtown"; // "radtown" = Standard (1.0), "safezone" = Safe Zone (2/3)
+      let inventory = {};
+      let currentRecycler = "radtown";
       let searchFilter = "";
 
       /* ── INITIALIZATION ────────────────────────────────────────────────── */
-      const grid = document.getElementById("inv-grid");
+      const gridComp = document.getElementById("inv-grid-components");
+      const gridItem = document.getElementById("inv-grid-items");
+      const wrapComp = document.getElementById("cat-components-wrap");
+      const wrapItem = document.getElementById("cat-items-wrap");
+
       const searchInput = document.getElementById("search-input");
       const btnClear = document.getElementById("btn-clear");
       const recBtns = document.querySelectorAll(".rec-btn");
+
+      async function loadData() {
+        try {
+          const response = await fetch("rust_recycling_data.json");
+          if (!response.ok) throw new Error("Nelze načíst data");
+
+          ITEMS = await response.json();
+          ITEM_MAP = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
+
+          init();
+        } catch (error) {
+          console.error("Chyba načítání dat:", error);
+          document.getElementById("empty-state").innerHTML =
+            '<span class="icon" style="color:#ff3333">⚠</span>Chyba načítání JSON dat.<br/>(Musíš to spustit přes lokální server, viz návod v chatu)';
+        }
+      }
 
       function init() {
         ITEMS.forEach((item) => (inventory[item.id] = 0));
         renderInputGrid();
         renderResults();
 
-        // Nastavení toggle tlačítek pro recycler
         recBtns.forEach((btn) => {
           btn.addEventListener("click", () => {
             recBtns.forEach((b) => b.classList.remove("active"));
@@ -1131,13 +1298,11 @@
           });
         });
 
-        // Hledání
         searchInput.addEventListener("input", (e) => {
           searchFilter = e.target.value.toLowerCase();
           renderInputGrid();
         });
 
-        // Smazat vše
         btnClear.addEventListener("click", () => {
           for (let id in inventory) inventory[id] = 0;
           renderInputGrid();
@@ -1145,52 +1310,91 @@
         });
       }
 
-      /* ── RENDER INPUT GRID ─────────────────────────────────────────────── */
       function renderInputGrid() {
-        grid.innerHTML = "";
-        ITEMS.forEach((item) => {
-          if (searchFilter && !item.name.toLowerCase().includes(searchFilter))
-            return;
+        const panelLeft = document.querySelector(".panel-left");
+        // Zachováme toolbar
+        const toolbar = document.querySelector(".input-toolbar");
+        panelLeft.innerHTML = "";
+        panelLeft.appendChild(toolbar);
 
-          const count = inventory[item.id];
-          const div = document.createElement("div");
-          div.className = `inv-item ${count > 0 ? "active" : ""}`;
+        // Definice prioritního pořadí kategorií, aby to vypadalo hezky
+        const categoryOrder = [
+          "components",
+          "weapons",
+          "attire",
+          "deployables",
+          "ammo",
+          "other",
+        ];
 
-          div.innerHTML = `
-            <div class="inv-item-img" title="${item.name}">
-              <img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'">
-            </div>
-            <div class="inv-controls">
-              <button class="ctrl-btn minus">−</button>
-              <div class="ctrl-val">${count}</div>
-              <button class="ctrl-btn plus">+</button>
-            </div>
-          `;
+        // Seskupení itemů podle kategorií
+        const grouped = ITEMS.reduce((acc, item) => {
+          const cat = item.category || "other";
+          if (!acc[cat]) acc[cat] = [];
+          acc[cat].push(item);
+          return acc;
+        }, {});
 
-          // Ovládání tlačítek
-          div.querySelector(".minus").addEventListener("click", () => {
-            if (inventory[item.id] > 0) {
-              inventory[item.id]--;
+        // Vykreslení
+        categoryOrder.forEach((cat) => {
+          if (!grouped[cat]) return;
+
+          const catWrap = document.createElement("div");
+          catWrap.style.marginTop = "20px";
+
+          const label = document.createElement("div");
+          label.className = "sec-label";
+          label.textContent = cat.toUpperCase();
+          catWrap.appendChild(label);
+
+          const grid = document.createElement("div");
+          grid.className = "inv-grid";
+
+          grouped[cat].forEach((item) => {
+            if (searchFilter && !item.name.toLowerCase().includes(searchFilter))
+              return;
+
+            const count = inventory[item.id] || 0;
+            const div = document.createElement("div");
+            div.className = `inv-item ${count > 0 ? "active" : ""}`;
+            div.innerHTML = `
+              <div class="inv-item-img" title="${item.name}">
+                <img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'">
+              </div>
+              <div class="inv-controls">
+                <button class="ctrl-btn minus">−</button>
+                <div class="ctrl-val">${count}</div>
+                <button class="ctrl-btn plus">+</button>
+              </div>
+            `;
+
+            div.querySelector(".minus").onclick = () => {
+              if (inventory[item.id] > 0) {
+                inventory[item.id]--;
+                renderInputGrid();
+                renderResults();
+              }
+            };
+            div.querySelector(".plus").onclick = () => {
+              inventory[item.id]++;
               renderInputGrid();
               renderResults();
-            }
+            };
+
+            grid.appendChild(div);
           });
 
-          div.querySelector(".plus").addEventListener("click", () => {
-            inventory[item.id]++;
-            renderInputGrid();
-            renderResults();
-          });
-
-          grid.appendChild(div);
+          catWrap.appendChild(grid);
+          panelLeft.appendChild(catWrap);
         });
       }
-
       /* ── RENDER RESULTS ────────────────────────────────────────────────── */
       function renderResults() {
         const emptyState = document.getElementById("empty-state");
         const resultsWrap = document.getElementById("results-wrapper");
         const bdList = document.getElementById("breakdown-list");
+        const rndWrap = document.getElementById("random-output");
+        const rndGrid = document.getElementById("random-grid");
 
         let totalItems = 0;
         for (let id in inventory) {
@@ -1206,10 +1410,21 @@
         emptyState.style.display = "none";
         resultsWrap.style.display = "flex";
 
-        // Multiplier: Standard recyklátor = 1.0 (reprezentuje 60% ingame yield).
-        // Safe Zone = 2/3 ze standardního (reprezentuje 40% ingame yield).
-        const multiplier = currentRecycler === "radtown" ? 1.0 : 2 / 3;
-        let total = { scrap: 0, metal: 0, hqm: 0, cloth: 0 };
+        const isSafezone = currentRecycler === "safezone";
+
+        let total = {
+          scrap: 0,
+          metal: 0,
+          hqm: 0,
+          cloth: 0,
+          wood: 0,
+          stone: 0,
+          lgf: 0,
+          gp: 0,
+          leather: 0,
+          sulfur: 0,
+        };
+        let randomTotals = {};
 
         bdList.innerHTML = "";
 
@@ -1218,32 +1433,108 @@
           if (count === 0) return;
 
           let outHtml = "";
-          for (let res in item.yield) {
-            let baseYield = item.yield[res];
-            if (baseYield === 0) continue;
 
-            // Výpočet a zaokrouhlení dolů (Rust mechanika)
-            let actualYield = Math.floor(baseYield * count * multiplier);
-            total[res] += actualYield;
+          const hasSafezoneYield =
+            item.safezone_yield && Object.keys(item.safezone_yield).length > 0;
+          const currentYield =
+            isSafezone && hasSafezoneYield ? item.safezone_yield : item.yield;
+          const currentMultiplier =
+            isSafezone && !hasSafezoneYield ? 2 / 3 : 1.0;
+          const currentRandom =
+            isSafezone && item.safezone_random
+              ? item.safezone_random
+              : item.random;
 
-            outHtml += `
-              <div class="bd-out-item">
-                <img src="${RESOURCE_ICONS[res]}" alt="${res}" onerror="this.style.opacity='.3'">
-                <span>×${actualYield}</span>
-              </div>
-            `;
+          // 1. Zaručený (Guaranteed) loot
+          if (currentYield) {
+            for (let res in currentYield) {
+              let baseYield = currentYield[res];
+              if (baseYield === 0) continue;
+
+              let actualYield = Math.floor(
+                baseYield * count * currentMultiplier,
+              );
+              let normalizedRes = RES_MAP[res] || res; // Sjednotí názvy
+
+              if (total[normalizedRes] !== undefined) {
+                total[normalizedRes] += actualYield;
+              }
+
+              let iconSrc = RESOURCE_ICONS[normalizedRes] || "";
+
+              outHtml += `
+                <div class="bd-out-item">
+                  <img src="${iconSrc}" alt="${normalizedRes}" onerror="this.style.opacity='.3'" title="${normalizedRes.toUpperCase()}">
+                  <span>×${actualYield}</span>
+                </div>
+              `;
+            }
           }
 
-          // Pokud jsme v Safezone, ukážeme tag se ztrátou oproti standardu (-33%)
+          // 2. Náhodný (Random) loot
+          if (currentRandom) {
+            currentRandom.forEach((rnd) => {
+              let actualChance = rnd.chance;
+              let chancePct = Math.round(actualChance * 100);
+              let badgeHtml =
+                chancePct < 100
+                  ? `<span class="rnd-badge">${chancePct}%</span>`
+                  : "";
+
+              let rndImg = "";
+              let rndName = "";
+              let normId = RES_MAP[rnd.id];
+
+              // Pokud to není item, může to být samotná surovina
+              if (ITEM_MAP[rnd.id]) {
+                rndImg = ITEM_MAP[rnd.id].img;
+                rndName = ITEM_MAP[rnd.id].name;
+              } else if (normId && RESOURCE_ICONS[normId]) {
+                rndImg = RESOURCE_ICONS[normId];
+                rndName = normId.toUpperCase();
+              } else {
+                rndName = rnd.id;
+              }
+
+              // Do rozpisu (Breakdown)
+              outHtml += `
+                <div class="bd-out-item">
+                  ${badgeHtml}
+                  <img src="${rndImg}" alt="${rndName}" onerror="this.style.opacity='.3'" title="${rndName}">
+                  <span>×${rnd.amount * count}</span>
+                </div>
+              `;
+
+              // Zapsání do globálních náhodných statistik
+              if (chancePct < 100) {
+                let maxPossible = count * rnd.amount;
+                let avgPossible = maxPossible * actualChance;
+
+                if (!randomTotals[rnd.id]) {
+                  randomTotals[rnd.id] = {
+                    min: 0,
+                    avg: 0,
+                    max: 0,
+                    img: rndImg,
+                    name: rndName,
+                  };
+                }
+
+                randomTotals[rnd.id].max += maxPossible;
+                randomTotals[rnd.id].avg += avgPossible;
+              }
+            });
+          }
+
           const penaltyHtml =
-            currentRecycler === "safezone"
+            isSafezone && !hasSafezoneYield
               ? `<span class="penalty-tag">-33%</span>`
               : "";
 
           bdList.innerHTML += `
             <div class="bd-row">
               <div class="bd-input">
-                <img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'">
+                <img src="${item.img}" alt="${item.name}" onerror="this.style.opacity='.3'" title="${item.name}">
                 <span class="bd-input-txt">${count}×</span>
               </div>
               <div class="bd-divider"></div>
@@ -1255,14 +1546,50 @@
           `;
         });
 
-        // Update Total Output
-        document.getElementById("tot-scrap").textContent = total.scrap;
-        document.getElementById("tot-metal").textContent = total.metal;
-        document.getElementById("tot-hqm").textContent = total.hqm;
-        document.getElementById("tot-cloth").textContent = total.cloth;
+        // Update all resource totals
+        ["scrap", "metal", "hqm", "cloth"].forEach((res) => {
+          document.getElementById(`tot-${res}`).textContent = total[res] || 0;
+        });
 
-        // Update Total Time
-        let timePerItem = currentRecycler === "radtown" ? 5 : 8;
+        ["wood", "stone", "lgf", "gp", "leather", "sulfur"].forEach((res) => {
+          const card = document.getElementById(`card-${res}`);
+          if (card) {
+            if (total[res] > 0) {
+              card.style.display = "flex";
+              document.getElementById(`tot-${res}`).textContent = total[res];
+            } else {
+              card.style.display = "none";
+            }
+          }
+        });
+
+        // Vykreslení bloku s náhodným lootem (pokud existuje)
+        rndGrid.innerHTML = "";
+        if (Object.keys(randomTotals).length > 0) {
+          rndWrap.style.display = "block";
+          for (let id in randomTotals) {
+            let stats = randomTotals[id];
+            let displayAvg = (Math.round(stats.avg * 10) / 10).toLocaleString();
+
+            rndGrid.innerHTML += `
+              <div class="rnd-row">
+                <img src="${stats.img}" alt="${stats.name}" class="rnd-icon" onerror="this.style.opacity='.3'">
+                <div class="rnd-stats">
+                  <div class="stat-block"><span class="stat-lbl">Min</span><span class="stat-val">${stats.min}</span></div>
+                  <div class="stat-line"></div>
+                  <div class="stat-block"><span class="stat-lbl">Avg</span><span class="stat-val">~${displayAvg}</span></div>
+                  <div class="stat-line"></div>
+                  <div class="stat-block"><span class="stat-lbl">Max</span><span class="stat-val">${stats.max}</span></div>
+                </div>
+              </div>
+            `;
+          }
+        } else {
+          rndWrap.style.display = "none";
+        }
+
+        // Časovač
+        let timePerItem = isSafezone ? 8 : 5;
         let totalSeconds = totalItems * timePerItem;
         let mins = Math.floor(totalSeconds / 60);
         let secs = totalSeconds % 60;
@@ -1270,7 +1597,7 @@
           mins > 0 ? `${mins}M ${secs}S` : `${secs}S`;
       }
 
-      init();
+      loadData();
     </script>
   </body>
 </html>
