@@ -1,4 +1,4 @@
-import { Img } from '../Img'
+import { RecycleImg } from './RecycleImg'
 import { QtyInput } from './QtyInput'
 import type { BreakdownRow } from './types'
 
@@ -16,7 +16,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
         {rows.map((row) => (
           <div className="bd-row" key={row.id}>
             <div className="bd-input">
-              <Img src={row.img} alt={row.name} data-tip={row.name} />
+              <RecycleImg src={row.img} alt={row.name} data-tip={row.name} />
               <QtyInput
                 className="bd-qty"
                 value={row.count}
@@ -40,7 +40,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   {o.chancePct != null && (
                     <span className="rnd-badge">{o.chancePct}%</span>
                   )}
-                  <Img src={o.img} alt={o.title} />
+                  <RecycleImg src={o.img} alt={o.title} />
                   <span>×{o.amount}</span>
                 </div>
               ))}

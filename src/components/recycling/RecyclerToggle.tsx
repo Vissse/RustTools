@@ -1,4 +1,4 @@
-import { Img } from '../Img'
+import { RecycleImg } from './RecycleImg'
 import type { RecyclerKind } from '../../lib/types'
 
 interface RecyclerToggleProps {
@@ -16,7 +16,7 @@ export function RecyclerToggle({ recycler, onChange }: RecyclerToggleProps) {
           className={`rec-btn${recycler === 'radtown' ? ' active' : ''}`}
           onClick={() => onChange('radtown')}
         >
-          <Img
+          <RecycleImg
             src="/images/recycler.png"
             className="rec-icon-img"
             alt="Standard Recycler"
@@ -28,7 +28,7 @@ export function RecyclerToggle({ recycler, onChange }: RecyclerToggleProps) {
           className={`rec-btn${recycler === 'safezone' ? ' active' : ''}`}
           onClick={() => onChange('safezone')}
         >
-          <Img
+          <RecycleImg
             src="/images/safezone-recycler.png"
             className="rec-icon-img"
             alt="Safe Zone Recycler"

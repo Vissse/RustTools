@@ -1,4 +1,4 @@
-import { Img } from '../Img'
+import { RecycleImg } from './RecycleImg'
 import type { RandomTotal } from './types'
 
 interface RandomDropListProps {
@@ -15,7 +15,7 @@ export function RandomDropList({ randomTotals }: RandomDropListProps) {
       <div className="rnd-grid">
         {randomTotals.map((rt) => (
           <div className="rnd-row" key={rt.id}>
-            <Img className="rnd-icon" src={rt.img} alt={rt.name} data-tip={rt.name} />
+            <RecycleImg className="rnd-icon" src={rt.img} alt={rt.name} data-tip={rt.name} />
             <div className="rnd-stats">
               <div className="stat-block">
                 <span className="stat-lbl">Min</span>

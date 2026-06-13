@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Img } from '../Img'
+import { RecycleImg } from './RecycleImg'
 import { QtyInput } from './QtyInput'
 
 interface InvItemProps {
@@ -24,7 +24,7 @@ export const InvItem = memo(function InvItem({
   return (
     <div className={`inv-item${count > 0 ? ' active' : ''}`}>
       <div className="inv-item-img" data-tip={name}>
-        <Img src={img} alt={name} loading="lazy" decoding="async" />
+        <RecycleImg src={img} alt={name} loading="lazy" decoding="async" />
       </div>
       <div className="inv-controls">
         <button className="ctrl-btn minus" onClick={() => onAdjust(id, -1)}>

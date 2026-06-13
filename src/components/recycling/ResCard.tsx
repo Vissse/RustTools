@@ -1,4 +1,4 @@
-import { Img } from '../Img'
+import { RecycleImg } from './RecycleImg'
 import { RESOURCE_ICONS } from '../../lib/data/recycling-data'
 import type { RecycleResource } from '../../lib/types'
 
@@ -13,7 +13,7 @@ export function ResCard({ kind, label, value }: ResCardProps) {
   return (
     <div className={`res-card ${kind}`}>
       <div className="res-header">
-        <Img src={RESOURCE_ICONS[kind]} alt={label} />
+        <RecycleImg src={RESOURCE_ICONS[kind]} alt={label} />
         <span className="res-lbl">{label}</span>
       </div>
       <span className="res-val">{value}</span>
