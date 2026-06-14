@@ -1,16 +1,16 @@
-import type { TooltipProps } from '../useTooltip'
-import { InvItem } from './InvItem'
-import type { ItemCategory } from './types'
+import type { TooltipProps } from "../useTooltip";
+import { InvItem } from "./InvItem";
+import type { ItemCategory } from "./types";
 
 interface ItemPickerProps {
-  search: string
-  onSearch: (value: string) => void
-  onClear: () => void
-  categories: ItemCategory[]
-  inventory: Record<string, number>
-  onAdjust: (id: string, delta: number) => void
-  onSet: (id: string, value: number) => void
-  tipProps: TooltipProps
+  search: string;
+  onSearch: (value: string) => void;
+  onClear: () => void;
+  categories: ItemCategory[];
+  inventory: Record<string, number>;
+  onAdjust: (id: string, delta: number) => void;
+  onSet: (id: string, value: number) => void;
+  tipProps: TooltipProps;
 }
 
 /** Left panel: search/clear toolbar + category-grouped item grid. */
@@ -59,5 +59,5 @@ export function ItemPicker({
         </div>
       ))}
     </div>
-  )
+  );
 }

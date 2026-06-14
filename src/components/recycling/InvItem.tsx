@@ -1,18 +1,16 @@
-import { memo } from 'react'
-import { RecycleImg } from './RecycleImg'
-import { QtyInput } from './QtyInput'
+import { memo } from "react";
+import { RecycleImg } from "./RecycleImg";
+import { QtyInput } from "./QtyInput";
 
 interface InvItemProps {
-  id: string
-  name: string
-  img: string
-  count: number
-  onAdjust: (id: string, delta: number) => void
-  onSet: (id: string, value: number) => void
+  id: string;
+  name: string;
+  img: string;
+  count: number;
+  onAdjust: (id: string, delta: number) => void;
+  onSet: (id: string, value: number) => void;
 }
 
-// Memoized so a +/- click only re-renders the one cell whose count changed,
-// instead of all 700+ items. `onAdjust`/`onSet` must be stable (useCallback).
 export const InvItem = memo(function InvItem({
   id,
   name,
@@ -22,24 +20,35 @@ export const InvItem = memo(function InvItem({
   onSet,
 }: InvItemProps) {
   return (
-    <div className={`inv-item${count > 0 ? ' active' : ''}`}>
-      <div className="inv-item-img" data-tip={name}>
+    <div className={`inv-item${count > 0 ? " active" : ""}`}>
+      <div
+        className="inv-item-img"
+        data-tip={name}
+        style={{ marginBottom: "6px" }}
+      >
         <RecycleImg src={img} alt={name} loading="lazy" decoding="async" />
       </div>
-      <div className="inv-controls">
-        <button className="ctrl-btn minus" onClick={() => onAdjust(id, -1)}>
+
+      {/* Horizontální separator s novou CSS třídou místo inline stylu */}
+      <div className="item-separator" />
+
+      {/* Zmenšený kalkulačkový counter */}
+      <div className="free-counter-wrap">
+        <button className="free-counter-btn" onClick={() => onAdjust(id, -1)}>
           −
         </button>
+        <div className="free-separator" />
         <QtyInput
-          className="ctrl-val"
+          className="free-counter-input invisible-num-input"
           value={count}
           ariaLabel={`${name} quantity`}
           onChange={(n) => onSet(id, n)}
         />
-        <button className="ctrl-btn plus" onClick={() => onAdjust(id, 1)}>
+        <div className="free-separator" />
+        <button className="free-counter-btn" onClick={() => onAdjust(id, 1)}>
           +
         </button>
       </div>
     </div>
-  )
-})
+  );
+});
