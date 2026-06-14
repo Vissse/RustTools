@@ -681,24 +681,39 @@ export function RaidCalculator() {
               )}
             </div>
 
-            {/* Total Resources */}
+            {/* --- UNIFIED TOTAL RESOURCES & CRAFTING METHOD --- */}
             <div>
               <div
                 className="sec-label"
-                style={{ marginBottom: "16px", marginTop: "8px" }}
+                style={{ marginBottom: "12px", marginTop: "8px" }}
               >
-                TOTAL RESOURCES
+                TOTAL RESOURCES & CRAFTING
               </div>
 
-              <div style={{ display: "flex", gap: "16px" }}>
+              <div
+                className="minimal-combo-row"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "16px 20px",
+                  margin: 0,
+                  flexWrap: "nowrap" /* STRIKTNĚ zakázáno zalamování */,
+                  gap: "12px",
+                  overflow:
+                    "hidden" /* Kdyby náhodou, ať nerozbije zbytek stránky */,
+                }}
+              >
+                {/* Levá část: Suroviny */}
                 <div
-                  className="heavy-res-card"
                   style={{
-                    borderBottomWidth: "3px",
-                    borderBottomStyle: "solid",
-                    borderBottomColor: "#cc422c",
+                    display: "flex",
+                    gap: "16px" /* Mírně zmenšená mezera pro víc místa u velkých čísel */,
+                    alignItems: "center",
+                    flexWrap: "nowrap" /* Striktně bez zalamování */,
                   }}
                 >
+                  {/* Sulfur */}
                   <div
                     style={{
                       display: "flex",
@@ -709,39 +724,36 @@ export function RaidCalculator() {
                     <Img
                       src={RESOURCE_ICONS.sulfur}
                       alt="Sulfur"
-                      style={{ width: "18px", height: "18px" }}
+                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
                     />
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#8b8c89",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      SULFUR
-                    </span>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: 800,
+                          color: "#cc422c",
+                          lineHeight: 1,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {result.totalSulfur.toLocaleString()}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          color: "#8b8c89",
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          marginTop: "2px",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        SULFUR
+                      </span>
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      fontSize: "22px",
-                      fontWeight: 800,
-                      color: "#cc422c",
-                    }}
-                  >
-                    {result.totalSulfur.toLocaleString()}
-                  </div>
-                </div>
 
-                <div
-                  className="heavy-res-card"
-                  style={{
-                    borderBottomWidth: "3px",
-                    borderBottomStyle: "solid",
-                    borderBottomColor: "#a5b4c0",
-                  }}
-                >
+                  {/* Metal */}
                   <div
                     style={{
                       display: "flex",
@@ -752,39 +764,36 @@ export function RaidCalculator() {
                     <Img
                       src={RESOURCE_ICONS.metal}
                       alt="Metal"
-                      style={{ width: "18px", height: "18px" }}
+                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
                     />
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#8b8c89",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      METAL
-                    </span>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: 800,
+                          color: "#a5b4c0",
+                          lineHeight: 1,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {result.totalMetal.toLocaleString()}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          color: "#8b8c89",
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          marginTop: "2px",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        METAL
+                      </span>
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      fontSize: "22px",
-                      fontWeight: 800,
-                      color: "#a5b4c0",
-                    }}
-                  >
-                    {result.totalMetal.toLocaleString()}
-                  </div>
-                </div>
 
-                <div
-                  className="heavy-res-card"
-                  style={{
-                    borderBottomWidth: "3px",
-                    borderBottomStyle: "solid",
-                    borderBottomColor: "#555",
-                  }}
-                >
+                  {/* Coal */}
                   <div
                     style={{
                       display: "flex",
@@ -795,113 +804,138 @@ export function RaidCalculator() {
                     <Img
                       src={RESOURCE_ICONS.coal}
                       alt="Coal"
-                      style={{ width: "18px", height: "18px" }}
+                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
                     />
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#8b8c89",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      COAL
-                    </span>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: 800,
+                          color: "#8b8c89",
+                          lineHeight: 1,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {result.totalCharcoal.toLocaleString()}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          color: "#8b8c89",
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          marginTop: "2px",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        COAL
+                      </span>
+                    </div>
                   </div>
+                </div>
+
+                {/* Pravá část: ODDĚLOVAČ + PŘEPÍNAČ (Pevný blok) */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  {/* --- VERTIKÁLNÍ ODDĚLOVAČ --- */}
                   <div
                     style={{
-                      fontSize: "22px",
-                      fontWeight: 800,
-                      color: "#8b8c89",
+                      width: "1px",
+                      height: "40px",
+                      background:
+                        "linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent)",
+                      margin: "0 14px",
+                      flexShrink: 0,
+                    }}
+                  />
+
+                  {/* Spínač a nápisy */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
                     }}
                   >
-                    {result.totalCharcoal.toLocaleString()}
+                    {/* Přepínač (Slider) */}
+                    <div
+                      onClick={() => setDiscountActive(!discountActive)}
+                      style={{
+                        position: "relative",
+                        width: "36px",
+                        height: "20px",
+                        background: "#121212",
+                        border: `1px solid ${discountActive ? "rgba(204, 66, 44, 0.5)" : "rgba(255, 255, 255, 0.1)"}`,
+                        borderRadius: "10px",
+                        cursor: "pointer",
+                        flexShrink: 0,
+                        transition: "all 0.3s ease",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          width: "12px",
+                          height: "12px",
+                          background: discountActive ? "#cc422c" : "#555",
+                          borderRadius: "50%",
+                          top: "3px",
+                          left: discountActive ? "19px" : "3px",
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        }}
+                      />
+                    </div>
+
+                    {/* Nápisy a separator na středu */}
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          color: discountActive ? "#cc422c" : "#757575",
+                          transition: "color 0.2s",
+                          lineHeight: 1,
+                        }}
+                      >
+                        MIXING TABLE
+                      </span>
+
+                      {/* Horizontální Separator textu */}
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "1px",
+                          background:
+                            "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)",
+                          margin: "4px 0",
+                        }}
+                      />
+
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          color: discountActive ? "#cc422c" : "#757575",
+                          transition: "color 0.2s",
+                          lineHeight: 1,
+                        }}
+                      >
+                        COOKING WORKBENCH
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Horní ovládací lišta: Crafting Method (přesunuto sem) */}
-            <div>
-              <div className="sec-label">CRAFTING METHOD</div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "16px",
-                  marginTop: "8px",
-                }}
-              >
-                <div
-                  onClick={() => setDiscountActive(!discountActive)}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    opacity: discountActive ? 1 : 0.4,
-                    transition: "opacity 0.2s ease",
-                  }}
-                >
-                  <Img
-                    src="images/mixingtable.png"
-                    alt="Mixing Table"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <span
-                    className="btn-name"
-                    style={{
-                      marginTop: "4px",
-                      fontSize: "10px",
-                      color: discountActive ? "#cdcdcd" : "#757575",
-                    }}
-                  >
-                    MIXING TABLE
-                  </span>
-                </div>
-
-                <div
-                  className={`vertical-craft-toggle ${discountActive ? "active" : ""}`}
-                  onClick={() => setDiscountActive(!discountActive)}
-                >
-                  <div className="vertical-craft-toggle-thumb" />
-                </div>
-
-                <div
-                  onClick={() => setDiscountActive(!discountActive)}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    opacity: discountActive ? 1 : 0.4,
-                    transition: "opacity 0.2s ease",
-                  }}
-                >
-                  <Img
-                    src="images/cookingworkbench.png"
-                    alt="Cooking Workbench"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <span
-                    className="btn-name"
-                    style={{
-                      marginTop: "4px",
-                      fontSize: "10px",
-                      color: discountActive ? "#cdcdcd" : "#757575",
-                    }}
-                  >
-                    WORKBENCH
-                  </span>
                 </div>
               </div>
             </div>
