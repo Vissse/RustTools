@@ -3,6 +3,7 @@ import type { RaidItem } from "../../types";
 export const RaidDataHighExternalStoneGate: RaidItem[] = [
   {
     name: "Torpedo",
+    category: "torpedo",
     side: "both",
     damage: 5.6,
     quantity: 90,
@@ -10,6 +11,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.9,
     quantity: 556,
@@ -17,6 +19,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.9,
     quantity: 556,
@@ -24,6 +27,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.9,
     quantity: 556,
@@ -31,6 +35,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.9,
     quantity: 556,
@@ -38,6 +43,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.72,
     quantity: 695,
@@ -45,6 +51,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Catapult - Propane Explosive Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 137.65,
     quantity: 4,
@@ -52,6 +59,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.675,
     quantity: 741,
@@ -59,6 +67,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -66,6 +75,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "L96 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -73,6 +83,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.908,
     quantity: 172,
@@ -80,6 +91,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.908,
     quantity: 172,
@@ -87,6 +99,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Timed Explosive Charge",
+    category: "explosive",
     side: "both",
     damage: 275,
     quantity: 2,
@@ -94,6 +107,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.8315,
     quantity: 177,
@@ -101,6 +115,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M249 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.8315,
     quantity: 177,
@@ -108,6 +123,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "HMLMG - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.79325,
     quantity: 180,
@@ -115,6 +131,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Python Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.275,
     quantity: 1819,
@@ -122,6 +139,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.755,
     quantity: 182,
@@ -129,6 +147,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.755,
     quantity: 182,
@@ -136,6 +155,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.704,
     quantity: 185,
@@ -143,6 +163,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Explosive 5.56 Rifle Ammo - Semi-Automatic Rifle",
+    category: "explosive",
     side: "both",
     damage: 2.704,
     quantity: 185,
@@ -150,6 +171,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.704,
     quantity: 185,
@@ -157,6 +179,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "SKS - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.71675,
     quantity: 185,
@@ -164,6 +187,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M16A2 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.6785,
     quantity: 187,
@@ -171,6 +195,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.05,
     quantity: 477,
@@ -178,6 +203,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.05,
     quantity: 477,
@@ -185,6 +211,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.05,
     quantity: 477,
@@ -192,6 +219,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.05,
     quantity: 477,
@@ -199,6 +227,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Satchel Charge",
+    category: "explosive",
     side: "both",
     damage: 51.5,
     quantity: 10,
@@ -206,6 +235,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 30.15,
     quantity: 17,
@@ -213,6 +243,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -220,6 +251,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M249 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -227,6 +259,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Beancan Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 11,
     quantity: 46,
@@ -234,6 +267,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.225,
     quantity: 2223,
@@ -241,6 +275,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Rocket",
+    category: "explosive",
     side: "both",
     damage: 137.65,
     quantity: 4,
@@ -248,6 +283,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "HMLMG - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2875,
     quantity: 1740,
@@ -255,6 +291,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.84,
     quantity: 596,
@@ -262,6 +299,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -269,6 +307,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -276,6 +315,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Propane Explosive Bomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 80.15,
     quantity: 7,
@@ -283,6 +323,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.7875,
     quantity: 635,
@@ -290,6 +331,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "High Velocity Rocket",
+    category: "explosive",
     side: "both",
     damage: 15.75,
     quantity: 32,
@@ -297,6 +339,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -304,6 +347,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M39 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -311,6 +355,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "MP5A4 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -318,6 +363,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Thompson - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -325,6 +371,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -332,6 +379,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "SKS - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2125,
     quantity: 2353,
@@ -339,6 +387,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -346,6 +395,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -353,6 +403,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Custom SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.15,
     quantity: 3334,
@@ -360,6 +411,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -367,6 +419,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "L96 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -374,6 +427,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Minigun - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -381,6 +435,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Python Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.275,
     quantity: 1819,
@@ -388,6 +443,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M16A2 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -395,6 +451,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -402,6 +459,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M249 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -409,6 +467,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Cannonball",
+    category: "explosive",
     side: "both",
     damage: 0.7,
     quantity: 715,
@@ -416,6 +475,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "F1 Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 2.75,
     quantity: 182,
@@ -423,6 +483,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M92 Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.225,
     quantity: 2223,
@@ -430,6 +491,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "HMLMG - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2875,
     quantity: 1740,
@@ -437,6 +499,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -444,6 +507,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -451,6 +515,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Prototype 17 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -458,6 +523,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -465,6 +531,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -472,6 +539,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -479,6 +547,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1,
     quantity: 5000,
@@ -486,6 +555,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "MP5A4 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -493,6 +563,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Thompson - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -500,6 +571,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -507,6 +579,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M39 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -514,6 +587,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -521,6 +595,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Python Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.275,
     quantity: 1819,
@@ -528,6 +603,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -535,6 +611,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -542,6 +619,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.32,
     quantity: 1563,
@@ -549,6 +627,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "SKS - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2125,
     quantity: 2353,
@@ -556,6 +635,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Custom SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.15,
     quantity: 3334,
@@ -563,6 +643,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.3,
     quantity: 1667,
@@ -570,6 +651,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -577,6 +659,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -584,6 +667,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.225,
     quantity: 2223,
@@ -591,6 +675,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M16A2 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -598,6 +683,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -605,6 +691,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M249 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.325,
     quantity: 1539,
@@ -612,6 +699,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -619,6 +707,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -626,6 +715,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -633,6 +723,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -640,6 +731,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -647,6 +739,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -654,6 +747,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "HMLMG - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2875,
     quantity: 1740,
@@ -661,6 +755,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "MP5A4 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -668,6 +763,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Thompson - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1875,
     quantity: 2667,
@@ -675,6 +771,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -682,6 +779,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -689,6 +787,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -696,6 +795,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -703,6 +803,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Handmade SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.1,
     quantity: 5000,
@@ -710,6 +811,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -717,6 +819,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Custom SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.15,
     quantity: 3334,
@@ -724,6 +827,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "SKS - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2125,
     quantity: 2353,
@@ -731,6 +835,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -738,6 +843,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -745,6 +851,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "M16A2 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.175,
     quantity: 2858,
@@ -752,6 +859,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.1,
     quantity: 5000,
@@ -759,6 +867,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Fragmentation Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 0.15,
     quantity: 3334,
@@ -766,6 +875,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "MLRS Rocket",
+    category: "explosive",
     side: "both",
     damage: 175.15,
     quantity: 3,
@@ -773,6 +883,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Mounted Ballista - Hammerhead Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 12.5,
     quantity: 40,
@@ -780,6 +891,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Ballista - Hammerhead Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 12.5,
     quantity: 40,
@@ -787,6 +899,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Battering Ram",
+    category: "siege weapons",
     side: "both",
     damage: 50.1,
     quantity: 10,
@@ -794,6 +907,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Catapult - Scattershot",
+    category: "siege weapons",
     side: "both",
     damage: 0.16,
     quantity: 3125,
@@ -801,6 +915,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Catapult - Bee Catapult Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 0.04,
     quantity: 12500,
@@ -808,6 +923,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "40mm HE Grenade",
+    category: "explosive",
     side: "both",
     damage: 17.61,
     quantity: 29,
@@ -815,6 +931,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Apple Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -822,6 +939,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bear Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -829,6 +947,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Big Cat Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -836,6 +955,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Chicken Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -843,6 +963,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Crocodile Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -850,6 +971,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Fish Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -857,6 +979,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Hunters Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -864,6 +987,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pork Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -871,6 +995,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pumpkin Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -878,6 +1003,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Survivor's Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -885,6 +1011,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Skinning Knife",
+    category: "melee",
     side: "both",
     damage: 0.04,
     quantity: 596,
@@ -892,6 +1019,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Skinning Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1000,
@@ -899,6 +1027,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Candy Cane Club",
+    category: "melee",
     side: "both",
     damage: 0.036,
     quantity: 632,
@@ -906,6 +1035,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Candy Cane Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.024,
     quantity: 834,
@@ -913,6 +1043,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Snowball - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 10000,
@@ -920,6 +1051,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Snowball Gun - Snowball",
+    category: "guns",
     side: "both",
     damage: 0.016,
     quantity: 625,
@@ -927,6 +1059,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Flashlight",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 1283,
@@ -934,6 +1067,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Jackhammer",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 88,
@@ -941,6 +1075,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Jackhammer - Workbench Refill",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 5,
@@ -948,6 +1083,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Shovel",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 981,
@@ -955,6 +1091,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Shovel - Throw",
+    category: "throw",
     side: "both",
     damage: 0.0701,
     quantity: 286,
@@ -962,6 +1099,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bee Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -969,6 +1107,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bone Club",
+    category: "melee",
     side: "both",
     damage: 0.024,
     quantity: 869,
@@ -976,6 +1115,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bone Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.024,
     quantity: 1042,
@@ -983,6 +1123,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bone Knife",
+    category: "melee",
     side: "both",
     damage: 0.056,
     quantity: 373,
@@ -990,6 +1131,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Bone Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1000,
@@ -997,6 +1139,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Boomerang",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 589,
@@ -1004,6 +1147,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Boomerang - Throw",
+    category: "throw",
     side: "both",
     damage: 0.09,
     quantity: 556,
@@ -1011,6 +1155,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Birthday Cake",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 5556,
@@ -1018,6 +1163,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Birthday Cake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 1,
@@ -1025,6 +1171,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Chainsaw",
+    category: "melee",
     side: "both",
     damage: 0.024,
     quantity: 695,
@@ -1032,6 +1179,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 209,
@@ -1039,6 +1187,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 133,
@@ -1046,6 +1195,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Multiple Grenade Launcher - 40mm Shotgun Round",
+    category: "guns",
     side: "both",
     damage: 1.35,
     quantity: 371,
@@ -1053,6 +1203,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Butcher Knife",
+    category: "melee",
     side: "both",
     damage: 0.04,
     quantity: 596,
@@ -1060,6 +1211,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Butcher Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1000,
@@ -1067,6 +1219,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pitchfork",
+    category: "melee",
     side: "both",
     damage: 0.2,
     quantity: 209,
@@ -1074,6 +1227,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Sickle",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 144,
@@ -1081,6 +1235,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Sickle - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 167,
@@ -1088,6 +1243,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Vampire Stake",
+    category: "melee",
     side: "both",
     damage: 0.1401,
     quantity: 3569,
@@ -1095,6 +1251,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Vampire Stake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.0701,
     quantity: 7133,
@@ -1102,6 +1259,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 150,
@@ -1109,6 +1267,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 167,
@@ -1116,6 +1275,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Combat Knife",
+    category: "melee",
     side: "both",
     damage: 0.1225,
     quantity: 314,
@@ -1123,6 +1283,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Combat Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1130,6 +1291,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Mace",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 261,
@@ -1137,6 +1299,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Mace - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 167,
@@ -1144,6 +1307,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Machete",
+    category: "melee",
     side: "both",
     damage: 0.07,
     quantity: 275,
@@ -1151,6 +1315,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Machete - Throw",
+    category: "throw",
     side: "both",
     damage: 0.04,
     quantity: 250,
@@ -1158,6 +1323,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Paddle",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 194,
@@ -1165,6 +1331,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 72,
@@ -1172,6 +1339,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 50,
@@ -1179,6 +1347,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Rock",
+    category: "melee",
     side: "both",
     damage: 0.02,
     quantity: 736,
@@ -1186,6 +1355,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Rock - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1000,
@@ -1193,6 +1363,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Axe",
+    category: "melee",
     side: "both",
     damage: 0.095,
     quantity: 94,
@@ -1200,6 +1371,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Axe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 80,
@@ -1207,6 +1379,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer",
+    category: "melee",
     side: "both",
     damage: 0.08,
     quantity: 112,
@@ -1214,6 +1387,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer - Throw",
+    category: "throw",
     side: "both",
     damage: 0.04,
     quantity: 100,
@@ -1221,6 +1395,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick",
+    category: "melee",
     side: "both",
     damage: 0.14,
     quantity: 64,
@@ -1228,6 +1403,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick - Throw",
+    category: "throw",
     side: "both",
     damage: 0.075,
     quantity: 54,
@@ -1235,6 +1411,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Stone Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 642,
@@ -1242,6 +1419,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Stone Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1000,
@@ -1249,6 +1427,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.064,
     quantity: 340,
@@ -1256,6 +1435,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 400,
@@ -1263,6 +1443,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Stone Spear",
+    category: "melee",
     side: "both",
     damage: 0.175,
     quantity: 260,
@@ -1270,6 +1451,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Longsword",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 209,
@@ -1277,6 +1459,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Longsword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 133,
@@ -1284,6 +1467,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Sword",
+    category: "melee",
     side: "both",
     damage: 0.1,
     quantity: 157,
@@ -1291,6 +1475,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Salvaged Sword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.04,
     quantity: 143,
@@ -1298,6 +1483,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Torch",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 1924,
@@ -1305,6 +1491,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Torch - Lit",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 7143,
@@ -1312,6 +1499,7 @@ export const RaidDataHighExternalStoneGate: RaidItem[] = [
   },
   {
     name: "Wooden Spear",
+    category: "melee",
     side: "both",
     damage: 0.125,
     quantity: 236,

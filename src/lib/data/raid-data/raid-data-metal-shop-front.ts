@@ -3,6 +3,7 @@ import type { RaidItem } from "../../types";
 export const RaidDataMetalShopFront: RaidItem[] = [
   {
     name: "Torpedo",
+    category: "torpedo",
     side: "both",
     damage: 5.006,
     quantity: 150,
@@ -10,6 +11,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Catapult - Propane Explosive Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 137.575,
     quantity: 6,
@@ -17,6 +19,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Timed Explosive Charge",
+    category: "explosive",
     side: "both",
     damage: 275,
     quantity: 3,
@@ -24,6 +27,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.512,
     quantity: 299,
@@ -31,6 +35,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.50975,
     quantity: 299,
@@ -38,6 +43,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "HMLMG - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.508625,
     quantity: 299,
@@ -45,6 +51,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.512,
     quantity: 299,
@@ -52,6 +59,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M249 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.50975,
     quantity: 299,
@@ -59,6 +67,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 30.075,
     quantity: 25,
@@ -66,6 +75,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.5075,
     quantity: 300,
@@ -73,6 +83,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.506,
     quantity: 300,
@@ -80,6 +91,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M16A2 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.50525,
     quantity: 300,
@@ -87,6 +99,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.5075,
     quantity: 300,
@@ -94,6 +107,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Explosive 5.56 Rifle Ammo - Semi-Automatic Rifle",
+    category: "explosive",
     side: "both",
     damage: 2.506,
     quantity: 300,
@@ -101,6 +115,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.506,
     quantity: 300,
@@ -108,6 +123,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "SKS - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.506375,
     quantity: 300,
@@ -115,6 +131,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Rocket",
+    category: "explosive",
     side: "both",
     damage: 137.575,
     quantity: 6,
@@ -122,6 +139,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Satchel Charge",
+    category: "explosive",
     side: "both",
     damage: 43.5,
     quantity: 18,
@@ -129,6 +147,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Propane Explosive Bomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 80.075,
     quantity: 10,
@@ -136,6 +155,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "High Velocity Rocket",
+    category: "explosive",
     side: "both",
     damage: 15.0075,
     quantity: 50,
@@ -143,6 +163,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Beancan Grenade",
+    category: "explosive",
     side: "both",
     damage: 7.65,
     quantity: 99,
@@ -150,6 +171,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Cannonball",
+    category: "explosive",
     side: "both",
     damage: 0.105,
     quantity: 7143,
@@ -157,6 +179,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.008999999999999,
     quantity: 83334,
@@ -164,6 +187,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.008999999999999,
     quantity: 83334,
@@ -171,6 +195,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.008999999999999,
     quantity: 83334,
@@ -178,6 +203,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.008999999999999,
     quantity: 83334,
@@ -185,6 +211,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "F1 Grenade",
+    category: "explosive",
     side: "both",
     damage: 0.10375,
     quantity: 7229,
@@ -192,6 +219,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.0071999999999992,
     quantity: 104167,
@@ -199,6 +227,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 0.0067499999999993,
     quantity: 111112,
@@ -206,6 +235,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -213,6 +243,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "L96 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -220,6 +251,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Python Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0027499999999997,
     quantity: 272728,
@@ -227,6 +259,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.010499999999999,
     quantity: 71429,
@@ -234,6 +267,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.010499999999999,
     quantity: 71429,
@@ -241,6 +275,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.010499999999999,
     quantity: 71429,
@@ -248,6 +283,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.010499999999999,
     quantity: 71429,
@@ -255,6 +291,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -262,6 +299,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M249 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -269,6 +307,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0022499999999998,
     quantity: 333334,
@@ -276,6 +315,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "HMLMG - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0028749999999997,
     quantity: 260870,
@@ -283,6 +323,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.0083999999999991,
     quantity: 89286,
@@ -290,6 +331,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -297,6 +339,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -304,6 +347,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 0.0078749999999991,
     quantity: 95239,
@@ -311,6 +355,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -318,6 +363,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M39 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -325,6 +371,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Fragmentation Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 0.075,
     quantity: 10000,
@@ -332,6 +379,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "MP5A4 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -339,6 +387,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Thompson - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -346,6 +395,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -353,6 +403,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "SKS - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0021249999999998,
     quantity: 352942,
@@ -360,6 +411,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -367,6 +419,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -374,6 +427,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Custom SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0014999999999998,
     quantity: 500000,
@@ -381,6 +435,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -388,6 +443,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "L96 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -395,6 +451,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Minigun - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -402,6 +459,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Python Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0027499999999997,
     quantity: 272728,
@@ -409,6 +467,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M16A2 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -416,6 +475,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -423,6 +483,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M249 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -430,6 +491,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M92 Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0022499999999998,
     quantity: 333334,
@@ -437,6 +499,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "HMLMG - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0028749999999997,
     quantity: 260870,
@@ -444,6 +507,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -451,6 +515,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -458,6 +523,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Prototype 17 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -465,6 +531,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -472,6 +539,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -479,6 +547,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -486,6 +555,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.00099999999999989,
     quantity: 750000,
@@ -493,6 +563,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "MP5A4 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -500,6 +571,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Thompson - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -507,6 +579,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -514,6 +587,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M39 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -521,6 +595,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -528,6 +603,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Python Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0027499999999997,
     quantity: 272728,
@@ -535,6 +611,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -542,6 +619,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -549,6 +627,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0031999999999996,
     quantity: 234375,
@@ -556,6 +635,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "SKS - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0021249999999998,
     quantity: 352942,
@@ -563,6 +643,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Custom SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0014999999999998,
     quantity: 500000,
@@ -570,6 +651,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.0029999999999997,
     quantity: 250000,
@@ -577,6 +659,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -584,6 +667,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -591,6 +675,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0022499999999998,
     quantity: 333334,
@@ -598,6 +683,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M16A2 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -605,6 +691,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -612,6 +699,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M249 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0032499999999996,
     quantity: 230770,
@@ -619,6 +707,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0049999999999994,
     quantity: 150000,
@@ -626,6 +715,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0049999999999994,
     quantity: 150000,
@@ -633,6 +723,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0049999999999994,
     quantity: 150000,
@@ -640,6 +731,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0049999999999994,
     quantity: 150000,
@@ -647,6 +739,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -654,6 +747,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -661,6 +755,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "HMLMG - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0028749999999997,
     quantity: 260870,
@@ -668,6 +763,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "MP5A4 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -675,6 +771,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Thompson - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0018749999999998,
     quantity: 400000,
@@ -682,6 +779,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -689,6 +787,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -696,6 +795,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0024999999999997,
     quantity: 300000,
@@ -703,6 +803,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0039999999999996,
     quantity: 187500,
@@ -710,6 +811,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Handmade SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.00099999999999989,
     quantity: 750000,
@@ -717,6 +819,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 0.0037499999999996,
     quantity: 200000,
@@ -724,6 +827,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Custom SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.0014999999999998,
     quantity: 500000,
@@ -731,6 +835,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "SKS - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0021249999999998,
     quantity: 352942,
@@ -738,6 +843,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -745,6 +851,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0019999999999998,
     quantity: 375000,
@@ -752,6 +859,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "M16A2 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.0017499999999998,
     quantity: 428572,
@@ -759,6 +867,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.00099999999999989,
     quantity: 750000,
@@ -766,6 +875,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "MLRS Rocket",
+    category: "explosive",
     side: "both",
     damage: 175.075,
     quantity: 5,
@@ -773,6 +883,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Battering Ram",
+    category: "siege weapons",
     side: "both",
     damage: 50.05,
     quantity: 15,
@@ -780,6 +891,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Catapult - Scattershot",
+    category: "siege weapons",
     side: "both",
     damage: 0.08,
     quantity: 9375,
@@ -787,6 +899,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Catapult - Bee Catapult Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 0.02,
     quantity: 37500,
@@ -794,6 +907,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "40mm HE Grenade",
+    category: "explosive",
     side: "both",
     damage: 17.555,
     quantity: 43,
@@ -801,6 +915,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Apple Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -808,6 +923,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bear Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -815,6 +931,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Big Cat Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -822,6 +939,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Chicken Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -829,6 +947,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Crocodile Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -836,6 +955,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Fish Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -843,6 +963,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Hunters Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -850,6 +971,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pork Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -857,6 +979,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pumpkin Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -864,6 +987,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Survivor's Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 1,
@@ -871,6 +995,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Skinning Knife",
+    category: "melee",
     side: "both",
     damage: 0.02,
     quantity: 1786,
@@ -878,6 +1003,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Skinning Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 3000,
@@ -885,6 +1011,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Candy Cane Club",
+    category: "melee",
     side: "both",
     damage: 0.018,
     quantity: 1894,
@@ -892,6 +1019,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Candy Cane Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.012,
     quantity: 2500,
@@ -899,6 +1027,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Snowball - Throw",
+    category: "throw",
     side: "both",
     damage: 0.025,
     quantity: 30000,
@@ -906,6 +1035,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Snowball Gun - Snowball",
+    category: "guns",
     side: "both",
     damage: 0.008,
     quantity: 1875,
@@ -913,6 +1043,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Flashlight",
+    category: "melee",
     side: "both",
     damage: 0.015,
     quantity: 3847,
@@ -920,6 +1051,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Jackhammer",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 329,
@@ -927,6 +1059,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Jackhammer - Workbench Refill",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 19,
@@ -934,6 +1067,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Shovel",
+    category: "melee",
     side: "both",
     damage: 0.005,
     quantity: 2942,
@@ -941,6 +1075,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Shovel - Throw",
+    category: "throw",
     side: "both",
     damage: 0.0302,
     quantity: 994,
@@ -948,6 +1083,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bee Grenade",
+    category: "explosive",
     side: "both",
     damage: 0.02,
     quantity: 37500,
@@ -955,6 +1091,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bone Club",
+    category: "melee",
     side: "both",
     damage: 0.012,
     quantity: 2605,
@@ -962,6 +1099,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bone Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.012,
     quantity: 3125,
@@ -969,6 +1107,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bone Knife",
+    category: "melee",
     side: "both",
     damage: 0.024,
     quantity: 1303,
@@ -976,6 +1115,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Bone Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 3000,
@@ -983,6 +1123,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Boomerang",
+    category: "melee",
     side: "both",
     damage: 0.025,
     quantity: 1765,
@@ -990,6 +1131,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Boomerang - Throw",
+    category: "throw",
     side: "both",
     damage: 0.045,
     quantity: 1667,
@@ -997,6 +1139,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Birthday Cake",
+    category: "melee",
     side: "both",
     damage: 0.015,
     quantity: 16667,
@@ -1004,6 +1147,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Birthday Cake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 1,
@@ -1011,6 +1155,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Chainsaw",
+    category: "melee",
     side: "both",
     damage: 0.012,
     quantity: 2084,
@@ -1018,6 +1163,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 625,
@@ -1025,6 +1171,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 397,
@@ -1032,6 +1179,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Multiple Grenade Launcher - 40mm Shotgun Round",
+    category: "guns",
     side: "both",
     damage: 0.013499999999999,
     quantity: 55556,
@@ -1039,6 +1187,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Butcher Knife",
+    category: "melee",
     side: "both",
     damage: 0.02,
     quantity: 1786,
@@ -1046,6 +1195,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Butcher Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 3000,
@@ -1053,6 +1203,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pitchfork",
+    category: "melee",
     side: "both",
     damage: 0.08,
     quantity: 782,
@@ -1060,6 +1211,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Sickle",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 432,
@@ -1067,6 +1219,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Sickle - Throw",
+    category: "throw",
     side: "both",
     damage: 0.015,
     quantity: 500,
@@ -1074,6 +1227,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Vampire Stake",
+    category: "melee",
     side: "both",
     damage: 0.0602,
     quantity: 12459,
@@ -1081,6 +1235,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Vampire Stake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.0302,
     quantity: 24835,
@@ -1088,6 +1243,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.025,
     quantity: 448,
@@ -1095,6 +1251,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.015,
     quantity: 500,
@@ -1102,6 +1259,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Combat Knife",
+    category: "melee",
     side: "both",
     damage: 0.0525,
     quantity: 1099,
@@ -1109,6 +1267,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Combat Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 600,
@@ -1116,6 +1275,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Mace",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 782,
@@ -1123,6 +1283,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Mace - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 500,
@@ -1130,6 +1291,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Machete",
+    category: "melee",
     side: "both",
     damage: 0.035,
     quantity: 825,
@@ -1137,6 +1299,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Machete - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 750,
@@ -1144,6 +1307,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Paddle",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 582,
@@ -1151,6 +1315,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 259,
@@ -1158,6 +1323,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.04,
     quantity: 188,
@@ -1165,6 +1331,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Rock",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 2206,
@@ -1172,6 +1339,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Rock - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 3000,
@@ -1179,6 +1347,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Axe",
+    category: "melee",
     side: "both",
     damage: 0.045,
     quantity: 298,
@@ -1186,6 +1355,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Axe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.025,
     quantity: 240,
@@ -1193,6 +1363,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 224,
@@ -1200,6 +1371,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 300,
@@ -1207,6 +1379,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 224,
@@ -1214,6 +1387,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 200,
@@ -1221,6 +1395,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Stone Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.015,
     quantity: 1924,
@@ -1228,6 +1403,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Stone Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.01,
     quantity: 3000,
@@ -1235,6 +1411,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.027,
     quantity: 1208,
@@ -1242,6 +1419,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1500,
@@ -1249,6 +1427,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Stone Spear",
+    category: "melee",
     side: "both",
     damage: 0.07,
     quantity: 975,
@@ -1256,6 +1435,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Longsword",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 625,
@@ -1263,6 +1443,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Longsword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.03,
     quantity: 397,
@@ -1270,6 +1451,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Sword",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 469,
@@ -1277,6 +1459,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Salvaged Sword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 427,
@@ -1284,6 +1467,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Torch",
+    category: "melee",
     side: "both",
     damage: 0.005,
     quantity: 5770,
@@ -1291,6 +1475,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Torch - Lit",
+    category: "melee",
     side: "both",
     damage: 0.005,
     quantity: 21429,
@@ -1298,6 +1483,7 @@ export const RaidDataMetalShopFront: RaidItem[] = [
   },
   {
     name: "Wooden Spear",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 883,

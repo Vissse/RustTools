@@ -83,9 +83,18 @@ export interface Stack {
   amount: number
 }
 
+export type RaidCategory =
+  | 'explosive'
+  | 'guns'
+  | 'melee'
+  | 'siege weapons'
+  | 'throw'
+  | 'torpedo'
+
 export interface RaidItem {
   name: string
   side: 'soft' | 'hard' | 'both'
+  category: RaidCategory
   damage: number
   quantity: number
   time: string

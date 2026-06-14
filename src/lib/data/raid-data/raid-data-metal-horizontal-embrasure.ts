@@ -3,6 +3,7 @@ import type { RaidItem } from "../../types";
 export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   {
     name: "Incendiary Rocket",
+    category: "explosive",
     side: "both",
     damage: 428.2575,
     quantity: 2,
@@ -10,6 +11,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Firebomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 172.803,
     quantity: 3,
@@ -17,6 +19,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Torpedo",
+    category: "torpedo",
     side: "both",
     damage: 6.2,
     quantity: 81,
@@ -24,6 +27,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.8,
     quantity: 278,
@@ -31,6 +35,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.8,
     quantity: 278,
@@ -38,6 +43,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.8,
     quantity: 278,
@@ -45,6 +51,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.8,
     quantity: 278,
@@ -52,6 +59,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.44,
     quantity: 348,
@@ -59,6 +67,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 1.35,
     quantity: 371,
@@ -66,6 +75,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -73,6 +83,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "L96 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -80,6 +91,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Python Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.55,
     quantity: 910,
@@ -87,6 +99,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.1,
     quantity: 239,
@@ -94,6 +107,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.1,
     quantity: 239,
@@ -101,6 +115,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.1,
     quantity: 239,
@@ -108,6 +123,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.1,
     quantity: 239,
@@ -115,6 +131,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.65,
     quantity: 770,
@@ -122,6 +139,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M249 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.65,
     quantity: 770,
@@ -129,6 +147,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.45,
     quantity: 1112,
@@ -136,6 +155,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 3.5,
     quantity: 143,
@@ -143,6 +163,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 3.5,
     quantity: 143,
@@ -150,6 +171,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 3.5,
     quantity: 143,
@@ -157,6 +179,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 3.5,
     quantity: 143,
@@ -164,6 +187,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "HMLMG - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.575,
     quantity: 870,
@@ -171,6 +195,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.68,
     quantity: 298,
@@ -178,6 +203,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -185,6 +211,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -192,6 +219,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 1.575,
     quantity: 318,
@@ -199,6 +227,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -206,6 +235,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M39 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -213,6 +243,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "MP5A4 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -220,6 +251,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Thompson - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -227,6 +259,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Python Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.1925,
     quantity: 420,
@@ -234,6 +267,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.35,
     quantity: 1429,
@@ -241,6 +275,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 2.8,
     quantity: 179,
@@ -248,6 +283,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Catapult - Propane Explosive Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 138.25,
     quantity: 4,
@@ -255,6 +291,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Cannonball",
+    category: "explosive",
     side: "both",
     damage: 2,
     quantity: 250,
@@ -262,6 +299,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.308,
     quantity: 152,
@@ -269,6 +307,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.308,
     quantity: 152,
@@ -276,6 +315,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 2.625,
     quantity: 191,
@@ -283,6 +323,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "SKS - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.425,
     quantity: 1177,
@@ -290,6 +331,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.1565,
     quantity: 159,
@@ -297,6 +339,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M249 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.1565,
     quantity: 159,
@@ -304,6 +347,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.0325,
     quantity: 485,
@@ -311,6 +355,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "HMLMG - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.08075,
     quantity: 163,
@@ -318,6 +363,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -325,6 +371,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -332,6 +379,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Custom SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.3,
     quantity: 1667,
@@ -339,6 +387,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -346,6 +395,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "L96 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -353,6 +403,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.005,
     quantity: 167,
@@ -360,6 +411,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.005,
     quantity: 167,
@@ -367,6 +419,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "SKS - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.92925,
     quantity: 171,
@@ -374,6 +427,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.904,
     quantity: 173,
@@ -381,6 +435,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Explosive 5.56 Rifle Ammo - Semi-Automatic Rifle",
+    category: "explosive",
     side: "both",
     damage: 2.904,
     quantity: 173,
@@ -388,6 +443,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.904,
     quantity: 173,
@@ -395,6 +451,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9525,
     quantity: 525,
@@ -402,6 +459,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9525,
     quantity: 525,
@@ -409,6 +467,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Timed Explosive Charge",
+    category: "explosive",
     side: "both",
     damage: 275,
     quantity: 2,
@@ -416,6 +475,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M16A2 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.8535,
     quantity: 176,
@@ -423,6 +483,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Minigun - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -430,6 +491,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Python Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.55,
     quantity: 910,
@@ -437,6 +499,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "MP5A4 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9125,
     quantity: 548,
@@ -444,6 +507,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Thompson - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9125,
     quantity: 548,
@@ -451,6 +515,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M16A2 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.35,
     quantity: 1429,
@@ -458,6 +523,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.8725,
     quantity: 574,
@@ -465,6 +531,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.28,
     quantity: 391,
@@ -472,6 +539,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.28,
     quantity: 391,
@@ -479,6 +547,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 30.75,
     quantity: 17,
@@ -486,6 +555,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.65,
     quantity: 770,
@@ -493,6 +563,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M249 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.65,
     quantity: 770,
@@ -500,6 +571,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Custom SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.7925,
     quantity: 631,
@@ -507,6 +579,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M92 Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.45,
     quantity: 1112,
@@ -514,6 +587,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Rocket",
+    category: "explosive",
     side: "both",
     damage: 138.25,
     quantity: 4,
@@ -521,6 +595,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "HMLMG - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.575,
     quantity: 870,
@@ -528,6 +603,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.04,
     quantity: 481,
@@ -535,6 +611,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M249 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.04,
     quantity: 481,
@@ -542,6 +619,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "High Velocity Rocket",
+    category: "explosive",
     side: "both",
     damage: 16.5,
     quantity: 31,
@@ -549,6 +627,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Satchel Charge",
+    category: "explosive",
     side: "both",
     damage: 41.5,
     quantity: 13,
@@ -556,6 +635,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -563,6 +643,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -570,6 +651,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Prototype 17 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -577,6 +659,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -584,6 +667,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -591,6 +675,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -598,6 +683,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -605,6 +691,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Propane Explosive Bomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 80.75,
     quantity: 7,
@@ -612,6 +699,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.6325,
     quantity: 791,
@@ -619,6 +707,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -626,6 +715,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M39 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 1000,
@@ -633,6 +723,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "MP5A4 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -640,6 +731,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Thompson - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.375,
     quantity: 1334,
@@ -647,6 +739,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "HMLMG - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.92,
     quantity: 544,
@@ -654,6 +747,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Beancan Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 8.5,
     quantity: 59,
@@ -661,6 +755,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.35,
     quantity: 1429,
@@ -668,6 +763,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -675,6 +771,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -682,6 +779,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.64,
     quantity: 782,
@@ -689,6 +787,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "SKS - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.425,
     quantity: 1177,
@@ -696,6 +795,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Custom SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.3,
     quantity: 1667,
@@ -703,6 +803,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -710,6 +811,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.4,
     quantity: 1250,
@@ -717,6 +819,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 834,
@@ -724,6 +827,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "SKS - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.68,
     quantity: 736,
@@ -731,6 +835,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M16A2 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.35,
     quantity: 1429,
@@ -738,6 +843,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.64,
     quantity: 782,
@@ -745,6 +851,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.64,
     quantity: 782,
@@ -752,6 +859,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "M16A2 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.56,
     quantity: 893,
@@ -759,6 +867,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Handmade SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -766,6 +875,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "F1 Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 1.75,
     quantity: 286,
@@ -773,6 +883,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Catapult - Firebomb",
+    category: "siege weapons",
     side: "both",
     damage: 2.5,
     quantity: 200,
@@ -780,6 +891,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Fragmentation Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 0.75,
     quantity: 667,
@@ -787,6 +899,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "MLRS Rocket",
+    category: "explosive",
     side: "both",
     damage: 175.75,
     quantity: 3,
@@ -794,6 +907,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Mounted Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 13.46875,
     quantity: 38,
@@ -801,6 +915,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 13.46875,
     quantity: 38,
@@ -808,6 +923,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Battering Ram",
+    category: "siege weapons",
     side: "both",
     damage: 50.5,
     quantity: 10,
@@ -815,6 +931,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Catapult - Scattershot",
+    category: "siege weapons",
     side: "both",
     damage: 0.8,
     quantity: 625,
@@ -822,6 +939,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Catapult - Bee Catapult Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -829,6 +947,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "40mm HE Grenade",
+    category: "explosive",
     side: "both",
     damage: 18.05,
     quantity: 28,
@@ -836,6 +955,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Apple Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -843,6 +963,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bear Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -850,6 +971,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Big Cat Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -857,6 +979,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Chicken Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -864,6 +987,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Crocodile Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -871,6 +995,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Fish Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -878,6 +1003,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Hunters Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -885,6 +1011,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pork Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -892,6 +1019,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pumpkin Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -899,6 +1027,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Survivor's Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 1,
@@ -906,6 +1035,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Skinning Knife",
+    category: "melee",
     side: "both",
     damage: 0.2,
     quantity: 120,
@@ -913,6 +1043,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Skinning Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -920,6 +1051,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Candy Cane Club",
+    category: "melee",
     side: "both",
     damage: 0.18,
     quantity: 127,
@@ -927,6 +1059,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Candy Cane Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.12,
     quantity: 167,
@@ -934,6 +1067,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Snowball - Throw",
+    category: "throw",
     side: "both",
     damage: 0.25,
     quantity: 2000,
@@ -941,6 +1075,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Snowball Gun - Snowball",
+    category: "guns",
     side: "both",
     damage: 0.08,
     quantity: 125,
@@ -948,6 +1083,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Flashlight",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 257,
@@ -955,6 +1091,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Jackhammer",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 44,
@@ -962,6 +1099,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Jackhammer - Workbench Refill",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 3,
@@ -969,6 +1107,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Shovel",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 197,
@@ -976,6 +1115,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Shovel - Throw",
+    category: "throw",
     side: "both",
     damage: 0.21,
     quantity: 96,
@@ -983,6 +1123,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bee Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 0.2,
     quantity: 2500,
@@ -990,6 +1131,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bone Club",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 174,
@@ -997,6 +1139,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bone Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.12,
     quantity: 209,
@@ -1004,6 +1147,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bone Knife",
+    category: "melee",
     side: "both",
     damage: 0.16,
     quantity: 131,
@@ -1011,6 +1155,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Bone Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1018,6 +1163,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Boomerang",
+    category: "melee",
     side: "both",
     damage: 0.25,
     quantity: 118,
@@ -1025,6 +1171,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Boomerang - Throw",
+    category: "throw",
     side: "both",
     damage: 0.45,
     quantity: 112,
@@ -1032,6 +1179,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Fire Arrow - Hunting Bow",
+    category: "explosive",
     side: "both",
     damage: 1,
     quantity: 500,
@@ -1039,6 +1187,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Hunting Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 500,
@@ -1046,6 +1195,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Birthday Cake",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 1112,
@@ -1053,6 +1203,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Birthday Cake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 1,
@@ -1060,6 +1211,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Chainsaw",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 139,
@@ -1067,6 +1219,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver",
+    category: "melee",
     side: "both",
     damage: 0.6,
     quantity: 42,
@@ -1074,6 +1227,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 27,
@@ -1081,6 +1235,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Compound Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 500,
@@ -1088,6 +1243,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 500,
@@ -1095,6 +1251,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 6.075,
     quantity: 824,
@@ -1102,6 +1259,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Multiple Grenade Launcher - 40mm Shotgun Round",
+    category: "guns",
     side: "both",
     damage: 2.7,
     quantity: 186,
@@ -1109,6 +1267,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Butcher Knife",
+    category: "melee",
     side: "both",
     damage: 0.2,
     quantity: 120,
@@ -1116,6 +1275,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Butcher Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1123,6 +1283,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pitchfork",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 105,
@@ -1130,6 +1291,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Sickle",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 29,
@@ -1137,6 +1299,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Sickle - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 34,
@@ -1144,6 +1307,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Vampire Stake",
+    category: "melee",
     side: "both",
     damage: 0.41,
     quantity: 1220,
@@ -1151,6 +1315,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Vampire Stake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.21,
     quantity: 2381,
@@ -1158,6 +1323,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.25,
     quantity: 30,
@@ -1165,6 +1331,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 34,
@@ -1172,6 +1339,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Combat Knife",
+    category: "melee",
     side: "both",
     damage: 0.35,
     quantity: 110,
@@ -1179,6 +1347,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Combat Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.5,
     quantity: 40,
@@ -1186,6 +1355,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Mace",
+    category: "melee",
     side: "both",
     damage: 0.6,
     quantity: 53,
@@ -1193,6 +1363,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Mace - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 34,
@@ -1200,6 +1371,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Machete",
+    category: "melee",
     side: "both",
     damage: 0.35,
     quantity: 55,
@@ -1207,6 +1379,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Machete - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 50,
@@ -1214,6 +1387,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Military Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 7.375,
     quantity: 1017,
@@ -1221,6 +1395,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Mini Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 500,
@@ -1228,6 +1403,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Molotov Cocktail",
+    category: "explosive",
     side: "both",
     damage: 36.75,
     quantity: 14,
@@ -1235,6 +1411,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Paddle",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 38,
@@ -1242,6 +1419,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 29,
@@ -1249,6 +1427,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 25,
@@ -1256,6 +1435,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Rock",
+    category: "melee",
     side: "both",
     damage: 0.1,
     quantity: 148,
@@ -1263,6 +1443,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Rock - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1270,6 +1451,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Axe",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 22,
@@ -1277,6 +1459,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Axe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.25,
     quantity: 16,
@@ -1284,6 +1467,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer",
+    category: "melee",
     side: "both",
     damage: 0.6,
     quantity: 15,
@@ -1291,6 +1475,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 20,
@@ -1298,6 +1483,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 22,
@@ -1305,6 +1491,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 27,
@@ -1312,6 +1499,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Stone Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 129,
@@ -1319,6 +1507,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Stone Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1326,6 +1515,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.17,
     quantity: 128,
@@ -1333,6 +1523,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 200,
@@ -1340,6 +1531,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Stone Spear",
+    category: "melee",
     side: "both",
     damage: 0.35,
     quantity: 130,
@@ -1347,6 +1539,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Longsword",
+    category: "melee",
     side: "both",
     damage: 0.75,
     quantity: 42,
@@ -1354,6 +1547,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Longsword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 27,
@@ -1361,6 +1555,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Sword",
+    category: "melee",
     side: "both",
     damage: 0.5,
     quantity: 31,
@@ -1368,6 +1563,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Salvaged Sword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 29,
@@ -1375,6 +1571,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Torch",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 385,
@@ -1382,6 +1579,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Torch - Lit",
+    category: "melee",
     side: "both",
     damage: 0.1,
     quantity: 715,
@@ -1389,6 +1587,7 @@ export const RaidDataMetalHorizontalEmbrasure: RaidItem[] = [
   },
   {
     name: "Wooden Spear",
+    category: "melee",
     side: "both",
     damage: 0.25,
     quantity: 118,

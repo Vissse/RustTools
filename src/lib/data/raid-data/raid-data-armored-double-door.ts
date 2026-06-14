@@ -3,6 +3,7 @@ import type { RaidItem } from "../../types";
 export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   {
     name: "Double Barrel Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 50,
     quantity: 2,
@@ -10,6 +11,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 50,
     quantity: 2,
@@ -17,6 +19,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 50,
     quantity: 2,
@@ -24,6 +27,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 50,
     quantity: 2,
@@ -31,6 +35,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Torpedo",
+    category: "torpedo",
     side: "both",
     damage: 23,
     quantity: 5,
@@ -38,6 +43,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 47.5,
     quantity: 3,
@@ -45,6 +51,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 46.875,
     quantity: 3,
@@ -52,6 +59,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 4.5,
     quantity: 23,
@@ -59,6 +67,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 4.5,
     quantity: 23,
@@ -66,6 +75,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 4.5,
     quantity: 23,
@@ -73,6 +83,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 4.5,
     quantity: 23,
@@ -80,6 +91,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 3.6,
     quantity: 28,
@@ -87,6 +99,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 3.375,
     quantity: 30,
@@ -94,6 +107,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -101,6 +115,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "L96 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -108,6 +123,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Python Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.375,
     quantity: 73,
@@ -115,6 +131,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 5.25,
     quantity: 20,
@@ -122,6 +139,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 5.25,
     quantity: 20,
@@ -129,6 +147,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 5.25,
     quantity: 20,
@@ -136,6 +155,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 5.25,
     quantity: 20,
@@ -143,6 +163,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.625,
     quantity: 62,
@@ -150,6 +171,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M249 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.625,
     quantity: 62,
@@ -157,6 +179,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Python Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.945,
     quantity: 26,
@@ -164,6 +187,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.125,
     quantity: 89,
@@ -171,6 +195,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.27,
     quantity: 9,
@@ -178,6 +203,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 12.032,
     quantity: 9,
@@ -185,6 +211,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.651,
     quantity: 9,
@@ -192,6 +219,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "HMLMG - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.4605,
     quantity: 9,
@@ -199,6 +227,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 12.032,
     quantity: 9,
@@ -206,6 +235,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M249 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.651,
     quantity: 9,
@@ -213,6 +243,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.27,
     quantity: 9,
@@ -220,6 +251,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "HMLMG - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.4375,
     quantity: 70,
@@ -227,6 +259,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 4.2,
     quantity: 24,
@@ -234,6 +267,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.455,
     quantity: 29,
@@ -241,6 +275,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -248,6 +283,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.016,
     quantity: 10,
@@ -255,6 +291,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M16A2 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 10.889,
     quantity: 10,
@@ -262,6 +299,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -269,6 +307,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Explosive 5.56 Rifle Ammo - Semi-Automatic Rifle",
+    category: "explosive",
     side: "both",
     damage: 11.016,
     quantity: 10,
@@ -276,6 +315,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.016,
     quantity: 10,
@@ -283,6 +323,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "SKS - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 11.0795,
     quantity: 10,
@@ -290,6 +331,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 3.9375,
     quantity: 26,
@@ -297,6 +339,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.25,
     quantity: 80,
@@ -304,6 +347,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M39 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.25,
     quantity: 80,
@@ -311,6 +355,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.21,
     quantity: 32,
@@ -318,6 +363,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.21,
     quantity: 32,
@@ -325,6 +371,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "MP5A4 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9375,
     quantity: 107,
@@ -332,6 +379,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Thompson - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.9375,
     quantity: 107,
@@ -339,6 +387,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "MP5A4 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.0875,
     quantity: 33,
@@ -346,6 +395,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Thompson - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 3.0875,
     quantity: 33,
@@ -353,6 +403,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 2.965,
     quantity: 34,
@@ -360,6 +411,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.875,
     quantity: 115,
@@ -367,6 +419,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Firebomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 691.212,
     quantity: 1,
@@ -374,6 +427,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Incendiary Rocket",
+    category: "explosive",
     side: "both",
     damage: 1713.03,
     quantity: 1,
@@ -381,6 +435,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 120.375,
     quantity: 1,
@@ -388,6 +443,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Custom SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 2.72,
     quantity: 37,
@@ -395,6 +451,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "SKS - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.0625,
     quantity: 95,
@@ -402,6 +459,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.92,
     quantity: 26,
@@ -409,6 +467,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.92,
     quantity: 26,
@@ -416,6 +475,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -423,6 +483,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -430,6 +491,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -437,6 +499,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "L96 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -444,6 +507,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Custom SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 134,
@@ -451,6 +515,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Minigun - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.9375,
     quantity: 107,
@@ -458,6 +523,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Python Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 1.375,
     quantity: 73,
@@ -465,6 +531,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 2.23,
     quantity: 45,
@@ -472,6 +539,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M16A2 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.875,
     quantity: 115,
@@ -479,6 +547,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "High Velocity Rocket",
+    category: "explosive",
     side: "both",
     damage: 63.75,
     quantity: 2,
@@ -486,6 +555,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.185,
     quantity: 32,
@@ -493,6 +563,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M249 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 3.185,
     quantity: 32,
@@ -500,6 +571,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.625,
     quantity: 62,
@@ -507,6 +579,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M249 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.625,
     quantity: 62,
@@ -514,6 +587,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M92 Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 1.125,
     quantity: 89,
@@ -521,6 +595,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "HMLMG - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.8175,
     quantity: 36,
@@ -528,6 +603,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "HMLMG - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.4375,
     quantity: 70,
@@ -535,6 +611,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Beancan Grenade",
+    category: "explosive",
     side: "both",
     damage: 30.5,
     quantity: 4,
@@ -542,6 +619,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Satchel Charge",
+    category: "explosive",
     side: "both",
     damage: 322,
     quantity: 1,
@@ -549,6 +627,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -556,6 +635,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -563,6 +643,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Prototype 17 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -570,6 +651,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -577,6 +659,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 50,
@@ -584,6 +667,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -591,6 +675,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 200,
@@ -598,6 +683,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Cannonball",
+    category: "explosive",
     side: "both",
     damage: 3,
     quantity: 34,
@@ -605,6 +691,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.45,
     quantity: 41,
@@ -612,6 +699,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.45,
     quantity: 41,
@@ -619,6 +707,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.25,
     quantity: 80,
@@ -626,6 +715,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M39 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.25,
     quantity: 80,
@@ -633,6 +723,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "MP5A4 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.9375,
     quantity: 107,
@@ -640,6 +731,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Thompson - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.9375,
     quantity: 107,
@@ -647,6 +739,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.875,
     quantity: 115,
@@ -654,6 +747,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "SKS - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.0825,
     quantity: 49,
@@ -661,6 +755,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.6,
     quantity: 63,
@@ -668,6 +763,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "SKS - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.0625,
     quantity: 95,
@@ -675,6 +771,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.96,
     quantity: 52,
@@ -682,6 +779,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.96,
     quantity: 52,
@@ -689,6 +787,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -696,6 +795,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1,
     quantity: 100,
@@ -703,6 +803,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Custom SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 134,
@@ -710,6 +811,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.5,
     quantity: 67,
@@ -717,6 +819,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M16A2 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.715,
     quantity: 59,
@@ -724,6 +827,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "M16A2 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.875,
     quantity: 115,
@@ -731,6 +835,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Propane Explosive Bomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 320.375,
     quantity: 1,
@@ -738,6 +843,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Catapult - Propane Explosive Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 550.375,
     quantity: 1,
@@ -745,6 +851,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Handmade SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5,
     quantity: 200,
@@ -752,6 +859,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Rocket",
+    category: "explosive",
     side: "both",
     damage: 550.375,
     quantity: 1,
@@ -759,6 +867,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Timed Explosive Charge",
+    category: "explosive",
     side: "both",
     damage: 2200,
     quantity: 1,
@@ -766,6 +875,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "F1 Grenade",
+    category: "explosive",
     side: "both",
     damage: 2.375,
     quantity: 43,
@@ -773,6 +883,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Catapult - Firebomb",
+    category: "siege weapons",
     side: "both",
     damage: 10,
     quantity: 10,
@@ -780,6 +891,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Fragmentation Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 0.375,
     quantity: 267,
@@ -787,6 +899,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "MLRS Rocket",
+    category: "explosive",
     side: "both",
     damage: 700.375,
     quantity: 1,
@@ -794,6 +907,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Mounted Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 53.875,
     quantity: 2,
@@ -801,6 +915,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 53.875,
     quantity: 2,
@@ -808,6 +923,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Battering Ram",
+    category: "siege weapons",
     side: "both",
     damage: 200.25,
     quantity: 1,
@@ -815,6 +931,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Catapult - Scattershot",
+    category: "siege weapons",
     side: "both",
     damage: 0.4,
     quantity: 250,
@@ -822,6 +939,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Catapult - Bee Catapult Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 0.1,
     quantity: 1000,
@@ -829,6 +947,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "40mm HE Grenade",
+    category: "explosive",
     side: "both",
     damage: 70.275,
     quantity: 2,
@@ -836,6 +955,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Apple Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -843,6 +963,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bear Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -850,6 +971,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Big Cat Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -857,6 +979,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Chicken Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -864,6 +987,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Crocodile Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -871,6 +995,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Fish Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -878,6 +1003,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Hunters Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -885,6 +1011,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pork Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -892,6 +1019,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pumpkin Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -899,6 +1027,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Survivor's Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 1,
@@ -906,6 +1035,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Skinning Knife",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 16,
@@ -913,6 +1043,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Skinning Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 27,
@@ -920,6 +1051,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Candy Cane Club",
+    category: "melee",
     side: "both",
     damage: 0.09,
     quantity: 51,
@@ -927,6 +1059,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Candy Cane Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 67,
@@ -934,6 +1067,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Snowball - Throw",
+    category: "throw",
     side: "both",
     damage: 0.125,
     quantity: 800,
@@ -941,6 +1075,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Snowball Gun - Snowball",
+    category: "guns",
     side: "both",
     damage: 0.04,
     quantity: 50,
@@ -948,6 +1083,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Flashlight",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 103,
@@ -955,6 +1091,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Jackhammer",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 18,
@@ -962,6 +1099,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Jackhammer - Workbench Refill",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 1,
@@ -969,6 +1107,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Shovel",
+    category: "melee",
     side: "both",
     damage: 0.025,
     quantity: 79,
@@ -976,6 +1115,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Shovel - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 20,
@@ -983,6 +1123,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bee Grenade",
+    category: "explosive",
     side: "both",
     damage: 0.2,
     quantity: 500,
@@ -990,6 +1131,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bone Club",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 70,
@@ -997,6 +1139,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bone Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 84,
@@ -1004,6 +1147,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bone Knife",
+    category: "melee",
     side: "both",
     damage: 0.16,
     quantity: 27,
@@ -1011,6 +1155,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Bone Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 27,
@@ -1018,6 +1163,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Boomerang",
+    category: "melee",
     side: "both",
     damage: 0.325,
     quantity: 19,
@@ -1025,6 +1171,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Boomerang - Throw",
+    category: "throw",
     side: "both",
     damage: 0.225,
     quantity: 45,
@@ -1032,6 +1179,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Fire Arrow - Hunting Bow",
+    category: "explosive",
     side: "both",
     damage: 13.375,
     quantity: 8,
@@ -1039,6 +1187,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Hunting Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 13.375,
     quantity: 8,
@@ -1046,6 +1195,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Birthday Cake",
+    category: "melee",
     side: "both",
     damage: 0.075,
     quantity: 445,
@@ -1053,6 +1203,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Birthday Cake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 1,
@@ -1060,6 +1211,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Chainsaw",
+    category: "melee",
     side: "both",
     damage: 0.18,
     quantity: 19,
@@ -1067,6 +1219,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver",
+    category: "melee",
     side: "both",
     damage: 0.9,
     quantity: 6,
@@ -1074,6 +1227,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver - Throw",
+    category: "throw",
     side: "both",
     damage: 0.45,
     quantity: 4,
@@ -1081,6 +1235,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Compound Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 13.375,
     quantity: 8,
@@ -1088,6 +1243,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 13.375,
     quantity: 8,
@@ -1095,6 +1251,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 24.3,
     quantity: 42,
@@ -1102,6 +1259,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Multiple Grenade Launcher - 40mm Shotgun Round",
+    category: "guns",
     side: "both",
     damage: 6.75,
     quantity: 15,
@@ -1109,6 +1267,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Butcher Knife",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 16,
@@ -1116,6 +1275,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Butcher Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 27,
@@ -1123,6 +1283,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pitchfork",
+    category: "melee",
     side: "both",
     damage: 0.2,
     quantity: 42,
@@ -1130,6 +1291,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Sickle",
+    category: "melee",
     side: "both",
     damage: 0.45,
     quantity: 4,
@@ -1137,6 +1299,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Sickle - Throw",
+    category: "throw",
     side: "both",
     damage: 0.225,
     quantity: 5,
@@ -1144,6 +1307,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Vampire Stake",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 250,
@@ -1151,6 +1315,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Vampire Stake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 500,
@@ -1158,6 +1323,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.275,
     quantity: 6,
@@ -1165,6 +1331,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.225,
     quantity: 5,
@@ -1172,6 +1339,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Combat Knife",
+    category: "melee",
     side: "both",
     damage: 0.35,
     quantity: 22,
@@ -1179,6 +1347,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Combat Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.75,
     quantity: 6,
@@ -1186,6 +1355,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Mace",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 21,
@@ -1193,6 +1363,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Mace - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 14,
@@ -1200,6 +1371,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Machete",
+    category: "melee",
     side: "both",
     damage: 0.525,
     quantity: 8,
@@ -1207,6 +1379,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Machete - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 7,
@@ -1214,6 +1387,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Military Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 29.5,
     quantity: 51,
@@ -1221,6 +1395,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Mini Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 13.375,
     quantity: 8,
@@ -1228,6 +1403,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Molotov Cocktail",
+    category: "explosive",
     side: "both",
     damage: 147,
     quantity: 1,
@@ -1235,6 +1411,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Paddle",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 16,
@@ -1242,6 +1419,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.25,
     quantity: 7,
@@ -1249,6 +1427,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 10,
@@ -1256,6 +1435,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Rock",
+    category: "melee",
     side: "both",
     damage: 0.05,
     quantity: 59,
@@ -1263,6 +1443,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Rock - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 80,
@@ -1270,6 +1451,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Axe",
+    category: "melee",
     side: "both",
     damage: 0.55,
     quantity: 4,
@@ -1277,6 +1459,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Axe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.375,
     quantity: 3,
@@ -1284,6 +1467,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer",
+    category: "melee",
     side: "both",
     damage: 0.3,
     quantity: 6,
@@ -1291,6 +1475,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 8,
@@ -1298,6 +1483,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 5,
@@ -1305,6 +1491,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick - Throw",
+    category: "throw",
     side: "both",
     damage: 0.075,
     quantity: 11,
@@ -1312,6 +1499,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Stone Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.175,
     quantity: 22,
@@ -1319,6 +1507,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Stone Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 27,
@@ -1326,6 +1515,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.085,
     quantity: 52,
@@ -1333,6 +1523,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 80,
@@ -1340,6 +1531,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Stone Spear",
+    category: "melee",
     side: "both",
     damage: 0.175,
     quantity: 52,
@@ -1347,6 +1539,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Longsword",
+    category: "melee",
     side: "both",
     damage: 1.125,
     quantity: 6,
@@ -1354,6 +1547,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Longsword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.45,
     quantity: 4,
@@ -1361,6 +1555,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Sword",
+    category: "melee",
     side: "both",
     damage: 0.75,
     quantity: 5,
@@ -1368,6 +1563,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Salvaged Sword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 4,
@@ -1375,6 +1571,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Torch",
+    category: "melee",
     side: "both",
     damage: 0.025,
     quantity: 154,
@@ -1382,6 +1579,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Torch - Lit",
+    category: "melee",
     side: "both",
     damage: 0.225,
     quantity: 64,
@@ -1389,6 +1587,7 @@ export const RaidDataArmoredDoubleDoor: RaidItem[] = [
   },
   {
     name: "Wooden Spear",
+    category: "melee",
     side: "both",
     damage: 0.125,
     quantity: 48,

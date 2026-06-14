@@ -3,6 +3,7 @@ import type { RaidItem } from "../../types";
 export const RaidDataWoodenWindowBars: RaidItem[] = [
   {
     name: "Torpedo",
+    category: "torpedo",
     side: "both",
     damage: 10.8,
     quantity: 24,
@@ -10,6 +11,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Firebomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 345.606,
     quantity: 1,
@@ -17,6 +19,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Incendiary Rocket",
+    category: "explosive",
     side: "both",
     damage: 856.515,
     quantity: 1,
@@ -24,6 +27,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.7,
     quantity: 93,
@@ -31,6 +35,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.7,
     quantity: 93,
@@ -38,6 +43,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.7,
     quantity: 93,
@@ -45,6 +51,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.7,
     quantity: 93,
@@ -52,6 +59,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.16,
     quantity: 116,
@@ -59,6 +67,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - Handmade Shell",
+    category: "guns",
     side: "both",
     damage: 2.025,
     quantity: 124,
@@ -66,6 +75,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -73,6 +83,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "L96 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -80,6 +91,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Python Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.825,
     quantity: 304,
@@ -87,6 +99,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 6.5,
     quantity: 39,
@@ -94,6 +107,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 6.5,
     quantity: 39,
@@ -101,6 +115,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 6.5,
     quantity: 39,
@@ -108,6 +123,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 6.5,
     quantity: 39,
@@ -115,6 +131,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 3.15,
     quantity: 80,
@@ -122,6 +139,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 3.15,
     quantity: 80,
@@ -129,6 +147,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 3.15,
     quantity: 80,
@@ -136,6 +155,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 3.15,
     quantity: 80,
@@ -143,6 +163,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.975,
     quantity: 257,
@@ -150,6 +171,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M249 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.975,
     quantity: 257,
@@ -157,6 +179,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.675,
     quantity: 371,
@@ -164,6 +187,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "HMLMG - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8625,
     quantity: 290,
@@ -171,6 +195,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 5.2,
     quantity: 49,
@@ -178,6 +203,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Python Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 2.11,
     quantity: 119,
@@ -185,6 +211,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.52,
     quantity: 100,
@@ -192,6 +219,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Incendiary Shell",
+    category: "guns",
     side: "both",
     damage: 4.875,
     quantity: 52,
@@ -199,6 +227,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -206,6 +235,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -213,6 +243,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Buckshot",
+    category: "guns",
     side: "both",
     damage: 2.3625,
     quantity: 106,
@@ -220,6 +251,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.7144,
     quantity: 44,
@@ -227,6 +259,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.7144,
     quantity: 44,
@@ -234,6 +267,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 334,
@@ -241,6 +275,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M39 Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 334,
@@ -248,6 +283,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "MP5A4 - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.5625,
     quantity: 445,
@@ -255,6 +291,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Thompson - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.5625,
     quantity: 445,
@@ -262,6 +299,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M92 Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.84,
     quantity: 136,
@@ -269,6 +307,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.4867,
     quantity: 46,
@@ -276,6 +315,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M249 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.4867,
     quantity: 46,
@@ -283,6 +323,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "HMLMG - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.37285,
     quantity: 47,
@@ -290,6 +331,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Revolver - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.525,
     quantity: 477,
@@ -297,6 +339,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.259,
     quantity: 48,
@@ -304,6 +347,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.259,
     quantity: 48,
@@ -311,6 +355,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Prototype 17 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.705,
     quantity: 147,
@@ -318,6 +363,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.705,
     quantity: 147,
@@ -325,6 +371,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.1072,
     quantity: 49,
@@ -332,6 +379,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Explosive 5.56 Rifle Ammo - Semi-Automatic Rifle",
+    category: "explosive",
     side: "both",
     damage: 5.1072,
     quantity: 49,
@@ -339,6 +387,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.1072,
     quantity: 49,
@@ -346,6 +395,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "SKS - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.14515,
     quantity: 49,
@@ -353,6 +403,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M16A2 - Explosive 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 5.0313,
     quantity: 50,
@@ -360,6 +411,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "MP5A4 - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.6375,
     quantity: 153,
@@ -367,6 +419,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Thompson - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.6375,
     quantity: 153,
@@ -374,6 +427,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "SKS - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6375,
     quantity: 393,
@@ -381,6 +435,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Revolver - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.57,
     quantity: 160,
@@ -388,6 +443,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -395,6 +451,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -402,6 +459,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Custom SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.45,
     quantity: 556,
@@ -409,6 +467,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -416,6 +475,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "L96 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -423,6 +483,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Satchel Charge",
+    category: "explosive",
     side: "both",
     damage: 91.5,
     quantity: 3,
@@ -430,6 +491,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bolt Action Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.16,
     quantity: 116,
@@ -437,6 +499,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "L96 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 2.16,
     quantity: 116,
@@ -444,6 +507,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Custom SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.435,
     quantity: 175,
@@ -451,6 +515,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Minigun - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5625,
     quantity: 445,
@@ -458,6 +523,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 54.15,
     quantity: 5,
@@ -465,6 +531,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Python Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.825,
     quantity: 304,
@@ -472,6 +539,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Beancan Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 19.5,
     quantity: 13,
@@ -479,6 +547,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M16A2 - 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.525,
     quantity: 477,
@@ -486,6 +555,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.975,
     quantity: 257,
@@ -493,6 +563,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M249 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.975,
     quantity: 257,
@@ -500,6 +571,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "High Caliber Revolver - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.755,
     quantity: 143,
@@ -507,6 +579,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M249 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.755,
     quantity: 143,
@@ -514,6 +587,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Incendiary Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 1.165,
     quantity: 215,
@@ -521,6 +595,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Propane Explosive Bomb - Planting",
+    category: "explosive",
     side: "both",
     damage: 144.15,
     quantity: 2,
@@ -528,6 +603,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Catapult - Propane Explosive Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 247.65,
     quantity: 2,
@@ -535,6 +611,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "High Velocity Rocket",
+    category: "explosive",
     side: "both",
     damage: 29.25,
     quantity: 9,
@@ -542,6 +619,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M92 Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.675,
     quantity: 371,
@@ -549,6 +627,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "HMLMG - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.8625,
     quantity: 290,
@@ -556,6 +635,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "HMLMG - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.5525,
     quantity: 162,
@@ -563,6 +643,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Prototype 17 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -570,6 +651,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Pistol - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -577,6 +659,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Handmade SMG - Pistol Bullet",
+    category: "guns",
     side: "both",
     damage: 0.3,
     quantity: 834,
@@ -584,6 +667,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Double Barrel Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -591,6 +675,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Eoka Pistol - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -598,6 +683,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Waterpipe Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -605,6 +691,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pump Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 1.2,
     quantity: 209,
@@ -612,6 +699,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Timed Explosive Charge",
+    category: "explosive",
     side: "both",
     damage: 495,
     quantity: 1,
@@ -619,6 +707,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Cannonball",
+    category: "explosive",
     side: "both",
     damage: 1.7,
     quantity: 148,
@@ -626,6 +715,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "MP5A4 - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5625,
     quantity: 445,
@@ -633,6 +723,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Thompson - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.5625,
     quantity: 445,
@@ -640,6 +731,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 334,
@@ -647,6 +739,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M39 Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.75,
     quantity: 334,
@@ -654,6 +747,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.35,
     quantity: 186,
@@ -661,6 +755,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M39 Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.35,
     quantity: 186,
@@ -668,6 +763,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Revolver - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.525,
     quantity: 477,
@@ -675,6 +771,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M4 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.96,
     quantity: 261,
@@ -682,6 +779,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "SKS - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6375,
     quantity: 393,
@@ -689,6 +787,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "SKS - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.1475,
     quantity: 218,
@@ -696,6 +795,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Custom SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.45,
     quantity: 556,
@@ -703,6 +803,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Spas-12 Shotgun - 12 Gauge Slug",
+    category: "guns",
     side: "both",
     damage: 0.9,
     quantity: 278,
@@ -710,6 +811,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -717,6 +819,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.6,
     quantity: 417,
@@ -724,6 +827,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Rocket",
+    category: "explosive",
     side: "both",
     damage: 247.65,
     quantity: 2,
@@ -731,6 +835,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "LR-300 Assault Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.08,
     quantity: 232,
@@ -738,6 +843,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Semi-Automatic Rifle - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 1.08,
     quantity: 232,
@@ -745,6 +851,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M16A2 - HV 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.525,
     quantity: 477,
@@ -752,6 +859,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "M16A2 - Incendiary 5.56 Rifle Ammo",
+    category: "guns",
     side: "both",
     damage: 0.945,
     quantity: 265,
@@ -759,6 +867,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "F1 Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 4.25,
     quantity: 59,
@@ -766,6 +875,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Handmade SMG - HV Pistol Ammo",
+    category: "guns",
     side: "both",
     damage: 0.3,
     quantity: 834,
@@ -773,6 +883,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Catapult - Firebomb",
+    category: "siege weapons",
     side: "both",
     damage: 5,
     quantity: 50,
@@ -780,6 +891,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Fragmentation Mortar Shell",
+    category: "explosive",
     side: "both",
     damage: 0.15,
     quantity: 1667,
@@ -787,6 +899,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "MLRS Rocket",
+    category: "explosive",
     side: "both",
     damage: 315.15,
     quantity: 1,
@@ -794,6 +907,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Mounted Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 26.9375,
     quantity: 10,
@@ -801,6 +915,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Ballista - Incendiary Bolt",
+    category: "siege weapons",
     side: "both",
     damage: 26.9375,
     quantity: 10,
@@ -808,6 +923,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Battering Ram",
+    category: "siege weapons",
     side: "both",
     damage: 90.1,
     quantity: 3,
@@ -815,6 +931,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Catapult - Scattershot",
+    category: "siege weapons",
     side: "both",
     damage: 0.16,
     quantity: 1563,
@@ -822,6 +939,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Catapult - Bee Catapult Bomb",
+    category: "siege weapons",
     side: "both",
     damage: 0.04,
     quantity: 6250,
@@ -829,6 +947,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "40mm HE Grenade",
+    category: "explosive",
     side: "both",
     damage: 31.61,
     quantity: 8,
@@ -836,6 +955,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Apple Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -843,6 +963,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bear Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -850,6 +971,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Big Cat Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -857,6 +979,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Chicken Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -864,6 +987,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Crocodile Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -871,6 +995,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Fish Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -878,6 +1003,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Hunters Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -885,6 +1011,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pork Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -892,6 +1019,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pumpkin Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -899,6 +1027,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Survivor's Pie - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 1,
@@ -906,6 +1035,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Skinning Knife",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 30,
@@ -913,6 +1043,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Skinning Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 50,
@@ -920,6 +1051,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Candy Cane Club",
+    category: "melee",
     side: "both",
     damage: 0.036,
     quantity: 316,
@@ -927,6 +1059,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Candy Cane Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.024,
     quantity: 417,
@@ -934,6 +1067,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Snowball - Throw",
+    category: "throw",
     side: "both",
     damage: 0.05,
     quantity: 5000,
@@ -941,6 +1075,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Snowball Gun - Snowball",
+    category: "guns",
     side: "both",
     damage: 0.016,
     quantity: 313,
@@ -948,6 +1083,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Flashlight",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 642,
@@ -955,6 +1091,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Jackhammer",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 22,
@@ -962,6 +1099,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Jackhammer - Workbench Refill",
+    category: "melee",
     side: "both",
     damage: 0.15,
     quantity: 2,
@@ -969,6 +1107,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Shovel",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 491,
@@ -976,6 +1115,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Shovel - Throw",
+    category: "throw",
     side: "both",
     damage: 0.301,
     quantity: 34,
@@ -983,6 +1123,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bee Grenade - Stuck (right click)",
+    category: "explosive",
     side: "both",
     damage: 2.2,
     quantity: 114,
@@ -990,6 +1131,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bone Club",
+    category: "melee",
     side: "both",
     damage: 0.024,
     quantity: 435,
@@ -997,6 +1139,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bone Club - Throw",
+    category: "throw",
     side: "both",
     damage: 0.024,
     quantity: 521,
@@ -1004,6 +1147,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bone Knife",
+    category: "melee",
     side: "both",
     damage: 0.24,
     quantity: 42,
@@ -1011,6 +1155,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Bone Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 50,
@@ -1018,6 +1163,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Boomerang",
+    category: "melee",
     side: "both",
     damage: 0.41,
     quantity: 36,
@@ -1025,6 +1171,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Boomerang - Throw",
+    category: "throw",
     side: "both",
     damage: 0.09,
     quantity: 278,
@@ -1032,6 +1179,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Fire Arrow - Hunting Bow",
+    category: "explosive",
     side: "both",
     damage: 2,
     quantity: 125,
@@ -1039,6 +1187,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Hunting Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 125,
@@ -1046,6 +1195,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Birthday Cake",
+    category: "melee",
     side: "both",
     damage: 0.03,
     quantity: 2778,
@@ -1053,6 +1203,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Birthday Cake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 1,
@@ -1060,6 +1211,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Chainsaw",
+    category: "melee",
     side: "both",
     damage: 0.24,
     quantity: 35,
@@ -1067,6 +1219,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver",
+    category: "melee",
     side: "both",
     damage: 1.2,
     quantity: 11,
@@ -1074,6 +1227,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Cleaver - Throw",
+    category: "throw",
     side: "both",
     damage: 0.6,
     quantity: 7,
@@ -1081,6 +1235,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Compound Bow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 125,
@@ -1088,6 +1243,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 125,
@@ -1095,6 +1251,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 12.15,
     quantity: 206,
@@ -1102,6 +1259,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Multiple Grenade Launcher - 40mm Shotgun Round",
+    category: "guns",
     side: "both",
     damage: 4.05,
     quantity: 62,
@@ -1109,6 +1267,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Butcher Knife",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 30,
@@ -1116,6 +1275,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Butcher Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 50,
@@ -1123,6 +1283,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pitchfork",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 53,
@@ -1130,6 +1291,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Sickle",
+    category: "melee",
     side: "both",
     damage: 0.6,
     quantity: 8,
@@ -1137,6 +1299,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Sickle - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 9,
@@ -1144,6 +1307,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Vampire Stake",
+    category: "melee",
     side: "both",
     damage: 0.601,
     quantity: 416,
@@ -1151,6 +1315,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Vampire Stake - Throw",
+    category: "throw",
     side: "both",
     damage: 0.301,
     quantity: 831,
@@ -1158,6 +1323,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.32,
     quantity: 12,
@@ -1165,6 +1331,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.3,
     quantity: 9,
@@ -1172,6 +1339,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Combat Knife",
+    category: "melee",
     side: "both",
     damage: 0.525,
     quantity: 37,
@@ -1179,6 +1347,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Combat Knife - Throw",
+    category: "throw",
     side: "both",
     damage: 1,
     quantity: 10,
@@ -1186,6 +1355,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Mace",
+    category: "melee",
     side: "both",
     damage: 0.12,
     quantity: 131,
@@ -1193,6 +1363,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Mace - Throw",
+    category: "throw",
     side: "both",
     damage: 0.06,
     quantity: 84,
@@ -1200,6 +1371,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Machete",
+    category: "melee",
     side: "both",
     damage: 0.7,
     quantity: 14,
@@ -1207,6 +1379,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Machete - Throw",
+    category: "throw",
     side: "both",
     damage: 0.4,
     quantity: 13,
@@ -1214,6 +1387,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Military Flame Thrower",
+    category: "explosive",
     side: "both",
     damage: 14.75,
     quantity: 255,
@@ -1221,6 +1395,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Mini Crossbow - Fire Arrow",
+    category: "guns",
     side: "both",
     damage: 2,
     quantity: 125,
@@ -1228,6 +1403,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Molotov Cocktail",
+    category: "explosive",
     side: "both",
     damage: 73.5,
     quantity: 4,
@@ -1235,6 +1411,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Paddle",
+    category: "melee",
     side: "both",
     damage: 0.06,
     quantity: 97,
@@ -1242,6 +1419,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.4,
     quantity: 11,
@@ -1249,6 +1427,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 13,
@@ -1256,6 +1435,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Rock",
+    category: "melee",
     side: "both",
     damage: 0.02,
     quantity: 368,
@@ -1263,6 +1443,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Rock - Throw",
+    category: "throw",
     side: "both",
     damage: 0.02,
     quantity: 500,
@@ -1270,6 +1451,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Axe",
+    category: "melee",
     side: "both",
     damage: 0.75,
     quantity: 6,
@@ -1277,6 +1459,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Axe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.5,
     quantity: 4,
@@ -1284,6 +1467,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer",
+    category: "melee",
     side: "both",
     damage: 0.08,
     quantity: 56,
@@ -1291,6 +1475,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Hammer - Throw",
+    category: "throw",
     side: "both",
     damage: 0.04,
     quantity: 50,
@@ -1298,6 +1483,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick",
+    category: "melee",
     side: "both",
     damage: 0.6,
     quantity: 8,
@@ -1305,6 +1491,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Icepick - Throw",
+    category: "throw",
     side: "both",
     damage: 0.15,
     quantity: 14,
@@ -1312,6 +1499,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Stone Hatchet",
+    category: "melee",
     side: "both",
     damage: 0.21,
     quantity: 46,
@@ -1319,6 +1507,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Stone Hatchet - Throw",
+    category: "throw",
     side: "both",
     damage: 0.2,
     quantity: 50,
@@ -1326,6 +1515,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe",
+    category: "melee",
     side: "both",
     damage: 0.114,
     quantity: 96,
@@ -1333,6 +1523,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Stone Pickaxe - Throw",
+    category: "throw",
     side: "both",
     damage: 0.1,
     quantity: 100,
@@ -1340,6 +1531,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Stone Spear",
+    category: "melee",
     side: "both",
     damage: 0.35,
     quantity: 65,
@@ -1347,6 +1539,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Longsword",
+    category: "melee",
     side: "both",
     damage: 1.5,
     quantity: 11,
@@ -1354,6 +1547,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Longsword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.6,
     quantity: 7,
@@ -1361,6 +1555,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Sword",
+    category: "melee",
     side: "both",
     damage: 1,
     quantity: 8,
@@ -1368,6 +1563,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Salvaged Sword - Throw",
+    category: "throw",
     side: "both",
     damage: 0.4,
     quantity: 8,
@@ -1375,6 +1571,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Torch",
+    category: "melee",
     side: "both",
     damage: 0.01,
     quantity: 962,
@@ -1382,6 +1579,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Torch - Lit",
+    category: "melee",
     side: "both",
     damage: 0.11,
     quantity: 325,
@@ -1389,6 +1587,7 @@ export const RaidDataWoodenWindowBars: RaidItem[] = [
   },
   {
     name: "Wooden Spear",
+    category: "melee",
     side: "both",
     damage: 0.25,
     quantity: 59,
