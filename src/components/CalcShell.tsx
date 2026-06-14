@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react'
 
-type Variant = "raid" | "recycling" | "cupboard";
+type Variant = 'raid' | 'recycling' | 'cupboard'
 
 interface CalcShellProps {
   /** Page title accent + main, e.g. titleAccent="RAID" title="CALCULATOR". */
-  pageTitle: ReactNode;
-  headerAccent: string;
-  headerRest: string;
-  variant: Variant;
-  version?: string;
-  children: ReactNode;
+  pageTitle: ReactNode
+  headerAccent: string
+  headerRest: string
+  variant: Variant
+  version?: string
+  children: ReactNode
 }
 
 /**
@@ -22,7 +22,7 @@ export function CalcShell({
   headerAccent,
   headerRest,
   variant,
-  version = "V1.0",
+  version = 'V1.0',
   children,
 }: CalcShellProps) {
   return (
@@ -38,9 +38,10 @@ export function CalcShell({
         <div className="calc-header">
           <div className="header-left">
             <div className="header-bar" />
-            <span className="header-title">
-              {headerAccent} <span>{headerRest}</span>
-            </span>
+            <div className="header-title text-[22px] font-semibold leading-1 flex gap-2 justify-center items-center">
+              <h2 className="!mt-1">{headerAccent}</h2>
+              <h2 className="header-title-red !mt-1">{headerRest}</h2>
+            </div>
             <span className="header-ver">{version}</span>
           </div>
           <div className="header-status">
@@ -53,5 +54,5 @@ export function CalcShell({
         <div className="calc-body">{children}</div>
       </div>
     </>
-  );
+  )
 }

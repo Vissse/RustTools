@@ -316,14 +316,12 @@ h1.page-title span {
 }
 .header-title {
   font-family: var(--font-d);
-  font-size: 22px;
-  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-bright);
-  line-height: 1;
+  /* line-height: ; */
 }
-.header-title span {
+.header-title-red {
   color: var(--rust);
 }
 .header-ver {
