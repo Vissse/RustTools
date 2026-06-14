@@ -1,21 +1,20 @@
-import { RESOURCE_LABELS } from '../../lib/data/recycling-data'
-import type { RecyclerKind } from '../../lib/types'
-import type { TooltipProps } from '../useTooltip'
-import { Breakdown } from './Breakdown'
-import { RandomDropList } from './RandomDropList'
-import { RecyclerToggle } from './RecyclerToggle'
-import { ResCard } from './ResCard'
-import type { RecycleResults } from './types'
+import { RESOURCE_LABELS } from "../../lib/data/recycling-data";
+import type { RecyclerKind } from "../../lib/types";
+import type { TooltipProps } from "../useTooltip";
+import { Breakdown } from "./Breakdown";
+import { RandomDropList } from "./RandomDropList";
+import { RecyclerToggle } from "./RecyclerToggle";
+import { ResCard } from "./ResCard";
+import type { RecycleResults } from "./types";
 
 interface ResultsPanelProps {
-  recycler: RecyclerKind
-  onRecyclerChange: (kind: RecyclerKind) => void
-  results: RecycleResults | null
-  onSet: (id: string, value: number) => void
-  tipProps: TooltipProps
+  recycler: RecyclerKind;
+  onRecyclerChange: (kind: RecyclerKind) => void;
+  results: RecycleResults | null;
+  onSet: (id: string, value: number) => void;
+  tipProps: TooltipProps;
 }
 
-/** Right panel: recycler selector, total output, random drops and breakdown. */
 export function ResultsPanel({
   recycler,
   onRecyclerChange,
@@ -28,30 +27,46 @@ export function ResultsPanel({
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div>
-            <div className="sec-label-wrapper">
-              <div className="sec-label" style={{ marginBottom: 0 }}>
-                Total Output
+        <div style={{ marginTop: "32px" }}>
+          {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
+          <div className="sec-label">TOTAL OUTPUT & TIME</div>
+
+          <div className="raid-box">
+            {/* Vnitřní hlavička s Total Yield a Time */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{ fontSize: "13px", color: "#a0a0a0", fontWeight: 600 }}
+              >
+                Total Yield
               </div>
               <div
                 style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: 11,
+                  fontSize: "13px",
                   fontWeight: 700,
-                  color: 'var(--rust)',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
+                  letterSpacing: "0.05em",
                 }}
               >
-                Time:{' '}
-                <span style={{ color: 'var(--text-bright)' }}>
-                  {results.time}
-                </span>
+                <span style={{ color: "#666", marginRight: "6px" }}>TIME:</span>
+                <span style={{ color: "#cd412b" }}>{results.time}</span>
               </div>
             </div>
 
-            <div className="res-grid" style={{ marginTop: 10 }}>
+            {/* Suroviny zarovnané vedle sebe s flexboxem */}
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "32px",
+                alignItems: "center",
+              }}
+            >
               {results.visibleResources.map((res) => (
                 <ResCard
                   key={res}
@@ -62,19 +77,24 @@ export function ResultsPanel({
               ))}
             </div>
 
-            <RandomDropList randomTotals={results.randomTotals} />
+            {results.randomTotals.length > 0 && (
+              <div style={{ marginTop: "24px" }}>
+                <RandomDropList randomTotals={results.randomTotals} />
+              </div>
+            )}
           </div>
 
           <Breakdown rows={results.rows} onSet={onSet} />
         </div>
       ) : (
-        <div className="empty-state">
+        <div
+          className="empty-state raid-box"
+          style={{ textAlign: "center", marginTop: 32 }}
+        >
           <span className="icon">◈</span>
           Select items to recycle
-          <br />
-          to see the output
         </div>
       )}
     </div>
-  )
+  );
 }
