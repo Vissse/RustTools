@@ -452,6 +452,7 @@ h1.page-title span {
   letter-spacing: 0.22em;
   color: var(--text-dim);
   text-transform: uppercase;
+  line-height: 1;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -467,12 +468,14 @@ h1.page-title span {
   background: var(--rust);
   display: inline-block;
   flex-shrink: 0;
+  transform: translateY(-1px);
 }
 .sec-label::after {
   content: "";
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, var(--border2) 0%, transparent 100%);
+  transform: translateY(-1px);
 }
 .sec-label-wrapper {
   display: flex;

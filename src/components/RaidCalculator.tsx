@@ -1,56 +1,56 @@
-import { useMemo, useState, Fragment } from "react";
-import { CalcShell } from "./CalcShell";
-import { Img } from "./Img";
-import { EXPLOSIVES, RESOURCE_ICONS, STRUCTURES } from "../lib/data/raid-data";
-import { cheapestCombo, comboTotal, damageAgainst } from "../lib/raid-solver";
+import { useMemo, useState, Fragment } from 'react'
+import { CalcShell } from './CalcShell'
+import { Img } from './Img'
+import { EXPLOSIVES, RESOURCE_ICONS, STRUCTURES } from '../lib/data/raid-data'
+import { cheapestCombo, comboTotal, damageAgainst } from '../lib/raid-solver'
 
 // Seznam kategorií pro filtr
 const FILTER_CATEGORIES = [
-  "Explosive",
-  "Siege Weapons",
-  "Melee",
-  "Throwing Attacks",
-  "Guns",
-  "Torpedos",
-];
+  'Explosive',
+  'Siege Weapons',
+  'Melee',
+  'Throwing Attacks',
+  'Guns',
+  'Torpedos',
+]
 
 export function RaidCalculator() {
   const [selectedStructure, setSelectedStructure] = useState<string | null>(
-    null,
-  );
+    null
+  )
   const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
-    () => new Set(),
-  );
-  const [structureCount, setStructureCount] = useState<number | "">(1);
-  const [discountActive, setDiscountActive] = useState<boolean>(false);
+    () => new Set()
+  )
+  const [structureCount, setStructureCount] = useState<number | ''>(1)
+  const [discountActive, setDiscountActive] = useState<boolean>(false)
 
   const [activeFilters, setActiveFilters] = useState<Set<string>>(
-    () => new Set(["Explosive"]),
-  );
+    () => new Set(['Explosive'])
+  )
 
-  const ready = selectedStructure !== null && selectedExplosives.size > 0;
+  const ready = selectedStructure !== null && selectedExplosives.size > 0
 
   const result = useMemo(() => {
-    if (!selectedStructure || selectedExplosives.size === 0) return null;
+    if (!selectedStructure || selectedExplosives.size === 0) return null
 
     const safeCount =
-      typeof structureCount === "number" && structureCount > 0
+      typeof structureCount === 'number' && structureCount > 0
         ? structureCount
-        : 1;
+        : 1
 
-    const totalHp = STRUCTURES[selectedStructure].hp * safeCount;
-    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name));
-    const combo = cheapestCombo(totalHp, selectedStructure, exps);
+    const totalHp = STRUCTURES[selectedStructure].hp * safeCount
+    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name))
+    const combo = cheapestCombo(totalHp, selectedStructure, exps)
 
     const totalDmg = combo.reduce(
       (s, c) => s + damageAgainst(c.exp, selectedStructure) * c.qty,
-      0,
-    );
-    const dmgDone = Math.min(totalDmg, totalHp);
-    const pct = Math.min(100, (dmgDone / totalHp) * 100);
-    const destroyed = totalDmg >= totalHp;
+      0
+    )
+    const dmgDone = Math.min(totalDmg, totalHp)
+    const pct = Math.min(100, (dmgDone / totalHp) * 100)
+    const destroyed = totalDmg >= totalHp
 
-    const baseCharcoal = comboTotal(combo, "totalCharcoal");
+    const baseCharcoal = comboTotal(combo, 'totalCharcoal')
 
     return {
       totalHp,
@@ -58,31 +58,31 @@ export function RaidCalculator() {
       dmgDone,
       pct,
       destroyed,
-      totalSulfur: comboTotal(combo, "totalSulfur"),
-      totalMetal: comboTotal(combo, "totalMetal"),
+      totalSulfur: comboTotal(combo, 'totalSulfur'),
+      totalMetal: comboTotal(combo, 'totalMetal'),
       totalCharcoal: discountActive
         ? Math.round(baseCharcoal * (2 / 3))
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
-    };
-  }, [selectedStructure, selectedExplosives, structureCount, discountActive]);
+    }
+  }, [selectedStructure, selectedExplosives, structureCount, discountActive])
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
-      const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
-      return next;
-    });
+      const next = new Set(prev)
+      if (next.has(name)) next.delete(name)
+      else next.add(name)
+      return next
+    })
   }
 
   function toggleFilter(cat: string) {
     setActiveFilters((prev) => {
-      const next = new Set(prev);
-      if (next.has(cat)) next.delete(cat);
-      else next.add(cat);
-      return next;
-    });
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
   }
 
   return (
@@ -338,16 +338,16 @@ export function RaidCalculator() {
 
       <div
         className="panel-left"
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: 'flex', flexDirection: 'column' }}
       >
         {/* Sekce 1: Target Structure */}
         <div>
-          <div className="sec-label">TARGET STRUCTURE</div>
+          <div className="sec-label leading-2">TARGET STRUCTURE</div>
           <div className="minimal-btn-grid">
             {Object.entries(STRUCTURES).map(([name, data]) => (
               <button
                 key={name}
-                className={`minimal-box-btn${selectedStructure === name ? " active" : ""}`}
+                className={`minimal-box-btn${selectedStructure === name ? ' active' : ''}`}
                 onClick={() => setSelectedStructure(name)}
               >
                 <Img src={data.img} alt={name} />
@@ -360,13 +360,13 @@ export function RaidCalculator() {
         {/* Sekce 2: Dynamický plovoucí náhled zdi + Counter */}
         <div
           style={{
-            height: "200px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0px 0 8px 0",
-            gap: "12px",
+            height: '200px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0px 0 8px 0',
+            gap: '12px',
           }}
         >
           {selectedStructure ? (
@@ -375,19 +375,19 @@ export function RaidCalculator() {
                 src={STRUCTURES[selectedStructure].img}
                 alt={selectedStructure}
                 style={{
-                  maxHeight: "130px",
-                  maxWidth: "80%",
-                  objectFit: "contain",
-                  filter: "drop-shadow(0px 8px 16px rgba(0,0,0,0.6))",
+                  maxHeight: '130px',
+                  maxWidth: '80%',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.6))',
                 }}
-                onError={(e) => (e.currentTarget.style.opacity = "0.3")}
+                onError={(e) => (e.currentTarget.style.opacity = '0.3')}
               />
               <div className="free-counter-wrap">
                 <button
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount((c) =>
-                      Math.max(1, (typeof c === "number" ? c : 1) - 1),
+                      Math.max(1, (typeof c === 'number' ? c : 1) - 1)
                     )
                   }
                 >
@@ -400,13 +400,13 @@ export function RaidCalculator() {
                   className="invisible-num-input free-counter-input"
                   value={structureCount}
                   onChange={(e) => {
-                    const val = e.target.value;
-                    if (val === "") {
-                      setStructureCount("");
+                    const val = e.target.value
+                    if (val === '') {
+                      setStructureCount('')
                     } else {
-                      const parsed = parseInt(val, 10);
+                      const parsed = parseInt(val, 10)
                       if (!isNaN(parsed) && parsed > 0)
-                        setStructureCount(parsed);
+                        setStructureCount(parsed)
                     }
                   }}
                 />
@@ -415,7 +415,7 @@ export function RaidCalculator() {
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount(
-                      (c) => (typeof c === "number" ? c : 1) + 1,
+                      (c) => (typeof c === 'number' ? c : 1) + 1
                     )
                   }
                 >
@@ -431,7 +431,7 @@ export function RaidCalculator() {
         </div>
 
         {/* Sekce 3: Nástroje a filtry */}
-        <div style={{ marginTop: "-20px" }}>
+        <div style={{ marginTop: '-20px' }}>
           <div className="sec-label">RAIDING TOOLS</div>
 
           {/* ULTRA MINIMALISTICKÁ SEKCE KATEGORIÍ SE SEPARÁTORY */}
@@ -439,7 +439,7 @@ export function RaidCalculator() {
             {FILTER_CATEGORIES.map((cat, idx) => (
               <Fragment key={cat}>
                 <button
-                  className={`filter-pure-text ${activeFilters.has(cat) ? "active" : ""}`}
+                  className={`filter-pure-text ${activeFilters.has(cat) ? 'active' : ''}`}
                   onClick={() => toggleFilter(cat)}
                 >
                   {cat}
@@ -456,7 +456,7 @@ export function RaidCalculator() {
             {EXPLOSIVES.map((e) => (
               <button
                 key={e.name}
-                className={`minimal-box-btn${selectedExplosives.has(e.name) ? " active" : ""}`}
+                className={`minimal-box-btn${selectedExplosives.has(e.name) ? ' active' : ''}`}
                 onClick={() => toggleExplosive(e.name)}
               >
                 <Img src={e.img} alt={e.name} />
@@ -481,24 +481,24 @@ export function RaidCalculator() {
           <div
             id="results"
             className="fade-in-container"
-            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}
           >
             {/* Integrity */}
             <div>
               <div className="sec-label">STRUCTURAL INTEGRITY</div>
               <div
                 style={{
-                  display: "flex",
-                  gap: "10px",
-                  alignItems: "baseline",
-                  margin: "16px 0 8px 0",
+                  display: 'flex',
+                  gap: '10px',
+                  alignItems: 'baseline',
+                  margin: '16px 0 8px 0',
                 }}
               >
                 <span
                   style={{
-                    fontSize: "42px",
+                    fontSize: '42px',
                     fontWeight: 800,
-                    color: "#fff",
+                    color: '#fff',
                     lineHeight: 1,
                   }}
                 >
@@ -506,10 +506,10 @@ export function RaidCalculator() {
                 </span>
                 <span
                   style={{
-                    fontSize: "14px",
-                    color: "#555",
+                    fontSize: '14px',
+                    color: '#555',
                     fontWeight: 600,
-                    letterSpacing: "0.02em",
+                    letterSpacing: '0.02em',
                   }}
                 >
                   / {result.totalHp.toLocaleString()} HP
@@ -539,9 +539,9 @@ export function RaidCalculator() {
                       src={c.exp.img}
                       alt={c.exp.name}
                       style={{
-                        width: "40px",
-                        height: "40px",
-                        objectFit: "contain",
+                        width: '40px',
+                        height: '40px',
+                        objectFit: 'contain',
                         flexShrink: 0,
                       }}
                     />
@@ -549,27 +549,27 @@ export function RaidCalculator() {
                     {/* 2. ČÁST: Množství a Název */}
                     <div
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "2px",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px',
                         flex: 1,
-                        marginLeft: "16px",
+                        marginLeft: '16px',
                       }}
                     >
                       <span
                         style={{
-                          color: "#cc422c",
+                          color: '#cc422c',
                           fontWeight: 800,
-                          fontSize: "18px",
+                          fontSize: '18px',
                           lineHeight: 1,
                         }}
                       >
                         {c.qty}
                         <span
                           style={{
-                            fontSize: "14px",
-                            marginLeft: "4px",
-                            color: "#cc422c",
+                            fontSize: '14px',
+                            marginLeft: '4px',
+                            color: '#cc422c',
                           }}
                         >
                           x
@@ -577,11 +577,11 @@ export function RaidCalculator() {
                       </span>
                       <span
                         style={{
-                          color: "#e0e0e0",
-                          fontSize: "13px",
+                          color: '#e0e0e0',
+                          fontSize: '13px',
                           fontWeight: 700,
-                          letterSpacing: "0.02em",
-                          textTransform: "uppercase",
+                          letterSpacing: '0.02em',
+                          textTransform: 'uppercase',
                         }}
                       >
                         {c.exp.name}
@@ -594,30 +594,30 @@ export function RaidCalculator() {
                     {/* 4. ČÁST: Suroviny napravo */}
                     <div
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "16px",
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
                         flexShrink: 0,
                       }}
                     >
                       {c.totalSulfur > 0 && (
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
                           }}
                         >
                           <Img
                             src={RESOURCE_ICONS.sulfur}
                             alt="Sulfur"
-                            style={{ width: "16px", height: "16px" }}
+                            style={{ width: '16px', height: '16px' }}
                           />
                           <span
                             style={{
-                              color: "#cc422c",
+                              color: '#cc422c',
                               fontWeight: 700,
-                              fontSize: "15px",
+                              fontSize: '15px',
                             }}
                           >
                             {c.totalSulfur.toLocaleString()}
@@ -627,21 +627,21 @@ export function RaidCalculator() {
                       {c.totalMetal > 0 && (
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
                           }}
                         >
                           <Img
                             src={RESOURCE_ICONS.metal}
                             alt="Metal"
-                            style={{ width: "16px", height: "16px" }}
+                            style={{ width: '16px', height: '16px' }}
                           />
                           <span
                             style={{
-                              color: "#a5b4c0",
+                              color: '#a5b4c0',
                               fontWeight: 700,
-                              fontSize: "15px",
+                              fontSize: '15px',
                             }}
                           >
                             {c.totalMetal.toLocaleString()}
@@ -651,21 +651,21 @@ export function RaidCalculator() {
                       {c.totalCharcoal > 0 && (
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
                           }}
                         >
                           <Img
                             src={RESOURCE_ICONS.coal}
                             alt="Coal"
-                            style={{ width: "16px", height: "16px" }}
+                            style={{ width: '16px', height: '16px' }}
                           />
                           <span
                             style={{
-                              color: "#8b8c89",
+                              color: '#8b8c89',
                               fontWeight: 700,
-                              fontSize: "15px",
+                              fontSize: '15px',
                             }}
                           >
                             {(discountActive
@@ -685,7 +685,7 @@ export function RaidCalculator() {
             <div>
               <div
                 className="sec-label"
-                style={{ marginBottom: "12px", marginTop: "8px" }}
+                style={{ marginBottom: '12px', marginTop: '8px' }}
               >
                 TOTAL RESOURCES & CRAFTING
               </div>
@@ -693,59 +693,59 @@ export function RaidCalculator() {
               <div
                 className="minimal-combo-row"
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "16px 20px",
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '16px 20px',
                   margin: 0,
-                  flexWrap: "nowrap" /* STRIKTNĚ zakázáno zalamování */,
-                  gap: "12px",
+                  flexWrap: 'nowrap' /* STRIKTNĚ zakázáno zalamování */,
+                  gap: '12px',
                   overflow:
-                    "hidden" /* Kdyby náhodou, ať nerozbije zbytek stránky */,
+                    'hidden' /* Kdyby náhodou, ať nerozbije zbytek stránky */,
                 }}
               >
                 {/* Levá část: Suroviny */}
                 <div
                   style={{
-                    display: "flex",
-                    gap: "16px" /* Mírně zmenšená mezera pro víc místa u velkých čísel */,
-                    alignItems: "center",
-                    flexWrap: "nowrap" /* Striktně bez zalamování */,
+                    display: 'flex',
+                    gap: '16px' /* Mírně zmenšená mezera pro víc místa u velkých čísel */,
+                    alignItems: 'center',
+                    flexWrap: 'nowrap' /* Striktně bez zalamování */,
                   }}
                 >
                   {/* Sulfur */}
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
                     <Img
                       src={RESOURCE_ICONS.sulfur}
                       alt="Sulfur"
-                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
+                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
                     />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <span
                         style={{
-                          fontSize: "20px",
+                          fontSize: '20px',
                           fontWeight: 800,
-                          color: "#cc422c",
+                          color: '#cc422c',
                           lineHeight: 1,
-                          whiteSpace: "nowrap",
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {result.totalSulfur.toLocaleString()}
                       </span>
                       <span
                         style={{
-                          fontSize: "10px",
-                          color: "#8b8c89",
+                          fontSize: '10px',
+                          color: '#8b8c89',
                           fontWeight: 700,
-                          letterSpacing: "0.05em",
-                          marginTop: "2px",
-                          whiteSpace: "nowrap",
+                          letterSpacing: '0.05em',
+                          marginTop: '2px',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         SULFUR
@@ -756,36 +756,36 @@ export function RaidCalculator() {
                   {/* Metal */}
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
                     <Img
                       src={RESOURCE_ICONS.metal}
                       alt="Metal"
-                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
+                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
                     />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <span
                         style={{
-                          fontSize: "20px",
+                          fontSize: '20px',
                           fontWeight: 800,
-                          color: "#a5b4c0",
+                          color: '#a5b4c0',
                           lineHeight: 1,
-                          whiteSpace: "nowrap",
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {result.totalMetal.toLocaleString()}
                       </span>
                       <span
                         style={{
-                          fontSize: "10px",
-                          color: "#8b8c89",
+                          fontSize: '10px',
+                          color: '#8b8c89',
                           fontWeight: 700,
-                          letterSpacing: "0.05em",
-                          marginTop: "2px",
-                          whiteSpace: "nowrap",
+                          letterSpacing: '0.05em',
+                          marginTop: '2px',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         METAL
@@ -796,36 +796,36 @@ export function RaidCalculator() {
                   {/* Coal */}
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
                     <Img
                       src={RESOURCE_ICONS.coal}
                       alt="Coal"
-                      style={{ width: "22px", height: "22px", flexShrink: 0 }}
+                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
                     />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <span
                         style={{
-                          fontSize: "20px",
+                          fontSize: '20px',
                           fontWeight: 800,
-                          color: "#8b8c89",
+                          color: '#8b8c89',
                           lineHeight: 1,
-                          whiteSpace: "nowrap",
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {result.totalCharcoal.toLocaleString()}
                       </span>
                       <span
                         style={{
-                          fontSize: "10px",
-                          color: "#8b8c89",
+                          fontSize: '10px',
+                          color: '#8b8c89',
                           fontWeight: 700,
-                          letterSpacing: "0.05em",
-                          marginTop: "2px",
-                          whiteSpace: "nowrap",
+                          letterSpacing: '0.05em',
+                          marginTop: '2px',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         COAL
@@ -837,19 +837,19 @@ export function RaidCalculator() {
                 {/* Pravá část: ODDĚLOVAČ + PŘEPÍNAČ (Pevný blok) */}
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "center",
+                    display: 'flex',
+                    alignItems: 'center',
                     flexShrink: 0,
                   }}
                 >
                   {/* --- VERTIKÁLNÍ ODDĚLOVAČ --- */}
                   <div
                     style={{
-                      width: "1px",
-                      height: "40px",
+                      width: '1px',
+                      height: '40px',
                       background:
-                        "linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent)",
-                      margin: "0 14px",
+                        'linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent)',
+                      margin: '0 14px',
                       flexShrink: 0,
                     }}
                   />
@@ -857,36 +857,36 @@ export function RaidCalculator() {
                   {/* Spínač a nápisy */}
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
                     }}
                   >
                     {/* Přepínač (Slider) */}
                     <div
                       onClick={() => setDiscountActive(!discountActive)}
                       style={{
-                        position: "relative",
-                        width: "36px",
-                        height: "20px",
-                        background: "#121212",
-                        border: `1px solid ${discountActive ? "rgba(204, 66, 44, 0.5)" : "rgba(255, 255, 255, 0.1)"}`,
-                        borderRadius: "10px",
-                        cursor: "pointer",
+                        position: 'relative',
+                        width: '36px',
+                        height: '20px',
+                        background: '#121212',
+                        border: `1px solid ${discountActive ? 'rgba(204, 66, 44, 0.5)' : 'rgba(255, 255, 255, 0.1)'}`,
+                        borderRadius: '10px',
+                        cursor: 'pointer',
                         flexShrink: 0,
-                        transition: "all 0.3s ease",
+                        transition: 'all 0.3s ease',
                       }}
                     >
                       <div
                         style={{
-                          position: "absolute",
-                          width: "12px",
-                          height: "12px",
-                          background: discountActive ? "#cc422c" : "#555",
-                          borderRadius: "50%",
-                          top: "3px",
-                          left: discountActive ? "19px" : "3px",
-                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          position: 'absolute',
+                          width: '12px',
+                          height: '12px',
+                          background: discountActive ? '#cc422c' : '#555',
+                          borderRadius: '50%',
+                          top: '3px',
+                          left: discountActive ? '19px' : '3px',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         }}
                       />
                     </div>
@@ -894,18 +894,18 @@ export function RaidCalculator() {
                     {/* Nápisy a separator na středu */}
                     <div
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        whiteSpace: "nowrap",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       <span
                         style={{
-                          fontSize: "11px",
+                          fontSize: '11px',
                           fontWeight: 700,
-                          color: discountActive ? "#cc422c" : "#757575",
-                          transition: "color 0.2s",
+                          color: discountActive ? '#cc422c' : '#757575',
+                          transition: 'color 0.2s',
                           lineHeight: 1,
                         }}
                       >
@@ -915,20 +915,20 @@ export function RaidCalculator() {
                       {/* Horizontální Separator textu */}
                       <div
                         style={{
-                          width: "100%",
-                          height: "1px",
+                          width: '100%',
+                          height: '1px',
                           background:
-                            "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)",
-                          margin: "4px 0",
+                            'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)',
+                          margin: '4px 0',
                         }}
                       />
 
                       <span
                         style={{
-                          fontSize: "11px",
+                          fontSize: '11px',
                           fontWeight: 700,
-                          color: discountActive ? "#cc422c" : "#757575",
-                          transition: "color 0.2s",
+                          color: discountActive ? '#cc422c' : '#757575',
+                          transition: 'color 0.2s',
                           lineHeight: 1,
                         }}
                       >
@@ -943,5 +943,5 @@ export function RaidCalculator() {
         )}
       </div>
     </CalcShell>
-  );
+  )
 }
