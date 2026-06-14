@@ -77,8 +77,9 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='64' height='64' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   color: var(--text-bright);
   font-family: var(--font-ui);
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 body::before {
   content: "";
@@ -1280,6 +1281,7 @@ h1.page-title span {
 /* res-header / res-lbl / res-val are identical for raid & recycling */
 .res-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 6px;
 }
@@ -1697,11 +1699,23 @@ h1.page-title span {
     justify-content: center;
   }
 
+  /* On mobile every shell sizes to content and the page scrolls instead of
+     trapping content in fixed-height inner scroll regions. */
+  .calc-wrap,
+  .calc-wrap[data-variant="recycling"],
+  .calc-wrap[data-variant="cupboard"] {
+    max-height: none;
+    height: auto;
+  }
+
   /* Recycling + cupboard stack their panels at this breakpoint */
   [data-variant="recycling"] .calc-body,
   [data-variant="cupboard"] .calc-body {
     flex-direction: column;
-    overflow-y: auto;
+    overflow: visible;
+  }
+  [data-variant="recycling"] .calc-body {
+    flex-direction: column-reverse;
   }
   [data-variant="recycling"] .panel-left,
   [data-variant="recycling"] .panel-right,
@@ -1734,6 +1748,7 @@ h1.page-title span {
     flex: unset;
     border-right: none;
     border-bottom: 1px solid var(--border2);
+    overflow-y: visible;
   }
   [data-variant="raid"] .panel-right {
     flex: unset;
