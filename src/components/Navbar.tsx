@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 
 /** Shared top navigation bar. Active state follows the current route. */
 export function Navbar() {
@@ -16,40 +16,38 @@ export function Navbar() {
             <Link
               to="/"
               className="dropdown-item"
-              activeProps={{ className: "active" }}
+              activeProps={{ className: 'active' }}
             >
               Raid Calculator
             </Link>
             <Link
               to="/recycling"
               className="dropdown-item"
-              activeProps={{ className: "active" }}
+              activeProps={{ className: 'active' }}
             >
               Recycling Calculator
             </Link>
             <Link
               to="/cupboard"
               className="dropdown-item"
-              activeProps={{ className: "active" }}
+              activeProps={{ className: 'active' }}
             >
               Cupboard Calculator
             </Link>
           </div>
         </div>
       </div>
-
       <div className="nav-brand">
         <span className="brand-logo">⛊</span>
         <span className="brand-name">
           RUST<span>TOOLS</span>
         </span>
       </div>
-
       <div className="nav-group right">
         <a href="#" className="nav-item">
           Incoming
         </a>
       </div>
     </nav>
-  );
+  )
 }
