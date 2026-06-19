@@ -1,6 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { RecyclingCalculator } from "../components/RecyclingCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/recycling")({
-  component: RecyclingCalculator,
+  component: lazyRouteComponent(
+    () => import("../components/RecyclingCalculator"),
+    "RecyclingCalculator",
+  ),
 });
