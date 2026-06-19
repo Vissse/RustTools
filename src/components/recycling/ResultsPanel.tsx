@@ -27,7 +27,7 @@ export function ResultsPanel({
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
-        <div style={{ marginTop: "32px" }}>
+        <div style={{ marginTop: "0px" }}>
           {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
           <div className="sec-label">TOTAL OUTPUT & TIME</div>
 

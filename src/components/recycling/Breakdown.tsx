@@ -35,31 +35,14 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                 <div
                   style={{ display: "flex", alignItems: "center", gap: "16px" }}
                 >
-                  {/* Kompaktní políčko a "x" */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <QtyInput
-                      className="invisible-num-input raid-qty-input"
-                      value={row.count}
-                      ariaLabel={`${row.name} quantity`}
-                      deferZero
-                      onChange={(n) => onSet(row.id, n)}
-                    />
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        color: "#666",
-                        fontWeight: 700,
-                      }}
-                    >
-                      x
-                    </span>
-                  </div>
+                  {/* Kompaktní políčko (křížek 'x' odstraněn) */}
+                  <QtyInput
+                    className="invisible-num-input raid-qty-input"
+                    value={row.count}
+                    ariaLabel={`${row.name} quantity`}
+                    deferZero
+                    onChange={(n) => onSet(row.id, n)}
+                  />
 
                   <div
                     style={{
@@ -90,11 +73,12 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   </div>
                 </div>
 
-                {/* Křížek na smazání */}
+                {/* Křížek na smazání - zesvětleno pomocí inline stylu pro lepší viditelnost */}
                 <button
                   className="raid-remove-btn"
                   onClick={() => onSet(row.id, 0)}
                   title="Remove"
+                  style={{ color: "#a0a0a0" }}
                 >
                   ✕
                 </button>
@@ -152,7 +136,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   <div className="bd-vertical-sep" />
                 )}
 
-                {/* Šance na suroviny (Extra resources) */}
+                {/* Šance na suroviny (Extra resources) - upraveno do moderní "pilulky" */}
                 {chance.map((o) => (
                   <div
                     key={o.key}
@@ -160,21 +144,25 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "8px",
+                      gap: "6px",
+                      background: "rgba(205, 65, 43, 0.08)",
+                      border: "1px solid rgba(205, 65, 43, 0.2)",
+                      padding: "4px 8px 4px 6px",
+                      borderRadius: "6px",
                     }}
                   >
                     <RecycleImg
                       src={o.img}
                       alt={o.title}
                       style={{
-                        width: "24px",
-                        height: "24px",
+                        width: "20px",
+                        height: "20px",
                         objectFit: "contain",
                       }}
                     />
                     <span
                       style={{
-                        fontSize: "15px",
+                        fontSize: "14px",
                         fontWeight: 700,
                         color: "#e0e0e0",
                         fontFamily: "var(--font-ui), sans-serif",
@@ -184,9 +172,10 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                     </span>
                     <span
                       style={{
-                        fontSize: "12px",
+                        fontSize: "11px",
                         color: "#cd412b",
                         fontWeight: 700,
+                        marginLeft: "2px",
                       }}
                     >
                       {o.chancePct}%
