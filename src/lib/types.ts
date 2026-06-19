@@ -63,6 +63,8 @@ export interface RecycleItem {
   safezone_yield: RecycleYield
   random?: RecycleRandomDrop[]
   safezone_random?: RecycleRandomDrop[]
+  /** Items recycled per cycle (one 5s/8s batch). Absent = 1 (one cycle per item). */
+  recycleStack?: number
 }
 
 export type RecyclerKind = 'radtown' | 'safezone'

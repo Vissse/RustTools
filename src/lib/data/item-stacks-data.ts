@@ -1,0 +1,61 @@
+export interface ItemStack {
+  name: string
+  stackSize: number
+}
+
+export const itemStacks: Record<string, number> = {
+  'sheet metal': 2,
+  'targeting computer': 7,
+  'cctv camera': 7,
+  'road sign': 2,
+  tarp: 2,
+  rope: 5,
+  'metal blades': 2,
+  'metal pipes': 2,
+  gear: 2,
+  fusion: 2,
+  'empty propane tank': 2,
+  'tech trash': 5,
+  'metal spring': 2,
+  'sewing kit': 2,
+  'spark plugs': 2,
+  'valves (car)': 2,
+  'wooden shutters': 2,
+  'metal vertical embrasure': 2,
+  'metal horizontal embrasure': 2,
+  nails: 7,
+  'all arrows': 7,
+  '40mm shotgun round': 3,
+  '40mm HE grenade': 2,
+  '40mm smoke grenade': 2,
+  'handmade shell': 7,
+  '12 gauge slug': 4,
+  '12 incendiary slug': 7,
+  '12 gauge buckshot': 7,
+  '556 rifle ammo': 13,
+  '556 explo ammo': 13,
+  '556 hv ammo': 13,
+  '556 incendiary ammo': 13,
+  'pistol ammo': 13,
+  'pistol incendiary ammo': 13,
+  'pistol hv ammo': 13,
+  'speargun spear': 7,
+  'sam ammo': 100,
+  paintball: 13,
+  torpedo: 10,
+  'wood dart': 7,
+  'radiation dart': 7,
+  'scatter dart': 7,
+  'incapacitate dart': 7,
+  'bulb string lights': 15,
+  'fairy lights': 15,
+  'deluxe christmas lights': 15,
+  'christmas lights': 15,
+  'tree lights': 15,
+  explosives: 10,
+  paper: 100,
+}
+
+export const itemStackList: ItemStack[] = Object.entries(itemStacks).map(
+  ([name, stackSize]) => ({ name, stackSize })
+)

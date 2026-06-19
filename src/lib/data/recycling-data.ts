@@ -84,6 +84,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'bulbstringlights',
     name: 'Bulb String Lights',
     category: 'electrical',
+    recycleStack: 15,
     img: '/images/electric.bulbstringlights.png',
     yield: {
       metal: 3,
@@ -202,6 +203,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'deluxechristmaslights',
     name: 'Deluxe Christmas Lights',
     category: 'electrical',
+    recycleStack: 15,
     img: '/images/xmas.lightstring.advanced.png',
     yield: {
       metal: 3,
@@ -326,6 +328,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'fairylights',
     name: 'Fairy Lights',
     category: 'electrical',
+    recycleStack: 15,
     img: '/images/electric.fairylights.png',
     yield: {
       metal: 3,
@@ -1540,6 +1543,7 @@ export const ITEMS: RecycleItem[] = [
     id: '12gaugebuckshot',
     name: '12 Gauge Buckshot',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/ammo.shotgun.png',
     yield: {
       metal: 1,
@@ -1561,6 +1565,7 @@ export const ITEMS: RecycleItem[] = [
     id: '12gaugeincendiaryshell',
     name: '12 Gauge Incendiary Shell',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/ammo.shotgun.fire.png',
     yield: {
       metal: 1,
@@ -1584,6 +1589,7 @@ export const ITEMS: RecycleItem[] = [
     id: '12gaugeslug',
     name: '12 Gauge Slug',
     category: 'ammo',
+    recycleStack: 4,
     img: '/images/ammo.shotgun.slug.png',
     yield: {
       metal: 1,
@@ -1605,6 +1611,7 @@ export const ITEMS: RecycleItem[] = [
     id: '40mmhegrenade',
     name: '40mm HE Grenade',
     category: 'ammo',
+    recycleStack: 2,
     img: '/images/ammo.grenadelauncher.he.png',
     yield: {
       'gun-powder': 9,
@@ -1641,6 +1648,7 @@ export const ITEMS: RecycleItem[] = [
     id: '40mmshotgunround',
     name: '40mm Shotgun Round',
     category: 'ammo',
+    recycleStack: 3,
     img: '/images/ammo.grenadelauncher.buckshot.png',
     yield: {
       metal: 1,
@@ -1673,6 +1681,7 @@ export const ITEMS: RecycleItem[] = [
     id: '40mmsmokegrenade',
     name: '40mm Smoke Grenade',
     category: 'ammo',
+    recycleStack: 2,
     img: '/images/ammo.grenadelauncher.smoke.png',
     yield: {
       'gun-powder': 9,
@@ -1699,6 +1708,7 @@ export const ITEMS: RecycleItem[] = [
     id: '5.56rifleammo',
     name: '5.56 Rifle Ammo',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.rifle.png',
     yield: {
       metal: 2,
@@ -1751,6 +1761,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'bonearrow',
     name: 'Bone Arrow',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/arrow.bone.png',
     yield: {
       wood: 5,
@@ -1798,6 +1809,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'explosive5.56rifleammo',
     name: 'Explosive 5.56 Rifle Ammo',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.rifle.explosive.png',
     yield: {
       metal: 3,
@@ -1814,6 +1826,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'firearrow',
     name: 'Fire Arrow',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/arrow.fire.png',
     yield: {
       wood: 6,
@@ -1911,6 +1924,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'handmadeshell',
     name: 'Handmade Shell',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/ammo.handmade.shell.png',
     yield: {
       stone: 1,
@@ -1937,6 +1951,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'highvelocityarrow',
     name: 'High Velocity Arrow',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/arrow.hv.png',
     yield: {
       wood: 6,
@@ -2020,6 +2035,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'hv5.56rifleammo',
     name: 'HV 5.56 Rifle Ammo',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.rifle.hv.png',
     yield: {
       metal: 2,
@@ -2046,6 +2062,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'hvpistolammo',
     name: 'HV Pistol Ammo',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.pistol.hv.png',
     yield: {
       metal: 1,
@@ -2072,6 +2089,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'incapacitatedart',
     name: 'Incapacitate Dart',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/dart.incapacitate.png',
     yield: {
       wood: 1,
@@ -2103,6 +2121,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'incendiary5.56rifleammo',
     name: 'Incendiary 5.56 Rifle Ammo',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.rifle.incendiary.png',
     yield: {
       metal: 3,
@@ -2142,6 +2161,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'incendiarypistolbullet',
     name: 'Incendiary Pistol Bullet',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.pistol.fire.png',
     yield: {
       metal: 2,
@@ -2257,6 +2277,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'nailgunnails',
     name: 'Nailgun Nails',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/ammo.nailgun.nails.png',
     yield: {},
     random: [
@@ -2279,6 +2300,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'paintball',
     name: 'Paintball',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.paintball.png',
     yield: {},
     random: [
@@ -2325,6 +2347,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'pistolbullet',
     name: 'Pistol Bullet',
     category: 'ammo',
+    recycleStack: 13,
     img: '/images/ammo.pistol.png',
     yield: {
       metal: 1,
@@ -2398,6 +2421,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'radiationdart',
     name: 'Radiation Dart',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/dart.radiation.png',
     yield: {
       wood: 7,
@@ -2453,6 +2477,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'samammo',
     name: 'SAM Ammo',
     category: 'ammo',
+    recycleStack: 100,
     img: '/images/ammo.rocket.sam.png',
     yield: {
       'gun-powder': 3,
@@ -2479,6 +2504,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'scatterdart',
     name: 'Scatter Dart',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/dart.scatter.png',
     yield: {
       wood: 7,
@@ -2528,6 +2554,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'speargunspear',
     name: 'Speargun Spear',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/speargun.spear.png',
     yield: {
       metal: 10,
@@ -2547,6 +2574,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'torpedo',
     name: 'Torpedo',
     category: 'ammo',
+    recycleStack: 10,
     img: '/images/submarine.torpedo.straight.png',
     yield: {
       'gun-powder': 3,
@@ -2583,6 +2611,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'wooddart',
     name: 'Wood Dart',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/dart.wood.png',
     yield: {
       wood: 7,
@@ -2602,6 +2631,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'woodenarrow',
     name: 'Wooden Arrow',
     category: 'ammo',
+    recycleStack: 7,
     img: '/images/arrow.wooden.png',
     yield: {
       wood: 7,
@@ -5564,6 +5594,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'electricfuse',
     name: 'Electric Fuse',
     category: 'components',
+    recycleStack: 2,
     img: '/images/fuse.png',
     yield: {
       scrap: 24,
@@ -5576,6 +5607,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'emptypropanetank',
     name: 'Empty Propane Tank',
     category: 'components',
+    recycleStack: 2,
     img: '/images/propanetank.png',
     yield: {
       scrap: 1,
@@ -5645,6 +5677,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'gears',
     name: 'Gears',
     category: 'components',
+    recycleStack: 2,
     img: '/images/gears.png',
     yield: {
       scrap: 12,
@@ -5695,6 +5728,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'highqualitysparkplugs',
     name: 'High Quality Spark Plugs',
     category: 'components',
+    recycleStack: 2,
     img: '/images/sparkplug3.png',
     yield: {
       metal: 72,
@@ -5707,6 +5741,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'highqualityvalves',
     name: 'High Quality Valves',
     category: 'components',
+    recycleStack: 2,
     img: '/images/valve3.png',
     yield: {
       metal: 72,
@@ -5769,6 +5804,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'lowqualitysparkplugs',
     name: 'Low Quality Spark Plugs',
     category: 'components',
+    recycleStack: 2,
     img: '/images/sparkplug1.png',
     yield: {
       metal: 15,
@@ -5781,6 +5817,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'lowqualityvalves',
     name: 'Low Quality Valves',
     category: 'components',
+    recycleStack: 2,
     img: '/images/valve1.png',
     yield: {
       metal: 15,
@@ -5829,6 +5866,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'mediumqualitysparkplugs',
     name: 'Medium Quality Spark Plugs',
     category: 'components',
+    recycleStack: 2,
     img: '/images/sparkplug2.png',
     yield: {
       metal: 42,
@@ -5841,6 +5879,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'mediumqualityvalves',
     name: 'Medium Quality Valves',
     category: 'components',
+    recycleStack: 2,
     img: '/images/valve2.png',
     yield: {
       metal: 42,
@@ -5853,6 +5892,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'metalblade',
     name: 'Metal Blade',
     category: 'components',
+    recycleStack: 2,
     img: '/images/metalblade.png',
     yield: {
       scrap: 2,
@@ -5867,6 +5907,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'metalpipe',
     name: 'Metal Pipe',
     category: 'components',
+    recycleStack: 2,
     img: '/images/metalpipe.png',
     yield: {
       scrap: 6,
@@ -5894,6 +5935,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'metalspring',
     name: 'Metal Spring',
     category: 'components',
+    recycleStack: 2,
     img: '/images/metalspring.png',
     yield: {
       scrap: 12,
@@ -6090,6 +6132,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'roadsigns',
     name: 'Road Signs',
     category: 'components',
+    recycleStack: 2,
     img: '/images/roadsigns.png',
     yield: {
       scrap: 6,
@@ -6117,6 +6160,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'rope',
     name: 'Rope',
     category: 'components',
+    recycleStack: 5,
     img: '/images/rope.png',
     yield: {
       cloth: 18,
@@ -6173,6 +6217,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'sewingkit',
     name: 'Sewing Kit',
     category: 'components',
+    recycleStack: 2,
     img: '/images/sewingkit.png',
     yield: {
       cloth: 12,
@@ -6201,6 +6246,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'sheetmetal',
     name: 'Sheet Metal',
     category: 'components',
+    recycleStack: 2,
     img: '/images/sheetmetal.png',
     yield: {
       scrap: 9,
@@ -6312,6 +6358,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'tarp',
     name: 'Tarp',
     category: 'components',
+    recycleStack: 2,
     img: '/images/tarp.png',
     yield: {
       cloth: 60,
@@ -6340,6 +6387,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'techtrash',
     name: 'Tech Trash',
     category: 'components',
+    recycleStack: 5,
     img: '/images/techparts.png',
     yield: {
       scrap: 24,
@@ -7269,6 +7317,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'woodshutters',
     name: 'Wood Shutters',
     category: 'construction',
+    recycleStack: 2,
     img: '/images/shutter.wood.a.png',
     yield: {
       wood: 120,
@@ -8679,6 +8728,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'christmaslights',
     name: 'Christmas Lights',
     category: 'items',
+    recycleStack: 15,
     img: '/images/xmas.lightstring.png',
     yield: {
       metal: 15,
@@ -11383,6 +11433,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'treelights',
     name: 'Tree Lights',
     category: 'misc',
+    recycleStack: 15,
     img: '/images/xmas.decoration.lights.png',
     yield: {
       scrap: 30,
@@ -11409,6 +11460,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'cctvcamera',
     name: 'CCTV Camera',
     category: 'resources',
+    recycleStack: 7,
     img: '/images/cctv.camera.png',
     yield: {
       techtrash: 1,
@@ -11513,6 +11565,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'explosives',
     name: 'Explosives',
     category: 'resources',
+    recycleStack: 10,
     img: '/images/explosives.png',
     yield: {
       'gun-powder': 30,
@@ -11614,6 +11667,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'paper',
     name: 'Paper',
     category: 'resources',
+    recycleStack: 100,
     img: '/images/paper.png',
     yield: {
       wood: 3,
@@ -11626,6 +11680,7 @@ export const ITEMS: RecycleItem[] = [
     id: 'targetingcomputer',
     name: 'Targeting Computer',
     category: 'resources',
+    recycleStack: 7,
     img: '/images/targeting.computer.png',
     yield: {
       techtrash: 3,

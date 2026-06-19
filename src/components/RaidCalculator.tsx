@@ -166,6 +166,13 @@ export function RaidCalculator() {
           mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
         }
 
+        /* Mřížka struktur: vyšší seznam + menší fade na spodní hraně */
+        .minimal-btn-grid.structure-grid {
+          max-height: 280px;
+          -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 94%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 94%, rgba(0,0,0,0) 100%);
+        }
+
         /* Nastylování vlastního scrollbaru */
         .minimal-btn-grid::-webkit-scrollbar {
           width: 6px;
@@ -436,9 +443,9 @@ export function RaidCalculator() {
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         {/* Sekce 1: Target Structure */}
-        <div>
+        <div className="min-h-72">
           <div className="sec-label leading-2">TARGET STRUCTURE</div>
-          <div className="minimal-btn-grid">
+          <div className="minimal-btn-grid structure-grid">
             {Object.entries(STRUCTURES).map(([name, data]) => (
               <button
                 key={name}
@@ -455,7 +462,7 @@ export function RaidCalculator() {
         {/* Sekce 2: Dynamický plovoucí náhled zdi + Counter */}
         <div
           style={{
-            height: '200px',
+            height: '170px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -470,7 +477,7 @@ export function RaidCalculator() {
                 src={STRUCTURES[selectedStructure].img}
                 alt={selectedStructure}
                 style={{
-                  maxHeight: '130px',
+                  maxHeight: '100px',
                   maxWidth: '80%',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.6))',
@@ -614,462 +621,481 @@ export function RaidCalculator() {
           >
             {solverShown && result && (
               <>
-            {/* Integrity */}
-            <div>
-              <div className="sec-label">STRUCTURAL INTEGRITY</div>
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '10px',
-                  alignItems: 'baseline',
-                  margin: '16px 0 8px 0',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: '42px',
-                    fontWeight: 800,
-                    color: '#fff',
-                    lineHeight: 1,
-                  }}
-                >
-                  {Math.round(result.dmgDone).toLocaleString()}
-                </span>
-                <span
-                  style={{
-                    fontSize: '14px',
-                    color: '#555',
-                    fontWeight: 600,
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  / {result.totalHp.toLocaleString()} HP
-                </span>
-              </div>
-              <div className="modern-hp-wrapper">
-                <div
-                  className="modern-hp-fill"
-                  style={{ width: `${result.pct}%` }}
-                />
-                <div
-                  className="modern-hp-glow"
-                  style={{ width: `${result.pct}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Cheapest Combo */}
-            <div>
-              {result.combo.length === 0 ? (
-                <div id="no-combo">NO COMBINATION FOUND</div>
-              ) : (
-                result.combo.map((c) => (
-                  <div className="minimal-combo-row" key={c.exp.name}>
-                    {/* 1. ČÁST: Ikona výbušniny */}
-                    <Img
-                      src={c.exp.img}
-                      alt={c.exp.name}
+                {/* Integrity */}
+                <div>
+                  <div className="sec-label">STRUCTURAL INTEGRITY</div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '10px',
+                      alignItems: 'baseline',
+                      margin: '16px 0 8px 0',
+                    }}
+                  >
+                    <span
                       style={{
-                        width: '40px',
-                        height: '40px',
-                        objectFit: 'contain',
-                        flexShrink: 0,
+                        fontSize: '42px',
+                        fontWeight: 800,
+                        color: '#fff',
+                        lineHeight: 1,
                       }}
+                    >
+                      {Math.round(result.dmgDone).toLocaleString()}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        color: '#555',
+                        fontWeight: 600,
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      / {result.totalHp.toLocaleString()} HP
+                    </span>
+                  </div>
+                  <div className="modern-hp-wrapper">
+                    <div
+                      className="modern-hp-fill"
+                      style={{ width: `${result.pct}%` }}
                     />
-
-                    {/* 2. ČÁST: Množství a Název */}
                     <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '2px',
-                        flex: 1,
-                        marginLeft: '16px',
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: '#cc422c',
-                          fontWeight: 800,
-                          fontSize: '18px',
-                          lineHeight: 1,
-                        }}
-                      >
-                        {c.qty}
-                        <span
+                      className="modern-hp-glow"
+                      style={{ width: `${result.pct}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Cheapest Combo */}
+                <div>
+                  {result.combo.length === 0 ? (
+                    <div id="no-combo">NO COMBINATION FOUND</div>
+                  ) : (
+                    result.combo.map((c) => (
+                      <div className="minimal-combo-row" key={c.exp.name}>
+                        {/* 1. ČÁST: Ikona výbušniny */}
+                        <Img
+                          src={c.exp.img}
+                          alt={c.exp.name}
                           style={{
-                            fontSize: '14px',
-                            marginLeft: '4px',
-                            color: '#cc422c',
+                            width: '40px',
+                            height: '40px',
+                            objectFit: 'contain',
+                            flexShrink: 0,
                           }}
-                        >
-                          x
-                        </span>
-                      </span>
-                      <span
-                        style={{
-                          color: '#e0e0e0',
-                          fontSize: '13px',
-                          fontWeight: 700,
-                          letterSpacing: '0.02em',
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        {c.exp.name}
-                      </span>
-                    </div>
+                        />
 
-                    {/* 3. ČÁST: Oddělovač */}
-                    <div className="combo-separator" />
-
-                    {/* 4. ČÁST: Suroviny napravo */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {c.totalSulfur > 0 && (
+                        {/* 2. ČÁST: Množství a Název */}
                         <div
                           style={{
                             display: 'flex',
-                            alignItems: 'center',
-                            gap: '6px',
+                            flexDirection: 'column',
+                            gap: '2px',
+                            flex: 1,
+                            marginLeft: '16px',
                           }}
                         >
-                          <Img
-                            src={RESOURCE_ICONS.sulfur}
-                            alt="Sulfur"
-                            style={{ width: '16px', height: '16px' }}
-                          />
                           <span
                             style={{
                               color: '#cc422c',
-                              fontWeight: 700,
-                              fontSize: '15px',
+                              fontWeight: 800,
+                              fontSize: '18px',
+                              lineHeight: 1,
                             }}
                           >
-                            {c.totalSulfur.toLocaleString()}
+                            {c.qty}
+                            <span
+                              style={{
+                                fontSize: '14px',
+                                marginLeft: '4px',
+                                color: '#cc422c',
+                              }}
+                            >
+                              x
+                            </span>
+                          </span>
+                          <span
+                            style={{
+                              color: '#e0e0e0',
+                              fontSize: '13px',
+                              fontWeight: 700,
+                              letterSpacing: '0.02em',
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            {c.exp.name}
                           </span>
                         </div>
-                      )}
-                      {c.totalMetal > 0 && (
+
+                        {/* 3. ČÁST: Oddělovač */}
+                        <div className="combo-separator" />
+
+                        {/* 4. ČÁST: Suroviny napravo */}
                         <div
                           style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '6px',
+                            gap: '16px',
+                            flexShrink: 0,
                           }}
                         >
-                          <Img
-                            src={RESOURCE_ICONS.metal}
-                            alt="Metal"
-                            style={{ width: '16px', height: '16px' }}
-                          />
-                          <span
-                            style={{
-                              color: '#a5b4c0',
-                              fontWeight: 700,
-                              fontSize: '15px',
-                            }}
-                          >
-                            {c.totalMetal.toLocaleString()}
-                          </span>
+                          {c.totalSulfur > 0 && (
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                              }}
+                            >
+                              <Img
+                                src={RESOURCE_ICONS.sulfur}
+                                alt="Sulfur"
+                                style={{ width: '16px', height: '16px' }}
+                              />
+                              <span
+                                style={{
+                                  color: '#cc422c',
+                                  fontWeight: 700,
+                                  fontSize: '15px',
+                                }}
+                              >
+                                {c.totalSulfur.toLocaleString()}
+                              </span>
+                            </div>
+                          )}
+                          {c.totalMetal > 0 && (
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                              }}
+                            >
+                              <Img
+                                src={RESOURCE_ICONS.metal}
+                                alt="Metal"
+                                style={{ width: '16px', height: '16px' }}
+                              />
+                              <span
+                                style={{
+                                  color: '#a5b4c0',
+                                  fontWeight: 700,
+                                  fontSize: '15px',
+                                }}
+                              >
+                                {c.totalMetal.toLocaleString()}
+                              </span>
+                            </div>
+                          )}
+                          {c.totalCharcoal > 0 && (
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                              }}
+                            >
+                              <Img
+                                src={RESOURCE_ICONS.coal}
+                                alt="Coal"
+                                style={{ width: '16px', height: '16px' }}
+                              />
+                              <span
+                                style={{
+                                  color: '#8b8c89',
+                                  fontWeight: 700,
+                                  fontSize: '15px',
+                                }}
+                              >
+                                {(discountActive
+                                  ? Math.round(c.totalCharcoal * (2 / 3))
+                                  : c.totalCharcoal
+                                ).toLocaleString()}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                      )}
-                      {c.totalCharcoal > 0 && (
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                          }}
-                        >
-                          <Img
-                            src={RESOURCE_ICONS.coal}
-                            alt="Coal"
-                            style={{ width: '16px', height: '16px' }}
-                          />
-                          <span
-                            style={{
-                              color: '#8b8c89',
-                              fontWeight: 700,
-                              fontSize: '15px',
-                            }}
-                          >
-                            {(discountActive
-                              ? Math.round(c.totalCharcoal * (2 / 3))
-                              : c.totalCharcoal
-                            ).toLocaleString()}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            {/* --- UNIFIED TOTAL RESOURCES & CRAFTING METHOD --- */}
-            <div>
-              <div
-                className="sec-label"
-                style={{ marginBottom: '12px', marginTop: '8px' }}
-              >
-                TOTAL RESOURCES & CRAFTING
-              </div>
-
-              <div
-                className="minimal-combo-row"
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '16px 20px',
-                  margin: 0,
-                  flexWrap: 'nowrap' /* STRIKTNĚ zakázáno zalamování */,
-                  gap: '12px',
-                  overflow:
-                    'hidden' /* Kdyby náhodou, ať nerozbije zbytek stránky */,
-                }}
-              >
-                {/* Levá část: Suroviny */}
-                <div
-                  style={{
-                    display: 'flex',
-                    gap: '16px' /* Mírně zmenšená mezera pro víc místa u velkých čísel */,
-                    alignItems: 'center',
-                    flexWrap: 'nowrap' /* Striktně bez zalamování */,
-                  }}
-                >
-                  {/* Sulfur */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Img
-                      src={RESOURCE_ICONS.sulfur}
-                      alt="Sulfur"
-                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span
-                        style={{
-                          fontSize: '20px',
-                          fontWeight: 800,
-                          color: '#cc422c',
-                          lineHeight: 1,
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {result.totalSulfur.toLocaleString()}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '10px',
-                          color: '#8b8c89',
-                          fontWeight: 700,
-                          letterSpacing: '0.05em',
-                          marginTop: '2px',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        SULFUR
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Metal */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Img
-                      src={RESOURCE_ICONS.metal}
-                      alt="Metal"
-                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span
-                        style={{
-                          fontSize: '20px',
-                          fontWeight: 800,
-                          color: '#a5b4c0',
-                          lineHeight: 1,
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {result.totalMetal.toLocaleString()}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '10px',
-                          color: '#8b8c89',
-                          fontWeight: 700,
-                          letterSpacing: '0.05em',
-                          marginTop: '2px',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        METAL
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Coal */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Img
-                      src={RESOURCE_ICONS.coal}
-                      alt="Coal"
-                      style={{ width: '22px', height: '22px', flexShrink: 0 }}
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span
-                        style={{
-                          fontSize: '20px',
-                          fontWeight: 800,
-                          color: '#8b8c89',
-                          lineHeight: 1,
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {result.totalCharcoal.toLocaleString()}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '10px',
-                          color: '#8b8c89',
-                          fontWeight: 700,
-                          letterSpacing: '0.05em',
-                          marginTop: '2px',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        COAL
-                      </span>
-                    </div>
-                  </div>
+                      </div>
+                    ))
+                  )}
                 </div>
 
-                {/* Pravá část: ODDĚLOVAČ + PŘEPÍNAČ (Pevný blok) */}
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  {/* --- VERTIKÁLNÍ ODDĚLOVAČ --- */}
+                {/* --- UNIFIED TOTAL RESOURCES & CRAFTING METHOD --- */}
+                <div>
                   <div
-                    style={{
-                      width: '1px',
-                      height: '40px',
-                      background:
-                        'linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent)',
-                      margin: '0 14px',
-                      flexShrink: 0,
-                    }}
-                  />
+                    className="sec-label"
+                    style={{ marginBottom: '12px', marginTop: '8px' }}
+                  >
+                    TOTAL RESOURCES & CRAFTING
+                  </div>
 
-                  {/* Spínač a nápisy */}
                   <div
+                    className="minimal-combo-row"
                     style={{
                       display: 'flex',
+                      justifyContent: 'space-between',
                       alignItems: 'center',
-                      gap: '10px',
+                      padding: '16px 20px',
+                      margin: 0,
+                      flexWrap: 'nowrap' /* STRIKTNĚ zakázáno zalamování */,
+                      gap: '12px',
+                      overflow:
+                        'hidden' /* Kdyby náhodou, ať nerozbije zbytek stránky */,
                     }}
                   >
-                    {/* Přepínač (Slider) */}
-                    <div
-                      onClick={() => setDiscountActive(!discountActive)}
-                      style={{
-                        position: 'relative',
-                        width: '36px',
-                        height: '20px',
-                        background: '#121212',
-                        border: `1px solid ${discountActive ? 'rgba(204, 66, 44, 0.5)' : 'rgba(255, 255, 255, 0.1)'}`,
-                        borderRadius: '10px',
-                        cursor: 'pointer',
-                        flexShrink: 0,
-                        transition: 'all 0.3s ease',
-                      }}
-                    >
-                      <div
-                        style={{
-                          position: 'absolute',
-                          width: '12px',
-                          height: '12px',
-                          background: discountActive ? '#cc422c' : '#555',
-                          borderRadius: '50%',
-                          top: '3px',
-                          left: discountActive ? '19px' : '3px',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        }}
-                      />
-                    </div>
-
-                    {/* Nápisy a separator na středu */}
+                    {/* Levá část: Suroviny */}
                     <div
                       style={{
                         display: 'flex',
-                        flexDirection: 'column',
+                        gap: '16px' /* Mírně zmenšená mezera pro víc místa u velkých čísel */,
                         alignItems: 'center',
-                        whiteSpace: 'nowrap',
+                        flexWrap: 'nowrap' /* Striktně bez zalamování */,
                       }}
                     >
-                      <span
-                        style={{
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          color: discountActive ? '#cc422c' : '#757575',
-                          transition: 'color 0.2s',
-                          lineHeight: 1,
-                        }}
-                      >
-                        MIXING TABLE
-                      </span>
-
-                      {/* Horizontální Separator textu */}
+                      {/* Sulfur */}
                       <div
                         style={{
-                          width: '100%',
-                          height: '1px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                        }}
+                      >
+                        <Img
+                          src={RESOURCE_ICONS.sulfur}
+                          alt="Sulfur"
+                          style={{
+                            width: '22px',
+                            height: '22px',
+                            flexShrink: 0,
+                          }}
+                        />
+                        <div
+                          style={{ display: 'flex', flexDirection: 'column' }}
+                        >
+                          <span
+                            style={{
+                              fontSize: '20px',
+                              fontWeight: 800,
+                              color: '#cc422c',
+                              lineHeight: 1,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {result.totalSulfur.toLocaleString()}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: '10px',
+                              color: '#8b8c89',
+                              fontWeight: 700,
+                              letterSpacing: '0.05em',
+                              marginTop: '2px',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            SULFUR
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Metal */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                        }}
+                      >
+                        <Img
+                          src={RESOURCE_ICONS.metal}
+                          alt="Metal"
+                          style={{
+                            width: '22px',
+                            height: '22px',
+                            flexShrink: 0,
+                          }}
+                        />
+                        <div
+                          style={{ display: 'flex', flexDirection: 'column' }}
+                        >
+                          <span
+                            style={{
+                              fontSize: '20px',
+                              fontWeight: 800,
+                              color: '#a5b4c0',
+                              lineHeight: 1,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {result.totalMetal.toLocaleString()}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: '10px',
+                              color: '#8b8c89',
+                              fontWeight: 700,
+                              letterSpacing: '0.05em',
+                              marginTop: '2px',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            METAL
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Coal */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                        }}
+                      >
+                        <Img
+                          src={RESOURCE_ICONS.coal}
+                          alt="Coal"
+                          style={{
+                            width: '22px',
+                            height: '22px',
+                            flexShrink: 0,
+                          }}
+                        />
+                        <div
+                          style={{ display: 'flex', flexDirection: 'column' }}
+                        >
+                          <span
+                            style={{
+                              fontSize: '20px',
+                              fontWeight: 800,
+                              color: '#8b8c89',
+                              lineHeight: 1,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {result.totalCharcoal.toLocaleString()}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: '10px',
+                              color: '#8b8c89',
+                              fontWeight: 700,
+                              letterSpacing: '0.05em',
+                              marginTop: '2px',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            COAL
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Pravá část: ODDĚLOVAČ + PŘEPÍNAČ (Pevný blok) */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {/* --- VERTIKÁLNÍ ODDĚLOVAČ --- */}
+                      <div
+                        style={{
+                          width: '1px',
+                          height: '40px',
                           background:
-                            'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)',
-                          margin: '4px 0',
+                            'linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent)',
+                          margin: '0 14px',
+                          flexShrink: 0,
                         }}
                       />
 
-                      <span
+                      {/* Spínač a nápisy */}
+                      <div
                         style={{
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          color: discountActive ? '#cc422c' : '#757575',
-                          transition: 'color 0.2s',
-                          lineHeight: 1,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
                         }}
                       >
-                        COOKING WORKBENCH
-                      </span>
+                        {/* Přepínač (Slider) */}
+                        <div
+                          onClick={() => setDiscountActive(!discountActive)}
+                          style={{
+                            position: 'relative',
+                            width: '36px',
+                            height: '20px',
+                            background: '#121212',
+                            border: `1px solid ${discountActive ? 'rgba(204, 66, 44, 0.5)' : 'rgba(255, 255, 255, 0.1)'}`,
+                            borderRadius: '10px',
+                            cursor: 'pointer',
+                            flexShrink: 0,
+                            transition: 'all 0.3s ease',
+                          }}
+                        >
+                          <div
+                            style={{
+                              position: 'absolute',
+                              width: '12px',
+                              height: '12px',
+                              background: discountActive ? '#cc422c' : '#555',
+                              borderRadius: '50%',
+                              top: '3px',
+                              left: discountActive ? '19px' : '3px',
+                              transition:
+                                'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            }}
+                          />
+                        </div>
+
+                        {/* Nápisy a separator na středu */}
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontSize: '11px',
+                              fontWeight: 700,
+                              color: discountActive ? '#cc422c' : '#757575',
+                              transition: 'color 0.2s',
+                              lineHeight: 1,
+                            }}
+                          >
+                            MIXING TABLE
+                          </span>
+
+                          {/* Horizontální Separator textu */}
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '1px',
+                              background:
+                                'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)',
+                              margin: '4px 0',
+                            }}
+                          />
+
+                          <span
+                            style={{
+                              fontSize: '11px',
+                              fontWeight: 700,
+                              color: discountActive ? '#cc422c' : '#757575',
+                              transition: 'color 0.2s',
+                              lineHeight: 1,
+                            }}
+                          >
+                            COOKING WORKBENCH
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
               </>
             )}
           </div>

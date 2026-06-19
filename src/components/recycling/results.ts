@@ -26,6 +26,11 @@ export function buildResults(
   for (const id in inventory) totalItems += inventory[id]
   if (totalItems === 0) return null
 
+  // Recyclers process a whole "recycle stack" per cycle, so timing is billed per
+  // cycle (ceil(count / stack)), not per item. Items without a recycleStack count
+  // as one cycle each.
+  let totalCycles = 0
+
   const isSafezone = recycler === 'safezone'
   const totals = Object.fromEntries(
     [...ALWAYS_RESOURCES, ...OPTIONAL_RESOURCES].map((r) => [r, 0])
@@ -40,6 +45,8 @@ export function buildResults(
   for (const item of ITEMS) {
     const count = inventory[item.id]
     if (!count) continue
+
+    totalCycles += Math.ceil(count / (item.recycleStack ?? 1))
 
     const hasSafezoneYield =
       !!item.safezone_yield && Object.keys(item.safezone_yield).length > 0
@@ -125,8 +132,8 @@ export function buildResults(
     }
   }
 
-  const timePerItem = isSafezone ? 8 : 5
-  const totalSeconds = totalItems * timePerItem
+  const timePerCycle = isSafezone ? 8 : 5
+  const totalSeconds = totalCycles * timePerCycle
   const mins = Math.floor(totalSeconds / 60)
   const secs = totalSeconds % 60
   const time = mins > 0 ? `${mins}M ${secs}S` : `${secs}S`

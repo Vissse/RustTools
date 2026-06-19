@@ -27,9 +27,9 @@ export function CalcShell({
 }: CalcShellProps) {
   return (
     <>
-      <h1 className="page-title">{pageTitle}</h1>
+      <h1 className="page-title hidden">{pageTitle}</h1>
 
-      <div className="calc-wrap" data-variant={variant}>
+      <div className="calc-wrap !mt-4" data-variant={variant}>
         <span className="rivet tl" />
         <span className="rivet tr" />
         <span className="rivet bl" />

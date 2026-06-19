@@ -167,13 +167,13 @@ export function RecyclingCalculator() {
           margin-top: 4px;
         }
 
-        /* Specifické barvy surovin */
-        .res-color-sulfur { color: #e44d32; }
-        .res-color-metal  { color: #a4b3c6; }
-        .res-color-hqm    { color: #ffffff; }
-        .res-color-scrap  { color: #c45c34; }
-        .res-color-cloth  { color: #c9b07a; }
-        .res-color-default{ color: #d0d0d0; }
+        /* Sjednocená bílá barva pro všechny hodnoty surovin */
+        .res-color-sulfur,
+        .res-color-metal,
+        .res-color-hqm,
+        .res-color-scrap,
+        .res-color-cloth,
+        .res-color-default { color: #ffffff; }
 
         /* Skrytí nativních šipek inputu */
         .invisible-num-input::-webkit-inner-spin-button,

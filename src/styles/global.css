@@ -228,7 +228,7 @@ h1.page-title span {
 .calc-wrap {
   width: 100%;
   max-width: 1100px;
-  max-height: 85vh;
+  max-height: 100vh;
   position: relative;
   z-index: 1;
   background: linear-gradient(170deg, #171512 0%, #131210 100%);
@@ -1956,7 +1956,7 @@ h1.page-title span {
 }
 
 .sleek-rnd-val.avg {
-  color: var(--rust);
+  color: #ffffff;
 }
 
 /* Jemná vertikální oddělovací čára mezi staty */
