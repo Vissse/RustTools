@@ -109,7 +109,7 @@ body::before {
 /* --- TOP NAVIGATION BAR --- */
 .top-navbar {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   background: linear-gradient(180deg, var(--panel) 0%, var(--panel2) 100%);
   border: 1px solid var(--border2);
   border-top: none;
@@ -228,7 +228,7 @@ h1.page-title span {
 /* --- CALC SHELL --- */
 .calc-wrap {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   max-height: 100vh;
   position: relative;
   z-index: 1;
