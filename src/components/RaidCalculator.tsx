@@ -1,8 +1,24 @@
 import { useMemo, useState, Fragment } from 'react'
 import { CalcShell } from './CalcShell'
 import { Img } from './Img'
-import { EXPLOSIVES, RESOURCE_ICONS, STRUCTURES } from '../lib/data/raid-data'
+import {
+  EXPLOSIVES,
+  RAID_DATA,
+  RESOURCE_ICONS,
+  STRUCTURES,
+} from '../lib/data/raid-data'
 import { cheapestCombo, comboTotal, damageAgainst } from '../lib/raid-solver'
+import type { RaidCategory } from '../lib/types'
+
+// Filtr -> kategorie v RAID_DATA. 'Explosive' řeší vlastní solver (cheapestCombo),
+// ostatní kategorie jen vypisují potřebné množství + čas z per-structure dat.
+const CATEGORY_MAP: Record<string, RaidCategory> = {
+  'Siege Weapons': 'siege weapons',
+  Melee: 'melee',
+  'Throwing Attacks': 'throw',
+  Guns: 'guns',
+  Torpedos: 'torpedo',
+}
 
 // Seznam kategorií pro filtr
 const FILTER_CATEGORIES = [
@@ -66,6 +82,36 @@ export function RaidCalculator() {
       segCount: Math.min(20, safeCount * 4),
     }
   }, [selectedStructure, selectedExplosives, structureCount, discountActive])
+
+  const explosiveActive = activeFilters.has('Explosive')
+
+  // Per-structure raiding tools for the active non-explosive categories,
+  // grouped by category, with quantities scaled by the structure count.
+  const toolGroups = useMemo(() => {
+    if (!selectedStructure) return []
+    const items = RAID_DATA[selectedStructure]
+    if (!items) return []
+
+    const safeCount =
+      typeof structureCount === 'number' && structureCount > 0
+        ? structureCount
+        : 1
+
+    return FILTER_CATEGORIES.filter(
+      (label) => label !== 'Explosive' && activeFilters.has(label)
+    )
+      .map((label) => {
+        const category = CATEGORY_MAP[label]
+        const tools = items
+          .filter((it) => it.category === category)
+          .map((it) => ({ ...it, total: it.quantity * safeCount }))
+          .sort((a, b) => a.total - b.total)
+        return { label, tools }
+      })
+      .filter((g) => g.tools.length > 0)
+  }, [selectedStructure, structureCount, activeFilters])
+
+  const solverShown = explosiveActive && ready && result !== null
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
@@ -186,6 +232,55 @@ export function RaidCalculator() {
         .minimal-box-btn.active .minimal-box-name {
           color: #fff;
         }
+        /* ---------------------------------------------- */
+
+        /* --- SEZNAM NÁSTROJŮ POD KATEGORIEMI (bez crafting ceny) --- */
+        .tool-list {
+          margin-top: 12px;
+          max-height: 230px;
+          overflow-y: auto;
+          padding-right: 8px;
+          -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+        }
+        .tool-list::-webkit-scrollbar { width: 6px; }
+        .tool-list::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02); border-radius: 4px;
+        }
+        .tool-list::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.1); border-radius: 4px;
+        }
+        .tool-list::-webkit-scrollbar-thumb:hover { background: #cc422c; }
+
+        .tool-group { margin-bottom: 18px; }
+        .tool-group:last-child { margin-bottom: 0; }
+        .tool-group-label {
+          font-size: 10px; font-weight: 700; color: #757575;
+          text-transform: uppercase; letter-spacing: 0.08em;
+          padding-bottom: 6px; margin-bottom: 6px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tool-row {
+          display: flex; align-items: center; gap: 12px;
+          padding: 7px 4px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+          transition: background 0.2s ease;
+        }
+        .tool-row:hover { background: rgba(255, 255, 255, 0.02); }
+        .tool-name {
+          flex: 1; min-width: 0;
+          color: #a5b4c0; font-size: 12px; font-weight: 600;
+          letter-spacing: 0.02em;
+        }
+        .tool-time {
+          flex-shrink: 0; color: #757575; font-size: 11px; font-weight: 600;
+          font-variant-numeric: tabular-nums; white-space: nowrap;
+        }
+        .tool-qty {
+          flex-shrink: 0; color: #cc422c; font-size: 15px; font-weight: 800;
+          font-variant-numeric: tabular-nums; min-width: 48px; text-align: right;
+        }
+        .tool-qty-x { font-size: 11px; margin-left: 2px; }
         /* ---------------------------------------------- */
 
         /* ULTRA MINIMALISTICKÝ VÝBĚR KATEGORIÍ (Jeden řádek, separátory) */
@@ -452,23 +547,57 @@ export function RaidCalculator() {
             ))}
           </div>
 
-          <div className="minimal-btn-grid">
-            {EXPLOSIVES.map((e) => (
-              <button
-                key={e.name}
-                className={`minimal-box-btn${selectedExplosives.has(e.name) ? ' active' : ''}`}
-                onClick={() => toggleExplosive(e.name)}
-              >
-                <Img src={e.img} alt={e.name} />
-                <span className="minimal-box-name">{e.short}</span>
-              </button>
-            ))}
-          </div>
+          {explosiveActive && (
+            <div className="minimal-btn-grid">
+              {EXPLOSIVES.map((e) => (
+                <button
+                  key={e.name}
+                  className={`minimal-box-btn${selectedExplosives.has(e.name) ? ' active' : ''}`}
+                  onClick={() => toggleExplosive(e.name)}
+                >
+                  <Img src={e.img} alt={e.name} />
+                  <span className="minimal-box-name">{e.short}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {!explosiveActive && toolGroups.length === 0 && (
+            <div
+              className="wall-placeholder"
+              style={{ opacity: 0.5, padding: '16px 0', fontSize: '12px' }}
+            >
+              {selectedStructure
+                ? 'NO TOOLS IN THE SELECTED CATEGORIES'
+                : 'SELECT A TARGET AND A RAIDING TOOL CATEGORY'}
+            </div>
+          )}
+
+          {toolGroups.length > 0 && (
+            <div className="tool-list">
+              {toolGroups.map((group) => (
+                <div key={group.label} className="tool-group">
+                  <div className="tool-group-label">
+                    {group.label.toUpperCase()}
+                  </div>
+                  {group.tools.map((tool) => (
+                    <div className="tool-row" key={tool.name}>
+                      <span className="tool-name">{tool.name}</span>
+                      <span className="tool-time">{tool.time}</span>
+                      <span className="tool-qty">
+                        {tool.total.toLocaleString()}
+                        <span className="tool-qty-x">x</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
       <div className="panel-right">
-        {!ready || !result ? (
+        {!solverShown ? (
           <div className="empty-state">
             <span className="icon">◈</span>
             SELECT A TARGET
@@ -483,6 +612,8 @@ export function RaidCalculator() {
             className="fade-in-container"
             style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}
           >
+            {solverShown && result && (
+              <>
             {/* Integrity */}
             <div>
               <div className="sec-label">STRUCTURAL INTEGRITY</div>
@@ -939,6 +1070,8 @@ export function RaidCalculator() {
                 </div>
               </div>
             </div>
+              </>
+            )}
           </div>
         )}
       </div>
