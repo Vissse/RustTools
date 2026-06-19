@@ -1,45 +1,45 @@
-import { useMemo, useState } from 'react'
-import { CalcShell } from './CalcShell'
-import { Img } from './Img'
-import { MAX_SLOTS } from '../lib/data/cupboard-data'
+import { useMemo, useState } from "react";
+import { CalcShell } from "./CalcShell";
+import { Img } from "./Img";
+import { MAX_SLOTS } from "../lib/data/cupboard-data";
 import {
   calculateOptimalTC,
   formatTime,
   generateStacks,
-} from '../lib/cupboard-logic'
-import type { Stack } from '../lib/types'
+} from "../lib/cupboard-logic";
+import type { Stack } from "../lib/types";
 
 const RESOURCES = [
-  { key: 'wood', img: '/images/wood.png', alt: 'Wood' },
-  { key: 'stone', img: '/images/stones.png', alt: 'Stone' },
-  { key: 'metal', img: '/images/metal.fragments.png', alt: 'Metal Fragments' },
-  { key: 'hqm', img: '/images/metal.refined.png', alt: 'High Quality Metal' },
-] as const
+  { key: "wood", img: "/images/wood.png", alt: "Wood" },
+  { key: "stone", img: "/images/stones.png", alt: "Stone" },
+  { key: "metal", img: "/images/metal.fragments.png", alt: "Metal Fragments" },
+  { key: "hqm", img: "/images/metal.refined.png", alt: "High Quality Metal" },
+] as const;
 
-type Inputs = Record<(typeof RESOURCES)[number]['key'], string>
+type Inputs = Record<(typeof RESOURCES)[number]["key"], string>;
 
-const EMPTY: Inputs = { wood: '', stone: '', metal: '', hqm: '' }
+const EMPTY: Inputs = { wood: "", stone: "", metal: "", hqm: "" };
 
 export function CupboardCalculator() {
-  const [inputs, setInputs] = useState<Inputs>(EMPTY)
+  const [inputs, setInputs] = useState<Inputs>(EMPTY);
 
   const result = useMemo(() => {
-    const wood = parseInt(inputs.wood) || 0
-    const stone = parseInt(inputs.stone) || 0
-    const metal = parseInt(inputs.metal) || 0
-    const hqm = parseInt(inputs.hqm) || 0
+    const wood = parseInt(inputs.wood) || 0;
+    const stone = parseInt(inputs.stone) || 0;
+    const metal = parseInt(inputs.metal) || 0;
+    const hqm = parseInt(inputs.hqm) || 0;
 
-    const tc = calculateOptimalTC(wood, stone, metal, hqm)
-    if (!tc) return null
+    const tc = calculateOptimalTC(wood, stone, metal, hqm);
+    if (!tc) return null;
 
     const stacks: Stack[] = [
-      ...generateStacks(tc.wood, 'wood'),
-      ...generateStacks(tc.stone, 'stone'),
-      ...generateStacks(tc.metal, 'metal'),
-      ...generateStacks(tc.hqm, 'hqm'),
-    ]
-    return { time: formatTime(tc.daysFloat), stacks }
-  }, [inputs])
+      ...generateStacks(tc.wood, "wood"),
+      ...generateStacks(tc.stone, "stone"),
+      ...generateStacks(tc.metal, "metal"),
+      ...generateStacks(tc.hqm, "hqm"),
+    ];
+    return { time: formatTime(tc.daysFloat), stacks };
+  }, [inputs]);
 
   return (
     <CalcShell
@@ -55,15 +55,13 @@ export function CupboardCalculator() {
       <div className="panel-left">
         <div className="sec-label">Daily Upkeep Cost</div>
 
-        <div className="input-group">
+        <div className="input-group" style={{ gap: "8px" }}>
           {RESOURCES.map((r) => (
-            <div className="input-row" key={r.key}>
-              <div className="input-icon">
-                <Img src={r.img} alt={r.alt} />
-              </div>
+            <div className="sleek-input-row" key={r.key}>
+              <Img src={r.img} alt={r.alt} className="sleek-input-icon" />
               <input
                 type="number"
-                className="input-box"
+                className="sleek-input-box"
                 min="0"
                 placeholder="0"
                 value={inputs[r.key]}
@@ -75,7 +73,7 @@ export function CupboardCalculator() {
           ))}
         </div>
 
-        <button className="btn-reset" onClick={() => setInputs(EMPTY)}>
+        <button className="sleek-btn-reset" onClick={() => setInputs(EMPTY)}>
           Reset Values
         </button>
 
@@ -84,6 +82,10 @@ export function CupboardCalculator() {
             src="/images/cupboard.tool.png"
             alt="Tool Cupboard"
             className="tc-image"
+            style={{
+              opacity: 0.8,
+              filter: "drop-shadow(0 15px 25px rgba(0,0,0,0.8))",
+            }}
           />
         </div>
       </div>
@@ -91,38 +93,52 @@ export function CupboardCalculator() {
       <div className="panel-right">
         {result ? (
           <div>
-            <div className="tc-status">
+            <div className="sleek-tc-status">
               Protected for <span>{result.time}</span>
             </div>
-            <div className="tc-grid-container">
-              <div className="tc-grid">
+
+            <div className="sleek-tc-grid-container">
+              <div className="sleek-tc-grid">
                 {Array.from({ length: MAX_SLOTS }).map((_, i) => {
-                  const stack = result.stacks[i]
+                  const stack = result.stacks[i];
                   return (
-                    <div className="tc-slot" key={i}>
+                    <div
+                      className={`sleek-tc-slot ${stack ? "has-item" : ""}`}
+                      key={i}
+                      style={
+                        stack ? { animationDelay: `${i * 0.025}s` } : undefined
+                      }
+                    >
                       {stack && (
                         <>
                           <Img src={stack.img} alt={stack.type} />
-                          <span className="tc-qty">
+                          <span className="sleek-tc-qty">
                             x{stack.amount.toLocaleString()}
                           </span>
                         </>
                       )}
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
           </div>
         ) : (
           <div className="empty-state">
-            <span className="icon">◈</span>
-            Enter your daily upkeep cost
-            <br />
-            to calculate capacity
+            <span
+              className="icon"
+              style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
+            >
+              ◈
+            </span>
+            <div style={{ color: "#888", lineHeight: 1.6 }}>
+              Enter your daily upkeep cost
+              <br />
+              to calculate optimal capacity
+            </div>
           </div>
         )}
       </div>
     </CalcShell>
-  )
+  );
 }

@@ -1965,3 +1965,299 @@ h1.page-title span {
   height: 12px;
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ CUPBOARD CALCULATOR
+   ════════════════════════════════════════════════════════════════════════ */
+/* Inputy */
+.sleek-input-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.sleek-input-row:focus-within {
+  border-color: rgba(206, 66, 43, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 0 16px rgba(206, 66, 43, 0.08);
+  transform: translateX(4px);
+}
+
+.sleek-input-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease;
+}
+
+.sleek-input-row:focus-within .sleek-input-icon {
+  transform: scale(1.1);
+}
+
+.sleek-input-box {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-bright);
+  font-family: var(--font-d);
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  outline: none;
+  text-align: right;
+  padding: 0;
+}
+
+.sleek-input-box::placeholder {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.sleek-input-box::-webkit-outer-spin-button,
+.sleek-input-box::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sleek-input-box[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Reset Tlačítko */
+.sleek-btn-reset {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #888;
+  font-family: var(--font-d);
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sleek-btn-reset:hover {
+  color: var(--rust);
+  border-color: rgba(206, 66, 43, 0.4);
+  background: rgba(206, 66, 43, 0.05);
+}
+
+/* Status a Grid (Pravý panel) */
+.sleek-tc-status {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sleek-tc-status span {
+  color: var(--text-bright);
+  font-weight: 700;
+  font-size: 15px;
+  background: rgba(206, 66, 43, 0.15);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(206, 66, 43, 0.3);
+  box-shadow: 0 0 10px rgba(206, 66, 43, 0.1);
+}
+
+.sleek-tc-grid-container {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.sleek-tc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.sleek-tc-slot {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sleek-tc-slot:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px) scale(1.05);
+  z-index: 2;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sleek-tc-slot img {
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+  transition: transform 0.2s ease;
+}
+
+.sleek-tc-slot:hover img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.8));
+}
+
+.sleek-tc-qty {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  color: #e0e0e0;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* Kaskádová animace pro předměty */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+  }
+  70% {
+    transform: scale(1.1) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.sleek-tc-slot.has-item {
+  animation: popIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ DROPDOWN MENU (Navbar)
+   ════════════════════════════════════════════════════════════════════════ */
+.nav-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Obal pro zachování hover stavu, i když myš přejíždí přes mezeru */
+.nav-dropdown-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 15px; /* Neviditelný most mezi tlačítkem a menu */
+}
+
+.nav-dropdown-wrapper .nav-item {
+  cursor: default; /* Není to odkaz, ale otevírač menu */
+  gap: 8px;
+}
+
+.dropdown-arrow {
+  font-size: 9px;
+  opacity: 0.6;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nav-dropdown-wrapper:hover .dropdown-arrow {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: var(--rust);
+}
+
+/* Skryté a posunuté menu */
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  min-width: 220px;
+  background: rgba(19, 18, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 2px solid var(--rust);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+
+  /* Animace: Průhledné, mírně nahoře a zmenšené */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px) scale(0.98);
+  transform-origin: top center;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 100;
+  pointer-events: none; /* Nechytá kliknutí, když je skryté */
+}
+
+/* Zobrazení při najetí myší na wrapper */
+.nav-dropdown-wrapper:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Položky uvnitř dropdownu */
+.dropdown-item {
+  font-family: var(--font-d);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-radius: 4px;
+  background: transparent;
+  transition: all 0.2s ease;
+  display: block;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-bright);
+  padding-left: 20px; /* Jemný mikro-posun doprava při najetí (moderní detail) */
+}
+
+.dropdown-item.active {
+  background: rgba(206, 66, 43, 0.08);
+  color: var(--rust);
+  border-left: 2px solid var(--rust);
+  padding-left: 18px;
+}
