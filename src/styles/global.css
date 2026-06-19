@@ -189,9 +189,10 @@ body::before {
   padding: 0 30px;
 }
 .brand-logo {
-  color: var(--rust);
-  font-size: 24px;
-  line-height: 1;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
   filter: drop-shadow(0 0 8px var(--rust-glow));
 }
 .brand-name {
@@ -2185,8 +2186,13 @@ h1.page-title span {
 }
 
 .dropdown-arrow {
-  font-size: 9px;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-left: 5px;
+  vertical-align: middle;
   opacity: 0.6;
+  transform-origin: center center;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
