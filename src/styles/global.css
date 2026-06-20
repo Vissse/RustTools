@@ -1046,10 +1046,6 @@ h1.page-title span {
   flex-direction: column;
   position: relative;
   user-select: none;
-  /* Skip layout/paint for off-screen cells in the 700+ item list. The size hint
-     matches a cell (image block + 24px controls) so the scrollbar stays stable. */
-  content-visibility: auto;
-  contain-intrinsic-size: auto 96px;
 }
 .inv-item-img {
   padding: 12px 0;
