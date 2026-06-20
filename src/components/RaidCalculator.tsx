@@ -453,8 +453,8 @@ export function RaidCalculator() {
                     </div>
 
                     {/* Pravá část: ODDĚLOVAČ + PŘEPÍNAČ (Pevný blok) */}
-                    <div className="craft-toggle-side">
-                      <div className="craft-divider" />
+                    <div className="ml-auto craft-toggle-side ">
+                      {/* <div className="craft-divider" /> */}
 
                       {/* Spínač a nápisy */}
                       <div
