@@ -9,7 +9,7 @@ const MATERIALS = [
     name: "Twig",
     hp: 10,
     decayHours: 1,
-    img: "/images/wood.png", // Twig obvykle nemá vlastní ikonu suroviny, použijeme dřevo
+    img: "/images/wood.png",
     color: "#a08b6c",
   },
   {
@@ -52,8 +52,7 @@ export function DecayCalculator() {
 
   const activeMat = MATERIALS.find((m) => m.id === selectedMaterial)!;
 
-  // Při změně materiálu automaticky upravíme HP, pokud přesahuje nové maximum,
-  // nebo pokud je pole prázdné, nastavíme ho na maximum nového materiálu.
+  // Při změně materiálu automaticky upravíme HP, pokud přesahuje nové maximum
   useEffect(() => {
     setCurrentHp((prev) => {
       if (prev === "") return activeMat.hp;
@@ -64,17 +63,15 @@ export function DecayCalculator() {
 
   const safeHp =
     typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;
-  const hpPercent = (safeHp / activeMat.hp) * 100;
+  const hpPercent = Math.max(0, Math.min(100, (safeHp / activeMat.hp) * 100));
 
   // Výpočet zbývajícího času
   const timeString = useMemo(() => {
     if (safeHp <= 0) return "0S";
 
-    // Zlomek životů vynásobíme celkovým časem rozpadu v sekundách
     const totalSeconds = Math.round(
       (safeHp / activeMat.hp) * activeMat.decayHours * 3600,
     );
-
     const hours = Math.floor(totalSeconds / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
     const secs = totalSeconds % 60;
@@ -96,188 +93,268 @@ export function DecayCalculator() {
       }
       headerAccent="DECAY"
       headerRest="CALCULATOR"
-      variant="cupboard" // Využijeme rozvržení 45% vlevo / 55% vpravo
+      variant="recycling" // Používáme "recycling" protože má flexibilní tělo přes celou výšku (85vh)
     >
-      {/* LEVÝ PANEL: Vstupy */}
-      <div className="panel-left">
-        {/* 1. Výběr Materiálu */}
-        <div className="sec-label">BUILDING MATERIAL</div>
+      <style>{`
+        /* Kompletní vycentrování celého obsahu */
+        .decay-container {
+          flex: 1;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center; /* Střed obrazovky vertikálně i horizontálně */
+          padding: 20px;
+        }
+
+        /* Nástupní animace prvků */
+        @keyframes slideUpFade {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .decay-anim-1 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
+        .decay-anim-2 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
+        .decay-anim-3 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
+
+        /* Centrování materiálů na 1 řádek */
+        .mat-selector-row {
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          flex-wrap: nowrap; /* STRIKTNĚ VYNUCENÝ JEDEN ŘÁDEK */
+          margin-bottom: 40px;
+          width: 100%;
+        }
+
+        /* Hlavní karta výsledků */
+        .decay-card {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 16px;
+          padding: 48px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 600px; /* Trošku rozšířeno pro hezčí proporce */
+          box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Jemný vrchní highlight karty */
+        .decay-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; height: 2px;
+          background: linear-gradient(90deg, transparent, var(--rust), transparent);
+          opacity: 0.5;
+        }
+
+        .decay-time-title {
+          font-size: 11px;
+          font-weight: 700;
+          color: #757575;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          margin-bottom: 12px;
+        }
+
+        .decay-time-value {
+          font-size: 72px; /* Zvětšeno pro wow efekt */
+          font-weight: 800;
+          color: var(--rust);
+          line-height: 1;
+          text-shadow: 0 0 32px rgba(204, 66, 44, 0.3);
+          margin-bottom: 40px;
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* Skrytí šipek u inputu */
+        .decay-input::-webkit-inner-spin-button,
+        .decay-input::-webkit-outer-spin-button {
+          -webkit-appearance: none; margin: 0;
+        }
+        .decay-input { -moz-appearance: textfield; }
+      `}</style>
+
+      {/* ŽÁDNÝ .panel-left / .panel-right! Čistý obal. */}
+      <div className="decay-container">
+        {/* 1. SELEKTOR MATERIÁLU */}
         <div
-          className="minimal-btn-grid"
-          style={{ maxHeight: "none", marginBottom: "32px" }}
+          className="decay-anim-1"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          {MATERIALS.map((m) => (
-            <button
-              key={m.id}
-              className={`minimal-box-btn${selectedMaterial === m.id ? " active" : ""}`}
-              onClick={() => setSelectedMaterial(m.id)}
-            >
-              <Img
-                src={m.img}
-                alt={m.name}
-                style={m.id === "twig" ? { opacity: 0.5 } : {}}
-              />
-              <span className="minimal-box-name">{m.name}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* 2. Zadání vlastního HP */}
-        <div className="sec-label">CURRENT HP</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div
-            className="free-counter-wrap"
-            style={{
-              background: "rgba(255,255,255,0.02)",
-              padding: "12px 16px",
-              borderRadius: "8px",
-              border: "1px solid rgba(255,255,255,0.05)",
-              alignSelf: "flex-start",
-            }}
-          >
-            <button
-              className="free-counter-btn"
-              onClick={() =>
-                setCurrentHp((c) =>
-                  Math.max(0, (typeof c === "number" ? c : 0) - 10),
-                )
-              }
-            >
-              −
-            </button>
-            <div className="free-separator" />
-            <input
-              type="number"
-              min="0"
-              max={activeMat.hp}
-              className="invisible-num-input free-counter-input"
-              style={{
-                fontSize: "26px",
-                width: "80px",
-                color: activeMat.color,
-              }}
-              value={currentHp}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val === "") setCurrentHp("");
-                else {
-                  const parsed = parseInt(val, 10);
-                  if (!isNaN(parsed) && parsed >= 0) {
-                    setCurrentHp(Math.min(parsed, activeMat.hp)); // Zabrání napsání většího HP než je max
-                  }
-                }
-              }}
-            />
-            <div className="free-separator" />
-            <button
-              className="free-counter-btn"
-              onClick={() =>
-                setCurrentHp((c) =>
-                  Math.min(activeMat.hp, (typeof c === "number" ? c : 0) + 10),
-                )
-              }
-            >
-              +
-            </button>
+          <div className="sec-label" style={{ marginBottom: "16px" }}>
+            BUILDING MATERIAL
           </div>
-
-          <div
-            style={{
-              fontSize: "11px",
-              color: "#666",
-              fontWeight: 600,
-              letterSpacing: "0.05em",
-              marginTop: "4px",
-            }}
-          >
-            MAX HP: <span style={{ color: "#a0a0a0" }}>{activeMat.hp}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* PRAVÝ PANEL: Výsledky */}
-      <div
-        className="panel-right"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          paddingBottom: "64px",
-        }}
-      >
-        {/* Zobrazení Času */}
-        <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <div
-            style={{
-              fontSize: "12px",
-              fontWeight: 700,
-              color: "#757575",
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              marginBottom: "12px",
-            }}
-          >
-            Time Until Destroyed
-          </div>
-          <div
-            style={{
-              fontSize: "56px",
-              fontWeight: 800,
-              color: "#cc422c",
-              lineHeight: 1,
-              textShadow: "0 0 24px rgba(204, 66, 44, 0.4)",
-            }}
-          >
-            {timeString}
+          <div className="mat-selector-row">
+            {MATERIALS.map((m) => (
+              <button
+                key={m.id}
+                className={`minimal-box-btn${selectedMaterial === m.id ? " active" : ""}`}
+                onClick={() => setSelectedMaterial(m.id)}
+                style={{ minWidth: "100px", flexShrink: 0 }}
+              >
+                <Img
+                  src={m.img}
+                  alt={m.name}
+                  style={m.id === "twig" ? { opacity: 0.6 } : {}}
+                />
+                <span className="minimal-box-name">{m.name}</span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Vizuální HP Bar (Převzatý a upravený z Raid Calculatoru) */}
-        <div style={{ width: "80%", margin: "0 auto" }}>
+        {/* 2. CENTRÁLNÍ KARTA (Input + Výsledek) */}
+        <div className="decay-card decay-anim-2">
+          {/* Výsledný čas */}
+          <div style={{ textAlign: "center" }}>
+            <div className="decay-time-title">Time Until Destroyed</div>
+            <div className="decay-time-value">{timeString}</div>
+          </div>
+
+          {/* Vstupní Input pro HP */}
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "8px",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.05em",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              marginBottom: "32px",
             }}
           >
-            <span style={{ color: activeMat.color }}>{safeHp} HP</span>
-            <span style={{ color: "#666" }}>{activeMat.hp} HP</span>
+            <div
+              style={{
+                fontSize: "11px",
+                color: "#666",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                marginBottom: "8px",
+              }}
+            >
+              CURRENT HP
+            </div>
+
+            <div
+              className="free-counter-wrap"
+              style={{
+                background: "rgba(0,0,0,0.4)",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <button
+                className="free-counter-btn"
+                onClick={() =>
+                  setCurrentHp((c) =>
+                    Math.max(0, (typeof c === "number" ? c : 0) - 10),
+                  )
+                }
+              >
+                −
+              </button>
+              <div className="free-separator" />
+              <input
+                type="number"
+                min="0"
+                max={activeMat.hp}
+                className="decay-input free-counter-input"
+                style={{
+                  fontSize: "28px",
+                  width: "100px",
+                  color: activeMat.color,
+                  transition: "color 0.3s ease",
+                }}
+                value={currentHp}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "") setCurrentHp("");
+                  else {
+                    const parsed = parseInt(val, 10);
+                    if (!isNaN(parsed) && parsed >= 0) {
+                      setCurrentHp(Math.min(parsed, activeMat.hp));
+                    }
+                  }
+                }}
+              />
+              <div className="free-separator" />
+              <button
+                className="free-counter-btn"
+                onClick={() =>
+                  setCurrentHp((c) =>
+                    Math.min(
+                      activeMat.hp,
+                      (typeof c === "number" ? c : 0) + 10,
+                    ),
+                  )
+                }
+              >
+                +
+              </button>
+            </div>
           </div>
 
-          <div
-            className="modern-hp-wrapper"
-            style={{
-              height: "6px",
-              background: "rgba(255,255,255,0.05)",
-              borderRadius: "3px",
-              overflow: "hidden",
-            }}
-          >
-            {/* Samotná výplň */}
+          {/* HP Bar */}
+          <div className="decay-anim-3" style={{ width: "100%" }}>
             <div
-              className="modern-hp-fill"
               style={{
-                width: `${hpPercent}%`,
-                background: `linear-gradient(to right, ${activeMat.color}40 0%, ${activeMat.color} 100%)`,
-                transition:
-                  "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "8px",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
               }}
-            />
-            {/* Glow efekt */}
+            >
+              <span
+                style={{
+                  color: activeMat.color,
+                  transition: "color 0.3s ease",
+                }}
+              >
+                {safeHp} HP
+              </span>
+              <span style={{ color: "#666" }}>{activeMat.hp} HP</span>
+            </div>
+
             <div
-              className="modern-hp-glow"
+              className="modern-hp-wrapper"
               style={{
-                width: `${hpPercent}%`,
-                background: activeMat.color,
-                opacity: 0.5,
-                transition:
-                  "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                height: "6px",
+                background: "rgba(255,255,255,0.05)",
+                borderRadius: "3px",
+                overflow: "hidden",
               }}
-            />
+            >
+              <div
+                className="modern-hp-fill"
+                style={{
+                  width: `${hpPercent}%`,
+                  background: `linear-gradient(to right, ${activeMat.color}40 0%, ${activeMat.color} 100%)`,
+                  transition:
+                    "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                }}
+              />
+              <div
+                className="modern-hp-glow"
+                style={{
+                  width: `${hpPercent}%`,
+                  background: activeMat.color,
+                  opacity: 0.5,
+                  transition:
+                    "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

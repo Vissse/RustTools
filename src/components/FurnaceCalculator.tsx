@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 
-// 1. Importy tvých vygenerovaných dat
+// 1. Importy vygenerovaných dat
 import { Barbeque as BarbequeData } from "../lib/data/smelting-data/smelting-data-barbeque";
 import { Campfire as CampfireData } from "../lib/data/smelting-data/smelting-data-campfire";
 import { Furnace as FurnaceData } from "../lib/data/smelting-data/smelting-data-furnace";
@@ -10,7 +10,6 @@ import { LargeFurnace as LargeFurnaceData } from "../lib/data/smelting-data/smel
 import { SmallOilRefinery as OilRefineryData } from "../lib/data/smelting-data/smelting-data-small-oil-refinery";
 import { SmallStoneFireplace as StoneFireplaceData } from "../lib/data/smelting-data/smelting-data-small-stone-fireplace";
 
-// Typ odpovídající tomu, co vygeneroval Python skript
 export interface SmeltingProcess {
   inputItem: string;
   woodRequired: number;
@@ -19,12 +18,11 @@ export interface SmeltingProcess {
   timeSeconds: number;
 }
 
-// 2. Definice všech tavení/vaření stanic
 const SMELTERS = [
   {
     id: "furnace",
     name: "Furnace",
-    slots: 3, // Běžně se ruda dělí na 3 stacky
+    slots: 3,
     img: "/images/furnace.png",
     data: FurnaceData,
   },
@@ -38,7 +36,7 @@ const SMELTERS = [
   {
     id: "small-oil-refinery",
     name: "Oil Refinery",
-    slots: 1, // Zpracovává se v jednom stacku
+    slots: 1,
     img: "/images/small.oil.refinery.png",
     data: OilRefineryData,
   },
@@ -53,19 +51,18 @@ const SMELTERS = [
     id: "barbeque",
     name: "Barbeque",
     slots: 1,
-    img: "/images/barbeque.png",
+    img: "/images/bbq.png",
     data: BarbequeData,
   },
   {
     id: "small-stone-fireplace",
     name: "Stone Fireplace",
     slots: 1,
-    img: "/images/small.stone.fireplace.png",
+    img: "/images/fireplace.stone.png",
     data: StoneFireplaceData,
   },
 ];
 
-// Pomocná funkce pro spárování názvu s obrázkem (řeší mezery a velká písmena)
 function getImageFromName(name: string) {
   const map: Record<string, string> = {
     "Metal Ore": "metal.ore.png",
@@ -104,23 +101,18 @@ export function FurnaceCalculator() {
   const activeSmelter = SMELTERS.find((s) => s.id === selectedSmelterId)!;
   const safeQty = typeof quantity === "number" && quantity > 0 ? quantity : 0;
 
-  // Když se změní typ pece, musíme resetovat index vybraného procesu,
-  // abychom nesahali mimo pole nového datového souboru
   useEffect(() => {
     setSelectedProcessIdx(0);
   }, [selectedSmelterId]);
 
   const activeProcess = activeSmelter.data[selectedProcessIdx];
 
-  // --- VÝPOČTY ---
   const results = useMemo(() => {
     if (safeQty === 0 || !activeProcess) return null;
 
-    // Optimální čas (pokud pec dovoluje víc slotů, rozdělíme surovinu na části)
     const itemsPerSlot = Math.ceil(safeQty / activeSmelter.slots);
     const totalSeconds = Math.ceil(itemsPerSlot * activeProcess.timeSeconds);
 
-    // Formátování času do textu
     const hours = Math.floor(totalSeconds / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
     const secs = totalSeconds % 60;
@@ -130,7 +122,6 @@ export function FurnaceCalculator() {
     if (mins > 0 || hours > 0) timeStr += `${mins}M `;
     timeStr += `${secs}S`;
 
-    // Výstup (Yield)
     const outStr = String(activeProcess.outputQuantity);
     let yieldAmount = 0;
     if (outStr.includes("%")) {
@@ -140,21 +131,13 @@ export function FurnaceCalculator() {
       yieldAmount = safeQty * parseFloat(outStr);
     }
 
-    // Spotřeba dřeva
     const woodRequired = Math.ceil(safeQty * activeProcess.woodRequired);
-
-    // Uhlí jako vedlejší produkt (jen pokud samo dřevo není hlavním vstupem)
     let charcoal = 0;
     if (woodRequired > 0 && activeProcess.inputItem !== "Wood") {
-      charcoal = Math.floor(woodRequired * 0.75); // 75% šance na uhlí za každé shořelé dřevo
+      charcoal = Math.floor(woodRequired * 0.75);
     }
 
-    return {
-      timeStr,
-      yieldAmount,
-      woodRequired,
-      charcoal,
-    };
+    return { timeStr, yieldAmount, woodRequired, charcoal };
   }, [safeQty, activeSmelter, activeProcess]);
 
   return (
@@ -166,205 +149,403 @@ export function FurnaceCalculator() {
       }
       headerAccent="SMELTING"
       headerRest="CALCULATOR"
-      variant="cupboard" // Využijeme rozvržení s levým a pravým panelem
+      variant="recycling"
     >
-      {/* LEVÝ PANEL: Vstupy */}
-      <div className="panel-left">
-        {/* 1. Výběr stanice */}
-        <div className="sec-label">SMELTER TYPE</div>
-        <div
-          className="minimal-btn-grid"
-          style={{ maxHeight: "none", marginBottom: "24px" }}
-        >
-          {SMELTERS.map((s) => (
-            <button
-              key={s.id}
-              className={`minimal-box-btn${selectedSmelterId === s.id ? " active" : ""}`}
-              onClick={() => setSelectedSmelterId(s.id)}
-            >
-              <Img src={s.img} alt={s.name} />
-              <span className="minimal-box-name">{s.name}</span>
-            </button>
-          ))}
-        </div>
+      <style>{`
+        /* Kompletní vycentrování celé kalkulačky do jednoho sloupce */
+        .furnace-container {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 20px 40px;
+          overflow-y: auto;
+        }
 
-        {/* 2. Výběr procesu (na základě stanice) */}
-        <div className="sec-label">TARGET PROCESS</div>
-        <div
-          className="minimal-btn-grid"
-          style={{ maxHeight: "none", marginBottom: "24px" }}
-        >
-          {activeSmelter.data.map((process, idx) => (
-            <button
-              key={idx}
-              className={`minimal-box-btn${selectedProcessIdx === idx ? " active" : ""}`}
-              onClick={() => setSelectedProcessIdx(idx)}
-              title={`${process.inputItem} -> ${process.outputItem}`}
-            >
-              <Img
-                src={getImageFromName(process.inputItem)}
-                alt={process.inputItem}
-              />
-              <span className="minimal-box-name">{process.inputItem}</span>
-            </button>
-          ))}
-        </div>
+        /* Nástupní animace prvků */
+        @keyframes slideUpFade {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .anim-1 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
+        .anim-2 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
+        .anim-3 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
 
-        {/* 3. Množství (Counter) */}
-        <div className="sec-label">AMOUNT TO PROCESS</div>
+        /* Zarovnání řad tlačítek na střed */
+        .selector-row {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 24px;
+          max-width: 800px;
+        }
+
+        /* ZAHUŠTĚNÝ řádek pro výběr procesu (aby se vešlo hodně položek jídla) */
+        .dense-selector-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          max-width: 840px;
+          margin-bottom: 30px;
+        }
+
+        .dense-btn {
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 4px;
+          padding: 8px 4px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          opacity: 0.5;
+          filter: grayscale(80%);
+          width: 85px; 
+        }
+        .dense-btn:hover {
+          opacity: 0.8;
+          background: rgba(255, 255, 255, 0.02);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+        .dense-btn.active {
+          opacity: 1;
+          filter: grayscale(0%);
+          border-color: #cc422c;
+          background: linear-gradient(to bottom, rgba(204, 66, 44, 0.08) 0%, transparent 100%);
+        }
+        .dense-btn img {
+          width: 32px; 
+          height: 32px;
+          object-fit: contain;
+          transition: transform 0.3s ease;
+        }
+        .dense-btn.active img {
+          transform: scale(1.1);
+        }
+        .dense-btn .minimal-box-name {
+          font-size: 9px;
+          line-height: 1.15;
+          text-align: center;
+        }
+
+        /* --- HORIZONTÁLNÍ KARTA (ZMENŠENO PRO MINIMALISMUS) --- */
+        .furnace-main-card {
+          background: linear-gradient(180deg, rgba(26, 25, 23, 0.95) 0%, rgba(18, 17, 15, 0.95) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 12px;
+          padding: 24px 36px; /* Zmenšen padding */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 600px; /* Mírně zúženo */
+          box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+          position: relative;
+        }
+        .furnace-main-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; height: 2px;
+          background: linear-gradient(90deg, transparent, rgba(204, 66, 44, 0.5), transparent);
+        }
+
+        /* Tmavý Counter box */
+        .dark-counter-box {
+          display: flex;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 6px;
+          padding: 4px 12px; /* Zmenšen padding */
+          margin-bottom: 16px; /* Zmenšen margin */
+        }
+
+        /* Výsledky vedle sebe */
+        .horizontal-results-grid {
+          display: flex;
+          gap: 12px; /* Zmenšená mezera */
+          width: 100%;
+          justify-content: center;
+          margin-top: 12px; /* Zmenšen margin */
+        }
+
+        .h-result-box {
+          background: rgba(255, 255, 255, 0.015);
+          border: 1px solid transparent;
+          border-radius: 8px;
+          padding: 12px; /* Zmenšen padding boxu */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex: 1; 
+          transition: background 0.2s ease;
+        }
+        .h-result-box:hover {
+          background: rgba(255, 255, 255, 0.035);
+        }
+
+        .h-result-box img {
+          width: 30px; /* Zmenšené ikony */
+          height: 30px;
+          object-fit: contain;
+          margin-bottom: 8px; /* Menší mezera */
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .h-result-val {
+          font-family: var(--font-d);
+          font-size: 22px; /* Zmenšený font čísel */
+          font-weight: 600;
+          line-height: 1;
+          margin-bottom: 2px;
+        }
+        .h-result-lbl {
+          font-family: var(--font-ui);
+          font-size: 9px; /* Menší popisek */
+          font-weight: 700;
+          color: #757575;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        /* Skrytí nativního inputu */
+        .invisible-num-input::-webkit-inner-spin-button,
+        .invisible-num-input::-webkit-outer-spin-button {
+          -webkit-appearance: none; margin: 0;
+        }
+        .invisible-num-input { -moz-appearance: textfield; }
+      `}</style>
+
+      <div className="furnace-container">
+        {/* 1. VÝBĚR PECE */}
         <div
-          className="free-counter-wrap"
+          className="anim-1"
           style={{
-            background: "rgba(255,255,255,0.02)",
-            padding: "8px 16px",
-            borderRadius: "8px",
-            border: "1px solid rgba(255,255,255,0.05)",
-            marginTop: "8px",
-            alignSelf: "flex-start",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
           }}
         >
-          <button
-            className="free-counter-btn"
-            onClick={() =>
-              setQuantity((c) =>
-                Math.max(0, (typeof c === "number" ? c : 0) - 100),
-              )
-            }
-          >
-            −
-          </button>
-          <div className="free-separator" />
-          <input
-            type="number"
-            min="0"
-            className="invisible-num-input free-counter-input"
-            style={{ fontSize: "22px", width: "80px" }}
-            value={quantity}
-            onChange={(e) => {
-              const val = e.target.value;
-              if (val === "") setQuantity("");
-              else {
-                const parsed = parseInt(val, 10);
-                if (!isNaN(parsed) && parsed >= 0) setQuantity(parsed);
-              }
-            }}
-          />
-          <div className="free-separator" />
-          <button
-            className="free-counter-btn"
-            onClick={() =>
-              setQuantity((c) => (typeof c === "number" ? c : 0) + 100)
-            }
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      {/* PRAVÝ PANEL: Výsledky */}
-      <div className="panel-right">
-        {results ? (
-          <div>
-            <div className="excavator-time-display">
-              <span className="excavator-time-label">
-                Total Processing Time
-              </span>
-              <span className="excavator-time-value">{results.timeStr}</span>
-            </div>
-
-            <div className="excavator-list">
-              {/* VÝSTUP: Zpracovaný materiál */}
-              <div
-                className="excavator-row animate-yield"
-                style={{ animationDelay: "0s" }}
+          <div className="sec-label" style={{ marginBottom: "16px" }}>
+            SMELTER TYPE
+          </div>
+          <div className="selector-row">
+            {SMELTERS.map((s) => (
+              <button
+                key={s.id}
+                className={`minimal-box-btn${selectedSmelterId === s.id ? " active" : ""}`}
+                onClick={() => setSelectedSmelterId(s.id)}
+                style={{ flexShrink: 0, minWidth: "90px" }}
               >
-                <div className="excavator-left">
-                  <Img
-                    src={getImageFromName(activeProcess.outputItem)}
-                    alt={activeProcess.outputItem}
-                  />
-                  <span className="excavator-name" style={{ color: "#fff" }}>
-                    {activeProcess.outputItem}
-                  </span>
-                </div>
-                <div className="excavator-right">
-                  <span className="excavator-total" style={{ color: "#fff" }}>
-                    {results.yieldAmount.toLocaleString()}
-                  </span>
-                  <span className="excavator-rate">YIELD</span>
-                </div>
+                <Img src={s.img} alt={s.name} />
+                <span className="minimal-box-name">{s.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 2. VÝBĚR PROCESU (ZAHUŠTĚNÝ) */}
+        <div
+          className="anim-2"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div className="sec-label" style={{ marginBottom: "16px" }}>
+            TARGET PROCESS
+          </div>
+          <div className="dense-selector-row">
+            {activeSmelter.data.map((process, idx) => (
+              <button
+                key={idx}
+                className={`dense-btn${selectedProcessIdx === idx ? " active" : ""}`}
+                onClick={() => setSelectedProcessIdx(idx)}
+                title={`${process.inputItem} -> ${process.outputItem}`}
+              >
+                <Img
+                  src={getImageFromName(process.inputItem)}
+                  alt={process.inputItem}
+                />
+                <span className="minimal-box-name">{process.inputItem}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 3. CENTRÁLNÍ KARTA (Zmenšená a minimalistická) */}
+        <div className="furnace-main-card anim-3">
+          {/* Label množstí */}
+          <div
+            style={{
+              fontSize: "10px",
+              color: "#757575",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              marginBottom: "8px",
+              textTransform: "uppercase",
+            }}
+          >
+            AMOUNT TO PROCESS
+          </div>
+
+          {/* Tmavý Counter box */}
+          <div className="dark-counter-box">
+            <button
+              className="free-counter-btn"
+              onClick={() =>
+                setQuantity((c) =>
+                  Math.max(0, (typeof c === "number" ? c : 0) - 100),
+                )
+              }
+            >
+              −
+            </button>
+            <div
+              className="free-separator"
+              style={{ background: "rgba(255,255,255,0.04)" }}
+            />
+            <input
+              type="number"
+              min="0"
+              className="invisible-num-input free-counter-input"
+              style={{ fontSize: "22px", width: "90px", color: "#fff" }}
+              value={quantity}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "") setQuantity("");
+                else {
+                  const parsed = parseInt(val, 10);
+                  if (!isNaN(parsed) && parsed >= 0) setQuantity(parsed);
+                }
+              }}
+            />
+            <div
+              className="free-separator"
+              style={{ background: "rgba(255,255,255,0.04)" }}
+            />
+            <button
+              className="free-counter-btn"
+              onClick={() =>
+                setQuantity((c) => (typeof c === "number" ? c : 0) + 100)
+              }
+            >
+              +
+            </button>
+          </div>
+
+          {/* Čas zpracování */}
+          {results && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                margin: "4px 0",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "10px",
+                  color: "#757575",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                PROCESSING TIME:
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-d)",
+                  fontSize: "24px" /* Zmenšený čas */,
+                  fontWeight: 600,
+                  color: "#cc422c",
+                  lineHeight: 1,
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {results.timeStr}
+              </span>
+            </div>
+          )}
+
+          {/* Horizontální rozložení výsledků */}
+          {results ? (
+            <div className="horizontal-results-grid">
+              {/* 1. BOX: Výtěžek (Yield) */}
+              <div className="h-result-box">
+                <Img
+                  src={getImageFromName(activeProcess.outputItem)}
+                  alt={activeProcess.outputItem}
+                />
+                <span className="h-result-val" style={{ color: "#fff" }}>
+                  {results.yieldAmount.toLocaleString()}
+                </span>
+                <span className="h-result-lbl">YIELD</span>
               </div>
 
-              {/* VÝSTUP: Dřevo */}
+              {/* 2. BOX: Potřebné dřevo (Fuel) */}
               {results.woodRequired > 0 && (
-                <div
-                  className="excavator-row animate-yield"
-                  style={{ animationDelay: "0.05s" }}
-                >
-                  <div className="excavator-left">
-                    <Img src="/images/wood.png" alt="Wood" />
-                    <span
-                      className="excavator-name"
-                      style={{ color: "#d0d0d0" }}
-                    >
-                      Wood Required
-                    </span>
-                  </div>
-                  <div className="excavator-right">
-                    <span
-                      className="excavator-total"
-                      style={{ color: "#c9b07a" }}
-                    >
-                      {results.woodRequired.toLocaleString()}
-                    </span>
-                    <span className="excavator-rate">FUEL</span>
-                  </div>
+                <div className="h-result-box">
+                  <Img src="/images/wood.png" alt="Wood" />
+                  <span className="h-result-val" style={{ color: "#c9b07a" }}>
+                    {results.woodRequired.toLocaleString()}
+                  </span>
+                  <span className="h-result-lbl">FUEL</span>
                 </div>
               )}
 
-              {/* VÝSTUP: Uhlí */}
+              {/* 3. BOX: Vyprodukované uhlí (Byproduct) */}
               {results.charcoal > 0 && (
-                <div
-                  className="excavator-row animate-yield"
-                  style={{ animationDelay: "0.1s" }}
-                >
-                  <div className="excavator-left">
-                    <Img src="/images/charcoal.png" alt="Charcoal" />
-                    <span
-                      className="excavator-name"
-                      style={{ color: "#d0d0d0" }}
-                    >
-                      Charcoal Produced
-                    </span>
-                  </div>
-                  <div className="excavator-right">
-                    <span
-                      className="excavator-total"
-                      style={{ color: "#8a7d6e" }}
-                    >
-                      {results.charcoal.toLocaleString()}
-                    </span>
-                    <span className="excavator-rate">BYPRODUCT</span>
-                  </div>
+                <div className="h-result-box">
+                  <Img src="/images/charcoal.png" alt="Charcoal" />
+                  <span className="h-result-val" style={{ color: "#8a7d6e" }}>
+                    {results.charcoal.toLocaleString()}
+                  </span>
+                  <span className="h-result-lbl">BYPRODUCT</span>
                 </div>
               )}
             </div>
-          </div>
-        ) : (
-          <div className="empty-state">
-            <span
-              className="icon"
-              style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
+          ) : (
+            <div
+              className="empty-state"
+              style={{
+                padding: "20px 0",
+                border: "none",
+                background: "transparent",
+              }}
             >
-              ◈
-            </span>
-            <div style={{ color: "#888", lineHeight: 1.6 }}>
-              Select a process and enter an amount
-              <br />
-              to calculate the requirements
+              <span
+                className="icon"
+                style={{ fontSize: "24px", marginBottom: "8px", opacity: 0.5 }}
+              >
+                ◈
+              </span>
+              <div
+                style={{
+                  color: "#555",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                }}
+              >
+                Enter an amount to calculate
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </CalcShell>
   );
