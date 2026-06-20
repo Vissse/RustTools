@@ -1,8 +1,23 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Outlet } from '@tanstack/react-router'
 import { Navbar } from '../components/Navbar'
 import { ErrorPage } from '../components/ErrorPage'
+import { seo } from '../lib/seo'
 
 export const Route = createRootRoute({
+  // Site-wide head defaults. Per-route `head` (title, description, canonical)
+  // is merged on top of these by TanStack Router.
+  head: () => {
+    // Only the `meta` fallback is taken here; the canonical `link` is left to
+    // each leaf route so we never emit two <link rel="canonical"> at once
+    // (links aren't deduped by rel, unlike meta which dedupes by name/property).
+    const { meta } = seo({
+      title: 'RustTools — Raid, Recycling & Cupboard Calculators for Rust',
+      description:
+        'Free calculators for the survival game Rust: work out the cheapest raid, recycler yields, base upkeep, smelting, decay and more.',
+      path: '/',
+    })
+    return { meta: [{ name: 'robots', content: 'index, follow' }, ...meta] }
+  },
   component: RootLayout,
   errorComponent: ({ error, reset }) => (
     <ErrorPage error={error} reset={reset} />
@@ -18,6 +33,7 @@ export const Route = createRootRoute({
 function RootLayout() {
   return (
     <>
+      <HeadContent />
       <Navbar />
       <Outlet />
     </>
