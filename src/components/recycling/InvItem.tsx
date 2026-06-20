@@ -1,14 +1,14 @@
-import { memo } from 'react'
-import { RecycleImg } from './RecycleImg'
-import { QtyInput } from './QtyInput'
+import { memo } from "react";
+import { RecycleImg } from "./RecycleImg";
+import { QtyInput } from "./QtyInput";
 
 interface InvItemProps {
-  id: string
-  name: string
-  img: string
-  count: number
-  onAdjust: (id: string, delta: number) => void
-  onSet: (id: string, value: number) => void
+  id: string;
+  name: string;
+  img: string;
+  count: number;
+  onAdjust: (id: string, delta: number) => void;
+  onSet: (id: string, value: number) => void;
 }
 
 export const InvItem = memo(function InvItem({
@@ -20,11 +20,11 @@ export const InvItem = memo(function InvItem({
   onSet,
 }: InvItemProps) {
   return (
-    <div className={`inv-item${count > 0 ? ' active' : ''}`}>
+    <div className={`inv-item${count > 0 ? " active" : ""}`}>
       <div
         className="inv-item-img"
         data-tip={name}
-        style={{ marginBottom: '6px' }}
+        style={{ marginBottom: "6px" }}
       >
         <RecycleImg src={img} alt={name} loading="lazy" decoding="async" />
       </div>
@@ -50,5 +50,5 @@ export const InvItem = memo(function InvItem({
         </button>
       </div>
     </div>
-  )
-})
+  );
+});
