@@ -52,14 +52,10 @@ export function DecayCalculator() {
 
   const activeMat = MATERIALS.find((m) => m.id === selectedMaterial)!;
 
-  // Při změně materiálu automaticky upravíme HP, pokud přesahuje nové maximum
+  // Při změně materiálu resetujeme HP (input i stav) na max HP zvoleného materiálu
   useEffect(() => {
-    setCurrentHp((prev) => {
-      if (prev === "") return activeMat.hp;
-      if (prev > activeMat.hp) return activeMat.hp;
-      return prev;
-    });
-  }, [activeMat.hp]);
+    setCurrentHp(activeMat.hp);
+  }, [selectedMaterial, activeMat.hp]);
 
   const safeHp =
     typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;
