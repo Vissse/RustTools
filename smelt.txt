@@ -1,0 +1,166 @@
+<div data-name="smelting" class="tab-page tab-table" style="display: block;">
+		<table class="table w100 olive">
+<thead><tr>
+<th>Process</th>
+		<th>Time</th>
+		</tr></thead>
+<tbody>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.png" alt="Raw Bear Meat" title="Raw Bear Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.cooked.png" alt="Cooked Bear Meat" title="Cooked Bear Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-big-cat-meat" class="item-box"><img class="" src="/img/items40/bigcatmeat.png" alt="Raw Big Cat Meat" title="Raw Big Cat Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-big-cat-meat" class="item-box"><img class="" src="/img/items40/bigcatmeat.cooked.png" alt="Cooked Big Cat Meat" title="Cooked Big Cat Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-chicken-breast" class="item-box"><img class="" src="/img/items40/chicken.raw.png" alt="Raw Chicken Breast" title="Raw Chicken Breast"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-chicken" class="item-box"><img class="" src="/img/items40/chicken.cooked.png" alt="Cooked Chicken" title="Cooked Chicken"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-crocodile-meat" class="item-box"><img class="" src="/img/items40/crocodilemeat.png" alt="Raw Crocodile Meat" title="Raw Crocodile Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-crocodile-meat" class="item-box"><img class="" src="/img/items40/crocodilemeat.cooked.png" alt="Cooked Crocodile Meat" title="Cooked Crocodile Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-deer-meat" class="item-box"><img class="" src="/img/items40/deermeat.raw.png" alt="Raw Deer Meat" title="Raw Deer Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-deer-meat" class="item-box"><img class="" src="/img/items40/deermeat.cooked.png" alt="Cooked Deer Meat" title="Cooked Deer Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-fish" class="item-box"><img class="" src="/img/items40/fish.raw.png" alt="Raw Fish" title="Raw Fish"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-fish" class="item-box"><img class="" src="/img/items40/fish.cooked.png" alt="Cooked Fish" title="Cooked Fish"><span class="text-in-icon"></span></a>
+</td>
+				<td>10 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-horse-meat" class="item-box"><img class="" src="/img/items40/horsemeat.raw.png" alt="Raw Horse Meat" title="Raw Horse Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-horse-meat" class="item-box"><img class="" src="/img/items40/horsemeat.cooked.png" alt="Cooked Horse Meat" title="Cooked Horse Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>13 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-human-meat" class="item-box"><img class="" src="/img/items40/humanmeat.raw.png" alt="Raw Human Meat" title="Raw Human Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-human-meat" class="item-box"><img class="" src="/img/items40/humanmeat.cooked.png" alt="Cooked Human Meat" title="Cooked Human Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-pork" class="item-box"><img class="" src="/img/items40/meat.boar.png" alt="Raw Pork" title="Raw Pork"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-pork" class="item-box"><img class="" src="/img/items40/meat.pork.cooked.png" alt="Cooked Pork" title="Cooked Pork"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-snake-meat" class="item-box"><img class="" src="/img/items40/snakemeat.png" alt="Raw Snake Meat" title="Raw Snake Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-snake-meat" class="item-box"><img class="" src="/img/items40/snakemeat.cooked.png" alt="Cooked Snake Meat" title="Cooked Snake Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/raw-wolf-meat" class="item-box"><img class="" src="/img/items40/wolfmeat.raw.png" alt="Raw Wolf Meat" title="Raw Wolf Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/cooked-wolf-meat" class="item-box"><img class="" src="/img/items40/wolfmeat.cooked.png" alt="Cooked Wolf Meat" title="Cooked Wolf Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.cooked.png" alt="Cooked Bear Meat" title="Cooked Bear Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.burned.png" alt="Burnt Bear Meat" title="Burnt Bear Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-big-cat-meat" class="item-box"><img class="" src="/img/items40/bigcatmeat.cooked.png" alt="Cooked Big Cat Meat" title="Cooked Big Cat Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.burned.png" alt="Burnt Bear Meat" title="Burnt Bear Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-chicken" class="item-box"><img class="" src="/img/items40/chicken.cooked.png" alt="Cooked Chicken" title="Cooked Chicken"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-chicken" class="item-box"><img class="" src="/img/items40/chicken.burned.png" alt="Burnt Chicken" title="Burnt Chicken"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-crocodile-meat" class="item-box"><img class="" src="/img/items40/crocodilemeat.cooked.png" alt="Cooked Crocodile Meat" title="Cooked Crocodile Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.burned.png" alt="Burnt Bear Meat" title="Burnt Bear Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-deer-meat" class="item-box"><img class="" src="/img/items40/deermeat.cooked.png" alt="Cooked Deer Meat" title="Cooked Deer Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-deer-meat" class="item-box"><img class="" src="/img/items40/deermeat.burned.png" alt="Burnt Deer Meat" title="Burnt Deer Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-fish" class="item-box"><img class="" src="/img/items40/fish.cooked.png" alt="Cooked Fish" title="Cooked Fish"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/charcoal" class="item-box"><img class="" src="/img/items40/charcoal.png" alt="Charcoal" title="Charcoal"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-horse-meat" class="item-box"><img class="" src="/img/items40/horsemeat.cooked.png" alt="Cooked Horse Meat" title="Cooked Horse Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-horse-meat" class="item-box"><img class="" src="/img/items40/horsemeat.burned.png" alt="Burnt Horse Meat" title="Burnt Horse Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-human-meat" class="item-box"><img class="" src="/img/items40/humanmeat.cooked.png" alt="Cooked Human Meat" title="Cooked Human Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-human-meat" class="item-box"><img class="" src="/img/items40/humanmeat.burned.png" alt="Burnt Human Meat" title="Burnt Human Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/burnt-pork" class="item-box"><img class="" src="/img/items40/meat.pork.burned.png" alt="Burnt Pork" title="Burnt Pork"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×6</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/charcoal" class="item-box"><img class="" src="/img/items40/charcoal.png" alt="Charcoal" title="Charcoal"><span class="text-in-icon"></span></a>
+</td>
+				<td>60 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-pork" class="item-box"><img class="" src="/img/items40/meat.pork.cooked.png" alt="Cooked Pork" title="Cooked Pork"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-pork" class="item-box"><img class="" src="/img/items40/meat.pork.burned.png" alt="Burnt Pork" title="Burnt Pork"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-snake-meat" class="item-box"><img class="" src="/img/items40/snakemeat.cooked.png" alt="Cooked Snake Meat" title="Cooked Snake Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-bear-meat" class="item-box"><img class="" src="/img/items40/bearmeat.burned.png" alt="Burnt Bear Meat" title="Burnt Bear Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/cooked-wolf-meat" class="item-box"><img class="" src="/img/items40/wolfmeat.cooked.png" alt="Cooked Wolf Meat" title="Cooked Wolf Meat"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×3</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/burnt-wolf-meat" class="item-box"><img class="" src="/img/items40/wolfmeat.burned.png" alt="Burnt Wolf Meat" title="Burnt Wolf Meat"><span class="text-in-icon"></span></a>
+</td>
+				<td>30 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/empty-can-of-beans" class="item-box"><img class="" src="/img/items40/can.beans.empty.png" alt="Empty Can Of Beans" title="Empty Can Of Beans"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/metal-fragments" class="item-box"><img class="" src="/img/items40/metal.fragments.png" alt="Metal Fragments" title="Metal Fragments"><span class="text-in-icon">×15</span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/empty-tuna-can" class="item-box"><img class="" src="/img/items40/can.tuna.empty.png" alt="Empty Tuna Can" title="Empty Tuna Can"><span class="text-in-icon"></span></a><a href="/item/wood" class="item-box"><img src="/img/items40/wood.png" alt="Wood" title="Wood"><img class="icon-in-icon" alt="fuel" src="/img/fuel.png"><span class="text-in-icon">×1.5</span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/metal-fragments" class="item-box"><img class="" src="/img/items40/metal.fragments.png" alt="Metal Fragments" title="Metal Fragments"><span class="text-in-icon">×10</span></a>
+</td>
+				<td>15 sec</td>
+				</tr>
+<tr>
+<td class="no-padding left">
+<a href="/item/wood" class="item-box"><img class="" src="/img/items40/wood.png" alt="Wood" title="Wood"><span class="text-in-icon"></span></a><img src="/img/rarrow.png" class="icon-in-text arrow" alt="&gt;"><a href="/item/charcoal" class="item-box"><img class="" src="/img/items40/charcoal.png" alt="Charcoal" title="Charcoal"><span class="text-in-icon">75%</span></a>
+</td>
+				<td>10 sec</td>
+				</tr>
+</tbody>
+</table>
+</div>
