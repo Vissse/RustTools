@@ -1803,6 +1803,20 @@ h1.page-title span {
     overflow-y: visible;
   }
 }
+
+/* Desktop: give the raid calculator more vertical room by letting the
+   scrollable lists in each column grow taller. */
+@media (min-width: 1025px) {
+  [data-variant="raid"] .panel-left .structure-grid {
+    max-height: 440px;
+  }
+  [data-variant="raid"] .panel-mid .minimal-btn-grid {
+    max-height: 380px;
+  }
+  [data-variant="raid"] .panel-mid .tool-list {
+    max-height: 440px;
+  }
+}
 /* ════════════════════════════════════════════════════════════════════════
    MODERNÍ MINIMALISTICKÝ TOGGLE (RECYCLER)
    ════════════════════════════════════════════════════════════════════════ */
@@ -2510,12 +2524,12 @@ h1.page-title span {
   padding-right: 8px;
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 1) 90%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 1) 90%,
     rgba(0, 0, 0, 0) 100%
   );
 }
