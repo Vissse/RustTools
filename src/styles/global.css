@@ -125,7 +125,7 @@ body::before {
 .nav-group {
   display: flex;
   gap: 20px;
-  flex: 1;
+  flex: 1 1 0%; /* Přidáno '1 0%' - Zásadní pro dokonalé vycentrování loga */
 }
 .nav-group.right {
   justify-content: flex-end;
@@ -2181,19 +2181,17 @@ h1.page-title span {
 }
 
 .nav-dropdown-wrapper .nav-item {
-  cursor: default; /* Není to odkaz, ale otevírač menu */
-  gap: 8px;
+  cursor: default;
+  gap: 5px; /* Původně bylo 8px, zmenšeno pro kompaktnější vzhled */
 }
 
 .dropdown-arrow {
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  margin-left: 5px;
-  vertical-align: middle;
+  width: 10px; /* Natvrdo nastavená šířka */
+  height: 10px; /* Natvrdo nastavená výška */
   opacity: 0.6;
-  transform-origin: center center;
+  margin-top: 3px; /* Optické vycentrování vůči textu */
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  flex-shrink: 0; /* Zabrání jakémukoliv deformování šipky */
 }
 
 .nav-dropdown-wrapper:hover .dropdown-arrow {
@@ -2327,4 +2325,20 @@ h1.page-title span {
   color: var(--text-dim);
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   NAVBAR ODDĚLOVAČ (SEPARATOR)
+   ════════════════════════════════════════════════════════════════════════ */
+.nav-separator {
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  align-self: center;
+  margin: 0 4px;
 }
