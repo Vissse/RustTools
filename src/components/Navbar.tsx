@@ -49,6 +49,34 @@ export function Navbar() {
             >
               Cupboard Calculator
             </Link>
+            <Link
+              to="/giant-excavator"
+              className="dropdown-item"
+              activeProps={{ className: "active" }}
+            >
+              Giant Excavator Calculator
+            </Link>
+            <Link
+              to="/genetics"
+              className="dropdown-item"
+              activeProps={{ className: "active" }}
+            >
+              Genetics Calculator
+            </Link>
+            <Link
+              to="/furnace"
+              className="dropdown-item"
+              activeProps={{ className: "active" }}
+            >
+              Furnace Calculator
+            </Link>
+            <Link
+              to="/decay"
+              className="dropdown-item"
+              activeProps={{ className: "active" }}
+            >
+              Decay Calculator
+            </Link>
           </div>
         </div>
 
