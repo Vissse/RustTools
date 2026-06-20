@@ -2991,9 +2991,8 @@ h1.page-title span {
   align-items: center;
   padding: 16px 20px;
   margin: 0;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 12px;
-  overflow: hidden;
 }
 .totals-group {
   display: flex;
@@ -3035,6 +3034,7 @@ h1.page-title span {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .craft-divider {
   width: 1px;
@@ -3085,14 +3085,16 @@ h1.page-title span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  white-space: nowrap;
 }
 .craft-label {
   font-size: 11px;
   font-weight: 700;
   color: #757575;
   transition: color 0.2s;
-  line-height: 1;
+  line-height: 1.1;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .craft-switch-group.active .craft-label {
   color: #cc422c;
