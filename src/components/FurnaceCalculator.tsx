@@ -89,6 +89,22 @@ function getImageFromName(name: string) {
     "Burnt Pork": "pork.burned.png",
     Honeycomb: "honeycomb.png",
     "Jar of Honey": "honey.png",
+    "Raw Big Cat Meat": "bigcatmeat.raw.png",
+    "Cooked Big Cat Meat": "bigcatmeat.cooked.png",
+    "Raw Chicken Breast": "chicken.raw.png",
+    "Cooked Chicken": "chicken.cooked.png",
+    "Raw Crocodile Meat": "crocodilemeat.raw.png",
+    "Cooked Crocodile Meat": "crocodilemeat.cooked.png",
+    "Raw Deer Meat": "deermeat.raw.png",
+    "Cooked Deer Meat": "deermeat.cooked.png",
+    "Raw Fish": "fish.raw.png",
+    "Cooked Fish": "fish.cooked.png",
+    "Raw Horse Meat": "horsemeat.raw.png",
+    "Cooked Horse Meat": "horsemeat.cooked.png",
+    "Raw Human Meat": "humanmeat.raw.png",
+    "Raw Snake Meat": "snakemeat.raw.png",
+    "Cooked Snake Meat": "snakemeat.cooked.png",
+    "Raw Wolf Meat": "wolfmeat.raw.png",
   };
   return `/images/${map[name] || name.toLowerCase().replace(/ /g, ".") + ".png"}`;
 }

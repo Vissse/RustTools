@@ -1,4 +1,4 @@
-import type { RecycleItem, RecycleResource } from '../types'
+import type { RecycleItem, RecycleResource } from "../types";
 
 // Recycling data sourced from rust_recycling_data.json (Rust, verified 2026-06).
 // Re-generate from that JSON after a Facepunch balance patch.
@@ -9,10 +9,10 @@ import type { RecycleItem, RecycleResource } from '../types'
 
 export const ITEMS: RecycleItem[] = [
   {
-    id: 'andswitch',
-    name: 'AND Switch',
-    category: 'electrical',
-    img: '/images/electric.andswitch.png',
+    id: "andswitch",
+    name: "AND Switch",
+    category: "electrical",
+    img: "/images/electric.andswitch.png",
     yield: {
       metal: 60,
     },
@@ -21,10 +21,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'audioalarm',
-    name: 'Audio Alarm',
-    category: 'electrical',
-    img: '/images/electric.audioalarm.png',
+    id: "audioalarm",
+    name: "Audio Alarm",
+    category: "electrical",
+    img: "/images/electric.audioalarm.png",
     yield: {
       metal: 45,
     },
@@ -33,21 +33,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'autoturret',
-    name: 'Auto Turret',
-    category: 'electrical',
-    img: '/images/autoturret.png',
+    id: "autoturret",
+    name: "Auto Turret",
+    category: "electrical",
+    img: "/images/autoturret.png",
     yield: {
       hqm: 6,
     },
     random: [
       {
-        id: 'computer',
+        id: "computer",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.6,
       },
@@ -57,22 +57,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'computer',
+        id: "computer",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'blocker',
-    name: 'Blocker',
-    category: 'electrical',
-    img: '/images/electric.blocker.png',
+    id: "blocker",
+    name: "Blocker",
+    category: "electrical",
+    img: "/images/electric.blocker.png",
     yield: {
       metal: 45,
     },
@@ -81,11 +81,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bulbstringlights',
-    name: 'Bulb String Lights',
-    category: 'electrical',
+    id: "bulbstringlights",
+    name: "Bulb String Lights",
+    category: "electrical",
     recycleStack: 15,
-    img: '/images/electric.bulbstringlights.png',
+    img: "/images/electric.bulbstringlights.png",
     yield: {
       metal: 3,
     },
@@ -94,10 +94,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'button',
-    name: 'Button',
-    category: 'electrical',
-    img: '/images/electric.button.png',
+    id: "button",
+    name: "Button",
+    category: "electrical",
+    img: "/images/electric.button.png",
     yield: {
       metal: 45,
     },
@@ -106,10 +106,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cabletunnel',
-    name: 'Cable Tunnel',
-    category: 'electrical',
-    img: '/images/electric.cabletunnel.png',
+    id: "cabletunnel",
+    name: "Cable Tunnel",
+    category: "electrical",
+    img: "/images/electric.cabletunnel.png",
     yield: {
       hqm: 6,
     },
@@ -118,10 +118,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ceilinglight',
-    name: 'Ceiling Light',
-    category: 'electrical',
-    img: '/images/ceilinglight.png',
+    id: "ceilinglight",
+    name: "Ceiling Light",
+    category: "electrical",
+    img: "/images/ceilinglight.png",
     yield: {
       metal: 30,
     },
@@ -130,10 +130,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chandelier',
-    name: 'Chandelier',
-    category: 'electrical',
-    img: '/images/electric.chandelier.png',
+    id: "chandelier",
+    name: "Chandelier",
+    category: "electrical",
+    img: "/images/electric.chandelier.png",
     yield: {
       metal: 60,
     },
@@ -142,26 +142,26 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'computerstation',
-    name: 'Computer Station',
-    category: 'electrical',
-    img: '/images/computerstation.png',
+    id: "computerstation",
+    name: "Computer Station",
+    category: "electrical",
+    img: "/images/computerstation.png",
     yield: {
       hqm: 3,
     },
     random: [
       {
-        id: 'computer',
+        id: "computer",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'rf-broadcaster',
+        id: "rf-broadcaster",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'rf-receiver',
+        id: "rf-receiver",
         amount: 1,
         chance: 0.6,
       },
@@ -171,27 +171,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'computer',
+        id: "computer",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'rf-broadcaster',
+        id: "rf-broadcaster",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'rf-receiver',
+        id: "rf-receiver",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'counter',
-    name: 'Counter',
-    category: 'electrical',
-    img: '/images/electric.counter.png',
+    id: "counter",
+    name: "Counter",
+    category: "electrical",
+    img: "/images/electric.counter.png",
     yield: {
       metal: 45,
     },
@@ -200,11 +200,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'deluxechristmaslights',
-    name: 'Deluxe Christmas Lights',
-    category: 'electrical',
+    id: "deluxechristmaslights",
+    name: "Deluxe Christmas Lights",
+    category: "electrical",
     recycleStack: 15,
-    img: '/images/xmas.lightstring.advanced.png',
+    img: "/images/xmas.lightstring.advanced.png",
     yield: {
       metal: 3,
     },
@@ -213,10 +213,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'digitalclock',
-    name: 'Digital Clock',
-    category: 'electrical',
-    img: '/images/electric.digitalclock.png',
+    id: "digitalclock",
+    name: "Digital Clock",
+    category: "electrical",
+    img: "/images/electric.digitalclock.png",
     yield: {
       metal: 60,
     },
@@ -225,10 +225,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'doorcontroller',
-    name: 'Door Controller',
-    category: 'electrical',
-    img: '/images/electric.doorcontroller.png',
+    id: "doorcontroller",
+    name: "Door Controller",
+    category: "electrical",
+    img: "/images/electric.doorcontroller.png",
     yield: {
       metal: 45,
     },
@@ -237,10 +237,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'electricfurnace',
-    name: 'Electric Furnace',
-    category: 'electrical',
-    img: '/images/electric.furnace.png',
+    id: "electricfurnace",
+    name: "Electric Furnace",
+    category: "electrical",
+    img: "/images/electric.furnace.png",
     yield: {
       hqm: 3,
       metal: 120,
@@ -251,10 +251,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'electricheater',
-    name: 'Electric Heater',
-    category: 'electrical',
-    img: '/images/electric.heater.png',
+    id: "electricheater",
+    name: "Electric Heater",
+    category: "electrical",
+    img: "/images/electric.heater.png",
     yield: {
       metal: 120,
     },
@@ -263,10 +263,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'electrictablelamp',
-    name: 'Electric Table Lamp',
-    category: 'electrical',
-    img: '/images/electric.tablelight.png',
+    id: "electrictablelamp",
+    name: "Electric Table Lamp",
+    category: "electrical",
+    img: "/images/electric.tablelight.png",
     yield: {
       metal: 30,
     },
@@ -275,10 +275,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'electricalbranch',
-    name: 'Electrical Branch',
-    category: 'electrical',
-    img: '/images/electrical.branch.png',
+    id: "electricalbranch",
+    name: "Electrical Branch",
+    category: "electrical",
+    img: "/images/electrical.branch.png",
     yield: {
       metal: 45,
     },
@@ -287,22 +287,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'elevator',
-    name: 'Elevator',
-    category: 'electrical',
-    img: '/images/elevator.png',
+    id: "elevator",
+    name: "Elevator",
+    category: "electrical",
+    img: "/images/elevator.png",
     yield: {
       hqm: 1,
       metal: 120,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -313,23 +313,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'fairylights',
-    name: 'Fairy Lights',
-    category: 'electrical',
+    id: "fairylights",
+    name: "Fairy Lights",
+    category: "electrical",
     recycleStack: 15,
-    img: '/images/electric.fairylights.png',
+    img: "/images/electric.fairylights.png",
     yield: {
       metal: 3,
     },
@@ -338,10 +338,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'flasherlight',
-    name: 'Flasher Light',
-    category: 'electrical',
-    img: '/images/electric.flasherlight.png',
+    id: "flasherlight",
+    name: "Flasher Light",
+    category: "electrical",
+    img: "/images/electric.flasherlight.png",
     yield: {
       metal: 72,
     },
@@ -350,10 +350,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fluidcombiner',
-    name: 'Fluid Combiner',
-    category: 'electrical',
-    img: '/images/fluid.combiner.webp',
+    id: "fluidcombiner",
+    name: "Fluid Combiner",
+    category: "electrical",
+    img: "/images/fluid.combiner.webp",
     yield: {
       metal: 45,
     },
@@ -362,10 +362,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fluidsplitter',
-    name: 'Fluid Splitter',
-    category: 'electrical',
-    img: '/images/fluid.splitter.png',
+    id: "fluidsplitter",
+    name: "Fluid Splitter",
+    category: "electrical",
+    img: "/images/fluid.splitter.png",
     yield: {
       metal: 45,
     },
@@ -374,10 +374,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fluidswitch&pump',
-    name: 'Fluid Switch & Pump',
-    category: 'electrical',
-    img: '/images/fluid.switch.png',
+    id: "fluidswitch&pump",
+    name: "Fluid Switch & Pump",
+    category: "electrical",
+    img: "/images/fluid.switch.png",
     yield: {
       metal: 90,
     },
@@ -386,10 +386,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fluorescentlight',
-    name: 'Fluorescent Light',
-    category: 'electrical',
-    img: '/images/electric.fluorescentlight.png',
+    id: "fluorescentlight",
+    name: "Fluorescent Light",
+    category: "electrical",
+    img: "/images/electric.fluorescentlight.png",
     yield: {
       metal: 30,
     },
@@ -398,10 +398,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fridge',
-    name: 'Fridge',
-    category: 'electrical',
-    img: '/images/fridge.png',
+    id: "fridge",
+    name: "Fridge",
+    category: "electrical",
+    img: "/images/fridge.png",
     yield: {
       metal: 90,
     },
@@ -410,10 +410,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hbhfsensor',
-    name: 'HBHF Sensor',
-    category: 'electrical',
-    img: '/images/electric.hbhfsensor.png',
+    id: "hbhfsensor",
+    name: "HBHF Sensor",
+    category: "electrical",
+    img: "/images/electric.hbhfsensor.png",
     yield: {
       metal: 45,
     },
@@ -422,16 +422,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hopper',
-    name: 'Hopper',
-    category: 'electrical',
-    img: '/images/hopper.png',
+    id: "hopper",
+    name: "Hopper",
+    category: "electrical",
+    img: "/images/hopper.png",
     yield: {
       metal: 120,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -441,23 +441,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'hosetool',
-    name: 'Hose Tool',
-    category: 'electrical',
-    img: '/images/hosetool.png',
+    id: "hosetool",
+    name: "Hose Tool",
+    category: "electrical",
+    img: "/images/hosetool.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -465,17 +465,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'igniter',
-    name: 'Igniter',
-    category: 'electrical',
-    img: '/images/electric.igniter.png',
+    id: "igniter",
+    name: "Igniter",
+    category: "electrical",
+    img: "/images/electric.igniter.png",
     yield: {
       metal: 45,
     },
@@ -484,10 +484,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialcombiner',
-    name: 'Industrial Combiner',
-    category: 'electrical',
-    img: '/images/industrial.combiner.png',
+    id: "industrialcombiner",
+    name: "Industrial Combiner",
+    category: "electrical",
+    img: "/images/industrial.combiner.png",
     yield: {
       metal: 45,
     },
@@ -496,10 +496,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialconveyor',
-    name: 'Industrial Conveyor',
-    category: 'electrical',
-    img: '/images/industrial.conveyor.png',
+    id: "industrialconveyor",
+    name: "Industrial Conveyor",
+    category: "electrical",
+    img: "/images/industrial.conveyor.png",
     yield: {
       metal: 45,
     },
@@ -508,22 +508,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialcrafter',
-    name: 'Industrial Crafter',
-    category: 'electrical',
-    img: '/images/industrial.crafter.png',
+    id: "industrialcrafter",
+    name: "Industrial Crafter",
+    category: "electrical",
+    img: "/images/industrial.crafter.png",
     yield: {
       hqm: 1,
       techtrash: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
@@ -533,22 +533,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'industrialsplitter',
-    name: 'Industrial Splitter',
-    category: 'electrical',
-    img: '/images/industrial.splitter.png',
+    id: "industrialsplitter",
+    name: "Industrial Splitter",
+    category: "electrical",
+    img: "/images/industrial.splitter.png",
     yield: {
       metal: 45,
     },
@@ -557,10 +557,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialwalllight',
-    name: 'Industrial Wall Light',
-    category: 'electrical',
-    img: '/images/industrial.wall.light.png',
+    id: "industrialwalllight",
+    name: "Industrial Wall Light",
+    category: "electrical",
+    img: "/images/industrial.wall.light.png",
     yield: {
       metal: 18,
     },
@@ -569,10 +569,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largeanimatedneonsign',
-    name: 'Large Animated Neon Sign',
-    category: 'electrical',
-    img: '/images/sign.neon.xl.animated.png',
+    id: "largeanimatedneonsign",
+    name: "Large Animated Neon Sign",
+    category: "electrical",
+    img: "/images/sign.neon.xl.animated.png",
     yield: {
       metal: 210,
       hqm: 3,
@@ -583,10 +583,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largeneonsign',
-    name: 'Large Neon Sign',
-    category: 'electrical',
-    img: '/images/sign.neon.xl.png',
+    id: "largeneonsign",
+    name: "Large Neon Sign",
+    category: "electrical",
+    img: "/images/sign.neon.xl.png",
     yield: {
       metal: 150,
     },
@@ -595,17 +595,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largerechargeablebattery',
-    name: 'Large Rechargeable Battery',
-    category: 'electrical',
-    img: '/images/electric.battery.rechargable.large.png',
+    id: "largerechargeablebattery",
+    name: "Large Rechargeable Battery",
+    category: "electrical",
+    img: "/images/electric.battery.rechargable.large.png",
     yield: {
       hqm: 6,
       techtrash: 1,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
@@ -615,23 +615,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'largesolarpanel',
-    name: 'Large Solar Panel',
-    category: 'electrical',
-    img: '/images/electric.solarpanel.large.png',
+    id: "largesolarpanel",
+    name: "Large Solar Panel",
+    category: "electrical",
+    img: "/images/electric.solarpanel.large.png",
     yield: {
       hqm: 3,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -641,17 +641,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'laserdetector',
-    name: 'Laser Detector',
-    category: 'electrical',
-    img: '/images/electric.laserdetector.png',
+    id: "laserdetector",
+    name: "Laser Detector",
+    category: "electrical",
+    img: "/images/electric.laserdetector.png",
     yield: {
       metal: 45,
     },
@@ -660,17 +660,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumanimatedneonsign',
-    name: 'Medium Animated Neon Sign',
-    category: 'electrical',
-    img: '/images/sign.neon.125x215.animated.png',
+    id: "mediumanimatedneonsign",
+    name: "Medium Animated Neon Sign",
+    category: "electrical",
+    img: "/images/sign.neon.125x215.animated.png",
     yield: {
       metal: 180,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -680,17 +680,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'mediumneonsign',
-    name: 'Medium Neon Sign',
-    category: 'electrical',
-    img: '/images/sign.neon.125x215.png',
+    id: "mediumneonsign",
+    name: "Medium Neon Sign",
+    category: "electrical",
+    img: "/images/sign.neon.125x215.png",
     yield: {
       metal: 120,
     },
@@ -699,16 +699,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumrechargeablebattery',
-    name: 'Medium Rechargeable Battery',
-    category: 'electrical',
-    img: '/images/electric.battery.rechargable.medium.png',
+    id: "mediumrechargeablebattery",
+    name: "Medium Rechargeable Battery",
+    category: "electrical",
+    img: "/images/electric.battery.rechargable.medium.png",
     yield: {
       hqm: 3,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -718,17 +718,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'memorycell',
-    name: 'Memory Cell',
-    category: 'electrical',
-    img: '/images/electrical.memorycell.png',
+    id: "memorycell",
+    name: "Memory Cell",
+    category: "electrical",
+    img: "/images/electrical.memorycell.png",
     yield: {
       metal: 45,
     },
@@ -737,10 +737,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'minifridge',
-    name: 'Mini Fridge',
-    category: 'electrical',
-    img: '/images/mini fridge.png',
+    id: "minifridge",
+    name: "Mini Fridge",
+    category: "electrical",
+    img: "/images/mini.fridge.png",
     yield: {
       metal: 30,
     },
@@ -749,17 +749,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'modularcarlift',
-    name: 'Modular Car Lift',
-    category: 'electrical',
-    img: '/images/modularcarlift.png',
+    id: "modularcarlift",
+    name: "Modular Car Lift",
+    category: "electrical",
+    img: "/images/modularcarlift.png",
     yield: {
       metal: 120,
       hqm: 3,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -770,17 +770,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'orswitch',
-    name: 'OR Switch',
-    category: 'electrical',
-    img: '/images/electric.orswitch.png',
+    id: "orswitch",
+    name: "OR Switch",
+    category: "electrical",
+    img: "/images/electric.orswitch.png",
     yield: {
       metal: 60,
     },
@@ -789,16 +789,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'pipetool',
-    name: 'Pipe Tool',
-    category: 'electrical',
-    img: '/images/pipetool.png',
+    id: "pipetool",
+    name: "Pipe Tool",
+    category: "electrical",
+    img: "/images/pipetool.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -806,17 +806,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'poweredwaterpurifier',
-    name: 'Powered Water Purifier',
-    category: 'electrical',
-    img: '/images/powered.water.purifier.png',
+    id: "poweredwaterpurifier",
+    name: "Powered Water Purifier",
+    category: "electrical",
+    img: "/images/powered.water.purifier.png",
     yield: {
       metal: 180,
       cloth: 12,
@@ -829,21 +829,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'pressurepad',
-    name: 'Pressure Pad',
-    category: 'electrical',
-    img: '/images/electric.pressurepad.png',
+    id: "pressurepad",
+    name: "Pressure Pad",
+    category: "electrical",
+    img: "/images/electric.pressurepad.png",
     yield: {
       wood: 90,
     },
     random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -853,28 +853,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'ptzcctvcamera',
-    name: 'PTZ CCTV Camera',
-    category: 'electrical',
-    img: '/images/ptz.cctv.camera.png',
+    id: "ptzcctvcamera",
+    name: "PTZ CCTV Camera",
+    category: "electrical",
+    img: "/images/ptz.cctv.camera.png",
     yield: {
       metal: 90,
     },
     random: [
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.6,
       },
@@ -884,17 +884,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'randswitch',
-    name: 'RAND Switch',
-    category: 'electrical',
-    img: '/images/electric.random.switch.png',
+    id: "randswitch",
+    name: "RAND Switch",
+    category: "electrical",
+    img: "/images/electric.random.switch.png",
     yield: {
       metal: 45,
     },
@@ -903,17 +903,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'reactivetarget',
-    name: 'Reactive Target',
-    category: 'electrical',
-    img: '/images/target.reactive.png',
+    id: "reactivetarget",
+    name: "Reactive Target",
+    category: "electrical",
+    img: "/images/target.reactive.png",
     yield: {
       wood: 60,
       metal: 90,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -924,17 +924,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'rfbroadcaster',
-    name: 'RF Broadcaster',
-    category: 'electrical',
-    img: '/images/electric.rf.broadcaster.png',
+    id: "rfbroadcaster",
+    name: "RF Broadcaster",
+    category: "electrical",
+    img: "/images/electric.rf.broadcaster.png",
     yield: {
       metal: 90,
     },
@@ -943,10 +943,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rfpager',
-    name: 'RF Pager',
-    category: 'electrical',
-    img: '/images/rf_pager.png',
+    id: "rfpager",
+    name: "RF Pager",
+    category: "electrical",
+    img: "/images/rf_pager.png",
     yield: {
       metal: 60,
     },
@@ -955,10 +955,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rfreceiver',
-    name: 'RF Receiver',
-    category: 'electrical',
-    img: '/images/electric.rf.receiver.png',
+    id: "rfreceiver",
+    name: "RF Receiver",
+    category: "electrical",
+    img: "/images/electric.rf.receiver.png",
     yield: {
       metal: 90,
     },
@@ -967,10 +967,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rootcombiner',
-    name: 'Root Combiner',
-    category: 'electrical',
-    img: '/images/electrical.combiner.png',
+    id: "rootcombiner",
+    name: "Root Combiner",
+    category: "electrical",
+    img: "/images/electrical.combiner.png",
     yield: {
       metal: 45,
     },
@@ -979,10 +979,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'searchlight',
-    name: 'Search Light',
-    category: 'electrical',
-    img: '/images/searchlight.png',
+    id: "searchlight",
+    name: "Search Light",
+    category: "electrical",
+    img: "/images/searchlight.png",
     yield: {
       wood: 300,
       metal: 120,
@@ -993,21 +993,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'seismicsensor',
-    name: 'Seismic Sensor',
-    category: 'electrical',
-    img: '/images/electric.seismicsensor.png',
+    id: "seismicsensor",
+    name: "Seismic Sensor",
+    category: "electrical",
+    img: "/images/electric.seismicsensor.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -1017,22 +1017,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'simplelight',
-    name: 'Simple Light',
-    category: 'electrical',
-    img: '/images/electric.simplelight.png',
+    id: "simplelight",
+    name: "Simple Light",
+    category: "electrical",
+    img: "/images/electric.simplelight.png",
     yield: {
       wood: 60,
       metal: 15,
@@ -1043,10 +1043,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sirenlight',
-    name: 'Siren Light',
-    category: 'electrical',
-    img: '/images/electric.sirenlight.png',
+    id: "sirenlight",
+    name: "Siren Light",
+    category: "electrical",
+    img: "/images/electric.sirenlight.png",
     yield: {
       metal: 72,
     },
@@ -1055,17 +1055,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallgenerator',
-    name: 'Small Generator',
-    category: 'electrical',
-    img: '/images/electric.fuelgenerator.small.png',
+    id: "smallgenerator",
+    name: "Small Generator",
+    category: "electrical",
+    img: "/images/electric.fuelgenerator.small.png",
     yield: {
       hqm: 3,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -1075,17 +1075,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smallneonsign',
-    name: 'Small Neon Sign',
-    category: 'electrical',
-    img: '/images/sign.neon.125x125.png',
+    id: "smallneonsign",
+    name: "Small Neon Sign",
+    category: "electrical",
+    img: "/images/sign.neon.125x125.png",
     yield: {
       metal: 90,
     },
@@ -1094,10 +1094,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallrechargeablebattery',
-    name: 'Small Rechargeable Battery',
-    category: 'electrical',
-    img: '/images/electric.battery.rechargable.small.png',
+    id: "smallrechargeablebattery",
+    name: "Small Rechargeable Battery",
+    category: "electrical",
+    img: "/images/electric.battery.rechargable.small.png",
     yield: {
       hqm: 3,
     },
@@ -1106,21 +1106,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smartalarm',
-    name: 'Smart Alarm',
-    category: 'electrical',
-    img: '/images/smart.alarm.png',
+    id: "smartalarm",
+    name: "Smart Alarm",
+    category: "electrical",
+    img: "/images/smart.alarm.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -1130,33 +1130,33 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'smartswitch',
-    name: 'Smart Switch',
-    category: 'electrical',
-    img: '/images/smart.switch.png',
+    id: "smartswitch",
+    name: "Smart Switch",
+    category: "electrical",
+    img: "/images/smart.switch.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -1166,22 +1166,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'splitter',
-    name: 'Splitter',
-    category: 'electrical',
-    img: '/images/electric.splitter.png',
+    id: "splitter",
+    name: "Splitter",
+    category: "electrical",
+    img: "/images/electric.splitter.png",
     yield: {
       metal: 60,
     },
@@ -1190,10 +1190,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'spotlight',
-    name: 'Spot Light',
-    category: 'electrical',
-    img: '/images/electric.spotlight.png',
+    id: "spotlight",
+    name: "Spot Light",
+    category: "electrical",
+    img: "/images/electric.spotlight.png",
     yield: {
       metal: 30,
     },
@@ -1202,10 +1202,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sprinkler',
-    name: 'Sprinkler',
-    category: 'electrical',
-    img: '/images/electric.sprinkler.png',
+    id: "sprinkler",
+    name: "Sprinkler",
+    category: "electrical",
+    img: "/images/electric.sprinkler.png",
     yield: {
       metal: 45,
     },
@@ -1214,10 +1214,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'storageadaptor',
-    name: 'Storage Adaptor',
-    category: 'electrical',
-    img: '/images/storageadaptor.png',
+    id: "storageadaptor",
+    name: "Storage Adaptor",
+    category: "electrical",
+    img: "/images/storageadaptor.png",
     yield: {
       metal: 60,
     },
@@ -1226,21 +1226,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'storagemonitor',
-    name: 'Storage Monitor',
-    category: 'electrical',
-    img: '/images/storage.monitor.png',
+    id: "storagemonitor",
+    name: "Storage Monitor",
+    category: "electrical",
+    img: "/images/storage.monitor.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -1250,22 +1250,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'switch',
-    name: 'Switch',
-    category: 'electrical',
-    img: '/images/electric.switch.png',
+    id: "switch",
+    name: "Switch",
+    category: "electrical",
+    img: "/images/electric.switch.png",
     yield: {
       metal: 60,
     },
@@ -1274,21 +1274,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'teslacoil',
-    name: 'Tesla Coil',
-    category: 'electrical',
-    img: '/images/electric.teslacoil.png',
+    id: "teslacoil",
+    name: "Tesla Coil",
+    category: "electrical",
+    img: "/images/electric.teslacoil.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -1298,22 +1298,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'testgenerator',
-    name: 'Test Generator',
-    category: 'electrical',
-    img: '/images/electric.generator.small.png',
+    id: "testgenerator",
+    name: "Test Generator",
+    category: "electrical",
+    img: "/images/electric.generator.small.png",
     yield: {
       hqm: 15,
       gears: 2,
@@ -1322,17 +1322,17 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'fuse',
+        id: "fuse",
         amount: 1,
         chance: 0.4,
       },
@@ -1344,27 +1344,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'fuse',
+        id: "fuse",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'timer',
-    name: 'Timer',
-    category: 'electrical',
-    img: '/images/electric.timer.png',
+    id: "timer",
+    name: "Timer",
+    category: "electrical",
+    img: "/images/electric.timer.png",
     yield: {
       metal: 45,
     },
@@ -1373,10 +1373,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tripodspotlight',
-    name: 'Tripod Spot Light',
-    category: 'electrical',
-    img: '/images/electric.spotlight.tripod.png',
+    id: "tripodspotlight",
+    name: "Tripod Spot Light",
+    category: "electrical",
+    img: "/images/electric.spotlight.tripod.png",
     yield: {
       metal: 30,
     },
@@ -1385,10 +1385,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twitchrivalsneonsign',
-    name: 'Twitch Rivals Neon Sign',
-    category: 'electrical',
-    img: '/images/neonsigntr.png',
+    id: "twitchrivalsneonsign",
+    name: "Twitch Rivals Neon Sign",
+    category: "electrical",
+    img: "/images/neonsigntr.png",
     yield: {
       metal: 90,
     },
@@ -1397,17 +1397,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterpump',
-    name: 'Water Pump',
-    category: 'electrical',
-    img: '/images/waterpump.png',
+    id: "waterpump",
+    name: "Water Pump",
+    category: "electrical",
+    img: "/images/waterpump.png",
     yield: {
       wood: 150,
       metal: 120,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -1418,29 +1418,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'waterwheel',
-    name: 'Water Wheel',
-    category: 'electrical',
-    img: '/images/generator.water.png',
+    id: "waterwheel",
+    name: "Water Wheel",
+    category: "electrical",
+    img: "/images/generator.water.png",
     yield: {
       wood: 300,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.6,
       },
@@ -1450,36 +1450,36 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'windturbine',
-    name: 'Wind Turbine',
-    category: 'electrical',
-    img: '/images/generator.wind.scrap.png',
+    id: "windturbine",
+    name: "Wind Turbine",
+    category: "electrical",
+    img: "/images/generator.wind.scrap.png",
     yield: {
       wood: 300,
       hqm: 6,
       gears: 1,
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
@@ -1488,32 +1488,32 @@ export const ITEMS: RecycleItem[] = [
       wood: 200,
       hqm: 4,
       gears: 1,
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'wiretool',
-    name: 'Wire Tool',
-    category: 'electrical',
-    img: '/images/wiretool.png',
+    id: "wiretool",
+    name: "Wire Tool",
+    category: "electrical",
+    img: "/images/wiretool.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -1521,17 +1521,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'xorswitch',
-    name: 'XOR Switch',
-    category: 'electrical',
-    img: '/images/electric.xorswitch.png',
+    id: "xorswitch",
+    name: "XOR Switch",
+    category: "electrical",
+    img: "/images/electric.xorswitch.png",
     yield: {
       metal: 60,
     },
@@ -1540,208 +1540,208 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: '12gaugebuckshot',
-    name: '12 Gauge Buckshot',
-    category: 'ammo',
+    id: "12gaugebuckshot",
+    name: "12 Gauge Buckshot",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/ammo.shotgun.png',
+    img: "/images/ammo.shotgun.png",
     yield: {
       metal: 1,
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 1,
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
   },
   {
-    id: '12gaugeincendiaryshell',
-    name: '12 Gauge Incendiary Shell',
-    category: 'ammo',
+    id: "12gaugeincendiaryshell",
+    name: "12 Gauge Incendiary Shell",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/ammo.shotgun.fire.png',
+    img: "/images/ammo.shotgun.fire.png",
     yield: {
       metal: 1,
-      'gun-powder': 3,
+      "gun-powder": 3,
       sulfur: 6,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 1,
-      'gun-powder': 2,
+      "gun-powder": 2,
       sulfur: 4,
     },
   },
   {
-    id: '12gaugeslug',
-    name: '12 Gauge Slug',
-    category: 'ammo',
+    id: "12gaugeslug",
+    name: "12 Gauge Slug",
+    category: "ammo",
     recycleStack: 4,
-    img: '/images/ammo.shotgun.slug.png',
+    img: "/images/ammo.shotgun.slug.png",
     yield: {
       metal: 1,
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 1,
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
   },
   {
-    id: '40mmhegrenade',
-    name: '40mm HE Grenade',
-    category: 'ammo',
+    id: "40mmhegrenade",
+    name: "40mm HE Grenade",
+    category: "ammo",
     recycleStack: 2,
-    img: '/images/ammo.grenadelauncher.he.png',
+    img: "/images/ammo.grenadelauncher.he.png",
     yield: {
-      'gun-powder': 9,
+      "gun-powder": 9,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.3,
       },
       {
-        id: 'explosives',
+        id: "explosives",
         amount: 1,
         chance: 0.3,
       },
     ],
     safezone_yield: {
-      'gun-powder': 6,
+      "gun-powder": 6,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'explosives',
+        id: "explosives",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: '40mmshotgunround',
-    name: '40mm Shotgun Round',
-    category: 'ammo',
+    id: "40mmshotgunround",
+    name: "40mm Shotgun Round",
+    category: "ammo",
     recycleStack: 3,
-    img: '/images/ammo.grenadelauncher.buckshot.png',
+    img: "/images/ammo.grenadelauncher.buckshot.png",
     yield: {
       metal: 1,
-      'gun-powder': 4,
+      "gun-powder": 4,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: '40mmsmokegrenade',
-    name: '40mm Smoke Grenade',
-    category: 'ammo',
+    id: "40mmsmokegrenade",
+    name: "40mm Smoke Grenade",
+    category: "ammo",
     recycleStack: 2,
-    img: '/images/ammo.grenadelauncher.smoke.png',
+    img: "/images/ammo.grenadelauncher.smoke.png",
     yield: {
-      'gun-powder': 9,
+      "gun-powder": 9,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.3,
       },
     ],
     safezone_yield: {
-      'gun-powder': 6,
+      "gun-powder": 6,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: '5.56rifleammo',
-    name: '5.56 Rifle Ammo',
-    category: 'ammo',
+    id: "5.56rifleammo",
+    name: "5.56 Rifle Ammo",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.rifle.png',
+    img: "/images/ammo.rifle.png",
     yield: {
       metal: 2,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
     safezone_yield: {
       metal: 1,
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.67,
       },
     ],
   },
   {
-    id: 'beecatapultbomb',
-    name: 'Bee Catapult Bomb',
-    category: 'ammo',
-    img: '/images/catapult.ammo.bee.png',
+    id: "beecatapultbomb",
+    name: "Bee Catapult Bomb",
+    category: "ammo",
+    img: "/images/catapult.ammo.bee.png",
     yield: {
-      'bee-grenade': 1,
+      "bee-grenade": 1,
       wood: 120,
     },
     random: [
       {
-        id: 'bee-grenade',
+        id: "bee-grenade",
         amount: 1,
         chance: 0.2,
       },
@@ -1751,90 +1751,90 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'bee-grenade',
+        id: "bee-grenade",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'bonearrow',
-    name: 'Bone Arrow',
-    category: 'ammo',
+    id: "bonearrow",
+    name: "Bone Arrow",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/arrow.bone.png',
+    img: "/images/arrow.bone.png",
     yield: {
       wood: 5,
-      'bone-fragments': 2,
+      "bone-fragments": 2,
     },
     safezone_yield: {
       wood: 3,
-      'bone-fragments': 1,
+      "bone-fragments": 1,
     },
     safezone_random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'bone-fragments',
+        id: "bone-fragments",
         amount: 1,
         chance: 0.33,
       },
     ],
   },
   {
-    id: 'cannonball',
-    name: 'Cannonball',
-    category: 'ammo',
-    img: '/images/cannonball.png',
+    id: "cannonball",
+    name: "Cannonball",
+    category: "ammo",
+    img: "/images/cannonball.png",
     yield: {
       metal: 15,
-      'gun-powder': 4,
+      "gun-powder": 4,
     },
     random: [
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 10,
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
   },
   {
-    id: 'explosive5.56rifleammo',
-    name: 'Explosive 5.56 Rifle Ammo',
-    category: 'ammo',
+    id: "explosive5.56rifleammo",
+    name: "Explosive 5.56 Rifle Ammo",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.rifle.explosive.png',
+    img: "/images/ammo.rifle.explosive.png",
     yield: {
       metal: 3,
-      'gun-powder': 6,
+      "gun-powder": 6,
       sulfur: 3,
     },
     safezone_yield: {
       metal: 2,
-      'gun-powder': 4,
+      "gun-powder": 4,
       sulfur: 2,
     },
   },
   {
-    id: 'firearrow',
-    name: 'Fire Arrow',
-    category: 'ammo',
+    id: "firearrow",
+    name: "Fire Arrow",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/arrow.fire.png',
+    img: "/images/arrow.fire.png",
     yield: {
       wood: 6,
       lgf: 3,
     },
     random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.6,
       },
@@ -1845,72 +1845,72 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'firebomb',
-    name: 'Firebomb',
-    category: 'ammo',
-    img: '/images/catapult.ammo.incendiary.png',
+    id: "firebomb",
+    name: "Firebomb",
+    category: "ammo",
+    img: "/images/catapult.ammo.incendiary.png",
     yield: {
-      'gun-powder': 90,
+      "gun-powder": 90,
       lgf: 30,
       rope: 1,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
     ],
     safezone_yield: {
-      'gun-powder': 60,
+      "gun-powder": 60,
       lgf: 20,
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'fragmentationmortarshell',
-    name: 'Fragmentation Mortar Shell',
-    category: 'ammo',
-    img: '/images/ammo.mortar.fragment.png',
+    id: "fragmentationmortarshell",
+    name: "Fragmentation Mortar Shell",
+    category: "ammo",
+    img: "/images/ammo.mortar.fragment.png",
     yield: {
-      'gun-powder': 30,
+      "gun-powder": 30,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
     safezone_yield: {
-      'gun-powder': 20,
+      "gun-powder": 20,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.13,
       },
     ],
   },
   {
-    id: 'hammerheadbolt',
-    name: 'Hammerhead Bolt',
-    category: 'ammo',
-    img: '/images/ballista.bolt.hammerhead.png',
+    id: "hammerheadbolt",
+    name: "Hammerhead Bolt",
+    category: "ammo",
+    img: "/images/ballista.bolt.hammerhead.png",
     yield: {
       hqm: 3,
       metal: 45,
@@ -1921,45 +1921,45 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'handmadeshell',
-    name: 'Handmade Shell',
-    category: 'ammo',
+    id: "handmadeshell",
+    name: "Handmade Shell",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/ammo.handmade.shell.png',
+    img: "/images/ammo.handmade.shell.png",
     yield: {
       stone: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
     random: [
       {
-        id: 'stone',
+        id: "stone",
         amount: 1,
         chance: 0.5,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       stone: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
   },
   {
-    id: 'highvelocityarrow',
-    name: 'High Velocity Arrow',
-    category: 'ammo',
+    id: "highvelocityarrow",
+    name: "High Velocity Arrow",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/arrow.hv.png',
+    img: "/images/arrow.hv.png",
     yield: {
       wood: 6,
       metal: 1,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
@@ -1970,138 +1970,138 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highvelocityrocket',
-    name: 'High Velocity Rocket',
-    category: 'ammo',
-    img: '/images/ammo.rocket.hv.png',
+    id: "highvelocityrocket",
+    name: "High Velocity Rocket",
+    category: "ammo",
+    img: "/images/ammo.rocket.hv.png",
     yield: {
-      'gun-powder': 60,
+      "gun-powder": 60,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'gun-powder': 40,
+      "gun-powder": 40,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'homingmissile',
-    name: 'Homing Missile',
-    category: 'ammo',
-    img: '/images/ammo.rocket.seeker.png',
+    id: "homingmissile",
+    name: "Homing Missile",
+    category: "ammo",
+    img: "/images/ammo.rocket.seeker.png",
     yield: {
-      'gun-powder': 30,
+      "gun-powder": 30,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.3,
       },
     ],
     safezone_yield: {
-      'gun-powder': 20,
+      "gun-powder": 20,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'hv5.56rifleammo',
-    name: 'HV 5.56 Rifle Ammo',
-    category: 'ammo',
+    id: "hv5.56rifleammo",
+    name: "HV 5.56 Rifle Ammo",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.rifle.hv.png',
+    img: "/images/ammo.rifle.hv.png",
     yield: {
       metal: 2,
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
     safezone_yield: {
       metal: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.33,
       },
     ],
   },
   {
-    id: 'hvpistolammo',
-    name: 'HV Pistol Ammo',
-    category: 'ammo',
+    id: "hvpistolammo",
+    name: "HV Pistol Ammo",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.pistol.hv.png',
+    img: "/images/ammo.pistol.hv.png",
     yield: {
       metal: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
   },
   {
-    id: 'incapacitatedart',
-    name: 'Incapacitate Dart',
-    category: 'ammo',
+    id: "incapacitatedart",
+    name: "Incapacitate Dart",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/dart.incapacitate.png',
+    img: "/images/dart.incapacitate.png",
     yield: {
       wood: 1,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.5,
       },
       {
-        id: 'snake-venom',
+        id: "snake-venom",
         amount: 1,
         chance: 0.3,
       },
@@ -2111,41 +2111,41 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'snake-venom',
+        id: "snake-venom",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'incendiary5.56rifleammo',
-    name: 'Incendiary 5.56 Rifle Ammo',
-    category: 'ammo',
+    id: "incendiary5.56rifleammo",
+    name: "Incendiary 5.56 Rifle Ammo",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.rifle.incendiary.png',
+    img: "/images/ammo.rifle.incendiary.png",
     yield: {
       metal: 3,
-      'gun-powder': 3,
+      "gun-powder": 3,
       sulfur: 1,
     },
     random: [
       {
-        id: 'sulfur',
+        id: "sulfur",
         amount: 1,
         chance: 0.5,
       },
     ],
     safezone_yield: {
       metal: 2,
-      'gun-powder': 2,
+      "gun-powder": 2,
       sulfur: 1,
     },
   },
   {
-    id: 'incendiarybolt',
-    name: 'Incendiary Bolt',
-    category: 'ammo',
-    img: '/images/ballista.bolt.incendiary.png',
+    id: "incendiarybolt",
+    name: "Incendiary Bolt",
+    category: "ammo",
+    img: "/images/ballista.bolt.incendiary.png",
     yield: {
       metal: 30,
       cloth: 6,
@@ -2158,131 +2158,131 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'incendiarypistolbullet',
-    name: 'Incendiary Pistol Bullet',
-    category: 'ammo',
+    id: "incendiarypistolbullet",
+    name: "Incendiary Pistol Bullet",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.pistol.fire.png',
+    img: "/images/ammo.pistol.fire.png",
     yield: {
       metal: 2,
-      'gun-powder': 2,
+      "gun-powder": 2,
       sulfur: 1,
     },
     safezone_yield: {
       metal: 1,
-      'gun-powder': 1,
+      "gun-powder": 1,
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'sulfur',
+        id: "sulfur",
         amount: 1,
         chance: 0.67,
       },
     ],
   },
   {
-    id: 'incendiaryrocket',
-    name: 'Incendiary Rocket',
-    category: 'ammo',
-    img: '/images/ammo.rocket.fire.png',
+    id: "incendiaryrocket",
+    name: "Incendiary Rocket",
+    category: "ammo",
+    img: "/images/ammo.rocket.fire.png",
     yield: {
       metalpipe: 1,
-      'gun-powder': 90,
+      "gun-powder": 90,
       lgf: 45,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
     safezone_yield: {
-      'gun-powder': 60,
+      "gun-powder": 60,
       lgf: 30,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'mlrsrocket',
-    name: 'MLRS Rocket',
-    category: 'ammo',
-    img: '/images/ammo.rocket.mlrs.png',
+    id: "mlrsrocket",
+    name: "MLRS Rocket",
+    category: "ammo",
+    img: "/images/ammo.rocket.mlrs.png",
     yield: {
       metalpipe: 2,
-      'gun-powder': 120,
+      "gun-powder": 120,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
     safezone_yield: {
       metalpipe: 1,
-      'gun-powder': 80,
+      "gun-powder": 80,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'mortarshell',
-    name: 'Mortar Shell',
-    category: 'ammo',
-    img: '/images/ammo.mortar.basic.png',
+    id: "mortarshell",
+    name: "Mortar Shell",
+    category: "ammo",
+    img: "/images/ammo.mortar.basic.png",
     yield: {
-      'gun-powder': 90,
+      "gun-powder": 90,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.3,
       },
     ],
     safezone_yield: {
-      'gun-powder': 60,
+      "gun-powder": 60,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'nailgunnails',
-    name: 'Nailgun Nails',
-    category: 'ammo',
+    id: "nailgunnails",
+    name: "Nailgun Nails",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/ammo.nailgun.nails.png',
+    img: "/images/ammo.nailgun.nails.png",
     yield: {},
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.96,
       },
@@ -2290,27 +2290,27 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.64,
       },
     ],
   },
   {
-    id: 'paintball',
-    name: 'Paintball',
-    category: 'ammo',
+    id: "paintball",
+    name: "Paintball",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.paintball.png',
+    img: "/images/ammo.paintball.png",
     yield: {},
     random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.3,
       },
       {
-        id: 'yellow-berry',
+        id: "yellow-berry",
         amount: 1,
         chance: 0.06,
       },
@@ -2318,22 +2318,22 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'yellow-berry',
+        id: "yellow-berry",
         amount: 1,
         chance: 0.04,
       },
     ],
   },
   {
-    id: 'piercerbolt',
-    name: 'Piercer Bolt',
-    category: 'ammo',
-    img: '/images/ballista.bolt.piercer.png',
+    id: "piercerbolt",
+    name: "Piercer Bolt",
+    category: "ammo",
+    img: "/images/ballista.bolt.piercer.png",
     yield: {
       hqm: 3,
       metal: 45,
@@ -2344,22 +2344,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'pistolbullet',
-    name: 'Pistol Bullet',
-    category: 'ammo',
+    id: "pistolbullet",
+    name: "Pistol Bullet",
+    category: "ammo",
     recycleStack: 13,
-    img: '/images/ammo.pistol.png',
+    img: "/images/ammo.pistol.png",
     yield: {
       metal: 1,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.75,
       },
@@ -2369,17 +2369,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.5,
       },
     ],
   },
   {
-    id: 'pitchforkbolt',
-    name: 'Pitchfork Bolt',
-    category: 'ammo',
-    img: '/images/ballista.bolt.pitchfork.png',
+    id: "pitchforkbolt",
+    name: "Pitchfork Bolt",
+    category: "ammo",
+    img: "/images/ballista.bolt.pitchfork.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -2390,51 +2390,51 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'propaneexplosivebomb',
-    name: 'Propane Explosive Bomb',
-    category: 'ammo',
-    img: '/images/catapult.ammo.explosive.png',
+    id: "propaneexplosivebomb",
+    name: "Propane Explosive Bomb",
+    category: "ammo",
+    img: "/images/catapult.ammo.explosive.png",
     yield: {
-      'gun-powder': 270,
+      "gun-powder": 270,
       lgf: 12,
     },
     random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'gun-powder': 180,
+      "gun-powder": 180,
       lgf: 8,
     },
     safezone_random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'radiationdart',
-    name: 'Radiation Dart',
-    category: 'ammo',
+    id: "radiationdart",
+    name: "Radiation Dart",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/dart.radiation.png',
+    img: "/images/dart.radiation.png",
     yield: {
       wood: 7,
       metal: 1,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.5,
       },
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.5,
       },
@@ -2445,74 +2445,74 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rocket',
-    name: 'Rocket',
-    category: 'ammo',
-    img: '/images/ammo.rocket.basic.png',
+    id: "rocket",
+    name: "Rocket",
+    category: "ammo",
+    img: "/images/ammo.rocket.basic.png",
     yield: {
       metalpipe: 1,
-      'gun-powder': 90,
+      "gun-powder": 90,
       explosives: 6,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
     safezone_yield: {
-      'gun-powder': 60,
+      "gun-powder": 60,
       explosives: 4,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'samammo',
-    name: 'SAM Ammo',
-    category: 'ammo',
+    id: "samammo",
+    name: "SAM Ammo",
+    category: "ammo",
     recycleStack: 100,
-    img: '/images/ammo.rocket.sam.png',
+    img: "/images/ammo.rocket.sam.png",
     yield: {
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.1,
       },
     ],
     safezone_yield: {
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.07,
       },
     ],
   },
   {
-    id: 'scatterdart',
-    name: 'Scatter Dart',
-    category: 'ammo',
+    id: "scatterdart",
+    name: "Scatter Dart",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/dart.scatter.png',
+    img: "/images/dart.scatter.png",
     yield: {
       wood: 7,
       stone: 3,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.5,
       },
@@ -2523,10 +2523,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'scattershot',
-    name: 'Scattershot',
-    category: 'ammo',
-    img: '/images/catapult.ammo.boulder.png',
+    id: "scattershot",
+    name: "Scattershot",
+    category: "ammo",
+    img: "/images/catapult.ammo.boulder.png",
     yield: {
       stone: 120,
     },
@@ -2535,27 +2535,27 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smokerocketwip!!!!',
-    name: 'Smoke Rocket WIP!!!!',
-    category: 'ammo',
-    img: '/images/ammo.rocket.smoke.png',
+    id: "smokerocketwip!!!!",
+    name: "Smoke Rocket WIP!!!!",
+    category: "ammo",
+    img: "/images/ammo.rocket.smoke.png",
     yield: {
       metal: 48,
-      'gun-powder': 120,
+      "gun-powder": 120,
       lgf: 15,
     },
     safezone_yield: {
       metal: 32,
-      'gun-powder': 80,
+      "gun-powder": 80,
       lgf: 10,
     },
   },
   {
-    id: 'speargunspear',
-    name: 'Speargun Spear',
-    category: 'ammo',
+    id: "speargunspear",
+    name: "Speargun Spear",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/speargun.spear.png',
+    img: "/images/speargun.spear.png",
     yield: {
       metal: 10,
     },
@@ -2564,61 +2564,61 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.67,
       },
     ],
   },
   {
-    id: 'torpedo',
-    name: 'Torpedo',
-    category: 'ammo',
+    id: "torpedo",
+    name: "Torpedo",
+    category: "ammo",
     recycleStack: 10,
-    img: '/images/submarine.torpedo.straight.png',
+    img: "/images/submarine.torpedo.straight.png",
     yield: {
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.12,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.08,
       },
       {
-        id: 'gun-powder',
+        id: "gun-powder",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'wooddart',
-    name: 'Wood Dart',
-    category: 'ammo',
+    id: "wooddart",
+    name: "Wood Dart",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/dart.wood.png',
+    img: "/images/dart.wood.png",
     yield: {
       wood: 7,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.5,
       },
@@ -2628,18 +2628,18 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenarrow',
-    name: 'Wooden Arrow',
-    category: 'ammo',
+    id: "woodenarrow",
+    name: "Wooden Arrow",
+    category: "ammo",
     recycleStack: 7,
-    img: '/images/arrow.wooden.png',
+    img: "/images/arrow.wooden.png",
     yield: {
       wood: 7,
       stone: 3,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.5,
       },
@@ -2650,10 +2650,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'arcticscientistsuit',
-    name: 'Arctic Scientist Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit_scientist_arctic.png',
+    id: "arcticscientistsuit",
+    name: "Arctic Scientist Suit",
+    category: "attire",
+    img: "/images/hazmatsuit_scientist_arctic.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -2661,12 +2661,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -2677,22 +2677,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'arcticsuit',
-    name: 'Arctic Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit.arcticsuit.png',
+    id: "arcticsuit",
+    name: "Arctic Suit",
+    category: "attire",
+    img: "/images/hazmatsuit.arcticsuit.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -2700,12 +2700,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -2716,22 +2716,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'ballistichelmet',
-    name: 'Ballistic helmet',
-    category: 'attire',
-    img: '/images/ballistic.helmet.png',
+    id: "ballistichelmet",
+    name: "Ballistic helmet",
+    category: "attire",
+    img: "/images/ballistic.helmet.png",
     yield: {
       hqm: 18,
     },
@@ -2740,10 +2740,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ballisticlegarmour',
-    name: 'Ballistic leg armour',
-    category: 'attire',
-    img: '/images/ballistic.legarmor.png',
+    id: "ballisticlegarmour",
+    name: "Ballistic leg armour",
+    category: "attire",
+    img: "/images/ballistic.legarmor.png",
     yield: {
       cloth: 48,
       hqm: 30,
@@ -2754,10 +2754,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ballisticvest',
-    name: 'Ballistic vest',
-    category: 'attire',
-    img: '/images/ballistic.vest.png',
+    id: "ballisticvest",
+    name: "Ballistic vest",
+    category: "attire",
+    img: "/images/ballistic.vest.png",
     yield: {
       hqm: 30,
       sewingkit: 3,
@@ -2768,10 +2768,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bandanamask',
-    name: 'Bandana Mask',
-    category: 'attire',
-    img: '/images/mask.bandana.png',
+    id: "bandanamask",
+    name: "Bandana Mask",
+    category: "attire",
+    img: "/images/mask.bandana.png",
     yield: {
       cloth: 3,
     },
@@ -2780,10 +2780,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'banditguardgear',
-    name: 'Bandit Guard Gear',
-    category: 'attire',
-    img: '/images/attire.banditguard.png',
+    id: "banditguardgear",
+    name: "Bandit Guard Gear",
+    category: "attire",
+    img: "/images/attire.banditguard.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -2791,12 +2791,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -2807,22 +2807,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'baseballcap',
-    name: 'Baseball Cap',
-    category: 'attire',
-    img: '/images/hat.cap.png',
+    id: "baseballcap",
+    name: "Baseball Cap",
+    category: "attire",
+    img: "/images/hat.cap.png",
     yield: {
       cloth: 3,
     },
@@ -2831,10 +2831,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'basichorseshoes',
-    name: 'Basic Horse Shoes',
-    category: 'attire',
-    img: '/images/horse.shoes.basic.png',
+    id: "basichorseshoes",
+    name: "Basic Horse Shoes",
+    category: "attire",
+    img: "/images/horse.shoes.basic.png",
     yield: {
       metal: 30,
     },
@@ -2843,10 +2843,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bdupants',
-    name: 'BDU pants',
-    category: 'attire',
-    img: '/images/bdu.pants.png',
+    id: "bdupants",
+    name: "BDU pants",
+    category: "attire",
+    img: "/images/bdu.pants.png",
     yield: {
       cloth: 36,
     },
@@ -2855,10 +2855,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bdushirt',
-    name: 'BDU shirt',
-    category: 'attire',
-    img: '/images/bdu.shirt.png',
+    id: "bdushirt",
+    name: "BDU shirt",
+    category: "attire",
+    img: "/images/bdu.shirt.png",
     yield: {
       cloth: 36,
     },
@@ -2867,10 +2867,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'beeniehat',
-    name: 'Beenie Hat',
-    category: 'attire',
-    img: '/images/hat.beenie.png',
+    id: "beeniehat",
+    name: "Beenie Hat",
+    category: "attire",
+    img: "/images/hat.beenie.png",
     yield: {
       cloth: 9,
     },
@@ -2879,10 +2879,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bluejumpsuit',
-    name: 'Blue Jumpsuit',
-    category: 'attire',
-    img: '/images/jumpsuit.suit.blue.png',
+    id: "bluejumpsuit",
+    name: "Blue Jumpsuit",
+    category: "attire",
+    img: "/images/jumpsuit.suit.blue.png",
     yield: {
       cloth: 30,
     },
@@ -2891,38 +2891,38 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bonearmor',
-    name: 'Bone Armor',
-    category: 'attire',
-    img: '/images/bone.armor.suit.png',
+    id: "bonearmor",
+    name: "Bone Armor",
+    category: "attire",
+    img: "/images/bone.armor.suit.png",
     yield: {
       cloth: 9,
-      'bone-fragments': 42,
+      "bone-fragments": 42,
     },
     safezone_yield: {
       cloth: 6,
-      'bone-fragments': 28,
+      "bone-fragments": 28,
     },
   },
   {
-    id: 'bonehelmet',
-    name: 'Bone Helmet',
-    category: 'attire',
-    img: '/images/deer.skull.mask.png',
+    id: "bonehelmet",
+    name: "Bone Helmet",
+    category: "attire",
+    img: "/images/deer.skull.mask.png",
     yield: {
       cloth: 9,
-      'bone-fragments': 18,
+      "bone-fragments": 18,
     },
     safezone_yield: {
       cloth: 6,
-      'bone-fragments': 12,
+      "bone-fragments": 12,
     },
   },
   {
-    id: 'booniehat',
-    name: 'Boonie Hat',
-    category: 'attire',
-    img: '/images/hat.boonie.png',
+    id: "booniehat",
+    name: "Boonie Hat",
+    category: "attire",
+    img: "/images/hat.boonie.png",
     yield: {
       cloth: 6,
     },
@@ -2931,17 +2931,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'boots',
-    name: 'Boots',
-    category: 'attire',
-    img: '/images/shoes.boots.png',
+    id: "boots",
+    name: "Boots",
+    category: "attire",
+    img: "/images/shoes.boots.png",
     yield: {
       leather: 12,
       metal: 9,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -2952,17 +2952,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'buckethelmet',
-    name: 'Bucket Helmet',
-    category: 'attire',
-    img: '/images/bucket.helmet.png',
+    id: "buckethelmet",
+    name: "Bucket Helmet",
+    category: "attire",
+    img: "/images/bucket.helmet.png",
     yield: {
       metal: 21,
     },
@@ -2971,10 +2971,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bunnycostume',
-    name: 'Bunny Costume',
-    category: 'attire',
-    img: '/images/bunny.suit.png',
+    id: "bunnycostume",
+    name: "Bunny Costume",
+    category: "attire",
+    img: "/images/bunny.suit.png",
     yield: {
       cloth: 15,
       wood: 120,
@@ -2985,10 +2985,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bunnyears',
-    name: 'Bunny Ears',
-    category: 'attire',
-    img: '/images/attire.bunnyears.png',
+    id: "bunnyears",
+    name: "Bunny Ears",
+    category: "attire",
+    img: "/images/attire.bunnyears.png",
     yield: {
       cloth: 12,
     },
@@ -2997,10 +2997,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bunnyhat',
-    name: 'Bunny Hat',
-    category: 'attire',
-    img: '/images/hat.bunnyhat.png',
+    id: "bunnyhat",
+    name: "Bunny Hat",
+    category: "attire",
+    img: "/images/hat.bunnyhat.png",
     yield: {
       cloth: 6,
     },
@@ -3009,10 +3009,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bunnyonesie',
-    name: 'Bunny Onesie',
-    category: 'attire',
-    img: '/images/attire.bunny.onesie.png',
+    id: "bunnyonesie",
+    name: "Bunny Onesie",
+    category: "attire",
+    img: "/images/attire.bunny.onesie.png",
     yield: {
       cloth: 24,
     },
@@ -3021,10 +3021,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burlapgloves',
-    name: 'Burlap Gloves',
-    category: 'attire',
-    img: '/images/burlap.gloves.new.png',
+    id: "burlapgloves",
+    name: "Burlap Gloves",
+    category: "attire",
+    img: "/images/burlap.gloves.new.png",
     yield: {
       cloth: 3,
     },
@@ -3033,10 +3033,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burlapheadwrap',
-    name: 'Burlap Headwrap',
-    category: 'attire',
-    img: '/images/burlap.headwrap.png',
+    id: "burlapheadwrap",
+    name: "Burlap Headwrap",
+    category: "attire",
+    img: "/images/burlap.headwrap.png",
     yield: {
       cloth: 6,
     },
@@ -3045,10 +3045,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burlapshirt',
-    name: 'Burlap Shirt',
-    category: 'attire',
-    img: '/images/burlap.shirt.png',
+    id: "burlapshirt",
+    name: "Burlap Shirt",
+    category: "attire",
+    img: "/images/burlap.shirt.png",
     yield: {
       cloth: 12,
     },
@@ -3057,10 +3057,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burlapshoes',
-    name: 'Burlap Shoes',
-    category: 'attire',
-    img: '/images/burlap.shoes.png',
+    id: "burlapshoes",
+    name: "Burlap Shoes",
+    category: "attire",
+    img: "/images/burlap.shoes.png",
     yield: {
       cloth: 6,
     },
@@ -3069,10 +3069,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burlaptrousers',
-    name: 'Burlap Trousers',
-    category: 'attire',
-    img: '/images/burlap.trousers.png',
+    id: "burlaptrousers",
+    name: "Burlap Trousers",
+    category: "attire",
+    img: "/images/burlap.trousers.png",
     yield: {
       cloth: 12,
     },
@@ -3081,10 +3081,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'candlehat',
-    name: 'Candle Hat',
-    category: 'attire',
-    img: '/images/hat.candle.png',
+    id: "candlehat",
+    name: "Candle Hat",
+    category: "attire",
+    img: "/images/hat.candle.png",
     yield: {
       cloth: 9,
       lgf: 3,
@@ -3095,10 +3095,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cardmovembermoustache',
-    name: 'Card Movember Moustache',
-    category: 'attire',
-    img: '/images/movembermoustachecard.png',
+    id: "cardmovembermoustache",
+    name: "Card Movember Moustache",
+    category: "attire",
+    img: "/images/movembermoustachecard.png",
     yield: {
       cloth: 6,
     },
@@ -3107,10 +3107,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chickencostume',
-    name: 'Chicken Costume',
-    category: 'attire',
-    img: '/images/chicken.costume.png',
+    id: "chickencostume",
+    name: "Chicken Costume",
+    category: "attire",
+    img: "/images/chicken.costume.png",
     yield: {
       cloth: 15,
       wood: 120,
@@ -3121,10 +3121,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'clatterhelmet',
-    name: 'Clatter Helmet',
-    category: 'attire',
-    img: '/images/clatter.helmet.png',
+    id: "clatterhelmet",
+    name: "Clatter Helmet",
+    category: "attire",
+    img: "/images/clatter.helmet.png",
     yield: {
       metal: 21,
     },
@@ -3133,17 +3133,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'coffeecanhelmet',
-    name: 'Coffee Can Helmet',
-    category: 'attire',
-    img: '/images/coffeecan.helmet.png',
+    id: "coffeecanhelmet",
+    name: "Coffee Can Helmet",
+    category: "attire",
+    img: "/images/coffeecan.helmet.png",
     yield: {
       cloth: 9,
       metal: 36,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -3154,17 +3154,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'divingfins',
-    name: 'Diving Fins',
-    category: 'attire',
-    img: '/images/diving.fins.png',
+    id: "divingfins",
+    name: "Diving Fins",
+    category: "attire",
+    img: "/images/diving.fins.png",
     yield: {
       metal: 60,
     },
@@ -3173,10 +3173,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'divingmask',
-    name: 'Diving Mask',
-    category: 'attire',
-    img: '/images/diving.mask.png',
+    id: "divingmask",
+    name: "Diving Mask",
+    category: "attire",
+    img: "/images/diving.mask.png",
     yield: {
       metal: 42,
     },
@@ -3185,17 +3185,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'divingtank',
-    name: 'Diving Tank',
-    category: 'attire',
-    img: '/images/diving.tank.png',
+    id: "divingtank",
+    name: "Diving Tank",
+    category: "attire",
+    img: "/images/diving.tank.png",
     yield: {
       hqm: 3,
       metal: 60,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
@@ -3206,24 +3206,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'doubledivingtank',
-    name: 'Double Diving Tank',
-    category: 'attire',
-    img: '/images/diving.tank.double.png',
+    id: "doubledivingtank",
+    name: "Double Diving Tank",
+    category: "attire",
+    img: "/images/diving.tank.double.png",
     yield: {
       hqm: 7,
       metal: 120,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -3234,24 +3234,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'doublehorsesaddle',
-    name: 'Double Horse Saddle',
-    category: 'attire',
-    img: '/images/horse.saddle.double.png',
+    id: "doublehorsesaddle",
+    name: "Double Horse Saddle",
+    category: "attire",
+    img: "/images/horse.saddle.double.png",
     yield: {
       roadsigns: 3,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
@@ -3262,24 +3262,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'draculacape',
-    name: 'Dracula Cape',
-    category: 'attire',
-    img: '/images/draculacape.png',
+    id: "draculacape",
+    name: "Dracula Cape",
+    category: "attire",
+    img: "/images/draculacape.png",
     yield: {
       cloth: 30,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -3289,17 +3289,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'draculamask',
-    name: 'Dracula Mask',
-    category: 'attire',
-    img: '/images/draculamask.png',
+    id: "draculamask",
+    name: "Dracula Mask",
+    category: "attire",
+    img: "/images/draculamask.png",
     yield: {
       cloth: 6,
     },
@@ -3308,16 +3308,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'dragonmask',
-    name: 'Dragon Mask',
-    category: 'attire',
-    img: '/images/hat.dragonmask.png',
+    id: "dragonmask",
+    name: "Dragon Mask",
+    category: "attire",
+    img: "/images/hat.dragonmask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -3327,24 +3327,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'eggsuit',
-    name: 'Egg Suit',
-    category: 'attire',
-    img: '/images/attire.egg.suit.png',
+    id: "eggsuit",
+    name: "Egg Suit",
+    category: "attire",
+    img: "/images/attire.egg.suit.png",
     yield: {
       cloth: 36,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -3354,17 +3354,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'frankensteinmask',
-    name: 'Frankenstein Mask',
-    category: 'attire',
-    img: '/images/frankensteinmask.png',
+    id: "frankensteinmask",
+    name: "Frankenstein Mask",
+    category: "attire",
+    img: "/images/frankensteinmask.png",
     yield: {
       cloth: 6,
     },
@@ -3373,14 +3373,14 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'frogboots',
-    name: 'Frog Boots',
-    category: 'attire',
-    img: '/images/boots.frog.png',
+    id: "frogboots",
+    name: "Frog Boots",
+    category: "attire",
+    img: "/images/boots.frog.png",
     yield: {},
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -3388,17 +3388,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'gasmask',
-    name: 'Gas Mask',
-    category: 'attire',
-    img: '/images/hat.gas.mask.png',
+    id: "gasmask",
+    name: "Gas Mask",
+    category: "attire",
+    img: "/images/hat.gas.mask.png",
     yield: {
       metal: 21,
     },
@@ -3407,17 +3407,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ghostcostume',
-    name: 'Ghost Costume',
-    category: 'attire',
-    img: '/images/ghostsheet.png',
+    id: "ghostcostume",
+    name: "Ghost Costume",
+    category: "attire",
+    img: "/images/ghostsheet.png",
     yield: {
       cloth: 60,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -3427,17 +3427,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'hazmatsuit',
-    name: 'Hazmat Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit.png',
+    id: "hazmatsuit",
+    name: "Hazmat Suit",
+    category: "attire",
+    img: "/images/hazmatsuit.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -3445,12 +3445,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -3461,22 +3461,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'headset',
-    name: 'Headset',
-    category: 'attire',
-    img: '/images/twitch.headset.png',
+    id: "headset",
+    name: "Headset",
+    category: "attire",
+    img: "/images/twitch.headset.png",
     yield: {
       cloth: 6,
     },
@@ -3485,111 +3485,111 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'heavyfrankensteinhead',
-    name: 'Heavy Frankenstein Head',
-    category: 'attire',
-    img: '/images/frankensteins.monster.03.head.png',
+    id: "heavyfrankensteinhead",
+    name: "Heavy Frankenstein Head",
+    category: "attire",
+    img: "/images/frankensteins.monster.03.head.png",
     yield: {
-      'raw-human-meat': 3,
-      'animal-fat': 9,
-      'bone-fragments': 18,
+      "raw-human-meat": 3,
+      "animal-fat": 9,
+      "bone-fragments": 18,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 2,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 2,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'heavyfrankensteinlegs',
-    name: 'Heavy Frankenstein Legs',
-    category: 'attire',
-    img: '/images/frankensteins.monster.03.legs.png',
+    id: "heavyfrankensteinlegs",
+    name: "Heavy Frankenstein Legs",
+    category: "attire",
+    img: "/images/frankensteins.monster.03.legs.png",
     yield: {
-      'raw-human-meat': 3,
-      'animal-fat': 9,
-      'bone-fragments': 18,
+      "raw-human-meat": 3,
+      "animal-fat": 9,
+      "bone-fragments": 18,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 2,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 2,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'heavyfrankensteintorso',
-    name: 'Heavy Frankenstein Torso',
-    category: 'attire',
-    img: '/images/frankensteins.monster.03.torso.png',
+    id: "heavyfrankensteintorso",
+    name: "Heavy Frankenstein Torso",
+    category: "attire",
+    img: "/images/frankensteins.monster.03.torso.png",
     yield: {
-      'raw-human-meat': 3,
-      'animal-fat': 9,
-      'bone-fragments': 18,
+      "raw-human-meat": 3,
+      "animal-fat": 9,
+      "bone-fragments": 18,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 2,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 2,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'heavyplatehelmet',
-    name: 'Heavy Plate Helmet',
-    category: 'attire',
-    img: '/images/heavy.plate.helmet.png',
+    id: "heavyplatehelmet",
+    name: "Heavy Plate Helmet",
+    category: "attire",
+    img: "/images/heavy.plate.helmet.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -3599,34 +3599,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'heavyplatejacket',
-    name: 'Heavy Plate Jacket',
-    category: 'attire',
-    img: '/images/heavy.plate.jacket.png',
+    id: "heavyplatejacket",
+    name: "Heavy Plate Jacket",
+    category: "attire",
+    img: "/images/heavy.plate.jacket.png",
     yield: {
-      'sheet-metal': 1,
+      "sheet-metal": 1,
       hqm: 2,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -3636,33 +3636,33 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'heavyplatepants',
-    name: 'Heavy Plate Pants',
-    category: 'attire',
-    img: '/images/heavy.plate.pants.png',
+    id: "heavyplatepants",
+    name: "Heavy Plate Pants",
+    category: "attire",
+    img: "/images/heavy.plate.pants.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -3672,22 +3672,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'heavyscientistsuit',
-    name: 'Heavy Scientist Suit',
-    category: 'attire',
-    img: '/images/scientistsuit_heavy.png',
+    id: "heavyscientistsuit",
+    name: "Heavy Scientist Suit",
+    category: "attire",
+    img: "/images/scientistsuit_heavy.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -3695,12 +3695,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -3711,22 +3711,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'hideboots',
-    name: 'Hide Boots',
-    category: 'attire',
-    img: '/images/attire.hide.boots.png',
+    id: "hideboots",
+    name: "Hide Boots",
+    category: "attire",
+    img: "/images/attire.hide.boots.png",
     yield: {
       leather: 6,
     },
@@ -3735,10 +3735,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hidehalterneck',
-    name: 'Hide Halterneck',
-    category: 'attire',
-    img: '/images/attire.hide.helterneck.png',
+    id: "hidehalterneck",
+    name: "Hide Halterneck",
+    category: "attire",
+    img: "/images/attire.hide.helterneck.png",
     yield: {
       leather: 6,
     },
@@ -3747,10 +3747,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hidepants',
-    name: 'Hide Pants',
-    category: 'attire',
-    img: '/images/attire.hide.pants.png',
+    id: "hidepants",
+    name: "Hide Pants",
+    category: "attire",
+    img: "/images/attire.hide.pants.png",
     yield: {
       leather: 6,
     },
@@ -3759,10 +3759,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hideponcho',
-    name: 'Hide Poncho',
-    category: 'attire',
-    img: '/images/attire.hide.poncho.png',
+    id: "hideponcho",
+    name: "Hide Poncho",
+    category: "attire",
+    img: "/images/attire.hide.poncho.png",
     yield: {
       leather: 9,
     },
@@ -3771,10 +3771,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hideskirt',
-    name: 'Hide Skirt',
-    category: 'attire',
-    img: '/images/attire.hide.skirt.png',
+    id: "hideskirt",
+    name: "Hide Skirt",
+    category: "attire",
+    img: "/images/attire.hide.skirt.png",
     yield: {
       leather: 6,
     },
@@ -3783,10 +3783,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hidevest',
-    name: 'Hide Vest',
-    category: 'attire',
-    img: '/images/attire.hide.vest.png',
+    id: "hidevest",
+    name: "Hide Vest",
+    category: "attire",
+    img: "/images/attire.hide.vest.png",
     yield: {
       leather: 6,
     },
@@ -3795,16 +3795,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualityhorseshoes',
-    name: 'High Quality Horse Shoes',
-    category: 'attire',
-    img: '/images/horse.shoes.advanced.png',
+    id: "highqualityhorseshoes",
+    name: "High Quality Horse Shoes",
+    category: "attire",
+    img: "/images/horse.shoes.advanced.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -3814,23 +3814,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'hoodie',
-    name: 'Hoodie',
-    category: 'attire',
-    img: '/images/hoodie.png',
+    id: "hoodie",
+    name: "Hoodie",
+    category: "attire",
+    img: "/images/hoodie.png",
     yield: {
       cloth: 24,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -3840,17 +3840,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'horsecostume',
-    name: 'Horse Costume',
-    category: 'attire',
-    img: '/images/horse.costume.png',
+    id: "horsecostume",
+    name: "Horse Costume",
+    category: "attire",
+    img: "/images/horse.costume.png",
     yield: {
       cloth: 15,
       wood: 120,
@@ -3861,16 +3861,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'horsemask',
-    name: 'Horse Mask',
-    category: 'attire',
-    img: '/images/hat.horsemask.png',
+    id: "horsemask",
+    name: "Horse Mask",
+    category: "attire",
+    img: "/images/hat.horsemask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -3880,17 +3880,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'hotairballoonarmor',
-    name: 'Hot Air Balloon Armor',
-    category: 'attire',
-    img: '/images/hab.armor.png',
+    id: "hotairballoonarmor",
+    name: "Hot Air Balloon Armor",
+    category: "attire",
+    img: "/images/hab.armor.png",
     yield: {
       metal: 120,
     },
@@ -3899,10 +3899,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'improvisedbalaclava',
-    name: 'Improvised Balaclava',
-    category: 'attire',
-    img: '/images/mask.balaclava.png',
+    id: "improvisedbalaclava",
+    name: "Improvised Balaclava",
+    category: "attire",
+    img: "/images/mask.balaclava.png",
     yield: {
       cloth: 9,
     },
@@ -3911,17 +3911,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'jacket',
-    name: 'Jacket',
-    category: 'attire',
-    img: '/images/jacket.png',
+    id: "jacket",
+    name: "Jacket",
+    category: "attire",
+    img: "/images/jacket.png",
     yield: {
       cloth: 30,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -3931,17 +3931,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'jumpsuit',
-    name: 'Jumpsuit',
-    category: 'attire',
-    img: '/images/jumpsuit.suit.png',
+    id: "jumpsuit",
+    name: "Jumpsuit",
+    category: "attire",
+    img: "/images/jumpsuit.suit.png",
     yield: {
       cloth: 30,
     },
@@ -3950,10 +3950,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largebackpack',
-    name: 'Large Backpack',
-    category: 'attire',
-    img: '/images/largebackpack.png',
+    id: "largebackpack",
+    name: "Large Backpack",
+    category: "attire",
+    img: "/images/largebackpack.png",
     yield: {
       scrap: 12,
       cloth: 60,
@@ -3961,7 +3961,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -3973,17 +3973,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'leathergloves',
-    name: 'Leather Gloves',
-    category: 'attire',
-    img: '/images/burlap.gloves.png',
+    id: "leathergloves",
+    name: "Leather Gloves",
+    category: "attire",
+    img: "/images/burlap.gloves.png",
     yield: {
       leather: 12,
     },
@@ -3992,100 +3992,100 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lightfrankensteinhead',
-    name: 'Light Frankenstein Head',
-    category: 'attire',
-    img: '/images/frankensteins.monster.01.head.png',
+    id: "lightfrankensteinhead",
+    name: "Light Frankenstein Head",
+    category: "attire",
+    img: "/images/frankensteins.monster.01.head.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'lightfrankensteinlegs',
-    name: 'Light Frankenstein Legs',
-    category: 'attire',
-    img: '/images/frankensteins.monster.01.legs.png',
+    id: "lightfrankensteinlegs",
+    name: "Light Frankenstein Legs",
+    category: "attire",
+    img: "/images/frankensteins.monster.01.legs.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'lightfrankensteintorso',
-    name: 'Light Frankenstein Torso',
-    category: 'attire',
-    img: '/images/frankensteins.monster.01.torso.png',
+    id: "lightfrankensteintorso",
+    name: "Light Frankenstein Torso",
+    category: "attire",
+    img: "/images/frankensteins.monster.01.torso.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'longsleevetshirt',
-    name: 'Longsleeve T-Shirt',
-    category: 'attire',
-    img: '/images/tshirt.long.png',
+    id: "longsleevetshirt",
+    name: "Longsleeve T-Shirt",
+    category: "attire",
+    img: "/images/tshirt.long.png",
     yield: {
       cloth: 18,
     },
@@ -4094,16 +4094,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lumberjackhoodie',
-    name: 'Lumberjack Hoodie',
-    category: 'attire',
-    img: '/images/lumberjack hoodie.png',
+    id: "lumberjackhoodie",
+    name: "Lumberjack Hoodie",
+    category: "attire",
+    img: "/images/lumberjack.hoodie.png",
     yield: {
       cloth: 24,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -4113,107 +4113,107 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'mediumfrankensteinhead',
-    name: 'Medium Frankenstein Head',
-    category: 'attire',
-    img: '/images/frankensteins.monster.02.head.png',
+    id: "mediumfrankensteinhead",
+    name: "Medium Frankenstein Head",
+    category: "attire",
+    img: "/images/frankensteins.monster.02.head.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'mediumfrankensteinlegs',
-    name: 'Medium Frankenstein Legs',
-    category: 'attire',
-    img: '/images/frankensteins.monster.02.legs.png',
+    id: "mediumfrankensteinlegs",
+    name: "Medium Frankenstein Legs",
+    category: "attire",
+    img: "/images/frankensteins.monster.02.legs.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'mediumfrankensteintorso',
-    name: 'Medium Frankenstein Torso',
-    category: 'attire',
-    img: '/images/frankensteins.monster.02.torso.png',
+    id: "mediumfrankensteintorso",
+    name: "Medium Frankenstein Torso",
+    category: "attire",
+    img: "/images/frankensteins.monster.02.torso.png",
     yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 6,
-      'bone-fragments': 12,
+      "raw-human-meat": 1,
+      "animal-fat": 6,
+      "bone-fragments": 12,
     },
     random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'raw-human-meat': 1,
-      'animal-fat': 4,
-      'bone-fragments': 8,
+      "raw-human-meat": 1,
+      "animal-fat": 4,
+      "bone-fragments": 8,
     },
     safezone_random: [
       {
-        id: 'raw-human-meat',
+        id: "raw-human-meat",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'metalchestplate',
-    name: 'Metal Chest Plate',
-    category: 'attire',
-    img: '/images/metal.plate.torso.png',
+    id: "metalchestplate",
+    name: "Metal Chest Plate",
+    category: "attire",
+    img: "/images/metal.plate.torso.png",
     yield: {
       leather: 30,
       hqm: 10,
@@ -4221,12 +4221,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
@@ -4238,22 +4238,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'metalfacemask',
-    name: 'Metal Facemask',
-    category: 'attire',
-    img: '/images/metal.facemask.png',
+    id: "metalfacemask",
+    name: "Metal Facemask",
+    category: "attire",
+    img: "/images/metal.facemask.png",
     yield: {
       leather: 30,
       hqm: 9,
@@ -4261,7 +4261,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -4273,17 +4273,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'metalshield',
-    name: 'Metal Shield',
-    category: 'attire',
-    img: '/images/metal.shield.png',
+    id: "metalshield",
+    name: "Metal Shield",
+    category: "attire",
+    img: "/images/metal.shield.png",
     yield: {
       metal: 180,
       leather: 6,
@@ -4296,10 +4296,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'minershat',
-    name: 'Miners Hat',
-    category: 'attire',
-    img: '/images/hat.miner.png',
+    id: "minershat",
+    name: "Miners Hat",
+    category: "attire",
+    img: "/images/hat.miner.png",
     yield: {
       cloth: 9,
       lgf: 6,
@@ -4312,10 +4312,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'movembermoustache',
-    name: 'Movember Moustache',
-    category: 'attire',
-    img: '/images/movembermoustache.png',
+    id: "movembermoustache",
+    name: "Movember Moustache",
+    category: "attire",
+    img: "/images/movembermoustache.png",
     yield: {
       cloth: 6,
     },
@@ -4324,10 +4324,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mummymask',
-    name: 'Mummy Mask',
-    category: 'attire',
-    img: '/images/mummymask.png',
+    id: "mummymask",
+    name: "Mummy Mask",
+    category: "attire",
+    img: "/images/mummymask.png",
     yield: {
       cloth: 6,
     },
@@ -4336,10 +4336,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'navalscientistsuit',
-    name: 'Naval Scientist Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit_scientist_naval.png',
+    id: "navalscientistsuit",
+    name: "Naval Scientist Suit",
+    category: "attire",
+    img: "/images/hazmatsuit_scientist_naval.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -4347,12 +4347,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -4363,28 +4363,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'nesthat',
-    name: 'Nest Hat',
-    category: 'attire',
-    img: '/images/attire.nesthat.png',
+    id: "nesthat",
+    name: "Nest Hat",
+    category: "attire",
+    img: "/images/attire.nesthat.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -4394,24 +4394,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'nightvisiongoggles',
-    name: 'Night Vision Goggles',
-    category: 'attire',
-    img: '/images/nightvisiongoggles.png',
+    id: "nightvisiongoggles",
+    name: "Night Vision Goggles",
+    category: "attire",
+    img: "/images/nightvisiongoggles.png",
     yield: {
       hqm: 6,
       techtrash: 1,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
@@ -4421,24 +4421,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'ninjasuit',
-    name: 'Ninja Suit',
-    category: 'attire',
-    img: '/images/attire.ninja.suit.png',
+    id: "ninjasuit",
+    name: "Ninja Suit",
+    category: "attire",
+    img: "/images/attire.ninja.suit.png",
     yield: {
       cloth: 36,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4448,17 +4448,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'nvgmscientistsuit',
-    name: 'NVGM Scientist Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit_scientist_nvgm.png',
+    id: "nvgmscientistsuit",
+    name: "NVGM Scientist Suit",
+    category: "attire",
+    img: "/images/hazmatsuit_scientist_nvgm.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -4466,12 +4466,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -4482,22 +4482,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'outbreakscientistsuit',
-    name: 'Outbreak Scientist Suit',
-    category: 'attire',
-    img: '/images/oubreak_scientist.png',
+    id: "outbreakscientistsuit",
+    name: "Outbreak Scientist Suit",
+    category: "attire",
+    img: "/images/oubreak_scientist.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -4505,12 +4505,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -4521,28 +4521,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'oxmask',
-    name: 'Ox Mask',
-    category: 'attire',
-    img: '/images/hat.oxmask.png',
+    id: "oxmask",
+    name: "Ox Mask",
+    category: "attire",
+    img: "/images/hat.oxmask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -4552,24 +4552,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'paintballoveralls',
-    name: 'Paintball Overalls',
-    category: 'attire',
-    img: '/images/paintballoveralls.suit.png',
+    id: "paintballoveralls",
+    name: "Paintball Overalls",
+    category: "attire",
+    img: "/images/paintballoveralls.suit.png",
     yield: {
       cloth: 36,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4579,23 +4579,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'pants',
-    name: 'Pants',
-    category: 'attire',
-    img: '/images/pants.png',
+    id: "pants",
+    name: "Pants",
+    category: "attire",
+    img: "/images/pants.png",
     yield: {
       cloth: 24,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -4605,17 +4605,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'parachute',
-    name: 'Parachute',
-    category: 'attire',
-    img: '/images/parachute.png',
+    id: "parachute",
+    name: "Parachute",
+    category: "attire",
+    img: "/images/parachute.png",
     yield: {
       tarp: 1,
       sewingkit: 1,
@@ -4623,12 +4623,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4638,22 +4638,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'prisonerhood',
-    name: 'Prisoner Hood',
-    category: 'attire',
-    img: '/images/prisonerhood.png',
+    id: "prisonerhood",
+    name: "Prisoner Hood",
+    category: "attire",
+    img: "/images/prisonerhood.png",
     yield: {
       cloth: 12,
     },
@@ -4662,10 +4662,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'purplesunglasses',
-    name: 'Purple Sunglasses',
-    category: 'attire',
-    img: '/images/twitchsunglasses.png',
+    id: "purplesunglasses",
+    name: "Purple Sunglasses",
+    category: "attire",
+    img: "/images/twitchsunglasses.png",
     yield: {
       metal: 18,
     },
@@ -4674,16 +4674,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rabbitmask',
-    name: 'Rabbit Mask',
-    category: 'attire',
-    img: '/images/hat.rabbitmask.png',
+    id: "rabbitmask",
+    name: "Rabbit Mask",
+    category: "attire",
+    img: "/images/hat.rabbitmask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -4693,23 +4693,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'ratmask',
-    name: 'Rat Mask',
-    category: 'attire',
-    img: '/images/hat.ratmask.png',
+    id: "ratmask",
+    name: "Rat Mask",
+    category: "attire",
+    img: "/images/hat.ratmask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -4719,17 +4719,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'reindeerantlers',
-    name: 'Reindeer Antlers',
-    category: 'attire',
-    img: '/images/attire.reindeer.headband.png',
+    id: "reindeerantlers",
+    name: "Reindeer Antlers",
+    category: "attire",
+    img: "/images/attire.reindeer.headband.png",
     yield: {
       cloth: 12,
     },
@@ -4738,17 +4738,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'reinforcedwoodenshield',
-    name: 'Reinforced Wooden Shield',
-    category: 'attire',
-    img: '/images/reinforced.wooden.shield.png',
+    id: "reinforcedwoodenshield",
+    name: "Reinforced Wooden Shield",
+    category: "attire",
+    img: "/images/reinforced.wooden.shield.png",
     yield: {
       cloth: 6,
       wood: 120,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
@@ -4759,17 +4759,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'riothelmet',
-    name: 'Riot Helmet',
-    category: 'attire',
-    img: '/images/riot.helmet.png',
+    id: "riothelmet",
+    name: "Riot Helmet",
+    category: "attire",
+    img: "/images/riot.helmet.png",
     yield: {
       cloth: 6,
       metal: 30,
@@ -4780,22 +4780,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'roadsigngloves',
-    name: 'Road Sign Gloves',
-    category: 'attire',
-    img: '/images/roadsign.gloves.png',
+    id: "roadsigngloves",
+    name: "Road Sign Gloves",
+    category: "attire",
+    img: "/images/roadsign.gloves.png",
     yield: {
       leather: 12,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4805,22 +4805,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'roadsignjacket',
-    name: 'Road Sign Jacket',
-    category: 'attire',
-    img: '/images/roadsign.jacket.png',
+    id: "roadsignjacket",
+    name: "Road Sign Jacket",
+    category: "attire",
+    img: "/images/roadsign.jacket.png",
     yield: {
       leather: 12,
       roadsigns: 1,
@@ -4828,12 +4828,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4843,34 +4843,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'roadsignkilt',
-    name: 'Road Sign Kilt',
-    category: 'attire',
-    img: '/images/roadsign.kilt.png',
+    id: "roadsignkilt",
+    name: "Road Sign Kilt",
+    category: "attire",
+    img: "/images/roadsign.kilt.png",
     yield: {
       leather: 6,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4880,34 +4880,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'roadsignhorsearmor',
-    name: 'Roadsign Horse Armor',
-    category: 'attire',
-    img: '/images/horse.armor.roadsign.png',
+    id: "roadsignhorsearmor",
+    name: "Roadsign Horse Armor",
+    category: "attire",
+    img: "/images/horse.armor.roadsign.png",
     yield: {
       roadsigns: 2,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -4917,22 +4917,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'saddlebag',
-    name: 'Saddle bag',
-    category: 'attire',
-    img: '/images/horse.saddlebag.png',
+    id: "saddlebag",
+    name: "Saddle bag",
+    category: "attire",
+    img: "/images/horse.saddlebag.png",
     yield: {
       leather: 12,
     },
@@ -4941,10 +4941,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'santabeard',
-    name: 'Santa Beard',
-    category: 'attire',
-    img: '/images/santabeard.png',
+    id: "santabeard",
+    name: "Santa Beard",
+    category: "attire",
+    img: "/images/santabeard.png",
     yield: {
       cloth: 6,
     },
@@ -4953,10 +4953,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'scarecrowwrap',
-    name: 'Scarecrow Wrap',
-    category: 'attire',
-    img: '/images/scarecrowhead.png',
+    id: "scarecrowwrap",
+    name: "Scarecrow Wrap",
+    category: "attire",
+    img: "/images/scarecrowhead.png",
     yield: {
       cloth: 6,
     },
@@ -4965,10 +4965,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'scientistsuit',
-    name: 'Scientist Suit',
-    category: 'attire',
-    img: '/images/hazmatsuit_scientist_peacekeeper.png',
+    id: "scientistsuit",
+    name: "Scientist Suit",
+    category: "attire",
+    img: "/images/hazmatsuit_scientist_peacekeeper.png",
     yield: {
       tarp: 3,
       sewingkit: 1,
@@ -4976,12 +4976,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -4992,22 +4992,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'shirt',
-    name: 'Shirt',
-    category: 'attire',
-    img: '/images/shirt.collared.png',
+    id: "shirt",
+    name: "Shirt",
+    category: "attire",
+    img: "/images/shirt.collared.png",
     yield: {
       cloth: 15,
     },
@@ -5016,10 +5016,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shorts',
-    name: 'Shorts',
-    category: 'attire',
-    img: '/images/pants.shorts.png',
+    id: "shorts",
+    name: "Shorts",
+    category: "attire",
+    img: "/images/pants.shorts.png",
     yield: {
       cloth: 18,
     },
@@ -5028,10 +5028,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sillyhorsemask',
-    name: 'Silly Horse Mask',
-    category: 'attire',
-    img: '/images/silly.horse.mask.png',
+    id: "sillyhorsemask",
+    name: "Silly Horse Mask",
+    category: "attire",
+    img: "/images/silly.horse.mask.png",
     yield: {
       cloth: 6,
     },
@@ -5040,22 +5040,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'singlehorsesaddle',
-    name: 'Single Horse Saddle',
-    category: 'attire',
-    img: '/images/horse.saddle.single.png',
+    id: "singlehorsesaddle",
+    name: "Single Horse Saddle",
+    category: "attire",
+    img: "/images/horse.saddle.single.png",
     yield: {
       roadsigns: 2,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -5065,22 +5065,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smallbackpack',
-    name: 'Small Backpack',
-    category: 'attire',
-    img: '/images/smallbackpack.png',
+    id: "smallbackpack",
+    name: "Small Backpack",
+    category: "attire",
+    img: "/images/smallbackpack.png",
     yield: {
       sewingkit: 3,
       cloth: 30,
@@ -5091,16 +5091,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'snakemask',
-    name: 'Snake mask',
-    category: 'attire',
-    img: '/images/hat.snakemask.png',
+    id: "snakemask",
+    name: "Snake mask",
+    category: "attire",
+    img: "/images/hat.snakemask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -5110,23 +5110,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'snowjacket',
-    name: 'Snow Jacket',
-    category: 'attire',
-    img: '/images/jacket.snow.png',
+    id: "snowjacket",
+    name: "Snow Jacket",
+    category: "attire",
+    img: "/images/jacket.snow.png",
     yield: {
       cloth: 36,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.6,
       },
@@ -5136,17 +5136,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'snowmanhelmet',
-    name: 'Snowman Helmet',
-    category: 'attire',
-    img: '/images/attire.snowman.helmet.png',
+    id: "snowmanhelmet",
+    name: "Snowman Helmet",
+    category: "attire",
+    img: "/images/attire.snowman.helmet.png",
     yield: {
       cloth: 6,
     },
@@ -5155,10 +5155,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sunglasses',
-    name: 'Sunglasses',
-    category: 'attire',
-    img: '/images/sunglasses.png',
+    id: "sunglasses",
+    name: "Sunglasses",
+    category: "attire",
+    img: "/images/sunglasses.png",
     yield: {
       metal: 18,
     },
@@ -5167,17 +5167,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'surgeonscrubs',
-    name: 'Surgeon Scrubs',
-    category: 'attire',
-    img: '/images/halloween.surgeonsuit.png',
+    id: "surgeonscrubs",
+    name: "Surgeon Scrubs",
+    category: "attire",
+    img: "/images/halloween.surgeonsuit.png",
     yield: {
       cloth: 36,
       sewingkit: 1,
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -5187,17 +5187,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'tshirt',
-    name: 'T-Shirt',
-    category: 'attire',
-    img: '/images/tshirt.png',
+    id: "tshirt",
+    name: "T-Shirt",
+    category: "attire",
+    img: "/images/tshirt.png",
     yield: {
       cloth: 15,
     },
@@ -5206,10 +5206,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tacticalgloves',
-    name: 'Tactical Gloves',
-    category: 'attire',
-    img: '/images/tactical.gloves.png',
+    id: "tacticalgloves",
+    name: "Tactical Gloves",
+    category: "attire",
+    img: "/images/tactical.gloves.png",
     yield: {
       leather: 12,
       sewingkit: 6,
@@ -5220,10 +5220,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tanktop',
-    name: 'Tank Top',
-    category: 'attire',
-    img: '/images/shirt.tanktop.png',
+    id: "tanktop",
+    name: "Tank Top",
+    category: "attire",
+    img: "/images/shirt.tanktop.png",
     yield: {
       cloth: 12,
     },
@@ -5232,16 +5232,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tigermask',
-    name: 'Tiger Mask',
-    category: 'attire',
-    img: '/images/hat.tigermask.png',
+    id: "tigermask",
+    name: "Tiger Mask",
+    category: "attire",
+    img: "/images/hat.tigermask.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -5251,17 +5251,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'waterwellnpcjumpsuit',
-    name: 'Waterwell NPC Jumpsuit',
-    category: 'attire',
-    img: '/images/jumpsuit.waterwellnpc.png',
+    id: "waterwellnpcjumpsuit",
+    name: "Waterwell NPC Jumpsuit",
+    category: "attire",
+    img: "/images/jumpsuit.waterwellnpc.png",
     yield: {
       cloth: 30,
     },
@@ -5270,10 +5270,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wellipetshat',
-    name: 'Wellipets Hat',
-    category: 'attire',
-    img: '/images/hat.wellipets.png',
+    id: "wellipetshat",
+    name: "Wellipets Hat",
+    category: "attire",
+    img: "/images/hat.wellipets.png",
     yield: {
       cloth: 6,
     },
@@ -5282,10 +5282,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wetsuit',
-    name: 'Wetsuit',
-    category: 'attire',
-    img: '/images/diving.wetsuit.png',
+    id: "wetsuit",
+    name: "Wetsuit",
+    category: "attire",
+    img: "/images/diving.wetsuit.png",
     yield: {
       metal: 45,
     },
@@ -5294,16 +5294,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wolfheaddress',
-    name: 'Wolf Headdress',
-    category: 'attire',
-    img: '/images/hat.wolf.png',
+    id: "wolfheaddress",
+    name: "Wolf Headdress",
+    category: "attire",
+    img: "/images/hat.wolf.png",
     yield: {
       cloth: 6,
     },
     random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -5313,17 +5313,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wolf-skull',
+        id: "wolf-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'woodarmorgloves',
-    name: 'Wood Armor Gloves',
-    category: 'attire',
-    img: '/images/woodarmor.gloves.png',
+    id: "woodarmorgloves",
+    name: "Wood Armor Gloves",
+    category: "attire",
+    img: "/images/woodarmor.gloves.png",
     yield: {
       wood: 60,
       cloth: 9,
@@ -5334,10 +5334,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodarmorhelmet',
-    name: 'Wood Armor Helmet',
-    category: 'attire',
-    img: '/images/wood.armor.helmet.png',
+    id: "woodarmorhelmet",
+    name: "Wood Armor Helmet",
+    category: "attire",
+    img: "/images/wood.armor.helmet.png",
     yield: {
       cloth: 9,
       wood: 90,
@@ -5348,10 +5348,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodarmorpants',
-    name: 'Wood Armor Pants',
-    category: 'attire',
-    img: '/images/wood.armor.pants.png',
+    id: "woodarmorpants",
+    name: "Wood Armor Pants",
+    category: "attire",
+    img: "/images/wood.armor.pants.png",
     yield: {
       cloth: 9,
       wood: 90,
@@ -5362,10 +5362,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodchestplate',
-    name: 'Wood Chestplate',
-    category: 'attire',
-    img: '/images/wood.armor.jacket.png',
+    id: "woodchestplate",
+    name: "Wood Chestplate",
+    category: "attire",
+    img: "/images/wood.armor.jacket.png",
     yield: {
       cloth: 12,
       wood: 150,
@@ -5376,17 +5376,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenhorsearmor',
-    name: 'Wooden Horse Armor',
-    category: 'attire',
-    img: '/images/horse.armor.wood.png',
+    id: "woodenhorsearmor",
+    name: "Wooden Horse Armor",
+    category: "attire",
+    img: "/images/horse.armor.wood.png",
     yield: {
       rope: 1,
       wood: 180,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -5396,17 +5396,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'woodenshield',
-    name: 'Wooden Shield',
-    category: 'attire',
-    img: '/images/wooden.shield.png',
+    id: "woodenshield",
+    name: "Wooden Shield",
+    category: "attire",
+    img: "/images/wooden.shield.png",
     yield: {
       wood: 150,
       cloth: 12,
@@ -5417,10 +5417,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'acceleratedworkbenchupgrade',
-    name: 'Accelerated Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.accelerated.png',
+    id: "acceleratedworkbenchupgrade",
+    name: "Accelerated Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.accelerated.png",
     yield: {
       gears: 3,
     },
@@ -5429,10 +5429,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'armoredcockpitvehiclemodule',
-    name: 'Armored Cockpit Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.cockpit.armored.png',
+    id: "armoredcockpitvehiclemodule",
+    name: "Armored Cockpit Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.cockpit.armored.png",
     yield: {
       metal: 75,
       hqm: 2,
@@ -5443,10 +5443,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'armoredpassengervehiclemodule',
-    name: 'Armored Passenger Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.passengers.armored.png',
+    id: "armoredpassengervehiclemodule",
+    name: "Armored Passenger Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.passengers.armored.png",
     yield: {
       metal: 75,
       hqm: 2,
@@ -5457,10 +5457,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'burstmodule',
-    name: 'Burst Module',
-    category: 'components',
-    img: '/images/weapon.mod.burstmodule.png',
+    id: "burstmodule",
+    name: "Burst Module",
+    category: "components",
+    img: "/images/weapon.mod.burstmodule.png",
     yield: {
       hqm: 6,
     },
@@ -5469,10 +5469,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'campervehiclemodule',
-    name: 'Camper Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.2mod.camper.png',
+    id: "campervehiclemodule",
+    name: "Camper Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.2mod.camper.png",
     yield: {
       metal: 87,
       wood: 62,
@@ -5483,10 +5483,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cockpitvehiclemodule',
-    name: 'Cockpit Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.cockpit.png',
+    id: "cockpitvehiclemodule",
+    name: "Cockpit Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.cockpit.png",
     yield: {
       metal: 75,
       wood: 50,
@@ -5497,10 +5497,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cockpitwithenginevehiclemodule',
-    name: 'Cockpit With Engine Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.cockpit.with.engine.png',
+    id: "cockpitwithenginevehiclemodule",
+    name: "Cockpit With Engine Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.cockpit.with.engine.png",
     yield: {
       metal: 75,
       hqm: 2,
@@ -5513,10 +5513,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'comfortworkbenchupgrade',
-    name: 'Comfort Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.comfort.png',
+    id: "comfortworkbenchupgrade",
+    name: "Comfort Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.comfort.png",
     yield: {
       wood: 60,
       cloth: 18,
@@ -5527,10 +5527,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'defensiveworkbenchupgrade',
-    name: 'Defensive Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.defensive.png',
+    id: "defensiveworkbenchupgrade",
+    name: "Defensive Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.defensive.png",
     yield: {
       metal: 60,
     },
@@ -5539,16 +5539,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ducttape',
-    name: 'Duct Tape',
-    category: 'components',
-    img: '/images/ducttape.png',
+    id: "ducttape",
+    name: "Duct Tape",
+    category: "components",
+    img: "/images/ducttape.png",
     yield: {
       cloth: 3,
     },
     random: [
       {
-        id: 'glue',
+        id: "glue",
         amount: 1,
         chance: 0.6,
       },
@@ -5558,23 +5558,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'glue',
+        id: "glue",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'efficiencyworkbenchupgrade',
-    name: 'Efficiency Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.efficiency.png',
+    id: "efficiencyworkbenchupgrade",
+    name: "Efficiency Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.efficiency.png",
     yield: {
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
@@ -5584,18 +5584,18 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'electricfuse',
-    name: 'Electric Fuse',
-    category: 'components',
+    id: "electricfuse",
+    name: "Electric Fuse",
+    category: "components",
     recycleStack: 2,
-    img: '/images/fuse.png',
+    img: "/images/fuse.png",
     yield: {
       scrap: 24,
     },
@@ -5604,11 +5604,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'emptypropanetank',
-    name: 'Empty Propane Tank',
-    category: 'components',
+    id: "emptypropanetank",
+    name: "Empty Propane Tank",
+    category: "components",
     recycleStack: 2,
-    img: '/images/propanetank.png',
+    img: "/images/propanetank.png",
     yield: {
       scrap: 1,
       metal: 60,
@@ -5618,17 +5618,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'enginevehiclemodule',
-    name: 'Engine Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.engine.png',
+    id: "enginevehiclemodule",
+    name: "Engine Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.engine.png",
     yield: {
       metal: 50,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -5639,17 +5639,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'flatbedvehiclemodule',
-    name: 'Flatbed Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.flatbed.png',
+    id: "flatbedvehiclemodule",
+    name: "Flatbed Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.flatbed.png",
     yield: {
       metal: 50,
       wood: 50,
@@ -5660,10 +5660,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fueltankvehiclemodule',
-    name: 'Fuel Tank Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.2mod.fuel.tank.png',
+    id: "fueltankvehiclemodule",
+    name: "Fuel Tank Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.2mod.fuel.tank.png",
     yield: {
       metal: 87,
       wood: 50,
@@ -5674,11 +5674,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'gears',
-    name: 'Gears',
-    category: 'components',
+    id: "gears",
+    name: "Gears",
+    category: "components",
     recycleStack: 2,
-    img: '/images/gears.png',
+    img: "/images/gears.png",
     yield: {
       scrap: 12,
       metal: 15,
@@ -5689,10 +5689,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualitycarburetor',
-    name: 'High Quality Carburetor',
-    category: 'components',
-    img: '/images/carburetor3.png',
+    id: "highqualitycarburetor",
+    name: "High Quality Carburetor",
+    category: "components",
+    img: "/images/carburetor3.png",
     yield: {
       metal: 102,
     },
@@ -5701,10 +5701,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualitycrankshaft',
-    name: 'High Quality Crankshaft',
-    category: 'components',
-    img: '/images/crankshaft3.png',
+    id: "highqualitycrankshaft",
+    name: "High Quality Crankshaft",
+    category: "components",
+    img: "/images/crankshaft3.png",
     yield: {
       metal: 72,
     },
@@ -5713,10 +5713,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualitypistons',
-    name: 'High Quality Pistons',
-    category: 'components',
-    img: '/images/piston3.png',
+    id: "highqualitypistons",
+    name: "High Quality Pistons",
+    category: "components",
+    img: "/images/piston3.png",
     yield: {
       metal: 72,
     },
@@ -5725,11 +5725,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualitysparkplugs',
-    name: 'High Quality Spark Plugs',
-    category: 'components',
+    id: "highqualitysparkplugs",
+    name: "High Quality Spark Plugs",
+    category: "components",
     recycleStack: 2,
-    img: '/images/sparkplug3.png',
+    img: "/images/sparkplug3.png",
     yield: {
       metal: 72,
     },
@@ -5738,11 +5738,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highqualityvalves',
-    name: 'High Quality Valves',
-    category: 'components',
+    id: "highqualityvalves",
+    name: "High Quality Valves",
+    category: "components",
     recycleStack: 2,
-    img: '/images/valve3.png',
+    img: "/images/valve3.png",
     yield: {
       metal: 72,
     },
@@ -5751,10 +5751,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largeflatbedvehiclemodule',
-    name: 'Large Flatbed Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.2mod.flatbed.png',
+    id: "largeflatbedvehiclemodule",
+    name: "Large Flatbed Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.2mod.flatbed.png",
     yield: {
       metal: 75,
       wood: 75,
@@ -5765,10 +5765,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lowqualitycarburetor',
-    name: 'Low Quality Carburetor',
-    category: 'components',
-    img: '/images/carburetor1.png',
+    id: "lowqualitycarburetor",
+    name: "Low Quality Carburetor",
+    category: "components",
+    img: "/images/carburetor1.png",
     yield: {
       metal: 24,
     },
@@ -5777,10 +5777,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lowqualitycrankshaft',
-    name: 'Low Quality Crankshaft',
-    category: 'components',
-    img: '/images/crankshaft1.png',
+    id: "lowqualitycrankshaft",
+    name: "Low Quality Crankshaft",
+    category: "components",
+    img: "/images/crankshaft1.png",
     yield: {
       metal: 15,
     },
@@ -5789,10 +5789,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lowqualitypistons',
-    name: 'Low Quality Pistons',
-    category: 'components',
-    img: '/images/piston1.png',
+    id: "lowqualitypistons",
+    name: "Low Quality Pistons",
+    category: "components",
+    img: "/images/piston1.png",
     yield: {
       metal: 15,
     },
@@ -5801,11 +5801,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lowqualitysparkplugs',
-    name: 'Low Quality Spark Plugs',
-    category: 'components',
+    id: "lowqualitysparkplugs",
+    name: "Low Quality Spark Plugs",
+    category: "components",
     recycleStack: 2,
-    img: '/images/sparkplug1.png',
+    img: "/images/sparkplug1.png",
     yield: {
       metal: 15,
     },
@@ -5814,11 +5814,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lowqualityvalves',
-    name: 'Low Quality Valves',
-    category: 'components',
+    id: "lowqualityvalves",
+    name: "Low Quality Valves",
+    category: "components",
     recycleStack: 2,
-    img: '/images/valve1.png',
+    img: "/images/valve1.png",
     yield: {
       metal: 15,
     },
@@ -5827,10 +5827,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumqualitycarburetor',
-    name: 'Medium Quality Carburetor',
-    category: 'components',
-    img: '/images/carburetor2.png',
+    id: "mediumqualitycarburetor",
+    name: "Medium Quality Carburetor",
+    category: "components",
+    img: "/images/carburetor2.png",
     yield: {
       metal: 60,
     },
@@ -5839,10 +5839,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumqualitycrankshaft',
-    name: 'Medium Quality Crankshaft',
-    category: 'components',
-    img: '/images/crankshaft2.png',
+    id: "mediumqualitycrankshaft",
+    name: "Medium Quality Crankshaft",
+    category: "components",
+    img: "/images/crankshaft2.png",
     yield: {
       metal: 42,
     },
@@ -5851,10 +5851,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumqualitypistons',
-    name: 'Medium Quality Pistons',
-    category: 'components',
-    img: '/images/piston2.png',
+    id: "mediumqualitypistons",
+    name: "Medium Quality Pistons",
+    category: "components",
+    img: "/images/piston2.png",
     yield: {
       metal: 42,
     },
@@ -5863,11 +5863,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumqualitysparkplugs',
-    name: 'Medium Quality Spark Plugs',
-    category: 'components',
+    id: "mediumqualitysparkplugs",
+    name: "Medium Quality Spark Plugs",
+    category: "components",
     recycleStack: 2,
-    img: '/images/sparkplug2.png',
+    img: "/images/sparkplug2.png",
     yield: {
       metal: 42,
     },
@@ -5876,11 +5876,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumqualityvalves',
-    name: 'Medium Quality Valves',
-    category: 'components',
+    id: "mediumqualityvalves",
+    name: "Medium Quality Valves",
+    category: "components",
     recycleStack: 2,
-    img: '/images/valve2.png',
+    img: "/images/valve2.png",
     yield: {
       metal: 42,
     },
@@ -5889,11 +5889,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalblade',
-    name: 'Metal Blade',
-    category: 'components',
+    id: "metalblade",
+    name: "Metal Blade",
+    category: "components",
     recycleStack: 2,
-    img: '/images/metalblade.png',
+    img: "/images/metalblade.png",
     yield: {
       scrap: 2,
       metal: 18,
@@ -5904,18 +5904,18 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalpipe',
-    name: 'Metal Pipe',
-    category: 'components',
+    id: "metalpipe",
+    name: "Metal Pipe",
+    category: "components",
     recycleStack: 2,
-    img: '/images/metalpipe.png',
+    img: "/images/metalpipe.png",
     yield: {
       scrap: 6,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -5925,25 +5925,25 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'metalspring',
-    name: 'Metal Spring',
-    category: 'components',
+    id: "metalspring",
+    name: "Metal Spring",
+    category: "components",
     recycleStack: 2,
-    img: '/images/metalspring.png',
+    img: "/images/metalspring.png",
     yield: {
       scrap: 12,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -5953,24 +5953,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'mlrsaimingmodule',
-    name: 'MLRS Aiming Module',
-    category: 'components',
-    img: '/images/aiming.module.mlrs.png',
+    id: "mlrsaimingmodule",
+    name: "MLRS Aiming Module",
+    category: "components",
+    img: "/images/aiming.module.mlrs.png",
     yield: {
       metal: 60,
       techtrash: 2,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
@@ -5981,17 +5981,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'passengervehiclemodule',
-    name: 'Passenger Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.2mod.passengers.png',
+    id: "passengervehiclemodule",
+    name: "Passenger Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.2mod.passengers.png",
     yield: {
       metal: 87,
       wood: 62,
@@ -6002,22 +6002,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'prototypeworkbenchupgrade',
-    name: 'Prototype Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.prototype.png',
+    id: "prototypeworkbenchupgrade",
+    name: "Prototype Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.prototype.png",
     yield: {
       techtrash: 1,
       gears: 1,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -6025,22 +6025,22 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rangeworkbenchupgrade',
-    name: 'Range Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.range.png',
+    id: "rangeworkbenchupgrade",
+    name: "Range Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.range.png",
     yield: {
       metal: 30,
     },
@@ -6049,10 +6049,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rearseatsvehiclemodule',
-    name: 'Rear Seats Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.rear.seats.png',
+    id: "rearseatsvehiclemodule",
+    name: "Rear Seats Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.rear.seats.png",
     yield: {
       metal: 75,
       wood: 50,
@@ -6063,10 +6063,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'recyclebinworkbenchupgrade',
-    name: 'Recycle Bin Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.recyclebin.png',
+    id: "recyclebinworkbenchupgrade",
+    name: "Recycle Bin Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.recyclebin.png",
     yield: {
       metal: 60,
     },
@@ -6075,43 +6075,43 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'reinforcedworkbenchupgrade',
-    name: 'Reinforced Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.reinforced.png',
+    id: "reinforcedworkbenchupgrade",
+    name: "Reinforced Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.reinforced.png",
     yield: {
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'riflebody',
-    name: 'Rifle Body',
-    category: 'components',
-    img: '/images/riflebody.png',
+    id: "riflebody",
+    name: "Rifle Body",
+    category: "components",
+    img: "/images/riflebody.png",
     yield: {
       scrap: 30,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -6122,25 +6122,25 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'roadsigns',
-    name: 'Road Signs',
-    category: 'components',
+    id: "roadsigns",
+    name: "Road Signs",
+    category: "components",
     recycleStack: 2,
-    img: '/images/roadsigns.png',
+    img: "/images/roadsigns.png",
     yield: {
       scrap: 6,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -6150,18 +6150,18 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rope',
-    name: 'Rope',
-    category: 'components',
+    id: "rope",
+    name: "Rope",
+    category: "components",
     recycleStack: 5,
-    img: '/images/rope.png',
+    img: "/images/rope.png",
     yield: {
       cloth: 18,
     },
@@ -6170,10 +6170,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'salvageworkbenchupgrade',
-    name: 'Salvage Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.salvage.png',
+    id: "salvageworkbenchupgrade",
+    name: "Salvage Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.salvage.png",
     yield: {
       scrap: 24,
       gears: 3,
@@ -6184,10 +6184,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'semiautomaticbody',
-    name: 'Semi Automatic Body',
-    category: 'components',
-    img: '/images/semibody.png',
+    id: "semiautomaticbody",
+    name: "Semi Automatic Body",
+    category: "components",
+    img: "/images/semibody.png",
     yield: {
       scrap: 18,
       hqm: 1,
@@ -6195,7 +6195,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -6207,25 +6207,25 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'sewingkit',
-    name: 'Sewing Kit',
-    category: 'components',
+    id: "sewingkit",
+    name: "Sewing Kit",
+    category: "components",
     recycleStack: 2,
-    img: '/images/sewingkit.png',
+    img: "/images/sewingkit.png",
     yield: {
       cloth: 12,
       rope: 1,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
@@ -6236,18 +6236,18 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'sheetmetal',
-    name: 'Sheet Metal',
-    category: 'components',
+    id: "sheetmetal",
+    name: "Sheet Metal",
+    category: "components",
     recycleStack: 2,
-    img: '/images/sheetmetal.png',
+    img: "/images/sheetmetal.png",
     yield: {
       scrap: 9,
       metal: 120,
@@ -6255,7 +6255,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -6266,24 +6266,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smgbody',
-    name: 'SMG Body',
-    category: 'components',
-    img: '/images/smgbody.png',
+    id: "smgbody",
+    name: "SMG Body",
+    category: "components",
+    img: "/images/smgbody.png",
     yield: {
       scrap: 18,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -6294,17 +6294,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'sticks',
-    name: 'Sticks',
-    category: 'components',
-    img: '/images/sticks.png',
+    id: "sticks",
+    name: "Sticks",
+    category: "components",
+    img: "/images/sticks.png",
     yield: {
       wood: 12,
     },
@@ -6313,10 +6313,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'storagevehiclemodule',
-    name: 'Storage Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.storage.png',
+    id: "storagevehiclemodule",
+    name: "Storage Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.storage.png",
     yield: {
       metal: 25,
       wood: 62,
@@ -6327,17 +6327,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'surplusworkbenchupgrade',
-    name: 'Surplus Workbench Upgrade',
-    category: 'components',
-    img: '/images/workbench.upgrade.surplus.png',
+    id: "surplusworkbenchupgrade",
+    name: "Surplus Workbench Upgrade",
+    category: "components",
+    img: "/images/workbench.upgrade.surplus.png",
     yield: {
       gears: 3,
       spring: 1,
     },
     random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
@@ -6348,18 +6348,18 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'tarp',
-    name: 'Tarp',
-    category: 'components',
+    id: "tarp",
+    name: "Tarp",
+    category: "components",
     recycleStack: 2,
-    img: '/images/tarp.png',
+    img: "/images/tarp.png",
     yield: {
       cloth: 60,
     },
@@ -6368,10 +6368,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'taxivehiclemodule',
-    name: 'Taxi Vehicle Module',
-    category: 'components',
-    img: '/images/vehicle.1mod.taxi.png',
+    id: "taxivehiclemodule",
+    name: "Taxi Vehicle Module",
+    category: "components",
+    img: "/images/vehicle.1mod.taxi.png",
     yield: {
       metal: 87,
       wood: 62,
@@ -6384,18 +6384,18 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'techtrash',
-    name: 'Tech Trash',
-    category: 'components',
+    id: "techtrash",
+    name: "Tech Trash",
+    category: "components",
     recycleStack: 5,
-    img: '/images/techparts.png',
+    img: "/images/techparts.png",
     yield: {
       scrap: 24,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -6405,17 +6405,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'armoreddoor',
-    name: 'Armored Door',
-    category: 'construction',
-    img: '/images/door.hinged.toptier.png',
+    id: "armoreddoor",
+    name: "Armored Door",
+    category: "construction",
+    img: "/images/door.hinged.toptier.png",
     yield: {
       hqm: 12,
       gears: 3,
@@ -6426,10 +6426,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'armoreddoubledoor',
-    name: 'Armored Double Door',
-    category: 'construction',
-    img: '/images/door.double.hinged.toptier.png',
+    id: "armoreddoubledoor",
+    name: "Armored Double Door",
+    category: "construction",
+    img: "/images/door.double.hinged.toptier.png",
     yield: {
       hqm: 15,
       gears: 3,
@@ -6440,22 +6440,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'armoredladderhatch',
-    name: 'Armored Ladder Hatch',
-    category: 'construction',
-    img: '/images/floor.ladder.hatch.toptier.png',
+    id: "armoredladderhatch",
+    name: "Armored Ladder Hatch",
+    category: "construction",
+    img: "/images/floor.ladder.hatch.toptier.png",
     yield: {
       hqm: 21,
       gears: 3,
     },
     random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -6466,34 +6466,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'armoredtriangleladderhatch',
-    name: 'Armored Triangle Ladder Hatch',
-    category: 'construction',
-    img: '/images/floor.triangle.ladder.hatch.toptier.png',
+    id: "armoredtriangleladderhatch",
+    name: "Armored Triangle Ladder Hatch",
+    category: "construction",
+    img: "/images/floor.triangle.ladder.hatch.toptier.png",
     yield: {
       hqm: 21,
       gears: 3,
     },
     random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -6504,29 +6504,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'barbedwoodenbarricade',
-    name: 'Barbed Wooden Barricade',
-    category: 'construction',
-    img: '/images/barricade.woodwire.png',
+    id: "barbedwoodenbarricade",
+    name: "Barbed Wooden Barricade",
+    category: "construction",
+    img: "/images/barricade.woodwire.png",
     yield: {
       wood: 180,
       metal: 30,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
@@ -6537,23 +6537,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'beehive',
-    name: 'Beehive',
-    category: 'construction',
-    img: '/images/beehive.png',
+    id: "beehive",
+    name: "Beehive",
+    category: "construction",
+    img: "/images/beehive.png",
     yield: {
       wood: 180,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.6,
       },
@@ -6563,17 +6563,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'boatbuildingplan',
-    name: 'Boat Building Plan',
-    category: 'construction',
-    img: '/images/boat.planner.png',
+    id: "boatbuildingplan",
+    name: "Boat Building Plan",
+    category: "construction",
+    img: "/images/boat.planner.png",
     yield: {
       wood: 12,
     },
@@ -6582,10 +6582,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'buildingplan',
-    name: 'Building Plan',
-    category: 'construction',
-    img: '/images/building.planner.png',
+    id: "buildingplan",
+    name: "Building Plan",
+    category: "construction",
+    img: "/images/building.planner.png",
     yield: {
       wood: 12,
     },
@@ -6594,10 +6594,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chainlinkfence',
-    name: 'Chainlink Fence',
-    category: 'construction',
-    img: '/images/wall.frame.fence.png',
+    id: "chainlinkfence",
+    name: "Chainlink Fence",
+    category: "construction",
+    img: "/images/wall.frame.fence.png",
     yield: {
       metal: 45,
     },
@@ -6606,10 +6606,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chainlinkfencegate',
-    name: 'Chainlink Fence Gate',
-    category: 'construction',
-    img: '/images/wall.frame.fence.gate.png',
+    id: "chainlinkfencegate",
+    name: "Chainlink Fence Gate",
+    category: "construction",
+    img: "/images/wall.frame.fence.gate.png",
     yield: {
       metal: 45,
     },
@@ -6618,10 +6618,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'codelock',
-    name: 'Code Lock',
-    category: 'construction',
-    img: '/images/lock.code.png',
+    id: "codelock",
+    name: "Code Lock",
+    category: "construction",
+    img: "/images/lock.code.png",
     yield: {
       metal: 60,
     },
@@ -6630,10 +6630,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'concretebarricade',
-    name: 'Concrete Barricade',
-    category: 'construction',
-    img: '/images/barricade.concrete.png',
+    id: "concretebarricade",
+    name: "Concrete Barricade",
+    category: "construction",
+    img: "/images/barricade.concrete.png",
     yield: {
       stone: 120,
     },
@@ -6642,16 +6642,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'doorcloser',
-    name: 'Door Closer',
-    category: 'construction',
-    img: '/images/door.closer.png',
+    id: "doorcloser",
+    name: "Door Closer",
+    category: "construction",
+    img: "/images/door.closer.png",
     yield: {
       metal: 30,
     },
     random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -6661,17 +6661,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'floorgrill',
-    name: 'Floor grill',
-    category: 'construction',
-    img: '/images/floor.grill.png',
+    id: "floorgrill",
+    name: "Floor grill",
+    category: "construction",
+    img: "/images/floor.grill.png",
     yield: {
       metal: 45,
     },
@@ -6680,10 +6680,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'floortrianglegrill',
-    name: 'Floor triangle grill',
-    category: 'construction',
-    img: '/images/floor.triangle.grill.png',
+    id: "floortrianglegrill",
+    name: "Floor triangle grill",
+    category: "construction",
+    img: "/images/floor.triangle.grill.png",
     yield: {
       metal: 45,
     },
@@ -6692,17 +6692,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'garagedoor',
-    name: 'Garage Door',
-    category: 'construction',
-    img: '/images/wall.frame.garagedoor.png',
+    id: "garagedoor",
+    name: "Garage Door",
+    category: "construction",
+    img: "/images/wall.frame.garagedoor.png",
     yield: {
       metal: 180,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -6712,17 +6712,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'highexternalstonegate',
-    name: 'High External Stone Gate',
-    category: 'construction',
-    img: '/images/gates.external.high.stone.png',
+    id: "highexternalstonegate",
+    name: "High External Stone Gate",
+    category: "construction",
+    img: "/images/gates.external.high.stone.png",
     yield: {
       stone: 1,
       gears: 3,
@@ -6733,21 +6733,21 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'highexternalstonewall',
-    name: 'High External Stone Wall',
-    category: 'construction',
-    img: '/images/wall.external.high.stone.png',
+    id: "highexternalstonewall",
+    name: "High External Stone Wall",
+    category: "construction",
+    img: "/images/wall.external.high.stone.png",
     yield: {
       stone: 799,
     },
     random: [
       {
-        id: 'stone',
+        id: "stone",
         amount: 1,
         chance: 1.0,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
@@ -6757,29 +6757,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'stone',
+        id: "stone",
         amount: 1,
         chance: 0.33,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.13,
       },
     ],
   },
   {
-    id: 'highexternalwoodengate',
-    name: 'High External Wooden Gate',
-    category: 'construction',
-    img: '/images/gates.external.high.wood.png',
+    id: "highexternalwoodengate",
+    name: "High External Wooden Gate",
+    category: "construction",
+    img: "/images/gates.external.high.wood.png",
     yield: {
       wood: 1,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -6789,23 +6789,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'highexternalwoodenwall',
-    name: 'High External Wooden Wall',
-    category: 'construction',
-    img: '/images/wall.external.high.png',
+    id: "highexternalwoodenwall",
+    name: "High External Wooden Wall",
+    category: "construction",
+    img: "/images/wall.external.high.png",
     yield: {
       wood: 799,
     },
     random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 1.0,
       },
@@ -6815,17 +6815,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wood',
+        id: "wood",
         amount: 1,
         chance: 0.33,
       },
     ],
   },
   {
-    id: 'highicewall',
-    name: 'High Ice Wall',
-    category: 'construction',
-    img: '/images/wall.external.high.ice.png',
+    id: "highicewall",
+    name: "High Ice Wall",
+    category: "construction",
+    img: "/images/wall.external.high.ice.png",
     yield: {
       stone: 600,
     },
@@ -6834,10 +6834,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'keylock',
-    name: 'Key Lock',
-    category: 'construction',
-    img: '/images/lock.key.png',
+    id: "keylock",
+    name: "Key Lock",
+    category: "construction",
+    img: "/images/lock.key.png",
     yield: {
       wood: 45,
     },
@@ -6846,22 +6846,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ladderhatch',
-    name: 'Ladder Hatch',
-    category: 'construction',
-    img: '/images/floor.ladder.hatch.png',
+    id: "ladderhatch",
+    name: "Ladder Hatch",
+    category: "construction",
+    img: "/images/floor.ladder.hatch.png",
     yield: {
       metal: 180,
       gears: 1,
     },
     random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
@@ -6872,22 +6872,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'largewatercatcher',
-    name: 'Large Water Catcher',
-    category: 'construction',
-    img: '/images/water.catcher.large.png',
+    id: "largewatercatcher",
+    name: "Large Water Catcher",
+    category: "construction",
+    img: "/images/water.catcher.large.png",
     yield: {
       wood: 300,
       metal: 120,
@@ -6895,7 +6895,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.2,
       },
@@ -6906,17 +6906,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'legacywoodshelter',
-    name: 'Legacy Wood Shelter',
-    category: 'construction',
-    img: '/images/legacy.shelter.wood.png',
+    id: "legacywoodshelter",
+    name: "Legacy Wood Shelter",
+    category: "construction",
+    img: "/images/legacy.shelter.wood.png",
     yield: {
       wood: 360,
     },
@@ -6925,10 +6925,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lunarwallframeinlay',
-    name: 'Lunar Wall Frame Inlay',
-    category: 'construction',
-    img: '/images/wall.frame.lunar2025_a.png',
+    id: "lunarwallframeinlay",
+    name: "Lunar Wall Frame Inlay",
+    category: "construction",
+    img: "/images/wall.frame.lunar2025_a.png",
     yield: {
       wood: 60,
     },
@@ -6937,10 +6937,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'medievalbarricade',
-    name: 'Medieval Barricade',
-    category: 'construction',
-    img: '/images/barricade.medieval.png',
+    id: "medievalbarricade",
+    name: "Medieval Barricade",
+    category: "construction",
+    img: "/images/barricade.medieval.png",
     yield: {
       wood: 180,
       metal: 30,
@@ -6951,17 +6951,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalbarricade',
-    name: 'Metal Barricade',
-    category: 'construction',
-    img: '/images/barricade.metal.png',
+    id: "metalbarricade",
+    name: "Metal Barricade",
+    category: "construction",
+    img: "/images/barricade.metal.png",
     yield: {
       metal: 120,
       blade: 1,
     },
     random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.2,
       },
@@ -6971,17 +6971,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'metalhorizontalembrasure',
-    name: 'Metal horizontal embrasure',
-    category: 'construction',
-    img: '/images/shutter.metal.embrasure.a.png',
+    id: "metalhorizontalembrasure",
+    name: "Metal horizontal embrasure",
+    category: "construction",
+    img: "/images/shutter.metal.embrasure.a.png",
     yield: {
       metal: 60,
     },
@@ -6990,10 +6990,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalshopfront',
-    name: 'Metal Shop Front',
-    category: 'construction',
-    img: '/images/wall.frame.shopfront.metal.png',
+    id: "metalshopfront",
+    name: "Metal Shop Front",
+    category: "construction",
+    img: "/images/wall.frame.shopfront.metal.png",
     yield: {
       metal: 150,
     },
@@ -7002,10 +7002,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalverticalembrasure',
-    name: 'Metal Vertical embrasure',
-    category: 'construction',
-    img: '/images/shutter.metal.embrasure.b.png',
+    id: "metalverticalembrasure",
+    name: "Metal Vertical embrasure",
+    category: "construction",
+    img: "/images/shutter.metal.embrasure.b.png",
     yield: {
       metal: 60,
     },
@@ -7014,10 +7014,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalwindowbars',
-    name: 'Metal Window Bars',
-    category: 'construction',
-    img: '/images/wall.window.bars.metal.png',
+    id: "metalwindowbars",
+    name: "Metal Window Bars",
+    category: "construction",
+    img: "/images/wall.window.bars.metal.png",
     yield: {
       metal: 15,
     },
@@ -7026,17 +7026,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mortar',
-    name: 'Mortar',
-    category: 'construction',
-    img: '/images/mortar.deployable.png',
+    id: "mortar",
+    name: "Mortar",
+    category: "construction",
+    img: "/images/mortar.deployable.png",
     yield: {
       hqm: 12,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
@@ -7047,21 +7047,21 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'netting',
-    name: 'Netting',
-    category: 'construction',
-    img: '/images/wall.frame.netting.png',
+    id: "netting",
+    name: "Netting",
+    category: "construction",
+    img: "/images/wall.frame.netting.png",
     yield: {},
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
@@ -7069,17 +7069,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'prisoncellgate',
-    name: 'Prison Cell Gate',
-    category: 'construction',
-    img: '/images/wall.frame.cell.gate.png',
+    id: "prisoncellgate",
+    name: "Prison Cell Gate",
+    category: "construction",
+    img: "/images/wall.frame.cell.gate.png",
     yield: {
       metal: 90,
     },
@@ -7088,10 +7088,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'prisoncellwall',
-    name: 'Prison Cell Wall',
-    category: 'construction',
-    img: '/images/wall.frame.cell.png',
+    id: "prisoncellwall",
+    name: "Prison Cell Wall",
+    category: "construction",
+    img: "/images/wall.frame.cell.png",
     yield: {
       metal: 90,
     },
@@ -7100,16 +7100,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'reinforcedglasswindow',
-    name: 'Reinforced Glass Window',
-    category: 'construction',
-    img: '/images/wall.window.bars.toptier.png',
+    id: "reinforcedglasswindow",
+    name: "Reinforced Glass Window",
+    category: "construction",
+    img: "/images/wall.window.bars.toptier.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -7119,17 +7119,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'sandbagbarricade',
-    name: 'Sandbag Barricade',
-    category: 'construction',
-    img: '/images/barricade.sandbags.png',
+    id: "sandbagbarricade",
+    name: "Sandbag Barricade",
+    category: "construction",
+    img: "/images/barricade.sandbags.png",
     yield: {
       stone: 60,
       cloth: 6,
@@ -7140,10 +7140,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sheetmetaldoor',
-    name: 'Sheet Metal Door',
-    category: 'construction',
-    img: '/images/door.hinged.metal.png',
+    id: "sheetmetaldoor",
+    name: "Sheet Metal Door",
+    category: "construction",
+    img: "/images/door.hinged.metal.png",
     yield: {
       metal: 90,
     },
@@ -7152,10 +7152,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sheetmetaldoubledoor',
-    name: 'Sheet Metal Double Door',
-    category: 'construction',
-    img: '/images/door.double.hinged.metal.png',
+    id: "sheetmetaldoubledoor",
+    name: "Sheet Metal Double Door",
+    category: "construction",
+    img: "/images/door.double.hinged.metal.png",
     yield: {
       metal: 120,
     },
@@ -7164,10 +7164,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shopfront',
-    name: 'Shop Front',
-    category: 'construction',
-    img: '/images/wall.frame.shopfront.png',
+    id: "shopfront",
+    name: "Shop Front",
+    category: "construction",
+    img: "/images/wall.frame.shopfront.png",
     yield: {
       wood: 90,
     },
@@ -7176,10 +7176,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shorticewall',
-    name: 'Short Ice Wall',
-    category: 'construction',
-    img: '/images/wall.ice.wall.png',
+    id: "shorticewall",
+    name: "Short Ice Wall",
+    category: "construction",
+    img: "/images/wall.ice.wall.png",
     yield: {
       stone: 180,
     },
@@ -7188,17 +7188,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallwatercatcher',
-    name: 'Small Water Catcher',
-    category: 'construction',
-    img: '/images/water.catcher.small.png',
+    id: "smallwatercatcher",
+    name: "Small Water Catcher",
+    category: "construction",
+    img: "/images/water.catcher.small.png",
     yield: {
       wood: 60,
       metal: 30,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -7209,17 +7209,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'stonebarricade',
-    name: 'Stone Barricade',
-    category: 'construction',
-    img: '/images/barricade.stone.png',
+    id: "stonebarricade",
+    name: "Stone Barricade",
+    category: "construction",
+    img: "/images/barricade.stone.png",
     yield: {
       stone: 60,
     },
@@ -7228,10 +7228,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'strengthenedglasswindow',
-    name: 'Strengthened Glass Window',
-    category: 'construction',
-    img: '/images/wall.window.glass.reinforced.png',
+    id: "strengthenedglasswindow",
+    name: "Strengthened Glass Window",
+    category: "construction",
+    img: "/images/wall.window.glass.reinforced.png",
     yield: {
       metal: 30,
     },
@@ -7240,10 +7240,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'toolcupboard',
-    name: 'Tool Cupboard',
-    category: 'construction',
-    img: '/images/cupboard.tool.png',
+    id: "toolcupboard",
+    name: "Tool Cupboard",
+    category: "construction",
+    img: "/images/cupboard.tool.png",
     yield: {
       wood: 600,
     },
@@ -7252,22 +7252,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'triangleladderhatch',
-    name: 'Triangle Ladder Hatch',
-    category: 'construction',
-    img: '/images/floor.triangle.ladder.hatch.png',
+    id: "triangleladderhatch",
+    name: "Triangle Ladder Hatch",
+    category: "construction",
+    img: "/images/floor.triangle.ladder.hatch.png",
     yield: {
       metal: 180,
       gears: 1,
     },
     random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
@@ -7278,22 +7278,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wooden-ladder',
+        id: "wooden-ladder",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'watchtower',
-    name: 'Watch Tower',
-    category: 'construction',
-    img: '/images/watchtower.wood.png',
+    id: "watchtower",
+    name: "Watch Tower",
+    category: "construction",
+    img: "/images/watchtower.wood.png",
     yield: {
       wood: 150,
     },
@@ -7302,10 +7302,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wooddoubledoor',
-    name: 'Wood Double Door',
-    category: 'construction',
-    img: '/images/door.double.hinged.wood.png',
+    id: "wooddoubledoor",
+    name: "Wood Double Door",
+    category: "construction",
+    img: "/images/door.double.hinged.wood.png",
     yield: {
       wood: 210,
     },
@@ -7314,11 +7314,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodshutters',
-    name: 'Wood Shutters',
-    category: 'construction',
+    id: "woodshutters",
+    name: "Wood Shutters",
+    category: "construction",
     recycleStack: 2,
-    img: '/images/shutter.wood.a.png',
+    img: "/images/shutter.wood.a.png",
     yield: {
       wood: 120,
     },
@@ -7327,16 +7327,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenbarricade',
-    name: 'Wooden Barricade',
-    category: 'construction',
-    img: '/images/barricade.wood.png',
+    id: "woodenbarricade",
+    name: "Wooden Barricade",
+    category: "construction",
+    img: "/images/barricade.wood.png",
     yield: {
       wood: 180,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
@@ -7346,17 +7346,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'woodenbarricadecover',
-    name: 'Wooden Barricade Cover',
-    category: 'construction',
-    img: '/images/barricade.wood.cover.png',
+    id: "woodenbarricadecover",
+    name: "Wooden Barricade Cover",
+    category: "construction",
+    img: "/images/barricade.wood.cover.png",
     yield: {
       wood: 150,
     },
@@ -7365,10 +7365,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodendoor',
-    name: 'Wooden Door',
-    category: 'construction',
-    img: '/images/door.hinged.wood.png',
+    id: "woodendoor",
+    name: "Wooden Door",
+    category: "construction",
+    img: "/images/door.hinged.wood.png",
     yield: {
       wood: 180,
     },
@@ -7377,10 +7377,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenfrontierbardoors',
-    name: 'Wooden Frontier Bar Doors',
-    category: 'construction',
-    img: '/images/door.double.hinged.bardoors.png',
+    id: "woodenfrontierbardoors",
+    name: "Wooden Frontier Bar Doors",
+    category: "construction",
+    img: "/images/door.double.hinged.bardoors.png",
     yield: {
       wood: 120,
     },
@@ -7389,17 +7389,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenladder',
-    name: 'Wooden Ladder',
-    category: 'construction',
-    img: '/images/ladder.wooden.wall.png',
+    id: "woodenladder",
+    name: "Wooden Ladder",
+    category: "construction",
+    img: "/images/ladder.wooden.wall.png",
     yield: {
       wood: 180,
       rope: 1,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
@@ -7410,17 +7410,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'woodenwindowbars',
-    name: 'Wooden Window Bars',
-    category: 'construction',
-    img: '/images/wall.window.bars.wood.png',
+    id: "woodenwindowbars",
+    name: "Wooden Window Bars",
+    category: "construction",
+    img: "/images/wall.window.bars.wood.png",
     yield: {
       wood: 30,
     },
@@ -7429,10 +7429,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterjug',
-    name: 'Water Jug',
-    category: 'food',
-    img: '/images/waterjug.png',
+    id: "waterjug",
+    name: "Water Jug",
+    category: "food",
+    img: "/images/waterjug.png",
     yield: {
       metal: 60,
     },
@@ -7441,10 +7441,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'abovegroundpool',
-    name: 'Above Ground Pool',
-    category: 'fun',
-    img: '/images/abovegroundpool.png',
+    id: "abovegroundpool",
+    name: "Above Ground Pool",
+    category: "fun",
+    img: "/images/abovegroundpool.png",
     yield: {
       metal: 120,
       tarp: 1,
@@ -7452,7 +7452,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.8,
       },
@@ -7464,17 +7464,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'acousticguitar',
-    name: 'Acoustic Guitar',
-    category: 'fun',
-    img: '/images/fun.guitar.png',
+    id: "acousticguitar",
+    name: "Acoustic Guitar",
+    category: "fun",
+    img: "/images/fun.guitar.png",
     yield: {
       wood: 60,
       cloth: 6,
@@ -7485,10 +7485,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'beachchair',
-    name: 'Beach Chair',
-    category: 'fun',
-    img: '/images/beachchair.png',
+    id: "beachchair",
+    name: "Beach Chair",
+    category: "fun",
+    img: "/images/beachchair.png",
     yield: {
       wood: 30,
       metal: 45,
@@ -7499,10 +7499,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'beachparasol',
-    name: 'Beach Parasol',
-    category: 'fun',
-    img: '/images/beachparasol.png',
+    id: "beachparasol",
+    name: "Beach Parasol",
+    category: "fun",
+    img: "/images/beachparasol.png",
     yield: {
       cloth: 12,
       metal: 45,
@@ -7513,10 +7513,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'beachtable',
-    name: 'Beach Table',
-    category: 'fun',
-    img: '/images/beachtable.png',
+    id: "beachtable",
+    name: "Beach Table",
+    category: "fun",
+    img: "/images/beachtable.png",
     yield: {
       wood: 60,
     },
@@ -7525,10 +7525,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'beachtowel',
-    name: 'Beach Towel',
-    category: 'fun',
-    img: '/images/beachtowel.png',
+    id: "beachtowel",
+    name: "Beach Towel",
+    category: "fun",
+    img: "/images/beachtowel.png",
     yield: {
       cloth: 18,
     },
@@ -7537,26 +7537,26 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'blueboomer',
-    name: 'Blue Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.blue.png',
+    id: "blueboomer",
+    name: "Blue Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.blue.png",
     yield: {
       metal: 15,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 10,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'blueromancandle',
-    name: 'Blue Roman Candle',
-    category: 'fun',
-    img: '/images/firework.romancandle.blue.png',
+    id: "blueromancandle",
+    name: "Blue Roman Candle",
+    category: "fun",
+    img: "/images/firework.romancandle.blue.png",
     yield: {
       metal: 15,
       lgf: 6,
@@ -7567,16 +7567,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'boogieboard',
-    name: 'Boogie Board',
-    category: 'fun',
-    img: '/images/boogieboard.png',
+    id: "boogieboard",
+    name: "Boogie Board",
+    category: "fun",
+    img: "/images/boogieboard.png",
     yield: {
       metal: 45,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -7586,17 +7586,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'boombox',
-    name: 'Boom Box',
-    category: 'fun',
-    img: '/images/boombox.png',
+    id: "boombox",
+    name: "Boom Box",
+    category: "fun",
+    img: "/images/boombox.png",
     yield: {
       wood: 120,
       metal: 60,
@@ -7609,10 +7609,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'canbourine',
-    name: 'Canbourine',
-    category: 'fun',
-    img: '/images/fun.tambourine.png',
+    id: "canbourine",
+    name: "Canbourine",
+    category: "fun",
+    img: "/images/fun.tambourine.png",
     yield: {
       metal: 15,
     },
@@ -7621,10 +7621,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'carradio',
-    name: 'Car Radio',
-    category: 'fun',
-    img: '/images/vehicle.car_radio.png',
+    id: "carradio",
+    name: "Car Radio",
+    category: "fun",
+    img: "/images/vehicle.car_radio.png",
     yield: {
       metal: 72,
     },
@@ -7633,10 +7633,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cassettelong',
-    name: 'Cassette - Long',
-    category: 'fun',
-    img: '/images/cassette.png',
+    id: "cassettelong",
+    name: "Cassette - Long",
+    category: "fun",
+    img: "/images/cassette.png",
     yield: {
       metal: 60,
     },
@@ -7645,10 +7645,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cassettemedium',
-    name: 'Cassette - Medium',
-    category: 'fun',
-    img: '/images/cassette.medium.png',
+    id: "cassettemedium",
+    name: "Cassette - Medium",
+    category: "fun",
+    img: "/images/cassette.medium.png",
     yield: {
       metal: 15,
     },
@@ -7657,10 +7657,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cassetteshort',
-    name: 'Cassette - Short',
-    category: 'fun',
-    img: '/images/cassette.short.png',
+    id: "cassetteshort",
+    name: "Cassette - Short",
+    category: "fun",
+    img: "/images/cassette.short.png",
     yield: {
       metal: 6,
     },
@@ -7669,10 +7669,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cassetterecorder',
-    name: 'Cassette Recorder',
-    category: 'fun',
-    img: '/images/fun.casetterecorder.png',
+    id: "cassetterecorder",
+    name: "Cassette Recorder",
+    category: "fun",
+    img: "/images/fun.casetterecorder.png",
     yield: {
       metal: 45,
     },
@@ -7681,40 +7681,40 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'champagneboomer',
-    name: 'Champagne Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.champagne.png',
+    id: "champagneboomer",
+    name: "Champagne Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.champagne.png",
     yield: {
       metal: 18,
-      'gun-powder': 45,
+      "gun-powder": 45,
       lgf: 18,
     },
     safezone_yield: {
       metal: 12,
-      'gun-powder': 30,
+      "gun-powder": 30,
       lgf: 12,
     },
   },
   {
-    id: 'confetticannon',
-    name: 'Confetti Cannon',
-    category: 'fun',
-    img: '/images/confetticannon.png',
+    id: "confetticannon",
+    name: "Confetti Cannon",
+    category: "fun",
+    img: "/images/confetticannon.png",
     yield: {
       wood: 45,
-      'gun-powder': 3,
+      "gun-powder": 3,
     },
     safezone_yield: {
       wood: 30,
-      'gun-powder': 2,
+      "gun-powder": 2,
     },
   },
   {
-    id: 'connectedspeaker',
-    name: 'Connected Speaker',
-    category: 'fun',
-    img: '/images/connected.speaker.png',
+    id: "connectedspeaker",
+    name: "Connected Speaker",
+    category: "fun",
+    img: "/images/connected.speaker.png",
     yield: {
       metal: 45,
     },
@@ -7723,10 +7723,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cowbell',
-    name: 'Cowbell',
-    category: 'fun',
-    img: '/images/fun.cowbell.png',
+    id: "cowbell",
+    name: "Cowbell",
+    category: "fun",
+    img: "/images/fun.cowbell.png",
     yield: {
       metal: 21,
     },
@@ -7735,10 +7735,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'discoball',
-    name: 'Disco Ball',
-    category: 'fun',
-    img: '/images/discoball.png',
+    id: "discoball",
+    name: "Disco Ball",
+    category: "fun",
+    img: "/images/discoball.png",
     yield: {
       metal: 30,
     },
@@ -7747,10 +7747,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'discofloor',
-    name: 'Disco Floor',
-    category: 'fun',
-    img: '/images/discofloor.png',
+    id: "discofloor",
+    name: "Disco Floor",
+    category: "fun",
+    img: "/images/discofloor.png",
     yield: {
       metal: 45,
     },
@@ -7759,40 +7759,40 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'firecrackerstring',
-    name: 'Firecracker String',
-    category: 'fun',
-    img: '/images/lunar.firecrackers.png',
+    id: "firecrackerstring",
+    name: "Firecracker String",
+    category: "fun",
+    img: "/images/lunar.firecrackers.png",
     yield: {
-      'gun-powder': 6,
+      "gun-powder": 6,
       metal: 6,
     },
     safezone_yield: {
-      'gun-powder': 4,
+      "gun-powder": 4,
       metal: 4,
     },
   },
   {
-    id: 'greenboomer',
-    name: 'Green Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.green.png',
+    id: "greenboomer",
+    name: "Green Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.green.png",
     yield: {
       metal: 15,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 10,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'greenromancandle',
-    name: 'Green Roman Candle',
-    category: 'fun',
-    img: '/images/firework.romancandle.green.png',
+    id: "greenromancandle",
+    name: "Green Roman Candle",
+    category: "fun",
+    img: "/images/firework.romancandle.green.png",
     yield: {
       metal: 15,
       lgf: 6,
@@ -7803,16 +7803,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'innertube',
-    name: 'Inner Tube',
-    category: 'fun',
-    img: '/images/innertube.png',
+    id: "innertube",
+    name: "Inner Tube",
+    category: "fun",
+    img: "/images/innertube.png",
     yield: {
       metal: 45,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -7822,17 +7822,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'jerrycanguitar',
-    name: 'Jerry Can Guitar',
-    category: 'fun',
-    img: '/images/fun.jerrycanguitar.png',
+    id: "jerrycanguitar",
+    name: "Jerry Can Guitar",
+    category: "fun",
+    img: "/images/fun.jerrycanguitar.png",
     yield: {
       wood: 15,
       metal: 30,
@@ -7843,10 +7843,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'junkyarddrumkit',
-    name: 'Junkyard Drum Kit',
-    category: 'fun',
-    img: '/images/drumkit.png',
+    id: "junkyarddrumkit",
+    name: "Junkyard Drum Kit",
+    category: "fun",
+    img: "/images/drumkit.png",
     yield: {
       wood: 120,
       metal: 60,
@@ -7857,10 +7857,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'laserlight',
-    name: 'Laser Light',
-    category: 'fun',
-    img: '/images/laserlight.png',
+    id: "laserlight",
+    name: "Laser Light",
+    category: "fun",
+    img: "/images/laserlight.png",
     yield: {
       metal: 60,
     },
@@ -7869,10 +7869,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'megaphone',
-    name: 'Megaphone',
-    category: 'fun',
-    img: '/images/megaphone.png',
+    id: "megaphone",
+    name: "Megaphone",
+    category: "fun",
+    img: "/images/megaphone.png",
     yield: {
       wood: 30,
       metal: 45,
@@ -7883,10 +7883,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'microphonestand',
-    name: 'Microphone Stand',
-    category: 'fun',
-    img: '/images/microphonestand.png',
+    id: "microphonestand",
+    name: "Microphone Stand",
+    category: "fun",
+    img: "/images/microphonestand.png",
     yield: {
       metal: 45,
     },
@@ -7895,10 +7895,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mobilephone',
-    name: 'Mobile Phone',
-    category: 'fun',
-    img: '/images/mobilephone.png',
+    id: "mobilephone",
+    name: "Mobile Phone",
+    category: "fun",
+    img: "/images/mobilephone.png",
     yield: {
       metal: 75,
     },
@@ -7907,10 +7907,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'newyeargong',
-    name: 'New Year Gong',
-    category: 'fun',
-    img: '/images/newyeargong.png',
+    id: "newyeargong",
+    name: "New Year Gong",
+    category: "fun",
+    img: "/images/newyeargong.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -7921,32 +7921,32 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'orangeboomer',
-    name: 'Orange Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.orange.png',
+    id: "orangeboomer",
+    name: "Orange Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.orange.png",
     yield: {
       metal: 15,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 10,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'paddlingpool',
-    name: 'Paddling Pool',
-    category: 'fun',
-    img: '/images/paddlingpool.png',
+    id: "paddlingpool",
+    name: "Paddling Pool",
+    category: "fun",
+    img: "/images/paddlingpool.png",
     yield: {
       cloth: 60,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -7956,17 +7956,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'panflute',
-    name: 'Pan Flute',
-    category: 'fun',
-    img: '/images/fun.flute.png',
+    id: "panflute",
+    name: "Pan Flute",
+    category: "fun",
+    img: "/images/fun.flute.png",
     yield: {
       metal: 12,
       cloth: 3,
@@ -7977,26 +7977,26 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'patternboomer',
-    name: 'Pattern Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.pattern.png',
+    id: "patternboomer",
+    name: "Pattern Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.pattern.png",
     yield: {
       metal: 30,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 20,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'pinata',
-    name: 'Pinata',
-    category: 'fun',
-    img: '/images/pinata.png',
+    id: "pinata",
+    name: "Pinata",
+    category: "fun",
+    img: "/images/pinata.png",
     yield: {
       wood: 300,
     },
@@ -8007,8 +8007,8 @@ export const ITEMS: RecycleItem[] = [
   {
     id: "plumber'strumpet",
     name: "Plumber's Trumpet",
-    category: 'fun',
-    img: '/images/fun.trumpet.png',
+    category: "fun",
+    img: "/images/fun.trumpet.png",
     yield: {
       metal: 45,
     },
@@ -8017,10 +8017,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'portableboombox',
-    name: 'Portable Boom Box',
-    category: 'fun',
-    img: '/images/fun.boomboxportable.png',
+    id: "portableboombox",
+    name: "Portable Boom Box",
+    category: "fun",
+    img: "/images/fun.boomboxportable.png",
     yield: {
       metal: 72,
     },
@@ -8029,26 +8029,26 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'redboomer',
-    name: 'Red Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.red.png',
+    id: "redboomer",
+    name: "Red Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.red.png",
     yield: {
       metal: 15,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 10,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'redromancandle',
-    name: 'Red Roman Candle',
-    category: 'fun',
-    img: '/images/firework.romancandle.red.png',
+    id: "redromancandle",
+    name: "Red Roman Candle",
+    category: "fun",
+    img: "/images/firework.romancandle.red.png",
     yield: {
       metal: 15,
       lgf: 6,
@@ -8059,24 +8059,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'redvolcanofirework',
-    name: 'Red Volcano Firework',
-    category: 'fun',
-    img: '/images/firework.volcano.red.png',
+    id: "redvolcanofirework",
+    name: "Red Volcano Firework",
+    category: "fun",
+    img: "/images/firework.volcano.red.png",
     yield: {
       metal: 12,
-      'gun-powder': 9,
+      "gun-powder": 9,
     },
     safezone_yield: {
       metal: 8,
-      'gun-powder': 6,
+      "gun-powder": 6,
     },
   },
   {
-    id: 'shovelbass',
-    name: 'Shovel Bass',
-    category: 'fun',
-    img: '/images/fun.bass.png',
+    id: "shovelbass",
+    name: "Shovel Bass",
+    category: "fun",
+    img: "/images/fun.bass.png",
     yield: {
       wood: 30,
       metal: 45,
@@ -8087,16 +8087,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'skullspikes',
-    name: 'Skull Spikes',
-    category: 'fun',
-    img: '/images/skullspikes.png',
+    id: "skullspikes",
+    name: "Skull Spikes",
+    category: "fun",
+    img: "/images/skullspikes.png",
     yield: {
       wood: 90,
     },
     random: [
       {
-        id: 'human-skull',
+        id: "human-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -8106,17 +8106,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'human-skull',
+        id: "human-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'skulltrophy',
-    name: 'Skull Trophy',
-    category: 'fun',
-    img: '/images/skull.trophy.png',
+    id: "skulltrophy",
+    name: "Skull Trophy",
+    category: "fun",
+    img: "/images/skull.trophy.png",
     yield: {
       wood: 60,
       metal: 15,
@@ -8127,10 +8127,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'skylantern',
-    name: 'Sky Lantern',
-    category: 'fun',
-    img: '/images/skylantern.png',
+    id: "skylantern",
+    name: "Sky Lantern",
+    category: "fun",
+    img: "/images/skylantern.png",
     yield: {
       cloth: 6,
       lgf: 3,
@@ -8141,10 +8141,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sled',
-    name: 'Sled',
-    category: 'fun',
-    img: '/images/sled.png',
+    id: "sled",
+    name: "Sled",
+    category: "fun",
+    img: "/images/sled.png",
     yield: {
       wood: 300,
     },
@@ -8153,10 +8153,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'soundlight',
-    name: 'Sound Light',
-    category: 'fun',
-    img: '/images/soundlight.png',
+    id: "soundlight",
+    name: "Sound Light",
+    category: "fun",
+    img: "/images/soundlight.png",
     yield: {
       metal: 60,
     },
@@ -8165,10 +8165,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sousaphone',
-    name: 'Sousaphone',
-    category: 'fun',
-    img: '/images/fun.tuba.png',
+    id: "sousaphone",
+    name: "Sousaphone",
+    category: "fun",
+    img: "/images/fun.tuba.png",
     yield: {
       metal: 60,
     },
@@ -8177,17 +8177,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'telephone',
-    name: 'Telephone',
-    category: 'fun',
-    img: '/images/telephone.png',
+    id: "telephone",
+    name: "Telephone",
+    category: "fun",
+    img: "/images/telephone.png",
     yield: {
       wood: 30,
       metal: 60,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -8198,33 +8198,33 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'violetboomer',
-    name: 'Violet Boomer',
-    category: 'fun',
-    img: '/images/firework.boomer.violet.png',
+    id: "violetboomer",
+    name: "Violet Boomer",
+    category: "fun",
+    img: "/images/firework.boomer.violet.png",
     yield: {
       metal: 15,
-      'gun-powder': 18,
+      "gun-powder": 18,
       lgf: 9,
     },
     safezone_yield: {
       metal: 10,
-      'gun-powder': 12,
+      "gun-powder": 12,
       lgf: 6,
     },
   },
   {
-    id: 'violetromancandle',
-    name: 'Violet Roman Candle',
-    category: 'fun',
-    img: '/images/firework.romancandle.violet.png',
+    id: "violetromancandle",
+    name: "Violet Roman Candle",
+    category: "fun",
+    img: "/images/firework.romancandle.violet.png",
     yield: {
       metal: 15,
       lgf: 6,
@@ -8235,24 +8235,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'violetvolcanofirework',
-    name: 'Violet Volcano Firework',
-    category: 'fun',
-    img: '/images/firework.volcano.violet.png',
+    id: "violetvolcanofirework",
+    name: "Violet Volcano Firework",
+    category: "fun",
+    img: "/images/firework.volcano.violet.png",
     yield: {
       metal: 12,
-      'gun-powder': 9,
+      "gun-powder": 9,
     },
     safezone_yield: {
       metal: 8,
-      'gun-powder': 6,
+      "gun-powder": 6,
     },
   },
   {
-    id: 'wheelbarrowpiano',
-    name: 'Wheelbarrow Piano',
-    category: 'fun',
-    img: '/images/piano.png',
+    id: "wheelbarrowpiano",
+    name: "Wheelbarrow Piano",
+    category: "fun",
+    img: "/images/piano.png",
     yield: {
       wood: 120,
       metal: 60,
@@ -8263,50 +8263,36 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'whitevolcanofirework',
-    name: 'White Volcano Firework',
-    category: 'fun',
-    img: '/images/firework.volcano.png',
+    id: "whitevolcanofirework",
+    name: "White Volcano Firework",
+    category: "fun",
+    img: "/images/firework.volcano.png",
     yield: {
       metal: 12,
-      'gun-powder': 9,
+      "gun-powder": 9,
     },
     safezone_yield: {
       metal: 8,
-      'gun-powder': 6,
+      "gun-powder": 6,
     },
   },
   {
-    id: 'xylobone',
-    name: 'Xylobone',
-    category: 'fun',
-    img: '/images/xylophone.png',
+    id: "xylobone",
+    name: "Xylobone",
+    category: "fun",
+    img: "/images/xylophone.png",
     yield: {
-      'bone-fragments': 30,
+      "bone-fragments": 30,
     },
     safezone_yield: {
-      'bone-fragments': 20,
+      "bone-fragments": 20,
     },
   },
   {
-    id: 'abysshorizontalstoragetank',
-    name: 'Abyss Horizontal Storage Tank',
-    category: 'items',
-    img: '/images/abyss.barrel.horizontal.png',
-    yield: {
-      wood: 180,
-      metal: 45,
-    },
-    safezone_yield: {
-      wood: 120,
-      metal: 30,
-    },
-  },
-  {
-    id: 'abyssverticalstoragetank',
-    name: 'Abyss Vertical Storage Tank',
-    category: 'items',
-    img: '/images/abyss.barrel.vertical.png',
+    id: "abysshorizontalstoragetank",
+    name: "Abyss Horizontal Storage Tank",
+    category: "items",
+    img: "/images/abyss.barrel.horizontal.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -8317,10 +8303,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'adventcalendar',
-    name: 'Advent Calendar',
-    category: 'items',
-    img: '/images/xmas.advent.png',
+    id: "abyssverticalstoragetank",
+    name: "Abyss Vertical Storage Tank",
+    category: "items",
+    img: "/images/abyss.barrel.vertical.png",
+    yield: {
+      wood: 180,
+      metal: 45,
+    },
+    safezone_yield: {
+      wood: 120,
+      metal: 30,
+    },
+  },
+  {
+    id: "adventcalendar",
+    name: "Advent Calendar",
+    category: "items",
+    img: "/images/xmas.advent.png",
     yield: {
       wood: 60,
       cloth: 12,
@@ -8331,10 +8331,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'anchor',
-    name: 'Anchor',
-    category: 'items',
-    img: '/images/anchor.png',
+    id: "anchor",
+    name: "Anchor",
+    category: "items",
+    img: "/images/anchor.png",
     yield: {
       wood: 150,
     },
@@ -8343,10 +8343,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'artistcanvaslarge',
-    name: 'Artist Canvas Large',
-    category: 'items',
-    img: '/images/sign.artistcanvas.m.png',
+    id: "artistcanvaslarge",
+    name: "Artist Canvas Large",
+    category: "items",
+    img: "/images/sign.artistcanvas.m.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -8357,10 +8357,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'artistcanvassmall',
-    name: 'Artist Canvas Small',
-    category: 'items',
-    img: '/images/sign.artistcanvas.xs.png',
+    id: "artistcanvassmall",
+    name: "Artist Canvas Small",
+    category: "items",
+    img: "/images/sign.artistcanvas.xs.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -8371,10 +8371,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'artistcanvasstanding',
-    name: 'Artist Canvas Standing',
-    category: 'items',
-    img: '/images/sign.artistcanvas.l.png',
+    id: "artistcanvasstanding",
+    name: "Artist Canvas Standing",
+    category: "items",
+    img: "/images/sign.artistcanvas.l.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -8385,10 +8385,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'artistcanvasxl',
-    name: 'Artist Canvas XL',
-    category: 'items',
-    img: '/images/sign.artistcanvas.xl.png',
+    id: "artistcanvasxl",
+    name: "Artist Canvas XL",
+    category: "items",
+    img: "/images/sign.artistcanvas.xl.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -8399,10 +8399,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'artistcanvasxxl',
-    name: 'Artist Canvas XXL',
-    category: 'items',
-    img: '/images/sign.artistcanvas.xxl.png',
+    id: "artistcanvasxxl",
+    name: "Artist Canvas XXL",
+    category: "items",
+    img: "/images/sign.artistcanvas.xxl.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -8413,10 +8413,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'asbestosarmorinsert',
-    name: 'Asbestos Armor Insert',
-    category: 'items',
-    img: '/images/clothing.mod.armorinsert_asbestos.png',
+    id: "asbestosarmorinsert",
+    name: "Asbestos Armor Insert",
+    category: "items",
+    img: "/images/clothing.mod.armorinsert_asbestos.png",
     yield: {
       metal: 30,
     },
@@ -8425,10 +8425,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bamboobarrel',
-    name: 'Bamboo Barrel',
-    category: 'items',
-    img: '/images/bamboo.barrel.png',
+    id: "bamboobarrel",
+    name: "Bamboo Barrel",
+    category: "items",
+    img: "/images/bamboo.barrel.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -8439,10 +8439,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bamboowallshelves',
-    name: 'Bamboo Wall Shelves',
-    category: 'items',
-    img: '/images/single.shallow.wall.shelves.png',
+    id: "bamboowallshelves",
+    name: "Bamboo Wall Shelves",
+    category: "items",
+    img: "/images/single.shallow.wall.shelves.png",
     yield: {
       wood: 60,
     },
@@ -8451,10 +8451,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'barbeque',
-    name: 'Barbeque',
-    category: 'items',
-    img: '/images/bbq.png',
+    id: "barbeque",
+    name: "Barbeque",
+    category: "items",
+    img: "/images/bbq.png",
     yield: {
       metal: 24,
       wood: 60,
@@ -8465,10 +8465,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bathtubplanter',
-    name: 'Bath Tub Planter',
-    category: 'items',
-    img: '/images/bathtub.planter.png',
+    id: "bathtubplanter",
+    name: "Bath Tub Planter",
+    category: "items",
+    img: "/images/bathtub.planter.png",
     yield: {
       metal: 60,
     },
@@ -8477,10 +8477,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bearskinrug',
-    name: 'Bear Skin Rug',
-    category: 'items',
-    img: '/images/rug.bear.png',
+    id: "bearskinrug",
+    name: "Bear Skin Rug",
+    category: "items",
+    img: "/images/rug.bear.png",
     yield: {
       leather: 12,
     },
@@ -8489,10 +8489,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bed',
-    name: 'Bed',
-    category: 'items',
-    img: '/images/bed.png',
+    id: "bed",
+    name: "Bed",
+    category: "items",
+    img: "/images/bed.png",
     yield: {
       cloth: 36,
       metal: 60,
@@ -8500,7 +8500,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.2,
       },
@@ -8511,23 +8511,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sewingkit',
+        id: "sewingkit",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'boatbuildingstation',
-    name: 'Boat Building Station',
-    category: 'items',
-    img: '/images/boatbuildingstation.png',
+    id: "boatbuildingstation",
+    name: "Boat Building Station",
+    category: "items",
+    img: "/images/boatbuildingstation.png",
     yield: {
       wood: 120,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -8537,17 +8537,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'botabag',
-    name: 'Bota Bag',
-    category: 'items',
-    img: '/images/botabag.png',
+    id: "botabag",
+    name: "Bota Bag",
+    category: "items",
+    img: "/images/botabag.png",
     yield: {
       cloth: 6,
     },
@@ -8556,10 +8556,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'campfire',
-    name: 'Camp Fire',
-    category: 'items',
-    img: '/images/campfire.png',
+    id: "campfire",
+    name: "Camp Fire",
+    category: "items",
+    img: "/images/campfire.png",
     yield: {
       wood: 60,
     },
@@ -8568,10 +8568,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cancerresearchukplushie',
-    name: 'Cancer Research UK Plushie',
-    category: 'items',
-    img: '/images/charity.plushy.01.png',
+    id: "cancerresearchukplushie",
+    name: "Cancer Research UK Plushie",
+    category: "items",
+    img: "/images/charity.plushy.01.png",
     yield: {
       cloth: 30,
     },
@@ -8580,10 +8580,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cannon',
-    name: 'Cannon',
-    category: 'items',
-    img: '/images/cannon.png',
+    id: "cannon",
+    name: "Cannon",
+    category: "items",
+    img: "/images/cannon.png",
     yield: {
       wood: 60,
       metal: 120,
@@ -8594,14 +8594,14 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'carvablepumpkin',
-    name: 'Carvable Pumpkin',
-    category: 'items',
-    img: '/images/carvable.pumpkin.png',
+    id: "carvablepumpkin",
+    name: "Carvable Pumpkin",
+    category: "items",
+    img: "/images/carvable.pumpkin.png",
     yield: {},
     random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.6,
       },
@@ -8609,17 +8609,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'chair',
-    name: 'Chair',
-    category: 'items',
-    img: '/images/chair.png',
+    id: "chair",
+    name: "Chair",
+    category: "items",
+    img: "/images/chair.png",
     yield: {
       wood: 30,
       metal: 45,
@@ -8630,17 +8630,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chickencoop',
-    name: 'Chicken Coop',
-    category: 'items',
-    img: '/images/chickencoop.png',
+    id: "chickencoop",
+    name: "Chicken Coop",
+    category: "items",
+    img: "/images/chickencoop.png",
     yield: {
       wood: 180,
       metal: 45,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
@@ -8651,17 +8651,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'chineselantern',
-    name: 'Chinese Lantern',
-    category: 'items',
-    img: '/images/chineselantern.png',
+    id: "chineselantern",
+    name: "Chinese Lantern",
+    category: "items",
+    img: "/images/chineselantern.png",
     yield: {
       cloth: 15,
       lgf: 3,
@@ -8672,10 +8672,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chineselanternwhite',
-    name: 'Chinese Lantern White',
-    category: 'items',
-    img: '/images/chineselanternwhite.png',
+    id: "chineselanternwhite",
+    name: "Chinese Lantern White",
+    category: "items",
+    img: "/images/chineselanternwhite.png",
     yield: {
       cloth: 15,
       lgf: 3,
@@ -8686,17 +8686,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chippyarcadegame',
-    name: 'Chippy Arcade Game',
-    category: 'items',
-    img: '/images/arcade.machine.chippy.png',
+    id: "chippyarcadegame",
+    name: "Chippy Arcade Game",
+    category: "items",
+    img: "/images/arcade.machine.chippy.png",
     yield: {
       hqm: 6,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -8706,17 +8706,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'christmasdoorwreath',
-    name: 'Christmas Door Wreath',
-    category: 'items',
-    img: '/images/xmasdoorwreath.png',
+    id: "christmasdoorwreath",
+    name: "Christmas Door Wreath",
+    category: "items",
+    img: "/images/xmasdoorwreath.png",
     yield: {
       cloth: 12,
     },
@@ -8725,11 +8725,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'christmaslights',
-    name: 'Christmas Lights',
-    category: 'items',
+    id: "christmaslights",
+    name: "Christmas Lights",
+    category: "items",
     recycleStack: 15,
-    img: '/images/xmas.lightstring.png',
+    img: "/images/xmas.lightstring.png",
     yield: {
       metal: 15,
       lgf: 12,
@@ -8740,10 +8740,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'christmastree',
-    name: 'Christmas Tree',
-    category: 'items',
-    img: '/images/xmas.tree.png',
+    id: "christmastree",
+    name: "Christmas Tree",
+    category: "items",
+    img: "/images/xmas.tree.png",
     yield: {
       wood: 60,
       cloth: 12,
@@ -8754,10 +8754,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'circleballoon',
-    name: 'Circle Balloon',
-    category: 'items',
-    img: '/images/circleballoon2025.png',
+    id: "circleballoon",
+    name: "Circle Balloon",
+    category: "items",
+    img: "/images/circleballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -8766,10 +8766,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'clantable',
-    name: 'Clan Table',
-    category: 'items',
-    img: '/images/clantable.png',
+    id: "clantable",
+    name: "Clan Table",
+    category: "items",
+    img: "/images/clantable.png",
     yield: {
       wood: 240,
       metal: 240,
@@ -8780,10 +8780,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'clothingmannequin',
-    name: 'Clothing Mannequin',
-    category: 'items',
-    img: '/images/mannequin.png',
+    id: "clothingmannequin",
+    name: "Clothing Mannequin",
+    category: "items",
+    img: "/images/mannequin.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -8794,10 +8794,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'clumpoflatexballoons',
-    name: 'Clump of Latex Balloons',
-    category: 'items',
-    img: '/images/latexclumpballoon2025.png',
+    id: "clumpoflatexballoons",
+    name: "Clump of Latex Balloons",
+    category: "items",
+    img: "/images/latexclumpballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -8806,17 +8806,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'composter',
-    name: 'Composter',
-    category: 'items',
-    img: '/images/composter.png',
+    id: "composter",
+    name: "Composter",
+    category: "items",
+    img: "/images/composter.png",
     yield: {
       tarp: 1,
       wood: 120,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.2,
       },
@@ -8826,17 +8826,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'cookingworkbench',
-    name: 'Cooking Workbench',
-    category: 'items',
-    img: '/images/cookingworkbench.png',
+    id: "cookingworkbench",
+    name: "Cooking Workbench",
+    category: "items",
+    img: "/images/cookingworkbench.png",
     yield: {
       metal: 120,
       stone: 120,
@@ -8849,10 +8849,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'discordtrophy',
-    name: 'Discord Trophy',
-    category: 'items',
-    img: '/images/discord.trophy.png',
+    id: "discordtrophy",
+    name: "Discord Trophy",
+    category: "items",
+    img: "/images/discord.trophy.png",
     yield: {
       metal: 30,
     },
@@ -8861,16 +8861,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'diverpropulsionvehicle',
-    name: 'Diver propulsion vehicle',
-    category: 'items',
-    img: '/images/skidoo.png',
+    id: "diverpropulsionvehicle",
+    name: "Diver propulsion vehicle",
+    category: "items",
+    img: "/images/skidoo.png",
     yield: {
       metal: 90,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -8880,17 +8880,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'doublesignpost',
-    name: 'Double Sign Post',
-    category: 'items',
-    img: '/images/sign.post.double.png',
+    id: "doublesignpost",
+    name: "Double Sign Post",
+    category: "items",
+    img: "/images/sign.post.double.png",
     yield: {
       wood: 45,
     },
@@ -8899,10 +8899,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'dragondoorknocker',
-    name: 'Dragon Door Knocker',
-    category: 'items',
-    img: '/images/dragondoorknocker.png',
+    id: "dragondoorknocker",
+    name: "Dragon Door Knocker",
+    category: "items",
+    img: "/images/dragondoorknocker.png",
     yield: {
       metal: 12,
     },
@@ -8911,16 +8911,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'drone',
-    name: 'Drone',
-    category: 'items',
-    img: '/images/drone.png',
+    id: "drone",
+    name: "Drone",
+    category: "items",
+    img: "/images/drone.png",
     yield: {
       metal: 120,
     },
     random: [
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.6,
       },
@@ -8930,17 +8930,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'dropbox',
-    name: 'Drop Box',
-    category: 'items',
-    img: '/images/dropbox.png',
+    id: "dropbox",
+    name: "Drop Box",
+    category: "items",
+    img: "/images/dropbox.png",
     yield: {
       metal: 120,
     },
@@ -8949,10 +8949,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'easterdoorwreath',
-    name: 'Easter Door Wreath',
-    category: 'items',
-    img: '/images/easterdoorwreath.png',
+    id: "easterdoorwreath",
+    name: "Easter Door Wreath",
+    category: "items",
+    img: "/images/easterdoorwreath.png",
     yield: {
       cloth: 12,
     },
@@ -8961,10 +8961,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'engineeringworkbench',
-    name: 'Engineering Workbench',
-    category: 'items',
-    img: '/images/iotable.png',
+    id: "engineeringworkbench",
+    name: "Engineering Workbench",
+    category: "items",
+    img: "/images/iotable.png",
     yield: {
       wood: 300,
       metal: 60,
@@ -8975,10 +8975,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'festivedoorwaygarland',
-    name: 'Festive Doorway Garland',
-    category: 'items',
-    img: '/images/xmas.door.garland.png',
+    id: "festivedoorwaygarland",
+    name: "Festive Doorway Garland",
+    category: "items",
+    img: "/images/xmas.door.garland.png",
     yield: {
       cloth: 15,
     },
@@ -8987,10 +8987,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'festivedoubledoorwaygarland',
-    name: 'Festive Double Doorway Garland',
-    category: 'items',
-    img: '/images/xmas.double.door.garland.png',
+    id: "festivedoubledoorwaygarland",
+    name: "Festive Double Doorway Garland",
+    category: "items",
+    img: "/images/xmas.double.door.garland.png",
     yield: {
       cloth: 15,
     },
@@ -8999,10 +8999,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'festivewindowgarland',
-    name: 'Festive Window Garland',
-    category: 'items',
-    img: '/images/xmas.window.garland.png',
+    id: "festivewindowgarland",
+    name: "Festive Window Garland",
+    category: "items",
+    img: "/images/xmas.window.garland.png",
     yield: {
       cloth: 15,
     },
@@ -9011,10 +9011,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fishtrophy',
-    name: 'Fish Trophy',
-    category: 'items',
-    img: '/images/fishtrophy.png',
+    id: "fishtrophy",
+    name: "Fish Trophy",
+    category: "items",
+    img: "/images/fishtrophy.png",
     yield: {
       wood: 45,
     },
@@ -9023,10 +9023,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'frankensteintable',
-    name: 'Frankenstein Table',
-    category: 'items',
-    img: '/images/frankensteintable.png',
+    id: "frankensteintable",
+    name: "Frankenstein Table",
+    category: "items",
+    img: "/images/frankensteintable.png",
     yield: {
       metal: 120,
     },
@@ -9035,10 +9035,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'frontierboltssingleitemrack',
-    name: 'Frontier Bolts Single Item Rack',
-    category: 'items',
-    img: '/images/gunrack.single.1.horizontal.png',
+    id: "frontierboltssingleitemrack",
+    name: "Frontier Bolts Single Item Rack",
+    category: "items",
+    img: "/images/gunrack.single.1.horizontal.png",
     yield: {
       wood: 30,
       metal: 12,
@@ -9049,22 +9049,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'frontierhornssingleitemrack',
-    name: 'Frontier Horns Single Item Rack',
-    category: 'items',
-    img: '/images/gunrack.single.3.horizontal.png',
+    id: "frontierhornssingleitemrack",
+    name: "Frontier Horns Single Item Rack",
+    category: "items",
+    img: "/images/gunrack.single.3.horizontal.png",
     yield: {
-      'bone-fragments': 18,
+      "bone-fragments": 18,
     },
     safezone_yield: {
-      'bone-fragments': 12,
+      "bone-fragments": 12,
     },
   },
   {
-    id: 'frontierhorseshoesingleitemrack',
-    name: 'Frontier Horseshoe Single Item Rack',
-    category: 'items',
-    img: '/images/gunrack.single.2.horizontal.png',
+    id: "frontierhorseshoesingleitemrack",
+    name: "Frontier Horseshoe Single Item Rack",
+    category: "items",
+    img: "/images/gunrack.single.2.horizontal.png",
     yield: {
       metal: 45,
     },
@@ -9073,10 +9073,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'furnace',
-    name: 'Furnace',
-    category: 'items',
-    img: '/images/furnace.png',
+    id: "furnace",
+    name: "Furnace",
+    category: "items",
+    img: "/images/furnace.png",
     yield: {
       stone: 120,
       wood: 60,
@@ -9089,10 +9089,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'halfheightbambooshelves',
-    name: 'Half Height Bamboo Shelves',
-    category: 'items',
-    img: '/images/half.bamboo.shelves.png',
+    id: "halfheightbambooshelves",
+    name: "Half Height Bamboo Shelves",
+    category: "items",
+    img: "/images/half.bamboo.shelves.png",
     yield: {
       metal: 24,
     },
@@ -9101,10 +9101,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'halfheightindustrialshelves',
-    name: 'Half Height Industrial Shelves',
-    category: 'items',
-    img: '/images/halfheight.industrial.shelves.png',
+    id: "halfheightindustrialshelves",
+    name: "Half Height Industrial Shelves",
+    category: "items",
+    img: "/images/halfheight.industrial.shelves.png",
     yield: {
       metal: 24,
     },
@@ -9113,10 +9113,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hazmatplushy',
-    name: 'Hazmat Plushy',
-    category: 'items',
-    img: '/images/hazmat.plushy.png',
+    id: "hazmatplushy",
+    name: "Hazmat Plushy",
+    category: "items",
+    img: "/images/hazmat.plushy.png",
     yield: {
       cloth: 30,
     },
@@ -9125,10 +9125,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hazmatyoutooz',
-    name: 'Hazmat Youtooz',
-    category: 'items',
-    img: '/images/hazmatyoutooz.png',
+    id: "hazmatyoutooz",
+    name: "Hazmat Youtooz",
+    category: "items",
+    img: "/images/hazmatyoutooz.png",
     yield: {
       metal: 30,
     },
@@ -9137,10 +9137,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'heartballoon',
-    name: 'Heart Balloon',
-    category: 'items',
-    img: '/images/heartballoon2025.png',
+    id: "heartballoon",
+    name: "Heart Balloon",
+    category: "items",
+    img: "/images/heartballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -9149,10 +9149,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'heavyscientistplushie',
-    name: 'Heavy Scientist Plushie',
-    category: 'items',
-    img: '/images/heavy.scientist.plushie.png',
+    id: "heavyscientistplushie",
+    name: "Heavy Scientist Plushie",
+    category: "items",
+    img: "/images/heavy.scientist.plushie.png",
     yield: {
       cloth: 30,
     },
@@ -9161,10 +9161,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'heavyscientistyoutooz',
-    name: 'Heavy Scientist Youtooz',
-    category: 'items',
-    img: '/images/heavyscientistyoutooz.png',
+    id: "heavyscientistyoutooz",
+    name: "Heavy Scientist Youtooz",
+    category: "items",
+    img: "/images/heavyscientistyoutooz.png",
     yield: {
       metal: 30,
     },
@@ -9173,10 +9173,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hitch&trough',
-    name: 'Hitch & Trough',
-    category: 'items',
-    img: '/images/hitchtroughcombo.png',
+    id: "hitch&trough",
+    name: "Hitch & Trough",
+    category: "items",
+    img: "/images/hitchtroughcombo.png",
     yield: {
       wood: 120,
     },
@@ -9185,10 +9185,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hobobarrel',
-    name: 'Hobo Barrel',
-    category: 'items',
-    img: '/images/hobobarrel.png',
+    id: "hobobarrel",
+    name: "Hobo Barrel",
+    category: "items",
+    img: "/images/hobobarrel.png",
     yield: {
       wood: 60,
     },
@@ -9197,10 +9197,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'horizontalweaponrack',
-    name: 'Horizontal Weapon Rack',
-    category: 'items',
-    img: '/images/gunrack.horizontal.png',
+    id: "horizontalweaponrack",
+    name: "Horizontal Weapon Rack",
+    category: "items",
+    img: "/images/gunrack.horizontal.png",
     yield: {
       wood: 60,
       metal: 72,
@@ -9211,10 +9211,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hugewoodensign',
-    name: 'Huge Wooden Sign',
-    category: 'items',
-    img: '/images/sign.wooden.huge.png',
+    id: "hugewoodensign",
+    name: "Huge Wooden Sign",
+    category: "items",
+    img: "/images/sign.wooden.huge.png",
     yield: {
       wood: 150,
     },
@@ -9223,10 +9223,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialstoragehorizontalbarrel',
-    name: 'Industrial Storage Horizontal Barrel',
-    category: 'items',
-    img: '/images/industrial.storage.horizontal.png',
+    id: "industrialstoragehorizontalbarrel",
+    name: "Industrial Storage Horizontal Barrel",
+    category: "items",
+    img: "/images/industrial.storage.horizontal.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -9237,10 +9237,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialstorageverticalbarrel',
-    name: 'Industrial Storage Vertical Barrel',
-    category: 'items',
-    img: '/images/industrial.storage.vertical.png',
+    id: "industrialstorageverticalbarrel",
+    name: "Industrial Storage Vertical Barrel",
+    category: "items",
+    img: "/images/industrial.storage.vertical.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -9251,10 +9251,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'industrialwallshelves',
-    name: 'Industrial Wall Shelves',
-    category: 'items',
-    img: '/images/wall.shallow.industrial.shelves.png',
+    id: "industrialwallshelves",
+    name: "Industrial Wall Shelves",
+    category: "items",
+    img: "/images/wall.shallow.industrial.shelves.png",
     yield: {
       wood: 60,
     },
@@ -9263,16 +9263,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'jackolanternangry',
-    name: 'Jack O Lantern Angry',
-    category: 'items',
-    img: '/images/jackolantern.angry.png',
+    id: "jackolanternangry",
+    name: "Jack O Lantern Angry",
+    category: "items",
+    img: "/images/jackolantern.angry.png",
     yield: {
       pumpkin: 1,
     },
     random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.2,
       },
@@ -9280,23 +9280,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'jackolanternhappy',
-    name: 'Jack O Lantern Happy',
-    category: 'items',
-    img: '/images/jackolantern.happy.png',
+    id: "jackolanternhappy",
+    name: "Jack O Lantern Happy",
+    category: "items",
+    img: "/images/jackolantern.happy.png",
     yield: {
       pumpkin: 1,
     },
     random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.2,
       },
@@ -9304,17 +9304,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'pumpkin',
+        id: "pumpkin",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'kayak',
-    name: 'Kayak',
-    category: 'items',
-    img: '/images/kayak.png',
+    id: "kayak",
+    name: "Kayak",
+    category: "items",
+    img: "/images/kayak.png",
     yield: {
       metal: 45,
       wood: 120,
@@ -9327,10 +9327,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'kriegstoragebarrel',
-    name: 'Krieg Storage Barrel',
-    category: 'items',
-    img: '/images/krieg.storage.vertical.png',
+    id: "kriegstoragebarrel",
+    name: "Krieg Storage Barrel",
+    category: "items",
+    img: "/images/krieg.storage.vertical.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -9341,10 +9341,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'kriegstoragecrates',
-    name: 'Krieg Storage Crates',
-    category: 'items',
-    img: '/images/krieg.storage.horizontal.png',
+    id: "kriegstoragecrates",
+    name: "Krieg Storage Crates",
+    category: "items",
+    img: "/images/krieg.storage.horizontal.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -9355,10 +9355,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'landscapephotoframe',
-    name: 'Landscape Photo Frame',
-    category: 'items',
-    img: '/images/photoframe.landscape.png',
+    id: "landscapephotoframe",
+    name: "Landscape Photo Frame",
+    category: "items",
+    img: "/images/photoframe.landscape.png",
     yield: {
       wood: 60,
     },
@@ -9367,10 +9367,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'landscapepictureframe',
-    name: 'Landscape Picture Frame',
-    category: 'items',
-    img: '/images/sign.pictureframe.landscape.png',
+    id: "landscapepictureframe",
+    name: "Landscape Picture Frame",
+    category: "items",
+    img: "/images/sign.pictureframe.landscape.png",
     yield: {
       wood: 60,
       cloth: 6,
@@ -9381,10 +9381,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lantern',
-    name: 'Lantern',
-    category: 'items',
-    img: '/images/lantern.png',
+    id: "lantern",
+    name: "Lantern",
+    category: "items",
+    img: "/images/lantern.png",
     yield: {
       metal: 15,
       lgf: 9,
@@ -9395,10 +9395,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largebannerhanging',
-    name: 'Large Banner Hanging',
-    category: 'items',
-    img: '/images/sign.hanging.banner.large.png',
+    id: "largebannerhanging",
+    name: "Large Banner Hanging",
+    category: "items",
+    img: "/images/sign.hanging.banner.large.png",
     yield: {
       cloth: 12,
       metal: 60,
@@ -9409,10 +9409,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largebanneronpole',
-    name: 'Large Banner on pole',
-    category: 'items',
-    img: '/images/sign.pole.banner.large.png',
+    id: "largebanneronpole",
+    name: "Large Banner on pole",
+    category: "items",
+    img: "/images/sign.pole.banner.large.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -9425,10 +9425,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largefurnace',
-    name: 'Large Furnace',
-    category: 'items',
-    img: '/images/furnace.large.png',
+    id: "largefurnace",
+    name: "Large Furnace",
+    category: "items",
+    img: "/images/furnace.large.png",
     yield: {
       stone: 300,
       wood: 360,
@@ -9441,10 +9441,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largehuntingtrophy',
-    name: 'Large Hunting Trophy',
-    category: 'items',
-    img: '/images/huntingtrophylarge.png',
+    id: "largehuntingtrophy",
+    name: "Large Hunting Trophy",
+    category: "items",
+    img: "/images/huntingtrophylarge.png",
     yield: {
       wood: 90,
     },
@@ -9453,10 +9453,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largephotoframe',
-    name: 'Large Photo Frame',
-    category: 'items',
-    img: '/images/photoframe.large.png',
+    id: "largephotoframe",
+    name: "Large Photo Frame",
+    category: "items",
+    img: "/images/photoframe.large.png",
     yield: {
       wood: 60,
     },
@@ -9465,17 +9465,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largeplanterbox',
-    name: 'Large Planter Box',
-    category: 'items',
-    img: '/images/planter.large.png',
+    id: "largeplanterbox",
+    name: "Large Planter Box",
+    category: "items",
+    img: "/images/planter.large.png",
     yield: {
       wood: 120,
       tarp: 1,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.2,
       },
@@ -9485,17 +9485,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'largewoodbox',
-    name: 'Large Wood Box',
-    category: 'items',
-    img: '/images/box.wooden.large.png',
+    id: "largewoodbox",
+    name: "Large Wood Box",
+    category: "items",
+    img: "/images/box.wooden.large.png",
     yield: {
       wood: 150,
       metal: 30,
@@ -9506,10 +9506,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largewoodensign',
-    name: 'Large Wooden Sign',
-    category: 'items',
-    img: '/images/sign.wooden.large.png',
+    id: "largewoodensign",
+    name: "Large Wooden Sign",
+    category: "items",
+    img: "/images/sign.wooden.large.png",
     yield: {
       wood: 90,
     },
@@ -9518,10 +9518,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'latexballoon',
-    name: 'Latex Balloon',
-    category: 'items',
-    img: '/images/latexballoon2025.png',
+    id: "latexballoon",
+    name: "Latex Balloon",
+    category: "items",
+    img: "/images/latexballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -9530,16 +9530,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'leadarmorinsert',
-    name: 'Lead Armor Insert',
-    category: 'items',
-    img: '/images/clothing.mod.armorinsert_lead.png',
+    id: "leadarmorinsert",
+    name: "Lead Armor Insert",
+    category: "items",
+    img: "/images/clothing.mod.armorinsert_lead.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -9549,17 +9549,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'lightupframelarge',
-    name: 'Light-Up Frame Large',
-    category: 'items',
-    img: '/images/lightup.large.png',
+    id: "lightupframelarge",
+    name: "Light-Up Frame Large",
+    category: "items",
+    img: "/images/lightup.large.png",
     yield: {
       wood: 90,
     },
@@ -9568,10 +9568,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lightupframesmall',
-    name: 'Light-Up Frame Small',
-    category: 'items',
-    img: '/images/lightupframe.small.png',
+    id: "lightupframesmall",
+    name: "Light-Up Frame Small",
+    category: "items",
+    img: "/images/lightupframe.small.png",
     yield: {
       wood: 90,
     },
@@ -9580,10 +9580,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lightupframestanding',
-    name: 'Light-Up Frame Standing',
-    category: 'items',
-    img: '/images/lightupframe.standing.png',
+    id: "lightupframestanding",
+    name: "Light-Up Frame Standing",
+    category: "items",
+    img: "/images/lightupframe.standing.png",
     yield: {
       wood: 90,
     },
@@ -9592,10 +9592,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lightupframexl',
-    name: 'Light-Up Frame XL',
-    category: 'items',
-    img: '/images/lightup.xl.png',
+    id: "lightupframexl",
+    name: "Light-Up Frame XL",
+    category: "items",
+    img: "/images/lightup.xl.png",
     yield: {
       wood: 90,
     },
@@ -9604,10 +9604,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'lightupframexxl',
-    name: 'Light-Up Frame XXL',
-    category: 'items',
-    img: '/images/lightup.xxl.png',
+    id: "lightupframexxl",
+    name: "Light-Up Frame XXL",
+    category: "items",
+    img: "/images/lightup.xxl.png",
     yield: {
       wood: 90,
     },
@@ -9616,10 +9616,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'locker',
-    name: 'Locker',
-    category: 'items',
-    img: '/images/locker.png',
+    id: "locker",
+    name: "Locker",
+    category: "items",
+    img: "/images/locker.png",
     yield: {
       metal: 60,
       wood: 30,
@@ -9630,10 +9630,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mailbox',
-    name: 'Mail Box',
-    category: 'items',
-    img: '/images/mailbox.png',
+    id: "mailbox",
+    name: "Mail Box",
+    category: "items",
+    img: "/images/mailbox.png",
     yield: {
       wood: 60,
       metal: 15,
@@ -9644,10 +9644,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mediumwoodensign',
-    name: 'Medium Wooden Sign',
-    category: 'items',
-    img: '/images/sign.wooden.medium.png',
+    id: "mediumwoodensign",
+    name: "Medium Wooden Sign",
+    category: "items",
+    img: "/images/sign.wooden.medium.png",
     yield: {
       wood: 60,
     },
@@ -9656,10 +9656,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'metalarmorinsert',
-    name: 'Metal Armor Insert',
-    category: 'items',
-    img: '/images/clothing.mod.armorinsert_metal.png',
+    id: "metalarmorinsert",
+    name: "Metal Armor Insert",
+    category: "items",
+    img: "/images/clothing.mod.armorinsert_metal.png",
     yield: {
       hqm: 3,
     },
@@ -9668,10 +9668,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'minecartplanter',
-    name: 'Minecart Planter',
-    category: 'items',
-    img: '/images/minecart.planter.png',
+    id: "minecartplanter",
+    name: "Minecart Planter",
+    category: "items",
+    img: "/images/minecart.planter.png",
     yield: {
       metal: 60,
     },
@@ -9680,10 +9680,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mixingtable',
-    name: 'Mixing Table',
-    category: 'items',
-    img: '/images/mixingtable.png',
+    id: "mixingtable",
+    name: "Mixing Table",
+    category: "items",
+    img: "/images/mixingtable.png",
     yield: {
       metal: 120,
       stone: 60,
@@ -9694,10 +9694,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'onesidedtownsignpost',
-    name: 'One Sided Town Sign Post',
-    category: 'items',
-    img: '/images/sign.post.town.png',
+    id: "onesidedtownsignpost",
+    name: "One Sided Town Sign Post",
+    category: "items",
+    img: "/images/sign.post.town.png",
     yield: {
       wood: 60,
     },
@@ -9706,10 +9706,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ornateframelarge',
-    name: 'Ornate Frame large',
-    category: 'items',
-    img: '/images/goldframe.large.png',
+    id: "ornateframelarge",
+    name: "Ornate Frame large",
+    category: "items",
+    img: "/images/goldframe.large.png",
     yield: {
       wood: 90,
     },
@@ -9718,10 +9718,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ornateframesmall',
-    name: 'Ornate Frame Small',
-    category: 'items',
-    img: '/images/goldframe.small.png',
+    id: "ornateframesmall",
+    name: "Ornate Frame Small",
+    category: "items",
+    img: "/images/goldframe.small.png",
     yield: {
       wood: 90,
     },
@@ -9730,10 +9730,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ornateframestanding',
-    name: 'Ornate Frame Standing',
-    category: 'items',
-    img: '/images/goldframe.standing.png',
+    id: "ornateframestanding",
+    name: "Ornate Frame Standing",
+    category: "items",
+    img: "/images/goldframe.standing.png",
     yield: {
       wood: 90,
     },
@@ -9742,10 +9742,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ornateframexl',
-    name: 'Ornate Frame XL',
-    category: 'items',
-    img: '/images/goldframe.xl.png',
+    id: "ornateframexl",
+    name: "Ornate Frame XL",
+    category: "items",
+    img: "/images/goldframe.xl.png",
     yield: {
       wood: 90,
     },
@@ -9754,10 +9754,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ornateframexxl',
-    name: 'Ornate Frame XXL',
-    category: 'items',
-    img: '/images/goldframe.xxl.png',
+    id: "ornateframexxl",
+    name: "Ornate Frame XXL",
+    category: "items",
+    img: "/images/goldframe.xxl.png",
     yield: {
       wood: 90,
     },
@@ -9766,10 +9766,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'papermap',
-    name: 'Paper Map',
-    category: 'items',
-    img: '/images/map.png',
+    id: "papermap",
+    name: "Paper Map",
+    category: "items",
+    img: "/images/map.png",
     yield: {
       wood: 60,
     },
@@ -9778,10 +9778,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'plank',
-    name: 'Plank',
-    category: 'items',
-    img: '/images/plank.png',
+    id: "plank",
+    name: "Plank",
+    category: "items",
+    img: "/images/plank.png",
     yield: {
       wood: 60,
     },
@@ -9790,10 +9790,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'portableeasel',
-    name: 'Portable Easel',
-    category: 'items',
-    img: '/images/easel.png',
+    id: "portableeasel",
+    name: "Portable Easel",
+    category: "items",
+    img: "/images/easel.png",
     yield: {
       wood: 60,
     },
@@ -9802,10 +9802,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'portraitphotoframe',
-    name: 'Portrait Photo Frame',
-    category: 'items',
-    img: '/images/photoframe.portrait.png',
+    id: "portraitphotoframe",
+    name: "Portrait Photo Frame",
+    category: "items",
+    img: "/images/photoframe.portrait.png",
     yield: {
       wood: 60,
     },
@@ -9814,10 +9814,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'portraitpictureframe',
-    name: 'Portrait Picture Frame',
-    category: 'items',
-    img: '/images/sign.pictureframe.portrait.png',
+    id: "portraitpictureframe",
+    name: "Portrait Picture Frame",
+    category: "items",
+    img: "/images/sign.pictureframe.portrait.png",
     yield: {
       wood: 60,
       cloth: 6,
@@ -9828,10 +9828,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'repairbench',
-    name: 'Repair Bench',
-    category: 'items',
-    img: '/images/box.repair.bench.png',
+    id: "repairbench",
+    name: "Repair Bench",
+    category: "items",
+    img: "/images/box.repair.bench.png",
     yield: {
       metal: 75,
     },
@@ -9840,10 +9840,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'researchtable',
-    name: 'Research Table',
-    category: 'items',
-    img: '/images/research.table.png',
+    id: "researchtable",
+    name: "Research Table",
+    category: "items",
+    img: "/images/research.table.png",
     yield: {
       metal: 120,
     },
@@ -9852,10 +9852,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rockingchair',
-    name: 'Rocking Chair',
-    category: 'items',
-    img: '/images/rockingchair.png',
+    id: "rockingchair",
+    name: "Rocking Chair",
+    category: "items",
+    img: "/images/rockingchair.png",
     yield: {
       wood: 78,
     },
@@ -9864,10 +9864,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'ronaldmcdonaldhouseukplushie',
-    name: 'Ronald McDonald House UK Plushie',
-    category: 'items',
-    img: '/images/charity.plushy.02.png',
+    id: "ronaldmcdonaldhouseukplushie",
+    name: "Ronald McDonald House UK Plushie",
+    category: "items",
+    img: "/images/charity.plushy.02.png",
     yield: {
       cloth: 30,
     },
@@ -9876,10 +9876,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rug',
-    name: 'Rug',
-    category: 'items',
-    img: '/images/rug.png',
+    id: "rug",
+    name: "Rug",
+    category: "items",
+    img: "/images/rug.png",
     yield: {
       cloth: 15,
     },
@@ -9888,16 +9888,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sail',
-    name: 'Sail',
-    category: 'items',
-    img: '/images/sail.png',
+    id: "sail",
+    name: "Sail",
+    category: "items",
+    img: "/images/sail.png",
     yield: {
       wood: 90,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -9907,17 +9907,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'salvagedshelves',
-    name: 'Salvaged Shelves',
-    category: 'items',
-    img: '/images/shelves.png',
+    id: "salvagedshelves",
+    name: "Salvaged Shelves",
+    category: "items",
+    img: "/images/shelves.png",
     yield: {
       metal: 30,
     },
@@ -9926,10 +9926,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'scarecrow',
-    name: 'Scarecrow',
-    category: 'items',
-    img: '/images/scarecrow.png',
+    id: "scarecrow",
+    name: "Scarecrow",
+    category: "items",
+    img: "/images/scarecrow.png",
     yield: {
       wood: 120,
       cloth: 6,
@@ -9940,10 +9940,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'scientistplushie',
-    name: 'Scientist Plushie',
-    category: 'items',
-    img: '/images/scientist.plushie.png',
+    id: "scientistplushie",
+    name: "Scientist Plushie",
+    category: "items",
+    img: "/images/scientist.plushie.png",
     yield: {
       cloth: 30,
     },
@@ -9952,10 +9952,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'secretlabchair',
-    name: 'Secretlab Chair',
-    category: 'items',
-    img: '/images/secretlabchair.png',
+    id: "secretlabchair",
+    name: "Secretlab Chair",
+    category: "items",
+    img: "/images/secretlabchair.png",
     yield: {
       wood: 30,
       metal: 45,
@@ -9966,10 +9966,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shutterframelarge',
-    name: 'Shutter Frame large',
-    category: 'items',
-    img: '/images/scrapframe.large.png',
+    id: "shutterframelarge",
+    name: "Shutter Frame large",
+    category: "items",
+    img: "/images/scrapframe.large.png",
     yield: {
       wood: 90,
     },
@@ -9978,10 +9978,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shutterframesmall',
-    name: 'Shutter Frame Small',
-    category: 'items',
-    img: '/images/scrapframe.small.png',
+    id: "shutterframesmall",
+    name: "Shutter Frame Small",
+    category: "items",
+    img: "/images/scrapframe.small.png",
     yield: {
       wood: 90,
     },
@@ -9990,10 +9990,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shutterframestanding',
-    name: 'Shutter Frame Standing',
-    category: 'items',
-    img: '/images/scrapframe.standing.png',
+    id: "shutterframestanding",
+    name: "Shutter Frame Standing",
+    category: "items",
+    img: "/images/scrapframe.standing.png",
     yield: {
       wood: 90,
     },
@@ -10002,10 +10002,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shutterframexl',
-    name: 'Shutter Frame XL',
-    category: 'items',
-    img: '/images/scrapframe.xl.png',
+    id: "shutterframexl",
+    name: "Shutter Frame XL",
+    category: "items",
+    img: "/images/scrapframe.xl.png",
     yield: {
       wood: 90,
     },
@@ -10014,10 +10014,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shutterframexxl',
-    name: 'Shutter Frame XXL',
-    category: 'items',
-    img: '/images/scrapframe.xxl.png',
+    id: "shutterframexxl",
+    name: "Shutter Frame XXL",
+    category: "items",
+    img: "/images/scrapframe.xxl.png",
     yield: {
       wood: 90,
     },
@@ -10026,10 +10026,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'singleplantpot',
-    name: 'Single Plant Pot',
-    category: 'items',
-    img: '/images/plantpot.single.png',
+    id: "singleplantpot",
+    name: "Single Plant Pot",
+    category: "items",
+    img: "/images/plantpot.single.png",
     yield: {
       wood: 120,
     },
@@ -10038,10 +10038,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'singlesignpost',
-    name: 'Single Sign Post',
-    category: 'items',
-    img: '/images/sign.post.single.png',
+    id: "singlesignpost",
+    name: "Single Sign Post",
+    category: "items",
+    img: "/images/sign.post.single.png",
     yield: {
       wood: 45,
     },
@@ -10050,10 +10050,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'skulldoorknocker',
-    name: 'Skull Door Knocker',
-    category: 'items',
-    img: '/images/skulldoorknocker.png',
+    id: "skulldoorknocker",
+    name: "Skull Door Knocker",
+    category: "items",
+    img: "/images/skulldoorknocker.png",
     yield: {
       metal: 12,
     },
@@ -10062,16 +10062,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'skullfirepit',
-    name: 'Skull Fire Pit',
-    category: 'items',
-    img: '/images/skull_fire_pit.png',
+    id: "skullfirepit",
+    name: "Skull Fire Pit",
+    category: "items",
+    img: "/images/skull_fire_pit.png",
     yield: {
       wood: 60,
     },
     random: [
       {
-        id: 'human-skull',
+        id: "human-skull",
         amount: 1,
         chance: 0.6,
       },
@@ -10081,17 +10081,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'human-skull',
+        id: "human-skull",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'sleepingbag',
-    name: 'Sleeping Bag',
-    category: 'items',
-    img: '/images/sleepingbag.png',
+    id: "sleepingbag",
+    name: "Sleeping Bag",
+    category: "items",
+    img: "/images/sleepingbag.png",
     yield: {
       cloth: 18,
     },
@@ -10100,10 +10100,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallboatengine',
-    name: 'Small Boat Engine',
-    category: 'items',
-    img: '/images/smallengine.png',
+    id: "smallboatengine",
+    name: "Small Boat Engine",
+    category: "items",
+    img: "/images/smallengine.png",
     yield: {
       hqm: 3,
       gears: 1,
@@ -10111,7 +10111,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -10122,17 +10122,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smallhuntingtrophy',
-    name: 'Small Hunting Trophy',
-    category: 'items',
-    img: '/images/huntingtrophysmall.png',
+    id: "smallhuntingtrophy",
+    name: "Small Hunting Trophy",
+    category: "items",
+    img: "/images/huntingtrophysmall.png",
     yield: {
       wood: 60,
     },
@@ -10141,10 +10141,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smalloilrefinery',
-    name: 'Small Oil Refinery',
-    category: 'items',
-    img: '/images/small.oil.refinery.png',
+    id: "smalloilrefinery",
+    name: "Small Oil Refinery",
+    category: "items",
+    img: "/images/small.oil.refinery.png",
     yield: {
       wood: 120,
       metal: 300,
@@ -10157,16 +10157,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallplanterbox',
-    name: 'Small Planter Box',
-    category: 'items',
-    img: '/images/planter.small.png',
+    id: "smallplanterbox",
+    name: "Small Planter Box",
+    category: "items",
+    img: "/images/planter.small.png",
     yield: {
       wood: 60,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -10176,24 +10176,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'smallramp',
-    name: 'Small Ramp',
-    category: 'items',
-    img: '/images/small_ramp.png',
+    id: "smallramp",
+    name: "Small Ramp",
+    category: "items",
+    img: "/images/small_ramp.png",
     yield: {
       wood: 150,
       rope: 1,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -10203,17 +10203,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smallstash',
-    name: 'Small Stash',
-    category: 'items',
-    img: '/images/stash.small.png',
+    id: "smallstash",
+    name: "Small Stash",
+    category: "items",
+    img: "/images/stash.small.png",
     yield: {
       cloth: 6,
     },
@@ -10222,10 +10222,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallwoodensign',
-    name: 'Small Wooden Sign',
-    category: 'items',
-    img: '/images/sign.wooden.small.png',
+    id: "smallwoodensign",
+    name: "Small Wooden Sign",
+    category: "items",
+    img: "/images/sign.wooden.small.png",
     yield: {
       wood: 45,
     },
@@ -10234,10 +10234,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'snowman',
-    name: 'Snowman',
-    category: 'items',
-    img: '/images/snowman.png',
+    id: "snowman",
+    name: "Snowman",
+    category: "items",
+    img: "/images/snowman.png",
     yield: {
       charcoal: 30,
       cloth: 12,
@@ -10250,10 +10250,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sofa',
-    name: 'Sofa',
-    category: 'items',
-    img: '/images/sofa.png',
+    id: "sofa",
+    name: "Sofa",
+    category: "items",
+    img: "/images/sofa.png",
     yield: {
       wood: 60,
       cloth: 18,
@@ -10264,10 +10264,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sofapattern',
-    name: 'Sofa - Pattern',
-    category: 'items',
-    img: '/images/sofa.pattern.png',
+    id: "sofapattern",
+    name: "Sofa - Pattern",
+    category: "items",
+    img: "/images/sofa.pattern.png",
     yield: {
       wood: 60,
       cloth: 18,
@@ -10278,10 +10278,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'speechbubbleballoon',
-    name: 'Speech Bubble Balloon',
-    category: 'items',
-    img: '/images/speechbubbleballoon2025.png',
+    id: "speechbubbleballoon",
+    name: "Speech Bubble Balloon",
+    category: "items",
+    img: "/images/speechbubbleballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -10290,10 +10290,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'spinningwheel',
-    name: 'Spinning Wheel',
-    category: 'items',
-    img: '/images/spinner.wheel.png',
+    id: "spinningwheel",
+    name: "Spinning Wheel",
+    category: "items",
+    img: "/images/spinner.wheel.png",
     yield: {
       metal: 90,
     },
@@ -10302,10 +10302,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'starballoon',
-    name: 'Star Balloon',
-    category: 'items',
-    img: '/images/starballoon2025.png',
+    id: "starballoon",
+    name: "Star Balloon",
+    category: "items",
+    img: "/images/starballoon2025.png",
     yield: {
       cloth: 9,
     },
@@ -10314,10 +10314,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'steeringwheel',
-    name: 'Steering Wheel',
-    category: 'items',
-    img: '/images/steeringwheel.boat.png',
+    id: "steeringwheel",
+    name: "Steering Wheel",
+    category: "items",
+    img: "/images/steeringwheel.boat.png",
     yield: {
       wood: 60,
     },
@@ -10326,10 +10326,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'stonefireplace',
-    name: 'Stone Fireplace',
-    category: 'items',
-    img: '/images/fireplace.stone.png',
+    id: "stonefireplace",
+    name: "Stone Fireplace",
+    category: "items",
+    img: "/images/fireplace.stone.png",
     yield: {
       stone: 300,
       wood: 120,
@@ -10340,10 +10340,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'storagebarrelhorizontal',
-    name: 'Storage Barrel Horizontal',
-    category: 'items',
-    img: '/images/storage_barrel_c.png',
+    id: "storagebarrelhorizontal",
+    name: "Storage Barrel Horizontal",
+    category: "items",
+    img: "/images/storage_barrel_c.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -10354,10 +10354,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'storagebarrelvertical',
-    name: 'Storage Barrel Vertical',
-    category: 'items',
-    img: '/images/storage_barrel_b.png',
+    id: "storagebarrelvertical",
+    name: "Storage Barrel Vertical",
+    category: "items",
+    img: "/images/storage_barrel_b.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -10368,10 +10368,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'survivalfishtrap',
-    name: 'Survival Fish Trap',
-    category: 'items',
-    img: '/images/fishtrap.small.png',
+    id: "survivalfishtrap",
+    name: "Survival Fish Trap",
+    category: "items",
+    img: "/images/fishtrap.small.png",
     yield: {
       wood: 120,
       cloth: 3,
@@ -10382,10 +10382,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'table',
-    name: 'Table',
-    category: 'items',
-    img: '/images/table.png',
+    id: "table",
+    name: "Table",
+    category: "items",
+    img: "/images/table.png",
     yield: {
       wood: 60,
     },
@@ -10394,10 +10394,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tallpictureframe',
-    name: 'Tall Picture Frame',
-    category: 'items',
-    img: '/images/sign.pictureframe.tall.png',
+    id: "tallpictureframe",
+    name: "Tall Picture Frame",
+    category: "items",
+    img: "/images/sign.pictureframe.tall.png",
     yield: {
       wood: 90,
       cloth: 6,
@@ -10408,10 +10408,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'tallweaponrack',
-    name: 'Tall Weapon Rack',
-    category: 'items',
-    img: '/images/gunrack_tall.horizontal.png',
+    id: "tallweaponrack",
+    name: "Tall Weapon Rack",
+    category: "items",
+    img: "/images/gunrack_tall.horizontal.png",
     yield: {
       wood: 60,
       metal: 105,
@@ -10422,10 +10422,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'torchholder',
-    name: 'Torch Holder',
-    category: 'items',
-    img: '/images/torchholder.png',
+    id: "torchholder",
+    name: "Torch Holder",
+    category: "items",
+    img: "/images/torchholder.png",
     yield: {
       wood: 24,
       metal: 6,
@@ -10436,16 +10436,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'triangleplanterbox',
-    name: 'Triangle Planter Box',
-    category: 'items',
-    img: '/images/planter.triangle.png',
+    id: "triangleplanterbox",
+    name: "Triangle Planter Box",
+    category: "items",
+    img: "/images/planter.triangle.png",
     yield: {
       wood: 90,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -10455,24 +10455,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'tunacanlamp',
-    name: 'Tuna Can Lamp',
-    category: 'items',
-    img: '/images/tunalight.png',
+    id: "tunacanlamp",
+    name: "Tuna Can Lamp",
+    category: "items",
+    img: "/images/tunalight.png",
     yield: {
       wood: 12,
       lgf: 6,
     },
     random: [
       {
-        id: 'empty-tuna-can',
+        id: "empty-tuna-can",
         amount: 1,
         chance: 0.6,
       },
@@ -10483,17 +10483,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'empty-tuna-can',
+        id: "empty-tuna-can",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'twitchrivals2025sofa',
-    name: 'Twitch Rivals 2025 Sofa',
-    category: 'items',
-    img: '/images/twitchrivals2025sofa.png',
+    id: "twitchrivals2025sofa",
+    name: "Twitch Rivals 2025 Sofa",
+    category: "items",
+    img: "/images/twitchrivals2025sofa.png",
     yield: {
       wood: 60,
       cloth: 18,
@@ -10504,10 +10504,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twitchrivalstrophy',
-    name: 'Twitch Rivals Trophy',
-    category: 'items',
-    img: '/images/trophy.png',
+    id: "twitchrivalstrophy",
+    name: "Twitch Rivals Trophy",
+    category: "items",
+    img: "/images/trophy.png",
     yield: {
       metal: 30,
     },
@@ -10516,10 +10516,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twitchrivalstrophy2023',
-    name: 'Twitch Rivals Trophy 2023',
-    category: 'items',
-    img: '/images/trophy2023.png',
+    id: "twitchrivalstrophy2023",
+    name: "Twitch Rivals Trophy 2023",
+    category: "items",
+    img: "/images/trophy2023.png",
     yield: {
       metal: 30,
     },
@@ -10528,10 +10528,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twosidedhangingsign',
-    name: 'Two Sided Hanging Sign',
-    category: 'items',
-    img: '/images/sign.hanging.png',
+    id: "twosidedhangingsign",
+    name: "Two Sided Hanging Sign",
+    category: "items",
+    img: "/images/sign.hanging.png",
     yield: {
       metal: 90,
     },
@@ -10540,10 +10540,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twosidedornatehangingsign',
-    name: 'Two Sided Ornate Hanging Sign',
-    category: 'items',
-    img: '/images/sign.hanging.ornate.png',
+    id: "twosidedornatehangingsign",
+    name: "Two Sided Ornate Hanging Sign",
+    category: "items",
+    img: "/images/sign.hanging.ornate.png",
     yield: {
       metal: 60,
     },
@@ -10552,10 +10552,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'twosidedtownsignpost',
-    name: 'Two Sided Town Sign Post',
-    category: 'items',
-    img: '/images/sign.post.town.roof.png',
+    id: "twosidedtownsignpost",
+    name: "Two Sided Town Sign Post",
+    category: "items",
+    img: "/images/sign.post.town.roof.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -10566,17 +10566,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'vendingmachine',
-    name: 'Vending Machine',
-    category: 'items',
-    img: '/images/vending.machine.png',
+    id: "vendingmachine",
+    name: "Vending Machine",
+    category: "items",
+    img: "/images/vending.machine.png",
     yield: {
       hqm: 12,
       gears: 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
@@ -10587,17 +10587,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'wallcabinet',
-    name: 'Wall Cabinet',
-    category: 'items',
-    img: '/images/electric.wallcabinet.png',
+    id: "wallcabinet",
+    name: "Wall Cabinet",
+    category: "items",
+    img: "/images/electric.wallcabinet.png",
     yield: {
       wood: 150,
       metal: 30,
@@ -10608,10 +10608,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wantedposter',
-    name: 'Wanted Poster',
-    category: 'items',
-    img: '/images/wantedposter.png',
+    id: "wantedposter",
+    name: "Wanted Poster",
+    category: "items",
+    img: "/images/wantedposter.png",
     yield: {
       wood: 12,
     },
@@ -10620,16 +10620,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterbarrel',
-    name: 'Water Barrel',
-    category: 'items',
-    img: '/images/water.barrel.png',
+    id: "waterbarrel",
+    name: "Water Barrel",
+    category: "items",
+    img: "/images/water.barrel.png",
     yield: {
       wood: 150,
     },
     random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -10639,24 +10639,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'waterpurifier',
-    name: 'Water Purifier',
-    category: 'items',
-    img: '/images/water.purifier.png',
+    id: "waterpurifier",
+    name: "Water Purifier",
+    category: "items",
+    img: "/images/water.purifier.png",
     yield: {
       metal: 9,
       cloth: 6,
     },
     random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.6,
       },
@@ -10667,17 +10667,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'weaponrackstand',
-    name: 'Weapon Rack Stand',
-    category: 'items',
-    img: '/images/gunrack_stand.png',
+    id: "weaponrackstand",
+    name: "Weapon Rack Stand",
+    category: "items",
+    img: "/images/gunrack_stand.png",
     yield: {
       wood: 120,
       metal: 45,
@@ -10688,10 +10688,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wickerbarrel',
-    name: 'Wicker Barrel',
-    category: 'items',
-    img: '/images/wicker.barrel.png',
+    id: "wickerbarrel",
+    name: "Wicker Barrel",
+    category: "items",
+    img: "/images/wicker.barrel.png",
     yield: {
       wood: 180,
       metal: 45,
@@ -10702,10 +10702,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'wideweaponrack',
-    name: 'Wide Weapon Rack',
-    category: 'items',
-    img: '/images/gunrack_wide.horizontal.png',
+    id: "wideweaponrack",
+    name: "Wide Weapon Rack",
+    category: "items",
+    img: "/images/gunrack_wide.horizontal.png",
     yield: {
       wood: 60,
       metal: 105,
@@ -10716,10 +10716,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodstoragebox',
-    name: 'Wood Storage Box',
-    category: 'items',
-    img: '/images/box.wooden.png',
+    id: "woodstoragebox",
+    name: "Wood Storage Box",
+    category: "items",
+    img: "/images/box.wooden.png",
     yield: {
       wood: 60,
     },
@@ -10728,10 +10728,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodenarmorinsert',
-    name: 'Wooden Armor Insert',
-    category: 'items',
-    img: '/images/clothing.mod.armorinsert_wood.png',
+    id: "woodenarmorinsert",
+    name: "Wooden Armor Insert",
+    category: "items",
+    img: "/images/clothing.mod.armorinsert_wood.png",
     yield: {
       wood: 90,
     },
@@ -10740,10 +10740,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'workbenchlevel1',
-    name: 'Workbench Level 1',
-    category: 'items',
-    img: '/images/workbench1.png',
+    id: "workbenchlevel1",
+    name: "Workbench Level 1",
+    category: "items",
+    img: "/images/workbench1.png",
     yield: {
       wood: 300,
       metal: 60,
@@ -10754,42 +10754,42 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'workbenchlevel2',
-    name: 'Workbench Level 2',
-    category: 'items',
-    img: '/images/workbench2.png',
+    id: "workbenchlevel2",
+    name: "Workbench Level 2",
+    category: "items",
+    img: "/images/workbench2.png",
     yield: {
       metal: 300,
       hqm: 12,
-      'basic-blueprint-fragment': 3,
+      "basic-blueprint-fragment": 3,
     },
     safezone_yield: {
       metal: 200,
       hqm: 8,
-      'basic-blueprint-fragment': 2,
+      "basic-blueprint-fragment": 2,
     },
   },
   {
-    id: 'workbenchlevel3',
-    name: 'Workbench Level 3',
-    category: 'items',
-    img: '/images/workbench3.png',
+    id: "workbenchlevel3",
+    name: "Workbench Level 3",
+    category: "items",
+    img: "/images/workbench3.png",
     yield: {
       metal: 600,
       hqm: 60,
-      'advanced-blueprint-fragment': 3,
+      "advanced-blueprint-fragment": 3,
     },
     safezone_yield: {
       metal: 400,
       hqm: 40,
-      'advanced-blueprint-fragment': 2,
+      "advanced-blueprint-fragment": 2,
     },
   },
   {
-    id: 'wumpusplush',
-    name: 'Wumpus Plush',
-    category: 'items',
-    img: '/images/discord.plushie.png',
+    id: "wumpusplush",
+    name: "Wumpus Plush",
+    category: "items",
+    img: "/images/discord.plushie.png",
     yield: {
       cloth: 30,
     },
@@ -10798,10 +10798,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'xlpictureframe',
-    name: 'XL Picture Frame',
-    category: 'items',
-    img: '/images/sign.pictureframe.xl.png',
+    id: "xlpictureframe",
+    name: "XL Picture Frame",
+    category: "items",
+    img: "/images/sign.pictureframe.xl.png",
     yield: {
       wood: 90,
       cloth: 9,
@@ -10812,10 +10812,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'xxlpictureframe',
-    name: 'XXL Picture Frame',
-    category: 'items',
-    img: '/images/sign.pictureframe.xxl.png',
+    id: "xxlpictureframe",
+    name: "XXL Picture Frame",
+    category: "items",
+    img: "/images/sign.pictureframe.xxl.png",
     yield: {
       wood: 105,
       cloth: 18,
@@ -10826,16 +10826,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'bandage',
-    name: 'Bandage',
-    category: 'medical',
-    img: '/images/bandage.png',
+    id: "bandage",
+    name: "Bandage",
+    category: "medical",
+    img: "/images/bandage.png",
     yield: {
       cloth: 2,
     },
     random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.4,
       },
@@ -10845,24 +10845,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'largemedkit',
-    name: 'Large Medkit',
-    category: 'medical',
-    img: '/images/largemedkit.png',
+    id: "largemedkit",
+    name: "Large Medkit",
+    category: "medical",
+    img: "/images/largemedkit.png",
     yield: {
-      'medical-syringe': 1,
+      "medical-syringe": 1,
       lgf: 6,
     },
     random: [
       {
-        id: 'medical-syringe',
+        id: "medical-syringe",
         amount: 1,
         chance: 0.2,
       },
@@ -10872,17 +10872,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'medical-syringe',
+        id: "medical-syringe",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'medicalsyringe',
-    name: 'Medical Syringe',
-    category: 'medical',
-    img: '/images/syringe.medical.png',
+    id: "medicalsyringe",
+    name: "Medical Syringe",
+    category: "medical",
+    img: "/images/syringe.medical.png",
     yield: {
       cloth: 9,
       metal: 6,
@@ -10895,10 +10895,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'coffin',
-    name: 'Coffin',
-    category: 'misc',
-    img: '/images/coffin.storage.png',
+    id: "coffin",
+    name: "Coffin",
+    category: "misc",
+    img: "/images/coffin.storage.png",
     yield: {
       wood: 480,
     },
@@ -10907,10 +10907,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cursedcauldron',
-    name: 'Cursed Cauldron',
-    category: 'misc',
-    img: '/images/cursedcauldron.png',
+    id: "cursedcauldron",
+    name: "Cursed Cauldron",
+    category: "misc",
+    img: "/images/cursedcauldron.png",
     yield: {
       wood: 60,
     },
@@ -10919,10 +10919,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'decorativebaubels',
-    name: 'Decorative Baubels',
-    category: 'misc',
-    img: '/images/xmas.decoration.baubels.png',
+    id: "decorativebaubels",
+    name: "Decorative Baubels",
+    category: "misc",
+    img: "/images/xmas.decoration.baubels.png",
     yield: {
       scrap: 2,
       metal: 60,
@@ -10933,10 +10933,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'decorativegingerbreadmen',
-    name: 'Decorative Gingerbread Men',
-    category: 'misc',
-    img: '/images/xmas.decoration.gingerbreadmen.png',
+    id: "decorativegingerbreadmen",
+    name: "Decorative Gingerbread Men",
+    category: "misc",
+    img: "/images/xmas.decoration.gingerbreadmen.png",
     yield: {
       wood: 60,
     },
@@ -10945,10 +10945,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'decorativepinecones',
-    name: 'Decorative Pinecones',
-    category: 'misc',
-    img: '/images/xmas.decoration.pinecone.png',
+    id: "decorativepinecones",
+    name: "Decorative Pinecones",
+    category: "misc",
+    img: "/images/xmas.decoration.pinecone.png",
     yield: {
       wood: 60,
     },
@@ -10957,10 +10957,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'decorativeplasticcandycanes',
-    name: 'Decorative Plastic Candy Canes',
-    category: 'misc',
-    img: '/images/xmas.decoration.candycanes.png',
+    id: "decorativeplasticcandycanes",
+    name: "Decorative Plastic Candy Canes",
+    category: "misc",
+    img: "/images/xmas.decoration.candycanes.png",
     yield: {
       wood: 60,
     },
@@ -10969,10 +10969,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'decorativetinsel',
-    name: 'Decorative Tinsel',
-    category: 'misc',
-    img: '/images/xmas.decoration.tinsel.png',
+    id: "decorativetinsel",
+    name: "Decorative Tinsel",
+    category: "misc",
+    img: "/images/xmas.decoration.tinsel.png",
     yield: {
       scrap: 3,
       wood: 60,
@@ -10983,10 +10983,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'doorkey',
-    name: 'Door Key',
-    category: 'misc',
-    img: '/images/door.key.png',
+    id: "doorkey",
+    name: "Door Key",
+    category: "misc",
+    img: "/images/door.key.png",
     yield: {
       wood: 15,
     },
@@ -10995,10 +10995,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'eggbasket',
-    name: 'Egg Basket',
-    category: 'misc',
-    img: '/images/easterbasket.png',
+    id: "eggbasket",
+    name: "Egg Basket",
+    category: "misc",
+    img: "/images/easterbasket.png",
     yield: {
       scrap: 18,
       metal: 60,
@@ -11009,17 +11009,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'fogger3000',
-    name: 'Fogger-3000',
-    category: 'misc',
-    img: '/images/fogmachine.png',
+    id: "fogger3000",
+    name: "Fogger-3000",
+    category: "misc",
+    img: "/images/fogmachine.png",
     yield: {
       metal: 60,
       lgf: 18,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -11030,17 +11030,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'giantcandydecor',
-    name: 'Giant Candy Decor',
-    category: 'misc',
-    img: '/images/giantcandycanedecor.png',
+    id: "giantcandydecor",
+    name: "Giant Candy Decor",
+    category: "misc",
+    img: "/images/giantcandycanedecor.png",
     yield: {
       cloth: 18,
     },
@@ -11049,10 +11049,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'giantlollipopdecor',
-    name: 'Giant Lollipop Decor',
-    category: 'misc',
-    img: '/images/giantlollipops.png',
+    id: "giantlollipopdecor",
+    name: "Giant Lollipop Decor",
+    category: "misc",
+    img: "/images/giantlollipops.png",
     yield: {
       cloth: 12,
     },
@@ -11061,10 +11061,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'gravestone',
-    name: 'Gravestone',
-    category: 'misc',
-    img: '/images/gravestone.png',
+    id: "gravestone",
+    name: "Gravestone",
+    category: "misc",
+    img: "/images/gravestone.png",
     yield: {
       wood: 240,
     },
@@ -11073,10 +11073,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'graveyardfence',
-    name: 'Graveyard Fence',
-    category: 'misc',
-    img: '/images/wall.graveyard.fence.png',
+    id: "graveyardfence",
+    name: "Graveyard Fence",
+    category: "misc",
+    img: "/images/wall.graveyard.fence.png",
     yield: {
       stone: 150,
       metal: 45,
@@ -11087,24 +11087,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'largecandleset',
-    name: 'Large Candle Set',
-    category: 'misc',
-    img: '/images/largecandles.png',
+    id: "largecandleset",
+    name: "Large Candle Set",
+    category: "misc",
+    img: "/images/largecandles.png",
     yield: {
-      'animal-fat': 12,
+      "animal-fat": 12,
       cloth: 6,
     },
     safezone_yield: {
-      'animal-fat': 8,
+      "animal-fat": 8,
       cloth: 4,
     },
   },
   {
-    id: 'note',
-    name: 'Note',
-    category: 'misc',
-    img: '/images/note.png',
+    id: "note",
+    name: "Note",
+    category: "misc",
+    img: "/images/note.png",
     yield: {
       wood: 6,
     },
@@ -11113,10 +11113,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'pumpkinbasket',
-    name: 'Pumpkin Basket',
-    category: 'misc',
-    img: '/images/pumpkinbasket.png',
+    id: "pumpkinbasket",
+    name: "Pumpkin Basket",
+    category: "misc",
+    img: "/images/pumpkinbasket.png",
     yield: {
       scrap: 18,
       metal: 60,
@@ -11127,16 +11127,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rustigéeggamethyst',
-    name: 'Rustigé Egg - Amethyst',
-    category: 'misc',
-    img: '/images/rustige_egg_h.png',
+    id: "rustigéeggamethyst",
+    name: "Rustigé Egg - Amethyst",
+    category: "misc",
+    img: "/images/rustige_egg_h.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11144,23 +11144,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggblue',
-    name: 'Rustigé Egg - Blue',
-    category: 'misc',
-    img: '/images/rustige_egg_b.png',
+    id: "rustigéeggblue",
+    name: "Rustigé Egg - Blue",
+    category: "misc",
+    img: "/images/rustige_egg_b.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11168,23 +11168,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggcerulean',
-    name: 'Rustigé Egg - Cerulean',
-    category: 'misc',
-    img: '/images/rustige_egg_g.png',
+    id: "rustigéeggcerulean",
+    name: "Rustigé Egg - Cerulean",
+    category: "misc",
+    img: "/images/rustige_egg_g.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11192,23 +11192,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéegggreen',
-    name: 'Rustigé Egg - Green',
-    category: 'misc',
-    img: '/images/rustige_egg_e.png',
+    id: "rustigéegggreen",
+    name: "Rustigé Egg - Green",
+    category: "misc",
+    img: "/images/rustige_egg_e.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11216,23 +11216,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggivory',
-    name: 'Rustigé Egg - Ivory',
-    category: 'misc',
-    img: '/images/rustige_egg_d.png',
+    id: "rustigéeggivory",
+    name: "Rustigé Egg - Ivory",
+    category: "misc",
+    img: "/images/rustige_egg_d.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11240,23 +11240,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggpurple',
-    name: 'Rustigé Egg - Purple',
-    category: 'misc',
-    img: '/images/rustige_egg_c.png',
+    id: "rustigéeggpurple",
+    name: "Rustigé Egg - Purple",
+    category: "misc",
+    img: "/images/rustige_egg_c.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11264,23 +11264,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggred',
-    name: 'Rustigé Egg - Red',
-    category: 'misc',
-    img: '/images/rustige_egg_a.png',
+    id: "rustigéeggred",
+    name: "Rustigé Egg - Red",
+    category: "misc",
+    img: "/images/rustige_egg_a.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11288,23 +11288,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'rustigéeggwhite',
-    name: 'Rustigé Egg - White',
-    category: 'misc',
-    img: '/images/rustige_egg_f.png',
+    id: "rustigéeggwhite",
+    name: "Rustigé Egg - White",
+    category: "misc",
+    img: "/images/rustige_egg_f.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11312,17 +11312,17 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'sickle',
-    name: 'Sickle',
-    category: 'misc',
-    img: '/images/sickle.png',
+    id: "sickle",
+    name: "Sickle",
+    category: "misc",
+    img: "/images/sickle.png",
     yield: {
       metal: 120,
     },
@@ -11331,31 +11331,31 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smallcandleset',
-    name: 'Small Candle Set',
-    category: 'misc',
-    img: '/images/smallcandles.png',
+    id: "smallcandleset",
+    name: "Small Candle Set",
+    category: "misc",
+    img: "/images/smallcandles.png",
     yield: {
-      'animal-fat': 6,
+      "animal-fat": 6,
       cloth: 3,
     },
     safezone_yield: {
-      'animal-fat': 4,
+      "animal-fat": 4,
       cloth: 2,
     },
   },
   {
-    id: 'snowmachine',
-    name: 'Snow Machine',
-    category: 'misc',
-    img: '/images/snowmachine.png',
+    id: "snowmachine",
+    name: "Snow Machine",
+    category: "misc",
+    img: "/images/snowmachine.png",
     yield: {
       metal: 75,
       lgf: 18,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -11366,17 +11366,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'spookyspeaker',
-    name: 'Spooky Speaker',
-    category: 'misc',
-    img: '/images/spookyspeaker.png',
+    id: "spookyspeaker",
+    name: "Spooky Speaker",
+    category: "misc",
+    img: "/images/spookyspeaker.png",
     yield: {
       wood: 240,
       metal: 60,
@@ -11389,10 +11389,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'startreetopper',
-    name: 'Star Tree Topper',
-    category: 'misc',
-    img: '/images/xmas.decoration.star.png',
+    id: "startreetopper",
+    name: "Star Tree Topper",
+    category: "misc",
+    img: "/images/xmas.decoration.star.png",
     yield: {
       scrap: 12,
       metal: 90,
@@ -11403,17 +11403,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'strobelight',
-    name: 'Strobe Light',
-    category: 'misc',
-    img: '/images/strobelight.png',
+    id: "strobelight",
+    name: "Strobe Light",
+    category: "misc",
+    img: "/images/strobelight.png",
     yield: {
       metal: 60,
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11423,18 +11423,18 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'treelights',
-    name: 'Tree Lights',
-    category: 'misc',
+    id: "treelights",
+    name: "Tree Lights",
+    category: "misc",
     recycleStack: 15,
-    img: '/images/xmas.decoration.lights.png',
+    img: "/images/xmas.decoration.lights.png",
     yield: {
       scrap: 30,
       metal: 90,
@@ -11445,10 +11445,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'woodencross',
-    name: 'Wooden Cross',
-    category: 'misc',
-    img: '/images/woodcross.png',
+    id: "woodencross",
+    name: "Wooden Cross",
+    category: "misc",
+    img: "/images/woodcross.png",
     yield: {
       wood: 240,
     },
@@ -11457,23 +11457,23 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'cctvcamera',
-    name: 'CCTV Camera',
-    category: 'resources',
+    id: "cctvcamera",
+    name: "CCTV Camera",
+    category: "resources",
     recycleStack: 7,
-    img: '/images/cctv.camera.png',
+    img: "/images/cctv.camera.png",
     yield: {
       techtrash: 1,
       hqm: 1,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -11484,50 +11484,50 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'coal:(',
-    name: 'Coal :(',
-    category: 'resources',
-    img: '/images/coal.png',
+    id: "coal:(",
+    name: "Coal :(",
+    category: "resources",
+    img: "/images/coal.png",
     yield: {
-      'crude-oil': 2,
+      "crude-oil": 2,
       stone: 30,
     },
     random: [
       {
-        id: 'crude-oil',
+        id: "crude-oil",
         amount: 1,
         chance: 0.4,
       },
     ],
     safezone_yield: {
-      'crude-oil': 1,
+      "crude-oil": 1,
       stone: 20,
     },
     safezone_random: [
       {
-        id: 'crude-oil',
+        id: "crude-oil",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'emptycanofbeans',
-    name: 'Empty Can Of Beans',
-    category: 'resources',
-    img: '/images/can.beans.empty.png',
+    id: "emptycanofbeans",
+    name: "Empty Can Of Beans",
+    category: "resources",
+    img: "/images/can.beans.empty.png",
     yield: {
       metal: 12,
     },
@@ -11536,16 +11536,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'emptytunacan',
-    name: 'Empty Tuna Can',
-    category: 'resources',
-    img: '/images/can.tuna.empty.png',
+    id: "emptytunacan",
+    name: "Empty Tuna Can",
+    category: "resources",
+    img: "/images/can.tuna.empty.png",
     yield: {
       metal: 9,
     },
     random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.6,
       },
@@ -11555,62 +11555,62 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metal',
+        id: "metal",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'explosives',
-    name: 'Explosives',
-    category: 'resources',
+    id: "explosives",
+    name: "Explosives",
+    category: "resources",
     recycleStack: 10,
-    img: '/images/explosives.png',
+    img: "/images/explosives.png",
     yield: {
-      'gun-powder': 30,
+      "gun-powder": 30,
       lgf: 1,
       sulfur: 6,
       metal: 6,
     },
     random: [
       {
-        id: 'lgf',
+        id: "lgf",
         amount: 1,
         chance: 0.8,
       },
     ],
     safezone_yield: {
-      'gun-powder': 20,
+      "gun-powder": 20,
       lgf: 1,
       sulfur: 4,
       metal: 4,
     },
     safezone_random: [
       {
-        id: 'lgf',
+        id: "lgf",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'gunpowder',
-    name: 'Gun Powder',
-    category: 'resources',
-    img: '/images/gunpowder.png',
+    id: "gunpowder",
+    name: "Gun Powder",
+    category: "resources",
+    img: "/images/gunpowder.png",
     yield: {
       charcoal: 1,
       sulfur: 1,
     },
     random: [
       {
-        id: 'charcoal',
+        id: "charcoal",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'sulfur',
+        id: "sulfur",
         amount: 1,
         chance: 0.2,
       },
@@ -11620,31 +11620,31 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'charcoal',
+        id: "charcoal",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'sulfur',
+        id: "sulfur",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'lowgradefuel',
-    name: 'Low Grade Fuel',
-    category: 'resources',
-    img: '/images/lowgradefuel.png',
+    id: "lowgradefuel",
+    name: "Low Grade Fuel",
+    category: "resources",
+    img: "/images/lowgradefuel.png",
     yield: {},
     random: [
       {
-        id: 'animal-fat',
+        id: "animal-fat",
         amount: 1,
         chance: 0.45,
       },
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.15,
       },
@@ -11652,23 +11652,23 @@ export const ITEMS: RecycleItem[] = [
     safezone_yield: {},
     safezone_random: [
       {
-        id: 'animal-fat',
+        id: "animal-fat",
         amount: 1,
         chance: 0.3,
       },
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.1,
       },
     ],
   },
   {
-    id: 'paper',
-    name: 'Paper',
-    category: 'resources',
+    id: "paper",
+    name: "Paper",
+    category: "resources",
     recycleStack: 100,
-    img: '/images/paper.png',
+    img: "/images/paper.png",
     yield: {
       wood: 3,
     },
@@ -11677,11 +11677,11 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'targetingcomputer',
-    name: 'Targeting Computer',
-    category: 'resources',
+    id: "targetingcomputer",
+    name: "Targeting Computer",
+    category: "resources",
     recycleStack: 7,
-    img: '/images/targeting.computer.png',
+    img: "/images/targeting.computer.png",
     yield: {
       techtrash: 3,
       hqm: 1,
@@ -11689,7 +11689,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -11700,17 +11700,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'binoculars',
-    name: 'Binoculars',
-    category: 'tools',
-    img: '/images/tool.binoculars.png',
+    id: "binoculars",
+    name: "Binoculars",
+    category: "tools",
+    img: "/images/tool.binoculars.png",
     yield: {
       metal: 24,
     },
@@ -11719,10 +11719,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'chainsaw',
-    name: 'Chainsaw',
-    category: 'tools',
-    img: '/images/chainsaw.png',
+    id: "chainsaw",
+    name: "Chainsaw",
+    category: "tools",
+    img: "/images/chainsaw.png",
     yield: {
       hqm: 3,
       gears: 1,
@@ -11730,12 +11730,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.6,
       },
@@ -11746,22 +11746,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'compass',
-    name: 'Compass',
-    category: 'tools',
-    img: '/images/compass.png',
+    id: "compass",
+    name: "Compass",
+    category: "tools",
+    img: "/images/compass.png",
     yield: {
       metal: 45,
     },
@@ -11770,24 +11770,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'flare',
-    name: 'Flare',
-    category: 'tools',
-    img: '/images/flare.png',
+    id: "flare",
+    name: "Flare",
+    category: "tools",
+    img: "/images/flare.png",
     yield: {
-      'gun-powder': 6,
+      "gun-powder": 6,
       metal: 6,
     },
     safezone_yield: {
-      'gun-powder': 4,
+      "gun-powder": 4,
       metal: 4,
     },
   },
   {
-    id: 'flashlight',
-    name: 'Flashlight',
-    category: 'tools',
-    img: '/images/flashlight.held.png',
+    id: "flashlight",
+    name: "Flashlight",
+    category: "tools",
+    img: "/images/flashlight.held.png",
     yield: {
       metal: 18,
     },
@@ -11798,8 +11798,8 @@ export const ITEMS: RecycleItem[] = [
   {
     id: "garry'smodtoolgun",
     name: "Garry's Mod Tool Gun",
-    category: 'tools',
-    img: '/images/toolgun.png',
+    category: "tools",
+    img: "/images/toolgun.png",
     yield: {
       wood: 60,
       metal: 12,
@@ -11810,10 +11810,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'geigercounter',
-    name: 'Geiger Counter',
-    category: 'tools',
-    img: '/images/geiger.counter.png',
+    id: "geigercounter",
+    name: "Geiger Counter",
+    category: "tools",
+    img: "/images/geiger.counter.png",
     yield: {
       metal: 18,
     },
@@ -11822,10 +11822,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'hammer',
-    name: 'Hammer',
-    category: 'tools',
-    img: '/images/hammer.png',
+    id: "hammer",
+    name: "Hammer",
+    category: "tools",
+    img: "/images/hammer.png",
     yield: {
       wood: 60,
     },
@@ -11834,10 +11834,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'handcuffs',
-    name: 'Handcuffs',
-    category: 'tools',
-    img: '/images/handcuffs.png',
+    id: "handcuffs",
+    name: "Handcuffs",
+    category: "tools",
+    img: "/images/handcuffs.png",
     yield: {
       metal: 42,
     },
@@ -11846,17 +11846,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'handmadefishingrod',
-    name: 'Handmade Fishing Rod',
-    category: 'tools',
-    img: '/images/fishingrod.handmade.png',
+    id: "handmadefishingrod",
+    name: "Handmade Fishing Rod",
+    category: "tools",
+    img: "/images/fishingrod.handmade.png",
     yield: {
       rope: 1,
       wood: 120,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -11866,17 +11866,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'hatchet',
-    name: 'Hatchet',
-    category: 'tools',
-    img: '/images/hatchet.png',
+    id: "hatchet",
+    name: "Hatchet",
+    category: "tools",
+    img: "/images/hatchet.png",
     yield: {
       wood: 60,
       metal: 45,
@@ -11887,16 +11887,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'instantcamera',
-    name: 'Instant Camera',
-    category: 'tools',
-    img: '/images/tool.instant_camera.png',
+    id: "instantcamera",
+    name: "Instant Camera",
+    category: "tools",
+    img: "/images/tool.instant_camera.png",
     yield: {
       metal: 45,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -11906,24 +11906,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'jackhammer',
-    name: 'Jackhammer',
-    category: 'tools',
-    img: '/images/jackhammer.png',
+    id: "jackhammer",
+    name: "Jackhammer",
+    category: "tools",
+    img: "/images/jackhammer.png",
     yield: {
       scrap: 36,
       blade: 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -11934,17 +11934,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'metaldetector',
-    name: 'Metal Detector',
-    category: 'tools',
-    img: '/images/metal.detector.png',
+    id: "metaldetector",
+    name: "Metal Detector",
+    category: "tools",
+    img: "/images/metal.detector.png",
     yield: {
       rope: 1,
       metal: 120,
@@ -11952,7 +11952,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -11963,17 +11963,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'pickaxe',
-    name: 'Pickaxe',
-    category: 'tools',
-    img: '/images/pickaxe.png',
+    id: "pickaxe",
+    name: "Pickaxe",
+    category: "tools",
+    img: "/images/pickaxe.png",
     yield: {
       wood: 60,
       metal: 75,
@@ -11984,10 +11984,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rftransmitter',
-    name: 'RF Transmitter',
-    category: 'tools',
-    img: '/images/rf.detonator.png',
+    id: "rftransmitter",
+    name: "RF Transmitter",
+    category: "tools",
+    img: "/images/rf.detonator.png",
     yield: {
       metal: 60,
     },
@@ -11996,10 +11996,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'rock',
-    name: 'Rock',
-    category: 'tools',
-    img: '/images/rock.png',
+    id: "rock",
+    name: "Rock",
+    category: "tools",
+    img: "/images/rock.png",
     yield: {
       stone: 6,
     },
@@ -12008,16 +12008,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'salvagedaxe',
-    name: 'Salvaged Axe',
-    category: 'tools',
-    img: '/images/axe.salvaged.png',
+    id: "salvagedaxe",
+    name: "Salvaged Axe",
+    category: "tools",
+    img: "/images/axe.salvaged.png",
     yield: {
       blade: 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -12027,23 +12027,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'salvagedhammer',
-    name: 'Salvaged Hammer',
-    category: 'tools',
-    img: '/images/hammer.salvaged.png',
+    id: "salvagedhammer",
+    name: "Salvaged Hammer",
+    category: "tools",
+    img: "/images/hammer.salvaged.png",
     yield: {
       metal: 30,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -12053,23 +12053,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'salvagedicepick',
-    name: 'Salvaged Icepick',
-    category: 'tools',
-    img: '/images/icepick.salvaged.png',
+    id: "salvagedicepick",
+    name: "Salvaged Icepick",
+    category: "tools",
+    img: "/images/icepick.salvaged.png",
     yield: {
       blade: 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -12079,63 +12079,63 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'satchelcharge',
-    name: 'Satchel Charge',
-    category: 'tools',
-    img: '/images/explosive.satchel.png',
+    id: "satchelcharge",
+    name: "Satchel Charge",
+    category: "tools",
+    img: "/images/explosive.satchel.png",
     yield: {
-      'beancan-grenade': 2,
+      "beancan-grenade": 2,
     },
     random: [
       {
-        id: 'beancan-grenade',
+        id: "beancan-grenade",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'small-stash',
+        id: "small-stash",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
     ],
     safezone_yield: {
-      'beancan-grenade': 1,
+      "beancan-grenade": 1,
     },
     safezone_random: [
       {
-        id: 'beancan-grenade',
+        id: "beancan-grenade",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'small-stash',
+        id: "small-stash",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'shovel',
-    name: 'Shovel',
-    category: 'tools',
-    img: '/images/shovel.png',
+    id: "shovel",
+    name: "Shovel",
+    category: "tools",
+    img: "/images/shovel.png",
     yield: {
       metal: 15,
     },
@@ -12144,24 +12144,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'smokegrenade',
-    name: 'Smoke Grenade',
-    category: 'tools',
-    img: '/images/grenade.smoke.png',
+    id: "smokegrenade",
+    name: "Smoke Grenade",
+    category: "tools",
+    img: "/images/grenade.smoke.png",
     yield: {
-      'gun-powder': 21,
+      "gun-powder": 21,
       metal: 30,
     },
     safezone_yield: {
-      'gun-powder': 14,
+      "gun-powder": 14,
       metal: 20,
     },
   },
   {
-    id: 'spraycan',
-    name: 'Spray Can',
-    category: 'tools',
-    img: '/images/spraycan.png',
+    id: "spraycan",
+    name: "Spray Can",
+    category: "tools",
+    img: "/images/spraycan.png",
     yield: {
       metal: 60,
     },
@@ -12170,10 +12170,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'stonehatchet',
-    name: 'Stone Hatchet',
-    category: 'tools',
-    img: '/images/stonehatchet.png',
+    id: "stonehatchet",
+    name: "Stone Hatchet",
+    category: "tools",
+    img: "/images/stonehatchet.png",
     yield: {
       wood: 120,
       stone: 60,
@@ -12184,10 +12184,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'stonepickaxe',
-    name: 'Stone Pickaxe',
-    category: 'tools',
-    img: '/images/stone.pickaxe.png',
+    id: "stonepickaxe",
+    name: "Stone Pickaxe",
+    category: "tools",
+    img: "/images/stone.pickaxe.png",
     yield: {
       wood: 120,
       stone: 60,
@@ -12198,28 +12198,28 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'surveycharge',
-    name: 'Survey Charge',
-    category: 'tools',
-    img: '/images/surveycharge.png',
+    id: "surveycharge",
+    name: "Survey Charge",
+    category: "tools",
+    img: "/images/surveycharge.png",
     yield: {
-      'gun-powder': 18,
+      "gun-powder": 18,
       cloth: 3,
       metal: 6,
       lgf: 12,
     },
     safezone_yield: {
-      'gun-powder': 12,
+      "gun-powder": 12,
       cloth: 2,
       metal: 4,
       lgf: 8,
     },
   },
   {
-    id: 'timedexplosivecharge',
-    name: 'Timed Explosive Charge',
-    category: 'tools',
-    img: '/images/explosive.timed.png',
+    id: "timedexplosivecharge",
+    name: "Timed Explosive Charge",
+    category: "tools",
+    img: "/images/explosive.timed.png",
     yield: {
       explosives: 12,
       cloth: 3,
@@ -12227,7 +12227,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.2,
       },
@@ -12238,28 +12238,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'torch',
-    name: 'Torch',
-    category: 'tools',
-    img: '/images/torch.png',
+    id: "torch",
+    name: "Torch",
+    category: "tools",
+    img: "/images/torch.png",
     yield: {
       wood: 18,
     },
     random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'lgf',
+        id: "lgf",
         amount: 1,
         chance: 0.6,
       },
@@ -12269,22 +12269,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'cloth',
+        id: "cloth",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'lgf',
+        id: "lgf",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'wallpapertool',
-    name: 'Wallpaper Tool',
-    category: 'tools',
-    img: '/images/wallpaper.tool.png',
+    id: "wallpapertool",
+    name: "Wallpaper Tool",
+    category: "tools",
+    img: "/images/wallpaper.tool.png",
     yield: {
       cloth: 6,
     },
@@ -12293,10 +12293,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterbucket',
-    name: 'Water Bucket',
-    category: 'tools',
-    img: '/images/bucket.water.png',
+    id: "waterbucket",
+    name: "Water Bucket",
+    category: "tools",
+    img: "/images/bucket.water.png",
     yield: {
       metal: 12,
     },
@@ -12305,22 +12305,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'flameturret',
-    name: 'Flame Turret',
-    category: 'traps',
-    img: '/images/flameturret.png',
+    id: "flameturret",
+    name: "Flame Turret",
+    category: "traps",
+    img: "/images/flameturret.png",
     yield: {
       metal: 120,
-      'empty-propane-tank': 1,
+      "empty-propane-tank": 1,
     },
     random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -12330,36 +12330,36 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'homemadelandmine',
-    name: 'Homemade Landmine',
-    category: 'traps',
-    img: '/images/trap.landmine.png',
+    id: "homemadelandmine",
+    name: "Homemade Landmine",
+    category: "traps",
+    img: "/images/trap.landmine.png",
     yield: {
       metal: 30,
-      'gun-powder': 18,
+      "gun-powder": 18,
     },
     safezone_yield: {
       metal: 20,
-      'gun-powder': 12,
+      "gun-powder": 12,
     },
   },
   {
-    id: 'samsite',
-    name: 'SAM Site',
-    category: 'traps',
-    img: '/images/samsite.png',
+    id: "samsite",
+    name: "SAM Site",
+    category: "traps",
+    img: "/images/samsite.png",
     yield: {
       hqm: 30,
     },
@@ -12368,10 +12368,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'shotguntrap',
-    name: 'Shotgun Trap',
-    category: 'traps',
-    img: '/images/guntrap.png',
+    id: "shotguntrap",
+    name: "Shotgun Trap",
+    category: "traps",
+    img: "/images/guntrap.png",
     yield: {
       wood: 300,
       metal: 150,
@@ -12380,12 +12380,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -12396,22 +12396,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'smallspiketrap',
-    name: 'Small Spike Trap',
-    category: 'traps',
-    img: '/images/spikes.trap.png',
+    id: "smallspiketrap",
+    name: "Small Spike Trap",
+    category: "traps",
+    img: "/images/spikes.trap.png",
     yield: {
       wood: 48,
     },
@@ -12420,16 +12420,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'snaptrap',
-    name: 'Snap Trap',
-    category: 'traps',
-    img: '/images/trap.bear.png',
+    id: "snaptrap",
+    name: "Snap Trap",
+    category: "traps",
+    img: "/images/trap.bear.png",
     yield: {
       metal: 30,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -12439,24 +12439,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'tincanalarm',
-    name: 'Tin Can Alarm',
-    category: 'traps',
-    img: '/images/tincan.alarm.png',
+    id: "tincanalarm",
+    name: "Tin Can Alarm",
+    category: "traps",
+    img: "/images/tincan.alarm.png",
     yield: {
       wood: 60,
       metal: 18,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
@@ -12467,17 +12467,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'woodenfloorspikes',
-    name: 'Wooden Floor Spikes',
-    category: 'traps',
-    img: '/images/spikes.floor.png',
+    id: "woodenfloorspikes",
+    name: "Wooden Floor Spikes",
+    category: "traps",
+    img: "/images/spikes.floor.png",
     yield: {
       wood: 90,
     },
@@ -12486,10 +12486,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: '8xzoomscope',
-    name: '8x Zoom Scope',
-    category: 'weapons',
-    img: '/images/weapon.mod.small.scope.png',
+    id: "8xzoomscope",
+    name: "8x Zoom Scope",
+    category: "weapons",
+    img: "/images/weapon.mod.small.scope.png",
     yield: {
       hqm: 30,
     },
@@ -12498,10 +12498,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'assaultrifle',
-    name: 'Assault Rifle',
-    category: 'weapons',
-    img: '/images/rifle.ak.png',
+    id: "assaultrifle",
+    name: "Assault Rifle",
+    category: "weapons",
+    img: "/images/rifle.ak.png",
     yield: {
       hqm: 30,
       wood: 120,
@@ -12509,12 +12509,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
@@ -12526,34 +12526,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'ballista',
-    name: 'Ballista',
-    category: 'weapons',
-    img: '/images/ballista.static.png',
+    id: "ballista",
+    name: "Ballista",
+    category: "weapons",
+    img: "/images/ballista.static.png",
     yield: {
       metal: 150,
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
@@ -12563,35 +12563,35 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'batteringram',
-    name: 'Battering Ram',
-    category: 'weapons',
-    img: '/images/batteringram.png',
+    id: "batteringram",
+    name: "Battering Ram",
+    category: "weapons",
+    img: "/images/batteringram.png",
     yield: {
       wood: 300,
-      'sheet-metal': 1,
+      "sheet-metal": 1,
       hqm: 60,
     },
     random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.6,
       },
@@ -12602,42 +12602,42 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'tarp',
+        id: "tarp",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'beancangrenade',
-    name: 'Beancan Grenade',
-    category: 'weapons',
-    img: '/images/grenade.beancan.png',
+    id: "beancangrenade",
+    name: "Beancan Grenade",
+    category: "weapons",
+    img: "/images/grenade.beancan.png",
     yield: {
-      'gun-powder': 36,
+      "gun-powder": 36,
       metal: 12,
     },
     safezone_yield: {
-      'gun-powder': 24,
+      "gun-powder": 24,
       metal: 8,
     },
   },
   {
-    id: 'beegrenade',
-    name: 'Bee Grenade',
-    category: 'weapons',
-    img: '/images/grenade.bee.png',
+    id: "beegrenade",
+    name: "Bee Grenade",
+    category: "weapons",
+    img: "/images/grenade.bee.png",
     yield: {
       cloth: 18,
     },
     random: [
       {
-        id: 'beehive-nucleus',
+        id: "beehive-nucleus",
         amount: 1,
         chance: 0.6,
       },
@@ -12647,24 +12647,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'beehive-nucleus',
+        id: "beehive-nucleus",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'blowpipe',
-    name: 'Blow Pipe',
-    category: 'weapons',
-    img: '/images/blowpipe.png',
+    id: "blowpipe",
+    name: "Blow Pipe",
+    category: "weapons",
+    img: "/images/blowpipe.png",
     yield: {
       wood: 120,
       cloth: 15,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -12675,34 +12675,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'boltactionrifle',
-    name: 'Bolt Action Rifle',
-    category: 'weapons',
-    img: '/images/rifle.bolt.png',
+    id: "boltactionrifle",
+    name: "Bolt Action Rifle",
+    category: "weapons",
+    img: "/images/rifle.bolt.png",
     yield: {
       hqm: 12,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -12713,51 +12713,51 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'boneclub',
-    name: 'Bone Club',
-    category: 'weapons',
-    img: '/images/bone.club.png',
+    id: "boneclub",
+    name: "Bone Club",
+    category: "weapons",
+    img: "/images/bone.club.png",
     yield: {
-      'bone-fragments': 12,
+      "bone-fragments": 12,
     },
     safezone_yield: {
-      'bone-fragments': 8,
+      "bone-fragments": 8,
     },
   },
   {
-    id: 'boneknife',
-    name: 'Bone Knife',
-    category: 'weapons',
-    img: '/images/knife.bone.png',
+    id: "boneknife",
+    name: "Bone Knife",
+    category: "weapons",
+    img: "/images/knife.bone.png",
     yield: {
-      'bone-fragments': 18,
+      "bone-fragments": 18,
     },
     safezone_yield: {
-      'bone-fragments': 12,
+      "bone-fragments": 12,
     },
   },
   {
-    id: 'boomerang',
-    name: 'Boomerang',
-    category: 'weapons',
-    img: '/images/boomerang.png',
+    id: "boomerang",
+    name: "Boomerang",
+    category: "weapons",
+    img: "/images/boomerang.png",
     yield: {
       wood: 180,
     },
@@ -12766,10 +12766,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'butcherknife',
-    name: 'Butcher Knife',
-    category: 'weapons',
-    img: '/images/knife.butcher.png',
+    id: "butcherknife",
+    name: "Butcher Knife",
+    category: "weapons",
+    img: "/images/knife.butcher.png",
     yield: {
       metal: 30,
     },
@@ -12778,22 +12778,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'catapult',
-    name: 'Catapult',
-    category: 'weapons',
-    img: '/images/catapult.png',
+    id: "catapult",
+    name: "Catapult",
+    category: "weapons",
+    img: "/images/catapult.png",
     yield: {
       wood: 300,
       hqm: 12,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -12804,28 +12804,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'combatknife',
-    name: 'Combat Knife',
-    category: 'weapons',
-    img: '/images/knife.combat.png',
+    id: "combatknife",
+    name: "Combat Knife",
+    category: "weapons",
+    img: "/images/knife.combat.png",
     yield: {
       metal: 15,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
@@ -12835,17 +12835,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'compoundbow',
-    name: 'Compound Bow',
-    category: 'weapons',
-    img: '/images/bow.compound.png',
+    id: "compoundbow",
+    name: "Compound Bow",
+    category: "weapons",
+    img: "/images/bow.compound.png",
     yield: {
       wood: 60,
       metal: 45,
@@ -12853,7 +12853,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -12864,17 +12864,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'crossbow',
-    name: 'Crossbow',
-    category: 'weapons',
-    img: '/images/crossbow.png',
+    id: "crossbow",
+    name: "Crossbow",
+    category: "weapons",
+    img: "/images/crossbow.png",
     yield: {
       wood: 120,
       metal: 45,
@@ -12882,7 +12882,7 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.2,
       },
@@ -12893,33 +12893,33 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'customsmg',
-    name: 'Custom SMG',
-    category: 'weapons',
-    img: '/images/smg.2.png',
+    id: "customsmg",
+    name: "Custom SMG",
+    category: "weapons",
+    img: "/images/smg.2.png",
     yield: {
       hqm: 4,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -12929,34 +12929,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'doublebarrelshotgun',
-    name: 'Double Barrel Shotgun',
-    category: 'weapons',
-    img: '/images/shotgun.double.png',
+    id: "doublebarrelshotgun",
+    name: "Double Barrel Shotgun",
+    category: "weapons",
+    img: "/images/shotgun.double.png",
     yield: {
       metal: 105,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
@@ -12966,17 +12966,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'eokapistol',
-    name: 'Eoka Pistol',
-    category: 'weapons',
-    img: '/images/pistol.eoka.png',
+    id: "eokapistol",
+    name: "Eoka Pistol",
+    category: "weapons",
+    img: "/images/pistol.eoka.png",
     yield: {
       wood: 45,
       metal: 18,
@@ -12987,10 +12987,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'extendedmagazine',
-    name: 'Extended Magazine',
-    category: 'weapons',
-    img: '/images/weapon.mod.extendedmags.png',
+    id: "extendedmagazine",
+    name: "Extended Magazine",
+    category: "weapons",
+    img: "/images/weapon.mod.extendedmags.png",
     yield: {
       hqm: 6,
     },
@@ -12999,38 +12999,38 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'f1grenade',
-    name: 'F1 Grenade',
-    category: 'weapons',
-    img: '/images/grenade.f1.png',
+    id: "f1grenade",
+    name: "F1 Grenade",
+    category: "weapons",
+    img: "/images/grenade.f1.png",
     yield: {
-      'gun-powder': 18,
+      "gun-powder": 18,
       metal: 15,
     },
     safezone_yield: {
-      'gun-powder': 12,
+      "gun-powder": 12,
       metal: 10,
     },
   },
   {
-    id: 'flamethrower',
-    name: 'Flame Thrower',
-    category: 'weapons',
-    img: '/images/flamethrower.png',
+    id: "flamethrower",
+    name: "Flame Thrower",
+    category: "weapons",
+    img: "/images/flamethrower.png",
     yield: {
       hqm: 9,
       metalpipe: 3,
       lgf: 60,
-      'empty-propane-tank': 1,
+      "empty-propane-tank": 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.2,
       },
@@ -13042,36 +13042,36 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'flashbang',
-    name: 'Flashbang',
-    category: 'weapons',
-    img: '/images/grenade.flashbang.png',
+    id: "flashbang",
+    name: "Flashbang",
+    category: "weapons",
+    img: "/images/grenade.flashbang.png",
     yield: {
-      'gun-powder': 15,
+      "gun-powder": 15,
       metal: 30,
     },
     safezone_yield: {
-      'gun-powder': 10,
+      "gun-powder": 10,
       metal: 20,
     },
   },
   {
-    id: 'gascompressionoverdrive',
-    name: 'Gas Compression Overdrive',
-    category: 'weapons',
-    img: '/images/weapon.mod.gascompressionovedrive.png',
+    id: "gascompressionoverdrive",
+    name: "Gas Compression Overdrive",
+    category: "weapons",
+    img: "/images/weapon.mod.gascompressionovedrive.png",
     yield: {
       hqm: 6,
     },
@@ -13080,17 +13080,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'handmadesmg',
-    name: 'Handmade SMG',
-    category: 'weapons',
-    img: '/images/t1_smg.png',
+    id: "handmadesmg",
+    name: "Handmade SMG",
+    category: "weapons",
+    img: "/images/t1_smg.png",
     yield: {
       hqm: 3,
       metal: 120,
     },
     random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -13101,39 +13101,39 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'highcaliberrevolver',
-    name: 'High Caliber Revolver',
-    category: 'weapons',
-    img: '/images/revolver.hc.png',
+    id: "highcaliberrevolver",
+    name: "High Caliber Revolver",
+    category: "weapons",
+    img: "/images/revolver.hc.png",
     yield: {
       metalpipe: 2,
       hqm: 3,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
@@ -13144,32 +13144,32 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'hmlmg',
-    name: 'HMLMG',
-    category: 'weapons',
-    img: '/images/hmlmg.png',
+    id: "hmlmg",
+    name: "HMLMG",
+    category: "weapons",
+    img: "/images/hmlmg.png",
     yield: {
       hqm: 36,
       spring: 1,
@@ -13177,17 +13177,17 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.2,
       },
@@ -13198,38 +13198,38 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'holosight',
-    name: 'Holosight',
-    category: 'weapons',
-    img: '/images/weapon.mod.holosight.png',
+    id: "holosight",
+    name: "Holosight",
+    category: "weapons",
+    img: "/images/weapon.mod.holosight.png",
     yield: {
       hqm: 7,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -13239,39 +13239,39 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'homingmissilelauncher',
-    name: 'Homing Missile Launcher',
-    category: 'weapons',
-    img: '/images/homingmissile.launcher.png',
+    id: "homingmissilelauncher",
+    name: "Homing Missile Launcher",
+    category: "weapons",
+    img: "/images/homingmissile.launcher.png",
     yield: {
       hqm: 12,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.6,
       },
@@ -13282,27 +13282,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'cctv',
+        id: "cctv",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'huntingbow',
-    name: 'Hunting Bow',
-    category: 'weapons',
-    img: '/images/bow.hunting.png',
+    id: "huntingbow",
+    name: "Hunting Bow",
+    category: "weapons",
+    img: "/images/bow.hunting.png",
     yield: {
       wood: 120,
       cloth: 30,
@@ -13313,10 +13313,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'l96rifle',
-    name: 'L96 Rifle',
-    category: 'weapons',
-    img: '/images/rifle.l96.png',
+    id: "l96rifle",
+    name: "L96 Rifle",
+    category: "weapons",
+    img: "/images/rifle.l96.png",
     yield: {
       hqm: 24,
       metalpipe: 3,
@@ -13324,12 +13324,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -13341,29 +13341,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'longsword',
-    name: 'Longsword',
-    category: 'weapons',
-    img: '/images/longsword.png',
+    id: "longsword",
+    name: "Longsword",
+    category: "weapons",
+    img: "/images/longsword.png",
     yield: {
       blade: 1,
       metal: 60,
     },
     random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.2,
       },
@@ -13373,35 +13373,35 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'lr300assaultrifle',
-    name: 'LR-300 Assault Rifle',
-    category: 'weapons',
-    img: '/images/rifle.lr300.png',
+    id: "lr300assaultrifle",
+    name: "LR-300 Assault Rifle",
+    category: "weapons",
+    img: "/images/rifle.lr300.png",
     yield: {
       hqm: 24,
       spring: 1,
-      'burst-module': 1,
+      "burst-module": 1,
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.2,
       },
@@ -13411,45 +13411,45 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'm16a2',
-    name: 'M16A2',
-    category: 'weapons',
-    img: '/images/m16a2.png',
+    id: "m16a2",
+    name: "M16A2",
+    category: "weapons",
+    img: "/images/m16a2.png",
     yield: {
       hqm: 24,
       spring: 1,
-      'burst-module': 1,
+      "burst-module": 1,
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.2,
       },
@@ -13459,27 +13459,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'm249',
-    name: 'M249',
-    category: 'weapons',
-    img: '/images/lmg.m249.png',
+    id: "m249",
+    name: "M249",
+    category: "weapons",
+    img: "/images/lmg.m249.png",
     yield: {
       hqm: 24,
       spring: 3,
@@ -13487,17 +13487,17 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -13509,39 +13509,39 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'm39rifle',
-    name: 'M39 Rifle',
-    category: 'weapons',
-    img: '/images/rifle.m39.png',
+    id: "m39rifle",
+    name: "M39 Rifle",
+    category: "weapons",
+    img: "/images/rifle.m39.png",
     yield: {
       spring: 2,
       hqm: 30,
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
@@ -13552,22 +13552,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'm4shotgun',
-    name: 'M4 Shotgun',
-    category: 'weapons',
-    img: '/images/shotgun.m4.png',
+    id: "m4shotgun",
+    name: "M4 Shotgun",
+    category: "weapons",
+    img: "/images/shotgun.m4.png",
     yield: {
       hqm: 12,
       metalpipe: 2,
@@ -13575,12 +13575,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
@@ -13592,38 +13592,38 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'm92pistol',
-    name: 'M92 Pistol',
-    category: 'weapons',
-    img: '/images/pistol.m92.png',
+    id: "m92pistol",
+    name: "M92 Pistol",
+    category: "weapons",
+    img: "/images/pistol.m92.png",
     yield: {
       hqm: 15,
     },
     random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -13633,27 +13633,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'mace',
-    name: 'Mace',
-    category: 'weapons',
-    img: '/images/mace.png',
+    id: "mace",
+    name: "Mace",
+    category: "weapons",
+    img: "/images/mace.png",
     yield: {
       wood: 60,
       metal: 30,
@@ -13664,10 +13664,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'machete',
-    name: 'Machete',
-    category: 'weapons',
-    img: '/images/machete.png',
+    id: "machete",
+    name: "Machete",
+    category: "weapons",
+    img: "/images/machete.png",
     yield: {
       wood: 60,
       metal: 24,
@@ -13678,24 +13678,24 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'militaryflamethrower',
-    name: 'Military Flame Thrower',
-    category: 'weapons',
-    img: '/images/military flamethrower.png',
+    id: "militaryflamethrower",
+    name: "Military Flame Thrower",
+    category: "weapons",
+    img: "/images/military.flamethrower.png",
     yield: {
       hqm: 21,
       metalpipe: 4,
       lgf: 60,
-      'empty-propane-tank': 2,
+      "empty-propane-tank": 2,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.4,
       },
@@ -13704,26 +13704,26 @@ export const ITEMS: RecycleItem[] = [
       hqm: 14,
       metalpipe: 3,
       lgf: 40,
-      'empty-propane-tank': 1,
+      "empty-propane-tank": 1,
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'militarysilencer',
-    name: 'Military Silencer',
-    category: 'weapons',
-    img: '/images/weapon.mod.silencer.png',
+    id: "militarysilencer",
+    name: "Military Silencer",
+    category: "weapons",
+    img: "/images/weapon.mod.silencer.png",
     yield: {
       hqm: 9,
     },
@@ -13732,22 +13732,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'minicrossbow',
-    name: 'Mini Crossbow',
-    category: 'weapons',
-    img: '/images/minicrossbow.png',
+    id: "minicrossbow",
+    name: "Mini Crossbow",
+    category: "weapons",
+    img: "/images/minicrossbow.png",
     yield: {
       wood: 120,
       metal: 90,
     },
     random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -13758,22 +13758,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'rope',
+        id: "rope",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'minigun',
-    name: 'Minigun',
-    category: 'weapons',
-    img: '/images/minigun.png',
+    id: "minigun",
+    name: "Minigun",
+    category: "weapons",
+    img: "/images/minigun.png",
     yield: {
       hqm: 30,
       riflebody: 2,
@@ -13782,17 +13782,17 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
@@ -13805,27 +13805,27 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'riflebody',
+        id: "riflebody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'molotovcocktail',
-    name: 'Molotov Cocktail',
-    category: 'weapons',
-    img: '/images/grenade.molotov.png',
+    id: "molotovcocktail",
+    name: "Molotov Cocktail",
+    category: "weapons",
+    img: "/images/grenade.molotov.png",
     yield: {
       cloth: 6,
       lgf: 30,
@@ -13836,22 +13836,22 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'mountedballista',
-    name: 'Mounted Ballista',
-    category: 'weapons',
-    img: '/images/ballista.mounted.png',
+    id: "mountedballista",
+    name: "Mounted Ballista",
+    category: "weapons",
+    img: "/images/ballista.mounted.png",
     yield: {
       metal: 150,
-      'sheet-metal': 1,
+      "sheet-metal": 1,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.2,
       },
@@ -13861,34 +13861,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'sheet-metal',
+        id: "sheet-metal",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'mp5a4',
-    name: 'MP5A4',
-    category: 'weapons',
-    img: '/images/smg.mp5.png',
+    id: "mp5a4",
+    name: "MP5A4",
+    category: "weapons",
+    img: "/images/smg.mp5.png",
     yield: {
       hqm: 9,
       spring: 1,
     },
     random: [
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
@@ -13898,29 +13898,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'multiplegrenadelauncher',
-    name: 'Multiple Grenade Launcher',
-    category: 'weapons',
-    img: '/images/multiplegrenadelauncher.png',
+    id: "multiplegrenadelauncher",
+    name: "Multiple Grenade Launcher",
+    category: "weapons",
+    img: "/images/multiplegrenadelauncher.png",
     yield: {
       hqm: 15,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
@@ -13931,17 +13931,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'muzzleboost',
-    name: 'Muzzle Boost',
-    category: 'weapons',
-    img: '/images/weapon.mod.muzzleboost.png',
+    id: "muzzleboost",
+    name: "Muzzle Boost",
+    category: "weapons",
+    img: "/images/weapon.mod.muzzleboost.png",
     yield: {
       hqm: 6,
     },
@@ -13950,16 +13950,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'muzzlebrake',
-    name: 'Muzzle Brake',
-    category: 'weapons',
-    img: '/images/weapon.mod.muzzlebrake.png',
+    id: "muzzlebrake",
+    name: "Muzzle Brake",
+    category: "weapons",
+    img: "/images/weapon.mod.muzzlebrake.png",
     yield: {
       hqm: 4,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -13969,17 +13969,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'nailgun',
-    name: 'Nailgun',
-    category: 'weapons',
-    img: '/images/pistol.nailgun.png',
+    id: "nailgun",
+    name: "Nailgun",
+    category: "weapons",
+    img: "/images/pistol.nailgun.png",
     yield: {
       scrap: 12,
       metal: 45,
@@ -13990,10 +13990,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'oilfiltersilencer',
-    name: 'Oil Filter Silencer',
-    category: 'weapons',
-    img: '/images/weapon.mod.oilfiltersilencer.png',
+    id: "oilfiltersilencer",
+    name: "Oil Filter Silencer",
+    category: "weapons",
+    img: "/images/weapon.mod.oilfiltersilencer.png",
     yield: {
       hqm: 6,
     },
@@ -14002,17 +14002,17 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'paddle',
-    name: 'Paddle',
-    category: 'weapons',
-    img: '/images/paddle.png',
+    id: "paddle",
+    name: "Paddle",
+    category: "weapons",
+    img: "/images/paddle.png",
     yield: {
       metal: 9,
       wood: 120,
     },
     random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.6,
       },
@@ -14023,23 +14023,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'paintballgun',
-    name: 'Paintball Gun',
-    category: 'weapons',
-    img: '/images/paintballgun.png',
+    id: "paintballgun",
+    name: "Paintball Gun",
+    category: "weapons",
+    img: "/images/paintballgun.png",
     yield: {
       metal: 30,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -14049,17 +14049,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'pitchfork',
-    name: 'Pitchfork',
-    category: 'weapons',
-    img: '/images/pitchfork.png',
+    id: "pitchfork",
+    name: "Pitchfork",
+    category: "weapons",
+    img: "/images/pitchfork.png",
     yield: {
       wood: 180,
       metal: 60,
@@ -14070,32 +14070,32 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'prototype17',
-    name: 'Prototype 17',
-    category: 'weapons',
-    img: '/images/pistol.prototype17.png',
+    id: "prototype17",
+    name: "Prototype 17",
+    category: "weapons",
+    img: "/images/pistol.prototype17.png",
     yield: {
       hqm: 2,
-      'burst-module': 1,
+      "burst-module": 1,
     },
     random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.2,
       },
@@ -14105,44 +14105,44 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'burst-module',
+        id: "burst-module",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'pumpshotgun',
-    name: 'Pump Shotgun',
-    category: 'weapons',
-    img: '/images/shotgun.pump.png',
+    id: "pumpshotgun",
+    name: "Pump Shotgun",
+    category: "weapons",
+    img: "/images/shotgun.pump.png",
     yield: {
       hqm: 9,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -14152,34 +14152,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'pythonrevolver',
-    name: 'Python Revolver',
-    category: 'weapons',
-    img: '/images/pistol.python.png',
+    id: "pythonrevolver",
+    name: "Python Revolver",
+    category: "weapons",
+    img: "/images/pistol.python.png",
     yield: {
       metalpipe: 1,
       hqm: 6,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -14190,29 +14190,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'revolver',
-    name: 'Revolver',
-    category: 'weapons',
-    img: '/images/pistol.revolver.png',
+    id: "revolver",
+    name: "Revolver",
+    category: "weapons",
+    img: "/images/pistol.revolver.png",
     yield: {
       cloth: 15,
       metal: 75,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -14223,24 +14223,24 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'rocketlauncher',
-    name: 'Rocket Launcher',
-    category: 'weapons',
-    img: '/images/rocket.launcher.png',
+    id: "rocketlauncher",
+    name: "Rocket Launcher",
+    category: "weapons",
+    img: "/images/rocket.launcher.png",
     yield: {
       hqm: 24,
       metalpipe: 2,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
@@ -14251,23 +14251,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'salvagedcleaver',
-    name: 'Salvaged Cleaver',
-    category: 'weapons',
-    img: '/images/salvaged.cleaver.png',
+    id: "salvagedcleaver",
+    name: "Salvaged Cleaver",
+    category: "weapons",
+    img: "/images/salvaged.cleaver.png",
     yield: {
       metal: 30,
     },
     random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.6,
       },
@@ -14277,23 +14277,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'roadsigns',
+        id: "roadsigns",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'salvagedsword',
-    name: 'Salvaged Sword',
-    category: 'weapons',
-    img: '/images/salvaged.sword.png',
+    id: "salvagedsword",
+    name: "Salvaged Sword",
+    category: "weapons",
+    img: "/images/salvaged.sword.png",
     yield: {
       metal: 9,
     },
     random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.6,
       },
@@ -14303,33 +14303,33 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'blade',
+        id: "blade",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'semiautomaticpistol',
-    name: 'Semi-Automatic Pistol',
-    category: 'weapons',
-    img: '/images/pistol.semiauto.png',
+    id: "semiautomaticpistol",
+    name: "Semi-Automatic Pistol",
+    category: "weapons",
+    img: "/images/pistol.semiauto.png",
     yield: {
       hqm: 2,
     },
     random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
@@ -14339,44 +14339,44 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'semiautomaticrifle',
-    name: 'Semi-Automatic Rifle',
-    category: 'weapons',
-    img: '/images/rifle.semiauto.png',
+    id: "semiautomaticrifle",
+    name: "Semi-Automatic Rifle",
+    category: "weapons",
+    img: "/images/rifle.semiauto.png",
     yield: {
       metal: 270,
       hqm: 2,
     },
     random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
@@ -14387,34 +14387,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
     ],
   },
   {
-    id: 'siegetower',
-    name: 'Siege Tower',
-    category: 'weapons',
-    img: '/images/siegetower.png',
+    id: "siegetower",
+    name: "Siege Tower",
+    category: "weapons",
+    img: "/images/siegetower.png",
     yield: {
       wood: 300,
       metal: 150,
     },
     random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.6,
       },
@@ -14425,23 +14425,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'gears',
+        id: "gears",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'simplehandmadesight',
-    name: 'Simple Handmade Sight',
-    category: 'weapons',
-    img: '/images/weapon.mod.simplesight.png',
+    id: "simplehandmadesight",
+    name: "Simple Handmade Sight",
+    category: "weapons",
+    img: "/images/weapon.mod.simplesight.png",
     yield: {
       hqm: 3,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.6,
       },
@@ -14451,17 +14451,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'skinningknife',
-    name: 'Skinning Knife',
-    category: 'weapons',
-    img: '/images/knife.skinning.png',
+    id: "skinningknife",
+    name: "Skinning Knife",
+    category: "weapons",
+    img: "/images/knife.skinning.png",
     yield: {
       metal: 45,
     },
@@ -14470,10 +14470,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'sks',
-    name: 'SKS',
-    category: 'weapons',
-    img: '/images/rifle.sks.png',
+    id: "sks",
+    name: "SKS",
+    category: "weapons",
+    img: "/images/rifle.sks.png",
     yield: {
       spring: 1,
       metal: 120,
@@ -14481,17 +14481,17 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
@@ -14502,34 +14502,34 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'semi-automatic-body',
+        id: "semi-automatic-body",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
     ],
   },
   {
-    id: 'snowballgun',
-    name: 'Snowball Gun',
-    category: 'weapons',
-    img: '/images/snowballgun.png',
+    id: "snowballgun",
+    name: "Snowball Gun",
+    category: "weapons",
+    img: "/images/snowballgun.png",
     yield: {
       hqm: 15,
       metalpipe: 1,
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.8,
       },
@@ -14540,17 +14540,17 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'sodacansilencer',
-    name: 'Soda Can Silencer',
-    category: 'weapons',
-    img: '/images/weapon.mod.sodacansilencer.png',
+    id: "sodacansilencer",
+    name: "Soda Can Silencer",
+    category: "weapons",
+    img: "/images/weapon.mod.sodacansilencer.png",
     yield: {
       metal: 24,
     },
@@ -14559,10 +14559,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'spas12shotgun',
-    name: 'Spas-12 Shotgun',
-    category: 'weapons',
-    img: '/images/shotgun.spas12.png',
+    id: "spas12shotgun",
+    name: "Spas-12 Shotgun",
+    category: "weapons",
+    img: "/images/shotgun.spas12.png",
     yield: {
       hqm: 12,
       metalpipe: 2,
@@ -14570,12 +14570,12 @@ export const ITEMS: RecycleItem[] = [
     },
     random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.8,
       },
@@ -14587,28 +14587,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'metalpipe',
+        id: "metalpipe",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'speargun',
-    name: 'Speargun',
-    category: 'weapons',
-    img: '/images/speargun.png',
+    id: "speargun",
+    name: "Speargun",
+    category: "weapons",
+    img: "/images/speargun.png",
     yield: {
       metal: 45,
     },
     random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.6,
       },
@@ -14618,23 +14618,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'empty-propane-tank',
+        id: "empty-propane-tank",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'stonespear',
-    name: 'Stone Spear',
-    category: 'weapons',
-    img: '/images/spear.stone.png',
+    id: "stonespear",
+    name: "Stone Spear",
+    category: "weapons",
+    img: "/images/spear.stone.png",
     yield: {
       stone: 12,
     },
     random: [
       {
-        id: 'wooden-spear',
+        id: "wooden-spear",
         amount: 1,
         chance: 0.6,
       },
@@ -14644,23 +14644,23 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'wooden-spear',
+        id: "wooden-spear",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'targetingattachment',
-    name: 'Targeting Attachment',
-    category: 'weapons',
-    img: '/images/weapon.mod.targetingattachment.png',
+    id: "targetingattachment",
+    name: "Targeting Attachment",
+    category: "weapons",
+    img: "/images/weapon.mod.targetingattachment.png",
     yield: {
       hqm: 6,
     },
     random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -14670,29 +14670,29 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'thompson',
-    name: 'Thompson',
-    category: 'weapons',
-    img: '/images/smg.thompson.png',
+    id: "thompson",
+    name: "Thompson",
+    category: "weapons",
+    img: "/images/smg.thompson.png",
     yield: {
       hqm: 6,
       wood: 60,
     },
     random: [
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.6,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.6,
       },
@@ -14703,22 +14703,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'smgbody',
+        id: "smgbody",
         amount: 1,
         chance: 0.4,
       },
       {
-        id: 'spring',
+        id: "spring",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'vampirestake',
-    name: 'Vampire Stake',
-    category: 'weapons',
-    img: '/images/vampire.stake.png',
+    id: "vampirestake",
+    name: "Vampire Stake",
+    category: "weapons",
+    img: "/images/vampire.stake.png",
     yield: {
       wood: 60,
     },
@@ -14727,10 +14727,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'variablezoomscope',
-    name: 'Variable Zoom Scope',
-    category: 'weapons',
-    img: '/images/weapon.mod.8x.scope.png',
+    id: "variablezoomscope",
+    name: "Variable Zoom Scope",
+    category: "weapons",
+    img: "/images/weapon.mod.8x.scope.png",
     yield: {
       hqm: 48,
     },
@@ -14739,10 +14739,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'watergun',
-    name: 'Water Gun',
-    category: 'weapons',
-    img: '/images/gun.water.png',
+    id: "watergun",
+    name: "Water Gun",
+    category: "weapons",
+    img: "/images/gun.water.png",
     yield: {
       metal: 75,
     },
@@ -14751,10 +14751,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterpistol',
-    name: 'Water Pistol',
-    category: 'weapons',
-    img: '/images/pistol.water.png',
+    id: "waterpistol",
+    name: "Water Pistol",
+    category: "weapons",
+    img: "/images/pistol.water.png",
     yield: {
       metal: 45,
     },
@@ -14763,10 +14763,10 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'waterpipeshotgun',
-    name: 'Waterpipe Shotgun',
-    category: 'weapons',
-    img: '/images/shotgun.waterpipe.png',
+    id: "waterpipeshotgun",
+    name: "Waterpipe Shotgun",
+    category: "weapons",
+    img: "/images/shotgun.waterpipe.png",
     yield: {
       wood: 90,
       metal: 45,
@@ -14777,16 +14777,16 @@ export const ITEMS: RecycleItem[] = [
     },
   },
   {
-    id: 'weaponflashlight',
-    name: 'Weapon flashlight',
-    category: 'weapons',
-    img: '/images/weapon.mod.flashlight.png',
+    id: "weaponflashlight",
+    name: "Weapon flashlight",
+    category: "weapons",
+    img: "/images/weapon.mod.flashlight.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
@@ -14796,28 +14796,28 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
     ],
   },
   {
-    id: 'weaponlasersight',
-    name: 'Weapon Lasersight',
-    category: 'weapons',
-    img: '/images/weapon.mod.lasersight.png',
+    id: "weaponlasersight",
+    name: "Weapon Lasersight",
+    category: "weapons",
+    img: "/images/weapon.mod.lasersight.png",
     yield: {
       hqm: 1,
     },
     random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.8,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.6,
       },
@@ -14827,22 +14827,22 @@ export const ITEMS: RecycleItem[] = [
     },
     safezone_random: [
       {
-        id: 'hqm',
+        id: "hqm",
         amount: 1,
         chance: 0.2,
       },
       {
-        id: 'techtrash',
+        id: "techtrash",
         amount: 1,
         chance: 0.4,
       },
     ],
   },
   {
-    id: 'woodenspear',
-    name: 'Wooden Spear',
-    category: 'weapons',
-    img: '/images/spear.wooden.png',
+    id: "woodenspear",
+    name: "Wooden Spear",
+    category: "weapons",
+    img: "/images/spear.wooden.png",
     yield: {
       wood: 180,
     },
@@ -14850,272 +14850,272 @@ export const ITEMS: RecycleItem[] = [
       wood: 120,
     },
   },
-]
+];
 
 export const ITEM_MAP: Record<string, RecycleItem> = Object.fromEntries(
-  ITEMS.map((i) => [i.id, i])
-)
+  ITEMS.map((i) => [i.id, i]),
+);
 
 // JSON yield keys -> the display resource bucket they roll up into.
 export const RES_MAP: Record<string, RecycleResource> = {
-  scrap: 'scrap',
-  metal: 'metal',
-  metal_fragments: 'metal',
-  'metal-fragments': 'metal',
-  hqm: 'hqm',
-  hq_metal: 'hqm',
-  high_quality_metal: 'hqm',
-  'high-quality-metal': 'hqm',
-  cloth: 'cloth',
-  wood: 'wood',
-  stone: 'stone',
-  stones: 'stone',
-  lgf: 'lgf',
-  low_grade_fuel: 'lgf',
-  'low-grade-fuel': 'lgf',
-  gp: 'gp',
-  gunpowder: 'gp',
-  'gun-powder': 'gp',
-  leather: 'leather',
-  sulfur: 'sulfur',
-}
+  scrap: "scrap",
+  metal: "metal",
+  metal_fragments: "metal",
+  "metal-fragments": "metal",
+  hqm: "hqm",
+  hq_metal: "hqm",
+  high_quality_metal: "hqm",
+  "high-quality-metal": "hqm",
+  cloth: "cloth",
+  wood: "wood",
+  stone: "stone",
+  stones: "stone",
+  lgf: "lgf",
+  low_grade_fuel: "lgf",
+  "low-grade-fuel": "lgf",
+  gp: "gp",
+  gunpowder: "gp",
+  "gun-powder": "gp",
+  leather: "leather",
+  sulfur: "sulfur",
+};
 
 export const RESOURCE_ICONS: Record<RecycleResource, string> = {
-  scrap: '/images/scrap.png',
-  metal: '/images/metal.fragments.png',
-  hqm: '/images/metal.refined.png',
-  cloth: '/images/cloth.png',
-  wood: '/images/wood.png',
-  stone: '/images/stones.png',
-  lgf: '/images/lowgradefuel.png',
-  gp: '/images/gunpowder.png',
-  leather: '/images/leather.png',
-  sulfur: '/images/sulfur.png',
-}
+  scrap: "/images/scrap.png",
+  metal: "/images/metal.fragments.png",
+  hqm: "/images/metal.refined.png",
+  cloth: "/images/cloth.png",
+  wood: "/images/wood.png",
+  stone: "/images/stones.png",
+  lgf: "/images/lowgradefuel.png",
+  gp: "/images/gunpowder.png",
+  leather: "/images/leather.png",
+  sulfur: "/images/sulfur.png",
+};
 
 export const RESOURCE_LABELS: Record<RecycleResource, string> = {
-  scrap: 'Scrap',
-  metal: 'Metal',
-  hqm: 'High Qual',
-  cloth: 'Cloth',
-  wood: 'Wood',
-  stone: 'Stone',
-  lgf: 'LGF',
-  gp: 'Gunpowder',
-  leather: 'Leather',
-  sulfur: 'Sulfur',
-}
+  scrap: "Scrap",
+  metal: "Metal",
+  hqm: "High Qual",
+  cloth: "Cloth",
+  wood: "Wood",
+  stone: "Stone",
+  lgf: "LGF",
+  gp: "Gunpowder",
+  leather: "Leather",
+  sulfur: "Sulfur",
+};
 
 // Always-rendered output cards.
 export const ALWAYS_RESOURCES: RecycleResource[] = [
-  'scrap',
-  'metal',
-  'hqm',
-  'cloth',
-]
+  "scrap",
+  "metal",
+  "hqm",
+  "cloth",
+];
 
 // Cards shown only when an item actually yields them.
 export const OPTIONAL_RESOURCES: RecycleResource[] = [
-  'wood',
-  'stone',
-  'lgf',
-  'gp',
-  'leather',
-  'sulfur',
-]
+  "wood",
+  "stone",
+  "lgf",
+  "gp",
+  "leather",
+  "sulfur",
+];
 
 export const RESOURCE_ORDER: RecycleResource[] = [
   ...ALWAYS_RESOURCES,
   ...OPTIONAL_RESOURCES,
-]
+];
 
 // Left-panel category order (alphabetical, "other" last).
 export const CATEGORIES: string[] = [
-  'ammo',
-  'attire',
-  'components',
-  'construction',
-  'electrical',
-  'food',
-  'fun',
-  'items',
-  'medical',
-  'misc',
-  'resources',
-  'tools',
-  'traps',
-  'weapons',
-]
+  "ammo",
+  "attire",
+  "components",
+  "construction",
+  "electrical",
+  "food",
+  "fun",
+  "items",
+  "medical",
+  "misc",
+  "resources",
+  "tools",
+  "traps",
+  "weapons",
+];
 
 // Resolves non-resource yield/random keys (component ids and odd hyphenated
 // loot keys that don't match an item id) to a display image + label.
 export const COMPONENT_INFO: Record<string, { img: string; label: string }> = {
-  'advanced-blueprint-fragment': {
-    img: '/images/advancedblueprintfragment.png',
-    label: 'Advanced Blueprint Fragment',
+  "advanced-blueprint-fragment": {
+    img: "/images/advancedblueprintfragment.png",
+    label: "Advanced Blueprint Fragment",
   },
-  'animal-fat': {
-    img: '/images/fat.animal.png',
-    label: 'Animal Fat',
+  "animal-fat": {
+    img: "/images/fat.animal.png",
+    label: "Animal Fat",
   },
-  'basic-blueprint-fragment': {
-    img: '/images/basicblueprintfragment.png',
-    label: 'Basic Blueprint Fragment',
+  "basic-blueprint-fragment": {
+    img: "/images/basicblueprintfragment.png",
+    label: "Basic Blueprint Fragment",
   },
-  'beancan-grenade': {
-    img: '/images/grenade.beancan.png',
-    label: 'Beancan Grenade',
+  "beancan-grenade": {
+    img: "/images/grenade.beancan.png",
+    label: "Beancan Grenade",
   },
-  'bee-grenade': {
-    img: '/images/grenade.bee.png',
-    label: 'Bee Grenade',
+  "bee-grenade": {
+    img: "/images/grenade.bee.png",
+    label: "Bee Grenade",
   },
-  'beehive-nucleus': {
-    img: '',
-    label: 'Beehive Nucleus',
+  "beehive-nucleus": {
+    img: "",
+    label: "Beehive Nucleus",
   },
   blade: {
-    img: '/images/metalblade.png',
-    label: 'Metal Blade',
+    img: "/images/metalblade.png",
+    label: "Metal Blade",
   },
-  'bone-fragments': {
-    img: '/images/bone.fragments.png',
-    label: 'Bone Fragments',
+  "bone-fragments": {
+    img: "/images/bone.fragments.png",
+    label: "Bone Fragments",
   },
-  'burst-module': {
-    img: '/images/weapon.mod.burstmodule.png',
-    label: 'Burst Module',
+  "burst-module": {
+    img: "/images/weapon.mod.burstmodule.png",
+    label: "Burst Module",
   },
   cctv: {
-    img: '/images/cctv.camera.png',
-    label: 'CCTV Camera',
+    img: "/images/cctv.camera.png",
+    label: "CCTV Camera",
   },
   charcoal: {
-    img: '/images/charcoal.png',
-    label: 'Charcoal',
+    img: "/images/charcoal.png",
+    label: "Charcoal",
   },
   computer: {
-    img: '/images/targeting.computer.png',
-    label: 'Targeting Computer',
+    img: "/images/targeting.computer.png",
+    label: "Targeting Computer",
   },
-  'crude-oil': {
-    img: '/images/crude.oil.png',
-    label: 'Crude Oil',
+  "crude-oil": {
+    img: "/images/crude.oil.png",
+    label: "Crude Oil",
   },
-  'empty-propane-tank': {
-    img: '/images/propanetank.png',
-    label: 'Empty Propane Tank',
+  "empty-propane-tank": {
+    img: "/images/propanetank.png",
+    label: "Empty Propane Tank",
   },
-  'empty-tuna-can': {
-    img: '/images/can.tuna.empty.png',
-    label: 'Empty Tuna Can',
+  "empty-tuna-can": {
+    img: "/images/can.tuna.empty.png",
+    label: "Empty Tuna Can",
   },
   explosives: {
-    img: '/images/explosives.png',
-    label: 'Explosives',
+    img: "/images/explosives.png",
+    label: "Explosives",
   },
   fuse: {
-    img: '/images/fuse.png',
-    label: 'Electric Fuse',
+    img: "/images/fuse.png",
+    label: "Electric Fuse",
   },
   gears: {
-    img: '/images/gears.png',
-    label: 'Gears',
+    img: "/images/gears.png",
+    label: "Gears",
   },
   glue: {
-    img: '/images/glue.png',
-    label: 'Glue',
+    img: "/images/glue.png",
+    label: "Glue",
   },
-  'human-skull': {
-    img: '/images/skull.human.png',
-    label: 'Human Skull',
+  "human-skull": {
+    img: "/images/skull.human.png",
+    label: "Human Skull",
   },
-  'medical-syringe': {
-    img: '/images/syringe.medical.png',
-    label: 'Medical Syringe',
+  "medical-syringe": {
+    img: "/images/syringe.medical.png",
+    label: "Medical Syringe",
   },
   metalpipe: {
-    img: '/images/metalpipe.png',
-    label: 'Metal Pipe',
+    img: "/images/metalpipe.png",
+    label: "Metal Pipe",
   },
   pumpkin: {
-    img: '/images/pumpkin.png',
-    label: 'Pumpkin',
+    img: "/images/pumpkin.png",
+    label: "Pumpkin",
   },
-  'raw-human-meat': {
-    img: '',
-    label: 'Raw Human Meat',
+  "raw-human-meat": {
+    img: "",
+    label: "Raw Human Meat",
   },
-  'rf-broadcaster': {
-    img: '/images/electric.rf.broadcaster.png',
-    label: 'RF Broadcaster',
+  "rf-broadcaster": {
+    img: "/images/electric.rf.broadcaster.png",
+    label: "RF Broadcaster",
   },
-  'rf-receiver': {
-    img: '/images/electric.rf.receiver.png',
-    label: 'RF Receiver',
+  "rf-receiver": {
+    img: "/images/electric.rf.receiver.png",
+    label: "RF Receiver",
   },
   riflebody: {
-    img: '/images/riflebody.png',
-    label: 'Rifle Body',
+    img: "/images/riflebody.png",
+    label: "Rifle Body",
   },
   roadsigns: {
-    img: '/images/roadsigns.png',
-    label: 'Road Signs',
+    img: "/images/roadsigns.png",
+    label: "Road Signs",
   },
   rope: {
-    img: '/images/rope.png',
-    label: 'Rope',
+    img: "/images/rope.png",
+    label: "Rope",
   },
-  'semi-automatic-body': {
-    img: '/images/semibody.png',
-    label: 'Semi Automatic Body',
+  "semi-automatic-body": {
+    img: "/images/semibody.png",
+    label: "Semi Automatic Body",
   },
   sewingkit: {
-    img: '/images/sewingkit.png',
-    label: 'Sewing Kit',
+    img: "/images/sewingkit.png",
+    label: "Sewing Kit",
   },
-  'sheet-metal': {
-    img: '/images/sheetmetal.png',
-    label: 'Sheet Metal',
+  "sheet-metal": {
+    img: "/images/sheetmetal.png",
+    label: "Sheet Metal",
   },
-  'small-stash': {
-    img: '/images/stash.small.png',
-    label: 'Small Stash',
+  "small-stash": {
+    img: "/images/stash.small.png",
+    label: "Small Stash",
   },
   smgbody: {
-    img: '/images/smgbody.png',
-    label: 'SMG Body',
+    img: "/images/smgbody.png",
+    label: "SMG Body",
   },
-  'snake-venom': {
-    img: '/images/venom.snake.png',
-    label: 'Snake Venom',
+  "snake-venom": {
+    img: "/images/venom.snake.png",
+    label: "Snake Venom",
   },
   spring: {
-    img: '/images/metalspring.png',
-    label: 'Metal Spring',
+    img: "/images/metalspring.png",
+    label: "Metal Spring",
   },
   tarp: {
-    img: '/images/tarp.png',
-    label: 'Tarp',
+    img: "/images/tarp.png",
+    label: "Tarp",
   },
   techtrash: {
-    img: '/images/techparts.png',
-    label: 'Tech Trash',
+    img: "/images/techparts.png",
+    label: "Tech Trash",
   },
-  'wolf-skull': {
-    img: '/images/skull.wolf.png',
-    label: 'Wolf Skull',
+  "wolf-skull": {
+    img: "/images/skull.wolf.png",
+    label: "Wolf Skull",
   },
-  'wooden-ladder': {
-    img: '/images/ladder.wooden.wall.png',
-    label: 'Wooden Ladder',
+  "wooden-ladder": {
+    img: "/images/ladder.wooden.wall.png",
+    label: "Wooden Ladder",
   },
-  'wooden-spear': {
-    img: '/images/spear.wooden.png',
-    label: 'Wooden Spear',
+  "wooden-spear": {
+    img: "/images/spear.wooden.png",
+    label: "Wooden Spear",
   },
-  'yellow-berry': {
-    img: '/images/yellow.berry.png',
-    label: 'Yellow Berry',
+  "yellow-berry": {
+    img: "/images/yellow.berry.png",
+    label: "Yellow Berry",
   },
-}
+};
