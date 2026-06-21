@@ -209,6 +209,39 @@ body::before {
   color: var(--text-dim);
 }
 
+/* Hamburger toggle — hidden on desktop, shown ≤1200px (see media query). */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-bright);
+  border-radius: 2px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+.top-navbar.open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.top-navbar.open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.top-navbar.open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 h1.page-title {
   font-family: var(--font-d);
   font-size: clamp(1.6rem, 4vw, 2.6rem);
@@ -1725,22 +1758,6 @@ h1.page-title span {
    RESPONSIVE
    ════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .top-navbar {
-    flex-wrap: wrap;
-    padding: 10px;
-    gap: 15px;
-  }
-  .nav-group {
-    justify-content: center;
-  }
-  .nav-brand {
-    order: -1;
-    width: 100%;
-  }
-  .nav-group.right {
-    justify-content: center;
-  }
-
   /* On mobile every shell sizes to content and the page scrolls instead of
      trapping content in fixed-height inner scroll regions. */
   .calc-wrap,
@@ -1779,6 +1796,87 @@ h1.page-title span {
   }
   [data-variant="cupboard"] .tc-image-container {
     display: none;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   NAVBAR — COLLAPSIBLE (HAMBURGER) MENU ≤1200px
+   The 8 wide-tracked nav items + brand can't share one row below ~1300px, so
+   the groups collapse behind a hamburger toggle instead of overflowing.
+   ════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .top-navbar {
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    column-gap: 12px;
+    row-gap: 0;
+  }
+  .nav-toggle {
+    display: flex;
+    order: 3;
+  }
+  .nav-brand {
+    order: 1;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+
+  /* Both groups stack vertically below the bar; hidden until toggled open. */
+  .nav-group {
+    order: 4;
+    flex: 1 1 100%;
+    flex-direction: column;
+    gap: 0;
+    display: none;
+  }
+  .top-navbar.open .nav-group {
+    display: flex;
+  }
+  .top-navbar.open .nav-group.left {
+    margin-top: 8px;
+    padding-top: 4px;
+    border-top: 1px solid var(--border2);
+  }
+  .nav-group.right {
+    justify-content: flex-start;
+  }
+  .nav-separator {
+    display: none;
+  }
+
+  /* Each top-level entry is now a full-width row. */
+  .nav-dropdown-wrapper {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .nav-dropdown-wrapper::after {
+    display: none; /* hover bridge not needed on touch */
+  }
+  .nav-dropdown-wrapper .nav-item,
+  .top-navbar .nav-item {
+    width: 100%;
+    padding: 14px 4px;
+    justify-content: space-between;
+  }
+
+  /* Dropdown contents render inline/expanded (hover can't open them on touch). */
+  .nav-dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    min-width: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 8px 16px;
+    gap: 2px;
   }
 }
 
