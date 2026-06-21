@@ -78,8 +78,16 @@ body {
   color: var(--text-bright);
   font-family: var(--font-ui);
   min-height: 100vh;
+  min-height: 100dvh; /* account for mobile browser dynamic toolbars */
   overflow-y: auto;
   overflow-x: hidden;
+  /* Stop iOS Safari from auto-inflating text on rotation, and smooth font
+     rendering across WebKit/Blink. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body::before {
   content: "";
@@ -99,6 +107,7 @@ body::before {
 /* App shell: the flex column that previously lived on <body> */
 #root {
   min-height: 100vh;
+  min-height: 100dvh; /* account for mobile browser dynamic toolbars */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -623,7 +632,12 @@ h1.page-title span {
   line-height: 1;
 }
 
-/* Shared scrollbar */
+/* Shared scrollbar. Firefox ignores ::-webkit-scrollbar, so it gets a themed
+   thin scrollbar via the standard properties (inherited by scroll containers). */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+}
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -843,6 +857,7 @@ h1.page-title span {
   justify-content: center;
   line-height: 1;
   transition: all 0.1s;
+  -webkit-user-select: none;
   user-select: none;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
@@ -1172,6 +1187,7 @@ h1.page-title span {
   display: flex;
   flex-direction: column;
   position: relative;
+  -webkit-user-select: none;
   user-select: none;
   /* Skip layout/paint for off-screen cells in the 700+ item list. The size hint
      matches a cell (image block + 24px controls) so the scrollbar stays stable. */
@@ -1235,11 +1251,13 @@ h1.page-title span {
   border-top: none;
   border-bottom: none;
   outline: none;
+  -webkit-appearance: none;
   appearance: none;
   -moz-appearance: textfield;
 }
 .ctrl-val::-webkit-outer-spin-button,
 .ctrl-val::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
@@ -1513,6 +1531,7 @@ h1.page-title span {
   font-weight: 700;
   padding: 3px 2px;
   outline: none;
+  -webkit-appearance: none;
   appearance: none;
   -moz-appearance: textfield;
 }
@@ -1522,6 +1541,7 @@ h1.page-title span {
 }
 .bd-qty::-webkit-outer-spin-button,
 .bd-qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
@@ -2996,6 +3016,7 @@ h1.page-title span {
   width: 32px;
   height: 32px;
   transition: all 0.2s ease;
+  -webkit-user-select: none;
   user-select: none;
 }
 .free-counter-btn:hover {
