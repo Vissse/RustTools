@@ -73,12 +73,11 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   </div>
                 </div>
 
-                {/* Křížek na smazání - zesvětleno pomocí inline stylu pro lepší viditelnost */}
+                {/* Křížek na smazání */}
                 <button
                   className="raid-remove-btn"
                   onClick={() => onSet(row.id, 0)}
                   title="Remove"
-                  style={{ color: "#a0a0a0" }}
                 >
                   ✕
                 </button>

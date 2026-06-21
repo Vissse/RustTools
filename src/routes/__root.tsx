@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet } from '@tanstack/react-router'
 import { Navbar } from '../components/Navbar'
+import { Footer } from '../components/Footer'
 import { ErrorPage } from '../components/ErrorPage'
 import { seo } from '../lib/seo'
 
@@ -36,6 +37,7 @@ function RootLayout() {
       <HeadContent />
       <Navbar />
       <Outlet />
+      <Footer />
     </>
   )
 }

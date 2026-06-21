@@ -129,17 +129,18 @@ export function RecyclingCalculator() {
         .raid-remove-btn {
           background: transparent;
           border: none;
-          color: #444;
+          color: var(--text-muted);
           cursor: pointer;
           font-size: 16px;
           padding: 4px;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: color 0.2s ease;
+          transition: color 0.15s ease-out, text-shadow 0.15s ease-out;
         }
         .raid-remove-btn:hover {
-          color: #cd412b;
+          color: var(--rust);
+          text-shadow: 0 0 8px var(--rust-glow);
         }
 
         /* --- Inline Resources --- */
