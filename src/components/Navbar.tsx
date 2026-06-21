@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 /** Shared top navigation bar. Active state follows the current route. */
 export function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="top-navbar">
+    <nav className={`top-navbar${open ? " open" : ""}`}>
+      <button
+        type="button"
+        className="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+      </button>
+
       <div className="nav-group left">
         {/* 1. Položka: Calculators Dropdown */}
         <div className="nav-dropdown-wrapper">
@@ -32,6 +47,7 @@ export function Navbar() {
               to="/"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Raid Calculator
             </Link>
@@ -39,6 +55,7 @@ export function Navbar() {
               to="/recycling"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Recycling Calculator
             </Link>
@@ -46,6 +63,7 @@ export function Navbar() {
               to="/cupboard"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Cupboard Calculator
             </Link>
@@ -53,6 +71,7 @@ export function Navbar() {
               to="/giant-excavator"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Giant Excavator Calculator
             </Link>
@@ -60,6 +79,7 @@ export function Navbar() {
               to="/genetics"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Genetics Calculator
             </Link>
@@ -67,6 +87,7 @@ export function Navbar() {
               to="/furnace"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Furnace Calculator
             </Link>
@@ -74,6 +95,7 @@ export function Navbar() {
               to="/decay"
               className="dropdown-item"
               activeProps={{ className: "active" }}
+              onClick={() => setOpen(false)}
             >
               Decay Calculator
             </Link>
