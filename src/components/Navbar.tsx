@@ -77,6 +77,13 @@ export function Navbar() {
             >
               Decay Calculator
             </Link>
+            <Link
+              to="/shops"
+              className="dropdown-item"
+              activeProps={{ className: "active" }}
+            >
+              Shops Calculator
+            </Link>
           </div>
         </div>
 
