@@ -24,10 +24,10 @@ const BANDIT_CAMP_CATEGORIES = [
       },
       {
         id: "16x",
-        name: "16x Zoom Scope",
+        name: "Variable Zoom Scope",
         price: 300,
         qty: 1,
-        img: "/images/recycle/optic.nv.webp",
+        img: "/images/recycle/variable.zoom.scope.webp",
       },
       {
         id: "m92",
