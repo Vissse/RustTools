@@ -200,6 +200,20 @@ body::before {
   top: -1px;
   box-shadow: 0 0 6px var(--rust-glow);
 }
+/* Not-yet-live top-level entry: dimmed and non-interactive, marked with a lock. */
+.nav-item.soon {
+  opacity: 0.45;
+  cursor: default;
+}
+.nav-item.soon:hover {
+  color: var(--text-dim);
+  text-shadow: none;
+}
+.nav-lock {
+  margin-left: 6px;
+  flex: 0 0 auto;
+  color: currentColor;
+}
 .nav-brand {
   display: flex;
   align-items: center;
