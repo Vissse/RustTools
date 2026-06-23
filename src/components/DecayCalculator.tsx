@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 
 // Data vytažená z tvých screenshotů
 const MATERIALS = [
@@ -79,6 +80,8 @@ export function DecayCalculator() {
 
     return str;
   }, [safeHp, activeMat]);
+
+  useFeatureUsed(Feature.decay, `${selectedMaterial}|${currentHp}`);
 
   return (
     <CalcShell

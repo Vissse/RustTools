@@ -9,6 +9,7 @@ import {
   STRUCTURES,
 } from '../lib/data/raid-data'
 import { cheapestCombo, comboTotal, damageAgainst } from '../lib/raid-solver'
+import { Feature, useFeatureUsed } from '../lib/analytics'
 import type { RaidCategory } from '../lib/types'
 
 // Filtr -> kategorie v RAID_DATA. 'Explosive' řeší vlastní solver (cheapestCombo),
@@ -113,6 +114,11 @@ export function RaidCalculator() {
   }, [selectedStructure, structureCount, activeFilters])
 
   const solverShown = explosiveActive && ready && result !== null
+
+  useFeatureUsed(
+    Feature.raid,
+    `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`,
+  )
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {

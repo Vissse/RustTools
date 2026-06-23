@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 
 // 1. DATA PŘEDMĚTŮ PRO VŠECHNY LOKACE
 const BANDIT_CAMP_CATEGORIES = [
@@ -974,6 +975,12 @@ export function ShopCalculator() {
 
     return { totalCost, totalGained, finalBalance };
   }, [cart, scrapInventory]);
+
+  const cartCount = useMemo(
+    () => Object.values(cart).reduce((sum, n) => sum + n, 0),
+    [cart],
+  );
+  useFeatureUsed(Feature.shops, `${scrapInventory}|${cartCount}`);
 
   return (
     <CalcShell

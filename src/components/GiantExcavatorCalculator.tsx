@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 
 // Data podle Rust tabulky (odstraněny barvy)
 const RATES = [
@@ -34,6 +35,8 @@ export function GiantExcavatorCalculator() {
   const [diesel, setDiesel] = useState<number | "">(1);
 
   const safeDiesel = typeof diesel === "number" && diesel > 0 ? diesel : 0;
+
+  useFeatureUsed(Feature.giantExcavator, `${diesel}`);
 
   const timeString = useMemo(() => {
     if (safeDiesel === 0) return "0 MIN";

@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 
 // 1. Importy vygenerovaných dat
 import { Barbeque as BarbequeData } from "../lib/data/smelting-data/smelting-data-barbeque";
@@ -155,6 +156,11 @@ export function FurnaceCalculator() {
 
     return { timeStr, yieldAmount, woodRequired, charcoal };
   }, [safeQty, activeSmelter, activeProcess]);
+
+  useFeatureUsed(
+    Feature.furnace,
+    `${selectedSmelterId}|${selectedProcessIdx}|${quantity}`,
+  );
 
   return (
     <CalcShell
