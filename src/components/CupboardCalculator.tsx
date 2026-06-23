@@ -7,6 +7,7 @@ import {
   formatTime,
   generateStacks,
 } from "../lib/cupboard-logic";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 import type { Stack } from "../lib/types";
 
 const RESOURCES = [
@@ -40,6 +41,11 @@ export function CupboardCalculator() {
     ];
     return { time: formatTime(tc.daysFloat), stacks };
   }, [inputs]);
+
+  useFeatureUsed(
+    Feature.cupboard,
+    `${inputs.wood}|${inputs.stone}|${inputs.metal}|${inputs.hqm}`,
+  );
 
   return (
     <CalcShell

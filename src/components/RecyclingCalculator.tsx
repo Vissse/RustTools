@@ -6,6 +6,7 @@ import type { RecyclerKind } from "../lib/types";
 import { ItemPicker } from "./recycling/ItemPicker";
 import { ResultsPanel } from "./recycling/ResultsPanel";
 import { buildResults, filterCategories } from "./recycling/results";
+import { Feature, useFeatureUsed } from "../lib/analytics";
 
 export function RecyclingCalculator() {
   const [inventory, setInventory] = useState<Record<string, number>>(() =>
@@ -22,6 +23,12 @@ export function RecyclingCalculator() {
 
   const query = search.trim().toLowerCase();
   const categories = useMemo(() => filterCategories(query), [query]);
+
+  const itemTotal = useMemo(
+    () => Object.values(inventory).reduce((sum, n) => sum + n, 0),
+    [inventory],
+  );
+  useFeatureUsed(Feature.recycling, itemTotal);
 
   const adjust = useCallback((id: string, delta: number) => {
     setInventory((prev) => ({
