@@ -152,7 +152,7 @@ body::before {
 }
 .nav-item {
   font-family: var(--font-d);
-  font-size: 16px;
+  font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 500;
   color: var(--text-dim);
   text-decoration: none;
@@ -231,7 +231,7 @@ body::before {
 }
 .brand-name {
   font-family: var(--font-d);
-  font-size: 24px;
+  font-size: clamp(18px, 4vw, 24px);
   font-weight: 600;
   letter-spacing: 0.2em;
   color: var(--text-bright);
@@ -493,7 +493,7 @@ h1.page-title span {
 }
 .status-lbl {
   font-family: var(--font-ui);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -580,6 +580,11 @@ h1.page-title span {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  /* Query container: the recycler toggle and "random amount" rows stack based
+     on THIS panel's width, not the viewport — so they reflow correctly both on
+     phones and in the narrow side-by-side layout (~768–1124px). */
+  container-type: inline-size;
+  container-name: rcy-panel;
 }
 [data-variant="cupboard"] .panel-left {
   flex: 0 0 45%;
@@ -798,7 +803,7 @@ html {
   text-align: center;
 }
 .btn-name.small {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.06em;
 }
 .item-btn.active .btn-name {
@@ -1885,6 +1890,12 @@ html {
    RESPONSIVE
    ════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  /* The "SYSTEM ONLINE" status indicator is decorative — hide it on phones to
+     free up header space. */
+  .header-status {
+    display: none;
+  }
+
   /* On mobile every shell sizes to content and the page scrolls instead of
      trapping content in fixed-height inner scroll regions. */
   .calc-wrap,
@@ -1923,6 +1934,29 @@ html {
   }
   [data-variant="cupboard"] .tc-image-container {
     display: none;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   SMALL PHONES ≤480px — dense fixed-column grids drop one more step and the
+   calculator shells tighten their padding so cells stay tappable on ~320px.
+   ════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Page gutters shrink to reclaim horizontal space. */
+  #root {
+    padding: 0 8px 0px;
+  }
+
+  /* 4-column action/structure grids become 3-column. */
+  .btn-grid,
+  [data-variant="recycling"] .res-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Tech-cost grids drop from 6/4 cols down to 3 so slots don't crush. */
+  .sleek-tc-grid,
+  [data-variant="cupboard"] .tc-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -2027,6 +2061,19 @@ html {
 }
 
 @media (max-width: 1024px) {
+  /* Center the recycling resource cards once the panel narrows. */
+  .rcy-res-resources {
+    justify-content: center;
+  }
+
+  /* Once the raid columns stack vertically the combined height exceeds 100vh;
+     without releasing the shell's fixed height + hidden overflow the bottom
+     panel (RAIDING TOOLS, order 3) gets clipped away entirely. Let it size to
+     content and scroll the page instead. */
+  .calc-wrap[data-variant="raid"] {
+    max-height: none;
+    overflow: visible;
+  }
   [data-variant="raid"] .calc-body {
     grid-template-columns: 1fr;
   }
@@ -2144,6 +2191,30 @@ html {
   border-left-color: rgba(206, 66, 43, 0.3);
 }
 
+/* When the panel narrows the name and the yield/time sub-text can't sit side by
+   side inside each button without overflowing — stack them vertically and
+   center both, dropping the inline divider. */
+@container rcy-panel (max-width: 540px) {
+  .sleek-toggle-btn {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+  .sleek-toggle-main {
+    flex: 0 0 auto;
+    justify-content: center;
+    gap: 8px;
+  }
+  .sleek-toggle-sub {
+    flex: 0 0 auto;
+    justify-content: center;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════════════
    MODERNÍ MINIMALISTICKÝ RANDOM DROP LIST
    ════════════════════════════════════════════════════════════════════════ */
@@ -2187,6 +2258,10 @@ html {
   display: flex;
   align-items: center;
   gap: 12px;
+  /* Allow the name side to shrink so long item names wrap instead of pushing
+     the Min/Avg/Max stats out of the row (and off-screen on narrow phones). */
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .sleek-rnd-left img {
@@ -2200,6 +2275,7 @@ html {
   font-size: 14px;
   font-weight: 700;
   color: #d0d0d0;
+  min-width: 0;
 }
 
 .sleek-rnd-stats {
@@ -2207,6 +2283,8 @@ html {
   align-items: center;
   gap: 16px;
   font-family: var(--font-ui);
+  /* Keep the stats block at its natural width so the name wraps instead. */
+  flex-shrink: 0;
 }
 
 .sleek-rnd-stat {
@@ -2240,6 +2318,20 @@ html {
   width: 1px;
   height: 12px;
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* When the results panel gets narrow the name + stats no longer fit side by
+   side, so stack them: the name gets a full-width line (wraps at spaces, not
+   char-by-char) and the Min/Avg/Max stats sit on their own line beneath it. */
+@container rcy-panel (max-width: 500px) {
+  .sleek-rnd-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .sleek-rnd-stats {
+    justify-content: flex-start;
+  }
 }
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -2777,12 +2869,12 @@ html {
   padding-right: 8px;
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -2790,12 +2882,12 @@ html {
   max-height: 280px;
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 94%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 94%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -2875,12 +2967,12 @@ html {
   padding-right: 8px;
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 1) 96%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -2959,7 +3051,11 @@ html {
 .filter-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* Classic tabs: a fixed gap that never collapses, and the row wraps onto a
+     second line instead of squeezing the spacing to nothing when the panel
+     narrows (space-between distributes leftover space, so it crushed the tabs). */
+  flex-wrap: wrap;
+  gap: 6px 14px;
   margin-bottom: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 8px;

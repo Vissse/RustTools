@@ -1075,6 +1075,27 @@ export function ShopCalculator() {
         .dash-val.negative { color: #cc422c; }
         .dash-val.positive { color: #8bafc8; }
 
+        /* Below 640px the two 150px-min dash blocks + 24px gap exceed the
+           viewport — wrap them, shrink the gap and relax the min-width. */
+        @media (max-width: 640px) {
+          .top-dashboard {
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            padding: 16px 12px 12px;
+          }
+          .dash-block {
+            min-width: 120px;
+          }
+          .dash-val {
+            font-size: 24px;
+          }
+          /* The vertical dividers only make sense on a single row — once blocks
+             wrap they get stranded on the first line and skew the layout. */
+          .dash-divider {
+            display: none;
+          }
+        }
+
         .my-scrap-input {
           background: transparent;
           border: none;
@@ -1117,6 +1138,7 @@ export function ShopCalculator() {
         /* --- LOKACE --- */
         .monument-swapper {
           display: flex;
+          flex-wrap: wrap;
           gap: 4px;
           padding: 8px 20px 0;
           overflow-x: auto;
@@ -1150,6 +1172,7 @@ export function ShopCalculator() {
         /* --- TABS (Kategorie) --- */
         .bandit-tabs {
           display: flex;
+          flex-wrap: wrap;
           gap: 4px;
           padding: 4px 20px 0;
           overflow-x: auto;
@@ -1200,7 +1223,9 @@ export function ShopCalculator() {
         }
 
         .item-card {
-          width: 145px;
+          flex: 1 1 130px;
+          min-width: 110px;
+          max-width: 160px;
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid rgba(255, 255, 255, 0.04);
           border-radius: 8px;

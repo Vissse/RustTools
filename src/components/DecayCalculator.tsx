@@ -126,13 +126,20 @@ export function DecayCalculator() {
           margin-bottom: 40px;
           width: 100%;
         }
+        /* Below 640px the buttons no longer fit on one row and were spilling out
+           of the viewport — let them wrap onto multiple lines. */
+        @media (max-width: 640px) {
+          .mat-selector-row {
+            flex-wrap: wrap;
+          }
+        }
 
         /* Hlavní karta výsledků */
         .decay-card {
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid rgba(255, 255, 255, 0.05);
           border-radius: 16px;
-          padding: 48px;
+          padding: clamp(20px, 6vw, 48px);
           display: flex;
           flex-direction: column;
           align-items: center;
