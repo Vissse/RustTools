@@ -8,11 +8,16 @@ import {
   RESOURCE_ICONS,
   STRUCTURES,
 } from "../lib/data/raid-data";
-import { cheapestCombo, comboTotal, damageAgainst } from "../lib/raid-solver";
+import {
+  bestCombo,
+  comboTotal,
+  damageAgainst,
+  type ComboMode,
+} from "../lib/raid-solver";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 import type { RaidCategory, RaidItem } from "../lib/types";
 
-// Filtr -> kategorie v dynamických datech. 'Explosive' řeší vlastní solver (cheapestCombo),
+// Filtr -> kategorie v dynamických datech. 'Explosive' řeší vlastní solver (bestCombo),
 // ostatní kategorie jen vypisují potřebné množství + čas z per-structure dat.
 const CATEGORY_MAP: Record<string, RaidCategory> = {
   "Siege Weapons": "siege weapons",
@@ -41,6 +46,7 @@ export function RaidCalculator() {
   );
   const [structureCount, setStructureCount] = useState<number | "">(1);
   const [discountActive, setDiscountActive] = useState<boolean>(false);
+  const [comboMode, setComboMode] = useState<ComboMode>("cheapest");
 
   const [activeFilters, setActiveFilters] = useState<Set<string>>(
     () => new Set(["Explosive"]),
@@ -90,9 +96,26 @@ export function RaidCalculator() {
         ? structureCount
         : 1;
 
-    const totalHp = STRUCTURES[selectedStructure].hp * safeCount;
+    // Raids happen door-by-door: solve the cheapest combo for ONE structure,
+    // then scale that combo by the count. This keeps the per-door combo stable
+    // regardless of count (20 vs 21 doors) instead of pooling all HP into one
+    // giant knapsack.
+    const singleHp = STRUCTURES[selectedStructure].hp;
+    const totalHp = singleHp * safeCount;
     const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name));
-    const combo = cheapestCombo(totalHp, selectedStructure, exps);
+    const perDoorCombo = bestCombo(
+      singleHp,
+      selectedStructure,
+      exps,
+      comboMode,
+    );
+    const combo = perDoorCombo.map((c) => ({
+      ...c,
+      qty: c.qty * safeCount,
+      totalSulfur: c.totalSulfur * safeCount,
+      totalMetal: c.totalMetal * safeCount,
+      totalCharcoal: c.totalCharcoal * safeCount,
+    }));
 
     const totalDmg = combo.reduce(
       (s, c) => s + damageAgainst(c.exp, selectedStructure) * c.qty,
@@ -117,7 +140,13 @@ export function RaidCalculator() {
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
     };
-  }, [selectedStructure, selectedExplosives, structureCount, discountActive]);
+  }, [
+    selectedStructure,
+    selectedExplosives,
+    structureCount,
+    discountActive,
+    comboMode,
+  ]);
 
   const explosiveActive = activeFilters.has("Explosive");
 
@@ -366,6 +395,32 @@ export function RaidCalculator() {
                   >
                     <div className="modern-hp-fill" />
                     <div className="modern-hp-glow" />
+                  </div>
+
+                  {/* Optimisation mode: cheapest sulfur vs fewest explosives */}
+                  <div
+                    className={`mode-switch craft-switch-group${comboMode === "fastest" ? " active" : ""}`}
+                  >
+                    <span
+                      className={`mode-side-label${comboMode === "cheapest" ? " active" : ""}`}
+                    >
+                      CHEAPEST
+                    </span>
+                    <div
+                      className="craft-switch"
+                      onClick={() =>
+                        setComboMode((m) =>
+                          m === "cheapest" ? "fastest" : "cheapest",
+                        )
+                      }
+                    >
+                      <div className="craft-switch-thumb" />
+                    </div>
+                    <span
+                      className={`mode-side-label${comboMode === "fastest" ? " active" : ""}`}
+                    >
+                      FASTEST
+                    </span>
                   </div>
                 </div>
 

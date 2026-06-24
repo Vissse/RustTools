@@ -3768,3 +3768,19 @@ html {
   );
   margin: 4px 0;
 }
+
+/* Cheapest / Fastest optimisation toggle (under the integrity bar). */
+.mode-switch {
+  justify-content: center;
+  margin-top: 14px;
+}
+.mode-side-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #757575;
+  transition: color 0.2s;
+}
+.mode-side-label.active {
+  color: #cc422c;
+}
