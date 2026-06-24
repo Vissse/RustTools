@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { FurnaceCalculator } from "../components/FurnaceCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { seo } from "../lib/seo";
 
 export const Route = createFileRoute("/furnace")({
@@ -10,5 +9,8 @@ export const Route = createFileRoute("/furnace")({
         "Plan your smelting in Rust: calculate furnace ratios, fuel and time to refine ore into metal, sulfur and high quality metal.",
       path: "/furnace",
     }),
-  component: FurnaceCalculator,
+  component: lazyRouteComponent(
+    () => import("../components/FurnaceCalculator"),
+    "FurnaceCalculator",
+  ),
 });

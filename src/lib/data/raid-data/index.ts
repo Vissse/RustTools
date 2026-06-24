@@ -1,94 +1,87 @@
-import type { RaidItem } from '../../types'
+import type { RaidItem } from "../../types";
 
-import { RaidDataArmoredDoor } from './raid-data-armored-door'
-import { RaidDataArmoredDoubleDoor } from './raid-data-armored-double-door'
-import { RaidDataArmoredLadderHatch } from './raid-data-armored-ladder-hatch'
-import { RaidDataArmoredWall } from './raid-data-armored-wall'
-import { RaidDataGarageDoor } from './raid-data-garage-door'
-import { RaidDataHighExternalStoneGate } from './raid-data-high-external-stone-gate'
-import { RaidDataHighExternalStoneWall } from './raid-data-high-external-stone-wall'
-import { RaidDataHighExternalWoodenGate } from './raid-data-high-external-wooden-gate'
-import { RaidDataHighExternalWoodenWall } from './raid-data-high-external-wooden-wall'
-import { RaidDataLadderHatch } from './raid-data-ladder-hatch'
-import { RaidDataMetalBarricade } from './raid-data-metal-barricade'
-import { RaidDataMetalHorizontalEmbrasure } from './raid-data-metal-horizontal-embrasure'
-import { RaidDataMetalShopFront } from './raid-data-metal-shop-front'
-import { RaidDataMetalVerticalEmbrasure } from './raid-data-metal-vertical-embrasure'
-import { RaidDataMetalWall } from './raid-data-metal-wall'
-import { RaidDataMetalWindowBars } from './raid-data-metal-window-bars'
-import { RaidDataReinforcedGlassWindow } from './raid-data-reinforced-glass-window'
-import { RaidDataSheetMetalDoor } from './raid-data-sheet-metal-door'
-import { RaidDataSheetMetalDoubleDoor } from './raid-data-sheet-metal-double-door'
-import { RaidDataStoneWall } from './raid-data-stone-wall'
-import { RaidDataStrengthenedGlassWindow } from './raid-data-strengthened-glass-window'
-import { RaidDataToolCupboard } from './raid-data-tool-cupboard'
-import { RaidDataWoodDoubleDoor } from './raid-data-wood-double-door'
-import { RaidDataWoodenDoor } from './raid-data-wooden-door'
-import { RaidDataWoodenWall } from './raid-data-wooden-wall'
-import { RaidDataWoodenWindowBars } from './raid-data-wooden-window-bars'
+export { STRUCTURES, EXPLOSIVES, RESOURCE_ICONS } from "./structures";
+export { RAID_TOOL_NAMES } from "./raid-tool-names";
 
-// Re-export structure HP table, explosive damage table, and resource icons so
-// `../lib/data/raid-data` is the single entry point for all raid data.
-export { STRUCTURES, EXPLOSIVES, RESOURCE_ICONS } from './structures'
-export { RAID_TOOL_NAMES } from './raid-tool-names'
+// OPTIMALIZACE PRO GECKO & MEMORY FOOTPRINT:
+// Namísto synchronního držení megabajtových dat v paměti hned při startu,
+// poskytujeme asynchronní getter pro načtení specifických dat struktury on-demand.
+// Firefox tak nemusí alokovat paměť pro "Armored Wall" data, pokud uživatel počítá "Wooden Door".
 
-// Per-structure raiding-tool data: every viable weapon/tool against a structure,
-// with the quantity and time needed to break it. Keyed by the same display names
-// used in STRUCTURES so the calculator can look it up by the selected target.
-export const RAID_DATA: Record<string, RaidItem[]> = {
-  'Wooden Wall': RaidDataWoodenWall,
-  'Stone Wall': RaidDataStoneWall,
-  'Metal Wall': RaidDataMetalWall,
-  'Armored Wall': RaidDataArmoredWall,
-  'Wooden Door': RaidDataWoodenDoor,
-  'Sheet Metal Door': RaidDataSheetMetalDoor,
-  'Armored Door': RaidDataArmoredDoor,
-  'Wood Double Door': RaidDataWoodDoubleDoor,
-  'Sheet Metal Double Door': RaidDataSheetMetalDoubleDoor,
-  'Armored Double Door': RaidDataArmoredDoubleDoor,
-  'Garage Door': RaidDataGarageDoor,
-  'Ladder Hatch': RaidDataLadderHatch,
-  'Armored Ladder Hatch': RaidDataArmoredLadderHatch,
-  'Metal Shop Front': RaidDataMetalShopFront,
-  'Metal Window Bars': RaidDataMetalWindowBars,
-  'Wooden Window Bars': RaidDataWoodenWindowBars,
-  'Reinforced Glass Window': RaidDataReinforcedGlassWindow,
-  'Strengthened Glass Window': RaidDataStrengthenedGlassWindow,
-  'Metal Horizontal Embrasure': RaidDataMetalHorizontalEmbrasure,
-  'Metal Vertical Embrasure': RaidDataMetalVerticalEmbrasure,
-  'High External Wooden Wall': RaidDataHighExternalWoodenWall,
-  'High External Stone Wall': RaidDataHighExternalStoneWall,
-  'High External Wooden Gate': RaidDataHighExternalWoodenGate,
-  'High External Stone Gate': RaidDataHighExternalStoneGate,
-  'Metal Barricade': RaidDataMetalBarricade,
-  'Tool Cupboard': RaidDataToolCupboard,
-}
-
-export {
-  RaidDataArmoredDoor,
-  RaidDataArmoredDoubleDoor,
-  RaidDataArmoredLadderHatch,
-  RaidDataArmoredWall,
-  RaidDataGarageDoor,
-  RaidDataHighExternalStoneGate,
-  RaidDataHighExternalStoneWall,
-  RaidDataHighExternalWoodenGate,
-  RaidDataHighExternalWoodenWall,
-  RaidDataLadderHatch,
-  RaidDataMetalBarricade,
-  RaidDataMetalHorizontalEmbrasure,
-  RaidDataMetalShopFront,
-  RaidDataMetalVerticalEmbrasure,
-  RaidDataMetalWall,
-  RaidDataMetalWindowBars,
-  RaidDataReinforcedGlassWindow,
-  RaidDataSheetMetalDoor,
-  RaidDataSheetMetalDoubleDoor,
-  RaidDataStoneWall,
-  RaidDataStrengthenedGlassWindow,
-  RaidDataToolCupboard,
-  RaidDataWoodDoubleDoor,
-  RaidDataWoodenDoor,
-  RaidDataWoodenWall,
-  RaidDataWoodenWindowBars,
-}
+export const loadRaidDataForStructure = async (
+  structureName: string,
+): Promise<RaidItem[]> => {
+  switch (structureName) {
+    case "Wooden Wall":
+      return (await import("./raid-data-wooden-wall")).RaidDataWoodenWall;
+    case "Stone Wall":
+      return (await import("./raid-data-stone-wall")).RaidDataStoneWall;
+    case "Metal Wall":
+      return (await import("./raid-data-metal-wall")).RaidDataMetalWall;
+    case "Armored Wall":
+      return (await import("./raid-data-armored-wall")).RaidDataArmoredWall;
+    case "Wooden Door":
+      return (await import("./raid-data-wooden-door")).RaidDataWoodenDoor;
+    case "Sheet Metal Door":
+      return (await import("./raid-data-sheet-metal-door"))
+        .RaidDataSheetMetalDoor;
+    case "Armored Door":
+      return (await import("./raid-data-armored-door")).RaidDataArmoredDoor;
+    case "Wood Double Door":
+      return (await import("./raid-data-wood-double-door"))
+        .RaidDataWoodDoubleDoor;
+    case "Sheet Metal Double Door":
+      return (await import("./raid-data-sheet-metal-double-door"))
+        .RaidDataSheetMetalDoubleDoor;
+    case "Armored Double Door":
+      return (await import("./raid-data-armored-double-door"))
+        .RaidDataArmoredDoubleDoor;
+    case "Garage Door":
+      return (await import("./raid-data-garage-door")).RaidDataGarageDoor;
+    case "Ladder Hatch":
+      return (await import("./raid-data-ladder-hatch")).RaidDataLadderHatch;
+    case "Armored Ladder Hatch":
+      return (await import("./raid-data-armored-ladder-hatch"))
+        .RaidDataArmoredLadderHatch;
+    case "Metal Shop Front":
+      return (await import("./raid-data-metal-shop-front"))
+        .RaidDataMetalShopFront;
+    case "Metal Window Bars":
+      return (await import("./raid-data-metal-window-bars"))
+        .RaidDataMetalWindowBars;
+    case "Wooden Window Bars":
+      return (await import("./raid-data-wooden-window-bars"))
+        .RaidDataWoodenWindowBars;
+    case "Reinforced Glass Window":
+      return (await import("./raid-data-reinforced-glass-window"))
+        .RaidDataReinforcedGlassWindow;
+    case "Strengthened Glass Window":
+      return (await import("./raid-data-strengthened-glass-window"))
+        .RaidDataStrengthenedGlassWindow;
+    case "Metal Horizontal Embrasure":
+      return (await import("./raid-data-metal-horizontal-embrasure"))
+        .RaidDataMetalHorizontalEmbrasure;
+    case "Metal Vertical Embrasure":
+      return (await import("./raid-data-metal-vertical-embrasure"))
+        .RaidDataMetalVerticalEmbrasure;
+    case "High External Wooden Wall":
+      return (await import("./raid-data-high-external-wooden-wall"))
+        .RaidDataHighExternalWoodenWall;
+    case "High External Stone Wall":
+      return (await import("./raid-data-high-external-stone-wall"))
+        .RaidDataHighExternalStoneWall;
+    case "High External Wooden Gate":
+      return (await import("./raid-data-high-external-wooden-gate"))
+        .RaidDataHighExternalWoodenGate;
+    case "High External Stone Gate":
+      return (await import("./raid-data-high-external-stone-gate"))
+        .RaidDataHighExternalStoneGate;
+    case "Metal Barricade":
+      return (await import("./raid-data-metal-barricade"))
+        .RaidDataMetalBarricade;
+    case "Tool Cupboard":
+      return (await import("./raid-data-tool-cupboard")).RaidDataToolCupboard;
+    default:
+      return [];
+  }
+};

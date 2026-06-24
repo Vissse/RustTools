@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ShopCalculator } from "../components/ShopCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { seo } from "../lib/seo";
 
 export const Route = createFileRoute("/shops")({
@@ -10,5 +9,8 @@ export const Route = createFileRoute("/shops")({
         "Calculate scrap costs for items at the Bandit Camp, Outpost, and Fishing Village in Rust. Track your scrap balance, purchases, and exchange rates.",
       path: "/shops",
     }),
-  component: ShopCalculator,
+  component: lazyRouteComponent(
+    () => import("../components/ShopCalculator"),
+    "ShopCalculator",
+  ),
 });

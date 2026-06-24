@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { DecayCalculator } from "../components/DecayCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { seo } from "../lib/seo";
 
 export const Route = createFileRoute("/decay")({
@@ -10,5 +9,10 @@ export const Route = createFileRoute("/decay")({
         "Work out how long a Rust structure survives without upkeep. Pick the building material and HP to see the full decay time.",
       path: "/decay",
     }),
-  component: DecayCalculator,
+  // OPTIMALIZACE PRO RYCHLOST NAČÍTÁNÍ: Změněno ze synchronního importu na lazy load.
+  // Obrovská datová pole pro decay se načtou až při návštěvě této konkrétní záložky.
+  component: lazyRouteComponent(
+    () => import("../components/DecayCalculator"),
+    "DecayCalculator",
+  ),
 });

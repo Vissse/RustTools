@@ -1,6 +1,9 @@
 packages:
   - '.'
 
+allowBuilds:
+  core-js: false
+
 minimumReleaseAgeExclude:
   - '@tailwindcss/node@4.3.1'
   - '@tailwindcss/oxide-android-arm64@4.3.1'
@@ -18,3 +21,6 @@ minimumReleaseAgeExclude:
   - '@tailwindcss/oxide@4.3.1'
   - '@tailwindcss/vite@4.3.1'
   - tailwindcss@4.3.1
+  - '@posthog/core@1.36.0'
+  - '@posthog/types@1.391.0'
+  - posthog-js@1.393.0

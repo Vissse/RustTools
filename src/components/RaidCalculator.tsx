@@ -1,74 +1,108 @@
-import { useMemo, useState, Fragment } from 'react'
-import type { CSSProperties } from 'react'
-import { CalcShell } from './CalcShell'
-import { Img } from './Img'
+import { useMemo, useState, useEffect, Fragment } from "react";
+import type { CSSProperties } from "react";
+import { CalcShell } from "./CalcShell";
+import { Img } from "./Img";
 import {
   EXPLOSIVES,
-  RAID_DATA,
+  loadRaidDataForStructure, // Původní RAID_DATA nahrazeno asynchronním getterem
   RESOURCE_ICONS,
   STRUCTURES,
-} from '../lib/data/raid-data'
-import { cheapestCombo, comboTotal, damageAgainst } from '../lib/raid-solver'
-import { Feature, useFeatureUsed } from '../lib/analytics'
-import type { RaidCategory } from '../lib/types'
+} from "../lib/data/raid-data";
+import { cheapestCombo, comboTotal, damageAgainst } from "../lib/raid-solver";
+import { Feature, useFeatureUsed } from "../lib/analytics";
+import type { RaidCategory, RaidItem } from "../lib/types";
 
-// Filtr -> kategorie v RAID_DATA. 'Explosive' řeší vlastní solver (cheapestCombo),
+// Filtr -> kategorie v dynamických datech. 'Explosive' řeší vlastní solver (cheapestCombo),
 // ostatní kategorie jen vypisují potřebné množství + čas z per-structure dat.
 const CATEGORY_MAP: Record<string, RaidCategory> = {
-  'Siege Weapons': 'siege weapons',
-  Melee: 'melee',
-  'Throwing Attacks': 'throw',
-  Guns: 'guns',
-  Torpedos: 'torpedo',
-}
+  "Siege Weapons": "siege weapons",
+  Melee: "melee",
+  "Throwing Attacks": "throw",
+  Guns: "guns",
+  Torpedos: "torpedo",
+};
 
 // Seznam kategorií pro filtr
 const FILTER_CATEGORIES = [
-  'Explosive',
-  'Siege Weapons',
-  'Melee',
-  'Throwing Attacks',
-  'Guns',
-  'Torpedos',
-]
+  "Explosive",
+  "Siege Weapons",
+  "Melee",
+  "Throwing Attacks",
+  "Guns",
+  "Torpedos",
+];
 
 export function RaidCalculator() {
   const [selectedStructure, setSelectedStructure] = useState<string | null>(
-    null
-  )
+    null,
+  );
   const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
-    () => new Set()
-  )
-  const [structureCount, setStructureCount] = useState<number | ''>(1)
-  const [discountActive, setDiscountActive] = useState<boolean>(false)
+    () => new Set(),
+  );
+  const [structureCount, setStructureCount] = useState<number | "">(1);
+  const [discountActive, setDiscountActive] = useState<boolean>(false);
 
   const [activeFilters, setActiveFilters] = useState<Set<string>>(
-    () => new Set(['Explosive'])
-  )
+    () => new Set(["Explosive"]),
+  );
 
-  const ready = selectedStructure !== null && selectedExplosives.size > 0
+  // --- NOVÉ STAVY PRO ASYNCHRONNÍ DATA (Gecko/Firefox optimalizace) ---
+  const [currentRaidData, setCurrentRaidData] = useState<RaidItem[]>([]);
+  const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
+
+  // --- EFEKT PRO NAČÍTÁNÍ DATOVÝCH CHUNKŮ ---
+  useEffect(() => {
+    if (!selectedStructure) {
+      setCurrentRaidData([]);
+      return;
+    }
+
+    let isMounted = true;
+    setIsLoadingData(true);
+
+    loadRaidDataForStructure(selectedStructure)
+      .then((data) => {
+        if (isMounted) {
+          setCurrentRaidData(data);
+          setIsLoadingData(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Chyba při načítání dat pro strukturu:", error);
+        if (isMounted) {
+          setCurrentRaidData([]);
+          setIsLoadingData(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedStructure]);
+
+  const ready = selectedStructure !== null && selectedExplosives.size > 0;
 
   const result = useMemo(() => {
-    if (!selectedStructure || selectedExplosives.size === 0) return null
+    if (!selectedStructure || selectedExplosives.size === 0) return null;
 
     const safeCount =
-      typeof structureCount === 'number' && structureCount > 0
+      typeof structureCount === "number" && structureCount > 0
         ? structureCount
-        : 1
+        : 1;
 
-    const totalHp = STRUCTURES[selectedStructure].hp * safeCount
-    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name))
-    const combo = cheapestCombo(totalHp, selectedStructure, exps)
+    const totalHp = STRUCTURES[selectedStructure].hp * safeCount;
+    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name));
+    const combo = cheapestCombo(totalHp, selectedStructure, exps);
 
     const totalDmg = combo.reduce(
       (s, c) => s + damageAgainst(c.exp, selectedStructure) * c.qty,
-      0
-    )
-    const dmgDone = Math.min(totalDmg, totalHp)
-    const pct = Math.min(100, (dmgDone / totalHp) * 100)
-    const destroyed = totalDmg >= totalHp
+      0,
+    );
+    const dmgDone = Math.min(totalDmg, totalHp);
+    const pct = Math.min(100, (dmgDone / totalHp) * 100);
+    const destroyed = totalDmg >= totalHp;
 
-    const baseCharcoal = comboTotal(combo, 'totalCharcoal')
+    const baseCharcoal = comboTotal(combo, "totalCharcoal");
 
     return {
       totalHp,
@@ -76,66 +110,63 @@ export function RaidCalculator() {
       dmgDone,
       pct,
       destroyed,
-      totalSulfur: comboTotal(combo, 'totalSulfur'),
-      totalMetal: comboTotal(combo, 'totalMetal'),
+      totalSulfur: comboTotal(combo, "totalSulfur"),
+      totalMetal: comboTotal(combo, "totalMetal"),
       totalCharcoal: discountActive
         ? Math.round(baseCharcoal * (2 / 3))
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
-    }
-  }, [selectedStructure, selectedExplosives, structureCount, discountActive])
+    };
+  }, [selectedStructure, selectedExplosives, structureCount, discountActive]);
 
-  const explosiveActive = activeFilters.has('Explosive')
+  const explosiveActive = activeFilters.has("Explosive");
 
-  // Per-structure raiding tools for the active non-explosive categories,
-  // grouped by category, with quantities scaled by the structure count.
+  // Využití dynamicky načtených 'currentRaidData' místo monolitického objektu RAID_DATA
   const toolGroups = useMemo(() => {
-    if (!selectedStructure) return []
-    const items = RAID_DATA[selectedStructure]
-    if (!items) return []
+    if (!selectedStructure || currentRaidData.length === 0) return [];
 
     const safeCount =
-      typeof structureCount === 'number' && structureCount > 0
+      typeof structureCount === "number" && structureCount > 0
         ? structureCount
-        : 1
+        : 1;
 
     return FILTER_CATEGORIES.filter(
-      (label) => label !== 'Explosive' && activeFilters.has(label)
+      (label) => label !== "Explosive" && activeFilters.has(label),
     )
       .map((label) => {
-        const category = CATEGORY_MAP[label]
-        const tools = items
+        const category = CATEGORY_MAP[label];
+        const tools = currentRaidData
           .filter((it) => it.category === category)
           .map((it) => ({ ...it, total: it.quantity * safeCount }))
-          .sort((a, b) => a.total - b.total)
-        return { label, tools }
+          .sort((a, b) => a.total - b.total);
+        return { label, tools };
       })
-      .filter((g) => g.tools.length > 0)
-  }, [selectedStructure, structureCount, activeFilters])
+      .filter((g) => g.tools.length > 0);
+  }, [selectedStructure, structureCount, activeFilters, currentRaidData]);
 
-  const solverShown = explosiveActive && ready && result !== null
+  const solverShown = explosiveActive && ready && result !== null;
 
   useFeatureUsed(
     Feature.raid,
     `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`,
-  )
+  );
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
-      const next = new Set(prev)
-      if (next.has(name)) next.delete(name)
-      else next.add(name)
-      return next
-    })
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
   }
 
   function toggleFilter(cat: string) {
     setActiveFilters((prev) => {
-      const next = new Set(prev)
-      if (next.has(cat)) next.delete(cat)
-      else next.add(cat)
-      return next
-    })
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
   }
 
   return (
@@ -158,7 +189,7 @@ export function RaidCalculator() {
             {Object.entries(STRUCTURES).map(([name, data]) => (
               <button
                 key={name}
-                className={`minimal-box-btn${selectedStructure === name ? ' active' : ''}`}
+                className={`minimal-box-btn${selectedStructure === name ? " active" : ""}`}
                 onClick={() => setSelectedStructure(name)}
               >
                 <Img src={data.img} alt={name} />
@@ -176,14 +207,14 @@ export function RaidCalculator() {
                 src={STRUCTURES[selectedStructure].img}
                 alt={selectedStructure}
                 className="structure-preview-img"
-                onError={(e) => (e.currentTarget.style.opacity = '0.3')}
+                onError={(e) => (e.currentTarget.style.opacity = "0.3")}
               />
               <div className="free-counter-wrap">
                 <button
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount((c) =>
-                      Math.max(1, (typeof c === 'number' ? c : 1) - 1)
+                      Math.max(1, (typeof c === "number" ? c : 1) - 1),
                     )
                   }
                 >
@@ -196,13 +227,13 @@ export function RaidCalculator() {
                   className="invisible-num-input free-counter-input"
                   value={structureCount}
                   onChange={(e) => {
-                    const val = e.target.value
-                    if (val === '') {
-                      setStructureCount('')
+                    const val = e.target.value;
+                    if (val === "") {
+                      setStructureCount("");
                     } else {
-                      const parsed = parseInt(val, 10)
+                      const parsed = parseInt(val, 10);
                       if (!isNaN(parsed) && parsed > 0)
-                        setStructureCount(parsed)
+                        setStructureCount(parsed);
                     }
                   }}
                 />
@@ -211,7 +242,7 @@ export function RaidCalculator() {
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount(
-                      (c) => (typeof c === 'number' ? c : 1) + 1
+                      (c) => (typeof c === "number" ? c : 1) + 1,
                     )
                   }
                 >
@@ -237,7 +268,7 @@ export function RaidCalculator() {
             {FILTER_CATEGORIES.map((cat, idx) => (
               <Fragment key={cat}>
                 <button
-                  className={`filter-pure-text ${activeFilters.has(cat) ? 'active' : ''}`}
+                  className={`filter-pure-text ${activeFilters.has(cat) ? "active" : ""}`}
                   onClick={() => toggleFilter(cat)}
                 >
                   {cat}
@@ -255,7 +286,7 @@ export function RaidCalculator() {
               {EXPLOSIVES.map((e) => (
                 <button
                   key={e.name}
-                  className={`minimal-box-btn${selectedExplosives.has(e.name) ? ' active' : ''}`}
+                  className={`minimal-box-btn${selectedExplosives.has(e.name) ? " active" : ""}`}
                   onClick={() => toggleExplosive(e.name)}
                 >
                   <Img src={e.img} alt={e.name} />
@@ -264,15 +295,23 @@ export function RaidCalculator() {
               ))}
             </div>
           )}
-          {!explosiveActive && toolGroups.length === 0 && (
+
+          {isLoadingData ? (
             <div className="wall-placeholder opacity-50 py-4 text-xs">
-              {selectedStructure
-                ? 'NO TOOLS IN THE SELECTED CATEGORIES'
-                : 'SELECT A TARGET AND A RAIDING TOOL CATEGORY'}
+              LOADING DATA...
             </div>
+          ) : (
+            !explosiveActive &&
+            toolGroups.length === 0 && (
+              <div className="wall-placeholder opacity-50 py-4 text-xs">
+                {selectedStructure
+                  ? "NO TOOLS IN THE SELECTED CATEGORIES"
+                  : "SELECT A TARGET AND A RAIDING TOOL CATEGORY"}
+              </div>
+            )
           )}
 
-          {toolGroups.length > 0 && (
+          {toolGroups.length > 0 && !isLoadingData && (
             <div className="tool-list">
               {toolGroups.map((group) => (
                 <div key={group.label} className="tool-group">
@@ -323,7 +362,7 @@ export function RaidCalculator() {
                   </div>
                   <div
                     className="modern-hp-wrapper"
-                    style={{ '--hp-pct': `${result.pct}%` } as CSSProperties}
+                    style={{ "--hp-pct": `${result.pct}%` } as CSSProperties}
                   >
                     <div className="modern-hp-fill" />
                     <div className="modern-hp-glow" />
@@ -464,7 +503,7 @@ export function RaidCalculator() {
 
                       {/* Spínač a nápisy */}
                       <div
-                        className={`craft-switch-group${discountActive ? ' active' : ''}`}
+                        className={`craft-switch-group${discountActive ? " active" : ""}`}
                       >
                         {/* Přepínač (Slider) */}
                         <div
@@ -490,5 +529,5 @@ export function RaidCalculator() {
         )}
       </div>
     </CalcShell>
-  )
+  );
 }

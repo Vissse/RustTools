@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { GiantExcavatorCalculator } from "../components/GiantExcavatorCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { seo } from "../lib/seo";
 
 export const Route = createFileRoute("/giant-excavator")({
@@ -10,5 +9,8 @@ export const Route = createFileRoute("/giant-excavator")({
         "Calculate Giant Excavator output and diesel fuel use in Rust to plan your mining runs at the monument.",
       path: "/giant-excavator",
     }),
-  component: GiantExcavatorCalculator,
+  component: lazyRouteComponent(
+    () => import("../components/GiantExcavatorCalculator"),
+    "GiantExcavatorCalculator",
+  ),
 });

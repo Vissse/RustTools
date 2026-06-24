@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { GeneticsCalculator } from "../components/GeneticsCalculator";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { seo } from "../lib/seo";
 
 export const Route = createFileRoute("/genetics")({
@@ -10,5 +9,8 @@ export const Route = createFileRoute("/genetics")({
         "Cross-breed plant genes in Rust to find the best crop genetics. Enter your gene sets and see the optimal combination.",
       path: "/genetics",
     }),
-  component: GeneticsCalculator,
+  component: lazyRouteComponent(
+    () => import("../components/GeneticsCalculator"),
+    "GeneticsCalculator",
+  ),
 });
