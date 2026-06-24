@@ -914,7 +914,6 @@ export function ShopCalculator() {
     BANDIT_CAMP_CATEGORIES[0].id,
   );
 
-  // Změněno na number, ať se s tím lépe pracuje
   const [scrapInventory, setScrapInventory] = useState<number>(0);
   const [cart, setCart] = useState<Record<string, number>>({});
 
@@ -1040,7 +1039,7 @@ export function ShopCalculator() {
         .dash-label {
           font-family: var(--font-ui);
           font-size: 11px;
-          color: #6a6a6a;
+          color: var(--text-dim);
           text-transform: uppercase;
           font-weight: 800;
           letter-spacing: 0.15em;
@@ -1065,41 +1064,31 @@ export function ShopCalculator() {
           font-family: var(--font-d);
           font-size: 28px;
           font-weight: 600;
-          color: #fff;
+          color: var(--text-bright);
           text-shadow: 0 2px 8px rgba(0,0,0,0.5);
           cursor: default;
           user-select: none;
           transition: color 0.3s ease;
         }
 
-        .dash-val.negative { color: #cc422c; }
-        .dash-val.positive { color: #8bafc8; }
+        .dash-val.negative { color: var(--rust); }
+        .dash-val.positive { color: var(--metal-col); }
 
-        /* Below 640px the two 150px-min dash blocks + 24px gap exceed the
-           viewport — wrap them, shrink the gap and relax the min-width. */
         @media (max-width: 640px) {
           .top-dashboard {
             flex-wrap: wrap;
             gap: 12px 24px;
             padding: 16px 12px 12px;
           }
-          .dash-block {
-            min-width: 120px;
-          }
-          .dash-val {
-            font-size: 24px;
-          }
-          /* The vertical dividers only make sense on a single row — once blocks
-             wrap they get stranded on the first line and skew the layout. */
-          .dash-divider {
-            display: none;
-          }
+          .dash-block { min-width: 120px; }
+          .dash-val { font-size: 24px; }
+          .dash-divider { display: none; }
         }
 
         .my-scrap-input {
           background: transparent;
           border: none;
-          color: #fff;
+          color: var(--text-bright);
           font-family: var(--font-d);
           font-size: 28px;
           width: 80px;
@@ -1112,13 +1101,12 @@ export function ShopCalculator() {
           appearance: textfield;
         }
         .my-scrap-input:hover, .my-scrap-input:focus {
-          color: #cc422c;
+          color: var(--rust);
           transform: scale(1.05);
         }
         .my-scrap-input::-webkit-inner-spin-button, 
         .my-scrap-input::-webkit-outer-spin-button { 
-          -webkit-appearance: none; 
-          margin: 0; 
+          -webkit-appearance: none; margin: 0; 
         }
 
         .dash-divider {
@@ -1152,7 +1140,7 @@ export function ShopCalculator() {
           background: transparent;
           border: none;
           border-bottom: 2px solid transparent;
-          color: #757575;
+          color: var(--text-dim);
           font-family: var(--font-d);
           font-size: 15px;
           letter-spacing: 0.1em;
@@ -1162,11 +1150,11 @@ export function ShopCalculator() {
           transition: all 0.3s ease;
           white-space: nowrap;
         }
-        .monument-btn:hover { color: #fff; transform: translateY(-1px); }
+        .monument-btn:hover { color: var(--text-bright); transform: translateY(-1px); }
         .monument-btn.active {
-          color: #cc422c;
-          border-bottom-color: #cc422c;
-          background: linear-gradient(to top, rgba(204, 66, 44, 0.15) 0%, transparent 100%);
+          color: var(--rust);
+          border-bottom-color: var(--rust);
+          background: linear-gradient(to top, rgba(206, 66, 43, 0.15) 0%, transparent 100%);
         }
 
         /* --- TABS (Kategorie) --- */
@@ -1186,7 +1174,7 @@ export function ShopCalculator() {
           background: transparent;
           border: none;
           border-bottom: 2px solid transparent;
-          color: #757575;
+          color: var(--text-dim);
           font-family: var(--font-d);
           font-size: 13px;
           letter-spacing: 0.1em;
@@ -1196,11 +1184,11 @@ export function ShopCalculator() {
           transition: all 0.3s ease;
           white-space: nowrap;
         }
-        .tab-btn:hover { color: #fff; transform: translateY(-1px); }
+        .tab-btn:hover { color: var(--text-bright); transform: translateY(-1px); }
         .tab-btn.active {
-          color: #cc422c;
-          border-bottom-color: #cc422c;
-          background: linear-gradient(to top, rgba(204, 66, 44, 0.15) 0%, transparent 100%);
+          color: var(--rust);
+          border-bottom-color: var(--rust);
+          background: linear-gradient(to top, rgba(206, 66, 43, 0.15) 0%, transparent 100%);
         }
 
         /* --- MŘÍŽKA PŘEDMĚTŮ & FOOTER --- */
@@ -1226,8 +1214,8 @@ export function ShopCalculator() {
           flex: 1 1 130px;
           min-width: 110px;
           max-width: 160px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          background: linear-gradient(180deg, var(--panel3) 0%, var(--panel2) 100%);
+          border: 1px solid var(--border2);
           border-radius: 8px;
           display: flex;
           flex-direction: column;
@@ -1235,46 +1223,102 @@ export function ShopCalculator() {
           padding: 14px 10px 18px;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           position: relative;
+          /* overflow: hidden;  <-- SMAZAT TENTO ŘÁDEK */
           
-          /* Výchozí stav pro animaci (skryto a posunuto dolů) */
           opacity: 0;
           transform: translateY(15px);
           animation: slideUpFade 0.4s ease forwards;
         }
         
         .item-card:hover { 
-          background: rgba(255, 255, 255, 0.05); 
-          border-color: rgba(255, 255, 255, 0.15); 
-          transform: translateY(-4px) !important; /* Nadzvednutí při hoveru */
+          background: rgba(255, 255, 255, 0.03); 
+          border-color: rgba(255, 255, 255, 0.1); 
+          transform: translateY(-4px) !important;
           box-shadow: 0 8px 16px rgba(0,0,0,0.4);
         }
+
+        .item-card::before {
+          content: '';
+          position: absolute;
+          top: -1px; left: -1px; right: -1px; height: 2px;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          z-index: 5;
+          pointer-events: none;
+        }
+        .item-card.is-buy::before {
+          background: linear-gradient(90deg, transparent 0%, var(--rust) 50%, transparent 100%);
+        }
+        .item-card.is-sell::before {
+          background: linear-gradient(90deg, transparent 0%, var(--metal-col) 50%, transparent 100%);
+        }
         
-        .item-card.is-sell { border-top: 2px solid #8bafc8; }
-        .item-card.is-buy { border-top: 2px solid #cc422c; }
-        
+        .item-card.active { border-color: rgba(206, 66, 43, 0.3); }
+        .item-card.active.is-sell { border-color: rgba(139, 175, 200, 0.3); }
+        .item-card.active.is-buy::before { box-shadow: 0 0 12px var(--rust); }
+        .item-card.active.is-sell::before { box-shadow: 0 0 12px var(--metal-col); }
+
+        /* Obrázek a odznak s množstvím (Yield) */
+        .item-img-wrap {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+          /* FIX: Fixní velikost boxu aby se badge správně a stabilně ukotvil do rohu */
+          width: 64px; 
+          height: 64px;
+        }
         .item-img { 
           width: 56px; 
           height: 56px; 
           object-fit: contain; 
-          margin-bottom: 10px; 
           filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); 
           transition: transform 0.3s ease;
         }
-        .item-card:hover .item-img { transform: scale(1.1); } /* Zvětšení obrázku při najetí */
+        .item-card:hover .item-img { transform: scale(1.1); }
 
-        .item-name { font-family: var(--font-ui); font-size: 11px; font-weight: 700; color: #d0d0d0; text-align: center; margin-bottom: 4px; min-height: 28px; transition: color 0.3s ease; }
-        .item-card:hover .item-name { color: #fff; }
+        .item-yield-badge {
+          position: absolute;
+          bottom: -4px;
+          right: -4px;
+          background: #000;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #fff;
+          font-family: var(--font-ui);
+          font-size: 10px;
+          font-weight: 800;
+          padding: 2px 4px;
+          border-radius: 4px;
+          z-index: 10; /* Musí být nad ostatními elementy */
+          box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .item-name { 
+          font-family: var(--font-ui); 
+          font-size: 11px; 
+          font-weight: 700; 
+          color: var(--text-dim); 
+          text-align: center; 
+          margin-bottom: 4px; 
+          min-height: 28px; 
+          transition: color 0.3s ease; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .item-card:hover .item-name { color: var(--text-bright); }
 
         .item-price { font-family: var(--font-d); font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
         .item-price img { width: 14px; height: 14px; }
-        .price-buy { color: #cc422c; }
-        .price-sell { color: #8bafc8; }
+        .price-buy { color: var(--rust); }
+        .price-sell { color: var(--metal-col); }
         
         .in-cart-badge { 
           position: absolute; 
           top: -8px; 
           right: -8px; 
-          background: #cc422c; 
+          background: var(--rust); 
           color: #fff; 
           font-family: var(--font-ui); 
           font-size: 10px; 
@@ -1283,6 +1327,7 @@ export function ShopCalculator() {
           border-radius: 12px; 
           box-shadow: 0 4px 8px rgba(0,0,0,0.6); 
           animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          z-index: 10;
         }
 
         .item-separator {
@@ -1293,26 +1338,30 @@ export function ShopCalculator() {
           transition: all 0.3s ease;
         }
         .item-card.active .item-separator {
-          background: linear-gradient(to right, transparent, #cc422c, transparent);
-          box-shadow: 0px -4px 10px rgba(204, 66, 44, 0.6);
+          background: linear-gradient(to right, transparent, var(--rust), transparent);
+          box-shadow: 0px -4px 10px rgba(206, 66, 43, 0.6);
+        }
+        .item-card.is-sell.active .item-separator {
+          background: linear-gradient(to right, transparent, var(--metal-col), transparent);
+          box-shadow: 0px -4px 10px rgba(139, 175, 200, 0.6);
         }
 
         .free-counter-wrap { display: flex; align-items: center; justify-content: center; width: 80%; margin: 0 auto; }
         .free-counter-btn {
-          background: transparent; border: none; color: #757575; font-size: 18px; font-weight: 300; cursor: pointer; 
+          background: transparent; border: none; color: var(--text-dim); font-size: 18px; font-weight: 300; cursor: pointer; 
           display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; transition: all 0.2s ease; user-select: none; padding: 0; flex-shrink: 0;
         }
-        .free-counter-btn:hover { color: #cc422c; transform: scale(1.2); }
+        .free-counter-btn:hover { color: var(--rust); transform: scale(1.2); }
         .free-counter-btn:active { transform: scale(0.9); }
         
-        .free-separator { width: 1px; min-width: 1px; height: 10px; background: linear-gradient(to bottom, transparent, #4a4a4a, transparent); margin: 0 6px; flex-shrink: 0; }
+        .free-separator { width: 1px; min-width: 1px; height: 10px; background: linear-gradient(to bottom, transparent, var(--border-hi), transparent); margin: 0 6px; flex-shrink: 0; }
         
         .free-counter-input {
-          width: 30px !important; min-width: 30px !important; background: transparent !important; border: none !important; color: #757575 !important;
+          width: 30px !important; min-width: 30px !important; background: transparent !important; border: none !important; color: var(--text-dim) !important;
           font-size: 14px !important; font-weight: 700 !important; text-align: center; outline: none; font-family: inherit; padding: 0 !important; box-shadow: none !important;
           transition: color 0.3s ease, transform 0.2s ease; flex-shrink: 0; -moz-appearance: textfield; appearance: textfield;
         }
-        .item-card.active .free-counter-input { color: #fff !important; transform: scale(1.1); }
+        .item-card.active .free-counter-input { color: var(--text-bright) !important; transform: scale(1.1); }
         .invisible-num-input::-webkit-inner-spin-button, .invisible-num-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         .invisible-num-input { -moz-appearance: textfield; }
 
@@ -1320,7 +1369,7 @@ export function ShopCalculator() {
         .shop-footer {
           width: 100%;
           max-width: 1200px;
-          margin-top: 10px; /* Sníženo, protože tam máme nový separátor */
+          margin-top: 10px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -1337,7 +1386,7 @@ export function ShopCalculator() {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #555;
+          color: var(--text-dim);
           font-family: var(--font-ui);
           font-size: 11px;
           letter-spacing: 0.1em;
@@ -1351,7 +1400,7 @@ export function ShopCalculator() {
         .dynamic-pricing-info {
           text-align: center;
           font-size: 11px;
-          color: #888;
+          color: var(--text-muted);
           font-family: var(--font-ui);
           text-transform: uppercase;
           letter-spacing: 0.05em;
@@ -1360,11 +1409,11 @@ export function ShopCalculator() {
         }
 
         /* --- PLACEHOLDER TRIKY PRO ZMIZENÍ NULY PO KLIKNUTÍ --- */
-        .my-scrap-input::placeholder { color: #fff; opacity: 1; transition: color 0.2s; }
+        .my-scrap-input::placeholder { color: var(--text-bright); opacity: 1; transition: color 0.2s; }
         .my-scrap-input:focus::placeholder { color: transparent; }
 
-        .free-counter-input::placeholder { color: #757575; opacity: 1; transition: color 0.2s; }
-        .item-card.active .free-counter-input::placeholder { color: #fff; opacity: 1; }
+        .free-counter-input::placeholder { color: var(--text-dim); opacity: 1; transition: color 0.2s; }
+        .item-card.active .free-counter-input::placeholder { color: var(--text-bright); opacity: 1; }
         .free-counter-input:focus::placeholder { color: transparent; }
       `}</style>
 
@@ -1380,7 +1429,6 @@ export function ShopCalculator() {
                 min="0"
                 className="my-scrap-input"
                 placeholder="0"
-                // Pokud je scrapInventory 0, nastavíme hodnotu na "" (čímž se ukáže ten náš placeholder, co umí mizet)
                 value={scrapInventory === 0 ? "" : scrapInventory}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -1401,7 +1449,7 @@ export function ShopCalculator() {
             <span className="dash-label">Cart Change</span>
             <div className="dash-value-row">
               {totals.totalCost === 0 && totals.totalGained === 0 && (
-                <span className="dash-val" style={{ color: "#555" }}>
+                <span className="dash-val" style={{ color: "var(--text-dim)" }}>
                   0
                 </span>
               )}
@@ -1479,7 +1527,6 @@ export function ShopCalculator() {
                 <div
                   key={item.id}
                   className={`item-card ${isBuy ? "is-buy" : "is-sell"} ${isActive ? "active" : ""}`}
-                  // Tímto se vytvoří krásný kaskádovitý slide-up efekt (postupné zobrazení zleva doprava)
                   style={{ animationDelay: `${index * 0.04}s` }}
                 >
                   {isActive && (
@@ -1488,12 +1535,15 @@ export function ShopCalculator() {
                     </div>
                   )}
 
-                  <Img src={item.img} alt={item.name} className="item-img" />
-
-                  <div className="item-name">
-                    {item.qty > 1 ? `${item.qty}x ` : ""}
-                    {item.name}
+                  {/* Obal obrázku pro správné pozicování odznáčku množství */}
+                  <div className="item-img-wrap">
+                    <Img src={item.img} alt={item.name} className="item-img" />
+                    {item.qty > 1 && (
+                      <div className="item-yield-badge">x{item.qty}</div>
+                    )}
                   </div>
+
+                  <div className="item-name">{item.name}</div>
 
                   <div
                     className={`item-price ${isBuy ? "price-buy" : "price-sell"}`}
@@ -1506,7 +1556,7 @@ export function ShopCalculator() {
                     <div
                       style={{
                         fontSize: "10px",
-                        color: "#6a6a6a",
+                        color: "var(--text-dim)",
                         marginBottom: "8px",
                         opacity: 0.8,
                       }}
@@ -1530,7 +1580,6 @@ export function ShopCalculator() {
                       type="number"
                       className="free-counter-input invisible-num-input"
                       placeholder="0"
-                      // Stejný trik: ukážeme jako výchozí stav "", placeholder zařídí tu nulu
                       value={cartQty === 0 ? "" : cartQty}
                       onChange={(e) => {
                         const val = e.target.value;
@@ -1567,7 +1616,7 @@ export function ShopCalculator() {
             })}
           </div>
 
-          {/* Separátor 3 (Nahrazuje ten hrubý border-top u footeru) */}
+          {/* Separátor 3 */}
           <div
             className="fading-separator"
             style={{ marginTop: "40px", width: "50%", opacity: 0.5 }}

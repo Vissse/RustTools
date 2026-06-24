@@ -174,18 +174,16 @@ export function FurnaceCalculator() {
       variant="recycling"
     >
       <style>{`
-        /* Kompletní vycentrování celé kalkulačky do jednoho sloupce */
         .furnace-container {
           flex: 1;
           width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 20px 20px 40px;
+          padding: 24px 16px;
           overflow-y: auto;
         }
 
-        /* Nástupní animace prvků */
         @keyframes slideUpFade {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
@@ -194,7 +192,6 @@ export function FurnaceCalculator() {
         .anim-2 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
         .anim-3 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
 
-        /* Zarovnání řad tlačítek na střed */
         .selector-row {
           display: flex;
           gap: 12px;
@@ -204,26 +201,22 @@ export function FurnaceCalculator() {
           max-width: 800px;
         }
 
-        /* ZAHUŠTĚNÝ řádek pro výběr procesu (aby se vešlo hodně položek jídla) */
         .dense-selector-row {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 8px;
           max-width: 840px;
-          margin-bottom: 30px;
+          margin-bottom: 36px;
         }
 
-        /* ════════════════════════════════════════════════════════════════
-           CASCADING ANIMACE (Oprava záblesku přes CSS proměnné)
-           ════════════════════════════════════════════════════════════════ */
         @keyframes popInProcess {
           0% { opacity: 0; transform: translateY(15px) scale(0.8); }
           100% { opacity: var(--btn-op); transform: translateY(0) scale(1); }
         }
 
         .dense-btn {
-          --btn-op: 0.5; /* Základní šedá průhlednost pro animaci i tlačítko */
+          --btn-op: 0.5;
           opacity: var(--btn-op);
           background: transparent;
           border: 1px solid rgba(255, 255, 255, 0.03);
@@ -242,17 +235,15 @@ export function FurnaceCalculator() {
 
         .dense-btn:hover {
           --btn-op: 0.8;
-          opacity: var(--btn-op);
           background: rgba(255, 255, 255, 0.02);
           border-color: rgba(255, 255, 255, 0.1);
         }
 
         .dense-btn.active {
-          --btn-op: 1; /* Aktivní svítící průhlednost */
-          opacity: var(--btn-op);
+          --btn-op: 1;
           filter: grayscale(0%);
-          border-color: #cc422c;
-          background: linear-gradient(to bottom, rgba(204, 66, 44, 0.08) 0%, transparent 100%);
+          border-color: var(--rust);
+          background: linear-gradient(to bottom, rgba(206, 66, 43, 0.08) 0%, transparent 100%);
         }
 
         .dense-btn img {
@@ -264,7 +255,7 @@ export function FurnaceCalculator() {
         
         .dense-btn.active img {
           transform: scale(1.1);
-          filter: drop-shadow(0 4px 8px rgba(206, 66, 43, 0.5)); 
+          filter: drop-shadow(0 4px 8px var(--rust-glow)); 
         }
         
         .dense-btn .minimal-box-name {
@@ -273,92 +264,145 @@ export function FurnaceCalculator() {
           text-align: center;
         }
 
-        /* --- HORIZONTÁLNÍ KARTA (ZMENŠENO PRO MINIMALISMUS) --- */
+        /* --- KARTA S FADE LINKOU --- */
         .furnace-main-card {
-          background: linear-gradient(180deg, rgba(26, 25, 23, 0.95) 0%, rgba(18, 17, 15, 0.95) 100%);
-          border: 1px solid rgba(255, 255, 255, 0.03);
+          background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
+          border: 1px solid var(--border2);
+          border-top: none;
           border-radius: 12px;
-          padding: 24px 36px; /* Zmenšen padding */
+          padding: 24px 32px;
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 100%;
-          max-width: 600px; /* Mírně zúženo */
-          box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+          max-width: 500px;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
           position: relative;
         }
+
         .furnace-main-card::before {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(204, 66, 44, 0.5), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--rust) 15%,
+            var(--rust) 85%,
+            transparent 100%
+          );
+          z-index: 10;
+          pointer-events: none;
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
         }
 
-        /* Tmavý Counter box */
-        .dark-counter-box {
+        /* --- INPUT WRAPPER --- */
+        .furnace-input-wrap {
+          background: rgba(0, 0, 0, 0.25);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 6px 12px;
+          display: inline-flex;
+          align-items: center;
+          margin-bottom: 24px;
+          transition: border-color 0.2s;
+        }
+        .furnace-input-wrap:focus-within {
+          border-color: rgba(206, 66, 43, 0.4);
+        }
+
+        .furnace-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-dim);
+          font-size: 18px;
+          font-weight: 300;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
           display: flex;
           align-items: center;
-          background: rgba(0, 0, 0, 0.5);
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          border-radius: 6px;
-          padding: 4px 12px; /* Zmenšen padding */
-          margin-bottom: 16px; /* Zmenšen margin */
+          justify-content: center;
+          transition: color 0.15s, transform 0.1s;
+        }
+        .furnace-btn:hover { color: var(--text-bright); }
+        .furnace-btn:active { transform: scale(0.9); }
+
+        .furnace-input {
+          background: transparent;
+          border: none;
+          outline: none;
+          text-align: center;
+          width: 90px;
+          font-family: var(--font-d);
+          font-size: 26px;
+          font-weight: 600;
+          color: var(--text-bright);
+          letter-spacing: 0.05em;
+        }
+        .furnace-input::-webkit-inner-spin-button,
+        .furnace-input::-webkit-outer-spin-button {
+          -webkit-appearance: none; margin: 0;
+        }
+        .furnace-input { -moz-appearance: textfield; }
+
+        .furnace-sep {
+          width: 1px;
+          height: 14px;
+          background: var(--border);
+          margin: 0 8px;
         }
 
-        /* Výsledky vedle sebe */
+        /* --- VÝSLEDKY --- */
         .horizontal-results-grid {
           display: flex;
-          gap: 12px; /* Zmenšená mezera */
+          gap: 8px;
           width: 100%;
           justify-content: center;
-          margin-top: 12px; /* Zmenšen margin */
+          margin-top: 8px;
         }
 
         .h-result-box {
           background: rgba(255, 255, 255, 0.015);
-          border: 1px solid transparent;
+          border: 1px solid rgba(255, 255, 255, 0.03);
           border-radius: 8px;
-          padding: 12px; /* Zmenšen padding boxu */
+          padding: 12px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          flex: 1; 
-          transition: background 0.2s ease;
+          flex: 1;
+          transition: background 0.2s ease, border-color 0.2s ease;
         }
         .h-result-box:hover {
-          background: rgba(255, 255, 255, 0.035);
+          background: rgba(255, 255, 255, 0.03);
+          border-color: rgba(255, 255, 255, 0.08);
         }
 
         .h-result-box img {
-          width: 30px; /* Zmenšené ikony */
-          height: 30px;
+          width: 28px;
+          height: 28px;
           object-fit: contain;
-          margin-bottom: 8px; /* Menší mezera */
+          margin-bottom: 8px;
           filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
         .h-result-val {
           font-family: var(--font-d);
-          font-size: 22px; /* Zmenšený font čísel */
+          font-size: 22px;
           font-weight: 600;
           line-height: 1;
           margin-bottom: 2px;
         }
+        
         .h-result-lbl {
           font-family: var(--font-ui);
-          font-size: 9px; /* Menší popisek */
+          font-size: 9px;
           font-weight: 700;
-          color: #757575;
+          color: var(--text-dim);
           text-transform: uppercase;
           letter-spacing: 0.1em;
         }
-
-        /* Skrytí nativního inputu */
-        .invisible-num-input::-webkit-inner-spin-button,
-        .invisible-num-input::-webkit-outer-spin-button {
-          -webkit-appearance: none; margin: 0;
-        }
-        .invisible-num-input { -moz-appearance: textfield; }
       `}</style>
 
       <div className="furnace-container">
@@ -390,7 +434,7 @@ export function FurnaceCalculator() {
           </div>
         </div>
 
-        {/* 2. VÝBĚR PROCESU (ZAHUŠTĚNÝ) */}
+        {/* 2. VÝBĚR PROCESU */}
         <div
           className="anim-2"
           style={{
@@ -403,7 +447,6 @@ export function FurnaceCalculator() {
           <div className="sec-label" style={{ marginBottom: "16px" }}>
             TARGET PROCESS
           </div>
-          {/* TADY JE TEN TRIK: Přidán key={selectedSmelterId} */}
           <div className="dense-selector-row" key={selectedSmelterId}>
             {activeSmelter.data.map((process, idx) => (
               <button
@@ -411,7 +454,6 @@ export function FurnaceCalculator() {
                 className={`dense-btn${selectedProcessIdx === idx ? " active" : ""}`}
                 onClick={() => setSelectedProcessIdx(idx)}
                 title={`${process.inputItem} -> ${process.outputItem}`}
-                /* TADY JE KOUZLO: Automatické zpoždění pro libovolný počet položek */
                 style={{ animationDelay: `${idx * 0.025}s` }}
               >
                 <Img
@@ -424,15 +466,16 @@ export function FurnaceCalculator() {
           </div>
         </div>
 
-        {/* 3. CENTRÁLNÍ KARTA (Zmenšená a minimalistická) */}
+        {/* 3. CENTRÁLNÍ KARTA */}
         <div className="furnace-main-card anim-3">
-          {/* Label množstí */}
+          {/* Label nad Inputem */}
           <div
             style={{
+              fontFamily: "var(--font-ui)",
               fontSize: "10px",
-              color: "#757575",
+              color: "var(--text-dim)",
               fontWeight: 700,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.15em",
               marginBottom: "8px",
               textTransform: "uppercase",
             }}
@@ -440,10 +483,10 @@ export function FurnaceCalculator() {
             AMOUNT TO PROCESS
           </div>
 
-          {/* Tmavý Counter box */}
-          <div className="dark-counter-box">
+          {/* Minimalistický Input */}
+          <div className="furnace-input-wrap">
             <button
-              className="free-counter-btn"
+              className="furnace-btn"
               onClick={() =>
                 setQuantity((c) =>
                   Math.max(0, (typeof c === "number" ? c : 0) - 100),
@@ -452,15 +495,11 @@ export function FurnaceCalculator() {
             >
               −
             </button>
-            <div
-              className="free-separator"
-              style={{ background: "rgba(255,255,255,0.04)" }}
-            />
+            <div className="furnace-sep" />
             <input
               type="number"
               min="0"
-              className="invisible-num-input free-counter-input"
-              style={{ fontSize: "22px", width: "90px", color: "#fff" }}
+              className="furnace-input"
               value={quantity}
               onChange={(e) => {
                 const val = e.target.value;
@@ -471,12 +510,9 @@ export function FurnaceCalculator() {
                 }
               }}
             />
-            <div
-              className="free-separator"
-              style={{ background: "rgba(255,255,255,0.04)" }}
-            />
+            <div className="furnace-sep" />
             <button
-              className="free-counter-btn"
+              className="furnace-btn"
               onClick={() =>
                 setQuantity((c) => (typeof c === "number" ? c : 0) + 100)
               }
@@ -490,35 +526,37 @@ export function FurnaceCalculator() {
             <div
               style={{
                 display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
-                gap: "8px",
-                margin: "4px 0",
+                marginBottom: "16px",
               }}
             >
-              <span
+              <div
                 style={{
                   fontFamily: "var(--font-ui)",
-                  fontSize: "10px",
-                  color: "#757575",
+                  fontSize: "11px",
+                  color: "var(--text-muted)",
                   fontWeight: 700,
                   textTransform: "uppercase",
-                  letterSpacing: "0.05em",
+                  letterSpacing: "0.15em",
+                  marginBottom: "4px",
                 }}
               >
-                PROCESSING TIME:
-              </span>
-              <span
+                PROCESSING TIME
+              </div>
+              <div
                 style={{
                   fontFamily: "var(--font-d)",
-                  fontSize: "24px" /* Zmenšený čas */,
+                  fontSize: "36px",
                   fontWeight: 600,
-                  color: "#cc422c",
+                  color: "var(--rust)",
                   lineHeight: 1,
                   letterSpacing: "0.02em",
+                  textShadow: "0 0 16px var(--rust-glow)",
                 }}
               >
                 {results.timeStr}
-              </span>
+              </div>
             </div>
           )}
 
@@ -531,7 +569,10 @@ export function FurnaceCalculator() {
                   src={getImageFromName(activeProcess.outputItem)}
                   alt={activeProcess.outputItem}
                 />
-                <span className="h-result-val" style={{ color: "#fff" }}>
+                <span
+                  className="h-result-val"
+                  style={{ color: "var(--text-bright)" }}
+                >
                   {results.yieldAmount.toLocaleString()}
                 </span>
                 <span className="h-result-lbl">YIELD</span>
@@ -541,7 +582,10 @@ export function FurnaceCalculator() {
               {results.woodRequired > 0 && (
                 <div className="h-result-box">
                   <Img src="/images/wood.png" alt="Wood" />
-                  <span className="h-result-val" style={{ color: "#c9b07a" }}>
+                  <span
+                    className="h-result-val"
+                    style={{ color: "var(--wood-col)" }}
+                  >
                     {results.woodRequired.toLocaleString()}
                   </span>
                   <span className="h-result-lbl">FUEL</span>
@@ -552,7 +596,10 @@ export function FurnaceCalculator() {
               {results.charcoal > 0 && (
                 <div className="h-result-box">
                   <Img src="/images/charcoal.png" alt="Charcoal" />
-                  <span className="h-result-val" style={{ color: "#8a7d6e" }}>
+                  <span
+                    className="h-result-val"
+                    style={{ color: "var(--coal-col)" }}
+                  >
                     {results.charcoal.toLocaleString()}
                   </span>
                   <span className="h-result-lbl">BYPRODUCT</span>
@@ -576,7 +623,7 @@ export function FurnaceCalculator() {
               </span>
               <div
                 style={{
-                  color: "#555",
+                  color: "var(--text-dim)",
                   fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.05em",

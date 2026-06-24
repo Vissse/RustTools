@@ -3,7 +3,6 @@ import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
-// Data vytažená z tvých screenshotů
 const MATERIALS = [
   {
     id: "twig",
@@ -11,7 +10,6 @@ const MATERIALS = [
     hp: 10,
     decayHours: 1,
     img: "/images/twig-wall.png",
-    color: "#a08b6c",
   },
   {
     id: "wood",
@@ -19,7 +17,6 @@ const MATERIALS = [
     hp: 250,
     decayHours: 3,
     img: "/images/wood-wall.png",
-    color: "#c9b07a",
   },
   {
     id: "stone",
@@ -27,7 +24,6 @@ const MATERIALS = [
     hp: 500,
     decayHours: 5,
     img: "/images/stone-wall.png",
-    color: "#a9a9a9",
   },
   {
     id: "metal",
@@ -35,7 +31,6 @@ const MATERIALS = [
     hp: 1000,
     decayHours: 8,
     img: "/images/metal-wall.png",
-    color: "#a4b3c6",
   },
   {
     id: "armored",
@@ -43,7 +38,6 @@ const MATERIALS = [
     hp: 2000,
     decayHours: 12,
     img: "/images/armored-wall.png",
-    color: "#ffffff",
   },
 ];
 
@@ -53,7 +47,6 @@ export function DecayCalculator() {
 
   const activeMat = MATERIALS.find((m) => m.id === selectedMaterial)!;
 
-  // Při změně materiálu resetujeme HP (input i stav) na max HP zvoleného materiálu
   useEffect(() => {
     setCurrentHp(activeMat.hp);
   }, [selectedMaterial, activeMat.hp]);
@@ -62,7 +55,6 @@ export function DecayCalculator() {
     typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;
   const hpPercent = Math.max(0, Math.min(100, (safeHp / activeMat.hp) * 100));
 
-  // Výpočet zbývajícího času
   const timeString = useMemo(() => {
     if (safeHp <= 0) return "0S";
 
@@ -92,10 +84,9 @@ export function DecayCalculator() {
       }
       headerAccent="DECAY"
       headerRest="CALCULATOR"
-      variant="recycling" // Používáme "recycling" protože má flexibilní tělo přes celou výšku (85vh)
+      variant="recycling"
     >
       <style>{`
-        /* Kompletní vycentrování celého obsahu */
         .decay-container {
           flex: 1;
           width: 100%;
@@ -103,11 +94,10 @@ export function DecayCalculator() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center; /* Střed obrazovky vertikálně i horizontálně */
+          justify-content: center;
           padding: 20px;
         }
 
-        /* Nástupní animace prvků */
         @keyframes slideUpFade {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
@@ -117,76 +107,136 @@ export function DecayCalculator() {
         .decay-anim-2 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
         .decay-anim-3 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
 
-        /* Centrování materiálů na 1 řádek */
         .mat-selector-row {
           display: flex;
           gap: 16px;
           justify-content: center;
-          flex-wrap: nowrap; /* STRIKTNĚ VYNUCENÝ JEDEN ŘÁDEK */
+          flex-wrap: nowrap;
           margin-bottom: 40px;
           width: 100%;
         }
-        /* Below 640px the buttons no longer fit on one row and were spilling out
-           of the viewport — let them wrap onto multiple lines. */
+
         @media (max-width: 640px) {
           .mat-selector-row {
             flex-wrap: wrap;
           }
         }
 
-        /* Hlavní karta výsledků */
+        /* --- KARTA S FADE LINKOU --- */
         .decay-card {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 16px;
-          padding: clamp(20px, 6vw, 48px);
+          background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
+          border: 1px solid var(--border2);
+          border-top: none; /* Smažeme tvrdou horní linku, nahradí ji fade */
+          border-radius: 12px;
+          padding: clamp(24px, 6vw, 40px);
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 100%;
-          max-width: 600px; /* Trošku rozšířeno pro hezčí proporce */
-          box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+          max-width: 500px;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
           position: relative;
-          overflow: hidden;
         }
 
-        /* Jemný vrchní highlight karty */
+        /* Tady je tvoje vysněná oranžová fade linka */
         .decay-card::before {
           content: '';
           position: absolute;
-          top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, transparent, var(--rust), transparent);
-          opacity: 0.5;
+          top: 0; 
+          left: 0; 
+          right: 0; 
+          height: 2px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--rust) 15%,
+            var(--rust) 85%,
+            transparent 100%
+          );
+          z-index: 10;
+          pointer-events: none;
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
         }
 
         .decay-time-title {
+          font-family: var(--font-ui);
           font-size: 11px;
           font-weight: 700;
-          color: #757575;
+          color: var(--text-muted);
           text-transform: uppercase;
-          letter-spacing: 0.2em;
-          margin-bottom: 12px;
+          letter-spacing: 0.15em;
+          margin-bottom: 8px;
         }
 
         .decay-time-value {
-          font-size: 72px; /* Zvětšeno pro wow efekt */
-          font-weight: 800;
+          font-family: var(--font-d);
+          font-size: clamp(48px, 10vw, 64px);
+          font-weight: 600;
           color: var(--rust);
           line-height: 1;
-          text-shadow: 0 0 32px rgba(204, 66, 44, 0.3);
-          margin-bottom: 40px;
+          text-shadow: 0 0 24px rgba(206, 66, 43, 0.2);
+          margin-bottom: 32px;
           font-variant-numeric: tabular-nums;
+          letter-spacing: 0.02em;
         }
 
-        /* Skrytí šipek u inputu */
+        .decay-input-wrap {
+          background: rgba(0, 0, 0, 0.25);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 6px 12px;
+          display: inline-flex;
+          align-items: center;
+          transition: border-color 0.2s;
+        }
+        .decay-input-wrap:focus-within {
+          border-color: rgba(206, 66, 43, 0.4);
+        }
+
+        .decay-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-dim);
+          font-size: 18px;
+          font-weight: 300;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: color 0.15s, transform 0.1s;
+        }
+        .decay-btn:hover { color: var(--text-bright); }
+        .decay-btn:active { transform: scale(0.9); }
+
+        .decay-input {
+          background: transparent;
+          border: none;
+          outline: none;
+          text-align: center;
+          width: 80px;
+          font-family: var(--font-d);
+          font-size: 26px;
+          font-weight: 600;
+          color: var(--text-bright);
+          letter-spacing: 0.05em;
+        }
         .decay-input::-webkit-inner-spin-button,
         .decay-input::-webkit-outer-spin-button {
           -webkit-appearance: none; margin: 0;
         }
         .decay-input { -moz-appearance: textfield; }
+
+        .decay-sep {
+          width: 1px;
+          height: 14px;
+          background: var(--border);
+          margin: 0 8px;
+        }
       `}</style>
 
-      {/* ŽÁDNÝ .panel-left / .panel-right! Čistý obal. */}
       <div className="decay-container">
         {/* 1. SELEKTOR MATERIÁLU */}
         <div
@@ -219,47 +269,38 @@ export function DecayCalculator() {
           </div>
         </div>
 
-        {/* 2. CENTRÁLNÍ KARTA (Input + Výsledek) */}
+        {/* 2. CENTRÁLNÍ KARTA */}
         <div className="decay-card decay-anim-2">
-          {/* Výsledný čas */}
           <div style={{ textAlign: "center" }}>
             <div className="decay-time-title">Time Until Destroyed</div>
             <div className="decay-time-value">{timeString}</div>
           </div>
 
-          {/* Vstupní Input pro HP */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               width: "100%",
-              marginBottom: "32px",
+              marginBottom: "36px",
             }}
           >
             <div
               style={{
-                fontSize: "11px",
-                color: "#666",
+                fontFamily: "var(--font-ui)",
+                fontSize: "10px",
+                color: "var(--text-dim)",
                 fontWeight: 700,
-                letterSpacing: "0.1em",
+                letterSpacing: "0.15em",
                 marginBottom: "8px",
               }}
             >
               CURRENT HP
             </div>
 
-            <div
-              className="free-counter-wrap"
-              style={{
-                background: "rgba(0,0,0,0.4)",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
+            <div className="decay-input-wrap">
               <button
-                className="free-counter-btn"
+                className="decay-btn"
                 onClick={() =>
                   setCurrentHp((c) =>
                     Math.max(0, (typeof c === "number" ? c : 0) - 10),
@@ -268,18 +309,12 @@ export function DecayCalculator() {
               >
                 −
               </button>
-              <div className="free-separator" />
+              <div className="decay-sep" />
               <input
                 type="number"
                 min="0"
                 max={activeMat.hp}
-                className="decay-input free-counter-input"
-                style={{
-                  fontSize: "28px",
-                  width: "100px",
-                  color: activeMat.color,
-                  transition: "color 0.3s ease",
-                }}
+                className="decay-input"
                 value={currentHp}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -292,9 +327,9 @@ export function DecayCalculator() {
                   }
                 }}
               />
-              <div className="free-separator" />
+              <div className="decay-sep" />
               <button
-                className="free-counter-btn"
+                className="decay-btn"
                 onClick={() =>
                   setCurrentHp((c) =>
                     Math.min(
@@ -309,35 +344,30 @@ export function DecayCalculator() {
             </div>
           </div>
 
-          {/* HP Bar */}
           <div className="decay-anim-3" style={{ width: "100%" }}>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "8px",
-                fontSize: "12px",
+                fontFamily: "var(--font-ui)",
+                fontSize: "11px",
                 fontWeight: 700,
                 letterSpacing: "0.05em",
               }}
             >
-              <span
-                style={{
-                  color: activeMat.color,
-                  transition: "color 0.3s ease",
-                }}
-              >
-                {safeHp} HP
+              <span style={{ color: "var(--text-bright)" }}>{safeHp} HP</span>
+              <span style={{ color: "var(--text-dim)" }}>
+                {activeMat.hp} HP
               </span>
-              <span style={{ color: "#666" }}>{activeMat.hp} HP</span>
             </div>
 
             <div
               className="modern-hp-wrapper"
               style={{
-                height: "6px",
-                background: "rgba(255,255,255,0.05)",
-                borderRadius: "3px",
+                height: "4px",
+                background: "var(--border)",
+                borderRadius: "2px",
                 overflow: "hidden",
               }}
             >
@@ -345,19 +375,18 @@ export function DecayCalculator() {
                 className="modern-hp-fill"
                 style={{
                   width: `${hpPercent}%`,
-                  background: `linear-gradient(to right, ${activeMat.color}40 0%, ${activeMat.color} 100%)`,
-                  transition:
-                    "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                  background: "var(--rust)",
+                  transition: "width 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               />
               <div
                 className="modern-hp-glow"
                 style={{
                   width: `${hpPercent}%`,
-                  background: activeMat.color,
-                  opacity: 0.5,
-                  transition:
-                    "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease",
+                  background: "var(--rust)",
+                  opacity: 0.3,
+                  filter: "blur(4px)",
+                  transition: "width 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               />
             </div>
