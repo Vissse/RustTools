@@ -126,21 +126,51 @@ body::before {
   margin-bottom: 44px;
 }
 
-/* --- TOP NAVIGATION BAR --- */
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ TOP NAVIGATION BAR (S FADE LINKOU)
+   ════════════════════════════════════════════════════════════════════════ */
 .top-navbar {
   width: 100%;
   max-width: 1400px;
-  background: linear-gradient(180deg, var(--panel) 0%, var(--panel2) 100%);
-  border: 1px solid var(--border2);
-  border-top: none;
-  border-bottom: 2px solid var(--rust);
+  background: rgba(19, 18, 16, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Tvrdé smazání původních linek */
+  border-top: none !important;
+  border-bottom: none !important;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 24px;
   position: relative;
+  z-index: 50;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.top-navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  /* Fade z průhledné do oranžové a zpět */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 15%,
+    var(--rust) 85%,
+    transparent 100%
+  );
   z-index: 10;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
 }
 .nav-group {
   display: flex;
@@ -243,14 +273,27 @@ body::before {
   color: var(--text-dim);
 }
 
-/* --- SITE FOOTER --- */
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ SITE FOOTER (Ochrana přes !important)
+   ════════════════════════════════════════════════════════════════════════ */
 .site-footer {
   width: 100%;
   max-width: 1400px;
-  background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
-  border: 1px solid var(--border2);
-  border-bottom: none;
-  border-top: 2px solid var(--rust);
+
+  /* Vynucení moderního pozadí */
+  background: rgba(19, 18, 16, 0.65) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Vynucení jemného skleněného ohraničení a zrušení starých hrubých linek */
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+
+  /* Zaoblení horních rohů */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -258,7 +301,30 @@ body::before {
   padding: 48px 40px;
   position: relative;
   z-index: 10;
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.8);
+
+  /* Vynucení moderního stínu */
+  box-shadow:
+    0 -16px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Fading linka pro footer nahoře */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 15%,
+    var(--rust) 85%,
+    transparent 100%
+  );
+  z-index: 10;
+  pointer-events: none;
 }
 .footer-brand {
   display: flex;
@@ -375,21 +441,48 @@ h1.page-title span {
   color: var(--rust);
 }
 
-/* --- CALC SHELL --- */
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ CALC SHELL (S FADE LINKOU)
+   ════════════════════════════════════════════════════════════════════════ */
 .calc-wrap {
   width: 100%;
   max-width: 1400px;
   max-height: 100vh;
   position: relative;
   z-index: 1;
-  background: linear-gradient(170deg, #171512 0%, #131210 100%);
-  border: 1px solid var(--border2);
-  border-top: 2px solid var(--rust);
+  background: rgba(19, 18, 16, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Tvrdé smazání původních linek */
+  border-top: none !important;
+
+  border-radius: 16px;
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.8),
-    0 6px 48px rgba(0, 0, 0, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.calc-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  /* Fade z průhledné do oranžové a zpět */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 10%,
+    var(--rust) 90%,
+    transparent 100%
+  );
+  z-index: 10;
+  pointer-events: none;
 }
 /* Recycling & cupboard use a fixed-height flex-column shell; raid sizes to content. */
 .calc-wrap[data-variant="recycling"],
@@ -398,6 +491,7 @@ h1.page-title span {
   display: flex;
   flex-direction: column;
 }
+/* Redukce zrnění (noise) pro čistší vzhled */
 .calc-wrap::after {
   content: "";
   position: absolute;
@@ -405,128 +499,150 @@ h1.page-title span {
   pointer-events: none;
   z-index: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  opacity: 0.6;
+  opacity: 0.25; /* Původně 0.6 - nyní mnohem subtilnější */
 }
 
-/* Rivets */
+/* Minimalistické "nýty" - nyní vypadají jako elegantní zapuštěné montážní body */
 .rivet {
   position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #4a4038, #1a1612);
-  border: 1px solid #3a3228;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow:
-    inset 0 1px 2px rgba(0, 0, 0, 0.8),
-    0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 2px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.03);
   z-index: 2;
 }
 .rivet.tl {
-  top: 8px;
-  left: 8px;
+  top: 12px;
+  left: 12px;
 }
 .rivet.tr {
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 12px;
 }
 .rivet.bl {
-  bottom: 8px;
-  left: 8px;
+  bottom: 12px;
+  left: 12px;
 }
 .rivet.br {
-  bottom: 8px;
-  right: 8px;
+  bottom: 12px;
+  right: 12px;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ HLAVIČKA KALKULAČKY (Symmetrical HUD Style)
+   ════════════════════════════════════════════════════════════════════════ */
 
 .calc-header {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 22px;
-  background: linear-gradient(
-    90deg,
-    rgba(206, 66, 43, 0.12) 0%,
-    rgba(206, 66, 43, 0.04) 40%,
-    transparent 100%
+  justify-content: space-between; /* Rozdělí obsah: Verze doleva, Status doprava */
+  padding: 16px 24px;
+
+  /* Místo gradientu zleva doprava uděláme radiální záři přesně uprostřed za nadpisem */
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(206, 66, 43, 0.1) 0%,
+    transparent 60%
   );
-  border-bottom: 1px solid var(--border2);
+  border-bottom: none;
   flex-shrink: 0;
+  min-height: 56px; /* Udržuje výšku lišty, protože nadpis bude vyjmut z běžného toku */
 }
+
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
-.header-bar {
-  width: 3px;
-  height: 22px;
-  background: var(--rust);
-  box-shadow: 0 0 8px var(--rust);
-  flex-shrink: 0;
-}
+
+/* Nadpis přesně ve stylu RUST TOOLS z navbaru */
 .header-title {
-  font-family: var(--font-d);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-bright);
-  /* line-height: ; */
-}
-.header-title-red {
-  color: var(--rust);
-}
-.header-ver {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-left: 4px;
-  align-self: flex-end;
-  padding-bottom: 2px;
-}
-.header-status {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   display: flex;
   align-items: center;
   gap: 8px;
+
+  /* Nastavení fontu, aby 100% odpovídal brand-name */
+  font-family: var(--font-d) !important;
+  font-weight: 600 !important;
+  font-size: clamp(20px, 4vw, 26px) !important; /* Responzivní velikost */
+  letter-spacing: 0.2em !important;
+  color: var(--text-bright) !important;
+  text-transform: uppercase !important;
+  white-space: nowrap;
 }
+
+/* Červená část nadpisu dostane moderní jemný glow */
+.header-title-red {
+  color: var(--rust) !important;
+  text-shadow: 0 0 16px rgba(206, 66, 43, 0.4);
+}
+
+/* Úplné odstranění levé dekorativní čárky */
+.header-bar {
+  display: none !important;
+}
+
+/* Verze (V1.0) vlevo – úplně skryto */
+.header-ver {
+  display: none !important;
+}
+
+/* Úplné skrytí nápisu SYSTEM ONLINE a pulzující tečky napravo */
+.header-status {
+  display: none !important;
+}
+
 .status-lbl {
   font-family: var(--font-ui);
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: var(--text-dim);
+  color: rgba(255, 255, 255, 0.35);
   text-transform: uppercase;
 }
+
 .status-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--rust);
-  animation: pulse 2.5s ease-in-out infinite;
+  animation: pulse-modern 3s ease-in-out infinite;
 }
-@keyframes pulse {
+
+@keyframes pulse-modern {
   0%,
   100% {
     opacity: 1;
-    box-shadow:
-      0 0 5px var(--rust),
-      0 0 12px var(--rust-glow);
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(206, 66, 43, 0.6);
   }
   50% {
-    opacity: 0.35;
-    box-shadow: none;
+    opacity: 0.4;
+    transform: scale(0.8);
+    box-shadow: 0 0 2px rgba(206, 66, 43, 0.1);
   }
 }
 
+/* ════════════════════════════════════════════════════════════════════════
+   DĚLÍCÍ LINKA POD HLAVIČKOU (Zářící od středu)
+   ════════════════════════════════════════════════════════════════════════ */
 .metal-rule {
-  height: 2px;
+  height: 1px;
+  /* Protože je text uprostřed, linka se nyní rozjasňuje od středu do stran */
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--border2) 8%,
-    var(--border-hi) 50%,
-    var(--border2) 92%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.02) 80%,
     transparent 100%
   );
   position: relative;
@@ -834,19 +950,23 @@ html {
   object-fit: contain;
   display: block;
 }
+/* Placeholder (Když není nic vybráno) */
 .wall-placeholder {
-  width: 200px;
-  height: 200px;
-  border: 1px dashed var(--border);
+  width: 100%;
+  height: 150px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-d);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   text-align: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #results {
@@ -2567,7 +2687,9 @@ html {
   color: var(--rust);
 }
 
-/* Skryté a posunuté menu */
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ DROPDOWN MENU (S FADE LINKOU)
+   ════════════════════════════════════════════════════════════════════════ */
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 5px);
@@ -2575,8 +2697,11 @@ html {
   min-width: 220px;
   background: rgba(19, 18, 16, 0.85);
   backdrop-filter: blur(12px);
+
+  /* Ponechat skleněný okraj, ale natvrdo zrušit starou hrubou linku */
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-top: 2px solid var(--rust);
+  border-top: none !important;
+
   border-radius: 6px;
   padding: 8px;
   display: flex;
@@ -2594,7 +2719,30 @@ html {
   pointer-events: none; /* Nechytá kliknutí, když je skryté */
 }
 
-/* Zobrazení při najetí myší na wrapper */
+/* Tady se tvoří nová mizící linka na vršku dropdownu */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  /* Fade z průhledné do oranžové a zpět */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 15%,
+    var(--rust) 85%,
+    transparent 100%
+  );
+  z-index: 10;
+  pointer-events: none;
+  /* Přizpůsobení zaoblení, aby linka na krajích nepřetékala přes menu */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* Zobrazení při najetí myší na wrapper (toto bys už tam měl mít, raději kopíruji pro jistotu) */
 .nav-dropdown-wrapper:hover .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;
@@ -2602,7 +2750,10 @@ html {
   pointer-events: auto;
 }
 
-/* Položky uvnitř dropdownu */
+/* ════════════════════════════════════════════════════════════════════════
+   POLOŽKY DROPDOWN MENU (S vertikální fade linkou pro vybranou)
+   ════════════════════════════════════════════════════════════════════════ */
+
 .dropdown-item {
   font-family: var(--font-d);
   font-size: 15px;
@@ -2617,19 +2768,44 @@ html {
   transition: all 0.2s ease;
   display: block;
   white-space: nowrap;
+  position: relative; /* DŮLEŽITÉ: Umožňuje absolutní pozicování fade linky uvnitř */
 }
 
 .dropdown-item:hover {
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-bright);
-  padding-left: 20px; /* Jemný mikro-posun doprava při najetí (moderní detail) */
+  padding-left: 20px; /* Jemný mikro-posun doprava při najetí */
 }
 
+/* --- ACTIVE STAV (Vybraná položka) --- */
 .dropdown-item.active {
   background: rgba(206, 66, 43, 0.08);
   color: var(--rust);
-  border-left: 2px solid var(--rust);
+
+  /* Smažeme tvrdou linku z původního CSS */
+  border-left: none !important;
   padding-left: 18px;
+}
+
+/* Vytvoření vertikální fade linky na levé straně vybrané položky */
+.dropdown-item.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+
+  /* Vertikální přechod: Průhledná -> Oranžová -> Průhledná */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--rust) 30%,
+    var(--rust) 70%,
+    transparent 100%
+  );
+
+  border-radius: 2px;
 }
 
 /* ---- Generic error / not-found page ---- */
@@ -2857,16 +3033,26 @@ html {
 .invisible-num-input {
   -moz-appearance: textfield;
 }
-
-/* Minimalistický grid pro struktury / výbušniny s omezenou výškou */
+/* ════════════════════════════════════════════════════════════════════════
+   MŘÍŽKA TLAČÍTEK (Oprava oříznutých stínů)
+   ════════════════════════════════════════════════════════════════════════ */
 .minimal-btn-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
   gap: 10px;
-  margin-top: 12px;
+
+  /* OPRAVA: Přesunuli jsme část marginu do paddingu. 
+     Tím uvnitř kontejneru vznikne nahoře 8px místa navíc pro záři a posun tlačítka. */
+  margin-top: 4px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-left: 4px; /* Místo i pro levou stranu stínu */
+  padding-right: 8px;
+
   max-height: 170px;
   overflow-y: auto;
-  padding-right: 8px;
+
+  /* Ponechaný mask-image pro plynulé mizení dole */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 96%,
@@ -2907,56 +3093,83 @@ html {
 }
 
 .minimal-box-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px; /* Zaoblené hrany pro moderní vzhled */
   padding: 12px 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  /* Plynulá animace pro všechny změny */
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
-  opacity: 0.5;
-  filter: grayscale(80%);
-  font-family: inherit;
+  overflow: hidden;
 }
-.minimal-box-btn:hover {
-  opacity: 0.8;
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.minimal-box-btn.active {
-  opacity: 1;
-  filter: grayscale(0%);
-  border-color: #cc422c;
-  background: linear-gradient(
-    to bottom,
-    rgba(204, 66, 44, 0.08) 0%,
-    transparent 100%
-  );
-}
+
 .minimal-box-btn img {
   width: 50px;
   height: 50px;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  /* V základu jsou obrázky lehce ztlumené a bez barev */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)) grayscale(40%) opacity(0.7);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.minimal-box-btn.active img {
-  transform: scale(1.1);
-}
+
 .minimal-box-name {
   font-size: 11px;
   font-weight: 600;
-  color: #a5b4c0;
+  color: #888;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.2;
   letter-spacing: 0.05em;
+  transition: color 0.25s ease;
 }
+
+/* --- HOVER STAV (Najetí myší) --- */
+.minimal-box-btn:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px); /* Tlačítko se lehce nadzvedne */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.minimal-box-btn:hover img {
+  /* Obrázek získá zpět barvu a mírně se zvětší */
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.6)) grayscale(0%) opacity(1);
+  transform: scale(1.08);
+}
+
+.minimal-box-btn:hover .minimal-box-name {
+  color: #ccc;
+}
+
+/* --- ACTIVE STAV (Vybraná struktura) --- */
+.minimal-box-btn.active {
+  background: linear-gradient(
+    180deg,
+    rgba(206, 66, 43, 0.12) 0%,
+    rgba(206, 66, 43, 0.01) 100%
+  );
+  border-color: rgba(206, 66, 43, 0.4);
+  box-shadow:
+    0 8px 24px rgba(206, 66, 43, 0.15),
+    inset 0 1px 0 rgba(206, 66, 43, 0.2);
+  transform: translateY(-2px);
+}
+
+.minimal-box-btn.active img {
+  /* Ostrý barevný stín a největší přiblížení */
+  filter: drop-shadow(0 8px 16px rgba(206, 66, 43, 0.4)) grayscale(0%)
+    opacity(1);
+  transform: scale(1.15);
+}
+
 .minimal-box-btn.active .minimal-box-name {
   color: #fff;
+  text-shadow: 0 0 8px rgba(206, 66, 43, 0.4);
 }
 
 /* Seznam nástrojů pod kategoriemi (bez crafting ceny) */
@@ -3047,74 +3260,131 @@ html {
   margin-left: 2px;
 }
 
-/* Ultra minimalistický výběr kategorií (jeden řádek, separátory) */
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ VÝBĚR KATEGORIÍ (Vše na jednom řádku + Fade linky)
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════════════
+   MODERNÍ VÝBĚR KATEGORIÍ (Vše úsporně na jednom řádku)
+   ════════════════════════════════════════════════════════════════════════ */
+
 .filter-row {
   display: flex;
   align-items: center;
-  /* Classic tabs: a fixed gap that never collapses, and the row wraps onto a
-     second line instead of squeezing the spacing to nothing when the panel
-     narrows (space-between distributes leftover space, so it crushed the tabs). */
-  flex-wrap: wrap;
-  gap: 6px 14px;
+  justify-content: space-between; /* Rovnoměrně rozprostře položky po celé šířce */
+  flex-wrap: nowrap !important;
+  gap: 4px; /* Zmenšená mezera z 10px na 4px pro úsporu místa */
   margin-bottom: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 8px;
   width: 100%;
+
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+
+.filter-row::-webkit-scrollbar {
+  display: none;
+}
+
 .filter-pure-text {
   background: transparent;
   border: none;
   padding: 0 0 6px 0;
   color: #757575;
-  font-size: 11px;
+  font-size: 9.5px; /* Nepatrné zmenšení pro lepší fit (původně 10.5px) */
   font-weight: 700;
   font-family: inherit;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em; /* Zmenšení rozestupu mezi písmenky */
   cursor: pointer;
   transition: color 0.3s ease;
   position: relative;
   outline: none;
   white-space: nowrap;
+  flex-shrink: 0;
 }
+
+.filter-pure-text {
+  background: transparent;
+  border: none;
+  padding: 0 0 6px 0;
+  color: #757575;
+  font-size: 10.5px; /* Něžné zmenšení, aby vše sedlo na jeden řádek */
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  outline: none;
+  white-space: nowrap; /* Zaručí, že text samotný se nikdy nezalomí */
+  flex-shrink: 0; /* Zabrání ošklivému smrsknutí tlačítka */
+}
+
 .filter-pure-text:hover {
   color: #c4c4c4;
 }
+
 .filter-pure-text.active {
   color: #fff;
 }
+
+/* --- ZDE JE TVŮJ NOVÝ FADE EFEKT PRO AKTIVNÍ ČÁRU --- */
 .filter-pure-text::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 0%;
   height: 2px;
-  background: #cc422c;
+
+  /* Původní plnou barvu nahradíme gradientem do ztracena */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 15%,
+    var(--rust) 85%,
+    transparent 100%
+  );
+
   transition: width 0.3s ease;
   border-radius: 2px;
 }
+
 .filter-pure-text.active::after {
-  width: 100%;
-}
-.filter-separator {
-  width: 1px;
-  height: 14px;
-  background: linear-gradient(to bottom, transparent, #4a4a4a, transparent);
-  flex-shrink: 0;
+  width: 100%; /* Čára se plynule roztáhne ze středu při vybrání */
 }
 
-/* Moderní counter (počet struktur) */
+.filter-separator {
+  width: 1px;
+  height: 12px;
+  background: linear-gradient(to bottom, transparent, #4a4a4a, transparent);
+  flex-shrink: 0; /* Zabrání mizení separátorů, když je málo místa */
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   MINIMALISTICKÉ POČÍTADLO (Původní vzhled s vylepšenou animací)
+   ════════════════════════════════════════════════════════════════════════ */
+
 .free-counter-wrap {
   display: inline-flex;
   align-items: center;
+  /* Odstraněno pozadí a rámečky - vracíme se k čistému vzhledu */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 0;
 }
+
 .free-counter-btn {
   background: transparent;
   border: none;
   color: #757575;
-  font-size: 20px;
+  font-size: 22px; /* Trochu větší pro snazší kliknutí */
   font-weight: 300;
   cursor: pointer;
   display: flex;
@@ -3122,35 +3392,55 @@ html {
   justify-content: center;
   width: 32px;
   height: 32px;
-  transition: all 0.2s ease;
+  /* Oddělené a vyhlazené animace pro barvu a velikost */
+  transition:
+    color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Mírný 'pružinový' efekt návratu */
   -webkit-user-select: none;
   user-select: none;
+  /* Zajistí, že transformace nerozhodí okolní prvky */
+  will-change: transform;
 }
+
 .free-counter-btn:hover {
-  color: #cc422c;
-  transform: scale(1.15);
+  color: var(--rust);
+  background: transparent; /* Ujistíme se, že nevzniká šedý kruh */
+  transform: scale(1.2);
 }
+
 .free-counter-btn:active {
-  transform: scale(0.95);
+  /* Zrychlená animace při stisku, aby to působilo okamžitě a responzivně */
+  transition-duration: 0.05s;
+  transform: scale(0.85);
 }
+
 .free-separator {
   width: 1px;
   height: 24px;
-  background: linear-gradient(to bottom, transparent, #4a4a4a, transparent);
+  /* Původní fade linka oddělující tlačítka */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
   margin: 0 4px;
 }
+
 .free-counter-input {
   width: 44px;
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 20px; /* Sladěno s velikostí tlačítek */
   font-weight: 700;
   text-align: center;
   outline: none;
-  font-family: inherit;
+  font-family: var(--font-d);
+  letter-spacing: 0.05em;
+  /* Mírný stín textu, aby číslo lépe vystoupilo ze tmy */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
-
 /* Animace a fading HP */
 .fade-in-container {
   animation: fadeInUp 0.4s ease-out forwards;
@@ -3239,11 +3529,26 @@ html {
   margin: 0 0 8px 0;
   gap: 12px;
 }
+/* Velký náhled vybrané struktury */
 .structure-preview-img {
-  max-height: 100px;
+  max-height: 120px;
   max-width: 80%;
   object-fit: contain;
-  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.8));
+  transition: all 0.3s ease;
+  /* Plynulý "Pop-in" efekt při přepnutí stěny */
+  animation: popInStructure 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes popInStructure {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* Sloupec 3: výsledky raidu */
