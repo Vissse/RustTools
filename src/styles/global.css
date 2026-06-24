@@ -2696,7 +2696,7 @@ html {
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  min-width: 220px;
+  min-width: 240px;
   background: rgba(19, 18, 16, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
