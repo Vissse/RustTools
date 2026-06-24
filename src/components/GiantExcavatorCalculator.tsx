@@ -90,140 +90,154 @@ export function GiantExcavatorCalculator() {
           font-size: 18px; font-weight: 700; text-align: center; outline: none;
           font-family: inherit;
         }
+
+        /* Nový minimalistický layout */
+        .single-layout {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 40px 20px;
+          height: 100%;
+          overflow-y: auto;
+          width: 100%;
+        }
+        .input-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          width: 100%;
+        }
+        .barrel-icon {
+          width: 120px;
+          height: 120px;
+          object-fit: contain;
+          filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+        }
+        .input-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+        .input-label-text {
+          color: #a0a0a0;
+          font-family: var(--font-ui);
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+        .output-card {
+          width: 100%;
+          max-width: 600px;
+        }
       `}</style>
 
-      {/* LEVÝ PANEL: Vstup */}
-      <div className="panel-left">
-        <div className="sec-label" style={{ marginBottom: "24px" }}>
-          FUEL INPUT
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "16px",
-            marginTop: "30px",
-          }}
-        >
+      <div className="single-layout">
+        <div className="input-section">
           <Img
             src="/images/diesel_barrel.png"
             alt="Diesel Fuel"
-            style={{
-              width: "120px",
-              height: "120px",
-              objectFit: "contain",
-              filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.6))",
-            }}
+            className="barrel-icon"
           />
-
-          <div
-            style={{
-              color: "#a0a0a0",
-              fontFamily: "var(--font-ui)",
-              fontSize: "14px",
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            DIESEL BARRELS
-          </div>
-
-          <div className="free-counter-wrap" style={{ marginTop: "8px" }}>
-            <button
-              className="free-counter-btn"
-              onClick={() =>
-                setDiesel((c) =>
-                  Math.max(0, (typeof c === "number" ? c : 0) - 1),
-                )
-              }
-            >
-              −
-            </button>
-            <div className="free-separator" />
-            <input
-              type="number"
-              min="0"
-              className="invisible-num-input free-counter-input"
-              value={diesel}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val === "") setDiesel("");
-                else {
-                  const parsed = parseInt(val, 10);
-                  if (!isNaN(parsed) && parsed >= 0) setDiesel(parsed);
+          <div className="input-info">
+            <div className="input-label-text">DIESEL BARRELS</div>
+            <div className="free-counter-wrap" style={{ marginTop: "8px" }}>
+              <button
+                className="free-counter-btn"
+                onClick={() =>
+                  setDiesel((c) =>
+                    Math.max(0, (typeof c === "number" ? c : 0) - 1),
+                  )
                 }
-              }}
-            />
-            <div className="free-separator" />
-            <button
-              className="free-counter-btn"
-              onClick={() =>
-                setDiesel((c) => (typeof c === "number" ? c : 0) + 1)
-              }
-            >
-              +
-            </button>
+              >
+                −
+              </button>
+              <div className="free-separator" />
+              <input
+                type="number"
+                min="0"
+                className="invisible-num-input free-counter-input"
+                value={diesel}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "") setDiesel("");
+                  else {
+                    const parsed = parseInt(val, 10);
+                    if (!isNaN(parsed) && parsed >= 0) setDiesel(parsed);
+                  }
+                }}
+              />
+              <div className="free-separator" />
+              <button
+                className="free-counter-btn"
+                onClick={() =>
+                  setDiesel((c) => (typeof c === "number" ? c : 0) + 1)
+                }
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* PRAVÝ PANEL: Výstup */}
-      <div className="panel-right">
-        {safeDiesel > 0 ? (
-          <div>
-            <div className="excavator-time-display">
-              <span className="excavator-time-label">
-                Total Extraction Time
+        <div className="metal-rule" style={{ width: '100%', margin: '40px 0' }} />
+
+        <div className="output-card">
+          {safeDiesel > 0 ? (
+            <div>
+              <div className="excavator-time-display" style={{ marginBottom: '20px', justifyContent: 'center' }}>
+                <span className="excavator-time-label">
+                  Total Extraction Time
+                </span>
+                <span className="excavator-time-value">{timeString}</span>
+              </div>
+
+              <div className="excavator-list">
+                {RATES.map((item, index) => {
+                  const total = safeDiesel * item.yieldPerBarrel;
+
+                  return (
+                    <div
+                      key={item.id}
+                      className="excavator-row animate-yield"
+                      style={{ animationDelay: `${index * 0.05}s` }}
+                    >
+                      <div className="excavator-left">
+                        <Img src={item.img} alt={item.name} />
+                        <span className="excavator-name">{item.name}</span>
+                      </div>
+
+                      <div className="excavator-right">
+                        <span className="excavator-total">
+                          {total.toLocaleString()}
+                        </span>
+                        <span className="excavator-rate">
+                          {item.yieldPerBarrel.toLocaleString()} / barrel
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="empty-state" style={{ minHeight: '200px' }}>
+              <span
+                className="icon"
+                style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
+              >
+                ◈
               </span>
-              <span className="excavator-time-value">{timeString}</span>
+              <div style={{ color: "#888", lineHeight: 1.6, textAlign: 'center' }}>
+                Enter the amount of Diesel Fuel
+                <br />
+                to calculate total yields
+              </div>
             </div>
-
-            <div className="excavator-list">
-              {RATES.map((item, index) => {
-                const total = safeDiesel * item.yieldPerBarrel;
-
-                return (
-                  <div
-                    key={item.id}
-                    className="excavator-row animate-yield"
-                    style={{ animationDelay: `${index * 0.05}s` }}
-                  >
-                    <div className="excavator-left">
-                      <Img src={item.img} alt={item.name} />
-                      <span className="excavator-name">{item.name}</span>
-                    </div>
-
-                    <div className="excavator-right">
-                      <span className="excavator-total">
-                        {total.toLocaleString()}
-                      </span>
-                      <span className="excavator-rate">
-                        {item.yieldPerBarrel.toLocaleString()} / barrel
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <div className="empty-state">
-            <span
-              className="icon"
-              style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
-            >
-              ◈
-            </span>
-            <div style={{ color: "#888", lineHeight: 1.6 }}>
-              Enter the amount of Diesel Fuel
-              <br />
-              to calculate total yields
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </CalcShell>
   );
