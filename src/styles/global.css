@@ -2230,6 +2230,38 @@ html {
     max-height: 440px;
   }
 }
+
+/* Mid-width raid layout: not enough room for 3 columns, but too wide to stack
+   into one. Two rows: [target structure | raiding tools] on top, results
+   (integrity + combos) spanning the full width below. The second row is taller
+   than 100vh allows, so release the shell's fixed height like the mobile view. */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .calc-wrap[data-variant="raid"] {
+    max-height: none;
+    overflow: visible;
+  }
+  [data-variant="raid"] .calc-body {
+    grid-template-columns: 1fr 1fr;
+  }
+  [data-variant="raid"] .panel-left {
+    order: 1;
+    border-right: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    overflow-y: visible;
+  }
+  [data-variant="raid"] .panel-mid {
+    order: 2;
+    border-right: none;
+    border-bottom: 1px solid var(--border2);
+    overflow-y: visible;
+  }
+  [data-variant="raid"] .panel-right {
+    order: 3;
+    grid-column: 1 / -1;
+    border-right: none;
+    overflow-y: visible;
+  }
+}
 /* ════════════════════════════════════════════════════════════════════════
    MODERNÍ MINIMALISTICKÝ TOGGLE (RECYCLER)
    ════════════════════════════════════════════════════════════════════════ */
