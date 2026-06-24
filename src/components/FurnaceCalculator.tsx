@@ -214,7 +214,17 @@ export function FurnaceCalculator() {
           margin-bottom: 30px;
         }
 
+        /* ════════════════════════════════════════════════════════════════
+           CASCADING ANIMACE (Oprava záblesku přes CSS proměnné)
+           ════════════════════════════════════════════════════════════════ */
+        @keyframes popInProcess {
+          0% { opacity: 0; transform: translateY(15px) scale(0.8); }
+          100% { opacity: var(--btn-op); transform: translateY(0) scale(1); }
+        }
+
         .dense-btn {
+          --btn-op: 0.5; /* Základní šedá průhlednost pro animaci i tlačítko */
+          opacity: var(--btn-op);
           background: transparent;
           border: 1px solid rgba(255, 255, 255, 0.03);
           border-radius: 4px;
@@ -225,30 +235,38 @@ export function FurnaceCalculator() {
           gap: 6px;
           cursor: pointer;
           transition: all 0.25s ease;
-          opacity: 0.5;
           filter: grayscale(80%);
           width: 85px; 
+          animation: popInProcess 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
         }
+
         .dense-btn:hover {
-          opacity: 0.8;
+          --btn-op: 0.8;
+          opacity: var(--btn-op);
           background: rgba(255, 255, 255, 0.02);
           border-color: rgba(255, 255, 255, 0.1);
         }
+
         .dense-btn.active {
-          opacity: 1;
+          --btn-op: 1; /* Aktivní svítící průhlednost */
+          opacity: var(--btn-op);
           filter: grayscale(0%);
           border-color: #cc422c;
           background: linear-gradient(to bottom, rgba(204, 66, 44, 0.08) 0%, transparent 100%);
         }
+
         .dense-btn img {
           width: 32px; 
           height: 32px;
           object-fit: contain;
           transition: transform 0.3s ease;
         }
+        
         .dense-btn.active img {
           transform: scale(1.1);
+          filter: drop-shadow(0 4px 8px rgba(206, 66, 43, 0.5)); 
         }
+        
         .dense-btn .minimal-box-name {
           font-size: 9px;
           line-height: 1.15;
@@ -385,13 +403,16 @@ export function FurnaceCalculator() {
           <div className="sec-label" style={{ marginBottom: "16px" }}>
             TARGET PROCESS
           </div>
-          <div className="dense-selector-row">
+          {/* TADY JE TEN TRIK: Přidán key={selectedSmelterId} */}
+          <div className="dense-selector-row" key={selectedSmelterId}>
             {activeSmelter.data.map((process, idx) => (
               <button
                 key={idx}
                 className={`dense-btn${selectedProcessIdx === idx ? " active" : ""}`}
                 onClick={() => setSelectedProcessIdx(idx)}
                 title={`${process.inputItem} -> ${process.outputItem}`}
+                /* TADY JE KOUZLO: Automatické zpoždění pro libovolný počet položek */
+                style={{ animationDelay: `${idx * 0.025}s` }}
               >
                 <Img
                   src={getImageFromName(process.inputItem)}

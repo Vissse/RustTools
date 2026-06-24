@@ -10,7 +10,7 @@ const MATERIALS = [
     name: "Twig",
     hp: 10,
     decayHours: 1,
-    img: "/images/wood.png",
+    img: "/images/twig-wall.png",
     color: "#a08b6c",
   },
   {
@@ -18,7 +18,7 @@ const MATERIALS = [
     name: "Wood",
     hp: 250,
     decayHours: 3,
-    img: "/images/wood.png",
+    img: "/images/wood-wall.png",
     color: "#c9b07a",
   },
   {
@@ -26,7 +26,7 @@ const MATERIALS = [
     name: "Stone",
     hp: 500,
     decayHours: 5,
-    img: "/images/stones.png",
+    img: "/images/stone-wall.png",
     color: "#a9a9a9",
   },
   {
@@ -34,7 +34,7 @@ const MATERIALS = [
     name: "Metal",
     hp: 1000,
     decayHours: 8,
-    img: "/images/metal.fragments.png",
+    img: "/images/metal-wall.png",
     color: "#a4b3c6",
   },
   {
@@ -42,7 +42,7 @@ const MATERIALS = [
     name: "Armored",
     hp: 2000,
     decayHours: 12,
-    img: "/images/metal.refined.png",
+    img: "/images/armored-wall.png",
     color: "#ffffff",
   },
 ];
