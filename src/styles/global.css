@@ -3319,16 +3319,19 @@ html {
 .filter-row {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Rovnoměrně rozprostře položky po celé šířce */
-  flex-wrap: nowrap !important;
-  gap: 4px; /* Zmenšená mezera z 10px na 4px pro úsporu místa */
+  /* Center with a fixed gap instead of space-between: space-between stretched
+     the leftover width between every item (incl. each tab and its divider), so
+     the spacing looked different at every panel width. A constant gap keeps the
+     tab↔divider distance identical on all resolutions. */
+  justify-content: safe center;
+  /* Wrap onto extra rows when the panel is too narrow for one line (mobile)
+     instead of overflowing. The 12px gap doubles as the row-gap. */
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 8px;
   width: 100%;
-
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
 .filter-row::-webkit-scrollbar {
@@ -3411,6 +3414,12 @@ html {
   height: 12px;
   background: linear-gradient(to bottom, transparent, #4a4a4a, transparent);
   flex-shrink: 0; /* Zabrání mizení separátorů, když je málo místa */
+}
+
+/* When the tabs wrap onto multiple rows, drop the dividers so none dangle at a
+   row edge — the row-gap alone separates the tabs (toggled from JS on wrap). */
+.filter-row.is-wrapped .filter-separator {
+  display: none;
 }
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -3674,6 +3683,25 @@ html {
 .combo-res-val {
   font-weight: 700;
   font-size: 15px;
+}
+
+/* On narrow phones the three resource chips don't fit beside the combo info,
+   so let the whole row wrap and drop the resources onto their own line
+   instead of overflowing to the right. */
+@media (max-width: 432px) {
+  .minimal-combo-row {
+    flex-wrap: wrap;
+  }
+  .combo-separator {
+    display: none;
+  }
+  .combo-resources {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px 16px;
+    margin-top: 10px;
+  }
 }
 
 /* Sdílené barvy surovin */

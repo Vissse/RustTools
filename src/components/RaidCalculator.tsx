@@ -1,131 +1,158 @@
-import { useMemo, useState, useEffect, Fragment } from "react";
-import type { CSSProperties } from "react";
-import { CalcShell } from "./CalcShell";
-import { Img } from "./Img";
+import { useMemo, useState, useEffect, useRef, Fragment } from 'react'
+import type { CSSProperties } from 'react'
+import { CalcShell } from './CalcShell'
+import { Img } from './Img'
 import {
   EXPLOSIVES,
   loadRaidDataForStructure, // Původní RAID_DATA nahrazeno asynchronním getterem
   RESOURCE_ICONS,
   STRUCTURES,
-} from "../lib/data/raid-data";
+} from '../lib/data/raid-data'
 import {
   bestCombo,
   comboTotal,
   damageAgainst,
   type ComboMode,
-} from "../lib/raid-solver";
-import { Feature, useFeatureUsed } from "../lib/analytics";
-import type { RaidCategory, RaidItem } from "../lib/types";
+} from '../lib/raid-solver'
+import { Feature, useFeatureUsed } from '../lib/analytics'
+import type { RaidCategory, RaidItem } from '../lib/types'
 
 // Filtr -> kategorie v dynamických datech. 'Explosive' řeší vlastní solver (bestCombo),
 // ostatní kategorie jen vypisují potřebné množství + čas z per-structure dat.
 const CATEGORY_MAP: Record<string, RaidCategory> = {
-  "Siege Weapons": "siege weapons",
-  Melee: "melee",
-  "Throwing Attacks": "throw",
-  Guns: "guns",
-  Torpedos: "torpedo",
-};
+  'Siege Weapons': 'siege weapons',
+  Melee: 'melee',
+  'Throwing Attacks': 'throw',
+  Guns: 'guns',
+  Torpedos: 'torpedo',
+}
 
 // Seznam kategorií pro filtr
 const FILTER_CATEGORIES = [
-  "Explosive",
-  "Siege Weapons",
-  "Melee",
-  "Throwing Attacks",
-  "Guns",
-  "Torpedos",
-];
+  'Explosive',
+  'Siege Weapons',
+  'Melee',
+  'Throwing Attacks',
+  'Guns',
+  'Torpedos',
+]
 
 export function RaidCalculator() {
   const [selectedStructure, setSelectedStructure] = useState<string | null>(
-    null,
-  );
+    null
+  )
   const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
-    () => new Set(),
-  );
-  const [structureCount, setStructureCount] = useState<number | "">(1);
-  const [discountActive, setDiscountActive] = useState<boolean>(false);
-  const [comboMode, setComboMode] = useState<ComboMode>("cheapest");
+    () => new Set()
+  )
+  const [structureCount, setStructureCount] = useState<number | ''>(1)
+  const [discountActive, setDiscountActive] = useState<boolean>(false)
+  const [comboMode, setComboMode] = useState<ComboMode>('cheapest')
+
+  // The category tabs wrap onto multiple rows on narrow screens; when they do,
+  // the vertical dividers between them would dangle at row edges. Detect the
+  // wrap and hide the dividers via the `is-wrapped` class. We compute the width
+  // a single row WOULD need (tabs + gaps + dividers) rather than reading the
+  // current layout, so toggling the class can't feed back into the measurement.
+  const filterRowRef = useRef<HTMLDivElement>(null)
+  const [filtersWrapped, setFiltersWrapped] = useState(false)
+
+  useEffect(() => {
+    const el = filterRowRef.current
+    if (!el) return
+    const GAP = 12 // .filter-row gap
+    const DIVIDER = 1 // .filter-separator width
+    const measure = () => {
+      const tabs = el.querySelectorAll<HTMLElement>('.filter-pure-text')
+      if (!tabs.length) return
+      let needed = 0
+      // Sub-pixel widths: offsetWidth rounds down, which made `needed`
+      // underestimate the row and fire the wrap detection a frame late.
+      tabs.forEach((t) => (needed += t.getBoundingClientRect().width))
+      // (n-1) dividers, each flanked by a gap on both sides.
+      needed += (tabs.length - 1) * (DIVIDER + GAP * 2)
+      // Hide the dividers a couple px BEFORE the true wrap point so they never
+      // dangle at a row edge during the transition as the panel narrows.
+      setFiltersWrapped(needed > el.clientWidth - 2)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   const [activeFilters, setActiveFilters] = useState<Set<string>>(
-    () => new Set(["Explosive"]),
-  );
+    () => new Set(['Explosive'])
+  )
 
   // --- NOVÉ STAVY PRO ASYNCHRONNÍ DATA (Gecko/Firefox optimalizace) ---
-  const [currentRaidData, setCurrentRaidData] = useState<RaidItem[]>([]);
-  const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
+  const [currentRaidData, setCurrentRaidData] = useState<RaidItem[]>([])
+  const [isLoadingData, setIsLoadingData] = useState<boolean>(false)
 
   // --- EFEKT PRO NAČÍTÁNÍ DATOVÝCH CHUNKŮ ---
   useEffect(() => {
     if (!selectedStructure) {
-      setCurrentRaidData([]);
-      return;
+      setCurrentRaidData([])
+      return
     }
 
-    let isMounted = true;
-    setIsLoadingData(true);
+    let isMounted = true
+    setIsLoadingData(true)
 
     loadRaidDataForStructure(selectedStructure)
       .then((data) => {
         if (isMounted) {
-          setCurrentRaidData(data);
-          setIsLoadingData(false);
+          setCurrentRaidData(data)
+          setIsLoadingData(false)
         }
       })
       .catch((error) => {
-        console.error("Chyba při načítání dat pro strukturu:", error);
+        console.error('Chyba při načítání dat pro strukturu:', error)
         if (isMounted) {
-          setCurrentRaidData([]);
-          setIsLoadingData(false);
+          setCurrentRaidData([])
+          setIsLoadingData(false)
         }
-      });
+      })
 
     return () => {
-      isMounted = false;
-    };
-  }, [selectedStructure]);
+      isMounted = false
+    }
+  }, [selectedStructure])
 
-  const ready = selectedStructure !== null && selectedExplosives.size > 0;
+  const ready = selectedStructure !== null && selectedExplosives.size > 0
 
   const result = useMemo(() => {
-    if (!selectedStructure || selectedExplosives.size === 0) return null;
+    if (!selectedStructure || selectedExplosives.size === 0) return null
 
     const safeCount =
-      typeof structureCount === "number" && structureCount > 0
+      typeof structureCount === 'number' && structureCount > 0
         ? structureCount
-        : 1;
+        : 1
 
     // Raids happen door-by-door: solve the cheapest combo for ONE structure,
     // then scale that combo by the count. This keeps the per-door combo stable
     // regardless of count (20 vs 21 doors) instead of pooling all HP into one
     // giant knapsack.
-    const singleHp = STRUCTURES[selectedStructure].hp;
-    const totalHp = singleHp * safeCount;
-    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name));
-    const perDoorCombo = bestCombo(
-      singleHp,
-      selectedStructure,
-      exps,
-      comboMode,
-    );
+    const singleHp = STRUCTURES[selectedStructure].hp
+    const totalHp = singleHp * safeCount
+    const exps = EXPLOSIVES.filter((e) => selectedExplosives.has(e.name))
+    const perDoorCombo = bestCombo(singleHp, selectedStructure, exps, comboMode)
     const combo = perDoorCombo.map((c) => ({
       ...c,
       qty: c.qty * safeCount,
       totalSulfur: c.totalSulfur * safeCount,
       totalMetal: c.totalMetal * safeCount,
       totalCharcoal: c.totalCharcoal * safeCount,
-    }));
+    }))
 
     const totalDmg = combo.reduce(
       (s, c) => s + damageAgainst(c.exp, selectedStructure) * c.qty,
-      0,
-    );
-    const dmgDone = Math.min(totalDmg, totalHp);
-    const pct = Math.min(100, (dmgDone / totalHp) * 100);
-    const destroyed = totalDmg >= totalHp;
+      0
+    )
+    const dmgDone = Math.min(totalDmg, totalHp)
+    const pct = Math.min(100, (dmgDone / totalHp) * 100)
+    const destroyed = totalDmg >= totalHp
 
-    const baseCharcoal = comboTotal(combo, "totalCharcoal");
+    const baseCharcoal = comboTotal(combo, 'totalCharcoal')
 
     return {
       totalHp,
@@ -133,69 +160,69 @@ export function RaidCalculator() {
       dmgDone,
       pct,
       destroyed,
-      totalSulfur: comboTotal(combo, "totalSulfur"),
-      totalMetal: comboTotal(combo, "totalMetal"),
+      totalSulfur: comboTotal(combo, 'totalSulfur'),
+      totalMetal: comboTotal(combo, 'totalMetal'),
       totalCharcoal: discountActive
         ? Math.round(baseCharcoal * (2 / 3))
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
-    };
+    }
   }, [
     selectedStructure,
     selectedExplosives,
     structureCount,
     discountActive,
     comboMode,
-  ]);
+  ])
 
-  const explosiveActive = activeFilters.has("Explosive");
+  const explosiveActive = activeFilters.has('Explosive')
 
   // Využití dynamicky načtených 'currentRaidData' místo monolitického objektu RAID_DATA
   const toolGroups = useMemo(() => {
-    if (!selectedStructure || currentRaidData.length === 0) return [];
+    if (!selectedStructure || currentRaidData.length === 0) return []
 
     const safeCount =
-      typeof structureCount === "number" && structureCount > 0
+      typeof structureCount === 'number' && structureCount > 0
         ? structureCount
-        : 1;
+        : 1
 
     return FILTER_CATEGORIES.filter(
-      (label) => label !== "Explosive" && activeFilters.has(label),
+      (label) => label !== 'Explosive' && activeFilters.has(label)
     )
       .map((label) => {
-        const category = CATEGORY_MAP[label];
+        const category = CATEGORY_MAP[label]
         const tools = currentRaidData
           .filter((it) => it.category === category)
           .map((it) => ({ ...it, total: it.quantity * safeCount }))
-          .sort((a, b) => a.total - b.total);
-        return { label, tools };
+          .sort((a, b) => a.total - b.total)
+        return { label, tools }
       })
-      .filter((g) => g.tools.length > 0);
-  }, [selectedStructure, structureCount, activeFilters, currentRaidData]);
+      .filter((g) => g.tools.length > 0)
+  }, [selectedStructure, structureCount, activeFilters, currentRaidData])
 
-  const solverShown = explosiveActive && ready && result !== null;
+  const solverShown = explosiveActive && ready && result !== null
 
   useFeatureUsed(
     Feature.raid,
-    `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`,
-  );
+    `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`
+  )
 
   function toggleExplosive(name: string) {
     setSelectedExplosives((prev) => {
-      const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
-      return next;
-    });
+      const next = new Set(prev)
+      if (next.has(name)) next.delete(name)
+      else next.add(name)
+      return next
+    })
   }
 
   function toggleFilter(cat: string) {
     setActiveFilters((prev) => {
-      const next = new Set(prev);
-      if (next.has(cat)) next.delete(cat);
-      else next.add(cat);
-      return next;
-    });
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
   }
 
   return (
@@ -218,7 +245,7 @@ export function RaidCalculator() {
             {Object.entries(STRUCTURES).map(([name, data]) => (
               <button
                 key={name}
-                className={`minimal-box-btn${selectedStructure === name ? " active" : ""}`}
+                className={`minimal-box-btn${selectedStructure === name ? ' active' : ''}`}
                 onClick={() => setSelectedStructure(name)}
               >
                 <Img src={data.img} alt={name} />
@@ -236,14 +263,14 @@ export function RaidCalculator() {
                 src={STRUCTURES[selectedStructure].img}
                 alt={selectedStructure}
                 className="structure-preview-img"
-                onError={(e) => (e.currentTarget.style.opacity = "0.3")}
+                onError={(e) => (e.currentTarget.style.opacity = '0.3')}
               />
               <div className="free-counter-wrap">
                 <button
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount((c) =>
-                      Math.max(1, (typeof c === "number" ? c : 1) - 1),
+                      Math.max(1, (typeof c === 'number' ? c : 1) - 1)
                     )
                   }
                 >
@@ -256,13 +283,13 @@ export function RaidCalculator() {
                   className="invisible-num-input free-counter-input"
                   value={structureCount}
                   onChange={(e) => {
-                    const val = e.target.value;
-                    if (val === "") {
-                      setStructureCount("");
+                    const val = e.target.value
+                    if (val === '') {
+                      setStructureCount('')
                     } else {
-                      const parsed = parseInt(val, 10);
+                      const parsed = parseInt(val, 10)
                       if (!isNaN(parsed) && parsed > 0)
-                        setStructureCount(parsed);
+                        setStructureCount(parsed)
                     }
                   }}
                 />
@@ -271,7 +298,7 @@ export function RaidCalculator() {
                   className="free-counter-btn"
                   onClick={() =>
                     setStructureCount(
-                      (c) => (typeof c === "number" ? c : 1) + 1,
+                      (c) => (typeof c === 'number' ? c : 1) + 1
                     )
                   }
                 >
@@ -293,11 +320,14 @@ export function RaidCalculator() {
           <div className="sec-label">RAIDING TOOLS</div>
 
           {/* ULTRA MINIMALISTICKÁ SEKCE KATEGORIÍ SE SEPARÁTORY */}
-          <div className="filter-row">
+          <div
+            ref={filterRowRef}
+            className={`filter-row${filtersWrapped ? ' is-wrapped' : ''}`}
+          >
             {FILTER_CATEGORIES.map((cat, idx) => (
               <Fragment key={cat}>
                 <button
-                  className={`filter-pure-text ${activeFilters.has(cat) ? "active" : ""}`}
+                  className={`filter-pure-text ${activeFilters.has(cat) ? 'active' : ''}`}
                   onClick={() => toggleFilter(cat)}
                 >
                   {cat}
@@ -315,7 +345,7 @@ export function RaidCalculator() {
               {EXPLOSIVES.map((e) => (
                 <button
                   key={e.name}
-                  className={`minimal-box-btn${selectedExplosives.has(e.name) ? " active" : ""}`}
+                  className={`minimal-box-btn${selectedExplosives.has(e.name) ? ' active' : ''}`}
                   onClick={() => toggleExplosive(e.name)}
                 >
                   <Img src={e.img} alt={e.name} />
@@ -334,8 +364,8 @@ export function RaidCalculator() {
             toolGroups.length === 0 && (
               <div className="wall-placeholder opacity-50 py-4 text-xs">
                 {selectedStructure
-                  ? "NO TOOLS IN THE SELECTED CATEGORIES"
-                  : "SELECT A TARGET AND A RAIDING TOOL CATEGORY"}
+                  ? 'NO TOOLS IN THE SELECTED CATEGORIES'
+                  : 'SELECT A TARGET AND A RAIDING TOOL CATEGORY'}
               </div>
             )
           )}
@@ -391,7 +421,7 @@ export function RaidCalculator() {
                   </div>
                   <div
                     className="modern-hp-wrapper"
-                    style={{ "--hp-pct": `${result.pct}%` } as CSSProperties}
+                    style={{ '--hp-pct': `${result.pct}%` } as CSSProperties}
                   >
                     <div className="modern-hp-fill" />
                     <div className="modern-hp-glow" />
@@ -399,10 +429,10 @@ export function RaidCalculator() {
 
                   {/* Optimisation mode: cheapest sulfur vs fewest explosives */}
                   <div
-                    className={`mode-switch craft-switch-group${comboMode === "fastest" ? " active" : ""}`}
+                    className={`mode-switch craft-switch-group${comboMode === 'fastest' ? ' active' : ''}`}
                   >
                     <span
-                      className={`mode-side-label${comboMode === "cheapest" ? " active" : ""}`}
+                      className={`mode-side-label${comboMode === 'cheapest' ? ' active' : ''}`}
                     >
                       CHEAPEST
                     </span>
@@ -410,14 +440,14 @@ export function RaidCalculator() {
                       className="craft-switch"
                       onClick={() =>
                         setComboMode((m) =>
-                          m === "cheapest" ? "fastest" : "cheapest",
+                          m === 'cheapest' ? 'fastest' : 'cheapest'
                         )
                       }
                     >
                       <div className="craft-switch-thumb" />
                     </div>
                     <span
-                      className={`mode-side-label${comboMode === "fastest" ? " active" : ""}`}
+                      className={`mode-side-label${comboMode === 'fastest' ? ' active' : ''}`}
                     >
                       FASTEST
                     </span>
@@ -558,7 +588,7 @@ export function RaidCalculator() {
 
                       {/* Spínač a nápisy */}
                       <div
-                        className={`craft-switch-group${discountActive ? " active" : ""}`}
+                        className={`craft-switch-group${discountActive ? ' active' : ''}`}
                       >
                         {/* Přepínač (Slider) */}
                         <div
@@ -584,5 +614,5 @@ export function RaidCalculator() {
         )}
       </div>
     </CalcShell>
-  );
+  )
 }
