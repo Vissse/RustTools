@@ -9,6 +9,8 @@ export const Route = createFileRoute("/recycling")({
         "Drop items into a recycler and see exactly what you get back, for both the Radtown and Safe Zone recyclers in Rust.",
       path: "/recycling",
     }),
+  // Sdílené odkazy: zachovej libovolné search params (stav kalkulačky v URL).
+  validateSearch: (search: Record<string, unknown>) => search,
   component: lazyRouteComponent(
     () => import("../components/RecyclingCalculator"),
     "RecyclingCalculator",

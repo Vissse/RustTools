@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
 
 // 1. DATA PŘEDMĚTŮ PRO VŠECHNY LOKACE
 const BANDIT_CAMP_CATEGORIES = [
@@ -908,19 +909,72 @@ const MONUMENTS = [
   { id: "large-barn", name: "Large Barn", categories: STABLES_CATEGORIES },
 ];
 
+// --- Sdílení stavu přes URL (search params) ---
+const MONUMENT_IDS = new Set(MONUMENTS.map((m) => m.id));
+const VALID_ITEM_IDS = new Set<string>();
+MONUMENTS.forEach((m) =>
+  m.categories.forEach((c) => c.items.forEach((i) => VALID_ITEM_IDS.add(i.id))),
+);
+
+const parseInitialMonument = (p: URLSearchParams): string => {
+  const m = p.get("mon");
+  return m && MONUMENT_IDS.has(m) ? m : "bandit";
+};
+const parseInitialTab = (p: URLSearchParams, monId: string): string => {
+  const mon = MONUMENTS.find((m) => m.id === monId)!;
+  const t = p.get("tab");
+  return t && mon.categories.some((c) => c.id === t)
+    ? t
+    : mon.categories[0].id;
+};
+const parseInitialScrap = (p: URLSearchParams): number => {
+  const n = parseInt(p.get("scrap") ?? "", 10);
+  return Number.isFinite(n) && n >= 0 ? n : 0;
+};
+const parseInitialCart = (p: URLSearchParams): Record<string, number> => {
+  const raw = p.get("cart");
+  const cart: Record<string, number> = {};
+  if (!raw) return cart;
+  for (const part of raw.split(",")) {
+    const [id, val] = part.split(":");
+    const n = parseInt(val, 10);
+    if (VALID_ITEM_IDS.has(id) && Number.isFinite(n) && n > 0) cart[id] = n;
+  }
+  return cart;
+};
+const serializeCart = (cart: Record<string, number>): string =>
+  Object.entries(cart)
+    .filter(([, n]) => n > 0)
+    .map(([id, n]) => `${id}:${n}`)
+    .join(",");
+
 export function ShopCalculator() {
-  const [activeMonumentId, setActiveMonumentId] = useState<string>("bandit");
-  const [activeTab, setActiveTab] = useState<string>(
-    BANDIT_CAMP_CATEGORIES[0].id,
+  const initialSearch = readInitialSearch();
+  const initialMonument = parseInitialMonument(initialSearch);
+  const [activeMonumentId, setActiveMonumentId] =
+    useState<string>(initialMonument);
+  const [activeTab, setActiveTab] = useState<string>(() =>
+    parseInitialTab(initialSearch, initialMonument),
   );
 
-  const [scrapInventory, setScrapInventory] = useState<number>(0);
-  const [cart, setCart] = useState<Record<string, number>>({});
+  const [scrapInventory, setScrapInventory] = useState<number>(() =>
+    parseInitialScrap(initialSearch),
+  );
+  const [cart, setCart] = useState<Record<string, number>>(() =>
+    parseInitialCart(initialSearch),
+  );
 
   const activeMonument = MONUMENTS.find((m) => m.id === activeMonumentId)!;
   const activeCategory =
     activeMonument.categories.find((c) => c.id === activeTab) ||
     activeMonument.categories[0];
+
+  useSyncSearch({
+    mon: activeMonumentId === "bandit" ? undefined : activeMonumentId,
+    tab: activeTab === activeMonument.categories[0].id ? undefined : activeTab,
+    scrap: scrapInventory > 0 ? String(scrapInventory) : undefined,
+    cart: serializeCart(cart) || undefined,
+  });
 
   const handleMonumentChange = (monId: string) => {
     setActiveMonumentId(monId);

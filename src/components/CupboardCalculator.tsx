@@ -8,6 +8,7 @@ import {
   generateStacks,
 } from "../lib/cupboard-logic";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
 import type { Stack } from "../lib/types";
 
 const RESOURCES = [
@@ -21,8 +22,37 @@ type Inputs = Record<(typeof RESOURCES)[number]["key"], string>;
 
 const EMPTY: Inputs = { wood: "", stone: "", metal: "", hqm: "" };
 
+// --- Sdílení stavu přes URL (search params) ---
+// Krátké klíče w/s/m/h -> wood/stone/metal/hqm.
+const PARAM_KEYS: Record<keyof Inputs, string> = {
+  wood: "w",
+  stone: "s",
+  metal: "m",
+  hqm: "h",
+};
+
+const parseInitialInputs = (p: URLSearchParams): Inputs => {
+  const next: Inputs = { ...EMPTY };
+  (Object.keys(PARAM_KEYS) as (keyof Inputs)[]).forEach((key) => {
+    const raw = p.get(PARAM_KEYS[key]);
+    const n = parseInt(raw ?? "", 10);
+    if (Number.isFinite(n) && n >= 0) next[key] = String(n);
+  });
+  return next;
+};
+
 export function CupboardCalculator() {
-  const [inputs, setInputs] = useState<Inputs>(EMPTY);
+  const initialSearch = readInitialSearch();
+  const [inputs, setInputs] = useState<Inputs>(() =>
+    parseInitialInputs(initialSearch),
+  );
+
+  useSyncSearch({
+    w: inputs.wood || undefined,
+    s: inputs.stone || undefined,
+    m: inputs.metal || undefined,
+    h: inputs.hqm || undefined,
+  });
 
   const result = useMemo(() => {
     const wood = parseInt(inputs.wood) || 0;

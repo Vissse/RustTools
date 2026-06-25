@@ -9,6 +9,8 @@ export const Route = createFileRoute("/cupboard")({
         "Enter your daily upkeep and see how long your base stays protected, laid out across the 24 Tool Cupboard slots in Rust.",
       path: "/cupboard",
     }),
+  // Sdílené odkazy: zachovej libovolné search params (stav kalkulačky v URL).
+  validateSearch: (search: Record<string, unknown>) => search,
   component: lazyRouteComponent(
     () => import("../components/CupboardCalculator"),
     "CupboardCalculator",

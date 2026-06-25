@@ -9,6 +9,8 @@ export const Route = createFileRoute("/shops")({
         "Calculate scrap costs for items at the Bandit Camp, Outpost, and Fishing Village in Rust. Track your scrap balance, purchases, and exchange rates.",
       path: "/shops",
     }),
+  // Sdílené odkazy: zachovej libovolné search params (stav kalkulačky v URL).
+  validateSearch: (search: Record<string, unknown>) => search,
   component: lazyRouteComponent(
     () => import("../components/ShopCalculator"),
     "ShopCalculator",

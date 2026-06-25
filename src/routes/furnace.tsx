@@ -9,6 +9,8 @@ export const Route = createFileRoute("/furnace")({
         "Plan your smelting in Rust: calculate furnace ratios, fuel and time to refine ore into metal, sulfur and high quality metal.",
       path: "/furnace",
     }),
+  // Sdílené odkazy: zachovej libovolné search params (stav kalkulačky v URL).
+  validateSearch: (search: Record<string, unknown>) => search,
   component: lazyRouteComponent(
     () => import("../components/FurnaceCalculator"),
     "FurnaceCalculator",

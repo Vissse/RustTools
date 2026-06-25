@@ -15,6 +15,7 @@ import {
   type ComboMode,
 } from '../lib/raid-solver'
 import { Feature, useFeatureUsed } from '../lib/analytics'
+import { readInitialSearch, useSyncSearch } from '../lib/useUrlState'
 import type { RaidCategory, RaidItem } from '../lib/types'
 
 // Filtr -> kategorie v dynamických datech. 'Explosive' řeší vlastní solver (bestCombo),
@@ -37,16 +38,54 @@ const FILTER_CATEGORIES = [
   'Torpedos',
 ]
 
+// --- Sdílení stavu přes URL (search params) ---
+// Pouze validní názvy ze známých dat se z URL přijmou, junk se ignoruje.
+const VALID_EXPLOSIVES = new Set(EXPLOSIVES.map((e) => e.name))
+
+const isDefaultFilters = (f: Set<string>) => f.size === 1 && f.has('Explosive')
+
+const parseInitialStructure = (p: URLSearchParams): string | null => {
+  const s = p.get('s')
+  return s && s in STRUCTURES ? s : null
+}
+const parseInitialExplosives = (p: URLSearchParams): Set<string> => {
+  const raw = p.get('ex')
+  if (!raw) return new Set()
+  return new Set(raw.split(',').filter((n) => VALID_EXPLOSIVES.has(n)))
+}
+const parseInitialCount = (p: URLSearchParams): number | '' => {
+  const n = parseInt(p.get('n') ?? '', 10)
+  return Number.isFinite(n) && n >= 1 ? n : 1
+}
+const parseInitialMode = (p: URLSearchParams): ComboMode =>
+  p.get('mode') === 'fastest' ? 'fastest' : 'cheapest'
+const parseInitialDiscount = (p: URLSearchParams): boolean =>
+  p.get('disc') === '1'
+const parseInitialFilters = (p: URLSearchParams): Set<string> => {
+  const raw = p.get('f')
+  if (raw == null) return new Set(['Explosive'])
+  const valid = raw.split(',').filter((c) => FILTER_CATEGORIES.includes(c))
+  return new Set(valid.length ? valid : ['Explosive'])
+}
+
 export function RaidCalculator() {
+  // Počáteční stav nasaď ze sdíleného odkazu (URL search params), jinak default.
+  const initialSearch = readInitialSearch()
   const [selectedStructure, setSelectedStructure] = useState<string | null>(
-    null
+    () => parseInitialStructure(initialSearch)
   )
   const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
-    () => new Set()
+    () => parseInitialExplosives(initialSearch)
   )
-  const [structureCount, setStructureCount] = useState<number | ''>(1)
-  const [discountActive, setDiscountActive] = useState<boolean>(false)
-  const [comboMode, setComboMode] = useState<ComboMode>('cheapest')
+  const [structureCount, setStructureCount] = useState<number | ''>(() =>
+    parseInitialCount(initialSearch)
+  )
+  const [discountActive, setDiscountActive] = useState<boolean>(() =>
+    parseInitialDiscount(initialSearch)
+  )
+  const [comboMode, setComboMode] = useState<ComboMode>(() =>
+    parseInitialMode(initialSearch)
+  )
 
   // The category tabs wrap onto multiple rows on narrow screens; when they do,
   // the vertical dividers between them would dangle at row edges. Detect the
@@ -80,9 +119,26 @@ export function RaidCalculator() {
     return () => ro.disconnect()
   }, [])
 
-  const [activeFilters, setActiveFilters] = useState<Set<string>>(
-    () => new Set(['Explosive'])
+  const [activeFilters, setActiveFilters] = useState<Set<string>>(() =>
+    parseInitialFilters(initialSearch)
   )
+
+  // Zrcadli aktuální výběr zpět do URL, aby šel výsledek sdílet odkazem.
+  useSyncSearch({
+    s: selectedStructure ?? undefined,
+    n:
+      structureCount !== '' && structureCount !== 1
+        ? String(structureCount)
+        : undefined,
+    ex: selectedExplosives.size
+      ? [...selectedExplosives].join(',')
+      : undefined,
+    mode: comboMode === 'cheapest' ? undefined : comboMode,
+    disc: discountActive ? '1' : undefined,
+    f: isDefaultFilters(activeFilters)
+      ? undefined
+      : [...activeFilters].join(','),
+  })
 
   // --- NOVÉ STAVY PRO ASYNCHRONNÍ DATA (Gecko/Firefox optimalizace) ---
   const [currentRaidData, setCurrentRaidData] = useState<RaidItem[]>([])

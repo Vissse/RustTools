@@ -1,7 +1,8 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
 
 const MATERIALS = [
   {
@@ -41,15 +42,51 @@ const MATERIALS = [
   },
 ];
 
+// --- Sdílení stavu přes URL (search params) ---
+const MATERIAL_IDS = new Set(MATERIALS.map((m) => m.id));
+
+const parseInitialMaterial = (p: URLSearchParams): string => {
+  const m = p.get("mat");
+  return m && MATERIAL_IDS.has(m) ? m : "stone";
+};
+const parseInitialHp = (p: URLSearchParams, matId: string): number | "" => {
+  const mat = MATERIALS.find((m) => m.id === matId)!;
+  const raw = p.get("hp");
+  if (raw == null) return mat.hp;
+  const n = parseInt(raw, 10);
+  if (!Number.isFinite(n) || n < 0) return mat.hp;
+  return Math.min(n, mat.hp);
+};
+
 export function DecayCalculator() {
-  const [selectedMaterial, setSelectedMaterial] = useState<string>("stone");
-  const [currentHp, setCurrentHp] = useState<number | "">(500);
+  const initialSearch = readInitialSearch();
+  const [selectedMaterial, setSelectedMaterial] = useState<string>(() =>
+    parseInitialMaterial(initialSearch),
+  );
+  const [currentHp, setCurrentHp] = useState<number | "">(() =>
+    parseInitialHp(initialSearch, parseInitialMaterial(initialSearch)),
+  );
 
   const activeMat = MATERIALS.find((m) => m.id === selectedMaterial)!;
 
+  // Reset HP na plné jen při SKUTEČNÉ změně materiálu — ne při mountu, aby se
+  // zachovalo HP nasazené ze sdíleného odkazu (a aby to bylo odolné vůči
+  // dvojímu mountu ve StrictMode).
+  const prevMatRef = useRef(selectedMaterial);
   useEffect(() => {
-    setCurrentHp(activeMat.hp);
+    if (prevMatRef.current !== selectedMaterial) {
+      prevMatRef.current = selectedMaterial;
+      setCurrentHp(activeMat.hp);
+    }
   }, [selectedMaterial, activeMat.hp]);
+
+  useSyncSearch({
+    mat: selectedMaterial === "stone" ? undefined : selectedMaterial,
+    hp:
+      typeof currentHp === "number" && currentHp !== activeMat.hp
+        ? String(currentHp)
+        : undefined,
+  });
 
   const safeHp =
     typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;

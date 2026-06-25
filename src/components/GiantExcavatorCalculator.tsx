@@ -2,6 +2,13 @@ import { useState, useMemo } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
+
+// --- Sdílení stavu přes URL (search params) ---
+const parseInitialDiesel = (p: URLSearchParams): number | "" => {
+  const n = parseInt(p.get("d") ?? "", 10);
+  return Number.isFinite(n) && n >= 0 ? n : 1;
+};
 
 // Data podle Rust tabulky (odstraněny barvy)
 const RATES = [
@@ -32,7 +39,13 @@ const RATES = [
 ];
 
 export function GiantExcavatorCalculator() {
-  const [diesel, setDiesel] = useState<number | "">(1);
+  const [diesel, setDiesel] = useState<number | "">(() =>
+    parseInitialDiesel(readInitialSearch()),
+  );
+
+  useSyncSearch({
+    d: typeof diesel === "number" && diesel !== 1 ? String(diesel) : undefined,
+  });
 
   const safeDiesel = typeof diesel === "number" && diesel > 0 ? diesel : 0;
 

@@ -1,7 +1,8 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
 
 // 1. Importy vygenerovaných dat
 import { Barbeque as BarbequeData } from "../lib/data/smelting-data/smelting-data-barbeque";
@@ -110,17 +111,56 @@ function getImageFromName(name: string) {
   return `/images/${map[name] || name.toLowerCase().replace(/ /g, ".") + ".png"}`;
 }
 
+// --- Sdílení stavu přes URL (search params) ---
+const SMELTER_IDS = new Set(SMELTERS.map((s) => s.id));
+
+const parseInitialSmelter = (p: URLSearchParams): string => {
+  const s = p.get("sm");
+  return s && SMELTER_IDS.has(s) ? s : "furnace";
+};
+const parseInitialProcessIdx = (p: URLSearchParams, smId: string): number => {
+  const sm = SMELTERS.find((s) => s.id === smId)!;
+  const n = parseInt(p.get("pr") ?? "", 10);
+  return Number.isFinite(n) && n >= 0 && n < sm.data.length ? n : 0;
+};
+const parseInitialQty = (p: URLSearchParams): number | "" => {
+  const n = parseInt(p.get("qty") ?? "", 10);
+  return Number.isFinite(n) && n >= 0 ? n : 1000;
+};
+
 export function FurnaceCalculator() {
-  const [selectedSmelterId, setSelectedSmelterId] = useState<string>("furnace");
-  const [selectedProcessIdx, setSelectedProcessIdx] = useState<number>(0);
-  const [quantity, setQuantity] = useState<number | "">(1000);
+  const initialSearch = readInitialSearch();
+  const [selectedSmelterId, setSelectedSmelterId] = useState<string>(() =>
+    parseInitialSmelter(initialSearch),
+  );
+  const [selectedProcessIdx, setSelectedProcessIdx] = useState<number>(() =>
+    parseInitialProcessIdx(initialSearch, parseInitialSmelter(initialSearch)),
+  );
+  const [quantity, setQuantity] = useState<number | "">(() =>
+    parseInitialQty(initialSearch),
+  );
 
   const activeSmelter = SMELTERS.find((s) => s.id === selectedSmelterId)!;
   const safeQty = typeof quantity === "number" && quantity > 0 ? quantity : 0;
 
+  // Reset procesu na 0 jen při SKUTEČNÉ změně pece — ne při mountu, aby se
+  // zachoval proces nasazený ze sdíleného odkazu (odolné vůči StrictMode).
+  const prevSmelterRef = useRef(selectedSmelterId);
   useEffect(() => {
-    setSelectedProcessIdx(0);
+    if (prevSmelterRef.current !== selectedSmelterId) {
+      prevSmelterRef.current = selectedSmelterId;
+      setSelectedProcessIdx(0);
+    }
   }, [selectedSmelterId]);
+
+  useSyncSearch({
+    sm: selectedSmelterId === "furnace" ? undefined : selectedSmelterId,
+    pr: selectedProcessIdx !== 0 ? String(selectedProcessIdx) : undefined,
+    qty:
+      typeof quantity === "number" && quantity !== 1000
+        ? String(quantity)
+        : undefined,
+  });
 
   const activeProcess = activeSmelter.data[selectedProcessIdx];
 

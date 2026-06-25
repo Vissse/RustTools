@@ -7,12 +7,45 @@ import { ItemPicker } from "./recycling/ItemPicker";
 import { ResultsPanel } from "./recycling/ResultsPanel";
 import { buildResults, filterCategories } from "./recycling/results";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { readInitialSearch, useSyncSearch } from "../lib/useUrlState";
+
+// --- Sdílení stavu přes URL (search params) ---
+const emptyInventory = () => Object.fromEntries(ITEMS.map((i) => [i.id, 0]));
+
+const parseInitialInventory = (p: URLSearchParams): Record<string, number> => {
+  const base = emptyInventory();
+  const raw = p.get("inv");
+  if (!raw) return base;
+  for (const part of raw.split(",")) {
+    const [id, val] = part.split(":");
+    const n = parseInt(val, 10);
+    if (id in base && Number.isFinite(n) && n > 0) base[id] = Math.min(9999, n);
+  }
+  return base;
+};
+
+const parseInitialRecycler = (p: URLSearchParams): RecyclerKind =>
+  p.get("rec") === "safezone" ? "safezone" : "radtown";
+
+const serializeInventory = (inv: Record<string, number>): string =>
+  Object.entries(inv)
+    .filter(([, n]) => n > 0)
+    .map(([id, n]) => `${id}:${n}`)
+    .join(",");
 
 export function RecyclingCalculator() {
+  const initialSearch = readInitialSearch();
   const [inventory, setInventory] = useState<Record<string, number>>(() =>
-    Object.fromEntries(ITEMS.map((i) => [i.id, 0])),
+    parseInitialInventory(initialSearch),
   );
-  const [recycler, setRecycler] = useState<RecyclerKind>("radtown");
+  const [recycler, setRecycler] = useState<RecyclerKind>(() =>
+    parseInitialRecycler(initialSearch),
+  );
+
+  useSyncSearch({
+    inv: serializeInventory(inventory) || undefined,
+    rec: recycler === "radtown" ? undefined : recycler,
+  });
   const [search, setSearch] = useState("");
   const tip = useTooltip();
 

@@ -9,6 +9,8 @@ export const Route = createFileRoute("/giant-excavator")({
         "Calculate Giant Excavator output and diesel fuel use in Rust to plan your mining runs at the monument.",
       path: "/giant-excavator",
     }),
+  // Sdílené odkazy: zachovej libovolné search params (stav kalkulačky v URL).
+  validateSearch: (search: Record<string, unknown>) => search,
   component: lazyRouteComponent(
     () => import("../components/GiantExcavatorCalculator"),
     "GiantExcavatorCalculator",
