@@ -54,6 +54,7 @@ export function DecayCalculator() {
   const safeHp =
     typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;
   const hpPercent = Math.max(0, Math.min(100, (safeHp / activeMat.hp) * 100));
+  const hpStep = activeMat.id === "twig" ? 1 : 10;
 
   const timeString = useMemo(() => {
     if (safeHp <= 0) return "0S";
@@ -106,6 +107,7 @@ export function DecayCalculator() {
         .decay-anim-1 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
         .decay-anim-2 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
         .decay-anim-3 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
+        .decay-anim-staggered { animation: slideUpFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
 
         .mat-selector-row {
           display: flex;
@@ -237,26 +239,29 @@ export function DecayCalculator() {
         }
       `}</style>
 
-      <div className="decay-container">
+      <div className="decay-container fade-in-container">
         {/* 1. SELEKTOR MATERIÁLU */}
         <div
-          className="decay-anim-1"
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <div className="sec-label" style={{ marginBottom: "16px" }}>
+          <div className="sec-label decay-anim-1" style={{ marginBottom: "16px" }}>
             BUILDING MATERIAL
           </div>
           <div className="mat-selector-row">
-            {MATERIALS.map((m) => (
+            {MATERIALS.map((m, index) => (
               <button
                 key={m.id}
-                className={`minimal-box-btn${selectedMaterial === m.id ? " active" : ""}`}
+                className={`minimal-box-btn decay-anim-staggered${selectedMaterial === m.id ? " active" : ""}`}
                 onClick={() => setSelectedMaterial(m.id)}
-                style={{ minWidth: "100px", flexShrink: 0 }}
+                style={{ 
+                  minWidth: "100px", 
+                  flexShrink: 0,
+                  animationDelay: `${index * 0.03}s`
+                }}
               >
                 <Img
                   src={m.img}
@@ -303,7 +308,7 @@ export function DecayCalculator() {
                 className="decay-btn"
                 onClick={() =>
                   setCurrentHp((c) =>
-                    Math.max(0, (typeof c === "number" ? c : 0) - 10),
+                    Math.max(0, (typeof c === "number" ? c : 0) - hpStep),
                   )
                 }
               >
@@ -334,7 +339,7 @@ export function DecayCalculator() {
                   setCurrentHp((c) =>
                     Math.min(
                       activeMat.hp,
-                      (typeof c === "number" ? c : 0) + 10,
+                      (typeof c === "number" ? c : 0) + hpStep,
                     ),
                   )
                 }

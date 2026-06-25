@@ -1329,6 +1329,9 @@ export function ShopCalculator() {
           animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
           z-index: 10;
         }
+        .item-card.is-sell .in-cart-badge {
+          background: var(--metal-col);
+        }
 
         .item-separator {
           width: 80%;
@@ -1417,7 +1420,7 @@ export function ShopCalculator() {
         .free-counter-input:focus::placeholder { color: transparent; }
       `}</style>
 
-      <div className="bandit-wrapper">
+      <div className="bandit-wrapper fade-in-container">
         {/* TOP DASHBOARD */}
         <div className="top-dashboard">
           <div className="dash-block">

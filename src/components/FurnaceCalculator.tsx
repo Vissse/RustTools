@@ -191,6 +191,7 @@ export function FurnaceCalculator() {
         .anim-1 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
         .anim-2 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
         .anim-3 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
+        .anim-staggered { animation: slideUpFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
 
         .selector-row {
           display: flex;
@@ -405,10 +406,9 @@ export function FurnaceCalculator() {
         }
       `}</style>
 
-      <div className="furnace-container">
+      <div className="furnace-container fade-in-container">
         {/* 1. VÝBĚR PECE */}
         <div
-          className="anim-1"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -416,16 +416,20 @@ export function FurnaceCalculator() {
             width: "100%",
           }}
         >
-          <div className="sec-label" style={{ marginBottom: "16px" }}>
+          <div className="sec-label anim-1" style={{ marginBottom: "16px" }}>
             SMELTER TYPE
           </div>
           <div className="selector-row">
-            {SMELTERS.map((s) => (
+            {SMELTERS.map((s, index) => (
               <button
                 key={s.id}
-                className={`minimal-box-btn${selectedSmelterId === s.id ? " active" : ""}`}
+                className={`minimal-box-btn anim-staggered${selectedSmelterId === s.id ? " active" : ""}`}
                 onClick={() => setSelectedSmelterId(s.id)}
-                style={{ flexShrink: 0, minWidth: "90px" }}
+                style={{ 
+                  flexShrink: 0, 
+                  minWidth: "90px",
+                  animationDelay: `${index * 0.03}s` 
+                }}
               >
                 <Img src={s.img} alt={s.name} />
                 <span className="minimal-box-name">{s.name}</span>

@@ -14,7 +14,7 @@ export function RandomDropList({ randomTotals }: RandomDropListProps) {
       <div className="sleek-rnd-title">Plus a random amount of...</div>
       <div className="sleek-rnd-list">
         {randomTotals.map((rt) => (
-          <div className="sleek-rnd-row" key={rt.id}>
+          <div className="sleek-rnd-row fade-in-container" key={rt.id}>
             {/* Levá část: Ikona a název */}
             <div className="sleek-rnd-left">
               <RecycleImg src={rt.img} alt={rt.name} data-tip={rt.name} />

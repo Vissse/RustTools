@@ -91,7 +91,7 @@ export function CupboardCalculator() {
         }
       `}</style>
 
-      <div className="cupboard-single-layout">
+      <div className="cupboard-single-layout fade-in-container">
         <div className="cupboard-input-section">
           <div style={{ color: "#a0a0a0", fontFamily: "var(--font-ui)", fontSize: "14px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
             Daily Upkeep Cost

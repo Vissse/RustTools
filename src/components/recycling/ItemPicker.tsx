@@ -25,7 +25,7 @@ export function ItemPicker({
   tipProps,
 }: ItemPickerProps) {
   return (
-    <div className="panel-left" {...tipProps}>
+    <div className="panel-left fade-in-container" {...tipProps}>
       {/* Moderní Sticky hlavička */}
       <div className="search-box-b flex gap-3 w-full !px-[22px] !pt-[18px] !pb-[16px]">
         <input

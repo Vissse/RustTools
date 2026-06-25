@@ -20,7 +20,8 @@ import type {
 /** Compute totals, breakdown and timing for the given inventory + recycler. */
 export function buildResults(
   inventory: Record<string, number>,
-  recycler: RecyclerKind
+  recycler: RecyclerKind,
+  order: string[] = []
 ): RecycleResults | null {
   let totalItems = 0
   for (const id in inventory) totalItems += inventory[id]
@@ -122,6 +123,15 @@ export function buildResults(
     })
   }
 
+  // Seřazení chronologicky podle pořadí přidání
+  if (order.length > 0) {
+    rows.sort((a, b) => {
+      const idxA = order.indexOf(a.id)
+      const idxB = order.indexOf(b.id)
+      return (idxA === -1 ? 9999 : idxA) - (idxB === -1 ? 9999 : idxB)
+    })
+  }
+
   // Fold guaranteed component amounts into their matching random-drop lines.
   for (const id in randomTotals) {
     const g = componentGuaranteed[id]
@@ -138,17 +148,48 @@ export function buildResults(
   const secs = totalSeconds % 60
   const time = mins > 0 ? `${mins}M ${secs}S` : `${secs}S`
 
-  const visibleResources = [
-    ...ALWAYS_RESOURCES,
-    ...OPTIONAL_RESOURCES.filter((r) => totals[r] > 0),
-  ]
+  // Chronologické seřazení všech surovin podle toho, kdy byly přidány
+  const orderedResources = new Set<RecycleResource>()
+  for (const row of rows) {
+    const item = ITEMS.find((i) => i.id === row.id)
+    if (!item) continue
+    const currentYield = isSafezone && item.safezone_yield ? item.safezone_yield : item.yield
+    for (const res of Object.keys(currentYield)) {
+      const mapped = RES_MAP[res]
+      if (mapped) {
+        orderedResources.add(mapped as RecycleResource)
+      }
+    }
+  }
+  const ALL_RESOURCES = [...ALWAYS_RESOURCES, ...OPTIONAL_RESOURCES]
+  for (const r of ALL_RESOURCES) {
+    if (totals[r] > 0) orderedResources.add(r)
+  }
+
+  const visibleResources = Array.from(orderedResources).filter((r) => totals[r] > 0)
+
+  // Chronologické seřazení náhodných dropů
+  const randomTotalsArray = Object.values(randomTotals)
+  randomTotalsArray.sort((a, b) => {
+    const getFirstRowIdx = (rndId: string) => {
+      return rows.findIndex((row) => {
+        const item = ITEMS.find((i) => i.id === row.id)
+        if (!item) return false
+        const currentRandom = isSafezone && item.safezone_random ? item.safezone_random : item.random
+        return currentRandom?.some((r) => r.id === rndId)
+      })
+    }
+    const idxA = getFirstRowIdx(a.id)
+    const idxB = getFirstRowIdx(b.id)
+    return (idxA === -1 ? 9999 : idxA) - (idxB === -1 ? 9999 : idxB)
+  })
 
   return {
     totals,
     rows,
     time,
     visibleResources,
-    randomTotals: Object.values(randomTotals),
+    randomTotals: randomTotalsArray,
   }
 }
 

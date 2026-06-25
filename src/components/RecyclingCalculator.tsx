@@ -13,12 +13,13 @@ export function RecyclingCalculator() {
     Object.fromEntries(ITEMS.map((i) => [i.id, 0])),
   );
   const [recycler, setRecycler] = useState<RecyclerKind>("radtown");
+  const [order, setOrder] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const tip = useTooltip();
 
   const results = useMemo(
-    () => buildResults(inventory, recycler),
-    [inventory, recycler],
+    () => buildResults(inventory, recycler, order),
+    [inventory, recycler, order],
   );
 
   const query = search.trim().toLowerCase();
@@ -31,18 +32,36 @@ export function RecyclingCalculator() {
   useFeatureUsed(Feature.recycling, itemTotal);
 
   const adjust = useCallback((id: string, delta: number) => {
-    setInventory((prev) => ({
-      ...prev,
-      [id]: Math.min(9999, Math.max(0, prev[id] + delta)),
-    }));
+    setInventory((prev) => {
+      const nextCount = Math.min(9999, Math.max(0, prev[id] + delta));
+      if (nextCount !== prev[id]) {
+        setOrder((o) => {
+          if (nextCount > 0 && !o.includes(id)) return [...o, id];
+          if (nextCount === 0 && o.includes(id)) return o.filter((x) => x !== id);
+          return o;
+        });
+      }
+      return { ...prev, [id]: nextCount };
+    });
   }, []);
 
   const setCount = useCallback((id: string, value: number) => {
-    setInventory((prev) => ({ ...prev, [id]: value }));
+    setInventory((prev) => {
+      const nextCount = Math.max(0, value);
+      if (nextCount !== prev[id]) {
+        setOrder((o) => {
+          if (nextCount > 0 && !o.includes(id)) return [...o, id];
+          if (nextCount === 0 && o.includes(id)) return o.filter((x) => x !== id);
+          return o;
+        });
+      }
+      return { ...prev, [id]: nextCount };
+    });
   }, []);
 
   const clearAll = useCallback(() => {
     setInventory(Object.fromEntries(ITEMS.map((i) => [i.id, 0])));
+    setOrder([]);
   }, []);
 
   return (

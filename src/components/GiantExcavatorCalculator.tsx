@@ -134,7 +134,7 @@ export function GiantExcavatorCalculator() {
         }
       `}</style>
 
-      <div className="single-layout">
+      <div className="single-layout fade-in-container">
         <div className="input-section">
           <Img
             src="/images/diesel_barrel.png"

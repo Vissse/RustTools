@@ -23,11 +23,11 @@ export function ResultsPanel({
   tipProps,
 }: ResultsPanelProps) {
   return (
-    <div className="panel-right" {...tipProps}>
+    <div className="panel-right fade-in-container" {...tipProps}>
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
-        <div style={{ marginTop: '0px' }}>
+        <div style={{ marginTop: '0px' }} className="fade-in-container">
           {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
           <div className="sec-label">TOTAL OUTPUT & TIME</div>
 
@@ -69,12 +69,13 @@ export function ResultsPanel({
               }}
             >
               {results.visibleResources.map((res) => (
-                <ResCard
-                  key={res}
-                  kind={res}
-                  label={RESOURCE_LABELS[res]}
-                  value={results.totals[res]}
-                />
+                <div key={res} className="fade-in-container">
+                  <ResCard
+                    kind={res}
+                    label={RESOURCE_LABELS[res]}
+                    value={results.totals[res]}
+                  />
+                </div>
               ))}
             </div>
 

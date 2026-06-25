@@ -237,7 +237,7 @@ export function RaidCalculator() {
       variant="raid"
     >
       {/* Column 1: Target Structure picker + preview + counter */}
-      <div className="panel-left">
+      <div className="panel-left fade-in-container">
         {/* Sekce 1: Target Structure */}
         <div className="min-h-72">
           <div className="sec-label leading-2">TARGET STRUCTURE</div>
@@ -315,7 +315,7 @@ export function RaidCalculator() {
       </div>
 
       {/* Column 2: Raiding Tools (filters, explosives grid, tool list) */}
-      <div className="panel-mid">
+      <div className="panel-mid fade-in-container">
         <div>
           <div className="sec-label">RAIDING TOOLS</div>
 
@@ -394,7 +394,7 @@ export function RaidCalculator() {
         </div>
       </div>
 
-      <div className="panel-right">
+      <div className="panel-right fade-in-container">
         {!solverShown ? (
           <div className="empty-state">
             <span className="icon">◈</span>

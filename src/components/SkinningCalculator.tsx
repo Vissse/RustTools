@@ -104,45 +104,29 @@ export function SkinningCalculator() {
       variant="recycling"
     >
       <style>{`
-        .target-row-btn {
+        .target-card {
           display: flex;
           align-items: center;
-          gap: 1rem;
-          padding: 0.6rem 1rem;
+          gap: 8px;
+          padding: 8px 12px;
           border-radius: 6px;
-          background: transparent;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.05);
           color: #888;
           transition: all 0.2s ease;
-          border-left: 3px solid transparent;
           cursor: pointer;
         }
-        .target-row-btn:hover {
-          background: rgba(255, 255, 255, 0.03);
+        .target-card:hover {
+          background: rgba(255, 255, 255, 0.06);
           color: #ccc;
         }
-        .target-row-btn.active {
-          background: linear-gradient(to right, rgba(206, 66, 43, 0.15), rgba(255, 255, 255, 0.01));
-          border-left: 3px solid #ce422b;
+        .target-card.active {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: #cc422c;
           color: #fff;
         }
-        .target-row-btn.active img {
+        .target-card.active img {
           filter: drop-shadow(0 0 6px rgba(206,66,43,0.6));
-        }
-
-        .calc-panel-left {
-          flex: 0 0 240px;
-          display: flex;
-          flex-direction: column;
-          background: rgba(0,0,0,0.2);
-          border-right: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .calc-panel-right {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          padding: 24px;
-          overflow-y: auto;
         }
 
         .table-row-styled {
@@ -157,6 +141,21 @@ export function SkinningCalculator() {
         .table-row-styled:hover {
           background: rgba(255,255,255,0.04);
         }
+        .hz-sep {
+          width: 100%;
+          height: 1px;
+          flex-shrink: 0;
+          margin-top: 32px;
+          margin-bottom: 32px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.02) 20%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.02) 80%,
+            transparent 100%
+          );
+        }
         .bd-vertical-sep {
           width: 1px;
           height: 40px;
@@ -164,35 +163,34 @@ export function SkinningCalculator() {
         }
       `}</style>
 
-      <div className="flex flex-col lg:flex-row h-full w-full relative z-10">
-        <div className="calc-panel-left custom-scrollbar overflow-y-auto">
-          <div className="p-4 border-b border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] uppercase text-xs font-bold tracking-widest text-[#888]">
-            Select Animal
-          </div>
-          <div className="flex flex-col gap-1 p-3">
-            {TARGETS.map((t) => (
-              <button
-                key={t}
-                onClick={() => setTarget(t)}
-                className={`target-row-btn group ${target === t ? "active" : ""}`}
-              >
-                <RecycleImg 
-                  src={getTargetImage(t)} 
-                  alt={t} 
-                  width={32} 
-                  height={32} 
-                  className="object-contain transition-transform group-hover:scale-110" 
-                />
-                <span className="text-[13px] font-bold tracking-wide uppercase">{t}</span>
-              </button>
-            ))}
+      <div className="flex flex-col h-full w-full relative z-10 px-6 pb-6 pt-8 custom-scrollbar overflow-y-auto fade-in-container">
+        <div className="w-full flex justify-center" style={{ marginTop: '30px' }}>
+          <div className="grid grid-cols-7 gap-2">
+          {TARGETS.map((t) => (
+            <button
+              key={t}
+              onClick={() => setTarget(t)}
+              className={`target-card group ${target === t ? "active" : ""}`}
+            >
+              <RecycleImg 
+                src={getTargetImage(t)} 
+                alt={t} 
+                width={24} 
+                height={24} 
+                className="object-contain transition-transform group-hover:scale-110" 
+              />
+              <span className="text-[12px] font-bold tracking-wide uppercase">{t}</span>
+            </button>
+          ))}
           </div>
         </div>
 
-        <div className="calc-panel-right custom-scrollbar">
-          <div className="flex items-center gap-3 mb-6">
-            <RecycleImg src={getTargetImage(target)} alt={target} width={36} height={36} className="object-contain" />
-            <h2 className="text-white text-xl font-bold uppercase tracking-wider">{target} Yield</h2>
+        <div className="hz-sep" />
+
+        <div className="flex flex-col flex-1">
+          <div className="flex items-center gap-3 mb-4">
+            <RecycleImg src={getTargetImage(target)} alt={target} width={32} height={32} className="object-contain" />
+            <h2 className="text-white text-lg font-bold uppercase tracking-wider">{target} Yield</h2>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -235,13 +233,6 @@ export function SkinningCalculator() {
                         </div>
                       </div>
                     ))}
-                  </div>
-
-                  <div className="bd-vertical-sep" />
-
-                  <div className="flex flex-col items-end w-[60px] flex-shrink-0">
-                    <span className="text-white font-bold text-lg leading-tight">{row.time}</span>
-                    <span className="text-[#888] text-[10px] font-bold uppercase tracking-wider">Time</span>
                   </div>
                 </div>
               ))

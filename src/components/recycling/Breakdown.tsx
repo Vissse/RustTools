@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { RecycleImg } from "./RecycleImg";
 import { QtyInput } from "./QtyInput";
 import type { BreakdownRow } from "./types";
@@ -7,8 +8,49 @@ interface BreakdownProps {
   onSet: (id: string, value: number) => void;
 }
 
+function useAnimatedRows(rows: BreakdownRow[]) {
+  const [rendered, setRendered] = useState(rows);
+  const [removing, setRemoving] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const currentIds = new Set(rows.map((r) => r.id));
+    const removed = rendered.filter((r) => !currentIds.has(r.id));
+
+    if (removed.length > 0) {
+      const removedIds = new Set(removed.map((r) => r.id));
+      setRemoving((prev) => new Set([...prev, ...removedIds]));
+
+      setRendered(() => {
+        const next = [...rows];
+        for (const r of removed) {
+          next.push(r);
+        }
+        // Zachování původního pořadí, abychom zamezili poskakování prvků:
+        return next.sort((a, b) => {
+          const idxA = rendered.findIndex(x => x.id === a.id);
+          const idxB = rendered.findIndex(x => x.id === b.id);
+          return idxA - idxB;
+        });
+      });
+
+      const timer = setTimeout(() => {
+        setRendered(rows);
+        setRemoving(new Set());
+      }, 200);
+
+      return () => clearTimeout(timer);
+    } else {
+      setRendered(rows);
+    }
+  }, [rows]);
+
+  return { rendered, removing };
+}
+
 export function Breakdown({ rows, onSet }: BreakdownProps) {
-  if (rows.length === 0) return null;
+  const { rendered, removing } = useAnimatedRows(rows);
+
+  if (rendered.length === 0) return null;
 
   return (
     <div style={{ marginTop: "32px" }}>
@@ -16,13 +58,14 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
       <div className="sec-label">BREAKDOWN</div>
 
       <div>
-        {rows.map((row) => {
+        {rendered.map((row) => {
           // Rozdělení na jisté suroviny a suroviny s procentuální šancí
           const guaranteed = row.outputs.filter((o) => o.chancePct == null);
           const chance = row.outputs.filter((o) => o.chancePct != null);
+          const isRemoving = removing.has(row.id);
 
           return (
-            <div className="raid-bd-row" key={row.id}>
+            <div className={`raid-bd-row ${isRemoving ? 'fade-out-container' : 'fade-in-container'}`} key={row.id}>
               {/* 1. HORNÍ ŘÁDEK: Input, Ikona, Název a Tlačítko smazat */}
               <div
                 style={{

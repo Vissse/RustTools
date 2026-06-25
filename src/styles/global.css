@@ -3512,6 +3512,19 @@ html {
     transform: translateY(0);
   }
 }
+.fade-out-container {
+  animation: fadeOutDown 0.2s ease-in forwards;
+}
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
 .modern-hp-wrapper {
   position: relative;
   width: 100%;
