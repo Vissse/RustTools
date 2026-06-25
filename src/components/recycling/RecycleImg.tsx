@@ -1,4 +1,4 @@
-import { useState, type ImgHTMLAttributes } from "react";
+import { useState, useEffect, type ImgHTMLAttributes } from "react";
 import { Img } from "../Img";
 import { recycleSrc } from "../../lib/recycleImg";
 
@@ -12,13 +12,16 @@ export function RecycleImg({ src, ...props }: ImgHTMLAttributes<HTMLImageElement
   const original = typeof src === "string" ? src : undefined;
   const [current, setCurrent] = useState(() => recycleSrc(original) ?? src);
 
+  useEffect(() => {
+    setCurrent(recycleSrc(original) ?? src);
+  }, [original, src]);
+
   return (
     <Img
       {...props}
       src={current}
       onError={(e) => {
         if (original && current !== original) {
-          e.currentTarget.style.opacity = "1";
           setCurrent(original);
         }
       }}

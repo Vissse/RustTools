@@ -115,9 +115,27 @@ export function Navbar() {
               to="/shops"
               className="dropdown-item"
               activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
             >
-              Shops Calculator
+              Shop Calculator
             </Link>
+            <Link
+              to="/skinning"
+              className="dropdown-item"
+              activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
+            >
+              Skinning Calculator
+            </Link>
+            <Link
+              to="/salvaging"
+              className="dropdown-item"
+              activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
+            >
+              Salvaging Calculator
+            </Link>
+
           </div>
         </div>
 

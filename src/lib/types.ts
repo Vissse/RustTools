@@ -114,3 +114,27 @@ export interface SmeltingProcess {
   outputQuantity: string | number;
   timeSeconds: number;
 }
+
+export interface SkinningResource {
+  name: string;
+  quantity: string;
+}
+
+export interface SkinningData {
+  tool: string;
+  resources: SkinningResource[];
+  time: string;
+  conditionLoss: string;
+}
+
+export interface SalvagingResource {
+  name: string;
+  quantity: string;
+}
+
+export interface SalvagingData {
+  tool: string;
+  resources: SalvagingResource[];
+  time: string;
+  conditionLoss: string;
+}
