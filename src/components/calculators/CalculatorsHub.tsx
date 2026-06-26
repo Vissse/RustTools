@@ -77,14 +77,14 @@ export function CalculatorsHub() {
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-20 lg:py-32 text-text font-sans">
       {/* Breadcrumbs */}
-      <div className="text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
+      <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link to="/" className="hover:text-text-bright transition-colors">Home</Link>
         <span>/</span>
         <span className="text-rust font-medium">Calculators</span>
       </div>
 
       {/* Header */}
-      <header className="mb-24 border-b border-border pb-16 animate-fade-in-up delay-100">
+      <header className="mb-8 animate-fade-in-up delay-100">
         <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-text-bright leading-none font-display uppercase">
           Rust <span className="text-rust">Calculators</span>
         </h1>
@@ -92,6 +92,9 @@ export function CalculatorsHub() {
           Optimize your gameplay with our precision tools. Calculate raid costs, smelting times, and resource yields to dominate the wipe.
         </p>
       </header>
+
+      {/* Separator */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-white/20 to-transparent separator-gap animate-fade-in-up delay-100" />
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

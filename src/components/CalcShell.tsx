@@ -33,7 +33,7 @@ export function CalcShell({
       <header className="mb-12 border-b border-border pb-6 relative flex items-end justify-center animate-fade-in-up" style={{ animationDelay: '100ms' }}>
         
         {/* Breadcrumbs positioned absolutely to the bottom left to rest on the separator */}
-        <div className="absolute left-0 bottom-2 text-lg font-display uppercase text-text-dim flex items-center space-x-2 tracking-widest">
+        <div className="absolute left-0 bottom-2 text-lg font-display uppercase text-text-dim flex items-center space-x-2 tracking-widest z-50">
           <Link to="/" className="hover:text-text-bright transition-colors">Home</Link>
           <span>/</span>
           <Link to="/calculators" className="hover:text-text-bright transition-colors">Calculators</Link>

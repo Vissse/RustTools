@@ -6,7 +6,7 @@ export function FarmingGuide() {
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-20 lg:py-32 text-text font-sans">
       {/* Breadcrumbs */}
-      <div className="text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest">
+      <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest">
         <Link to="/" className="hover:text-text-bright transition-colors">Home</Link>
         <span>/</span>
         <Link to="/guides" className="hover:text-text-bright transition-colors">Guides</Link>
@@ -15,7 +15,7 @@ export function FarmingGuide() {
       </div>
 
       {/* Hero Section */}
-      <header className="mb-20 border-b border-border pb-16 relative">
+      <header className="guide-hero">
         <div className="relative z-10">
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-text-bright leading-none font-display uppercase">
             The Ultimate <span className="text-rust">Rust Farming</span> Guide
@@ -27,19 +27,19 @@ export function FarmingGuide() {
       </header>
 
       {/* Introduction */}
-      <div className="mb-24">
+      <div className="guide-intro">
         <p className="text-text leading-loose text-xl font-light max-w-4xl">
           In this guide, you will learn how to build a fully functional and highly efficient farm in Rust. You will discover everything from proper irrigation and lighting to advanced gene crossbreeding and animal farming.
         </p>
       </div>
 
       {/* Requirements Box */}
-      <div className="mb-48 md:mb-56 relative pt-12">
+      <div className="guide-reqs-box">
         {/* Oranžová čára do ztracena */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-rust to-transparent" />
         
-        <h2 className="text-2xl font-bold text-text-bright uppercase font-display mb-8 tracking-wide">Requirements</h2>
-        <div className="flex flex-col gap-5">
+        <h2 className="guide-reqs-title">Requirements</h2>
+        <div className="guide-reqs-list">
           <ReqCard title="Seeds" desc="Hemp, corn, pumpkins, or berries." />
           <ReqCard title="Planters" desc="Wood and tarps for Large Planters." />
           <ReqCard title="Water Source" desc="Swamp, river, or Rain Catchers." />
@@ -49,12 +49,12 @@ export function FarmingGuide() {
       </div>
 
       {/* Steps (Timeline Layout) */}
-      <div className="mb-32 mt-40">
-        <h2 className="text-4xl md:text-5xl font-bold mb-20 text-text-bright tracking-tight font-display uppercase border-b border-border pb-6">
+      <div className="section-gap">
+        <h2 className="guide-steps-title">
           Step-by-Step Process
         </h2>
         
-        <div className="flex flex-col gap-24 md:gap-32">
+        <div className="guide-steps-list">
           
           {/* STEP 1 */}
           <Step number={1} title="Choosing and Placing Planters">
@@ -119,16 +119,16 @@ export function FarmingGuide() {
               Genetics dictate your farm's true efficiency. Every plant has six gene slots that become visible in the UI at the sapling stage.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl">
-              <div className="bg-panel border border-border p-6 flex flex-col gap-4">
-                <div className="text-[#8b9264] font-bold tracking-widest uppercase text-sm border-b border-border pb-2">Good Genes</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl">
+              <div className="flex flex-col gap-5">
+                <div className="text-[#8b9264] font-bold tracking-widest uppercase text-xs">Good Genes</div>
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-4"><Gene type="good" letter="Y" size="sm" /><span className="text-sm text-text-bright">Y (Yield - increases harvest and clones)</span></div>
                   <div className="flex items-center gap-4"><Gene type="good" letter="G" size="sm" /><span className="text-sm text-text-bright">G (Growth speed)</span></div>
                 </div>
               </div>
-              <div className="bg-panel border border-border p-6 flex flex-col gap-4">
-                <div className="text-red-cost font-bold tracking-widest uppercase text-sm border-b border-border pb-2">Bad Genes</div>
+              <div className="flex flex-col gap-5">
+                <div className="text-red-cost font-bold tracking-widest uppercase text-xs">Bad Genes</div>
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-4"><Gene type="bad" letter="W" size="sm" /><span className="text-sm text-text-dim">W (Increased water consumption)</span></div>
                   <div className="flex items-center gap-4"><Gene type="bad" letter="X" size="sm" /><span className="text-sm text-text-dim">X (Empty slot)</span></div>
@@ -141,7 +141,7 @@ export function FarmingGuide() {
               Your goal is to reach the crossbreed stage and mix neighboring plants to achieve the perfect ratio, such as <strong className="text-text-bright font-medium">3G 3Y</strong> or <strong className="text-text-bright font-medium">2G 4Y</strong>. Once you breed the perfect plant, you can clone it endlessly.
             </p>
 
-            <div className="bg-bg border border-border p-8 max-w-max text-center mb-10">
+            <div className="bg-bg border border-border p-8 max-w-max guide-center-block text-center mb-10">
               <div className="text-text-dim uppercase text-xs tracking-widest mb-6 font-bold">Perfect Clone Example (3G 3Y)</div>
               <div className="flex gap-2 justify-center">
                 <Gene type="good" letter="Y" />
@@ -186,12 +186,12 @@ export function FarmingGuide() {
       </div>
 
       {/* Pro-Tips (Social Proof / Warning Layout) */}
-      <div className="border-t border-border pt-32">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-text-bright tracking-tight font-display uppercase mb-4">Pro-Tips & Common Mistakes</h2>
+      <div className="guide-tips-section">
+        <div className="guide-tips-header">
+          <h2 className="guide-tips-title">Pro-Tips & Common Mistakes</h2>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="guide-tips-grid">
           <Tip title="Overwatering the Planters" type="warning">
             Filling planters to 100% capacity with water drops plant happiness. Keep the volume strictly between 50% and 75% (ideally around 60%).
           </Tip>
@@ -208,14 +208,17 @@ export function FarmingGuide() {
       </div>
 
       {/* Pre-footer CTA */}
-      <div className="mt-32 border-t border-border pt-24 pb-12">
-        <h2 className="text-4xl font-bold mb-8 text-text-bright tracking-tight font-display uppercase text-center">
+      <div className="guide-footer-section">
+        {/* Fading horizontal separator */}
+        <div className="guide-footer-separator" />
+        
+        <h2 className="guide-footer-title">
           What's Next?
         </h2>
-        <p className="text-center text-text-dim mb-12 max-w-2xl mx-auto leading-loose text-lg font-light">
+        <p className="guide-footer-text">
           Ready to put your new farming knowledge to the test? Use our specialized calculators to determine exactly what genetics you need to crossbreed.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div className="guide-footer-buttons">
           <Link 
             to="/genetics" 
             className="px-8 py-4 bg-rust-dim border border-rust text-text-bright font-display uppercase tracking-[0.1em] text-2xl hover:bg-rust transition-all active:scale-95 flex items-center gap-3"

@@ -151,7 +151,7 @@ body::before {
   justify-content: space-between;
   padding: 0 24px;
   position: relative;
-  z-index: 50;
+  z-index: 1000;
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.4),
     inset 0 -1px 0 rgba(255, 255, 255, 0.03);
@@ -3844,3 +3844,174 @@ html {
 .delay-100 { animation-delay: 100ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-500 { animation-delay: 500ms; }
+
+.separator-gap {
+  margin-bottom: 60px;
+}
+
+.section-gap {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+/* Guide Layout Components */
+.guide-hero {
+  padding-bottom: 1rem; /* glued to the subtitle */
+  margin-bottom: 2rem; /* slight spacing above the intro text */
+  position: relative;
+}
+
+.guide-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.guide-intro {
+  margin-bottom: 2rem; /* reduced from 6rem to make reqs closer */
+}
+
+.guide-reqs-box {
+  margin-top: 0; /* relies on intro's mb-8 */
+  margin-bottom: 2rem; /* reduced from 4rem to bring step-by-step even closer */
+  position: relative;
+  padding-top: 0.5rem; /* glued right under the separator */
+}
+
+.guide-reqs-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+  color: var(--color-text-bright);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  margin-bottom: 2rem; /* mb-8 */
+  letter-spacing: 0.025em; /* tracking-wide */
+}
+
+.guide-reqs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* gap-4 */
+}
+
+.guide-steps-title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 6rem; /* mb-24 */
+  color: var(--color-text-bright);
+  letter-spacing: -0.025em; /* tracking-tight */
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2rem; /* pb-8 */
+}
+@media (min-width: 768px) {
+  .guide-steps-title {
+    font-size: 3rem; /* md:text-5xl */
+  }
+}
+
+.guide-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem; /* gap-32 */
+}
+@media (min-width: 768px) {
+  .guide-steps-list {
+    gap: 12rem; /* md:gap-48 */
+  }
+}
+
+.guide-tips-section {
+  border-top: 1px solid var(--color-border);
+  padding-top: 8rem; /* pt-32 */
+}
+
+.guide-tips-header {
+  text-align: center;
+  margin-bottom: 3rem; /* reduced from 6rem to be closer to tips */
+}
+
+.guide-tips-title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  color: var(--color-text-bright);
+  letter-spacing: -0.025em; /* tracking-tight */
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.guide-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 3rem; /* gap-12 */
+}
+@media (min-width: 1024px) {
+  .guide-tips-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.guide-footer-section {
+  margin-top: 10rem; /* mt-40 */
+  padding-top: 6rem; /* pt-24 */
+  padding-bottom: 3rem; /* pb-12 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guide-footer-separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rust), transparent);
+  opacity: 0.7;
+}
+
+.guide-footer-title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 2rem; /* mb-8 */
+  color: var(--text-bright);
+  letter-spacing: -0.025em; /* tracking-tight */
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.guide-footer-text {
+  text-align: center;
+  color: var(--text-dim);
+  margin-bottom: 3rem; /* mb-12 */
+  max-width: 42rem; /* max-w-2xl */
+  line-height: 2; /* leading-loose */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 300; /* font-light */
+}
+
+.guide-footer-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem; /* gap-6 */
+}
+@media (min-width: 640px) {
+  .guide-footer-buttons {
+    flex-direction: row;
+  }
+}
+
+.guide-center-block {
+  margin-left: auto;
+  margin-right: auto;
+}

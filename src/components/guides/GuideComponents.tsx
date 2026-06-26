@@ -19,7 +19,7 @@ export function Step({ number, title, children, isLast }: { number: number; titl
         </div>
         
         {!isLast && (
-          <div className="absolute top-16 bottom-[-6rem] md:bottom-[-8rem] left-1/2 -translate-x-1/2 flex flex-col items-center">
+          <div className="absolute top-16 bottom-[-8rem] md:bottom-[-12rem] left-1/2 -translate-x-1/2 flex flex-col items-center">
             <div className="w-[2px] h-full bg-border relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-rust to-transparent animate-pulse" />
             </div>
@@ -28,9 +28,9 @@ export function Step({ number, title, children, isLast }: { number: number; titl
       </div>
       
       {/* Obsah */}
-      <div className="flex-1 pb-4">
-        <h3 className="text-3xl font-medium text-text-bright mb-6 tracking-wide mt-2 font-display uppercase">{title}</h3>
-        <div>{children}</div>
+      <div className="flex-1 pb-8">
+        <h3 className="text-3xl md:text-4xl font-medium text-text-bright mb-8 tracking-wide mt-1 font-display uppercase">{title}</h3>
+        <div className="flex flex-col gap-6">{children}</div>
       </div>
     </div>
   );
@@ -44,10 +44,10 @@ export function Tip({ title, children, type = "info" }: { title: string; childre
     : <svg className="w-6 h-6 text-rust" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 
   return (
-    <div className={`border border-border border-l-[4px] ${borderColor} p-8 bg-panel flex gap-6 items-start`}>
+    <div className={`border border-border border-l-[4px] ${borderColor} p-10 bg-panel flex gap-8 items-start`}>
       <div className="flex-shrink-0 mt-1">{icon}</div>
       <div>
-        <h4 className="text-text-bright font-bold mb-3 text-2xl font-display uppercase tracking-wide">{title}</h4>
+        <h4 className="text-text-bright font-bold mb-4 text-2xl font-display uppercase tracking-wide">{title}</h4>
         <p className="text-text-dim text-base leading-loose font-light">{children}</p>
       </div>
     </div>
