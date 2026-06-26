@@ -34,7 +34,12 @@ export function Navbar() {
       <div className="nav-group left">
         {/* 1. Položka: Calculators Dropdown */}
         <div className="nav-dropdown-wrapper">
-          <span className="nav-item">
+          <Link 
+            to="/calculators" 
+            className="nav-item" 
+            activeProps={{ className: 'guides-active' }}
+            onClick={() => setOpen(false)}
+          >
             <span className="!mt-1">Calculators</span>
             <svg
               className="dropdown-arrow"
@@ -53,10 +58,10 @@ export function Navbar() {
                 strokeLinejoin="round"
               />
             </svg>
-          </span>
+          </Link>
           <div className="nav-dropdown-menu">
             <Link
-              to="/"
+              to="/raid"
               className="dropdown-item"
               activeProps={{ className: 'active' }}
               onClick={() => setOpen(false)}
@@ -174,10 +179,62 @@ export function Navbar() {
         <span className="nav-separator" />
 
         {/* 4. Položka: Guides */}
-        <SoonItem label="Guides" />
+        <div className="nav-dropdown-wrapper">
+          <Link 
+            to="/guides" 
+            className="nav-item" 
+            activeProps={{ className: 'guides-active' }}
+            onClick={() => setOpen(false)}
+          >
+            <span className="!mt-1">Guides</span>
+            <svg
+              className="dropdown-arrow"
+              width="10"
+              height="10"
+              viewBox="0 0 12 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M2.5 4.5 L6 7.5 L9.5 4.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+          <div className="nav-dropdown-menu">
+            <Link
+              to="/guides/farming"
+              className="dropdown-item"
+              activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
+            >
+              Farming Guide
+            </Link>
+            <Link
+              to="/guides/base-building"
+              className="dropdown-item"
+              activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
+            >
+              Base Building
+            </Link>
+            <Link
+              to="/guides/monuments"
+              className="dropdown-item"
+              activeProps={{ className: 'active' }}
+              onClick={() => setOpen(false)}
+            >
+              Monument Puzzles
+            </Link>
+          </div>
+        </div>
       </div>
 
-      <div className="nav-brand">
+      <Link to="/" className="nav-brand" onClick={() => setOpen(false)}>
         <img
           className="brand-logo"
           src="/images/icon.svg"
@@ -186,7 +243,7 @@ export function Navbar() {
         <span className="brand-name">
           RUST<span>TOOLS</span>
         </span>
-      </div>
+      </Link>
 
       <div className="nav-group right">
         {/* 1. Položka: Items */}

@@ -20,7 +20,7 @@ export function RecycleImg({ src, ...props }: ImgHTMLAttributes<HTMLImageElement
     <Img
       {...props}
       src={current}
-      onError={(e) => {
+      onError={() => {
         if (original && current !== original) {
           setCurrent(original);
         }

@@ -27,7 +27,7 @@
   --color-text-muted: #4a4038;
 
   --font-display: "Teko", sans-serif;
-  --font-ui: "Roboto Condensed", sans-serif;
+  --font-ui: "Inter", sans-serif;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -61,7 +61,10 @@
   --text-bright: #e8dcc8;
   --text-muted: #4a4038;
   --font-d: "Teko", sans-serif;
-  --font-ui: "Roboto Condensed", sans-serif;
+  --font-display: "Teko", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-m: "JetBrains Mono", monospace;
 }
 
 *,
@@ -182,8 +185,8 @@ body::before {
 }
 .nav-item {
   font-family: var(--font-d);
-  font-size: clamp(14px, 1.2vw, 16px);
-  font-weight: 500;
+  font-size: clamp(18px, 1.5vw, 20px);
+  font-weight: 600;
   color: var(--text-dim);
   text-decoration: none;
   text-transform: uppercase;
@@ -217,8 +220,8 @@ body::before {
   box-shadow: 0 -2px 8px var(--rust);
 }
 .nav-badge {
-  font-family: var(--font-ui);
-  font-size: 9px;
+  font-family: var(--font-sans);
+  font-size: 10px;
   font-weight: 700;
   color: var(--text-bright);
   background: var(--rust);
@@ -269,16 +272,16 @@ body::before {
 }
 .brand-name {
   font-family: var(--font-d);
-  font-size: clamp(18px, 4vw, 24px);
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-size: clamp(24px, 5vw, 28px);
+  font-weight: 700;
+  letter-spacing: normal;
   color: var(--text-bright);
   text-transform: uppercase;
   line-height: 1;
   margin-top: 4px;
 }
 .brand-name span {
-  color: var(--text-dim);
+  color: var(--rust);
 }
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -458,39 +461,16 @@ h1.page-title span {
   max-height: 100vh;
   position: relative;
   z-index: 1;
-  background: rgba(19, 18, 16, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-
-  /* Tvrdé smazání původních linek */
-  border-top: none !important;
-
-  border-radius: 16px;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: var(--bg);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .calc-wrap::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  /* Fade z průhledné do oranžové a zpět */
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--rust) 10%,
-    var(--rust) 90%,
-    transparent 100%
-  );
-  z-index: 10;
-  pointer-events: none;
+  display: none;
 }
 /* Recycling & cupboard use a fixed-height flex-column shell; raid sizes to content. */
 .calc-wrap[data-variant="recycling"],
@@ -501,27 +481,12 @@ h1.page-title span {
 }
 /* Redukce zrnění (noise) pro čistší vzhled */
 .calc-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  opacity: 0.25; /* Původně 0.6 - nyní mnohem subtilnější */
+  display: none;
 }
 
-/* Minimalistické "nýty" - nyní vypadají jako elegantní zapuštěné montážní body */
+/* Minimalistické "nýty" - nyní skryté */
 .rivet {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  box-shadow:
-    inset 0 1px 2px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(255, 255, 255, 0.03);
-  z-index: 2;
+  display: none;
 }
 .rivet.tl {
   top: 12px;
@@ -549,18 +514,12 @@ h1.page-title span {
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Rozdělí obsah: Verze doleva, Status doprava */
+  justify-content: space-between;
   padding: 16px 24px;
-
-  /* Místo gradientu zleva doprava uděláme radiální záři přesně uprostřed za nadpisem */
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(206, 66, 43, 0.1) 0%,
-    transparent 60%
-  );
-  border-bottom: none;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
-  min-height: 56px; /* Udržuje výšku lišty, protože nadpis bude vyjmut z běžného toku */
+  min-height: 56px;
 }
 
 .header-left {
@@ -643,19 +602,7 @@ h1.page-title span {
    DĚLÍCÍ LINKA POD HLAVIČKOU (Zářící od středu)
    ════════════════════════════════════════════════════════════════════════ */
 .metal-rule {
-  height: 1px;
-  /* Protože je text uprostřed, linka se nyní rozjasňuje od středu do stran */
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.02) 20%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.02) 80%,
-    transparent 100%
-  );
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
+  display: none;
 }
 
 /* Body layout */
@@ -731,9 +678,9 @@ h1.page-title span {
 /* Section label */
 .sec-label {
   font-family: var(--font-d);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   color: var(--text-dim);
   text-transform: uppercase;
   line-height: 1;
@@ -2715,7 +2662,7 @@ html {
 }
 
 .nav-dropdown-wrapper .nav-item {
-  cursor: default;
+  cursor: pointer;
   gap: 5px; /* Původně bylo 8px, zmenšeno pro kompaktnější vzhled */
 }
 
@@ -2804,7 +2751,7 @@ html {
 
 .dropdown-item {
   font-family: var(--font-d);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--text-dim);
@@ -3342,12 +3289,12 @@ html {
   background: transparent;
   border: none;
   padding: 0 0 6px 0;
-  color: #757575;
-  font-size: 9.5px; /* Nepatrné zmenšení pro lepší fit (původně 10.5px) */
-  font-weight: 700;
-  font-family: inherit;
+  color: var(--text-dim);
+  font-size: 16px; 
+  font-weight: 600;
+  font-family: var(--font-d);
   text-transform: uppercase;
-  letter-spacing: 0.02em; /* Zmenšení rozestupu mezi písmenky */
+  letter-spacing: 0.15em; 
   cursor: pointer;
   transition: color 0.3s ease;
   position: relative;
@@ -3356,23 +3303,6 @@ html {
   flex-shrink: 0;
 }
 
-.filter-pure-text {
-  background: transparent;
-  border: none;
-  padding: 0 0 6px 0;
-  color: #757575;
-  font-size: 10.5px; /* Něžné zmenšení, aby vše sedlo na jeden řádek */
-  font-weight: 700;
-  font-family: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  position: relative;
-  outline: none;
-  white-space: nowrap; /* Zaručí, že text samotný se nikdy nezalomí */
-  flex-shrink: 0; /* Zabrání ošklivému smrsknutí tlačítka */
-}
 
 .filter-pure-text:hover {
   color: #c4c4c4;
@@ -3870,3 +3800,47 @@ html {
 .mode-side-label.active {
   color: #cc422c;
 }
+
+/* Custom active state for Guides link in navbar (no glow, no underline) */
+.nav-item.guides-active {
+  color: var(--rust) !important;
+  text-shadow: none !important;
+}
+.nav-item.guides-active::after {
+  display: none !important;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0; /* starts hidden */
+  animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
