@@ -10,7 +10,7 @@ export function Home() {
           YOUR <span className="text-rust">WIPE</span>
         </h1>
         
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 animate-fade-in-up delay-300">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 animate-fade-in-up">
           <Link
             to="/calculators"
             className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"

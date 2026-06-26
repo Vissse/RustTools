@@ -37,7 +37,7 @@ const GUIDES = [
 
 export function GuidesHub() {
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 lg:py-32 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link to="/" className="hover:text-text-bright transition-colors">
@@ -48,7 +48,7 @@ export function GuidesHub() {
       </div>
 
       {/* Header */}
-      <header className="mb-8 animate-fade-in-up delay-100">
+      <header className="mb-8 animate-fade-in-up">
         <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-text-bright leading-none font-display uppercase">
           Strategy <span className="text-rust">Guides</span>
         </h1>
@@ -60,25 +60,19 @@ export function GuidesHub() {
       </header>
 
       {/* Separator */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-white/20 to-transparent separator-gap animate-fade-in-up delay-100" />
+      <div className="w-full h-[1px] bg-gradient-to-r from-white/20 to-transparent separator-gap animate-fade-in-up" />
 
       {/* Guides Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {GUIDES.map((guide, index) => (
-          <GuideCard key={guide.id} guide={guide} index={index} />
+        {GUIDES.map((guide) => (
+          <GuideCard key={guide.id} guide={guide} />
         ))}
       </div>
     </div>
   )
 }
 
-function GuideCard({
-  guide,
-  index,
-}: {
-  guide: (typeof GUIDES)[0]
-  index: number
-}) {
+function GuideCard({ guide }: { guide: (typeof GUIDES)[0] }) {
   const isPublished = guide.status === 'published'
 
   const content = (
@@ -88,7 +82,6 @@ function GuideCard({
           ? 'bg-panel hover:bg-[#1f1f1f] cursor-pointer hover:-translate-y-2 shadow-xl hover:shadow-2xl'
           : 'bg-panel/95 opacity-95 cursor-not-allowed shadow-lg'
       }`}
-      style={{ animationDelay: `${200 + index * 50}ms` }}
     >
       {/* Obrazek (Floating Image Box Placeholder) */}
       <div className="w-full aspect-[16/9] bg-bg relative overflow-hidden">

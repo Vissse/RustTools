@@ -3849,14 +3849,12 @@ html {
   }
 }
 
+/* On-load reveal. No animation-delay anywhere — every element fades in together,
+   immediately on render, so nothing is gated behind a stagger. */
 .animate-fade-in-up {
   opacity: 0; /* starts hidden */
   animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
-.delay-100 { animation-delay: 100ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-500 { animation-delay: 500ms; }
 
 /* Loading skeletons — shown while a lazy route chunk is fetched */
 @keyframes skeleton-shimmer {
