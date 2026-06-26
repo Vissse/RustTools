@@ -25,7 +25,7 @@ export function ResCard({ kind, label, value }: ResCardProps) {
       <RecycleImg
         src={RESOURCE_ICONS[kind]}
         alt={label}
-        style={{ width: "40px", height: "40px", objectFit: "contain" }}
+        className="w-10 h-10 object-contain"
       />
       <div className="raid-res-info">
         <span className={`raid-res-val ${colorClass}`}>

@@ -87,157 +87,6 @@ export function DecayCalculator() {
       headerRest="CALCULATOR"
       variant="recycling"
     >
-      <style>{`
-        .decay-container {
-          flex: 1;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-
-        @keyframes slideUpFade {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .decay-anim-1 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
-        .decay-anim-2 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
-        .decay-anim-3 { animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
-        .decay-anim-staggered { animation: slideUpFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
-
-        .mat-selector-row {
-          display: flex;
-          gap: 16px;
-          justify-content: center;
-          flex-wrap: nowrap;
-          margin-bottom: 40px;
-          width: 100%;
-        }
-
-        @media (max-width: 640px) {
-          .mat-selector-row {
-            flex-wrap: wrap;
-          }
-        }
-
-        /* --- KARTA S FADE LINKOU --- */
-        .decay-card {
-          background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
-          border: 1px solid var(--border2);
-          border-top: none; /* Smažeme tvrdou horní linku, nahradí ji fade */
-          border-radius: 12px;
-          padding: clamp(24px, 6vw, 40px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-          max-width: 500px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-          position: relative;
-        }
-
-        /* Tady je tvoje vysněná oranžová fade linka */
-        .decay-card::before {
-          content: '';
-          position: absolute;
-          top: 0; 
-          left: 0; 
-          right: 0; 
-          height: 2px;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--rust) 15%,
-            var(--rust) 85%,
-            transparent 100%
-          );
-          z-index: 10;
-          pointer-events: none;
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
-        }
-
-        .decay-time-title {
-          font-family: var(--font-ui);
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--text-muted);
-          text-transform: uppercase;
-          letter-spacing: 0.15em;
-          margin-bottom: 8px;
-        }
-
-        .decay-time-value {
-          font-family: var(--font-d);
-          font-size: clamp(48px, 10vw, 64px);
-          font-weight: 600;
-          color: var(--rust);
-          line-height: 1;
-          text-shadow: 0 0 24px rgba(206, 66, 43, 0.2);
-          margin-bottom: 32px;
-          font-variant-numeric: tabular-nums;
-          letter-spacing: 0.02em;
-        }
-
-        .decay-input-wrap {
-          background: rgba(0, 0, 0, 0.25);
-          border: 1px solid var(--border);
-          border-radius: 6px;
-          padding: 6px 12px;
-          display: inline-flex;
-          align-items: center;
-          transition: border-color 0.2s;
-        }
-        .decay-input-wrap:focus-within {
-          border-color: rgba(206, 66, 43, 0.4);
-        }
-
-        .decay-btn {
-          background: transparent;
-          border: none;
-          color: var(--text-dim);
-          font-size: 18px;
-          font-weight: 300;
-          cursor: pointer;
-          width: 32px;
-          height: 32px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: color 0.15s, transform 0.1s;
-        }
-        .decay-btn:hover { color: var(--text-bright); }
-        .decay-btn:active { transform: scale(0.9); }
-
-        .decay-input {
-          background: transparent;
-          border: none;
-          outline: none;
-          text-align: center;
-          width: 80px;
-          font-family: var(--font-d);
-          font-size: 26px;
-          font-weight: 600;
-          color: var(--text-bright);
-          letter-spacing: 0.05em;
-        }
-        .decay-input::-webkit-inner-spin-button,
-        .decay-input::-webkit-outer-spin-button {
-          -webkit-appearance: none; margin: 0;
-        }
-        .decay-input { -moz-appearance: textfield; }
-
-        .decay-sep {
-          width: 1px;
-          height: 14px;
-          background: var(--border);
-          margin: 0 8px;
-        }
-      `}</style>
 
       <div className="decay-container fade-in-container">
         {/* 1. SELEKTOR MATERIÁLU */}
@@ -248,7 +97,7 @@ export function DecayCalculator() {
             alignItems: "center",
           }}
         >
-          <div className="sec-label decay-anim-1" style={{ marginBottom: "16px" }}>
+          <div className="sec-label decay-anim-1 mb-4">
             BUILDING MATERIAL
           </div>
           <div className="mat-selector-row">
@@ -276,7 +125,7 @@ export function DecayCalculator() {
 
         {/* 2. CENTRÁLNÍ KARTA */}
         <div className="decay-card decay-anim-2">
-          <div style={{ textAlign: "center" }}>
+          <div className="text-center">
             <div className="decay-time-title">Time Until Destroyed</div>
             <div className="decay-time-value">{timeString}</div>
           </div>
@@ -349,7 +198,7 @@ export function DecayCalculator() {
             </div>
           </div>
 
-          <div className="decay-anim-3" style={{ width: "100%" }}>
+          <div className="decay-anim-3 w-full">
             <div
               style={{
                 display: "flex",
@@ -361,8 +210,8 @@ export function DecayCalculator() {
                 letterSpacing: "0.05em",
               }}
             >
-              <span style={{ color: "var(--text-bright)" }}>{safeHp} HP</span>
-              <span style={{ color: "var(--text-dim)" }}>
+              <span className="text-text-bright">{safeHp} HP</span>
+              <span className="text-text-dim">
                 {activeMat.hp} HP
               </span>
             </div>

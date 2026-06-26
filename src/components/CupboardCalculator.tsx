@@ -58,75 +58,42 @@ export function CupboardCalculator() {
       headerRest="CALCULATOR"
       variant="cupboard"
     >
-      <style>{`
-        .cupboard-single-layout {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 20px;
-          height: 100%;
-          overflow-y: auto;
-          width: 100%;
-        }
-        .cupboard-input-section {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 16px;
-          width: 100%;
-          max-width: 500px;
-        }
-        .cupboard-inputs-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 12px;
-          width: 100%;
-        }
-        .cupboard-output-section {
-          width: 100%;
-          max-width: 500px;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-        }
-      `}</style>
 
       <div className="cupboard-single-layout fade-in-container">
         <div className="cupboard-input-section">
-          <div style={{ color: "#a0a0a0", fontFamily: "var(--font-ui)", fontSize: "14px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+          <div className="text-[#a0a0a0] font-ui text-[14px] font-bold tracking-[0.1em] uppercase">
             Daily Upkeep Cost
           </div>
 
           <div className="cupboard-inputs-grid">
             {RESOURCES.map((r) => (
-              <div className="sleek-input-row" key={r.key} style={{ margin: 0, padding: '4px 12px' }}>
-                <Img src={r.img} alt={r.alt} className="sleek-input-icon" style={{ width: '28px', height: '28px' }} />
+              <div className="sleek-input-row m-0 px-3 py-1" key={r.key}>
+                <Img src={r.img} alt={r.alt} className="sleek-input-icon w-7 h-7" />
                 <input
                   type="number"
-                  className="sleek-input-box"
+                  className="sleek-input-box text-[16px]"
                   min="0"
                   placeholder="0"
                   value={inputs[r.key]}
                   onChange={(e) =>
                     setInputs((prev) => ({ ...prev, [r.key]: e.target.value }))
                   }
-                  style={{ fontSize: '16px' }}
                 />
               </div>
             ))}
           </div>
 
-          <button className="sleek-btn-reset" onClick={() => setInputs(EMPTY)} style={{ marginTop: '4px' }}>
+          <button className="sleek-btn-reset mt-1" onClick={() => setInputs(EMPTY)}>
             Reset Values
           </button>
         </div>
 
-        <div className="metal-rule" style={{ width: '100%', margin: '24px 0' }} />
+        <div className="metal-rule w-full my-6" />
 
         <div className="cupboard-output-section">
           {result ? (
             <div>
-              <div className="sleek-tc-status" style={{ justifyContent: 'center', marginBottom: '20px' }}>
+              <div className="sleek-tc-status justify-center mb-5">
                 Protected for <span>{result.time}</span>
               </div>
 
@@ -157,14 +124,13 @@ export function CupboardCalculator() {
               </div>
             </div>
           ) : (
-            <div className="empty-state" style={{ minHeight: '160px' }}>
+            <div className="empty-state min-h-[160px]">
               <span
-                className="icon"
-                style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
+                className="icon text-[32px] mb-2 opacity-50"
               >
                 ◈
               </span>
-              <div style={{ color: "#888", lineHeight: 1.6, textAlign: 'center' }}>
+              <div className="text-[#888] leading-[1.6] text-center">
                 Enter your daily upkeep cost
                 <br />
                 to calculate optimal capacity

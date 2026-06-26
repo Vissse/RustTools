@@ -12,7 +12,7 @@ export function GeneticsCalculator() {
       headerRest="CALCULATOR"
       variant="cupboard"
     >
-      <div className="panel-left fade-in-container" style={{ width: "100%", border: "none" }}>
+      <div className="panel-left fade-in-container w-full border-none">
         <div className="empty-state">
           <span className="icon">◈</span>
           GENETICS CALCULATOR INCOMING

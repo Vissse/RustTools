@@ -1,43 +1,43 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 
 const GUIDES = [
   {
-    id: "farming",
-    title: "Farming & Genetics",
+    id: 'farming',
+    title: 'Farming & Genetics',
     description:
-      "Learn how to build a highly efficient farm, crossbreed perfect genetics, and brew teas for massive buffs.",
-    path: "/guides/farming",
-    status: "published",
+      'Learn how to build a highly efficient farm, crossbreed perfect genetics, and brew teas for massive buffs.',
+    path: '/guides/farming',
+    status: 'published',
   },
   {
-    id: "electricity",
-    title: "Advanced Electricity",
+    id: 'electricity',
+    title: 'Advanced Electricity',
     description:
-      "Master logical circuits, automated defense systems, smart alarms, and efficient power management.",
-    path: "/guides/electricity",
-    status: "coming_soon",
+      'Master logical circuits, automated defense systems, smart alarms, and efficient power management.',
+    path: '/guides/electricity',
+    status: 'coming_soon',
   },
   {
-    id: "base-building",
-    title: "Base Building Patterns",
+    id: 'base-building',
+    title: 'Base Building Patterns',
     description:
-      "Discover the most effective base footprints, honeycombing, pixel gaps, and unraidable bunker designs.",
-    path: "/guides/base-building",
-    status: "published",
+      'Discover the most effective base footprints, honeycombing, pixel gaps, and unraidable bunker designs.',
+    path: '/guides/base-building',
+    status: 'published',
   },
   {
-    id: "monuments",
-    title: "Monument Puzzles",
+    id: 'monuments',
+    title: 'Monument Puzzles',
     description:
-      "Step-by-step walkthroughs for every keycard puzzle and monument puzzle in the game.",
-    path: "/guides/monuments",
-    status: "published",
+      'Step-by-step walkthroughs for every keycard puzzle and monument puzzle in the game.',
+    path: '/guides/monuments',
+    status: 'published',
   },
-];
+]
 
 export function GuidesHub() {
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 py-20 lg:py-32 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 lg:py-32 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link to="/" className="hover:text-text-bright transition-colors">
@@ -69,24 +69,24 @@ export function GuidesHub() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 function GuideCard({
   guide,
   index,
 }: {
-  guide: (typeof GUIDES)[0];
-  index: number;
+  guide: (typeof GUIDES)[0]
+  index: number
 }) {
-  const isPublished = guide.status === "published";
+  const isPublished = guide.status === 'published'
 
   const content = (
     <div
       className={`transition-all duration-300 h-full flex flex-col group animate-fade-in-up ${
         isPublished
-          ? "bg-panel hover:bg-[#1f1f1f] cursor-pointer hover:-translate-y-2 shadow-xl hover:shadow-2xl"
-          : "bg-panel/50 opacity-50 cursor-not-allowed"
+          ? 'bg-panel hover:bg-[#1f1f1f] cursor-pointer hover:-translate-y-2 shadow-xl hover:shadow-2xl'
+          : 'bg-panel/95 opacity-95 cursor-not-allowed shadow-lg'
       }`}
       style={{ animationDelay: `${200 + index * 50}ms` }}
     >
@@ -99,7 +99,7 @@ function GuideCard({
       </div>
 
       {/* Content */}
-      <div className="p-8 flex flex-col flex-1">
+      <div className="p-4 flex flex-col flex-1">
         <div className="mb-4 flex justify-between items-start">
           <h3 className="text-2xl font-bold text-text-bright tracking-wide font-display uppercase leading-tight">
             {guide.title}
@@ -115,15 +115,15 @@ function GuideCard({
         </p>
       </div>
     </div>
-  );
+  )
 
   if (isPublished) {
     return (
       <Link to={guide.path} className="block h-full">
         {content}
       </Link>
-    );
+    )
   }
 
-  return <div className="block h-full">{content}</div>;
+  return <div className="block h-full">{content}</div>
 }

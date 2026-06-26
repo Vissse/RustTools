@@ -103,68 +103,9 @@ export function SkinningCalculator() {
       headerRest="CALCULATOR"
       variant="recycling"
     >
-      <style>{`
-        .target-card {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 12px;
-          border-radius: 6px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          color: #888;
-          transition: all 0.2s ease;
-          cursor: pointer;
-        }
-        .target-card:hover {
-          background: rgba(255, 255, 255, 0.06);
-          color: #ccc;
-        }
-        .target-card.active {
-          background: rgba(255, 255, 255, 0.08);
-          border-color: #cc422c;
-          color: #fff;
-        }
-        .target-card.active img {
-          filter: drop-shadow(0 0 6px rgba(206,66,43,0.6));
-        }
 
-        .table-row-styled {
-          background: rgba(255,255,255,0.02);
-          border-radius: 8px;
-          padding: 0.75rem 1rem;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          transition: background 0.2s;
-        }
-        .table-row-styled:hover {
-          background: rgba(255,255,255,0.04);
-        }
-        .hz-sep {
-          width: 100%;
-          height: 1px;
-          flex-shrink: 0;
-          margin-top: 32px;
-          margin-bottom: 32px;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.02) 20%,
-            rgba(255, 255, 255, 0.2) 50%,
-            rgba(255, 255, 255, 0.02) 80%,
-            transparent 100%
-          );
-        }
-        .bd-vertical-sep {
-          width: 1px;
-          height: 40px;
-          background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
-        }
-      `}</style>
-
-      <div className="flex flex-col h-full w-full relative z-10 px-6 pb-6 pt-8 custom-scrollbar overflow-y-auto fade-in-container">
-        <div className="w-full flex justify-center" style={{ marginTop: '30px' }}>
+      <div className="skinning-layout flex flex-col h-full w-full relative z-10 px-6 pb-6 pt-8 custom-scrollbar overflow-y-auto fade-in-container">
+        <div className="w-full flex justify-center mt-[30px]">
           <div className="grid grid-cols-7 gap-2">
           {TARGETS.map((t) => (
             <button

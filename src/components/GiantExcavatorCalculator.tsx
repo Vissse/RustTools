@@ -60,79 +60,6 @@ export function GiantExcavatorCalculator() {
       headerRest="EXCAVATOR"
       variant="cupboard"
     >
-      <style>{`
-        /* Skrytí nativních šipek inputu */
-        .invisible-num-input::-webkit-inner-spin-button,
-        .invisible-num-input::-webkit-outer-spin-button {
-          -webkit-appearance: none; margin: 0;
-        }
-        .invisible-num-input { -moz-appearance: textfield; }
-
-        /* Přesná kopie stylů počítadla z Raid kalkulačky */
-        .free-counter-wrap {
-          display: inline-flex; align-items: center;
-        }
-        .free-counter-btn {
-          background: transparent; border: none; color: #757575;
-          font-size: 20px; font-weight: 300; cursor: pointer; display: flex;
-          align-items: center; justify-content: center; width: 32px; height: 32px;
-          transition: all 0.2s ease; user-select: none;
-        }
-        .free-counter-btn:hover { color: #cc422c; transform: scale(1.15); }
-        .free-counter-btn:active { transform: scale(0.95); }
-        .free-separator {
-          width: 1px; height: 24px;
-          background: linear-gradient(to bottom, transparent, #4a4a4a, transparent);
-          margin: 0 4px;
-        }
-        .free-counter-input {
-          width: 44px; background: transparent; border: none; color: #fff;
-          font-size: 18px; font-weight: 700; text-align: center; outline: none;
-          font-family: inherit;
-        }
-
-        /* Nový minimalistický layout */
-        .single-layout {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 40px 20px;
-          height: 100%;
-          overflow-y: auto;
-          width: 100%;
-        }
-        .input-section {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 16px;
-          width: 100%;
-        }
-        .barrel-icon {
-          width: 120px;
-          height: 120px;
-          object-fit: contain;
-          filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
-        }
-        .input-info {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-        }
-        .input-label-text {
-          color: #a0a0a0;
-          font-family: var(--font-ui);
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        }
-        .output-card {
-          width: 100%;
-          max-width: 600px;
-        }
-      `}</style>
 
       <div className="single-layout fade-in-container">
         <div className="input-section">
@@ -143,7 +70,7 @@ export function GiantExcavatorCalculator() {
           />
           <div className="input-info">
             <div className="input-label-text">DIESEL BARRELS</div>
-            <div className="free-counter-wrap" style={{ marginTop: "8px" }}>
+            <div className="free-counter-wrap mt-2">
               <button
                 className="free-counter-btn"
                 onClick={() =>
@@ -182,12 +109,12 @@ export function GiantExcavatorCalculator() {
           </div>
         </div>
 
-        <div className="metal-rule" style={{ width: '100%', margin: '40px 0' }} />
+        <div className="metal-rule w-full my-10" />
 
         <div className="output-card">
           {safeDiesel > 0 ? (
             <div>
-              <div className="excavator-time-display" style={{ marginBottom: '20px', justifyContent: 'center' }}>
+              <div className="excavator-time-display mb-5 justify-center">
                 <span className="excavator-time-label">
                   Total Extraction Time
                 </span>
@@ -223,14 +150,13 @@ export function GiantExcavatorCalculator() {
               </div>
             </div>
           ) : (
-            <div className="empty-state" style={{ minHeight: '200px' }}>
+            <div className="empty-state min-h-[200px]">
               <span
-                className="icon"
-                style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.5 }}
+                className="icon text-[32px] mb-2 opacity-50"
               >
                 ◈
               </span>
-              <div style={{ color: "#888", lineHeight: 1.6, textAlign: 'center' }}>
+              <div className="text-[#888] leading-[1.6] text-center">
                 Enter the amount of Diesel Fuel
                 <br />
                 to calculate total yields

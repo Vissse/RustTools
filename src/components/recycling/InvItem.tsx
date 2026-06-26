@@ -22,9 +22,8 @@ export const InvItem = memo(function InvItem({
   return (
     <div className={`inv-item${count > 0 ? " active" : ""}`}>
       <div
-        className="inv-item-img"
+        className="inv-item-img mb-1.5"
         data-tip={name}
-        style={{ marginBottom: "6px" }}
       >
         <RecycleImg src={img} alt={name} loading="lazy" decoding="async" />
       </div>

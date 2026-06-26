@@ -173,238 +173,6 @@ export function FurnaceCalculator() {
       headerRest="CALCULATOR"
       variant="recycling"
     >
-      <style>{`
-        .furnace-container {
-          flex: 1;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 24px 16px;
-          overflow-y: auto;
-        }
-
-        @keyframes slideUpFade {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .anim-1 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.0s; }
-        .anim-2 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.1s; }
-        .anim-3 { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; animation-delay: 0.2s; }
-        .anim-staggered { animation: slideUpFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
-
-        .selector-row {
-          display: flex;
-          gap: 12px;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin-bottom: 24px;
-          max-width: 800px;
-        }
-
-        .dense-selector-row {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 8px;
-          max-width: 840px;
-          margin-bottom: 36px;
-        }
-
-        @keyframes popInProcess {
-          0% { opacity: 0; transform: translateY(15px) scale(0.8); }
-          100% { opacity: var(--btn-op); transform: translateY(0) scale(1); }
-        }
-
-        .dense-btn {
-          --btn-op: 0.5;
-          opacity: var(--btn-op);
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          border-radius: 4px;
-          padding: 8px 4px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 6px;
-          cursor: pointer;
-          transition: all 0.25s ease;
-          filter: grayscale(80%);
-          width: 85px; 
-          animation: popInProcess 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
-        }
-
-        .dense-btn:hover {
-          --btn-op: 0.8;
-          background: rgba(255, 255, 255, 0.02);
-          border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .dense-btn.active {
-          --btn-op: 1;
-          filter: grayscale(0%);
-          border-color: var(--rust);
-          background: linear-gradient(to bottom, rgba(206, 66, 43, 0.08) 0%, transparent 100%);
-        }
-
-        .dense-btn img {
-          width: 32px; 
-          height: 32px;
-          object-fit: contain;
-          transition: transform 0.3s ease;
-        }
-        
-        .dense-btn.active img {
-          transform: scale(1.1);
-          filter: drop-shadow(0 4px 8px var(--rust-glow)); 
-        }
-        
-        .dense-btn .minimal-box-name {
-          font-size: 9px;
-          line-height: 1.15;
-          text-align: center;
-        }
-
-        /* --- KARTA S FADE LINKOU --- */
-        .furnace-main-card {
-          background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
-          border: 1px solid var(--border2);
-          border-top: none;
-          border-radius: 12px;
-          padding: 24px 32px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-          max-width: 500px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-          position: relative;
-        }
-
-        .furnace-main-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--rust) 15%,
-            var(--rust) 85%,
-            transparent 100%
-          );
-          z-index: 10;
-          pointer-events: none;
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
-        }
-
-        /* --- INPUT WRAPPER --- */
-        .furnace-input-wrap {
-          background: rgba(0, 0, 0, 0.25);
-          border: 1px solid var(--border);
-          border-radius: 6px;
-          padding: 6px 12px;
-          display: inline-flex;
-          align-items: center;
-          margin-bottom: 24px;
-          transition: border-color 0.2s;
-        }
-        .furnace-input-wrap:focus-within {
-          border-color: rgba(206, 66, 43, 0.4);
-        }
-
-        .furnace-btn {
-          background: transparent;
-          border: none;
-          color: var(--text-dim);
-          font-size: 18px;
-          font-weight: 300;
-          cursor: pointer;
-          width: 32px;
-          height: 32px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: color 0.15s, transform 0.1s;
-        }
-        .furnace-btn:hover { color: var(--text-bright); }
-        .furnace-btn:active { transform: scale(0.9); }
-
-        .furnace-input {
-          background: transparent;
-          border: none;
-          outline: none;
-          text-align: center;
-          width: 90px;
-          font-family: var(--font-d);
-          font-size: 26px;
-          font-weight: 600;
-          color: var(--text-bright);
-          letter-spacing: 0.05em;
-        }
-        .furnace-input::-webkit-inner-spin-button,
-        .furnace-input::-webkit-outer-spin-button {
-          -webkit-appearance: none; margin: 0;
-        }
-        .furnace-input { -moz-appearance: textfield; }
-
-        .furnace-sep {
-          width: 1px;
-          height: 14px;
-          background: var(--border);
-          margin: 0 8px;
-        }
-
-        /* --- VÝSLEDKY --- */
-        .horizontal-results-grid {
-          display: flex;
-          gap: 8px;
-          width: 100%;
-          justify-content: center;
-          margin-top: 8px;
-        }
-
-        .h-result-box {
-          background: rgba(255, 255, 255, 0.015);
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          border-radius: 8px;
-          padding: 12px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          flex: 1;
-          transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .h-result-box:hover {
-          background: rgba(255, 255, 255, 0.03);
-          border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .h-result-box img {
-          width: 28px;
-          height: 28px;
-          object-fit: contain;
-          margin-bottom: 8px;
-          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-
-        .h-result-val {
-          font-family: var(--font-d);
-          font-size: 22px;
-          font-weight: 600;
-          line-height: 1;
-          margin-bottom: 2px;
-        }
-        
-        .h-result-lbl {
-          font-family: var(--font-ui);
-          font-size: 9px;
-          font-weight: 700;
-          color: var(--text-dim);
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-        }
-      `}</style>
 
       <div className="furnace-container fade-in-container">
         {/* 1. VÝBĚR PECE */}
@@ -416,7 +184,7 @@ export function FurnaceCalculator() {
             width: "100%",
           }}
         >
-          <div className="sec-label anim-1" style={{ marginBottom: "16px" }}>
+          <div className="sec-label anim-1 mb-4">
             SMELTER TYPE
           </div>
           <div className="selector-row">
@@ -448,7 +216,7 @@ export function FurnaceCalculator() {
             width: "100%",
           }}
         >
-          <div className="sec-label" style={{ marginBottom: "16px" }}>
+          <div className="sec-label mb-4">
             TARGET PROCESS
           </div>
           <div className="dense-selector-row" key={selectedSmelterId}>
@@ -574,8 +342,7 @@ export function FurnaceCalculator() {
                   alt={activeProcess.outputItem}
                 />
                 <span
-                  className="h-result-val"
-                  style={{ color: "var(--text-bright)" }}
+                  className="h-result-val text-text-bright"
                 >
                   {results.yieldAmount.toLocaleString()}
                 </span>
@@ -587,8 +354,7 @@ export function FurnaceCalculator() {
                 <div className="h-result-box">
                   <Img src="/images/wood.png" alt="Wood" />
                   <span
-                    className="h-result-val"
-                    style={{ color: "var(--wood-col)" }}
+                    className="h-result-val text-[var(--wood-col)]"
                   >
                     {results.woodRequired.toLocaleString()}
                   </span>
@@ -601,8 +367,7 @@ export function FurnaceCalculator() {
                 <div className="h-result-box">
                   <Img src="/images/charcoal.png" alt="Charcoal" />
                   <span
-                    className="h-result-val"
-                    style={{ color: "var(--coal-col)" }}
+                    className="h-result-val text-coal"
                   >
                     {results.charcoal.toLocaleString()}
                   </span>
@@ -620,8 +385,7 @@ export function FurnaceCalculator() {
               }}
             >
               <span
-                className="icon"
-                style={{ fontSize: "24px", marginBottom: "8px", opacity: 0.5 }}
+                className="icon text-[24px] mb-2 opacity-50"
               >
                 ◈
               </span>

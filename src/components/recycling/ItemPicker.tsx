@@ -27,7 +27,7 @@ export function ItemPicker({
   return (
     <div className="panel-left fade-in-container" {...tipProps}>
       {/* Moderní Sticky hlavička */}
-      <div className="search-box-b flex gap-3 w-full !px-[22px] !pt-[18px] !pb-[16px]">
+      <div className="search-box-b flex gap-3 w-full px-[22px] pt-[18px] pb-[16px]">
         <input
           type="text"
           className="sleek-search"
@@ -41,7 +41,7 @@ export function ItemPicker({
       </div>
 
       {categories.map(({ cat, items }) => (
-        <div className="cat-wrap z-40 !px-[22px] !pt-[12px]" key={cat}>
+        <div className="cat-wrap z-40 px-[22px] pt-[12px]" key={cat}>
           <div className="sec-label">{cat.toUpperCase()}</div>
           <div className="inv-grid">
             {items.map((item) => (

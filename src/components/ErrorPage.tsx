@@ -32,7 +32,7 @@ export function ErrorPage({
           <div className="header-left">
             <div className="header-bar" />
             <div className="header-title text-[22px] font-semibold leading-1 flex gap-2 justify-center items-center">
-              <h2 className="!mt-1">{title}</h2>
+              <h2 className="mt-1">{title}</h2>
             </div>
           </div>
           <div className="header-status">

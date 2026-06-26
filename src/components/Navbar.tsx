@@ -6,7 +6,7 @@ function SoonItem({ label }: { label: string }) {
   return (
     <div className="nav-dropdown-wrapper">
       <span className="nav-item soon" aria-disabled="true" title="Coming soon">
-        <span className="!mt-1">{label}</span>
+        <span className="mt-1">{label}</span>
         <span className="soon-badge">SOON</span>
       </span>
     </div>
@@ -34,13 +34,13 @@ export function Navbar() {
       <div className="nav-group left">
         {/* 1. Položka: Calculators Dropdown */}
         <div className="nav-dropdown-wrapper">
-          <Link 
-            to="/calculators" 
-            className="nav-item" 
+          <Link
+            to="/calculators"
+            className="nav-item"
             activeProps={{ className: 'guides-active' }}
             onClick={() => setOpen(false)}
           >
-            <span className="!mt-1">Calculators</span>
+            <span className="mt-1">Calculators</span>
             <svg
               className="dropdown-arrow"
               width="10"
@@ -140,7 +140,6 @@ export function Navbar() {
             >
               Salvaging Calculator
             </Link>
-
           </div>
         </div>
 
@@ -149,7 +148,7 @@ export function Navbar() {
         {/* 2. Položka: World */}
         {/* <div className="nav-dropdown-wrapper">
           <a href="#" className="nav-item">
-            <span className="!mt-1">World</span>
+            <span className="mt-1">World</span>
             <span className="nav-badge soon">Soon</span>
             <svg
               className="dropdown-arrow"
@@ -180,13 +179,13 @@ export function Navbar() {
 
         {/* 4. Položka: Guides */}
         <div className="nav-dropdown-wrapper">
-          <Link 
-            to="/guides" 
-            className="nav-item" 
+          <Link
+            to="/guides"
+            className="nav-item"
             activeProps={{ className: 'guides-active' }}
             onClick={() => setOpen(false)}
           >
-            <span className="!mt-1">Guides</span>
+            <span className="mt-1">Guides</span>
             <svg
               className="dropdown-arrow"
               width="10"
@@ -234,9 +233,13 @@ export function Navbar() {
         </div>
       </div>
 
-      <Link to="/" className="nav-brand" onClick={() => setOpen(false)}>
+      <Link
+        to="/"
+        className="nav-brand min-w-[234px]"
+        onClick={() => setOpen(false)}
+      >
         <img
-          className="brand-logo"
+          className="brand-logo min-w-10.5!"
           src="/images/icon.svg"
           alt="RustTools logo"
         />
@@ -259,7 +262,7 @@ export function Navbar() {
         {/* 3. Položka: Social Media */}
         {/* <div className="nav-dropdown-wrapper">
           <a href="#" className="nav-item">
-            <span className="!mt-1">Social Media</span>
+            <span className="mt-1">Social Media</span>
             <span className="nav-badge soon">Soon</span>
             <svg
               className="dropdown-arrow"

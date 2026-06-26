@@ -27,46 +27,25 @@ export function ResultsPanel({
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
-        <div style={{ marginTop: '0px' }} className="fade-in-container">
+        <div className="fade-in-container mt-0">
           {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
           <div className="sec-label">TOTAL OUTPUT & TIME</div>
 
           <div className="raid-box">
             {/* Vnitřní hlavička s Total Yield a Time */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '24px',
-              }}
-            >
-              <div
-                style={{ fontSize: '13px', color: '#a0a0a0', fontWeight: 600 }}
-              >
+            <div className="flex justify-between items-center mb-6">
+              <div className="text-[13px] text-[#a0a0a0] font-semibold">
                 Total Yield
               </div>
-              <div
-                style={{
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                }}
-              >
-                <span style={{ color: '#666', marginRight: '6px' }}>TIME:</span>
-                <span style={{ color: '#cd412b' }}>{results.time}</span>
+              <div className="text-[13px] font-bold tracking-[0.05em]">
+                <span className="text-[#666] mr-1.5">TIME:</span>
+                <span className="text-[#cd412b]">{results.time}</span>
               </div>
             </div>
 
             {/* Suroviny zarovnané vedle sebe s flexboxem */}
             <div
-              className="rcy-res-resources"
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '32px',
-                alignItems: 'center',
-              }}
+              className="rcy-res-resources flex flex-wrap gap-8 items-center"
             >
               {results.visibleResources.map((res) => (
                 <div key={res} className="fade-in-container">
@@ -80,7 +59,7 @@ export function ResultsPanel({
             </div>
 
             {results.randomTotals.length > 0 && (
-              <div style={{ marginTop: '24px' }}>
+              <div className="mt-6">
                 <RandomDropList randomTotals={results.randomTotals} />
               </div>
             )}
@@ -89,10 +68,7 @@ export function ResultsPanel({
           <Breakdown rows={results.rows} onSet={onSet} />
         </div>
       ) : (
-        <div
-          className="empty-state raid-box"
-          style={{ textAlign: 'center', marginTop: 32 }}
-        >
+        <div className="empty-state raid-box text-center mt-8">
           <span className="icon">◈</span>
           Select items to recycle
         </div>

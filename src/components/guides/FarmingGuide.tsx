@@ -4,7 +4,7 @@ import { ReqCard, Step, Tip, ImagePlaceholder } from "./GuideComponents";
 
 export function FarmingGuide() {
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 py-20 lg:py-32 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 lg:py-32 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest">
         <Link to="/" className="hover:text-text-bright transition-colors">Home</Link>

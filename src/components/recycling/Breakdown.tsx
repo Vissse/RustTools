@@ -53,7 +53,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
   if (rendered.length === 0) return null;
 
   return (
-    <div style={{ marginTop: "32px" }}>
+    <div className="mt-8">
       {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
       <div className="sec-label">BREAKDOWN</div>
 
@@ -67,17 +67,8 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
           return (
             <div className={`raid-bd-row ${isRemoving ? 'fade-out-container' : 'fade-in-container'}`} key={row.id}>
               {/* 1. HORNÍ ŘÁDEK: Input, Ikona, Název a Tlačítko smazat */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                }}
-              >
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "16px" }}
-                >
+              <div className="flex justify-between items-center w-full">
+                <div className="flex items-center gap-4">
                   {/* Kompaktní políčko (křížek 'x' odstraněn) */}
                   <QtyInput
                     className="invisible-num-input raid-qty-input"
@@ -87,29 +78,14 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                     onChange={(n) => onSet(row.id, n)}
                   />
 
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                    }}
-                  >
+                  <div className="flex items-center gap-3">
                     <RecycleImg
                       src={row.img}
                       alt={row.name}
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        objectFit: "contain",
-                      }}
+                      className="w-9 h-9 object-contain"
                     />
                     <span
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        color: "#e0e0e0",
-                        fontFamily: "var(--font-ui), sans-serif",
-                      }}
+                      className="text-[14px] font-bold text-[#e0e0e0] font-ui"
                     >
                       {row.name}
                     </span>
@@ -130,43 +106,21 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
               <div className="bd-horizontal-sep" />
 
               {/* 2. SPODNÍ ŘÁDEK: Výstupy z recyklace */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  gap: "16px",
-                  flexWrap: "wrap",
-                  width: "100%",
-                }}
-              >
+              <div className="flex items-center justify-start gap-4 flex-wrap w-full">
                 {/* Garantované suroviny */}
                 {guaranteed.map((o) => (
                   <div
                     key={o.key}
                     data-tip={o.title}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
+                    className="flex items-center gap-2"
                   >
                     <RecycleImg
                       src={o.img}
                       alt={o.title}
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        objectFit: "contain",
-                      }}
+                      className="w-6 h-6 object-contain"
                     />
                     <span
-                      style={{
-                        fontSize: "15px",
-                        fontWeight: 700,
-                        color: "#e0e0e0",
-                        fontFamily: "var(--font-ui), sans-serif",
-                      }}
+                      className="text-[15px] font-bold text-[#e0e0e0] font-ui"
                     >
                       {o.amount.toLocaleString("en-US").replace(/,/g, " ")}
                     </span>
@@ -183,42 +137,20 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   <div
                     key={o.key}
                     data-tip={o.title}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      background: "rgba(205, 65, 43, 0.08)",
-                      border: "1px solid rgba(205, 65, 43, 0.2)",
-                      padding: "4px 8px 4px 6px",
-                      borderRadius: "6px",
-                    }}
+                    className="flex items-center gap-1.5 bg-[rgba(205,65,43,0.08)] border border-[rgba(205,65,43,0.2)] pt-1 pr-2 pb-1 pl-1.5 rounded-md"
                   >
                     <RecycleImg
                       src={o.img}
                       alt={o.title}
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        objectFit: "contain",
-                      }}
+                      className="w-5 h-5 object-contain"
                     />
                     <span
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        color: "#e0e0e0",
-                        fontFamily: "var(--font-ui), sans-serif",
-                      }}
+                      className="text-[14px] font-bold text-[#e0e0e0] font-ui"
                     >
                       {o.amount.toLocaleString("en-US").replace(/,/g, " ")}
                     </span>
                     <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#cd412b",
-                        fontWeight: 700,
-                        marginLeft: "2px",
-                      }}
+                      className="text-[11px] text-[#cd412b] font-bold ml-0.5"
                     >
                       {o.chancePct}%
                     </span>
@@ -228,17 +160,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                 {/* Penalizace (Safe zone) */}
                 {row.penalty && (
                   <span
-                    style={{
-                      fontSize: "10px",
-                      padding: "2px 6px",
-                      background: "rgba(205, 65, 43, 0.1)",
-                      color: "#cd412b",
-                      borderRadius: "4px",
-                      border: "1px solid #cd412b",
-                      marginLeft: "auto", // Odstrčí badge na pravý okraj
-                      textTransform: "uppercase",
-                      fontFamily: "var(--font-ui), sans-serif",
-                    }}
+                    className="text-[10px] py-0.5 px-1.5 bg-[rgba(205,65,43,0.1)] text-[#cd412b] rounded-sm border border-[#cd412b] ml-auto uppercase font-ui"
                   >
                     -33% Safe Zone
                   </span>
