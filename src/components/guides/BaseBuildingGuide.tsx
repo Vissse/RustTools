@@ -5,9 +5,13 @@ export function BaseBuildingGuide() {
     <div className="w-full max-w-5xl mx-auto px-6 py-20 lg:py-32 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest">
-        <Link to="/" className="hover:text-text-bright transition-colors">Home</Link>
+        <Link to="/" className="hover:text-text-bright transition-colors">
+          Home
+        </Link>
         <span>/</span>
-        <Link to="/guides" className="hover:text-text-bright transition-colors">Guides</Link>
+        <Link to="/guides" className="hover:text-text-bright transition-colors">
+          Guides
+        </Link>
         <span>/</span>
         <span className="text-rust font-medium">Base Building Patterns</span>
       </div>
@@ -19,11 +23,10 @@ export function BaseBuildingGuide() {
             The Ultimate <span className="text-rust">Base Building</span> Guide
           </h1>
           <p className="text-2xl text-rust font-light tracking-wide max-w-3xl leading-relaxed font-display uppercase">
-            Unraidable Footprints and Pixel Gaps
+            Unraidable Designs and Pixel Gaps
           </p>
         </div>
       </header>
-
     </div>
   );
 }
