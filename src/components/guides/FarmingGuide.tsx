@@ -78,17 +78,39 @@ export function FarmingGuide() {
           <Step number={1} title="Choosing and Placing Planters">
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
               While you can plant seeds in natural soil, it is highly
-              inefficient. For large-scale farming, the{" "}
+              inefficient. When starting your farm, the{" "}
               <strong className="text-text-bright font-medium">
-                Large Planter
+                Large Planter Box
               </strong>{" "}
-              is your best option, holding 9 plants and 9 liters of water. For
-              micro-farms or filling tight spaces, use the cheap and
-              space-saving{" "}
+              (9 seeds) is highly recommended, as its size is necessary for
+              cross-breeding. Both the Large and the{" "}
               <strong className="text-text-bright font-medium">
-                Plant Plot
+                Triangle Planter Box
               </strong>{" "}
-              .
+              (4 seeds) automatically snap to the center of your foundations for
+              perfect, hassle-free placement. You <em>can</em> fit three{" "}
+              <strong className="text-text-bright font-medium">
+                Small Planter Boxes
+              </strong>{" "}
+              (3 seeds each) on a square foundation, but they lack the
+              auto-align feature. This makes them difficult to center and can
+              interfere with placing walls.
+            </p>
+            <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
+              Note that the current farming &quot;meta&quot; is using the{" "}
+              <strong className="text-text-bright font-medium">
+                Single Plant Pot
+              </strong>
+              . You can fit up to 25 of these onto a single square foundation
+              for maximum yield! Even better, they can be placed on top of
+              storage containers, allowing you to fit four Large Wood Boxes on a
+              foundation with 25 pots resting directly on top of them (
+              <span className="text-accent underline cursor-pointer">
+                [Link: How to place correctly]
+              </span>
+              ). However, this method is best used <em>after</em>{" "}
+              you have secured the perfect genetics for your crops (which we&apos;ll
+              cover in the next section).
             </p>
             <ImagePlaceholder label="Screenshot showing the ideal layout of several Large Planters placed tightly together on square foundations" />
           </Step>
@@ -96,12 +118,22 @@ export function FarmingGuide() {
           {/* STEP 2 */}
           <Step number={2} title="Setting up Perfect Lighting">
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
-              To keep the light level at 100%, you need to craft a standard
-              ceiling lamp. The lamp's coverage is a hemisphere that extends
-              about two floors down and one square foundation to the sides. If
-              you place one lamp exactly between four planters, or hang it on
-              the intersection of four foundations, you can light up multiple
-              planters at once.
+              To keep the light level at a perfect 100%, you need to craft a
+              standard ceiling light. The light&apos;s coverage is a hemisphere
+              extending about two floors down and one square foundation to the
+              sides. The most efficient placement is to hang the light exactly
+              on the intersection of four foundations. Doing this will perfectly
+              illuminate four{" "}
+              <strong className="text-text-bright font-medium">
+                Large Planter Boxes
+              </strong>{" "}
+              at once. Even more impressively, if you are using the{" "}
+              <strong className="text-text-bright font-medium">
+                Single Plant Pot
+              </strong>{" "}
+              &quot;meta&quot;, a single centrally-placed light can illuminate
+              all the pots across those four foundations, which means growing
+              100 seeds with only one light source!
             </p>
           </Step>
 
