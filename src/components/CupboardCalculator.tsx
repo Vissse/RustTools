@@ -63,17 +63,17 @@ export function CupboardCalculator() {
 
       <div className="cupboard-single-layout fade-in-container">
         <div className="cupboard-input-section">
-          <div className="text-[#a0a0a0] font-ui text-[14px] font-bold tracking-[0.1em] uppercase">
+          <div className="text-[#a0a0a0] font-ui text-[18px] font-bold tracking-[0.1em] uppercase">
             Daily Upkeep Cost
           </div>
 
-          <div className="cupboard-inputs-grid">
+          <div className="cupboard-inputs-grid gap-4 mt-2">
             {RESOURCES.map((r) => (
-              <div className="sleek-input-row m-0 px-3 py-1" key={r.key}>
-                <Img src={r.img} alt={r.alt} className="sleek-input-icon w-7 h-7" />
+              <div className="sleek-input-row m-0 px-4 py-2" key={r.key}>
+                <Img src={r.img} alt={r.alt} className="sleek-input-icon w-10 h-10" />
                 <input
                   type="number"
-                  className="sleek-input-box text-[16px]"
+                  className="sleek-input-box text-[20px]"
                   min="0"
                   placeholder="0"
                   value={inputs[r.key]}
@@ -90,13 +90,13 @@ export function CupboardCalculator() {
           </button>
         </div>
 
-        <div className="metal-rule w-full my-6" />
+        <div className="metal-rule w-full my-4" />
 
         <div className="cupboard-output-section">
           {result ? (
             <div>
-              <div className="sleek-tc-status justify-center mb-5">
-                Protected for <span>{result.time}</span>
+              <div className="sleek-tc-status justify-center mb-3 text-[18px]">
+                Protected for <span className="text-[22px] ml-2">{result.time}</span>
               </div>
 
               <div className="sleek-tc-grid-container">

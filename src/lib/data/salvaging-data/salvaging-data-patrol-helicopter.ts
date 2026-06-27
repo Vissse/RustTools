@@ -21,25 +21,6 @@ export const SalvagingDataPatrolHelicopter: SalvagingData[] = [
     conditionLoss: "15 %",
   },
   {
-    tool: "Pickaxe",
-    resources: [
-      {
-        name: "Charcoal",
-        quantity: "800",
-      },
-      {
-        name: "Metal Fragments",
-        quantity: "1500",
-      },
-      {
-        name: "High Quality Metal",
-        quantity: "70",
-      },
-    ],
-    time: "1 min 30 sec – 4 min 16 sec",
-    conditionLoss: "43 %",
-  },
-  {
     tool: "Salvaged Icepick",
     resources: [
       {
@@ -57,6 +38,25 @@ export const SalvagingDataPatrolHelicopter: SalvagingData[] = [
     ],
     time: "47 sec – 2 min 12 sec",
     conditionLoss: "8 %",
+  },
+  {
+    tool: "Pickaxe",
+    resources: [
+      {
+        name: "Charcoal",
+        quantity: "800",
+      },
+      {
+        name: "Metal Fragments",
+        quantity: "1500",
+      },
+      {
+        name: "High Quality Metal",
+        quantity: "70",
+      },
+    ],
+    time: "1 min 30 sec – 4 min 16 sec",
+    conditionLoss: "43 %",
   },
   {
     tool: "Stone Pickaxe",

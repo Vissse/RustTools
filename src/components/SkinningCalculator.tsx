@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Fragment } from "react";
 import { CalcShell } from "./CalcShell";
 import { RecycleImg } from "./recycling/RecycleImg";
 import { SKINNING_DATA } from "../lib/data/skinning-data";
@@ -106,71 +106,78 @@ export function SkinningCalculator() {
       variant="recycling"
     >
 
-      <div className="skinning-layout flex flex-col h-full w-full relative z-10 px-6 pb-6 pt-8 custom-scrollbar overflow-y-auto fade-in-container">
-        <div className="w-full flex justify-center mt-[30px]">
-          <div className="grid grid-cols-7 gap-2">
-          {TARGETS.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTarget(t)}
-              className={`target-card group ${target === t ? "active" : ""}`}
-            >
-              <RecycleImg 
-                src={getTargetImage(t)} 
-                alt={t} 
-                width={24} 
-                height={24} 
-                className="object-contain transition-transform group-hover:scale-110" 
-              />
-              <span className="text-[12px] font-bold tracking-wide uppercase">{t}</span>
-            </button>
-          ))}
+      <div className="calc-panel-full custom-scrollbar fade-in-container px-6 pb-6 pt-4">
+        {/* Minimalist Target Selection (Raid Style) */}
+        <div className="flex justify-center mt-4">
+          <div className="filter-row" style={{ flexWrap: 'wrap' }}>
+            {TARGETS.map((t, idx) => (
+              <Fragment key={t}>
+                <button
+                  onClick={() => setTarget(t)}
+                  className={`filter-pure-text flex items-center gap-2 ${target === t ? "active" : ""}`}
+                >
+                  <RecycleImg 
+                    src={getTargetImage(t)} 
+                    alt={t} 
+                    width={20} 
+                    height={20} 
+                    className="object-contain drop-shadow-md" 
+                  />
+                  <span>{t}</span>
+                </button>
+                {idx !== TARGETS.length - 1 && (
+                  <div className="filter-separator" />
+                )}
+              </Fragment>
+            ))}
           </div>
         </div>
 
-        <div className="hz-sep" />
-
-        <div className="flex flex-col flex-1">
-          <div className="flex items-center gap-3 mb-4">
-            <RecycleImg src={getTargetImage(target)} alt={target} width={32} height={32} className="object-contain" />
-            <h2 className="text-white text-lg font-bold uppercase tracking-wider">{target} Yield</h2>
+        {/* Minimalist Data Display */}
+        <div className="mt-4 max-w-5xl mx-auto w-full">
+          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-3">
+            <RecycleImg src={getTargetImage(target)} alt={target} width={28} height={28} className="object-contain opacity-80" />
+            <h2 className="text-text-dim text-[13px] font-bold uppercase tracking-wider">{target} Yield Breakdown</h2>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             {data.length > 0 ? (
               data.map((row, idx) => (
-                <div key={idx} className="table-row-styled">
-                  <div className="flex items-center gap-3 w-[150px] flex-shrink-0">
+                <div 
+                  key={idx} 
+                  className="flex flex-col sm:flex-row sm:items-center justify-between py-4 px-6 hover:bg-white/[0.02] transition-colors rounded-lg group"
+                >
+                  <div className="flex items-center gap-4 w-[240px] flex-shrink-0 mb-3 sm:mb-0">
                     <RecycleImg
                       src={getToolImage(row.tool)}
                       alt={row.tool}
-                      width={40}
-                      height={40}
-                      className="object-contain"
+                      width={24}
+                      height={24}
+                      className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                     />
-                    <span className="text-white text-[15px] font-bold">{row.tool}</span>
+                    <span className="text-text-bright text-[14px] tracking-wide font-light">
+                      {row.tool}
+                    </span>
                   </div>
 
-                  <div className="bd-vertical-sep" />
-
-                  <div className="flex flex-wrap gap-4 flex-1">
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 flex-1">
                     {[...row.resources.filter(r => r.name !== "Head Bag"), ...row.resources.filter(r => r.name === "Head Bag")].map((res, ridx) => (
                       <div
                         key={ridx}
-                        className="flex items-center gap-2 group relative"
+                        className="flex items-center gap-2"
                       >
                         <RecycleImg
                           src={getResourceImage(res.name)}
                           alt={res.name}
-                          width={32}
-                          height={32}
-                          className="object-contain drop-shadow-md transition-transform group-hover:scale-110"
+                          width={18}
+                          height={18}
+                          className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                         />
                         <div className="flex flex-col">
-                          <span className="text-white font-bold text-lg leading-tight">
+                          <span className="text-text-bright text-sm font-medium">
                             {res.quantity}
                           </span>
-                          <span className="text-[#888] text-[10px] font-bold uppercase tracking-wider">
+                          <span className="text-white text-[9px] uppercase tracking-wider">
                             {res.name}
                           </span>
                         </div>
@@ -180,7 +187,7 @@ export function SkinningCalculator() {
                 </div>
               ))
             ) : (
-              <div className="text-[#888] text-sm py-4">No data available for {target}.</div>
+              <div className="text-text-dim text-sm py-8 text-center">No data available for {target}.</div>
             )}
           </div>
         </div>

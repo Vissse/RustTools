@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Fragment } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
@@ -1057,38 +1057,42 @@ export function ShopCalculator() {
           </div>
         </div>
 
-        {/* Separátor 1 */}
-        <div className="fading-separator" />
-
         {/* MONUMENT SWAPPER */}
-        <div className="monument-swapper">
-          {MONUMENTS.map((monument) => (
-            <button
-              key={monument.id}
-              className={`monument-btn ${activeMonumentId === monument.id ? "active" : ""}`}
-              onClick={() => handleMonumentChange(monument.id)}
-            >
-              {monument.name}
-            </button>
-          ))}
+        <div className="flex justify-center mt-6">
+          <div className="filter-row" style={{ flexWrap: 'wrap' }}>
+            {MONUMENTS.map((monument, idx) => (
+              <Fragment key={monument.id}>
+                <button
+                  className={`filter-pure-text ${activeMonumentId === monument.id ? "active" : ""}`}
+                  onClick={() => handleMonumentChange(monument.id)}
+                >
+                  {monument.name}
+                </button>
+                {idx < MONUMENTS.length - 1 && (
+                  <div className="filter-separator" />
+                )}
+              </Fragment>
+            ))}
+          </div>
         </div>
 
-        {/* Separátor 2 */}
-        <div
-          className="fading-separator w-3/5 opacity-60"
-        />
-
         {/* TABS */}
-        <div className="bandit-tabs">
-          {activeMonument.categories.map((cat) => (
-            <button
-              key={cat.id}
-              className={`tab-btn ${activeTab === cat.id ? "active" : ""}`}
-              onClick={() => setActiveTab(cat.id)}
-            >
-              {cat.name}
-            </button>
-          ))}
+        <div className="flex justify-center mt-2">
+          <div className="filter-row" style={{ flexWrap: 'wrap' }}>
+            {activeMonument.categories.map((cat, idx) => (
+              <Fragment key={cat.id}>
+                <button
+                  className={`filter-pure-text ${activeTab === cat.id ? "active" : ""}`}
+                  onClick={() => setActiveTab(cat.id)}
+                >
+                  {cat.name}
+                </button>
+                {idx < activeMonument.categories.length - 1 && (
+                  <div className="filter-separator" />
+                )}
+              </Fragment>
+            ))}
+          </div>
         </div>
 
         {/* ITEMS GRID & FOOTER CONTAINER */}
