@@ -108,8 +108,8 @@ export function FarmingGuide() {
               <span className="text-accent underline cursor-pointer">
                 [Link: How to place correctly]
               </span>
-              ). However, this method is best used <em>after</em>{" "}
-              you have secured the perfect genetics for your crops (which we&apos;ll
+              ). However, this method is best used <em>after</em> you have
+              secured the perfect genetics for your crops (which we&apos;ll
               cover in the next section).
             </p>
             <ImagePlaceholder label="Screenshot showing the ideal layout of several Large Planters placed tightly together on square foundations" />
@@ -150,8 +150,19 @@ export function FarmingGuide() {
               <li>Place a water pump into a fresh water source.</li>
               <li>Connect it directly to a sprinkler using a hose.</li>
               <li>
-                Place the sprinkler in the center of a four-planter block to
-                distribute water evenly.
+                Strategic sprinkler placement is key. If using{" "}
+                <strong className="text-text-bright font-medium">
+                  Large Planter Boxes
+                </strong>
+                , a sprinkler&apos;s effective range is very forgiving—you only
+                need 2 sprinklers to cover up to 16 planters! However, if using
+                the{" "}
+                <strong className="text-text-bright font-medium">
+                  Single Plant Pot
+                </strong>{" "}
+                meta, the sprinkler must physically hit every individual pot. In
+                this case, place the sprinkler exactly halfway between two
+                foundations to cover all 50 pots evenly.
               </li>
             </ul>
             <ImagePlaceholder label="Logical diagram or screenshot showing a Water Pump connected via hose to a Sprinkler hanging perfectly above the intersection of four Large Planters" />
