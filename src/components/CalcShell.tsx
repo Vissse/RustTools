@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import Link from 'next/link'
+import { ShareButton } from './ShareButton'
 
 type Variant = 'raid' | 'recycling' | 'cupboard'
 
@@ -55,11 +56,14 @@ export function CalcShell({
         <span className="text-rust font-medium">{crumbLabel}</span>
       </div>
 
-      {/* Page header — sits directly under the breadcrumb, left-aligned. */}
-      <header className="mb-8 animate-fade-in-up">
+      {/* Page header — sits directly under the breadcrumb. The title is
+          left-aligned; the Share button is pinned to the right and copies the
+          current URL (calculator state lives in the query string via nuqs). */}
+      <header className="mb-8 animate-fade-in-up flex items-end justify-between gap-6 flex-wrap">
         <h1 className="text-6xl md:text-7xl font-bold tracking-tight m-0 text-text-bright leading-none font-display uppercase">
           {headerAccent} <span className="text-rust">{headerRest}</span>
         </h1>
+        <ShareButton />
       </header>
 
       {/* Separator — matches the hubs. */}

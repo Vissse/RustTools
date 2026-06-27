@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useMemo, Fragment } from "react";
+import { useMemo, Fragment } from "react";
+import { useQueryStates, parseAsString, parseAsInteger } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
+import { parseAsEntries, setEntryQty } from "../lib/url-entries";
 
 // 1. DATA PŘEDMĚTŮ PRO VŠECHNY LOKACE
 const BANDIT_CAMP_CATEGORIES = [
@@ -911,36 +913,54 @@ const MONUMENTS = [
 ];
 
 export function ShopCalculator() {
-  const [activeMonumentId, setActiveMonumentId] = useState<string>("bandit");
-  const [activeTab, setActiveTab] = useState<string>(
-    BANDIT_CAMP_CATEGORIES[0].id,
+  // Monument, active tab, scrap balance and cart all live in the URL so a shop
+  // run can be shared (?mon=outpost&scrap=500&c=auto-turret:2,gears:4).
+  const [{ mon, tab, scrap, c: cartEntries }, setQuery] = useQueryStates(
+    {
+      mon: parseAsString.withDefault("bandit"),
+      tab: parseAsString,
+      scrap: parseAsInteger,
+      c: parseAsEntries,
+    },
+    { history: "replace" },
   );
 
-  const [scrapInventory, setScrapInventory] = useState<number>(0);
-  const [cart, setCart] = useState<Record<string, number>>({});
-
-  const activeMonument = MONUMENTS.find((m) => m.id === activeMonumentId)!;
+  // Sanitise against the data: unknown monument/tab fall back to the first valid
+  // option so a hand-edited URL never breaks the page.
+  const activeMonument = MONUMENTS.find((m) => m.id === mon) ?? MONUMENTS[0];
   const activeCategory =
-    activeMonument.categories.find((c) => c.id === activeTab) ||
+    activeMonument.categories.find((c) => c.id === tab) ??
     activeMonument.categories[0];
+  const activeMonumentId = activeMonument.id;
+  const activeTab = activeCategory.id;
+  const scrapInventory = scrap ?? 0;
+
+  const cart = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const e of cartEntries) {
+      const exists = MONUMENTS.some((m) =>
+        m.categories.some((cat) => cat.items.some((it) => it.id === e.id)),
+      );
+      if (exists) map[e.id] = e.qty;
+    }
+    return map;
+  }, [cartEntries]);
 
   const handleMonumentChange = (monId: string) => {
-    setActiveMonumentId(monId);
-    const newMon = MONUMENTS.find((m) => m.id === monId)!;
-    setActiveTab(newMon.categories[0].id);
+    // Reset to the new monument's first tab (null = default first tab → clean URL).
+    setQuery({ mon: monId, tab: null });
+  };
+
+  const setActiveTab = (tabId: string) => {
+    setQuery({
+      tab: tabId === activeMonument.categories[0].id ? null : tabId,
+    });
   };
 
   const adjustCart = (itemId: string, delta: number) => {
-    setCart((prev) => {
-      const current = prev[itemId] || 0;
-      const next = Math.max(0, current + delta);
-      const newCart = { ...prev };
-      if (next === 0) {
-        delete newCart[itemId];
-      } else {
-        newCart[itemId] = next;
-      }
-      return newCart;
+    setQuery((prev) => {
+      const current = prev.c.find((e) => e.id === itemId)?.qty ?? 0;
+      return { c: setEntryQty(prev.c, itemId, current + delta) };
     });
   };
 
@@ -1010,11 +1030,11 @@ export function ShopCalculator() {
                 value={scrapInventory === 0 ? "" : scrapInventory}
                 onChange={(e) => {
                   const val = e.target.value;
-                  if (val === "") setScrapInventory(0);
+                  if (val === "") setQuery({ scrap: null });
                   else {
                     const parsed = parseInt(val, 10);
                     if (!isNaN(parsed) && parsed >= 0)
-                      setScrapInventory(parsed);
+                      setQuery({ scrap: parsed === 0 ? null : parsed });
                   }
                 }}
               />
@@ -1160,20 +1180,15 @@ export function ShopCalculator() {
                       onChange={(e) => {
                         const val = e.target.value;
                         if (val === "") {
-                          setCart((prev) => {
-                            const next = { ...prev };
-                            delete next[item.id];
-                            return next;
-                          });
+                          setQuery((prev) => ({
+                            c: setEntryQty(prev.c, item.id, 0),
+                          }));
                         } else {
                           const parsed = parseInt(val, 10);
                           if (!isNaN(parsed) && parsed >= 0) {
-                            setCart((prev) => {
-                              const next = { ...prev };
-                              if (parsed === 0) delete next[item.id];
-                              else next[item.id] = parsed;
-                              return next;
-                            });
+                            setQuery((prev) => ({
+                              c: setEntryQty(prev.c, item.id, parsed),
+                            }));
                           }
                         }
                       }}

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
+import { useQueryState, parseAsInteger } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
@@ -34,7 +35,8 @@ const RATES = [
 ];
 
 export function GiantExcavatorCalculator() {
-  const [diesel, setDiesel] = useState<number | "">(1);
+  // Diesel count lives in the URL (?b=) so a yield estimate can be shared.
+  const [diesel, setDiesel] = useQueryState("b", parseAsInteger);
 
   const safeDiesel = typeof diesel === "number" && diesel > 0 ? diesel : 0;
 
@@ -75,11 +77,7 @@ export function GiantExcavatorCalculator() {
             <div className="free-counter-wrap mt-2">
               <button
                 className="free-counter-btn"
-                onClick={() =>
-                  setDiesel((c) =>
-                    Math.max(0, (typeof c === "number" ? c : 0) - 1),
-                  )
-                }
+                onClick={() => setDiesel((c) => Math.max(0, (c ?? 0) - 1) || null)}
               >
                 −
               </button>
@@ -88,10 +86,10 @@ export function GiantExcavatorCalculator() {
                 type="number"
                 min="0"
                 className="invisible-num-input free-counter-input"
-                value={diesel}
+                value={diesel ?? ""}
                 onChange={(e) => {
                   const val = e.target.value;
-                  if (val === "") setDiesel("");
+                  if (val === "") setDiesel(null);
                   else {
                     const parsed = parseInt(val, 10);
                     if (!isNaN(parsed) && parsed >= 0) setDiesel(parsed);
@@ -101,9 +99,7 @@ export function GiantExcavatorCalculator() {
               <div className="free-separator" />
               <button
                 className="free-counter-btn"
-                onClick={() =>
-                  setDiesel((c) => (typeof c === "number" ? c : 0) + 1)
-                }
+                onClick={() => setDiesel((c) => (c ?? 0) + 1)}
               >
                 +
               </button>

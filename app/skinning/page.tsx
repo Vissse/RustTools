@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { SkinningCalculator } from '@/components/SkinningCalculator'
 import { seoMetadata } from '@/lib/seo'
 
@@ -10,5 +11,9 @@ export const metadata: Metadata = seoMetadata({
 })
 
 export default function Page() {
-  return <SkinningCalculator />
+  return (
+    <Suspense>
+      <SkinningCalculator />
+    </Suspense>
+  )
 }

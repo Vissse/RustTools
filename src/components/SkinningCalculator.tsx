@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, Fragment } from "react";
+import { useMemo, Fragment } from "react";
+import { useQueryState, parseAsStringLiteral } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { RecycleImg } from "./recycling/RecycleImg";
 import { SKINNING_DATA } from "../lib/data/skinning-data";
@@ -87,7 +88,11 @@ function getTargetImage(target: string): string {
 }
 
 export function SkinningCalculator() {
-  const [target, setTarget] = useState<SkinningTarget>("Bear");
+  // Selected animal lives in the URL (?a=) so a yield breakdown can be shared.
+  const [target, setTarget] = useQueryState(
+    "a",
+    parseAsStringLiteral(TARGETS).withDefault("Bear"),
+  );
 
   const data: SkinningData[] = useMemo(
     () => SKINNING_DATA[target] || [],

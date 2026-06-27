@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, Fragment } from "react";
+import { useMemo, Fragment } from "react";
+import { useQueryState, parseAsStringLiteral } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { RecycleImg } from "./recycling/RecycleImg";
@@ -44,7 +45,11 @@ function getToolImage(name: string): string {
 }
 
 export function SalvagingCalculator() {
-  const [target, setTarget] = useState<SalvagingTarget>("Bradley");
+  // Selected target lives in the URL (?t=) so a yield table can be shared.
+  const [target, setTarget] = useQueryState(
+    "t",
+    parseAsStringLiteral(TARGETS).withDefault("Bradley"),
+  );
 
   const data: SalvagingData[] = useMemo(
     () => SALVAGING_DATA[target] || [],

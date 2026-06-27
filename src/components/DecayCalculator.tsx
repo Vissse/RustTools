@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, useEffect } from "react";
+import { useMemo, useEffect, useRef } from "react";
+import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
@@ -43,18 +44,45 @@ const MATERIALS = [
   },
 ];
 
+const MATERIAL_IDS = MATERIALS.map((m) => m.id);
+
 export function DecayCalculator() {
-  const [selectedMaterial, setSelectedMaterial] = useState<string>("stone");
-  const [currentHp, setCurrentHp] = useState<number | "">(500);
+  // Material + remaining HP live in the URL (?mat=&hp=) so a decay timer can be
+  // shared. `hp` is nullable: when absent it falls back to the material's full HP,
+  // which keeps the URL clean (no `hp` param) for the common "fresh wall" case.
+  const [{ mat: selectedMaterial, hp: currentHp }, setQuery] = useQueryStates(
+    {
+      mat: parseAsStringLiteral(MATERIAL_IDS).withDefault("stone"),
+      hp: parseAsInteger,
+    },
+    { history: "replace" },
+  );
+  const setSelectedMaterial = (mat: string) => setQuery({ mat });
+  const setCurrentHp = (
+    hp: number | null | ((prev: number | null) => number | null),
+  ) =>
+    setQuery((prev) => ({
+      hp: typeof hp === "function" ? hp(prev.hp) : hp,
+    }));
 
   const activeMat = MATERIALS.find((m) => m.id === selectedMaterial)!;
 
+  // Reset HP to the new material's full when the user switches material. Guarded
+  // by a ref so it doesn't fire on mount/hydration and clobber a shared `?hp=`.
+  // Setting null (rather than the number) keeps the URL clean — display falls
+  // back to full via `currentHp ?? activeMat.hp` below.
+  const prevMat = useRef(selectedMaterial);
   useEffect(() => {
-    setCurrentHp(activeMat.hp);
-  }, [selectedMaterial, activeMat.hp]);
+    if (prevMat.current === selectedMaterial) return;
+    prevMat.current = selectedMaterial;
+    setCurrentHp(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedMaterial]);
 
-  const safeHp =
-    typeof currentHp === "number" ? Math.min(currentHp, activeMat.hp) : 0;
+  const safeHp = Math.max(
+    0,
+    Math.min(currentHp ?? activeMat.hp, activeMat.hp),
+  );
   const hpPercent = Math.max(0, Math.min(100, (safeHp / activeMat.hp) * 100));
   const hpStep = activeMat.id === "twig" ? 1 : 10;
 
@@ -159,7 +187,7 @@ export function DecayCalculator() {
                 className="decay-btn"
                 onClick={() =>
                   setCurrentHp((c) =>
-                    Math.max(0, (typeof c === "number" ? c : 0) - hpStep),
+                    Math.max(0, (c ?? activeMat.hp) - hpStep),
                   )
                 }
               >
@@ -171,10 +199,10 @@ export function DecayCalculator() {
                 min="0"
                 max={activeMat.hp}
                 className="decay-input"
-                value={currentHp}
+                value={currentHp ?? activeMat.hp}
                 onChange={(e) => {
                   const val = e.target.value;
-                  if (val === "") setCurrentHp("");
+                  if (val === "") setCurrentHp(null);
                   else {
                     const parsed = parseInt(val, 10);
                     if (!isNaN(parsed) && parsed >= 0) {
@@ -188,10 +216,7 @@ export function DecayCalculator() {
                 className="decay-btn"
                 onClick={() =>
                   setCurrentHp((c) =>
-                    Math.min(
-                      activeMat.hp,
-                      (typeof c === "number" ? c : 0) + hpStep,
-                    ),
+                    Math.min(activeMat.hp, (c ?? activeMat.hp) + hpStep),
                   )
                 }
               >

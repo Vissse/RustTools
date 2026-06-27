@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { RecyclingCalculator } from '@/components/RecyclingCalculator'
 import { seoMetadata } from '@/lib/seo'
 
@@ -10,5 +11,9 @@ export const metadata: Metadata = seoMetadata({
 })
 
 export default function Page() {
-  return <RecyclingCalculator />
+  return (
+    <Suspense>
+      <RecyclingCalculator />
+    </Suspense>
+  )
 }

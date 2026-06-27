@@ -1,6 +1,7 @@
 'use client'
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useQueryStates, parseAsString } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { MAX_SLOTS } from "../lib/data/cupboard-data";
@@ -12,19 +13,27 @@ import {
 import { Feature, useFeatureUsed } from "../lib/analytics";
 import type { Stack } from "../lib/types";
 
+// `urlKey` is the short query-string key shared in URLs (e.g. ?w=1000&s=500).
 const RESOURCES = [
-  { key: "wood", img: "/images/wood.png", alt: "Wood" },
-  { key: "stone", img: "/images/stones.png", alt: "Stone" },
-  { key: "metal", img: "/images/metal.fragments.png", alt: "Metal Fragments" },
-  { key: "hqm", img: "/images/metal.refined.png", alt: "High Quality Metal" },
+  { key: "wood", urlKey: "w", img: "/images/wood.png", alt: "Wood" },
+  { key: "stone", urlKey: "s", img: "/images/stones.png", alt: "Stone" },
+  { key: "metal", urlKey: "m", img: "/images/metal.fragments.png", alt: "Metal Fragments" },
+  { key: "hqm", urlKey: "h", img: "/images/metal.refined.png", alt: "High Quality Metal" },
 ] as const;
 
-type Inputs = Record<(typeof RESOURCES)[number]["key"], string>;
-
-const EMPTY: Inputs = { wood: "", stone: "", metal: "", hqm: "" };
-
 export function CupboardCalculator() {
-  const [inputs, setInputs] = useState<Inputs>(EMPTY);
+  // Inputs live in the URL so a filled-in upkeep cost can be shared. Kept as
+  // strings to preserve the empty-while-typing UX; blanks are dropped from the URL.
+  const [q, setQ] = useQueryStates(
+    {
+      w: parseAsString.withDefault(""),
+      s: parseAsString.withDefault(""),
+      m: parseAsString.withDefault(""),
+      h: parseAsString.withDefault(""),
+    },
+    { history: "replace" },
+  );
+  const inputs = { wood: q.w, stone: q.s, metal: q.m, hqm: q.h };
 
   const result = useMemo(() => {
     const wood = parseInt(inputs.wood) || 0;
@@ -77,15 +86,13 @@ export function CupboardCalculator() {
                   min="0"
                   placeholder="0"
                   value={inputs[r.key]}
-                  onChange={(e) =>
-                    setInputs((prev) => ({ ...prev, [r.key]: e.target.value }))
-                  }
+                  onChange={(e) => setQ({ [r.urlKey]: e.target.value })}
                 />
               </div>
             ))}
           </div>
 
-          <button className="sleek-btn-reset mt-1" onClick={() => setInputs(EMPTY)}>
+          <button className="sleek-btn-reset mt-1" onClick={() => setQ(null)}>
             Reset Values
           </button>
         </div>

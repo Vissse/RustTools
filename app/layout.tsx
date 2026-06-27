@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import '@/styles/global.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -63,7 +64,7 @@ export default function RootLayout({
             stay exactly [Navbar, page content, Footer]. */}
         <div id="root">
           <Navbar />
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
           <Footer />
         </div>
       </body>

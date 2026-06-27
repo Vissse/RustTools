@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, useEffect } from "react";
+import { useMemo, useEffect, useRef } from "react";
+import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
@@ -112,16 +113,40 @@ function getImageFromName(name: string) {
   return `/images/${map[name] || name.toLowerCase().replace(/ /g, ".") + ".png"}`;
 }
 
+const SMELTER_IDS = SMELTERS.map((s) => s.id);
+
 export function FurnaceCalculator() {
-  const [selectedSmelterId, setSelectedSmelterId] = useState<string>("furnace");
-  const [selectedProcessIdx, setSelectedProcessIdx] = useState<number>(0);
-  const [quantity, setQuantity] = useState<number | "">(1000);
+  // Smelter, target process and amount live in the URL (?sm=&p=&q=) so a smelt
+  // estimate can be shared.
+  const [
+    { sm: selectedSmelterId, p: selectedProcessIdx, q: quantity },
+    setQuery,
+  ] = useQueryStates(
+    {
+      sm: parseAsStringLiteral(SMELTER_IDS).withDefault("furnace"),
+      p: parseAsInteger.withDefault(0),
+      q: parseAsInteger,
+    },
+    { history: "replace" },
+  );
+  const setSelectedSmelterId = (sm: string) => setQuery({ sm });
+  const setSelectedProcessIdx = (p: number) => setQuery({ p });
+  const setQuantity = (
+    q: number | null | ((prev: number | null) => number | null),
+  ) =>
+    setQuery((prev) => ({ q: typeof q === "function" ? q(prev.q) : q }));
 
   const activeSmelter = SMELTERS.find((s) => s.id === selectedSmelterId)!;
   const safeQty = typeof quantity === "number" && quantity > 0 ? quantity : 0;
 
+  // Reset the process to the first when the user switches smelter. Guarded by a
+  // ref so it doesn't fire on mount/hydration and clobber a shared `?p=`.
+  const prevSmelter = useRef(selectedSmelterId);
   useEffect(() => {
+    if (prevSmelter.current === selectedSmelterId) return;
+    prevSmelter.current = selectedSmelterId;
     setSelectedProcessIdx(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSmelterId]);
 
   const activeProcess = activeSmelter.data[selectedProcessIdx];
@@ -261,11 +286,7 @@ export function FurnaceCalculator() {
           <div className="furnace-input-wrap">
             <button
               className="furnace-btn"
-              onClick={() =>
-                setQuantity((c) =>
-                  Math.max(0, (typeof c === "number" ? c : 0) - 100),
-                )
-              }
+              onClick={() => setQuantity((c) => Math.max(0, (c ?? 0) - 100) || null)}
             >
               −
             </button>
@@ -274,10 +295,10 @@ export function FurnaceCalculator() {
               type="number"
               min="0"
               className="furnace-input"
-              value={quantity}
+              value={quantity ?? ""}
               onChange={(e) => {
                 const val = e.target.value;
-                if (val === "") setQuantity("");
+                if (val === "") setQuantity(null);
                 else {
                   const parsed = parseInt(val, 10);
                   if (!isNaN(parsed) && parsed >= 0) setQuantity(parsed);
@@ -287,9 +308,7 @@ export function FurnaceCalculator() {
             <div className="furnace-sep" />
             <button
               className="furnace-btn"
-              onClick={() =>
-                setQuantity((c) => (typeof c === "number" ? c : 0) + 100)
-              }
+              onClick={() => setQuantity((c) => (c ?? 0) + 100)}
             >
               +
             </button>

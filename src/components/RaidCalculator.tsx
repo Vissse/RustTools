@@ -2,6 +2,14 @@
 
 import { useMemo, useState, useEffect, useRef, Fragment } from 'react'
 import type { CSSProperties } from 'react'
+import {
+  useQueryStates,
+  parseAsString,
+  parseAsInteger,
+  parseAsBoolean,
+  parseAsStringLiteral,
+  parseAsArrayOf,
+} from 'nuqs'
 import { CalcShell } from './CalcShell'
 import { Img } from './Img'
 import {
@@ -39,16 +47,43 @@ const FILTER_CATEGORIES = [
   'Torpedos',
 ]
 
+const COMBO_MODES = ['cheapest', 'fastest'] as const
+
 export function RaidCalculator() {
-  const [selectedStructure, setSelectedStructure] = useState<string | null>(
-    null
+  // The whole raid setup lives in the URL so a combo can be shared with a link:
+  //   ?s=Sheet+Metal+Door&e=C4,Rocket&n=20&d=true&m=fastest&f=Explosive,Melee
+  // Sets/structure are stored as plain arrays/strings here and sanitised against
+  // the known data below, so a hand-edited URL can never inject invalid state.
+  const [query, setQuery] = useQueryStates(
+    {
+      s: parseAsString,
+      e: parseAsArrayOf(parseAsString).withDefault([]),
+      n: parseAsInteger,
+      d: parseAsBoolean.withDefault(false),
+      m: parseAsStringLiteral(COMBO_MODES).withDefault('cheapest'),
+      f: parseAsArrayOf(parseAsString).withDefault(['Explosive']),
+    },
+    { history: 'replace' },
   )
-  const [selectedExplosives, setSelectedExplosives] = useState<Set<string>>(
-    () => new Set()
+
+  const selectedStructure = query.s && STRUCTURES[query.s] ? query.s : null
+  const structureCount = query.n
+  const discountActive = query.d
+  const comboMode: ComboMode = query.m
+
+  const selectedExplosives = useMemo(
+    () => new Set(query.e.filter((name) => EXPLOSIVES.some((x) => x.name === name))),
+    [query.e],
   )
-  const [structureCount, setStructureCount] = useState<number | ''>(1)
-  const [discountActive, setDiscountActive] = useState<boolean>(false)
-  const [comboMode, setComboMode] = useState<ComboMode>('cheapest')
+  const activeFilters = useMemo(
+    () => new Set(query.f.filter((c) => FILTER_CATEGORIES.includes(c))),
+    [query.f],
+  )
+
+  const setSelectedStructure = (name: string) => setQuery({ s: name })
+  const setStructureCount = (
+    n: number | null | ((prev: number | null) => number | null),
+  ) => setQuery((prev) => ({ n: typeof n === 'function' ? n(prev.n) : n }))
 
   // The category tabs wrap onto multiple rows on narrow screens; when they do,
   // the vertical dividers between them would dangle at row edges. Detect the
@@ -81,10 +116,6 @@ export function RaidCalculator() {
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
-
-  const [activeFilters, setActiveFilters] = useState<Set<string>>(
-    () => new Set(['Explosive'])
-  )
 
   // --- NOVÉ STAVY PRO ASYNCHRONNÍ DATA (Gecko/Firefox optimalizace) ---
   const [currentRaidData, setCurrentRaidData] = useState<RaidItem[]>([])
@@ -210,21 +241,19 @@ export function RaidCalculator() {
   )
 
   function toggleExplosive(name: string) {
-    setSelectedExplosives((prev) => {
-      const next = new Set(prev)
-      if (next.has(name)) next.delete(name)
-      else next.add(name)
-      return next
-    })
+    setQuery((prev) => ({
+      e: prev.e.includes(name)
+        ? prev.e.filter((x) => x !== name)
+        : [...prev.e, name],
+    }))
   }
 
   function toggleFilter(cat: string) {
-    setActiveFilters((prev) => {
-      const next = new Set(prev)
-      if (next.has(cat)) next.delete(cat)
-      else next.add(cat)
-      return next
-    })
+    setQuery((prev) => ({
+      f: prev.f.includes(cat)
+        ? prev.f.filter((x) => x !== cat)
+        : [...prev.f, cat],
+    }))
   }
 
   return (
@@ -271,9 +300,7 @@ export function RaidCalculator() {
                 <button
                   className="free-counter-btn"
                   onClick={() =>
-                    setStructureCount((c) =>
-                      Math.max(1, (typeof c === 'number' ? c : 1) - 1)
-                    )
+                    setStructureCount((c) => Math.max(1, (c ?? 1) - 1))
                   }
                 >
                   −
@@ -283,11 +310,11 @@ export function RaidCalculator() {
                   type="number"
                   min="1"
                   className="invisible-num-input free-counter-input"
-                  value={structureCount}
+                  value={structureCount ?? 1}
                   onChange={(e) => {
                     const val = e.target.value
                     if (val === '') {
-                      setStructureCount('')
+                      setStructureCount(null)
                     } else {
                       const parsed = parseInt(val, 10)
                       if (!isNaN(parsed) && parsed > 0)
@@ -298,11 +325,7 @@ export function RaidCalculator() {
                 <div className="free-separator" />
                 <button
                   className="free-counter-btn"
-                  onClick={() =>
-                    setStructureCount(
-                      (c) => (typeof c === 'number' ? c : 1) + 1
-                    )
-                  }
+                  onClick={() => setStructureCount((c) => (c ?? 1) + 1)}
                 >
                   +
                 </button>
@@ -441,9 +464,9 @@ export function RaidCalculator() {
                     <div
                       className="craft-switch"
                       onClick={() =>
-                        setComboMode((m) =>
-                          m === 'cheapest' ? 'fastest' : 'cheapest'
-                        )
+                        setQuery({
+                          m: comboMode === 'cheapest' ? 'fastest' : 'cheapest',
+                        })
                       }
                     >
                       <div className="craft-switch-thumb" />
@@ -595,7 +618,7 @@ export function RaidCalculator() {
                         {/* Přepínač (Slider) */}
                         <div
                           className="craft-switch"
-                          onClick={() => setDiscountActive(!discountActive)}
+                          onClick={() => setQuery({ d: !discountActive })}
                         >
                           <div className="craft-switch-thumb" />
                         </div>

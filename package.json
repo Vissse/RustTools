@@ -13,6 +13,7 @@
   "dependencies": {
     "lodash": "4.18.1",
     "next": "16.2.9",
+    "nuqs": "^2.8.9",
     "posthog-js": "1.393.0",
     "react": "19.2.7",
     "react-dom": "19.2.7"
