@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 import { ReqCard, Step, Tip, ImagePlaceholder, Reveal } from './GuideComponents'
 
@@ -7,11 +7,11 @@ export function FarmingGuide() {
     <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
-        <Link to="/" className="hover:text-text-bright transition-colors">
+        <Link href="/" className="hover:text-text-bright transition-colors">
           Home
         </Link>
         <span>/</span>
-        <Link to="/guides" className="hover:text-text-bright transition-colors">
+        <Link href="/guides" className="hover:text-text-bright transition-colors">
           Guides
         </Link>
         <span>/</span>
@@ -322,7 +322,7 @@ export function FarmingGuide() {
         </p>
         <div className="guide-footer-buttons">
           <Link
-            to="/genetics"
+            href="/genetics"
             className="px-8 py-4 bg-rust-dim border border-rust text-text-bright font-display uppercase tracking-[0.1em] text-2xl hover:bg-rust transition-all active:scale-95 flex items-center gap-3"
           >
             Open Genetics Calculator
@@ -341,7 +341,7 @@ export function FarmingGuide() {
             </svg>
           </Link>
           <Link
-            to="/guides"
+            href="/guides"
             className="px-8 py-4 bg-panel border border-border text-text-bright font-display uppercase tracking-[0.1em] text-2xl hover:border-rust/50 hover:text-rust transition-all active:scale-95"
           >
             Explore All Guides

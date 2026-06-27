@@ -1,3 +1,5 @@
+'use client'
+
 import { RESOURCE_LABELS } from '../../lib/data/recycling-data'
 import type { RecyclerKind } from '../../lib/types'
 import type { TooltipProps } from '../useTooltip'

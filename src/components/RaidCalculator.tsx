@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState, useEffect, useRef, Fragment } from 'react'
 import type { CSSProperties } from 'react'
 import { CalcShell } from './CalcShell'

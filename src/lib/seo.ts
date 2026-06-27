@@ -5,6 +5,8 @@
  * It is used for canonical URLs, og:url, the sitemap and robots.txt.
  * Keep it without a trailing slash.
  */
+import type { Metadata } from "next";
+
 export const SITE_URL = "https://rust-tools.com";
 
 export const SITE_NAME = "RustTools";
@@ -21,44 +23,43 @@ type SeoInput = {
   path: string;
   image?: string;
   /** Defaults to "website". */
-  type?: string;
+  type?: "website" | "article";
 };
 
-type MetaDescriptor =
-  | { title: string }
-  | { name: string; content: string }
-  | { property: string; content: string };
-
 /**
- * Builds the `meta` + `links` arrays for a TanStack Router route `head`.
+ * Builds a Next.js `Metadata` object for a route's `metadata` export, with the
+ * brand-suffixed title, description, canonical, and Open Graph / Twitter cards.
  * Returns absolute canonical/og URLs derived from SITE_URL.
  */
-export function seo({ title, description, path, image, type = "website" }: SeoInput): {
-  meta: MetaDescriptor[];
-  links: { rel: string; href: string }[];
-} {
+export function seoMetadata({
+  title,
+  description,
+  path,
+  image,
+  type = "website",
+}: SeoInput): Metadata {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
   const url = `${SITE_URL}${path === "/" ? "" : path}`;
   const ogImage = image ?? DEFAULT_OG_IMAGE;
 
   return {
-    meta: [
-      { title: fullTitle },
-      { name: "description", content: description },
-
-      { property: "og:type", content: type },
-      { property: "og:site_name", content: SITE_NAME },
-      { property: "og:title", content: fullTitle },
-      { property: "og:description", content: description },
-      { property: "og:url", content: url },
-      { property: "og:image", content: ogImage },
-
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: fullTitle },
-      { name: "twitter:description", content: description },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: [{ rel: "canonical", href: url }],
+    title: fullTitle,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type,
+      siteName: SITE_NAME,
+      title: fullTitle,
+      description,
+      url,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -76,7 +77,7 @@ export const ROUTES: { path: string; priority: number }[] = [
   { path: "/giant-excavator", priority: 0.7 },
 ];
 
-/** schema.org structured data describing the app, injected into index.html. */
+/** schema.org structured data describing the app, rendered in the root layout. */
 export function siteJsonLd() {
   return {
     "@context": "https://schema.org",

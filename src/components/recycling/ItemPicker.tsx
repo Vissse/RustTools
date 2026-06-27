@@ -1,3 +1,5 @@
+'use client'
+
 import type { TooltipProps } from "../useTooltip";
 import { InvItem } from "./InvItem";
 import type { ItemCategory } from "./types";

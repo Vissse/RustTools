@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 /** Top-level nav entry for a section that isn't live yet: dimmed, with a lock. */
 function SoonItem({ label }: { label: string }) {
@@ -13,9 +16,35 @@ function SoonItem({ label }: { label: string }) {
   )
 }
 
+const DropArrow = () => (
+  <svg
+    className="dropdown-arrow"
+    width="10"
+    height="10"
+    viewBox="0 0 12 12"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M2.5 4.5 L6 7.5 L9.5 4.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
 /** Shared top navigation bar. Active state follows the current route. */
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  // Matches TanStack Router's default fuzzy active matching: a link is active on
+  // its own route and any descendant (so "/guides" stays lit on "/guides/farming").
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + '/')
+  const close = () => setOpen(false)
 
   return (
     <nav className={`top-navbar${open ? ' open' : ''}`}>
@@ -35,140 +64,86 @@ export function Navbar() {
         {/* 1. Položka: Calculators Dropdown */}
         <div className="nav-dropdown-wrapper">
           <Link
-            to="/calculators"
-            className="nav-item"
-            activeProps={{ className: 'guides-active' }}
-            onClick={() => setOpen(false)}
+            href="/calculators"
+            className={`nav-item${isActive('/calculators') ? ' guides-active' : ''}`}
+            onClick={close}
           >
             <span className="mt-1">Calculators</span>
-            <svg
-              className="dropdown-arrow"
-              width="10"
-              height="10"
-              viewBox="0 0 12 12"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M2.5 4.5 L6 7.5 L9.5 4.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <DropArrow />
           </Link>
           <div className="nav-dropdown-menu">
             <Link
-              to="/raid"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/raid"
+              className={`dropdown-item${isActive('/raid') ? ' active' : ''}`}
+              onClick={close}
             >
               Raid Calculator
             </Link>
             <Link
-              to="/recycling"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/recycling"
+              className={`dropdown-item${isActive('/recycling') ? ' active' : ''}`}
+              onClick={close}
             >
               Recycling Calculator
             </Link>
             <Link
-              to="/cupboard"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/cupboard"
+              className={`dropdown-item${isActive('/cupboard') ? ' active' : ''}`}
+              onClick={close}
             >
               Cupboard Calculator
             </Link>
             <Link
-              to="/giant-excavator"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/giant-excavator"
+              className={`dropdown-item${isActive('/giant-excavator') ? ' active' : ''}`}
+              onClick={close}
             >
               Giant Excavator Calculator
             </Link>
             <Link
-              to="/genetics"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/genetics"
+              className={`dropdown-item${isActive('/genetics') ? ' active' : ''}`}
+              onClick={close}
             >
               Genetics Calculator
             </Link>
             <Link
-              to="/furnace"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/furnace"
+              className={`dropdown-item${isActive('/furnace') ? ' active' : ''}`}
+              onClick={close}
             >
               Furnace Calculator
             </Link>
             <Link
-              to="/decay"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/decay"
+              className={`dropdown-item${isActive('/decay') ? ' active' : ''}`}
+              onClick={close}
             >
               Decay Calculator
             </Link>
             <Link
-              to="/shops"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/shops"
+              className={`dropdown-item${isActive('/shops') ? ' active' : ''}`}
+              onClick={close}
             >
               Shop Calculator
             </Link>
             <Link
-              to="/skinning"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/skinning"
+              className={`dropdown-item${isActive('/skinning') ? ' active' : ''}`}
+              onClick={close}
             >
               Skinning Calculator
             </Link>
             <Link
-              to="/salvaging"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/salvaging"
+              className={`dropdown-item${isActive('/salvaging') ? ' active' : ''}`}
+              onClick={close}
             >
               Salvaging Calculator
             </Link>
           </div>
         </div>
-
-        {/* <span className="nav-separator" /> */}
-
-        {/* 2. Položka: World */}
-        {/* <div className="nav-dropdown-wrapper">
-          <a href="#" className="nav-item">
-            <span className="mt-1">World</span>
-            <span className="nav-badge soon">Soon</span>
-            <svg
-              className="dropdown-arrow"
-              width="10"
-              height="10"
-              viewBox="0 0 12 12"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M2.5 4.5 L6 7.5 L9.5 4.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        </div> */}
 
         <span className="nav-separator" />
 
@@ -180,52 +155,32 @@ export function Navbar() {
         {/* 4. Položka: Guides */}
         <div className="nav-dropdown-wrapper">
           <Link
-            to="/guides"
-            className="nav-item"
-            activeProps={{ className: 'guides-active' }}
-            onClick={() => setOpen(false)}
+            href="/guides"
+            className={`nav-item${isActive('/guides') ? ' guides-active' : ''}`}
+            onClick={close}
           >
             <span className="mt-1">Guides</span>
-            <svg
-              className="dropdown-arrow"
-              width="10"
-              height="10"
-              viewBox="0 0 12 12"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M2.5 4.5 L6 7.5 L9.5 4.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <DropArrow />
           </Link>
           <div className="nav-dropdown-menu">
             <Link
-              to="/guides/farming"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/guides/farming"
+              className={`dropdown-item${isActive('/guides/farming') ? ' active' : ''}`}
+              onClick={close}
             >
               Farming Guide
             </Link>
             <Link
-              to="/guides/base-building"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/guides/base-building"
+              className={`dropdown-item${isActive('/guides/base-building') ? ' active' : ''}`}
+              onClick={close}
             >
               Base Building
             </Link>
             <Link
-              to="/guides/monuments"
-              className="dropdown-item"
-              activeProps={{ className: 'active' }}
-              onClick={() => setOpen(false)}
+              href="/guides/monuments"
+              className={`dropdown-item${isActive('/guides/monuments') ? ' active' : ''}`}
+              onClick={close}
             >
               Monument Puzzles
             </Link>
@@ -233,11 +188,7 @@ export function Navbar() {
         </div>
       </div>
 
-      <Link
-        to="/"
-        className="nav-brand min-w-[234px]"
-        onClick={() => setOpen(false)}
-      >
+      <Link href="/" className="nav-brand min-w-[234px]" onClick={close}>
         <img
           className="brand-logo min-w-10.5!"
           src="/images/icon.svg"
@@ -258,33 +209,6 @@ export function Navbar() {
         <SoonItem label="App" />
 
         <span className="nav-separator" />
-
-        {/* 3. Položka: Social Media */}
-        {/* <div className="nav-dropdown-wrapper">
-          <a href="#" className="nav-item">
-            <span className="mt-1">Social Media</span>
-            <span className="nav-badge soon">Soon</span>
-            <svg
-              className="dropdown-arrow"
-              width="10"
-              height="10"
-              viewBox="0 0 12 12"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M2.5 4.5 L6 7.5 L9.5 4.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        </div> */}
-
-        {/* <span className="nav-separator" /> */}
 
         {/* 4. Položka: Binds */}
         <SoonItem label="Binds" />

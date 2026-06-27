@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 type Variant = 'raid' | 'recycling' | 'cupboard'
 
@@ -41,12 +41,12 @@ export function CalcShell({
     <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
       {/* Breadcrumbs — first element on the page, stacked above the header. */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
-        <Link to="/" className="hover:text-text-bright transition-colors">
+        <Link href="/" className="hover:text-text-bright transition-colors">
           Home
         </Link>
         <span>/</span>
         <Link
-          to="/calculators"
+          href="/calculators"
           className="hover:text-text-bright transition-colors"
         >
           Calculators

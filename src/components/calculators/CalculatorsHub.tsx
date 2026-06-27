@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 const CALCULATORS = [
   {
@@ -84,7 +84,7 @@ export function CalculatorsHub() {
     <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
-        <Link to="/" className="hover:text-text-bright transition-colors">
+        <Link href="/" className="hover:text-text-bright transition-colors">
           Home
         </Link>
         <span>/</span>
@@ -155,7 +155,7 @@ function CalcCard({ calc }: { calc: (typeof CALCULATORS)[0] }) {
 
   if (isPublished) {
     return (
-      <Link to={calc.path} className="block h-full">
+      <Link href={calc.path} className="block h-full">
         {content}
       </Link>
     )

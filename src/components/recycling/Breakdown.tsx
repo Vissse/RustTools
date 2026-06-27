@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from "react";
 import { RecycleImg } from "./RecycleImg";
 import { QtyInput } from "./QtyInput";

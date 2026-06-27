@@ -1,3 +1,5 @@
+'use client'
+
 import { CalcShell } from "./CalcShell";
 
 export function GeneticsCalculator() {
