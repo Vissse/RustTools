@@ -51,8 +51,11 @@ export function Footer() {
             RUST<span>TOOLS</span>
           </span>
         </div>
-        <p className="footer-copy">
+        <p className="footer-copy text-text-dim">
           © {new Date().getFullYear()} RustTools. All rights reserved.
+        </p>
+        <p className="footer-copy mt-2 text-xs text-text-dim max-w-xs">
+          RustTools is an unofficial fan-made project. Not affiliated with, authorized, or endorsed by Facepunch Studios.
         </p>
       </div>
 
