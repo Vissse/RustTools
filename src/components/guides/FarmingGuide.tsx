@@ -1,6 +1,12 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import { ReqCard, Step, Tip, ImagePlaceholder, Reveal } from './GuideComponents'
+import {
+  ReqCard,
+  Step,
+  Tip,
+  ImagePlaceholder,
+  Reveal,
+} from "./GuideComponents";
 
 export function FarmingGuide() {
   return (
@@ -11,7 +17,10 @@ export function FarmingGuide() {
           Home
         </Link>
         <span>/</span>
-        <Link href="/guides" className="hover:text-text-bright transition-colors">
+        <Link
+          href="/guides"
+          className="hover:text-text-bright transition-colors"
+        >
           Guides
         </Link>
         <span>/</span>
@@ -47,16 +56,13 @@ export function FarmingGuide() {
 
         <h2 className="guide-reqs-title">Requirements</h2>
         <div className="guide-reqs-list">
-          <ReqCard title="Seeds" desc="Hemp, corn, pumpkins, or berries." />
-          <ReqCard title="Planters" desc="Wood and tarps for Large Planters." />
+          <ReqCard title="Seeds" desc="Hemp, Corn, Pumpkins, or Berries." />
+          <ReqCard title="Planters" desc="Wood and Tarps for Large Planters." />
           <ReqCard
             title="Water Source"
-            desc="Swamp, river, or Rain Catchers."
+            desc="Swamp, River, or Rain Catchers."
           />
-          <ReqCard
-            title="Equipment"
-            desc="Pumps, hoses, sprinklers, power, UV lamps."
-          />
+          <ReqCard title="Equipment" desc="Pumps, Hoses, Sprinklers, Power." />
           <ReqCard title="Composter" desc="For producing fertilizer." />
         </div>
       </Reveal>
@@ -72,13 +78,17 @@ export function FarmingGuide() {
           <Step number={1} title="Choosing and Placing Planters">
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
               While you can plant seeds in natural soil, it is highly
-              inefficient. For large-scale farming, the{' '}
+              inefficient. For large-scale farming, the{" "}
               <strong className="text-text-bright font-medium">
                 Large Planter
-              </strong>{' '}
+              </strong>{" "}
               is your best option, holding 9 plants and 9 liters of water. For
               micro-farms or filling tight spaces, use the cheap and
-              space-saving Plant Pot.
+              space-saving{" "}
+              <strong className="text-text-bright font-medium">
+                Plant Plot
+              </strong>{" "}
+              .
             </p>
             <ImagePlaceholder label="Screenshot showing the ideal layout of several Large Planters placed tightly together on square foundations" />
           </Step>
@@ -86,12 +96,12 @@ export function FarmingGuide() {
           {/* STEP 2 */}
           <Step number={2} title="Setting up Perfect Lighting">
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
-              To keep the light level at 100%, you need to craft a UV grow lamp
-              (or use a standard ceiling lamp). The lamp's coverage is a
-              hemisphere that extends about two floors down and one square
-              foundation to the sides. If you place one lamp exactly between
-              four planters, or hang it on the intersection of four foundations,
-              you can light up multiple planters at once.
+              To keep the light level at 100%, you need to craft a standard
+              ceiling lamp. The lamp's coverage is a hemisphere that extends
+              about two floors down and one square foundation to the sides. If
+              you place one lamp exactly between four planters, or hang it on
+              the intersection of four foundations, you can light up multiple
+              planters at once.
             </p>
           </Step>
 
@@ -100,8 +110,8 @@ export function FarmingGuide() {
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
               Plants constantly consume water, but you don't water the plant
               directly—you fill the planter itself. The optimal water level for
-              100% happiness is to keep the planter filled to about{' '}
-              <strong className="text-text-bright font-medium">60–65%</strong>{' '}
+              100% happiness is to keep the planter filled to about{" "}
+              <strong className="text-text-bright font-medium">60–65%</strong>{" "}
               of its total capacity.
             </p>
             <ul className="list-disc list-inside text-text leading-loose text-lg font-light space-y-4 mb-10 ml-2">
@@ -218,8 +228,8 @@ export function FarmingGuide() {
 
             <p className="text-text leading-loose text-lg font-light mb-10 max-w-3xl">
               Your goal is to reach the crossbreed stage and mix neighboring
-              plants to achieve the perfect ratio, such as{' '}
-              <strong className="text-text-bright font-medium">3G 3Y</strong> or{' '}
+              plants to achieve the perfect ratio, such as{" "}
+              <strong className="text-text-bright font-medium">3G 3Y</strong> or{" "}
               <strong className="text-text-bright font-medium">2G 4Y</strong>.
               Once you breed the perfect plant, you can clone it endlessly.
             </p>
@@ -349,24 +359,24 @@ export function FarmingGuide() {
         </div>
       </Reveal>
     </div>
-  )
+  );
 }
 
 function Gene({
   type,
   letter,
-  size = 'lg',
+  size = "lg",
 }: {
-  type: 'good' | 'bad'
-  letter: string
-  size?: 'sm' | 'lg'
+  type: "good" | "bad";
+  letter: string;
+  size?: "sm" | "lg";
 }) {
-  const isGood = type === 'good'
+  const isGood = type === "good";
   const colorClasses = isGood
-    ? 'bg-[#8b9264]/10 border-[#8b9264]/50 text-[#8b9264]'
-    : 'bg-red-cost/10 border-red-cost/50 text-red-cost'
+    ? "bg-[#8b9264]/10 border-[#8b9264]/50 text-[#8b9264]"
+    : "bg-red-cost/10 border-red-cost/50 text-red-cost";
 
-  const sizeClasses = size === 'lg' ? 'w-14 h-20 text-4xl' : 'w-8 h-10 text-xl'
+  const sizeClasses = size === "lg" ? "w-14 h-20 text-4xl" : "w-8 h-10 text-xl";
 
   return (
     <div
@@ -374,5 +384,5 @@ function Gene({
     >
       <span className="mt-1">{letter}</span>
     </div>
-  )
+  );
 }

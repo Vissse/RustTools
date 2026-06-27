@@ -3,6 +3,7 @@ packages:
 
 allowBuilds:
   core-js: false
+  sharp: false
 
 minimumReleaseAgeExclude:
   - '@tailwindcss/node@4.3.1'

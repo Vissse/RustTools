@@ -272,7 +272,7 @@ body::before {
 /* Not-yet-live top-level entry: dimmed and non-interactive, marked with a lock. */
 .nav-item.soon {
   opacity: 0.45;
-  cursor: default;
+  cursor: default !important;
 }
 .nav-item.soon:hover {
   color: var(--text-dim);
@@ -497,16 +497,35 @@ h1.page-title span {
   max-height: 100vh;
   position: relative;
   z-index: 1;
-  background: var(--bg);
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  background: rgba(19, 18, 16, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
   overflow: hidden;
   transition: all 0.3s ease;
+  padding: 24px;
 }
 
 .calc-wrap::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rust) 15%,
+    var(--rust) 85%,
+    transparent 100%
+  );
+  opacity: 0.8;
+  display: block;
 }
 /* Recycling & cupboard use a fixed-height flex-column shell; raid sizes to content. */
 .calc-wrap[data-variant="recycling"],

@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /** Top-level nav entry for a section that isn't live yet: dimmed, with a lock. */
 function SoonItem({ label }: { label: string }) {
@@ -13,7 +13,7 @@ function SoonItem({ label }: { label: string }) {
         <span className="soon-badge">SOON</span>
       </span>
     </div>
-  )
+  );
 }
 
 const DropArrow = () => (
@@ -34,20 +34,20 @@ const DropArrow = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+);
 
 /** Shared top navigation bar. Active state follows the current route. */
 export function Navbar() {
-  const [open, setOpen] = useState(false)
-  const pathname = usePathname()
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   // Matches TanStack Router's default fuzzy active matching: a link is active on
   // its own route and any descendant (so "/guides" stays lit on "/guides/farming").
   const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(href + '/')
-  const close = () => setOpen(false)
+    pathname === href || pathname.startsWith(href + "/");
+  const close = () => setOpen(false);
 
   return (
-    <nav className={`top-navbar${open ? ' open' : ''}`}>
+    <nav className={`top-navbar${open ? " open" : ""}`}>
       <button
         type="button"
         className="nav-toggle"
@@ -65,7 +65,7 @@ export function Navbar() {
         <div className="nav-dropdown-wrapper">
           <Link
             href="/calculators"
-            className={`nav-item${isActive('/calculators') ? ' guides-active' : ''}`}
+            className={`nav-item${isActive("/calculators") ? " guides-active" : ""}`}
             onClick={close}
           >
             <span className="mt-1">Calculators</span>
@@ -74,70 +74,70 @@ export function Navbar() {
           <div className="nav-dropdown-menu">
             <Link
               href="/raid"
-              className={`dropdown-item${isActive('/raid') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/raid") ? " active" : ""}`}
               onClick={close}
             >
               Raid Calculator
             </Link>
             <Link
               href="/recycling"
-              className={`dropdown-item${isActive('/recycling') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/recycling") ? " active" : ""}`}
               onClick={close}
             >
               Recycling Calculator
             </Link>
             <Link
               href="/cupboard"
-              className={`dropdown-item${isActive('/cupboard') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/cupboard") ? " active" : ""}`}
               onClick={close}
             >
               Cupboard Calculator
             </Link>
             <Link
               href="/giant-excavator"
-              className={`dropdown-item${isActive('/giant-excavator') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/giant-excavator") ? " active" : ""}`}
               onClick={close}
             >
               Giant Excavator Calculator
             </Link>
             <Link
               href="/genetics"
-              className={`dropdown-item${isActive('/genetics') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/genetics") ? " active" : ""}`}
               onClick={close}
             >
               Genetics Calculator
             </Link>
             <Link
               href="/furnace"
-              className={`dropdown-item${isActive('/furnace') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/furnace") ? " active" : ""}`}
               onClick={close}
             >
               Furnace Calculator
             </Link>
             <Link
               href="/decay"
-              className={`dropdown-item${isActive('/decay') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/decay") ? " active" : ""}`}
               onClick={close}
             >
               Decay Calculator
             </Link>
             <Link
               href="/shops"
-              className={`dropdown-item${isActive('/shops') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/shops") ? " active" : ""}`}
               onClick={close}
             >
               Shop Calculator
             </Link>
             <Link
               href="/skinning"
-              className={`dropdown-item${isActive('/skinning') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/skinning") ? " active" : ""}`}
               onClick={close}
             >
               Skinning Calculator
             </Link>
             <Link
               href="/salvaging"
-              className={`dropdown-item${isActive('/salvaging') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/salvaging") ? " active" : ""}`}
               onClick={close}
             >
               Salvaging Calculator
@@ -147,8 +147,8 @@ export function Navbar() {
 
         <span className="nav-separator" />
 
-        {/* 3. Položka: Skins */}
-        <SoonItem label="Skins" />
+        {/* 3. Položka: World */}
+        <SoonItem label="World" />
 
         <span className="nav-separator" />
 
@@ -156,7 +156,7 @@ export function Navbar() {
         <div className="nav-dropdown-wrapper">
           <Link
             href="/guides"
-            className={`nav-item${isActive('/guides') ? ' guides-active' : ''}`}
+            className={`nav-item${isActive("/guides") ? " guides-active" : ""}`}
             onClick={close}
           >
             <span className="mt-1">Guides</span>
@@ -165,24 +165,31 @@ export function Navbar() {
           <div className="nav-dropdown-menu">
             <Link
               href="/guides/farming"
-              className={`dropdown-item${isActive('/guides/farming') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/guides/farming") ? " active" : ""}`}
               onClick={close}
             >
-              Farming Guide
+              Farming
             </Link>
             <Link
               href="/guides/base-building"
-              className={`dropdown-item${isActive('/guides/base-building') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/guides/base-building") ? " active" : ""}`}
               onClick={close}
             >
               Base Building
             </Link>
             <Link
               href="/guides/monuments"
-              className={`dropdown-item${isActive('/guides/monuments') ? ' active' : ''}`}
+              className={`dropdown-item${isActive("/guides/monuments") ? " active" : ""}`}
               onClick={close}
             >
               Monument Puzzles
+            </Link>
+            <Link
+              href="/guides/binds"
+              className={`dropdown-item${isActive("/guides/binds") ? " active" : ""}`}
+              onClick={close}
+            >
+              Console Binds
             </Link>
           </div>
         </div>
@@ -206,13 +213,21 @@ export function Navbar() {
         <span className="nav-separator" />
 
         {/* 2. Položka: App */}
-        <SoonItem label="App" />
+        <div className="nav-dropdown-wrapper">
+          <Link
+            href="/app"
+            className={`nav-item${isActive('/app') ? ' guides-active' : ''}`}
+            onClick={close}
+          >
+            <span className="mt-1">App</span>
+          </Link>
+        </div>
 
         <span className="nav-separator" />
 
-        {/* 4. Položka: Binds */}
-        <SoonItem label="Binds" />
+        {/* 3. Položka: Skins */}
+        <SoonItem label="Skins" />
       </div>
     </nav>
-  )
+  );
 }
