@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export function AppPage() {
   return (
@@ -23,14 +23,16 @@ export function AppPage() {
           </p>
           <div className="mt-8 text-lg text-text-dim max-w-2xl">
             <p>
-              This section is currently under development. RustTools will soon be available as a
-              <strong className="text-text-bright"> Progressive Web App (PWA)</strong>,
-              allowing you to install it directly on your device for offline use, 
-              faster loading times, and a native app experience right from your home screen.
+              This section is currently under development. RustTools will soon
+              be available as a
+              <strong className="text-text-bright"> Progressive Web App</strong>
+              , allowing you to install it directly on your device for offline
+              use, faster loading times, and a native app experience right from
+              your home screen.
             </p>
           </div>
         </div>
       </header>
     </div>
-  )
+  );
 }
