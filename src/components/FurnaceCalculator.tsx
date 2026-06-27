@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useMemo, useEffect } from "react";
 import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";

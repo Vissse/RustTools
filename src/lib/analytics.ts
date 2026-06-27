@@ -7,18 +7,19 @@
  *  - EU data residency (api_host).
  *  - Cookieless operation (`persistence: 'memory'`) so no consent banner is
  *    required — nothing is written to cookies or localStorage.
- *  - Manual pageview capture: this is a client-side-routed SPA, so automatic
- *    capture would only fire on the first load. `capturePageview` is called on
- *    every route change from main.tsx instead.
+ *  - Manual pageview capture: navigation is client-side, so automatic capture
+ *    would only fire on the first load. `capturePageview` is called on every
+ *    route change from `AnalyticsProvider` instead.
  *
- * If `VITE_POSTHOG_KEY` is absent (e.g. local dev without a key) everything is a
- * no-op and nothing is sent.
+ * If `NEXT_PUBLIC_POSTHOG_KEY` is absent (e.g. local dev without a key)
+ * everything is a no-op and nothing is sent.
  */
 import { useEffect, useRef } from "react";
 import type { PostHog } from "posthog-js";
 
-const KEY = import.meta.env.VITE_POSTHOG_KEY;
-const HOST = import.meta.env.VITE_POSTHOG_HOST ?? "https://eu.i.posthog.com";
+const KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+const HOST =
+  process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://eu.i.posthog.com";
 
 /**
  * The posthog-js library (~150 KB) is loaded lazily via dynamic import so it

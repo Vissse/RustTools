@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 
 interface ErrorPageProps {
@@ -11,7 +13,7 @@ export function ErrorPage({
   reset,
   title = 'SOMETHING WENT WRONG',
 }: ErrorPageProps) {
-  const isDev = import.meta.env.DEV
+  const isDev = process.env.NODE_ENV !== 'production'
   const [showDetails, setShowDetails] = useState(isDev)
 
   const err = error instanceof Error ? error : undefined

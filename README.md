@@ -11,7 +11,7 @@ A small set of calculators for the survival game **Rust**, built as one fast web
 
 ## Tech
 
-Vite · React · TanStack Router · TypeScript · Tailwind CSS · lodash.
+Next.js (App Router) · React · TypeScript · Tailwind CSS · lodash.
 
 ## Getting started
 
@@ -19,27 +19,29 @@ You'll need [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io).
 
 ```bash
 pnpm install      # install dependencies
-pnpm dev          # start the dev server (http://localhost:5173)
+pnpm dev          # start the dev server (http://localhost:3000)
 ```
 
 ## Other commands
 
 ```bash
-pnpm build        # production build into dist/
-pnpm preview      # preview the production build locally
+pnpm build        # production build into .next/
+pnpm start        # run the production server locally
 pnpm typecheck    # run the TypeScript type checker
 ```
 
 ## Project layout
 
 ```
+app/              one folder per route (page.tsx), root layout.tsx,
+                  sitemap.ts, robots.ts — App Router pages live here
 src/
-  components/   UI components (Navbar, CalcShell, the three calculators)
-  lib/          pure logic + game data
+  components/   UI components (Navbar, CalcShell, the calculators)
+  lib/          pure logic + game data (and seo.ts, analytics.ts)
     data/       structure HP, explosive damage, recycler yields, stack sizes
-  routes/       one file per page (/, /recycling, /cupboard)
   styles/       global.css — the whole Rust-themed look
 public/images/  item and resource icons
+public/fonts/   self-hosted Teko + Inter webfonts
 ```
 
 > Game values (HP, damage, yields) are accurate as of mid-2026 — they may need updating

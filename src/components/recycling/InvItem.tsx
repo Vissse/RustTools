@@ -1,3 +1,5 @@
+'use client'
+
 import { memo } from "react";
 import { RecycleImg } from "./RecycleImg";
 import { QtyInput } from "./QtyInput";

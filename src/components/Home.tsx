@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 
 export function Home() {
   return (
@@ -12,14 +12,14 @@ export function Home() {
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 animate-fade-in-up">
           <Link
-            to="/calculators"
+            href="/calculators"
             className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
           >
             Calculators
           </Link>
-          
+
           <Link
-            to="/guides"
+            href="/guides"
             className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
           >
             Guides

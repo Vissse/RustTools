@@ -1,4 +1,7 @@
-import { Link } from "@tanstack/react-router";
+'use client'
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /** Footer link menu, grouped into categories rendered as columns. */
 const FOOTER_CATEGORIES = [
@@ -29,6 +32,12 @@ const FOOTER_CATEGORIES = [
 
 /** Site-wide footer: brand on the left, page links filling out to the right. */
 export function Footer() {
+  const pathname = usePathname();
+  // "/" matches exactly (it would otherwise prefix-match every route); the rest
+  // match their own route and any descendant.
+  const isActive = (to: string) =>
+    to === "/" ? pathname === "/" : pathname === to || pathname.startsWith(to + "/");
+
   return (
     <footer className="site-footer">
       <div className="footer-brand">
@@ -54,10 +63,8 @@ export function Footer() {
             {category.links.map(({ to, label }) => (
               <Link
                 key={to}
-                to={to}
-                className="footer-link"
-                activeProps={{ className: "active" }}
-                activeOptions={{ exact: to === "/" }}
+                href={to}
+                className={`footer-link${isActive(to) ? " active" : ""}`}
               >
                 {label}
               </Link>

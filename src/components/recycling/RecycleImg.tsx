@@ -1,4 +1,6 @@
-import { useState, useEffect, type ImgHTMLAttributes } from "react";
+'use client'
+
+import { useState, useEffect, type ComponentProps } from "react";
 import { Img } from "../Img";
 import { recycleSrc } from "../../lib/recycleImg";
 
@@ -8,7 +10,7 @@ import { recycleSrc } from "../../lib/recycleImg";
  * or fails to decode, it falls back once to the original /images/ path (undoing
  * Img's dim-to-0.3) before Img's normal failure handling kicks in.
  */
-export function RecycleImg({ src, ...props }: ImgHTMLAttributes<HTMLImageElement>) {
+export function RecycleImg({ src, ...props }: ComponentProps<typeof Img>) {
   const original = typeof src === "string" ? src : undefined;
   const [current, setCurrent] = useState(() => recycleSrc(original) ?? src);
 

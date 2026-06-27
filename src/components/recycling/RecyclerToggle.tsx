@@ -1,3 +1,5 @@
+'use client'
+
 import { RecycleImg } from "./RecycleImg";
 import type { RecyclerKind } from "../../lib/types";
 
