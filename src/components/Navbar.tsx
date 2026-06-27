@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+/** Below this width the nav collapses into the hamburger menu (see global.css). */
+const MOBILE_QUERY = "(max-width: 1200px)";
 
 /** Top-level nav entry for a section that isn't live yet: dimmed, with a lock. */
 function SoonItem({ label }: { label: string }) {
@@ -39,12 +42,33 @@ const DropArrow = () => (
 /** Shared top navigation bar. Active state follows the current route. */
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  // Which section's submenu is expanded in the mobile accordion (null = none).
+  const [openSection, setOpenSection] = useState<string | null>(null);
   const pathname = usePathname();
   // Matches TanStack Router's default fuzzy active matching: a link is active on
   // its own route and any descendant (so "/guides" stays lit on "/guides/farming").
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
-  const close = () => setOpen(false);
+  const close = () => {
+    setOpen(false);
+    setOpenSection(null);
+  };
+
+  // On mobile, a top-level entry with a submenu acts as an accordion toggle
+  // rather than navigating to its hub page — so the user can pick a specific
+  // calculator/guide. On desktop the submenu opens on hover, so let the link
+  // navigate as normal.
+  const handleSectionClick = (e: MouseEvent, section: string) => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia(MOBILE_QUERY).matches
+    ) {
+      e.preventDefault();
+      setOpenSection((s) => (s === section ? null : section));
+    } else {
+      close();
+    }
+  };
 
   return (
     <nav className={`top-navbar${open ? " open" : ""}`}>
@@ -62,11 +86,14 @@ export function Navbar() {
 
       <div className="nav-group left">
         {/* 1. Položka: Calculators Dropdown */}
-        <div className="nav-dropdown-wrapper">
+        <div
+          className={`nav-dropdown-wrapper${openSection === "calculators" ? " expanded" : ""}`}
+        >
           <Link
             href="/calculators"
             className={`nav-item${isActive("/calculators") ? " guides-active" : ""}`}
-            onClick={close}
+            onClick={(e) => handleSectionClick(e, "calculators")}
+            aria-expanded={openSection === "calculators"}
           >
             <span className="mt-1">Calculators</span>
             <DropArrow />
@@ -153,11 +180,14 @@ export function Navbar() {
         <span className="nav-separator" />
 
         {/* 4. Položka: Guides */}
-        <div className="nav-dropdown-wrapper">
+        <div
+          className={`nav-dropdown-wrapper${openSection === "guides" ? " expanded" : ""}`}
+        >
           <Link
             href="/guides"
             className={`nav-item${isActive("/guides") ? " guides-active" : ""}`}
-            onClick={close}
+            onClick={(e) => handleSectionClick(e, "guides")}
+            aria-expanded={openSection === "guides"}
           >
             <span className="mt-1">Guides</span>
             <DropArrow />

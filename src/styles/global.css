@@ -2135,7 +2135,9 @@ html {
     justify-content: space-between;
   }
 
-  /* Dropdown contents render inline/expanded (hover can't open them on touch). */
+  /* Dropdown contents render inline as an accordion (hover can't open them on
+     touch). Collapsed by default; the parent acts as a toggle that adds
+     `.expanded` to the wrapper. */
   .nav-dropdown-menu {
     position: static;
     opacity: 1;
@@ -2151,6 +2153,16 @@ html {
     box-shadow: none;
     padding: 0 0 8px 16px;
     gap: 2px;
+    display: none;
+  }
+  .nav-dropdown-wrapper.expanded .nav-dropdown-menu {
+    display: flex;
+  }
+  /* Flip the arrow to signal the open state (mirrors the desktop hover state). */
+  .nav-dropdown-wrapper.expanded .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: var(--rust);
   }
 
   /* Footer stacks: brand on top, link column below, all centered. */
