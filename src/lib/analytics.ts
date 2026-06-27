@@ -15,11 +15,18 @@
  * no-op and nothing is sent.
  */
 import { useEffect, useRef } from "react";
-import posthog from "posthog-js";
+import type { PostHog } from "posthog-js";
 
 const KEY = import.meta.env.VITE_POSTHOG_KEY;
 const HOST = import.meta.env.VITE_POSTHOG_HOST ?? "https://eu.i.posthog.com";
 
+/**
+ * The posthog-js library (~150 KB) is loaded lazily via dynamic import so it
+ * never ships in the critical entry bundle. It is only fetched when a key is
+ * configured, after first paint. Until then `posthog` is undefined and every
+ * helper below is a no-op.
+ */
+let posthog: PostHog | undefined;
 let enabled = false;
 
 /** Stable event names for feature-usage tracking — keep these in one place to
@@ -37,21 +44,28 @@ export const Feature = {
 
 export type FeatureName = (typeof Feature)[keyof typeof Feature];
 
-/** Initialize PostHog once, at app startup. No-op when no key is configured. */
-export function initAnalytics(): void {
+/**
+ * Initialize PostHog once, at app startup. No-op when no key is configured.
+ * Dynamically imports posthog-js so the library stays out of the entry bundle
+ * and is only downloaded when analytics is actually enabled.
+ */
+export async function initAnalytics(): Promise<void> {
   if (enabled || !KEY) return;
-  posthog.init(KEY, {
+  const { default: ph } = await import("posthog-js");
+  if (enabled) return; // guard against a concurrent second call
+  ph.init(KEY, {
     api_host: HOST,
     persistence: "memory", // cookieless — no consent banner needed
     capture_pageview: false, // we capture manually on route change (SPA)
     autocapture: true, // cheap "most clicked" signal
   });
+  posthog = ph;
   enabled = true;
 }
 
 /** Record a pageview for the current route. Called on every navigation. */
 export function capturePageview(path: string): void {
-  if (!enabled) return;
+  if (!enabled || !posthog) return;
   posthog.capture("$pageview", {
     $current_url: window.location.href,
     path,
@@ -63,7 +77,7 @@ export function trackFeature(
   feature: FeatureName,
   props?: Record<string, unknown>,
 ): void {
-  if (!enabled) return;
+  if (!enabled || !posthog) return;
   posthog.capture("feature_used", { feature, ...props });
 }
 
@@ -84,5 +98,3 @@ export function useFeatureUsed(feature: FeatureName, signal: unknown): void {
     trackFeature(feature);
   }, [feature, signal]);
 }
-
-export { posthog };

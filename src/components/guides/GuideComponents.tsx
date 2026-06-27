@@ -1,5 +1,63 @@
 import React from "react";
 
+/**
+ * Scroll-triggered reveal. Returns a ref to attach to an element plus the class
+ * to merge into its className. The element starts hidden (`opacity-0`) and gets
+ * the shared `animate-fade-in-up` once it scrolls into view — so guide content
+ * below the fold fades up as you reach it instead of appearing immediately.
+ * Users with `prefers-reduced-motion` see content right away, no animation.
+ */
+function useReveal() {
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  const [state, setState] = React.useState<"hidden" | "shown" | "static">(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "static"
+      : "hidden",
+  );
+
+  React.useEffect(() => {
+    if (state !== "hidden") return;
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setState("shown");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [state]);
+
+  const cls =
+    state === "shown"
+      ? "animate-fade-in-up"
+      : state === "hidden"
+        ? "opacity-0"
+        : "";
+  return { ref, cls };
+}
+
+/** Wraps a block of guide content so it fades up when scrolled into view. */
+export function Reveal({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const { ref, cls } = useReveal();
+  return (
+    <div ref={ref} className={`${className} ${cls}`.trim()}>
+      {children}
+    </div>
+  );
+}
+
 export function ReqCard({ title, desc }: { title: string, desc: string }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-6 ml-6 md:ml-10">
@@ -10,8 +68,9 @@ export function ReqCard({ title, desc }: { title: string, desc: string }) {
 }
 
 export function Step({ number, title, children, isLast }: { number: number; title: string; children: React.ReactNode; isLast?: boolean }) {
+  const { ref, cls } = useReveal();
   return (
-    <div className="flex gap-8 md:gap-16">
+    <div ref={ref} className={`flex gap-8 md:gap-16 ${cls}`}>
       {/* Osa */}
       <div className="flex-shrink-0 relative flex flex-col items-center">
         <div className="w-16 h-16 bg-panel border-2 border-rust relative z-10 flex items-center justify-center shadow-[0_0_15px_var(--rust-glow)]">
@@ -37,6 +96,7 @@ export function Step({ number, title, children, isLast }: { number: number; titl
 }
 
 export function Tip({ title, children, type = "info" }: { title: string; children: React.ReactNode, type?: "warning" | "info" }) {
+  const { ref, cls } = useReveal();
   const isWarning = type === "warning";
   const borderColor = isWarning ? 'border-l-red-cost' : 'border-l-rust';
   const icon = isWarning 
@@ -44,7 +104,7 @@ export function Tip({ title, children, type = "info" }: { title: string; childre
     : <svg className="w-6 h-6 text-rust" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 
   return (
-    <div className={`border border-border border-l-[4px] ${borderColor} p-10 bg-panel flex gap-8 items-start`}>
+    <div ref={ref} className={`border border-border border-l-[4px] ${borderColor} p-10 bg-panel flex gap-8 items-start ${cls}`}>
       <div className="flex-shrink-0 mt-1">{icon}</div>
       <div>
         <h4 className="text-text-bright font-bold mb-4 text-2xl font-display uppercase tracking-wide">{title}</h4>

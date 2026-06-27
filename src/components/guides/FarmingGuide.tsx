@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 
-import { ReqCard, Step, Tip, ImagePlaceholder } from './GuideComponents'
+import { ReqCard, Step, Tip, ImagePlaceholder, Reveal } from './GuideComponents'
 
 export function FarmingGuide() {
   return (
@@ -31,17 +31,17 @@ export function FarmingGuide() {
       </header>
 
       {/* Introduction */}
-      <div className="guide-intro">
+      <Reveal className="guide-intro">
         <p className="text-text leading-loose text-xl font-light max-w-4xl">
           In this guide, you will learn how to build a fully functional and
           highly efficient farm in Rust. You will discover everything from
           proper irrigation and lighting to advanced gene crossbreeding and
           animal farming.
         </p>
-      </div>
+      </Reveal>
 
       {/* Requirements Box */}
-      <div className="guide-reqs-box">
+      <Reveal className="guide-reqs-box">
         {/* Oranžová čára do ztracena */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-rust to-transparent" />
 
@@ -59,11 +59,13 @@ export function FarmingGuide() {
           />
           <ReqCard title="Composter" desc="For producing fertilizer." />
         </div>
-      </div>
+      </Reveal>
 
       {/* Steps (Timeline Layout) */}
       <div className="section-gap">
-        <h2 className="guide-steps-title">Step-by-Step Process</h2>
+        <Reveal>
+          <h2 className="guide-steps-title">Step-by-Step Process</h2>
+        </Reveal>
 
         <div className="guide-steps-list">
           {/* STEP 1 */}
@@ -281,9 +283,9 @@ export function FarmingGuide() {
 
       {/* Pro-Tips (Social Proof / Warning Layout) */}
       <div className="guide-tips-section">
-        <div className="guide-tips-header">
+        <Reveal className="guide-tips-header">
           <h2 className="guide-tips-title">Pro-Tips & Common Mistakes</h2>
-        </div>
+        </Reveal>
 
         <div className="guide-tips-grid">
           <Tip title="Overwatering the Planters" type="warning">
@@ -308,7 +310,7 @@ export function FarmingGuide() {
       </div>
 
       {/* Pre-footer CTA */}
-      <div className="guide-footer-section">
+      <Reveal className="guide-footer-section">
         {/* Fading horizontal separator */}
         <div className="guide-footer-separator" />
 
@@ -345,7 +347,7 @@ export function FarmingGuide() {
             Explore All Guides
           </Link>
         </div>
-      </div>
+      </Reveal>
     </div>
   )
 }

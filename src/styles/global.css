@@ -3853,7 +3853,7 @@ html {
    immediately on render, so nothing is gated behind a stagger. */
 .animate-fade-in-up {
   opacity: 0; /* starts hidden */
-  animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Loading skeletons — shown while a lazy route chunk is fetched */

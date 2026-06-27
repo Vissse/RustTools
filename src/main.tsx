@@ -1,21 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
-import { PostHogProvider } from '@posthog/react'
 import { routeTree } from './routeTree.gen'
 import './styles/global.css'
 import { ErrorPage } from './components/ErrorPage'
-import { initAnalytics, capturePageview, posthog } from './lib/analytics'
+import { initAnalytics, capturePageview } from './lib/analytics'
 
 // OPTIMALIZACE PRO GECKO: Inicializace analytiky přesunuta do fronty makrouloh (idle callback / setTimeout),
 // aby neblokovala parsování DOM a první plynulé vykreslení (First Paint) kalkulačky.
+// posthog-js se navíc načítá dynamickým importem (až uvnitř initAnalytics), takže
+// nikdy není součástí kritického entry bundlu.
 if (typeof window !== 'undefined') {
   const scheduleInitialization =
     window.requestIdleCallback || ((cb) => setTimeout(cb, 200))
   scheduleInitialization(() => {
-    initAnalytics()
-    // První pageview zachytíme asynchronně po plynulém náběhu aplikace
-    capturePageview(window.location.pathname)
+    // První pageview zachytíme až po dokončení (asynchronní) inicializace.
+    void initAnalytics().then(() =>
+      capturePageview(window.location.pathname),
+    )
   })
 }
 
@@ -42,8 +44,6 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PostHogProvider client={posthog}>
-      <RouterProvider router={router} />
-    </PostHogProvider>
+    <RouterProvider router={router} />
   </StrictMode>
 )
