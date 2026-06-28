@@ -7,6 +7,7 @@ import {
   ImagePlaceholder,
   Reveal,
 } from "./GuideComponents";
+import { ComposterPopup } from "./ComposterPopup";
 
 export function FarmingGuide() {
   return (
@@ -120,21 +121,40 @@ export function FarmingGuide() {
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
               To keep the light level at a perfect 100%, you need to craft a
               standard ceiling light. The light&apos;s coverage is a hemisphere
-              extending about two floors down and one square foundation to the
-              sides. The most efficient placement is to hang the light exactly
-              on the intersection of four foundations. Doing this will perfectly
-              illuminate four{" "}
+              extending downwards and about one square foundation to the sides.
+              The most efficient placement depends on your setup. If you are
+              using{" "}
               <strong className="text-text-bright font-medium">
                 Large Planter Boxes
-              </strong>{" "}
-              at once. Even more impressively, if you are using the{" "}
+              </strong>
+              , you can hang the light exactly on the intersection of four
+              foundations. Because the light only needs to touch the planter box
+              itself (not the outer seeds), this will perfectly illuminate four
+              boxes at once. However, if you are using the{" "}
               <strong className="text-text-bright font-medium">
                 Single Plant Pot
               </strong>{" "}
-              &quot;meta&quot;, a single centrally-placed light can illuminate
-              all the pots across those four foundations, which means growing
-              100 seeds with only one light source!
+              &quot;meta&quot;, the mechanics change—the light must physically
+              reach every individual pot. In this case, you must place the light
+              exactly halfway between two foundations to perfectly cover 50 pots
+              with a single light source.
             </p>
+
+            <div className="bg-panel p-6 border-l-[4px] border-l-rust border border-border mb-8 max-w-3xl">
+              <strong className="text-text-bright font-bold uppercase tracking-wider text-sm block mb-2">
+                Outdated Information Warning
+              </strong>
+              <p className="text-text-dim text-base leading-relaxed">
+                Many older guides and sources claim that ceiling lights can
+                reach two floors down or even shine through solid floors.{" "}
+                <strong className="text-text-bright font-medium">
+                  This is no longer true.
+                </strong>{" "}
+                Light does not pass through floors, meaning every single floor
+                of a multi-story farm must have its own dedicated lighting
+                setup.
+              </p>
+            </div>
           </Step>
 
           {/* STEP 3 */}
@@ -146,11 +166,13 @@ export function FarmingGuide() {
               <strong className="text-text-bright font-medium">60–65%</strong>{" "}
               of its total capacity.
             </p>
-            <ul className="list-disc list-inside text-text leading-loose text-lg font-light space-y-4 mb-10 ml-2">
+
+            <ul className="list-disc list-inside text-text leading-loose text-lg font-light space-y-4 mb-8 ml-2">
               <li>Place a water pump into a fresh water source.</li>
               <li>Connect it directly to a sprinkler using a hose.</li>
               <li>
-                Strategic sprinkler placement is key. If using{" "}
+                Strategic sprinkler placement is key, and it works very
+                similarly to the lighting mechanics. If using{" "}
                 <strong className="text-text-bright font-medium">
                   Large Planter Boxes
                 </strong>
@@ -161,10 +183,22 @@ export function FarmingGuide() {
                   Single Plant Pot
                 </strong>{" "}
                 meta, the sprinkler must physically hit every individual pot. In
-                this case, place the sprinkler exactly halfway between two
-                foundations to cover all 50 pots evenly.
+                this case, just like with the ceiling light, place the sprinkler
+                exactly halfway between two foundations to cover all 50 pots
+                evenly.
               </li>
             </ul>
+
+            <div className="bg-panel p-6 border-l-[4px] border-l-rust border border-border mb-10 max-w-3xl">
+              <strong className="text-text-bright font-bold uppercase tracking-wider text-sm block mb-2">
+                Overwatering Warning
+              </strong>
+              <p className="text-text-dim text-base leading-relaxed">
+                Filling planters to 100% capacity with water drops plant
+                happiness. Keep the volume strictly between 60% and 75% (ideally
+                around 70%).
+              </p>
+            </div>
             <ImagePlaceholder label="Logical diagram or screenshot showing a Water Pump connected via hose to a Sprinkler hanging perfectly above the intersection of four Large Planters" />
           </Step>
 
@@ -175,10 +209,19 @@ export function FarmingGuide() {
               achieve 100% plant happiness.
             </p>
             <ul className="list-disc list-inside text-text leading-loose text-lg font-light space-y-4 ml-2">
-              <li>Craft a Composter.</li>
               <li>
-                Gather horse dung by keeping a horse and feeding it (1 dung = 10
-                fertilizer).
+                Craft a <ComposterPopup />. (You can click on the word to see a
+                complete table of all compostable items and their fertilizer
+                yields).
+              </li>
+              <li>
+                While you can put almost any organic material (like food or
+                fish) into the composter, the absolute best source is{" "}
+                <strong className="text-text-bright font-medium">
+                  horse dung
+                </strong>
+                . Keeping a horse and feeding it will provide massive amounts of
+                dung (1 dung = 10 fertilizer).
               </li>
               <li>
                 The soil consumes exactly one fertilizer per sapling per growth
@@ -341,10 +384,6 @@ export function FarmingGuide() {
         </Reveal>
 
         <div className="guide-tips-grid">
-          <Tip title="Overwatering the Planters" type="warning">
-            Filling planters to 100% capacity with water drops plant happiness.
-            Keep the volume strictly between 50% and 75% (ideally around 60%).
-          </Tip>
           <Tip title="Losing Your Perfect Clones" type="info">
             Never store all of your perfect genetic clones in one chest. Always
             make backups and hide a couple of clones in a hidden loot stash.
