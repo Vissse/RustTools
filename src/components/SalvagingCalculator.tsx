@@ -71,7 +71,7 @@ export function SalvagingCalculator() {
       <div className="calc-panel-full custom-scrollbar fade-in-container px-6 pb-6 pt-4">
         {/* Minimalist Target Selection (Raid Style) */}
         <div className="flex justify-center mt-4">
-          <div className="filter-row">
+          <div className="filter-row w-full max-w-4xl border-b border-white/[0.05] pb-6 mb-2">
             {TARGETS.map((t, idx) => {
               let imgSrc = "/images/unknown.png";
               if (t === "Patrol Helicopter") imgSrc = "/images/patrol.helicopter.png";
@@ -81,19 +81,21 @@ export function SalvagingCalculator() {
                 <Fragment key={t}>
                   <button
                     onClick={() => setTarget(t)}
-                    className={`filter-pure-text flex items-center gap-4 ${target === t ? "active" : ""}`}
+                    className={`filter-pure-text flex items-center gap-4 group ${target === t ? "active" : ""}`}
                   >
                     <Img
                       src={imgSrc}
                       alt={t}
                       width={64}
                       height={44}
-                      className="object-contain drop-shadow-md"
+                      className={`object-contain drop-shadow-md transition-opacity duration-300 ${target === t ? "opacity-100" : "opacity-40 group-hover:opacity-70"}`}
                     />
-                    <span className="text-[20px]">{t}</span>
+                    <span className={`text-[20px] transition-colors duration-300 ${target === t ? "text-white font-semibold" : "text-white/40 font-medium group-hover:text-white/70"}`}>
+                      {t}
+                    </span>
                   </button>
                   {idx < TARGETS.length - 1 && (
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/30 to-transparent flex-shrink-0" />
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/10 to-transparent flex-shrink-0" />
                   )}
                 </Fragment>
               );
@@ -102,22 +104,47 @@ export function SalvagingCalculator() {
         </div>
 
         {/* Minimalist Data Display */}
-        <div className="mt-4 max-w-4xl mx-auto">
+        <div className="mt-2 max-w-4xl mx-auto">
+          {/* Header Row */}
+          {data.length > 0 && (
+            <div className="hidden sm:flex flex-row items-center justify-between py-2 px-6 mb-2">
+              <div className="w-[240px] flex-shrink-0">
+                {/* Empty header for tools column */}
+              </div>
+              <div className="flex items-center gap-8">
+                {data[0].resources.map((res, ridx) => (
+                  <div key={ridx} className="flex items-center justify-center gap-2 w-[110px]">
+                    <RecycleImg
+                      src={getResourceImage(res.name)}
+                      alt={res.name}
+                      width={18}
+                      height={18}
+                      className="object-contain opacity-90"
+                    />
+                    <span className="text-white/80 text-[11px] uppercase tracking-wider font-bold text-center leading-tight">
+                      {res.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-col gap-1">
             {data.map((row, idx) => (
               <div 
                 key={idx} 
-                className="flex flex-col sm:flex-row sm:items-center justify-between py-4 px-6 hover:bg-white/[0.02] transition-colors rounded-lg group"
+                className="flex flex-col sm:flex-row sm:items-center justify-between py-3 px-6 hover:bg-white/[0.03] transition-colors rounded-lg group"
               >
                 <div className="flex items-center gap-4 w-[240px] flex-shrink-0 mb-3 sm:mb-0">
                   <RecycleImg
                     src={getToolImage(row.tool)}
                     alt={row.tool}
-                    width={24}
-                    height={24}
-                    className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                    width={28}
+                    height={28}
+                    className="object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all"
                   />
-                  <span className="text-text-bright text-[14px] tracking-wide font-light">
+                  <span className="text-white/90 group-hover:text-white font-medium text-[15px] tracking-wide transition-colors">
                     {row.tool}
                   </span>
                 </div>
@@ -126,23 +153,21 @@ export function SalvagingCalculator() {
                   {row.resources.map((res, ridx) => (
                     <div
                       key={ridx}
-                      className="flex items-center gap-3 w-[110px]"
+                      className="flex items-center justify-center gap-3 w-[110px]"
                     >
-                      <RecycleImg
-                        src={getResourceImage(res.name)}
-                        alt={res.name}
-                        width={18}
-                        height={18}
-                        className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                      />
-                      <div className="flex flex-col">
-                        <span className="text-text-bright text-sm font-medium">
-                          {res.quantity}
-                        </span>
-                        <span className="text-white text-[9px] uppercase tracking-wider">
-                          {res.name}
-                        </span>
+                      {/* Mobile-only resource label/icon if it wraps, otherwise we just show number */}
+                      <div className="flex sm:hidden items-center gap-2 mr-2">
+                        <RecycleImg
+                          src={getResourceImage(res.name)}
+                          alt={res.name}
+                          width={14}
+                          height={14}
+                          className="object-contain opacity-50"
+                        />
                       </div>
+                      <span className="text-text-bright font-display text-[22px] font-medium tracking-wide tabular-nums text-center">
+                        {res.quantity}
+                      </span>
                     </div>
                   ))}
                 </div>

@@ -18,6 +18,15 @@
   src: url("/fonts/teko-latin.woff2") format("woff2");
 }
 @font-face {
+  font-family: "TekoNums";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: block;
+  src: url("/fonts/teko-latin.woff2") format("woff2");
+  unicode-range: U+0030-0039, U+0025, U+002B, U+002D, U+002E, U+002F, U+002A, U+003A;
+  size-adjust: 140%;
+}
+@font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
@@ -52,7 +61,7 @@
   --color-text-muted: #4a4038;
 
   --font-display: "Teko", sans-serif;
-  --font-ui: "Inter", sans-serif;
+  --font-ui: "TekoNums", "Inter", sans-serif;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -87,8 +96,8 @@
   --text-muted: #4a4038;
   --font-d: "Teko", sans-serif;
   --font-display: "Teko", sans-serif;
-  --font-ui: "Inter", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-ui: "TekoNums", "Inter", sans-serif;
+  --font-sans: "TekoNums", "Inter", sans-serif;
   --font-m: "JetBrains Mono", monospace;
 }
 
@@ -4682,8 +4691,7 @@ html {
         }
 
         .dash-val {
-          font-family: var(--font-d);
-          font-size: 28px;
+          font-size: 20px;
           font-weight: 600;
           color: var(--text-bright);
           text-shadow: 0 2px 8px rgba(0,0,0,0.5);
@@ -4702,7 +4710,7 @@ html {
             padding: 16px 12px 12px;
           }
           .dash-block { min-width: 120px; }
-          .dash-val { font-size: 24px; }
+          .dash-val { font-size: 18px; }
           .dash-divider { display: none; }
         }
 
@@ -4710,8 +4718,7 @@ html {
           background: transparent;
           border: none;
           color: var(--text-bright);
-          font-family: var(--font-d);
-          font-size: 28px;
+          font-size: 20px;
           width: 80px;
           text-align: center;
           outline: none;

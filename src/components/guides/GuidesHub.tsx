@@ -7,6 +7,7 @@ const GUIDES = [
     description:
       'Learn how to build a highly efficient farm, crossbreed perfect genetics, and brew teas for massive buffs.',
     path: '/guides/farming',
+    image: '/images/placeholder_farming.png',
     status: 'published',
   },
   {
@@ -85,10 +86,13 @@ function GuideCard({ guide }: { guide: (typeof GUIDES)[0] }) {
     >
       {/* Obrazek (Floating Image Box Placeholder) */}
       <div className="w-full aspect-[16/9] bg-bg relative overflow-hidden">
-        {/* Zde uzivatel vlozi img, napr: <img src="/images/guide-farming.jpg" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /> */}
-        <div className="absolute inset-0 flex items-center justify-center text-text-dim/20 font-display uppercase tracking-widest text-xl transition-transform duration-500 group-hover:scale-105">
-          IMAGE PLACEHOLDER
-        </div>
+        {'image' in guide && guide.image ? (
+          <img src={guide.image} alt={guide.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-text-dim/20 font-display uppercase tracking-widest text-xl transition-transform duration-500 group-hover:scale-105">
+            IMAGE PLACEHOLDER
+          </div>
+        )}
       </div>
 
       {/* Content */}
