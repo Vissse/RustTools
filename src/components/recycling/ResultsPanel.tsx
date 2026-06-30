@@ -25,30 +25,30 @@ export function ResultsPanel({
   tipProps,
 }: ResultsPanelProps) {
   return (
-    <div className="panel-right fade-in-container" {...tipProps}>
+    <div
+      className="fade-in-container basis-[45%] grow-0 shrink-0 p-[22px] overflow-y-auto flex flex-col gap-6 @container/rcy-panel max-md:basis-auto max-md:grow max-md:overflow-y-visible max-md:border-r-0 max-md:p-1.5"
+      {...tipProps}
+    >
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
         <div className="fade-in-container mt-0">
-          {/* Použití nativní třídy sec-label pro sjednocení nadpisu */}
           <div className="sec-label">TOTAL OUTPUT & TIME</div>
 
-          <div className="raid-box">
-            {/* Vnitřní hlavička s Total Yield a Time */}
+          <div className="bg-white/3 border border-white/5 rounded-lg px-5 py-4 mb-6">
+            {/* Inner header: Total Yield + Time */}
             <div className="flex justify-between items-center mb-6">
               <div className="text-[13px] text-[#a0a0a0] font-semibold">
                 Total Yield
               </div>
-              <div className="text-[13px] font-bold tracking-[0.05em]">
+              <div className="text-[13px] font-bold tracking-wider">
                 <span className="text-[#666] mr-1.5">TIME:</span>
                 <span className="text-[#cd412b]">{results.time}</span>
               </div>
             </div>
 
-            {/* Suroviny zarovnané vedle sebe s flexboxem */}
-            <div
-              className="rcy-res-resources flex flex-wrap gap-8 items-center"
-            >
+            {/* Resources laid out side by side */}
+            <div className="flex flex-wrap gap-8 items-center max-[1024px]:justify-center">
               {results.visibleResources.map((res) => (
                 <div key={res} className="fade-in-container">
                   <ResCard
@@ -70,8 +70,8 @@ export function ResultsPanel({
           <Breakdown rows={results.rows} onSet={onSet} />
         </div>
       ) : (
-        <div className="empty-state raid-box text-center mt-8">
-          <span className="icon">◈</span>
+        <div className="h-full flex items-center justify-center flex-col gap-2.5 font-display text-base font-normal tracking-[0.15em] text-text-muted uppercase text-center leading-[1.9] min-h-[200px] border border-border bg-black/25 mt-8">
+          <span className="text-rust text-[28px] leading-none">◈</span>
           Select items to recycle
         </div>
       )}

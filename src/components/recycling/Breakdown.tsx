@@ -67,13 +67,13 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
           const isRemoving = removing.has(row.id);
 
           return (
-            <div className={`raid-bd-row ${isRemoving ? 'fade-out-container' : 'fade-in-container'}`} key={row.id}>
-              {/* 1. HORNÍ ŘÁDEK: Input, Ikona, Název a Tlačítko smazat */}
+            <div className={`bg-white/3 border border-white/5 rounded-lg flex flex-col items-start px-[18px] py-3.5 mb-3 transition-[border-color] duration-200 hover:border-white/8 ${isRemoving ? 'fade-out-container' : 'fade-in-container'}`} key={row.id}>
+              {/* 1. Top row: input, icon, name, remove button */}
               <div className="flex justify-between items-center w-full">
                 <div className="flex items-center gap-4">
-                  {/* Kompaktní políčko (křížek 'x' odstraněn) */}
+                  {/* Compact qty field */}
                   <QtyInput
-                    className="invisible-num-input raid-qty-input"
+                    className="bg-white/4 border border-white/8 rounded text-[15px] font-bold text-white text-center outline-none px-1 py-1.5 transition-all duration-200 font-ui w-14 hover:bg-white/8 hover:border-white/20 focus:bg-white/8 focus:border-white/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                     value={row.count}
                     ariaLabel={`${row.name} quantity`}
                     deferZero
@@ -94,9 +94,9 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                   </div>
                 </div>
 
-                {/* Křížek na smazání */}
+                {/* Remove button */}
                 <button
-                  className="raid-remove-btn"
+                  className="bg-transparent border-0 text-text-muted cursor-pointer text-base p-1 flex items-center justify-center transition-[color,text-shadow] duration-150 ease-out hover:text-rust hover:[text-shadow:0_0_8px_var(--rust-glow)]"
                   onClick={() => onSet(row.id, 0)}
                   title="Remove"
                 >
@@ -104,8 +104,8 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                 </button>
               </div>
 
-              {/* HORIZONTÁLNÍ SEPARÁTOR (Do ztracena doprava) */}
-              <div className="bd-horizontal-sep" />
+              {/* Horizontal fade separator */}
+              <div className="w-full h-px my-3.5 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_0%,transparent_80%)]" />
 
               {/* 2. SPODNÍ ŘÁDEK: Výstupy z recyklace */}
               <div className="flex items-center justify-start gap-4 flex-wrap w-full">
@@ -131,7 +131,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
 
                 {/* VERTIKÁLNÍ SEPARÁTOR (Zobrazí se pouze, když jsou obě skupiny) */}
                 {guaranteed.length > 0 && chance.length > 0 && (
-                  <div className="bd-vertical-sep" />
+                  <div className="w-px h-6 mx-1.5 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.15)_50%,transparent)]" />
                 )}
 
                 {/* Šance na suroviny (Extra resources) - upraveno do moderní "pilulky" */}

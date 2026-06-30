@@ -158,7 +158,7 @@ export function SkinningCalculator() {
         </div>
 
         {/* Breakdown Area (Scrollable) */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar px-6 pb-6 w-full">
+        <div className="flex-1 overflow-y-auto px-6 pb-6 w-full">
           <div className="max-w-5xl mx-auto w-full pt-2">
           <div className="flex items-center gap-3 mb-4">
             <RecycleImg src={getTargetImage(target)} alt={target} width={24} height={24} className="object-contain opacity-80" />

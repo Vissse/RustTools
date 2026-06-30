@@ -39,7 +39,7 @@ export function CalcShell({
   const crumbLabel = crumb ?? titleCase(`${headerAccent} ${headerRest}`.trim())
 
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-0 sm:px-6 py-20 text-text font-sans">
       {/* Breadcrumbs — first element on the page, stacked above the header. */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link href="/" className="hover:text-text-bright transition-colors">
@@ -69,13 +69,26 @@ export function CalcShell({
       {/* Separator — matches the hubs. */}
       <div className="w-full h-[1px] bg-gradient-to-r from-white/20 to-transparent separator-gap animate-fade-in-up" />
 
-      {/*
-        The legacy calc-wrap is kept purely because global.css targets
-        .calc-wrap[data-variant="..."] .calc-body for the grid layouts.
-        All heavy styling (borders, backgrounds) was removed from it in CSS.
-      */}
-      <div className="calc-wrap animate-fade-in-up" data-variant={variant}>
-        <div className="calc-body">{children}</div>
+      {/* Shell visual + per-variant layout (was global.css .calc-wrap / .calc-body
+          + the [data-variant="…"] rules; now applied inline by variant). */}
+      <div
+        className={`w-full max-w-[1400px] relative z-[1] overflow-hidden rounded-2xl bg-[rgba(19,18,16,0.65)] backdrop-blur-[20px] border border-white/[0.06] shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_-1px_0_rgba(255,255,255,0.03)] transition-all duration-300 p-6 max-md:p-3 before:content-[''] before:absolute before:top-0 before:inset-x-0 before:h-0.5 before:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] before:opacity-80 animate-fade-in-up ${
+          variant === 'raid'
+            ? 'max-h-screen max-[1280px]:max-h-none max-[1280px]:overflow-visible'
+            : 'h-[85vh] flex flex-col max-md:h-auto max-md:max-h-none'
+        }`}
+      >
+        <div
+          className={
+            variant === 'raid'
+              ? 'relative z-[1] grid grid-cols-3 max-[1024px]:grid-cols-1 min-[1025px]:max-[1280px]:grid-cols-2'
+              : variant === 'recycling'
+                ? 'relative z-[1] flex flex-1 overflow-hidden max-md:flex-col-reverse max-md:overflow-visible'
+                : 'relative z-[1] flex flex-1 overflow-hidden max-md:flex-col max-md:overflow-visible'
+          }
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

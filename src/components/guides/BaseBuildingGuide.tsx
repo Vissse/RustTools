@@ -17,7 +17,7 @@ export function BaseBuildingGuide() {
       </div>
 
       {/* Hero Section */}
-      <header className="guide-hero animate-fade-in-up">
+      <header className="pb-4 mb-8 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-[linear-gradient(to_right,rgba(255,255,255,0.2),transparent)] animate-fade-in-up">
         <div className="relative z-10">
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-text-bright leading-none font-display uppercase">
             The Ultimate <span className="text-rust">Base Building</span> Guide

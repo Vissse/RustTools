@@ -1015,17 +1015,17 @@ export function ShopCalculator() {
       variant="recycling"
     >
 
-      <div className="bandit-wrapper fade-in-container">
+      <div className="fade-in-container flex flex-col h-full w-full overflow-hidden relative">
         {/* TOP DASHBOARD */}
-        <div className="top-dashboard">
-          <div className="dash-block">
-            <span className="dash-label">Your Scrap</span>
-            <div className="dash-value-row">
-              <Img src="/images/recycle/scrap.webp" alt="Scrap" />
+        <div className="flex justify-center items-center gap-6 px-5 pt-6 pb-3 max-[640px]:flex-wrap max-[640px]:gap-x-6 max-[640px]:gap-y-3 max-[640px]:px-3 max-[640px]:pt-4 max-[640px]:pb-3">
+          <div className="flex flex-col items-center min-w-[150px] max-[640px]:min-w-[120px]">
+            <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">Your Scrap</span>
+            <div className="flex items-center gap-2.5">
+              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
               <input
                 type="number"
                 min="0"
-                className="my-scrap-input"
+                className="bg-transparent border-0 text-text-bright text-xl w-20 text-center outline-none transition-all duration-200 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-text [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 hover:text-rust hover:scale-105 focus:text-rust focus:scale-105 placeholder:text-text-bright placeholder:opacity-100 focus:placeholder:text-transparent"
                 placeholder="0"
                 value={scrapInventory === 0 ? "" : scrapInventory}
                 onChange={(e) => {
@@ -1041,36 +1041,34 @@ export function ShopCalculator() {
             </div>
           </div>
 
-          <div className="dash-divider" />
+          <div className="w-px h-8 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.08),transparent)] max-[640px]:hidden" />
 
-          <div className="dash-block">
-            <span className="dash-label">Cart Change</span>
-            <div className="dash-value-row">
+          <div className="flex flex-col items-center min-w-[150px] max-[640px]:min-w-[120px]">
+            <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">Cart Change</span>
+            <div className="flex items-center gap-2.5">
               {totals.totalCost === 0 && totals.totalGained === 0 && (
-                <span className="dash-val text-text-dim">
+                <span className="text-xl font-semibold text-text-dim [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">
                   0
                 </span>
               )}
               {totals.totalCost > 0 && (
-                <span className="dash-val negative">-{totals.totalCost}</span>
+                <span className="text-xl font-semibold text-rust [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">-{totals.totalCost}</span>
               )}
               {totals.totalGained > 0 && (
-                <span className="dash-val positive">+{totals.totalGained}</span>
+                <span className="text-xl font-semibold text-metal [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">+{totals.totalGained}</span>
               )}
             </div>
           </div>
 
-          <div className="dash-divider" />
+          <div className="w-px h-8 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.08),transparent)] max-[640px]:hidden" />
 
-          <div className="dash-block highlight">
-            <span className="dash-label">
+          <div className="flex flex-col items-center min-w-[150px] max-[640px]:min-w-[120px]">
+            <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">
               {totals.finalBalance >= 0 ? "Remaining" : "Missing"}
             </span>
-            <div className="dash-value-row">
-              <Img src="/images/recycle/scrap.webp" alt="Scrap" />
-              <span
-                className={`dash-val ${totals.finalBalance < 0 ? "negative" : ""}`}
-              >
+            <div className="flex items-center gap-2.5">
+              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
+              <span className={`text-xl font-semibold [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg ${totals.finalBalance < 0 ? "text-rust" : "text-text-bright"}`}>
                 {Math.abs(totals.finalBalance)}
               </span>
             </div>
@@ -1116,9 +1114,9 @@ export function ShopCalculator() {
         </div>
 
         {/* ITEMS GRID & FOOTER CONTAINER */}
-        <div className="items-grid-container">
+        <div className="flex-1 overflow-y-auto p-5 flex flex-col items-center">
           {/* ITEMS GRID */}
-          <div className="items-grid">
+          <div className="flex flex-wrap justify-center gap-3 w-full max-w-[1320px] content-start">
             {activeCategory.items.map((item, index) => {
               const isBuy = item.price > 0;
               const cartQty = cart[item.id] || 0;
@@ -1127,54 +1125,57 @@ export function ShopCalculator() {
               return (
                 <div
                   key={item.id}
-                  className={`item-card ${isBuy ? "is-buy" : "is-sell"} ${isActive ? "active" : ""}`}
+                  className={`group/card ${isBuy ? "is-buy" : "is-sell"} ${isActive ? "active" : ""} flex-[1_1_130px] min-w-[110px] max-w-[160px] bg-[linear-gradient(180deg,var(--panel3)_0%,var(--panel2)_100%)] border rounded-lg flex flex-col items-center px-2.5 pt-3.5 pb-[18px] transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] relative opacity-0 translate-y-[15px] animate-[shopSlideUp_0.4s_ease_forwards] hover:bg-white/3 hover:-translate-y-1! hover:shadow-[0_8px_16px_rgba(0,0,0,0.4)] before:content-[''] before:absolute before:-top-px before:-left-px before:-right-px before:h-0.5 before:rounded-t-lg before:z-[5] before:pointer-events-none ${
+                    isBuy
+                      ? `before:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_50%,transparent_100%)] ${isActive ? "border-[rgba(206,66,43,0.3)] before:shadow-[0_0_12px_var(--rust)]" : "border-border-2 hover:border-white/10"}`
+                      : `before:bg-[linear-gradient(90deg,transparent_0%,var(--metal-col)_50%,transparent_100%)] ${isActive ? "border-[rgba(139,175,200,0.3)] before:shadow-[0_0_12px_var(--metal-col)]" : "border-border-2 hover:border-white/10"}`
+                  }`}
                   style={{ animationDelay: `${index * 0.04}s` }}
                 >
                   {isActive && (
-                    <div className="in-cart-badge" key={cartQty}>
+                    <div
+                      className="absolute -top-2 -right-2 bg-rust group-[.is-sell]/card:bg-metal text-white font-ui text-[10px] font-extrabold px-[7px] py-[3px] rounded-xl shadow-[0_4px_8px_rgba(0,0,0,0.6)] animate-[shopPopIn_0.3s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] z-10"
+                      key={cartQty}
+                    >
                       {cartQty}x
                     </div>
                   )}
 
-                  {/* Obal obrázku pro správné pozicování odznáčku množství */}
-                  <div className="item-img-wrap">
-                    <Img src={item.img} alt={item.name} className="item-img" />
+                  {/* Image wrap (anchors the yield badge) */}
+                  <div className="relative flex justify-center items-center mb-2.5 w-16 h-16">
+                    <Img src={item.img} alt={item.name} className="w-14 h-14 object-contain [filter:drop-shadow(0_4px_6px_rgba(0,0,0,0.5))] transition-transform duration-300 group-hover/card:scale-110" />
                     {item.qty > 1 && (
-                      <div className="item-yield-badge">x{item.qty}</div>
+                      <div className="absolute -bottom-1 -right-1 bg-black border border-white/10 text-white font-ui text-[10px] font-extrabold px-1 py-0.5 rounded z-10 shadow-[0_2px_4px_rgba(0,0,0,0.5)]">x{item.qty}</div>
                     )}
                   </div>
 
-                  <div className="item-name">{item.name}</div>
+                  <div className="font-ui text-[11px] font-bold text-text-dim text-center mb-1 min-h-[28px] transition-[color] duration-300 flex items-center justify-center group-hover/card:text-text-bright">{item.name}</div>
 
-                  <div
-                    className={`item-price ${isBuy ? "price-buy" : "price-sell"}`}
-                  >
-                    <Img src="/images/recycle/scrap.webp" alt="Scrap" />
+                  <div className={`font-display text-base font-semibold flex items-center gap-1.5 mb-2 ${isBuy ? "text-rust" : "text-metal"}`}>
+                    <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-3.5 h-3.5" />
                     {isBuy ? item.price : `+${Math.abs(item.price)}`}
                   </div>
 
                   {(item as any).fuel && (
-                    <div
-                      className="text-[10px] text-text-dim mb-2 opacity-80"
-                    >
+                    <div className="text-[10px] text-text-dim mb-2 opacity-80">
                       + {(item as any).fuel} Low Grade Fuel
                     </div>
                   )}
 
-                  <div className="item-separator" />
+                  <div className="w-4/5 h-px mt-1.5 mb-3 mx-auto bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.15),transparent)] transition-all duration-300 group-[.active.is-buy]/card:bg-[linear-gradient(to_right,transparent,var(--rust),transparent)] group-[.active.is-buy]/card:shadow-[0px_-4px_10px_rgba(206,66,43,0.6)] group-[.active.is-sell]/card:bg-[linear-gradient(to_right,transparent,var(--metal-col),transparent)] group-[.active.is-sell]/card:shadow-[0px_-4px_10px_rgba(139,175,200,0.6)]" />
 
-                  <div className="free-counter-wrap">
+                  <div className="flex items-center justify-center w-4/5 mx-auto">
                     <button
-                      className="free-counter-btn"
+                      className="bg-transparent border-0 text-text-dim text-lg font-light cursor-pointer flex items-center justify-center w-5 h-5 transition-all duration-200 select-none p-0 shrink-0 hover:text-rust hover:scale-[1.2] active:scale-90"
                       onClick={() => adjustCart(item.id, -1)}
                     >
                       −
                     </button>
-                    <div className="free-separator" />
+                    <div className="w-px min-w-px h-2.5 bg-[linear-gradient(to_bottom,transparent,var(--border-hi),transparent)] mx-1.5 shrink-0" />
 
                     <input
                       type="number"
-                      className="free-counter-input invisible-num-input"
+                      className="w-[30px] min-w-[30px] bg-transparent border-0 text-text-dim text-sm font-bold text-center outline-none p-0 shadow-none transition-[color,transform] duration-300 shrink-0 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 placeholder:text-text-dim placeholder:opacity-100 focus:placeholder:text-transparent group-[.active]/card:text-text-bright group-[.active]/card:scale-110 group-[.active]/card:placeholder:text-text-bright"
                       placeholder="0"
                       value={cartQty === 0 ? "" : cartQty}
                       onChange={(e) => {
@@ -1194,9 +1195,9 @@ export function ShopCalculator() {
                       }}
                     />
 
-                    <div className="free-separator" />
+                    <div className="w-px min-w-px h-2.5 bg-[linear-gradient(to_bottom,transparent,var(--border-hi),transparent)] mx-1.5 shrink-0" />
                     <button
-                      className="free-counter-btn"
+                      className="bg-transparent border-0 text-text-dim text-lg font-light cursor-pointer flex items-center justify-center w-5 h-5 transition-all duration-200 select-none p-0 shrink-0 hover:text-rust hover:scale-[1.2] active:scale-90"
                       onClick={() => adjustCart(item.id, 1)}
                     >
                       +
@@ -1207,16 +1208,14 @@ export function ShopCalculator() {
             })}
           </div>
 
-          {/* Separátor 3 */}
-          <div
-            className="fading-separator mt-10 w-1/2 opacity-50"
-          />
+          {/* Fading separator */}
+          <div className="h-px w-1/2 mt-10 mb-3 mx-auto opacity-50 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)]" />
 
           {/* SHOP FOOTER */}
-          <div className="shop-footer">
-            <div className="map-placeholder">Map Location Placeholder</div>
+          <div className="w-full max-w-[1200px] mt-2.5 flex flex-col items-center gap-3">
+            <div className="w-full max-w-[450px] h-[180px] bg-black/20 border border-dashed border-white/10 rounded-lg flex items-center justify-center text-text-dim font-ui text-[11px] tracking-widest uppercase transition-[border-color] duration-300 hover:border-white/30">Map Location Placeholder</div>
 
-            <div className="dynamic-pricing-info">
+            <div className="text-center text-[11px] text-text-muted font-ui uppercase tracking-wider opacity-80 mb-2">
               Rates fluctuate between 50% off and 100% markup based on demand.
             </div>
           </div>

@@ -118,29 +118,19 @@ export function DecayCalculator() {
       variant="recycling"
     >
 
-      <div className="decay-container fade-in-container">
-        {/* 1. SELEKTOR MATERIÁLU */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <div className="sec-label decay-anim-1 mb-4">
+      <div className="fade-in-container flex-1 w-full h-full flex flex-col items-center justify-center p-5">
+        {/* 1. MATERIAL SELECTOR */}
+        <div className="flex flex-col items-center">
+          <div className="sec-label animate-[decaySlideUp_0.5s_cubic-bezier(0.2,0.8,0.2,1)_backwards] [animation-delay:0s] mb-4">
             BUILDING MATERIAL
           </div>
-          <div className="mat-selector-row">
+          <div className="flex gap-4 justify-center flex-nowrap mb-10 w-full max-[640px]:flex-wrap">
             {MATERIALS.map((m, index) => (
               <button
                 key={m.id}
-                className={`minimal-box-btn decay-anim-staggered${selectedMaterial === m.id ? " active" : ""}`}
+                className={`minimal-box-btn animate-[decaySlideUp_0.3s_cubic-bezier(0.34,1.56,0.64,1)_backwards] min-w-[100px] shrink-0${selectedMaterial === m.id ? " active" : ""}`}
                 onClick={() => setSelectedMaterial(m.id)}
-                style={{ 
-                  minWidth: "100px", 
-                  flexShrink: 0,
-                  animationDelay: `${index * 0.03}s`
-                }}
+                style={{ animationDelay: `${index * 0.03}s` }}
               >
                 <Img
                   src={m.img}
@@ -153,11 +143,11 @@ export function DecayCalculator() {
           </div>
         </div>
 
-        {/* 2. CENTRÁLNÍ KARTA */}
-        <div className="decay-card decay-anim-2">
+        {/* 2. CENTRAL CARD */}
+        <div className="bg-[linear-gradient(180deg,var(--panel2)_0%,var(--panel)_100%)] border border-border-2 border-t-0 rounded-xl p-[clamp(24px,6vw,40px)] flex flex-col items-center w-full max-w-[500px] shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.02)] relative before:content-[''] before:absolute before:top-0 before:inset-x-0 before:h-0.5 before:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] before:z-10 before:pointer-events-none before:rounded-t-xl animate-[decaySlideUp_0.5s_cubic-bezier(0.2,0.8,0.2,1)_backwards] [animation-delay:0.1s]">
           <div className="text-center">
-            <div className="decay-time-title">Time Until Destroyed</div>
-            <div className="decay-time-value">{timeString}</div>
+            <div className="font-ui text-[11px] font-bold text-text-muted uppercase tracking-[0.15em] mb-2">Time Until Destroyed</div>
+            <div className="font-display text-[clamp(48px,10vw,64px)] font-semibold text-rust leading-none [text-shadow:0_0_24px_rgba(206,66,43,0.2)] mb-8 tabular-nums tracking-[0.02em]">{timeString}</div>
           </div>
 
           <div
@@ -182,9 +172,9 @@ export function DecayCalculator() {
               CURRENT HP
             </div>
 
-            <div className="decay-input-wrap">
+            <div className="bg-black/25 border border-border rounded-md px-3 py-1.5 inline-flex items-center transition-[border-color] duration-200 focus-within:border-[rgba(206,66,43,0.4)]">
               <button
-                className="decay-btn"
+                className="bg-transparent border-0 text-text-dim text-lg font-light cursor-pointer w-8 h-8 flex items-center justify-center transition-[color,transform] duration-150 hover:text-text-bright active:scale-90"
                 onClick={() =>
                   setCurrentHp((c) =>
                     Math.max(0, (c ?? activeMat.hp) - hpStep),
@@ -193,12 +183,12 @@ export function DecayCalculator() {
               >
                 −
               </button>
-              <div className="decay-sep" />
+              <div className="w-px h-3.5 bg-border mx-2" />
               <input
                 type="number"
                 min="0"
                 max={activeMat.hp}
-                className="decay-input"
+                className="bg-transparent border-0 outline-none text-center w-20 font-display text-[26px] font-semibold text-text-bright tracking-wider [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                 value={currentHp ?? activeMat.hp}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -211,9 +201,9 @@ export function DecayCalculator() {
                   }
                 }}
               />
-              <div className="decay-sep" />
+              <div className="w-px h-3.5 bg-border mx-2" />
               <button
-                className="decay-btn"
+                className="bg-transparent border-0 text-text-dim text-lg font-light cursor-pointer w-8 h-8 flex items-center justify-center transition-[color,transform] duration-150 hover:text-text-bright active:scale-90"
                 onClick={() =>
                   setCurrentHp((c) =>
                     Math.min(activeMat.hp, (c ?? activeMat.hp) + hpStep),
@@ -225,7 +215,7 @@ export function DecayCalculator() {
             </div>
           </div>
 
-          <div className="decay-anim-3 w-full">
+          <div className="animate-[decaySlideUp_0.5s_cubic-bezier(0.2,0.8,0.2,1)_backwards] [animation-delay:0.2s] w-full">
             <div
               style={{
                 display: "flex",
@@ -244,7 +234,7 @@ export function DecayCalculator() {
             </div>
 
             <div
-              className="modern-hp-wrapper"
+              className="relative w-full"
               style={{
                 height: "4px",
                 background: "var(--border)",
@@ -253,7 +243,7 @@ export function DecayCalculator() {
               }}
             >
               <div
-                className="modern-hp-fill"
+                className="absolute top-0 left-0 h-full"
                 style={{
                   width: `${hpPercent}%`,
                   background: "var(--rust)",
@@ -261,7 +251,7 @@ export function DecayCalculator() {
                 }}
               />
               <div
-                className="modern-hp-glow"
+                className="absolute top-0 left-0 h-full"
                 style={{
                   width: `${hpPercent}%`,
                   background: "var(--rust)",

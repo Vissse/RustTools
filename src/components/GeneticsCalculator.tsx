@@ -14,9 +14,9 @@ export function GeneticsCalculator() {
       headerRest="CALCULATOR"
       variant="cupboard"
     >
-      <div className="panel-left fade-in-container w-full border-none">
-        <div className="empty-state">
-          <span className="icon">◈</span>
+      <div className="fade-in-container w-full p-[22px] flex flex-col gap-6 overflow-y-auto">
+        <div className="h-full flex items-center justify-center flex-col gap-2.5 font-display text-base font-normal tracking-[0.15em] text-text-muted uppercase text-center leading-[1.9]">
+          <span className="text-rust text-[28px] leading-none">◈</span>
           GENETICS CALCULATOR INCOMING
         </div>
       </div>

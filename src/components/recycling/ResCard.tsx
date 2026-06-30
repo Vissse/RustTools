@@ -8,30 +8,21 @@ interface ResCardProps {
   value: number;
 }
 
-// Mapování CSS tříd pro barvy podle typu suroviny
-const COLOR_MAP: Record<string, string> = {
-  scrap: "res-color-scrap",
-  metal: "res-color-metal",
-  hqm: "res-color-hqm",
-  cloth: "res-color-cloth",
-  sulfur: "res-color-sulfur",
-};
-
 export function ResCard({ kind, label, value }: ResCardProps) {
-  const colorClass = COLOR_MAP[kind] || "res-color-default";
-
   return (
-    <div className="raid-res-inline">
+    <div className="flex items-center gap-3">
       <RecycleImg
         src={RESOURCE_ICONS[kind]}
         alt={label}
         className="w-10 h-10 object-contain"
       />
-      <div className="raid-res-info">
-        <span className={`raid-res-val ${colorClass}`}>
+      <div className="flex flex-col leading-[1.1]">
+        <span className="text-2xl font-bold font-ui text-white">
           {value.toLocaleString("en-US").replace(/,/g, " ")}
         </span>
-        <span className="raid-res-lbl">{label}</span>
+        <span className="text-[10px] font-bold text-[#888] uppercase tracking-[0.05em] mt-1">
+          {label}
+        </span>
       </div>
     </div>
   );

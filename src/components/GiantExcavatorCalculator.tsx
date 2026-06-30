@@ -65,27 +65,27 @@ export function GiantExcavatorCalculator() {
       variant="cupboard"
     >
 
-      <div className="single-layout fade-in-container">
-        <div className="input-section">
+      <div className="fade-in-container flex flex-col items-center px-5 py-10 h-full overflow-y-auto w-full">
+        <div className="flex flex-col items-center gap-4 w-full">
           <Img
             src="/images/diesel_barrel.png"
             alt="Diesel Fuel"
-            className="barrel-icon"
+            className="w-[120px] h-[120px] object-contain"
           />
-          <div className="input-info">
-            <div className="input-label-text">DIESEL BARRELS</div>
-            <div className="free-counter-wrap mt-2">
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-[#a0a0a0] font-ui text-sm font-bold tracking-widest uppercase">DIESEL BARRELS</div>
+            <div className="inline-flex items-center mt-2">
               <button
-                className="free-counter-btn"
+                className="bg-transparent border-0 text-[#757575] text-xl font-light cursor-pointer flex items-center justify-center w-8 h-8 transition-all duration-200 select-none hover:text-[#cc422c] hover:scale-[1.15] active:scale-[0.95]"
                 onClick={() => setDiesel((c) => Math.max(0, (c ?? 0) - 1) || null)}
               >
                 −
               </button>
-              <div className="free-separator" />
+              <div className="w-px h-6 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] mx-1" />
               <input
                 type="number"
                 min="0"
-                className="invisible-num-input free-counter-input"
+                className="w-11 bg-transparent border-0 text-white text-[18px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                 value={diesel ?? ""}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -96,9 +96,9 @@ export function GiantExcavatorCalculator() {
                   }
                 }}
               />
-              <div className="free-separator" />
+              <div className="w-px h-6 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] mx-1" />
               <button
-                className="free-counter-btn"
+                className="bg-transparent border-0 text-[#757575] text-xl font-light cursor-pointer flex items-center justify-center w-8 h-8 transition-all duration-200 select-none hover:text-[#cc422c] hover:scale-[1.15] active:scale-[0.95]"
                 onClick={() => setDiesel((c) => (c ?? 0) + 1)}
               >
                 +
@@ -109,36 +109,40 @@ export function GiantExcavatorCalculator() {
 
         <div className="metal-rule w-full my-10" />
 
-        <div className="output-card">
+        <div className="w-full max-w-[600px]">
           {safeDiesel > 0 ? (
             <div>
-              <div className="excavator-time-display mb-5 justify-center">
-                <span className="excavator-time-label">
+              <div className="flex items-baseline gap-3 pb-4 border-b border-white/5 mb-5 justify-center">
+                <span className="font-ui text-[13px] font-bold text-[#757575] uppercase tracking-widest">
                   Total Extraction Time
                 </span>
-                <span className="excavator-time-value">{timeString}</span>
+                <span className="font-display text-[32px] font-semibold text-rust leading-none [text-shadow:0_0_16px_var(--rust-glow)]">{timeString}</span>
               </div>
 
-              <div className="excavator-list">
+              <div className="flex flex-col gap-3">
                 {RATES.map((item, index) => {
                   const total = safeDiesel * item.yieldPerBarrel;
 
                   return (
                     <div
                       key={item.id}
-                      className="excavator-row animate-yield"
+                      className="group/exc flex items-center justify-between px-4 py-3 bg-white/1.5 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:translate-x-1 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-transparent before:transition-[background] before:duration-300 hover:before:bg-rust hover:before:shadow-[0_0_8px_var(--rust)] animate-[slideUpFade_0.4s_cubic-bezier(0.2,0.8,0.2,1)_backwards]"
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
-                      <div className="excavator-left">
-                        <Img src={item.img} alt={item.name} />
-                        <span className="excavator-name">{item.name}</span>
+                      <div className="flex items-center gap-4">
+                        <Img
+                          src={item.img}
+                          alt={item.name}
+                          className="w-9 h-9 object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover/exc:scale-[1.15] group-hover/exc:rotate-[5deg]"
+                        />
+                        <span className="font-ui text-[15px] font-bold text-[#d0d0d0] tracking-[0.02em]">{item.name}</span>
                       </div>
 
-                      <div className="excavator-right">
-                        <span className="excavator-total">
+                      <div className="flex flex-col items-end">
+                        <span className="font-display text-2xl font-semibold text-white leading-none">
                           {total.toLocaleString()}
                         </span>
-                        <span className="excavator-rate">
+                        <span className="font-ui text-[11px] text-[#666] font-semibold mt-1 tracking-wider">
                           {item.yieldPerBarrel.toLocaleString()} / barrel
                         </span>
                       </div>
@@ -148,12 +152,8 @@ export function GiantExcavatorCalculator() {
               </div>
             </div>
           ) : (
-            <div className="empty-state min-h-[200px]">
-              <span
-                className="icon text-[32px] mb-2 opacity-50"
-              >
-                ◈
-              </span>
+            <div className="h-full flex items-center justify-center flex-col gap-2.5 font-display text-base font-normal tracking-[0.15em] text-text-muted uppercase text-center leading-[1.9] min-h-[200px]">
+              <span className="text-rust text-[32px] leading-none mb-2 opacity-50">◈</span>
               <div className="text-[#888] leading-[1.6] text-center">
                 Enter the amount of Diesel Fuel
                 <br />

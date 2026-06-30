@@ -68,7 +68,7 @@ export function SalvagingCalculator() {
       variant="recycling"
     >
 
-      <div className="calc-panel-full custom-scrollbar fade-in-container px-6 pb-6 pt-4">
+      <div className="fade-in-container flex flex-col gap-4 w-full h-full overflow-y-auto px-6 pb-6 pt-4">
         {/* Minimalist Target Selection (Raid Style) */}
         <div className="flex justify-center mt-4">
           <div className="filter-row w-full max-w-4xl border-b border-white/[0.05] pb-6 mb-2">

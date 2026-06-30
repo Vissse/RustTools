@@ -29,7 +29,7 @@ export function FarmingGuide() {
       </div>
 
       {/* Hero Section */}
-      <header className="guide-hero animate-fade-in-up">
+      <header className="pb-4 mb-8 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-[linear-gradient(to_right,rgba(255,255,255,0.2),transparent)] animate-fade-in-up">
         <div className="relative z-10">
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-text-bright leading-none font-display uppercase">
             The Ultimate <span className="text-rust">Rust Farming</span> Guide
@@ -41,7 +41,7 @@ export function FarmingGuide() {
       </header>
 
       {/* Introduction */}
-      <Reveal className="guide-intro">
+      <Reveal className="mb-8">
         <p className="text-text leading-loose text-xl font-light max-w-4xl">
           In this guide, you will learn how to build a fully functional and
           highly efficient farm in Rust. You will discover everything from
@@ -51,12 +51,12 @@ export function FarmingGuide() {
       </Reveal>
 
       {/* Requirements Box */}
-      <Reveal className="guide-reqs-box">
+      <Reveal className="mt-0 mb-8 relative pt-2">
         {/* Oranžová čára do ztracena */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-rust to-transparent" />
 
-        <h2 className="guide-reqs-title">Requirements</h2>
-        <div className="guide-reqs-list">
+        <h2 className="text-3xl font-bold text-text-bright uppercase font-display mb-8 tracking-wide">Requirements</h2>
+        <div className="flex flex-col gap-4">
           <ReqCard title="Seeds" desc="Hemp, Corn, Pumpkins, or Berries." />
           <ReqCard title="Planters" desc="Wood and Tarps for Large Planters." />
           <ReqCard
@@ -71,10 +71,10 @@ export function FarmingGuide() {
       {/* Steps (Timeline Layout) */}
       <div className="section-gap">
         <Reveal>
-          <h2 className="guide-steps-title">Step-by-Step Process</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-24 text-text-bright tracking-tight font-display uppercase border-b border-border pb-8">Step-by-Step Process</h2>
         </Reveal>
 
-        <div className="guide-steps-list">
+        <div className="flex flex-col gap-32 md:gap-48">
           {/* STEP 1 */}
           <Step number={1} title="Choosing and Placing Planters">
             <p className="text-text leading-loose text-lg font-light mb-8 max-w-3xl">
@@ -320,7 +320,7 @@ export function FarmingGuide() {
               Once you breed the perfect plant, you can clone it endlessly.
             </p>
 
-            <div className="bg-bg border border-border p-8 max-w-max guide-center-block text-center mb-10">
+            <div className="bg-bg border border-border p-8 max-w-max mx-auto text-center mb-10">
               <div className="text-text-dim uppercase text-xs tracking-widest mb-6 font-bold">
                 Perfect Clone Example (3G 3Y)
               </div>
@@ -378,12 +378,12 @@ export function FarmingGuide() {
       </div>
 
       {/* Pro-Tips (Social Proof / Warning Layout) */}
-      <div className="guide-tips-section">
-        <Reveal className="guide-tips-header">
-          <h2 className="guide-tips-title">Pro-Tips & Common Mistakes</h2>
+      <div className="border-t border-border pt-32">
+        <Reveal className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-text-bright tracking-tight font-display uppercase mb-4">Pro-Tips & Common Mistakes</h2>
         </Reveal>
 
-        <div className="guide-tips-grid">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <Tip title="Losing Your Perfect Clones" type="info">
             Never store all of your perfect genetic clones in one chest. Always
             make backups and hide a couple of clones in a hidden loot stash.
@@ -402,17 +402,17 @@ export function FarmingGuide() {
       </div>
 
       {/* Pre-footer CTA */}
-      <Reveal className="guide-footer-section">
+      <Reveal className="mt-40 pt-24 pb-12 relative flex flex-col items-center">
         {/* Fading horizontal separator */}
-        <div className="guide-footer-separator" />
+        <div className="absolute top-0 left-0 w-full h-px bg-[linear-gradient(to_right,transparent,var(--rust),transparent)] opacity-70" />
 
-        <h2 className="guide-footer-title">What's Next?</h2>
-        <p className="guide-footer-text">
+        <h2 className="text-4xl font-bold mb-8 text-text-bright tracking-tight font-display uppercase text-center">What's Next?</h2>
+        <p className="text-center text-text-dim mb-12 max-w-2xl leading-loose text-lg font-light">
           Ready to put your new farming knowledge to the test? Use our
           specialized calculators to determine exactly what genetics you need to
           crossbreed.
         </p>
-        <div className="guide-footer-buttons">
+        <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
           <Link
             href="/genetics"
             className="px-8 py-4 bg-rust-dim border border-rust text-text-bright font-display uppercase tracking-[0.1em] text-2xl hover:bg-rust transition-all active:scale-95 flex items-center gap-3"
