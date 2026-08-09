@@ -1,14 +1,20 @@
 import type { Metadata } from 'next'
 import { GuidesHub } from '@/components/guides/GuidesHub'
-import { seoMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/JsonLd'
+import { breadcrumbJsonLd, seoMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = seoMetadata({
-  title: 'Rust Guides & Tutorials',
+  title: 'Rust Guides — Tips, Tricks & Tutorials',
   description:
-    'In-depth tutorials and advanced strategies to help you dominate your wipe in Rust. From basic survival to complex electrical systems.',
+    'Rust tips and tricks for every stage of the wipe: farming and genetics, base building, monument puzzles and console binds.',
   path: '/guides',
 })
 
 export default function Page() {
-  return <GuidesHub />
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Guides', path: '/guides' }])} />
+      <GuidesHub />
+    </>
+  )
 }

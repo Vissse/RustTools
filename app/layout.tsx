@@ -5,7 +5,12 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { CookieBanner } from '@/components/CookieBanner'
 import { AnalyticsProvider } from '@/components/AnalyticsProvider'
-import { SITE_URL, seoMetadata, siteJsonLd } from '@/lib/seo'
+import {
+  SITE_URL,
+  seoMetadata,
+  siteJsonLd,
+  organizationJsonLd,
+} from '@/lib/seo'
 
 // Site-wide head defaults. Per-route `metadata` exports (title, description,
 // canonical) are merged on top of these by Next.
@@ -51,9 +56,15 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* Site-wide structured data. The WebSite node references the
+            Organization by @id, so both must be present for the graph to
+            resolve. Per-page nodes (breadcrumb, calculator, FAQ) are emitted by
+            the pages themselves. */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationJsonLd(), siteJsonLd()]),
+          }}
         />
       </head>
       <body>

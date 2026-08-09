@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { GeneticsCalculator } from '@/components/GeneticsCalculator'
 import { seoMetadata } from '@/lib/seo'
+import { CalcSeo } from '@/components/CalcSeo'
+import { GENETICS_SEO } from '@/lib/calculator-seo'
 
 export const metadata: Metadata = seoMetadata({
   title: 'Rust Genetics Calculator — Best Plant Gene Combinations',
@@ -10,5 +12,10 @@ export const metadata: Metadata = seoMetadata({
 })
 
 export default function Page() {
-  return <GeneticsCalculator />
+  return (
+    <>
+      <GeneticsCalculator />
+      <CalcSeo {...GENETICS_SEO} />
+    </>
+  )
 }

@@ -3,9 +3,11 @@ import { Home } from '@/components/Home'
 import { seoMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = seoMetadata({
-  title: 'RustTools — Master Your Wipe',
+  // Lead with what people search for, not the tagline. "RustTools — Master
+  // Your Wipe" only ever matched people who already knew the brand.
+  title: 'Rust Calculators & Guides — Raid, Recycling, Upkeep | RustTools',
   description:
-    'Precise calculators and in-depth strategy guides giving you the ultimate advantage. Survive longer, raid smarter.',
+    'Free Rust calculators for raid cost, recycler yields, base upkeep, smelting, decay and more, plus in-depth guides. No account needed.',
   path: '/',
 })
 

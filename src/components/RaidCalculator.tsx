@@ -403,7 +403,9 @@ export function RaidCalculator() {
                     {group.label.toUpperCase()}
                   </div>
                   {group.tools.map((tool) => (
-                    <div className="flex items-center gap-3 px-1 py-[7px] border-b border-white/3 transition-[background] duration-200 hover:bg-white/2" key={tool.name}>
+                    // Walls list the same tool twice (hard vs soft side), so the
+                    // name alone is not a unique key.
+                    <div className="flex items-center gap-3 px-1 py-[7px] border-b border-white/3 transition-[background] duration-200 hover:bg-white/2" key={`${tool.name}|${tool.side}`}>
                       <span className="flex-1 min-w-0 text-[#a5b4c0] text-xs font-semibold tracking-[0.02em]">{tool.name}</span>
                       <span className="shrink-0 text-[#757575] text-[11px] font-semibold tabular-nums whitespace-nowrap">{tool.time}</span>
                       <span className="shrink-0 text-[#cc422c] text-[15px] font-extrabold tabular-nums min-w-12 text-right">
