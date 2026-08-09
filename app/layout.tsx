@@ -3,6 +3,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import '@/styles/global.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { CookieBanner } from '@/components/CookieBanner'
 import { AnalyticsProvider } from '@/components/AnalyticsProvider'
 import { SITE_URL, seoMetadata, siteJsonLd } from '@/lib/seo'
 
@@ -66,6 +67,7 @@ export default function RootLayout({
           <Navbar />
           <NuqsAdapter>{children}</NuqsAdapter>
           <Footer />
+          <CookieBanner />
         </div>
       </body>
     </html>
