@@ -48,8 +48,7 @@ export function calculateOptimalTC(
   };
 }
 
-/** Human-readable "D days H hours M minutes S seconds" for a fractional day count. */
-export function formatTime(daysFloat: number): string {
+export function parseTime(daysFloat: number) {
   let totalSeconds = Math.floor(daysFloat * 24 * 60 * 60);
   const days = Math.floor(totalSeconds / (24 * 3600));
   totalSeconds %= 24 * 3600;
@@ -57,7 +56,7 @@ export function formatTime(daysFloat: number): string {
   totalSeconds %= 3600;
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  return `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+  return { days, hours, minutes, seconds };
 }
 
 /** Split a resource amount into whole stacks of its max size. */

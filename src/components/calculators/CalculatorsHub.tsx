@@ -1,6 +1,15 @@
 import Link from 'next/link'
 
-const CALCULATORS = [
+type Calculator = {
+  id: string
+  title: string
+  description: string
+  path: string
+  status: string
+  image?: string
+}
+
+const CALCULATORS: Calculator[] = [
   {
     id: 'raid',
     title: 'Raid Calculator',
@@ -8,6 +17,7 @@ const CALCULATORS = [
       'Calculate exactly how much sulfur and explosives you need to raid a base.',
     path: '/raid',
     status: 'published',
+    image: '/images/placeholder_raid.png',
   },
   {
     id: 'recycling',
@@ -16,6 +26,7 @@ const CALCULATORS = [
       'Find out how much scrap and resources you will get from recycling items.',
     path: '/recycling',
     status: 'published',
+    image: '/images/placeholder_recyclator.png',
   },
   {
     id: 'furnace',
@@ -24,6 +35,7 @@ const CALCULATORS = [
       'Calculate wood and time required to smelt ores in different furnaces.',
     path: '/furnace',
     status: 'published',
+    image: '/images/placeholder_furnace.png',
   },
   {
     id: 'genetics',
@@ -39,6 +51,7 @@ const CALCULATORS = [
     description: 'Calculate base upkeep and how long your resources will last.',
     path: '/cupboard',
     status: 'published',
+    image: '/images/placeholder_cupboard.png',
   },
   {
     id: 'giant-excavator',
@@ -46,6 +59,7 @@ const CALCULATORS = [
     description: 'Plan your diesel usage and calculate exact resource yields.',
     path: '/giant-excavator',
     status: 'published',
+    image: '/images/placeholder_giant.png',
   },
   {
     id: 'decay',
@@ -115,7 +129,7 @@ export function CalculatorsHub() {
   )
 }
 
-function CalcCard({ calc }: { calc: (typeof CALCULATORS)[0] }) {
+function CalcCard({ calc }: { calc: Calculator }) {
   const isPublished = calc.status === 'published'
 
   const content = (
@@ -128,10 +142,17 @@ function CalcCard({ calc }: { calc: (typeof CALCULATORS)[0] }) {
     >
       {/* Obrazek (Floating Image Box Placeholder) */}
       <div className="w-full aspect-[16/9] bg-bg relative overflow-hidden">
-        {/* Zde uzivatel vlozi img, napr: <img src="/images/calc-raid.jpg" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /> */}
-        <div className="absolute inset-0 flex items-center justify-center text-text-dim/20 font-display uppercase tracking-widest text-xl transition-transform duration-500 group-hover:scale-105">
-          IMAGE PLACEHOLDER
-        </div>
+        {calc.image ? (
+          <img
+            src={calc.image}
+            alt={calc.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-text-dim/20 font-display uppercase tracking-widest text-xl transition-transform duration-500 group-hover:scale-105">
+            IMAGE PLACEHOLDER
+          </div>
+        )}
       </div>
 
       {/* Content */}

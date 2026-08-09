@@ -1020,12 +1020,12 @@ export function ShopCalculator() {
         <div className="flex justify-center items-center gap-6 px-5 pt-6 pb-3 max-[640px]:flex-wrap max-[640px]:gap-x-6 max-[640px]:gap-y-3 max-[640px]:px-3 max-[640px]:pt-4 max-[640px]:pb-3">
           <div className="flex flex-col items-center min-w-[150px] max-[640px]:min-w-[120px]">
             <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">Your Scrap</span>
-            <div className="flex items-center gap-2.5">
-              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
+            <div className="flex items-center justify-center gap-1.5 h-[36px]">
+              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 md:w-6 md:h-6 shrink-0 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
               <input
                 type="number"
                 min="0"
-                className="bg-transparent border-0 text-text-bright text-xl w-20 text-center outline-none transition-all duration-200 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-text [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 hover:text-rust hover:scale-105 focus:text-rust focus:scale-105 placeholder:text-text-bright placeholder:opacity-100 focus:placeholder:text-transparent"
+                className="bg-transparent border-0 font-display text-[24px] md:text-[28px] leading-none text-text-bright w-[50px] text-center outline-none transition-all duration-200 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-text [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 hover:text-rust hover:scale-105 focus:text-rust focus:scale-105 placeholder:text-text-bright placeholder:opacity-100 focus:placeholder:text-transparent"
                 placeholder="0"
                 value={scrapInventory === 0 ? "" : scrapInventory}
                 onChange={(e) => {
@@ -1045,17 +1045,17 @@ export function ShopCalculator() {
 
           <div className="flex flex-col items-center min-w-[150px] max-[640px]:min-w-[120px]">
             <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">Cart Change</span>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center justify-center gap-1.5 h-[36px]">
               {totals.totalCost === 0 && totals.totalGained === 0 && (
-                <span className="text-xl font-semibold text-text-dim [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">
+                <span className="font-display text-[24px] md:text-[28px] leading-none text-text-dim [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none">
                   0
                 </span>
               )}
               {totals.totalCost > 0 && (
-                <span className="text-xl font-semibold text-rust [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">-{totals.totalCost}</span>
+                <span className="font-display text-[24px] md:text-[28px] leading-none text-rust [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none">-{totals.totalCost}</span>
               )}
               {totals.totalGained > 0 && (
-                <span className="text-xl font-semibold text-metal [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg">+{totals.totalGained}</span>
+                <span className="font-display text-[24px] md:text-[28px] leading-none text-metal [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none">+{totals.totalGained}</span>
               )}
             </div>
           </div>
@@ -1066,9 +1066,9 @@ export function ShopCalculator() {
             <span className="font-ui text-[11px] text-text-dim uppercase font-extrabold tracking-[0.15em] mb-1.5 cursor-default select-none">
               {totals.finalBalance >= 0 ? "Remaining" : "Missing"}
             </span>
-            <div className="flex items-center gap-2.5">
-              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
-              <span className={`text-xl font-semibold [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none max-[640px]:text-lg ${totals.finalBalance < 0 ? "text-rust" : "text-text-bright"}`}>
+            <div className="flex items-center justify-center gap-1.5 h-[36px]">
+              <Img src="/images/recycle/scrap.webp" alt="Scrap" className="w-5 h-5 md:w-6 md:h-6 shrink-0 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] select-none" />
+              <span className={`font-display text-[24px] md:text-[28px] leading-none [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] cursor-default select-none ${totals.finalBalance < 0 ? "text-rust" : "text-text-bright"}`}>
                 {Math.abs(totals.finalBalance)}
               </span>
             </div>
@@ -1114,7 +1114,7 @@ export function ShopCalculator() {
         </div>
 
         {/* ITEMS GRID & FOOTER CONTAINER */}
-        <div className="flex-1 overflow-y-auto p-5 flex flex-col items-center">
+        <div className="flex-1 overflow-y-auto p-3 md:p-4 flex flex-col items-center">
           {/* ITEMS GRID */}
           <div className="flex flex-wrap justify-center gap-3 w-full max-w-[1320px] content-start">
             {activeCategory.items.map((item, index) => {
@@ -1209,13 +1209,13 @@ export function ShopCalculator() {
           </div>
 
           {/* Fading separator */}
-          <div className="h-px w-1/2 mt-10 mb-3 mx-auto opacity-50 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)]" />
+          <div className="h-px w-1/2 mt-6 mb-3 mx-auto opacity-50 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)]" />
 
           {/* SHOP FOOTER */}
-          <div className="w-full max-w-[1200px] mt-2.5 flex flex-col items-center gap-3">
-            <div className="w-full max-w-[450px] h-[180px] bg-black/20 border border-dashed border-white/10 rounded-lg flex items-center justify-center text-text-dim font-ui text-[11px] tracking-widest uppercase transition-[border-color] duration-300 hover:border-white/30">Map Location Placeholder</div>
+          <div className="w-full max-w-[1200px] mt-2 flex flex-col items-center gap-2">
+            <div className="w-full max-w-[450px] h-[120px] bg-black/20 border border-dashed border-white/10 rounded-lg flex items-center justify-center text-text-dim font-ui text-[11px] tracking-widest uppercase transition-[border-color] duration-300 hover:border-white/30">Map Location Placeholder</div>
 
-            <div className="text-center text-[11px] text-text-muted font-ui uppercase tracking-wider opacity-80 mb-2">
+            <div className="text-center text-[10px] text-text-muted font-ui uppercase tracking-wider opacity-60 mb-2">
               Rates fluctuate between 50% off and 100% markup based on demand.
             </div>
           </div>

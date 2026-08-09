@@ -28,6 +28,16 @@ const FOOTER_CATEGORIES = [
       { to: "/shops", label: "Shops" },
     ],
   },
+  {
+    title: "Community & Legal",
+    links: [
+      { to: "#", label: "Discord (Soon)" },
+      { to: "/contact", label: "Contact Us" },
+      { to: "/changelog", label: "Changelog" },
+      { to: "/privacy", label: "Privacy Policy" },
+      { to: "/support", label: "Support Us" },
+    ],
+  },
 ] as const;
 
 /** Site-wide footer: brand on the left, page links filling out to the right. */

@@ -25,24 +25,18 @@ export function RandomDropList({ randomTotals }: RandomDropListProps) {
               <span className="font-ui text-sm font-bold text-[#d0d0d0] min-w-0">{rt.name}</span>
             </div>
 
-            <div className="flex items-center gap-4 font-ui shrink-0 @max-[500px]/rcy-panel:justify-start">
-              <div className="flex items-baseline gap-1.5 min-w-[45px] justify-end">
-                <span className="text-[10px] text-[#666] uppercase tracking-wider font-semibold">Min</span>
-                <span className="text-[15px] font-bold text-[#e0e0e0]">{rt.min}</span>
-              </div>
-
-              <div className="w-px h-3 bg-white/10" />
-
-              <div className="flex items-baseline gap-1.5 min-w-[45px] justify-end">
-                <span className="text-[10px] text-[#666] uppercase tracking-wider font-semibold">Avg</span>
-                <span className="text-[15px] font-bold text-white">~{Math.round(rt.avg * 10) / 10}</span>
-              </div>
-
-              <div className="w-px h-3 bg-white/10" />
-
-              <div className="flex items-baseline gap-1.5 min-w-[45px] justify-end">
-                <span className="text-[10px] text-[#666] uppercase tracking-wider font-semibold">Max</span>
-                <span className="text-[15px] font-bold text-[#e0e0e0]">{rt.max}</span>
+            <div className="flex items-center gap-4 font-ui shrink-0">
+              <div className="text-right">
+                <div className="flex items-center justify-end gap-1.5">
+                  <span className="text-[15px] font-bold text-white">~{Math.round(rt.avg * 10) / 10}</span>
+                  <span className="text-[10px] text-rust uppercase tracking-wider font-bold">Avg</span>
+                </div>
+                <div className="text-[10px] text-text-dim mt-0.5 tracking-wide flex items-center justify-end gap-1">
+                  <span>Range:</span>
+                  <span className="text-white/60 font-semibold">{rt.min}</span>
+                  <span>-</span>
+                  <span className="text-white/60 font-semibold">{rt.max}</span>
+                </div>
               </div>
             </div>
           </div>

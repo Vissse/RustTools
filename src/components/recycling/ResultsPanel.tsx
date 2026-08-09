@@ -26,13 +26,13 @@ export function ResultsPanel({
 }: ResultsPanelProps) {
   return (
     <div
-      className="fade-in-container basis-[45%] grow-0 shrink-0 p-[22px] overflow-y-auto flex flex-col gap-6 @container/rcy-panel max-md:basis-auto max-md:grow max-md:overflow-y-visible max-md:border-r-0 max-md:p-1.5"
+      className="fade-in-container basis-[45%] grow-0 shrink-0 p-[22px] overflow-hidden flex flex-col gap-6 @container/rcy-panel max-md:basis-auto max-md:grow max-md:overflow-y-visible max-md:border-r-0 max-md:p-1.5"
       {...tipProps}
     >
       <RecyclerToggle recycler={recycler} onChange={onRecyclerChange} />
 
       {results ? (
-        <div className="fade-in-container mt-0">
+        <div className="fade-in-container mt-0 overflow-y-auto flex-1 min-h-0 pr-2 -mr-2 pb-6">
           <div className="sec-label">TOTAL OUTPUT & TIME</div>
 
           <div className="bg-white/3 border border-white/5 rounded-lg px-5 py-4 mb-6">
