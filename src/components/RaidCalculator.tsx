@@ -10,7 +10,6 @@ import {
   parseAsStringLiteral,
   parseAsArrayOf,
 } from 'nuqs'
-import { CalcShell } from './CalcShell'
 import { Img } from './Img'
 import {
   EXPLOSIVES,
@@ -257,16 +256,7 @@ export function RaidCalculator() {
   }
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> RAID CALCULATOR
-        </>
-      }
-      headerAccent="RAID"
-      headerRest="CALCULATOR"
-      variant="raid"
-    >
+    <>
       {/* Column 1: Target Structure picker + preview + counter */}
       <div className="fade-in-container p-[22px] flex flex-col gap-6 overflow-y-auto max-md:p-1.5 max-[1024px]:border-r-0 max-[1024px]:border-b max-[1024px]:border-border-2 max-[1024px]:overflow-y-visible min-[1025px]:max-[1280px]:border-b min-[1025px]:max-[1280px]:overflow-y-visible border-r border-border-2 max-[1024px]:order-1 min-[1025px]:max-[1280px]:order-1 min-[1025px]:max-[1280px]:border-r">
         {/* Section 1: Target Structure */}
@@ -611,6 +601,6 @@ export function RaidCalculator() {
           </div>
         )}
       </div>
-    </CalcShell>
+    </>
   )
 }

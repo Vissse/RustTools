@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { useQueryState, parseAsInteger } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
@@ -54,16 +53,7 @@ export function GiantExcavatorCalculator() {
   }, [safeDiesel]);
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> GIANT EXCAVATOR
-        </>
-      }
-      headerAccent="GIANT"
-      headerRest="EXCAVATOR"
-      variant="cupboard"
-    >
+    <>
 
       <div className="fade-in-container flex flex-col items-center px-5 py-10 h-full overflow-y-auto w-full">
         <div className="flex flex-col items-center gap-4 w-full">
@@ -163,6 +153,6 @@ export function GiantExcavatorCalculator() {
           )}
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

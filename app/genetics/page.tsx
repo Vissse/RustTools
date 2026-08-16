@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { GeneticsCalculator } from '@/components/GeneticsCalculator'
-import { seoMetadata } from '@/lib/seo'
-import { CalcSeo } from '@/components/CalcSeo'
+import { seoMetadata, calculatorPageJsonLd } from '@/lib/seo'
+import { CalcShell } from '@/components/CalcShell'
+import { JsonLd } from '@/components/JsonLd'
 import { GENETICS_SEO } from '@/lib/calculator-seo'
 
 export const metadata: Metadata = seoMetadata({
@@ -14,8 +15,10 @@ export const metadata: Metadata = seoMetadata({
 export default function Page() {
   return (
     <>
-      <GeneticsCalculator />
-      <CalcSeo {...GENETICS_SEO} />
+      <JsonLd data={calculatorPageJsonLd(GENETICS_SEO)} />
+      <CalcShell headerAccent="GENETICS" headerRest="CALCULATOR" variant="cupboard">
+        <GeneticsCalculator />
+      </CalcShell>
     </>
   )
 }

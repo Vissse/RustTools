@@ -2,7 +2,6 @@
 
 import { useMemo, useEffect, useRef } from "react";
 import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
@@ -107,16 +106,7 @@ export function DecayCalculator() {
   useFeatureUsed(Feature.decay, `${selectedMaterial}|${currentHp}`);
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> DECAY CALCULATOR
-        </>
-      }
-      headerAccent="DECAY"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <div className="fade-in-container flex-1 w-full h-full flex flex-col items-center justify-center p-5">
         {/* 1. MATERIAL SELECTOR */}
@@ -264,6 +254,6 @@ export function DecayCalculator() {
           </div>
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

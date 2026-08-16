@@ -5,8 +5,6 @@ import { ShareButton } from './ShareButton'
 type Variant = 'raid' | 'recycling' | 'cupboard'
 
 interface CalcShellProps {
-  /** Legacy props kept for compatibility with parent components */
-  pageTitle?: ReactNode
   headerAccent: string
   headerRest: string
   variant: Variant
@@ -28,6 +26,13 @@ const titleCase = (s: string) =>
  * Shared calculator shell. Matches the Guides/Calculators hubs exactly: the
  * breadcrumb is the first thing on the page, with the page header stacked
  * directly beneath it (both left-aligned), followed by a separator.
+ *
+ * Server component, rendered from each route's page.tsx *around* the Suspense
+ * boundary that holds the calculator. That placement is the point: the
+ * calculators read search params, so they opt their route out of static
+ * rendering and the pre-rendered HTML is just the fallback. Keeping the
+ * breadcrumb and <h1> out here means the HTML a crawler receives still has the
+ * page's heading and its internal links. Do not move it inside the boundary.
  */
 export function CalcShell({
   headerAccent,

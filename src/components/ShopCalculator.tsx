@@ -2,7 +2,6 @@
 
 import { useMemo, Fragment } from "react";
 import { useQueryStates, parseAsString, parseAsInteger } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 import { parseAsEntries, setEntryQty } from "../lib/url-entries";
@@ -1004,16 +1003,7 @@ export function ShopCalculator() {
   useFeatureUsed(Feature.shops, `${scrapInventory}|${cartCount}`);
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> SHOP CALCULATOR
-        </>
-      }
-      headerAccent="SHOPS"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <div className="fade-in-container flex flex-col h-full w-full overflow-hidden relative">
         {/* TOP DASHBOARD */}
@@ -1221,6 +1211,6 @@ export function ShopCalculator() {
           </div>
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

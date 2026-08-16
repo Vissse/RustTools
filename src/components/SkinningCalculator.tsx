@@ -2,7 +2,6 @@
 
 import { useMemo, Fragment } from "react";
 import { useQueryState, parseAsStringLiteral } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { RecycleImg } from "./recycling/RecycleImg";
 import { SKINNING_DATA } from "../lib/data/skinning-data";
 import type { SkinningTarget } from "../lib/data/skinning-data";
@@ -117,16 +116,7 @@ export function SkinningCalculator() {
   }, [data]);
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> SKINNING CALCULATOR
-        </>
-      }
-      headerAccent="SKINNING"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <div className="flex flex-col h-full w-full fade-in-container">
         {/* Minimalist Target Selection (Fixed at top) */}
@@ -244,6 +234,6 @@ export function SkinningCalculator() {
         </div>
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

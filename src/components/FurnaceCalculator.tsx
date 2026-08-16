@@ -2,7 +2,6 @@
 
 import { useMemo, useEffect, useRef } from "react";
 import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
@@ -190,16 +189,7 @@ export function FurnaceCalculator() {
   );
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> SMELTING CALCULATOR
-        </>
-      }
-      headerAccent="SMELTING"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <div className="fade-in-container flex-1 w-full flex flex-col items-center px-4 py-6 overflow-y-auto">
         {/* 1. SMELTER SELECTOR */}
@@ -346,6 +336,6 @@ export function FurnaceCalculator() {
           )}
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

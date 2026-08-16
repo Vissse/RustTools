@@ -2,7 +2,6 @@
 
 import { useMemo, useState, useEffect } from "react";
 import { useQueryStates, parseAsString } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { MAX_SLOTS } from "../lib/data/cupboard-data";
 import {
@@ -89,16 +88,7 @@ export function CupboardCalculator() {
   );
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> CUPBOARD CALCULATOR
-        </>
-      }
-      headerAccent="CUPBOARD"
-      headerRest="CALCULATOR"
-      variant="cupboard"
-    >
+    <>
 
       <div className="fade-in-container flex flex-col items-center p-2 md:p-3 h-full overflow-y-auto w-full">
         <div className="flex flex-col items-center gap-2 w-full max-w-[520px]">
@@ -203,6 +193,6 @@ export function CupboardCalculator() {
           </div>
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }

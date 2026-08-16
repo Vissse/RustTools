@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { useQueryStates, parseAsStringLiteral } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { useTooltip } from "./useTooltip";
 import { ITEMS } from "../lib/data/recycling-data";
 import type { RecyclerKind } from "../lib/types";
@@ -81,16 +80,7 @@ export function RecyclingCalculator() {
   }, [setQuery]);
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> RECYCLING CALCULATOR
-        </>
-      }
-      headerAccent="RECYCLING"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <ItemPicker
         search={search}
@@ -109,6 +99,6 @@ export function RecyclingCalculator() {
         onSet={setCount}
         tipProps={tip}
       />
-    </CalcShell>
+    </>
   );
 }

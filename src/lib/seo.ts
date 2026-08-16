@@ -191,16 +191,29 @@ export function calculatorJsonLd({
   };
 }
 
-/** FAQ block. Must correspond 1:1 with FAQs visible on the page — Google
- *  penalizes schema describing content a user can't see. */
-export function faqJsonLd(faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map(({ q, a }) => ({
-      "@type": "Question",
-      name: q,
-      acceptedAnswer: { "@type": "Answer", text: a },
-    })),
-  };
+/**
+ * The full structured-data set for a calculator route: the breadcrumb trail
+ * that matches the visible one in CalcShell, plus the WebApplication node.
+ *
+ * Deliberately no FAQPage — schema is only emitted for content a visitor can
+ * actually see on the page, and the calculators carry no FAQ copy.
+ */
+export function calculatorPageJsonLd({
+  name,
+  path,
+  crumb,
+  description,
+}: {
+  name: string;
+  path: string;
+  crumb: string;
+  description: string;
+}) {
+  return [
+    breadcrumbJsonLd([
+      { name: "Calculators", path: "/calculators" },
+      { name: crumb, path },
+    ]),
+    calculatorJsonLd({ name, description, path }),
+  ];
 }

@@ -2,7 +2,6 @@
 
 import { useMemo, Fragment } from "react";
 import { useQueryState, parseAsStringLiteral } from "nuqs";
-import { CalcShell } from "./CalcShell";
 import { Img } from "./Img";
 import { RecycleImg } from "./recycling/RecycleImg";
 import { SALVAGING_DATA } from "../lib/data/salvaging-data";
@@ -57,16 +56,7 @@ export function SalvagingCalculator() {
   );
 
   return (
-    <CalcShell
-      pageTitle={
-        <>
-          RUST <span>//</span> SALVAGING CALCULATOR
-        </>
-      }
-      headerAccent="SALVAGING"
-      headerRest="CALCULATOR"
-      variant="recycling"
-    >
+    <>
 
       <div className="fade-in-container flex flex-col gap-4 w-full h-full overflow-y-auto px-6 pb-6 pt-4">
         {/* Minimalist Target Selection (Raid Style) */}
@@ -181,6 +171,6 @@ export function SalvagingCalculator() {
           )}
         </div>
       </div>
-    </CalcShell>
+    </>
   );
 }
