@@ -108,10 +108,9 @@ export function MonumentsGuide() {
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [search, filter])
 
-  const getTierStyle = (tier: string) => {
-    // Solid background for maximum visibility over images
-    return 'bg-rust text-white border-rust shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-display'
-  }
+  // Solid background for maximum visibility over images
+  const tierStyle =
+    'bg-rust text-white border-rust shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-display'
 
   const renderItemIcon = (rawName: string, count: number = 1, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
     const name = rawName.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
@@ -230,7 +229,7 @@ export function MonumentsGuide() {
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-        {filteredMonuments.map((m, idx) => (
+        {filteredMonuments.map((m) => (
           <article 
             key={m.id} 
             className="group flex flex-col bg-surface border border-white/10 rounded-2xl overflow-hidden shadow-2xl hover:border-rust/40 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300"
@@ -265,7 +264,7 @@ export function MonumentsGuide() {
               )}
 
               <div className="relative z-10">
-                <span className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded border mb-3 ${getTierStyle(m.tier)}`}>
+                <span className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded border mb-3 ${tierStyle}`}>
                   {m.tier}
                 </span>
                 <h2 className="text-2xl font-bold text-text-bright font-display uppercase tracking-wide leading-tight group-hover:text-rust transition-colors relative z-10">
