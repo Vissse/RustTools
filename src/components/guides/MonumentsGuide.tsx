@@ -1,5 +1,6 @@
 "use client"
 
+import { CctvPopup } from './CctvPopup';
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useMemo } from 'react'
@@ -94,6 +95,7 @@ const GenericIcon = ({ type }: { type: 'utility' | 'vehicle' | 'bp' | 'computer'
 
 export function MonumentsGuide() {
   const [search, setSearch] = useState('')
+  const [selectedCctvMonument, setSelectedCctvMonument] = useState<string | null>(null)
   const [filter, setFilter] = useState('All')
 
   const tiers = ['All', 'T1', 'T2', 'T3', 'Safe Zone', 'Resources', 'Vendor', 'Deep Sea', 'Ocean']
@@ -247,7 +249,11 @@ export function MonumentsGuide() {
               <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
               
               {m.cctv && (
-                <Link href={m.cctv} title="CCTV Cameras" className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all text-white/80 shadow-lg">
+                <button 
+                  onClick={() => setSelectedCctvMonument(m.name)}
+                  title="CCTV Cameras" 
+                  className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all text-white/80 shadow-lg cursor-pointer"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97"></path>
                     <path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z"></path>
@@ -255,7 +261,7 @@ export function MonumentsGuide() {
                     <path d="M2 21v-4"></path>
                     <path d="M7 9h.01"></path>
                   </svg>
-                </Link>
+                </button>
               )}
 
               <div className="relative z-10">
@@ -295,7 +301,6 @@ export function MonumentsGuide() {
                 </div>
               </div>
 
-              {/* Infrastructure */}
               {/* Infrastructure */}
               <div className="pt-4 border-t border-white/5">
                 <h3 className="text-gray-400 text-xs font-display uppercase tracking-widest mb-3">Facilities & Transport</h3>
@@ -342,6 +347,13 @@ export function MonumentsGuide() {
           </div>
         )}
       </div>
+
+      {selectedCctvMonument && (
+        <CctvPopup 
+          monumentName={selectedCctvMonument} 
+          onClose={() => setSelectedCctvMonument(null)} 
+        />
+      )}
     </div>
   )
 }
