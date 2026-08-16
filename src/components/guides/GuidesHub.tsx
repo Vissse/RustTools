@@ -34,6 +34,30 @@ const GUIDES = [
     path: '/guides/monuments',
     status: 'published',
   },
+  {
+    id: 'skinning',
+    title: 'Skinning Guide',
+    description:
+      'Comprehensive yield rates for harvesting animals, scientists, and other entities with various tools.',
+    path: '/guides/skinning',
+    status: 'published',
+  },
+  {
+    id: 'salvaging',
+    title: 'Salvaging Guide',
+    description:
+      'Detailed yield rates for harvesting destroyed vehicles, loot drops, and other scrap metal entities.',
+    path: '/guides/salvaging',
+    status: 'published',
+  },
+  {
+    id: 'missions',
+    title: 'Missions Guide',
+    description:
+      'Find every listed Rust mission, where it starts, what it requires, and what you receive when the work is done.',
+    path: '/guides/missions',
+    status: 'published',
+  },
 ]
 
 export function GuidesHub() {

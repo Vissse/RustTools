@@ -38,10 +38,10 @@
    the bespoke CSS keeps using var(--rust) etc. so nothing had to be rewritten.
    ────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-bg: #0d0c0b;
-  --color-panel: #131210;
-  --color-panel-2: #1a1815;
-  --color-panel-3: #211f1b;
+  --color-bg: #151311;
+  --color-panel: #1a1815;
+  --color-panel-2: #211e1a;
+  --color-panel-3: #282520;
   --color-border: #2e2925;
   --color-border-2: #3d3830;
   --color-border-hi: #4a4238;
@@ -72,10 +72,10 @@
    Original design tokens (kept verbatim so the bespoke CSS below is unchanged)
    ────────────────────────────────────────────────────────────────────────── */
 :root {
-  --bg: #0d0c0b;
-  --panel: #131210;
-  --panel2: #1a1815;
-  --panel3: #211f1b;
+  --bg: #151311;
+  --panel: #1a1815;
+  --panel2: #211e1a;
+  --panel3: #282520;
   --border: #2e2925;
   --border2: #3d3830;
   --border-hi: #4a4238;

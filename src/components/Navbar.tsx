@@ -16,13 +16,14 @@ const CALC_ITEMS = [
   { href: "/furnace", label: "Furnace Calculator" },
   { href: "/decay", label: "Decay Calculator" },
   { href: "/shops", label: "Shop Calculator" },
-  { href: "/skinning", label: "Skinning Calculator" },
-  { href: "/salvaging", label: "Salvaging Calculator" },
 ];
 const GUIDE_ITEMS = [
   { href: "/guides/farming", label: "Farming" },
   { href: "/guides/base-building", label: "Base Building" },
   { href: "/guides/monuments", label: "Monument Puzzles" },
+  { href: "/guides/skinning", label: "Skinning Guide" },
+  { href: "/guides/salvaging", label: "Salvaging Guide" },
+  { href: "/guides/missions", label: "Missions Guide" },
   { href: "/guides/binds", label: "Console Binds" },
 ];
 

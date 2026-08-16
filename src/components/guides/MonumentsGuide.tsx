@@ -4,7 +4,8 @@ import { CctvPopup } from './CctvPopup';
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useMemo } from 'react'
-import { monumentsData, MonumentCard } from '@/lib/monumentsData'
+import { useTooltip } from '../useTooltip'
+import { monumentsData, type MonumentCard } from '@/lib/monumentsData'
 
 const getImagePath = (name: string): string | null => {
   const cleanName = name.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
@@ -43,6 +44,19 @@ const getImagePath = (name: string): string | null => {
     'Bradley APC': '/images/bradley.apc.png',
   }
   return map[cleanName] || null
+}
+
+const getDisplayName = (name: string): string => {
+  const cleanName = name.replace(/\s*x\d+$/, '')
+  const displayMap: Record<string, string> = {
+    'Bike': 'Motorbike',
+    'Ridable Horse': 'Horse',
+    'Patrol Boat': 'RHIB',
+    'green keycard': 'Green Keycard',
+    'blue keycard': 'Blue Keycard',
+    'red keycard': 'Red Keycard'
+  }
+  return displayMap[cleanName] || cleanName
 }
 
 // Fallback generic icons for items missing PNGs
@@ -97,6 +111,7 @@ export function MonumentsGuide() {
   const [search, setSearch] = useState('')
   const [selectedCctvMonument, setSelectedCctvMonument] = useState<string | null>(null)
   const [filter, setFilter] = useState('All')
+  const tooltip = useTooltip()
 
   const tiers = ['All', 'T1', 'T2', 'T3', 'Safe Zone', 'Resources', 'Vendor', 'Deep Sea', 'Ocean']
 
@@ -108,9 +123,8 @@ export function MonumentsGuide() {
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [search, filter])
 
-  const getTierStyle = (tier: string) => {
-    // Solid background for maximum visibility over images
-    return 'bg-rust text-white border-rust shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-display'
+  const getTierDot = (tier: string) => {
+    return 'bg-rust shadow-[0_0_8px_rgba(206,66,43,0.6)]'
   }
 
   const renderItemIcon = (rawName: string, count: number = 1, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
@@ -125,18 +139,18 @@ export function MonumentsGuide() {
     return (
       <div 
         key={name} 
-        title={name}
-        className="relative group flex items-center justify-center w-12 h-12 transition-all"
+        data-tip={getDisplayName(name)}
+        className="relative group flex items-center justify-center w-11 h-11 transition-all"
       >
         {imgPath ? (
-          <Image src={imgPath} alt={name} width={32} height={32} className="object-contain drop-shadow-md" />
+          <Image src={imgPath} alt={name} width={40} height={40} className="object-contain drop-shadow-md" />
         ) : (
           <div>
             <GenericIcon type={typeHint} />
           </div>
         )}
         {count > 1 && (
-          <span className="absolute -bottom-1 -right-1 text-rust text-[11px] font-bold font-display drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+          <span className="absolute -bottom-1 -right-1 bg-rust text-white text-[9px] font-bold font-mono px-1 rounded border border-black/50 shadow-md z-10">
             x{count}
           </span>
         )}
@@ -149,11 +163,11 @@ export function MonumentsGuide() {
     return (
       <div 
         key={idx} 
-        title={card.name + (card.logic ? ` (${card.logic})` : '')}
-        className="relative group flex items-center justify-center w-12 h-12 transition-all"
+        data-tip={getDisplayName(card.name) + (card.logic ? ` (${card.logic})` : '')}
+        className="relative group flex items-center justify-center w-14 h-14 transition-all"
       >
         {imgPath && (
-          <Image src={imgPath} alt={card.name} width={32} height={32} className="object-contain drop-shadow-md" />
+          <Image src={imgPath} alt={card.name} width={40} height={40} className="object-contain drop-shadow-md" />
         )}
         {card.logic && (
           <span className="absolute -top-2 -right-2 bg-surface text-text-bright text-[9px] font-mono px-1 rounded border border-white/20">
@@ -165,7 +179,7 @@ export function MonumentsGuide() {
   }
 
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans" {...tooltip}>
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link href="/" className="hover:text-text-bright transition-colors">
@@ -183,10 +197,10 @@ export function MonumentsGuide() {
       <header className="pb-4 mb-8 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-[linear-gradient(to_right,rgba(255,255,255,0.2),transparent)] animate-fade-in-up">
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-4 text-text-bright leading-none font-display uppercase">
-              Monuments <span className="text-rust">Database</span>
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-text-bright leading-none font-display uppercase">
+              The Ultimate <span className="text-rust">Monuments</span> Guide
             </h1>
-            <p className="text-xl text-rust font-light tracking-wide max-w-3xl leading-relaxed font-display uppercase">
+            <p className="text-2xl text-rust font-light tracking-wide max-w-3xl leading-relaxed font-display uppercase">
               Explore loot, access routes, and facilities
             </p>
           </div>
@@ -214,7 +228,7 @@ export function MonumentsGuide() {
           <button
             key={t}
             onClick={() => setFilter(t)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
               filter === t
                 ? 'bg-rust text-white shadow-[0_0_15px_rgba(207,87,31,0.4)] border border-rust'
                 : 'bg-surface text-text-dim hover:text-text-bright hover:bg-white/5 border border-white/5 shadow-sm'
@@ -229,32 +243,48 @@ export function MonumentsGuide() {
       </div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+      <div key={filter + search} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
         {filteredMonuments.map((m, idx) => (
           <article 
             key={m.id} 
-            className="group flex flex-col bg-surface border border-white/10 rounded-2xl overflow-hidden shadow-2xl hover:border-rust/40 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300"
+            className="group relative flex flex-col bg-surface border border-transparent rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.8)] hover:border-rust/40 hover:shadow-[0_12px_40px_rgba(207,87,31,0.25)] transition-all duration-500 animate-fade-in-up h-[480px]"
+            style={{ animationDelay: `${(idx % 15) * 50}ms`, animationFillMode: 'both' }}
           >
-            {/* Header */}
-            <div className="p-5 border-b border-white/5 bg-white/[0.02] relative overflow-hidden">
-              {/* Background Image pro Monument */}
-              <div 
-                className="absolute inset-0 opacity-50 group-hover:opacity-70 transition-all duration-500 group-hover:scale-105 transform origin-center"
-                style={{
-                  backgroundImage: `url(/images/monuments/${m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '.')}.webp)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
+            {/* Full Background Image */}
+            <div 
+              className="absolute inset-0 opacity-70 group-hover:opacity-40 transition-all duration-700 ease-out group-hover:scale-110 group-hover:blur-[6px] transform origin-center"
+              style={{
+                backgroundImage: `url(/images/monuments/${m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '.')}.webp)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            
+            {/* Absolute Action Buttons */}
+            <div className="absolute top-4 right-4 z-30 flex flex-col gap-2 transition-all duration-500 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
               
+              {/* Map Button */}
+              <button 
+                data-tip="Monument Map" 
+                className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 text-white/80 shadow-lg cursor-pointer group/map"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/map:scale-110 transition-transform duration-300">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                  <line x1="9" y1="3" x2="9" y2="18"></line>
+                  <line x1="15" y1="6" x2="15" y2="21"></line>
+                </svg>
+              </button>
+
+              {/* CCTV Button */}
               {m.cctv && (
                 <button 
                   onClick={() => setSelectedCctvMonument(m.name)}
-                  title="CCTV Cameras" 
-                  className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all text-white/80 shadow-lg cursor-pointer"
+                  data-tip="CCTV Cameras" 
+                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 text-white/80 shadow-lg cursor-pointer group/cctv"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/cctv:rotate-12 transition-transform duration-300">
                     <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97"></path>
                     <path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z"></path>
                     <path d="M2 19h3.76a2 2 0 0 0 1.8-1.1L9 15"></path>
@@ -263,91 +293,94 @@ export function MonumentsGuide() {
                   </svg>
                 </button>
               )}
+            </div>
 
-              <div className="relative z-10">
-                <span className={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded border mb-3 ${getTierStyle(m.tier)}`}>
-                  {m.tier}
-                </span>
-                <h2 className="text-2xl font-bold text-text-bright font-display uppercase tracking-wide leading-tight group-hover:text-rust transition-colors relative z-10">
+            {/* Content Container pushed to bottom */}
+            <div className="relative z-20 h-full flex flex-col justify-end p-6">
+              
+              {/* Permanent Header (Title) */}
+              <div className="shrink-0 mb-4 group-hover:translate-y-[-8px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
+                <div className="flex items-center gap-2 mb-2 drop-shadow-lg">
+                  <span className={`w-1.5 h-1.5 rounded-full ${getTierDot(m.tier)}`}></span>
+                  <span className="text-[10px] font-medium tracking-widest text-white/90 uppercase">{m.tier}</span>
+                </div>
+                <h2 className="text-3xl font-bold text-white font-display uppercase tracking-wide leading-tight drop-shadow-xl">
                   {m.name}
                 </h2>
               </div>
-            </div>
 
-            {/* Content Body */}
-            <div className="p-5 flex-1 flex flex-col space-y-6">
-              
-              {/* Access Row */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-gray-400 text-xs font-display uppercase tracking-widest mb-3">Access Required</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {m.cardsNeeded.length > 0 ? (
-                      m.cardsNeeded.map((c, i) => renderKeycard(c, i))
-                    ) : (
-                      <span className="text-text-dim/40 text-sm font-light italic">None</span>
-                    )}
+              {/* Expandable Drawer (Grid trick) */}
+              <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
+                <div className="overflow-hidden">
+                  
+                  {/* Drawer Content */}
+                  <div className="flex flex-col space-y-5 pt-4 border-t border-white/10">
+                    
+                    {/* Access Row & Blueprints */}
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Access Required</h3>
+                        <div className="flex flex-wrap gap-2 items-center">
+                          {m.cardsNeeded.length > 0 ? (
+                            m.cardsNeeded.map((c, i) => renderKeycard(c, i))
+                          ) : (
+                            <div className="flex items-center h-11" data-tip="Cardless">
+                              <span className="text-white/60 text-xs font-light italic">Cardless</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {(m.bpFrags.length > 0 || m.advBp.length > 0) && (
+                        <div className="text-right">
+                          <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Blueprints</h3>
+                          <div className="flex flex-wrap gap-2 justify-end items-center">
+                            {m.bpFrags.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
+                            {m.advBp.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Infrastructure */}
+                    <div className="pt-3 border-t border-white/5">
+                      <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Facilities & Transport</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {m.utilities.length === 0 && m.vehicles.length === 0 && (
+                          <span className="text-white/60 text-xs font-light italic">Barren</span>
+                        )}
+                        {m.utilities.map((u) => renderItemIcon(u.name, u.count, 'utility'))}
+                        {m.vehicles.map((v) => renderItemIcon(v.name, v.count, 'vehicle'))}
+                      </div>
+                    </div>
+
+                    {/* Footer / Actions */}
+                    <div className="pt-3">
+                      <button 
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 text-white/50 border border-white/10 hover:bg-rust/20 hover:text-rust hover:border-rust/50 cursor-pointer transition-all font-display tracking-wider uppercase text-xs backdrop-blur-sm"
+                        data-tip="Video guide coming soon"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
+                          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        <span>Video Guide <span className="opacity-70 ml-1 font-mono text-[9px]">(SOON)</span></span>
+                      </button>
+                    </div>
+
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-gray-400 text-xs font-display uppercase tracking-widest mb-3">Lootable Access</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {m.cardsFound.length > 0 ? (
-                      m.cardsFound.map((c, i) => renderKeycard(c, i))
-                    ) : (
-                      <span className="text-text-dim/40 text-sm font-light italic">None</span>
-                    )}
-                  </div>
-                </div>
               </div>
 
-              {/* Infrastructure */}
-              <div className="pt-4 border-t border-white/5">
-                <h3 className="text-gray-400 text-xs font-display uppercase tracking-widest mb-3">Facilities & Transport</h3>
-                <div className="flex flex-wrap gap-2">
-                  {m.utilities.length === 0 && m.vehicles.length === 0 && (
-                    <span className="text-text-dim/40 text-sm font-light italic">Barren</span>
-                  )}
-                  {m.utilities.map((u) => renderItemIcon(u.name, u.count, 'utility'))}
-                  {m.vehicles.map((v) => renderItemIcon(v.name, v.count, 'vehicle'))}
-                </div>
-              </div>
-
-              {/* Blueprint & Intel Footer */}
-              <div className="mt-auto pt-4 flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  {m.bpFrags.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
-                  {m.advBp.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
-                </div>
-                
-                <div className="flex space-x-2">
-                </div>
-              </div>
-            </div>
-
-            {/* Footer / Actions */}
-            <div className="p-5 border-t border-white/5 bg-black/20 mt-auto">
-              <button 
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rust/5 text-rust/50 border border-rust/10 cursor-not-allowed transition-all font-display tracking-wider uppercase text-sm"
-                title="Video guide coming soon"
-                disabled
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0 opacity-50">
-                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                </svg>
-                <span>Video Guide <span className="text-[10px] tracking-widest opacity-70 ml-1">(SOON)</span></span>
-              </button>
             </div>
           </article>
         ))}
+      </div>
 
-        {filteredMonuments.length === 0 && (
+      {filteredMonuments.length === 0 && (
           <div className="col-span-full py-20 text-center border border-white/5 rounded-2xl bg-white/[0.02]">
             <p className="text-text-dim text-lg">No monuments found matching your search.</p>
           </div>
         )}
-      </div>
-
       {selectedCctvMonument && (
         <CctvPopup 
           monumentName={selectedCctvMonument} 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const CAMERA_CODES: Record<string, string[]> = {
   "Large Oil Rig": ["OILRIG2HELI", "OILRIG2DOCK", "OILRIG2EXHAUST", "OILRIG2L1", "OILRIG2L2", "OILRIG2L3A", "OILRIG2L3B", "OILRIG2L4", "OILRIG2L5", "OILRIG2L6A", "OILRIG2L6B", "OILRIG2L6C", "OILRIG2L6D"],
@@ -72,7 +72,7 @@ export function CctvPopup({ monumentName, onClose }: CctvPopupProps) {
                 <button
                   key={code}
                   onClick={() => handleCopy(code)}
-                  className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-rust/10 hover:border-rust/30 transition-all group text-left"
+                  className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-rust/10 hover:border-rust/30 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] group text-left"
                 >
                   <span className="font-mono text-lg font-bold text-text-bright tracking-wider group-hover:text-rust transition-colors">
                     {code}
