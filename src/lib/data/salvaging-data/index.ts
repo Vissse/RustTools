@@ -7,3 +7,9 @@ export const SALVAGING_DATA = {
 };
 
 export type SalvagingTarget = keyof typeof SALVAGING_DATA;
+
+/**
+ * Row types re-exported so consumers can pull the data and the shape of one of
+ * its entries from this one module; they're declared in src/lib/types.ts.
+ */
+export type { SalvagingData, SalvagingResource } from "../../types";

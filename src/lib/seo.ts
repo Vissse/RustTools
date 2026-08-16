@@ -161,6 +161,23 @@ export function breadcrumbJsonLd(trail: { name: string; path: string }[]) {
 }
 
 /**
+ * FAQ block for a page that renders a visible list of questions and answers.
+ * Only emit this when the same Q&A is actually on the page — Google treats
+ * schema that isn't visible to the user as a violation.
+ */
+export function faqJsonLd(entries: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: entries.map((e) => ({
+      "@type": "Question",
+      name: e.q,
+      acceptedAnswer: { "@type": "Answer", text: e.a },
+    })),
+  };
+}
+
+/**
  * A single calculator, described as a free web application. This is what makes
  * a tool eligible for the richer "free / web-based" treatment on queries like
  * "rust raid calculator" rather than being read as a generic article.

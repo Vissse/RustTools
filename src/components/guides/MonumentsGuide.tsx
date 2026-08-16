@@ -3,9 +3,15 @@
 import { CctvPopup } from './CctvPopup';
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Suspense } from 'react'
+import { useQueryStates, parseAsString, parseAsStringLiteral } from 'nuqs'
 import { useTooltip } from '../useTooltip'
-import { monumentsData, type MonumentCard } from '@/lib/monumentsData'
+import {
+  monumentsData,
+  TIER_FILTERS,
+  type MonumentCard,
+  type TierFilter,
+} from '@/lib/monumentsData'
 
 const getImagePath = (name: string): string | null => {
   const cleanName = name.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
@@ -107,13 +113,28 @@ const GenericIcon = ({ type }: { type: 'utility' | 'vehicle' | 'bp' | 'computer'
   }
 }
 
-export function MonumentsGuide() {
-  const [search, setSearch] = useState('')
+/**
+ * The guide body, driven entirely by props so it can render both inside the
+ * URL-state wrapper below and as that wrapper's Suspense fallback. The fallback
+ * pass is what puts the heading and the full monument list into the statically
+ * prerendered HTML — reading search params opts a subtree out of static
+ * rendering, so without it a crawler would receive an empty page.
+ *
+ * Omitting the setters (the fallback case) renders a read-only view.
+ */
+function MonumentsView({
+  search,
+  filter,
+  onSearch,
+  onFilter,
+}: {
+  search: string
+  filter: TierFilter
+  onSearch?: (value: string) => void
+  onFilter?: (value: TierFilter) => void
+}) {
   const [selectedCctvMonument, setSelectedCctvMonument] = useState<string | null>(null)
-  const [filter, setFilter] = useState('All')
   const tooltip = useTooltip()
-
-  const tiers = ['All', 'T1', 'T2', 'T3', 'Safe Zone', 'Resources', 'Vendor', 'Deep Sea', 'Ocean']
 
   const filteredMonuments = useMemo(() => {
     return monumentsData.filter(m => {
@@ -122,10 +143,6 @@ export function MonumentsGuide() {
       return matchSearch && matchFilter
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [search, filter])
-
-  const getTierDot = (tier: string) => {
-    return 'bg-rust shadow-[0_0_8px_rgba(206,66,43,0.6)]'
-  }
 
   const renderItemIcon = (rawName: string, count: number = 1, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
     const name = rawName.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
@@ -215,7 +232,8 @@ export function MonumentsGuide() {
               type="text"
               placeholder="Search by name..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => onSearch?.(e.target.value)}
+              readOnly={!onSearch}
               className="w-full bg-surface border border-white/10 rounded-xl pl-12 pr-4 py-3 text-text-bright focus:outline-none focus:border-rust focus:ring-1 focus:ring-rust transition-all shadow-lg placeholder:text-text-dim/50"
             />
           </div>
@@ -224,10 +242,10 @@ export function MonumentsGuide() {
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-2 mb-12 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-        {tiers.map(t => (
+        {TIER_FILTERS.map(t => (
           <button
             key={t}
-            onClick={() => setFilter(t)}
+            onClick={() => onFilter?.(t)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
               filter === t
                 ? 'bg-rust text-white shadow-[0_0_15px_rgba(207,87,31,0.4)] border border-rust'
@@ -301,7 +319,7 @@ export function MonumentsGuide() {
               {/* Permanent Header (Title) */}
               <div className="shrink-0 mb-4 group-hover:translate-y-[-8px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
                 <div className="flex items-center gap-2 mb-2 drop-shadow-lg">
-                  <span className={`w-1.5 h-1.5 rounded-full ${getTierDot(m.tier)}`}></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-rust shadow-[0_0_8px_rgba(206,66,43,0.6)]"></span>
                   <span className="text-[10px] font-medium tracking-widest text-white/90 uppercase">{m.tier}</span>
                 </div>
                 <h2 className="text-3xl font-bold text-white font-display uppercase tracking-wide leading-tight drop-shadow-xl">
@@ -382,11 +400,47 @@ export function MonumentsGuide() {
           </div>
         )}
       {selectedCctvMonument && (
-        <CctvPopup 
-          monumentName={selectedCctvMonument} 
-          onClose={() => setSelectedCctvMonument(null)} 
+        <CctvPopup
+          monumentName={selectedCctvMonument}
+          onClose={() => setSelectedCctvMonument(null)}
         />
       )}
     </div>
+  )
+}
+
+/**
+ * Search + tier filter in the URL (`?q=oil&tier=T3`) so a filtered view is
+ * shareable. `history: 'replace'` keeps typing out of the back-button stack, and
+ * `clearOnDefault` drops params at their default so an untouched page stays on a
+ * clean `/guides/monuments`.
+ */
+function MonumentsWithUrlState() {
+  const [{ q, tier }, setView] = useQueryStates(
+    {
+      q: parseAsString.withDefault(''),
+      tier: parseAsStringLiteral(TIER_FILTERS).withDefault('All'),
+    },
+    { history: 'replace', clearOnDefault: true },
+  )
+
+  return (
+    <MonumentsView
+      search={q}
+      filter={tier}
+      onSearch={(value) => setView({ q: value })}
+      onFilter={(value) => setView({ tier: value })}
+    />
+  )
+}
+
+export function MonumentsGuide() {
+  // The fallback renders the same view at its default state, so the heading and
+  // the full monument list are in the prerendered HTML for crawlers; the client
+  // swaps in the URL-filtered view on hydration.
+  return (
+    <Suspense fallback={<MonumentsView search="" filter="All" />}>
+      <MonumentsWithUrlState />
+    </Suspense>
   )
 }

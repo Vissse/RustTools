@@ -14,6 +14,30 @@ export type Monument = {
     advBp: MonumentIcon[];
     guide: string;
 };
+/**
+ * Accepted values of the guide's `?tier=` search param, in the order the filter
+ * buttons render. A literal tuple because nuqs's parseAsStringLiteral needs one
+ * to narrow the parsed type, which also makes an unknown value in a hand-edited
+ * URL fall back to "All".
+ *
+ * `Monument.tier` is a plain string, so this can't be checked at compile time —
+ * every distinct `tier` in the data below must appear here or it becomes
+ * unfilterable. Verified complete as of 2026-08-16.
+ */
+export const TIER_FILTERS = [
+  'All',
+  'T1',
+  'T2',
+  'T3',
+  'Safe Zone',
+  'Resources',
+  'Vendor',
+  'Deep Sea',
+  'Ocean',
+] as const;
+
+export type TierFilter = (typeof TIER_FILTERS)[number];
+
 export const monumentsData = [
   {
     "id": "01",

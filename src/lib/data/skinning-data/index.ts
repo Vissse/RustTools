@@ -31,3 +31,9 @@ export const SKINNING_DATA = {
 };
 
 export type SkinningTarget = keyof typeof SKINNING_DATA;
+
+/**
+ * Row types re-exported so consumers can pull the data and the shape of one of
+ * its entries from this one module; they're declared in src/lib/types.ts.
+ */
+export type { SkinningData, SkinningResource } from "../../types";
