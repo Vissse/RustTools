@@ -17,15 +17,13 @@
   font-display: block;
   src: url("/fonts/teko-latin.woff2") format("woff2");
 }
-@font-face {
-  font-family: "TekoNums";
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: block;
-  src: url("/fonts/teko-latin.woff2") format("woff2");
-  unicode-range: U+0030-0039, U+0025, U+002B, U+002D, U+002E, U+002F, U+002A, U+003A;
-  size-adjust: 140%;
-}
+/* There used to be a third face here, "TekoNums": Teko restricted by
+   unicode-range to digits and a handful of symbols, listed ahead of Inter in
+   --font-ui so every number in body text picked up the display font. It made
+   standalone readouts look good but split any mixed string down the middle —
+   item names like "LR-300", "M39" or "Spas-12" rendered their letters in Inter
+   and their digits in Teko at 140% size. Numbers that should look like Teko now
+   ask for it explicitly with font-display. */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -67,7 +65,7 @@
   --color-text-muted: #4a4038;
 
   --font-display: "Teko", sans-serif;
-  --font-ui: "TekoNums", "Inter", sans-serif;
+  --font-ui: "Inter", sans-serif;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -102,8 +100,8 @@
   --text-muted: #4a4038;
   --font-d: "Teko", sans-serif;
   --font-display: "Teko", sans-serif;
-  --font-ui: "TekoNums", "Inter", sans-serif;
-  --font-sans: "TekoNums", "Inter", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
   --font-m: "JetBrains Mono", monospace;
 }
 
