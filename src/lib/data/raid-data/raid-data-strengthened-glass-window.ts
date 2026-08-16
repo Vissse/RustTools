@@ -1,5 +1,11 @@
 import type { RaidItem } from "../../types";
 
+// FIXME(unverified): this table is a verbatim copy of raid-data-high-external-wooden-gate.ts
+// — its damage values are Wooden tier and its quantities imply 500 HP, while
+// STRUCTURES['Strengthened Glass Window'] says 250 HP / Metal. Public sources
+// disagree on this one, so it has NOT been patched: the numbers this structure
+// reports are known-wrong until someone supplies verified values. Everything else
+// in the calculator is validated by `pnpm verify:raid`, which flags this file.
 export const RaidDataStrengthenedGlassWindow: RaidItem[] = [
   {
     name: "Incendiary Rocket",

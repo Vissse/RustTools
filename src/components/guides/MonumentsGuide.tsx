@@ -163,7 +163,7 @@ export function MonumentsGuide() {
   }
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-6 py-20 text-text font-sans">
+    <div className="w-full max-w-[1400px] mx-auto px-6 py-20 text-text font-sans">
       {/* Breadcrumbs */}
       <div className="relative z-50 text-lg font-display uppercase text-text-dim mb-12 flex items-center space-x-3 tracking-widest animate-fade-in-up">
         <Link href="/" className="hover:text-text-bright transition-colors">
@@ -182,7 +182,7 @@ export function MonumentsGuide() {
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-4 text-text-bright leading-none font-display uppercase">
-              Monuments <span className="text-rust text-5xl">Database</span>
+              Monuments <span className="text-rust">Database</span>
             </h1>
             <p className="text-xl text-rust font-light tracking-wide max-w-3xl leading-relaxed font-display uppercase">
               Explore loot, access routes, and facilities
@@ -227,7 +227,7 @@ export function MonumentsGuide() {
       </div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
         {filteredMonuments.map((m, idx) => (
           <article 
             key={m.id} 

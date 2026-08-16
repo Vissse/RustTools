@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "verify:raid": "node scripts/verify-raid-data.mjs",
+    "check": "pnpm typecheck && pnpm verify:raid && pnpm build",
     "images:recycle": "node scripts/gen-recycle-webp.mjs"
   },
   "dependencies": {

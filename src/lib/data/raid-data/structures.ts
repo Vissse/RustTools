@@ -1,14 +1,17 @@
 import type { Explosive, Structure } from '../../types'
 
-// Game data (structure HP / explosive damage) verified against Rust as of 2026-06.
-// Re-check these values after a Facepunch balance patch.
+// Structure HP and explosive craft costs, verified against Rust as of 2026-08.
+// Re-check after a Facepunch balance patch, then run `pnpm verify:raid`.
+//
+// Explosive DAMAGE is deliberately not here. It used to be a table keyed by
+// material tier, which is wrong for every door/hatch/window/gate — Rust assigns
+// damage per prefab, not per tier. Damage now comes from the per-structure
+// raid-data-*.ts files via buildDamageMap() in ./explosive-rows.ts, which is the
+// same data the tool lists render, so the two can no longer contradict.
 
-// Destructible structures, keyed by display name.
-// `material` selects the damage column in each explosive's `dmg` table;
-// some structures (e.g. Garage Door, Tool Cupboard) get a per-structure override.
-// Each key here must match a key in RAID_DATA (see ./index.ts) so the calculator
-// can pull the per-structure raiding-tool list for the selected target.
-export const STRUCTURES: Record<string, Structure> = {
+// Destructible structures, keyed by display name. Each key must have an entry in
+// LOADERS (see ./index.ts) so the calculator can pull the per-structure tool list.
+export const STRUCTURES = {
   'Wooden Wall': { hp: 250, material: 'Wooden', img: '/images/wood-wall.png' },
   'Stone Wall': { hp: 500, material: 'Stone', img: '/images/stone-wall.png' },
   'Metal Wall': { hp: 1000, material: 'Metal', img: '/images/metal-wall.png' },
@@ -43,7 +46,7 @@ export const STRUCTURES: Record<string, Structure> = {
     img: '/images/door.double.hinged.metal.png',
   },
   'Armored Double Door': {
-    hp: 800,
+    hp: 1000,
     material: 'Armored',
     img: '/images/door.double.hinged.toptier.png',
   },
@@ -127,74 +130,62 @@ export const STRUCTURES: Record<string, Structure> = {
     material: 'Wooden',
     img: '/images/cupboard.tool.png',
   },
-}
+} as const satisfies Record<string, Structure>
 
-// Explosives. `cost` is per unit in sulfur (s) / metal fragments (m) / charcoal (c).
-// `dmg` maps a structure material (or a specific structure name) to damage per hit.
-export const EXPLOSIVES: Explosive[] = [
+/** Display name of a structure the calculator knows about. */
+export type StructureName = keyof typeof STRUCTURES
+
+// Explosives the solver can combine. `cost` is per unit in sulfur (s) / metal
+// fragments (m) / charcoal (c). Damage is NOT here — see the header comment.
+// Each name must have an entry in EXPLOSIVE_ROW (./explosive-rows.ts) naming the
+// raid-data row it draws its per-structure damage from.
+export const EXPLOSIVES = [
   {
     name: 'C4',
     short: 'C4',
     img: '/images/explosive.timed.png',
     cost: { s: 2200, m: 200, c: 3000 },
-    dmg: {
-      Wooden: 495,
-      Stone: 275,
-      Metal: 275,
-      Armored: 275,
-      'Garage Door': 440,
-      'Tool Cupboard': 100,
-    },
   },
   {
     name: 'Rocket',
     short: 'Rocket',
     img: '/images/ammo.rocket.basic.png',
     cost: { s: 1400, m: 100, c: 1950 },
-    dmg: { Wooden: 247.6, Stone: 137.6, Metal: 137.6, Armored: 137.6 },
   },
   {
     name: 'Explosive 5.56 Rifle Ammo',
     short: 'Exp.Ammo',
     img: '/images/ammo.rifle.explosive.png',
     cost: { s: 25, m: 5, c: 30 },
-    dmg: { Wooden: 5, Stone: 3.937, Metal: 2.5, Armored: 2.5 },
   },
   {
     name: 'High Velocity Rocket',
     short: 'HV Rocket',
     img: '/images/ammo.rocket.hv.png',
     cost: { s: 200, m: 0, c: 300 },
-    dmg: { Wooden: 90, Stone: 31, Metal: 31, Armored: 31 },
   },
   {
     name: 'F1 Grenade',
     short: 'F1 Gren.',
     img: '/images/grenade.f1.png',
     cost: { s: 60, m: 25, c: 90 },
-    dmg: { Wooden: 2, Stone: 2, Metal: 1, Armored: 1 },
   },
   {
     name: 'Beancan Grenade',
     short: 'Beancan',
     img: '/images/grenade.beancan.png',
     cost: { s: 120, m: 20, c: 180 },
-    dmg: { Wooden: 19.5, Stone: 11, Metal: 9, Armored: 9 },
   },
   {
     name: 'Satchel',
     short: 'Satchel',
     img: '/images/explosive.satchel.png',
     cost: { s: 480, m: 80, c: 720 },
-    dmg: {
-      Wooden: 91.5,
-      Stone: 51.6,
-      Metal: 43.5,
-      Armored: 43.5,
-      'Tool Cupboard': 100,
-    },
   },
-]
+] as const satisfies readonly Explosive[]
+
+/** Name of an explosive the solver can combine. */
+export type ExplosiveName = (typeof EXPLOSIVES)[number]['name']
 
 export const RESOURCE_ICONS = {
   sulfur: '/images/sulfur.png',

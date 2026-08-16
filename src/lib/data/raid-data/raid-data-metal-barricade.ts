@@ -1,5 +1,9 @@
 import type { RaidItem } from "../../types";
 
+// FIXME(unverified): every quantity in this table is internally consistent with
+// 600 HP, but STRUCTURES['Metal Barricade'] says 500. Public sources disagree, so
+// neither has been patched: the numbers this structure reports are known-wrong
+// until someone supplies verified values. `pnpm verify:raid` flags this file.
 export const RaidDataMetalBarricade: RaidItem[] = [
   {
     name: "Torpedo",

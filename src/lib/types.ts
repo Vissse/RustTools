@@ -1,5 +1,11 @@
 /* Shared domain types for the RustTools calculators. */
 
+/**
+ * Build tier. Descriptive only — never key damage off this. Rust assigns damage
+ * per prefab, not per tier: a Sheet Metal Door and a Metal Wall are both "Metal"
+ * but take very different damage from the same explosive. Per-explosive damage
+ * lives in the per-structure raid-data-*.ts files.
+ */
 export type Material = "Wooden" | "Stone" | "Metal" | "Armored";
 
 export interface Structure {
@@ -8,15 +14,11 @@ export interface Structure {
   img: string;
 }
 
-/** Damage table keyed by material or by a specific structure name (override). */
-export type DamageTable = Partial<Record<Material | string, number>>;
-
 export interface Explosive {
   name: string;
   short: string;
   img: string;
   cost: { s: number; m: number; c: number };
-  dmg: DamageTable;
 }
 
 /** One line of a raid combo: how many of an explosive, with its resource totals. */
@@ -93,9 +95,15 @@ export type RaidCategory =
   | "throw"
   | "torpedo";
 
+/**
+ * Which face of the structure was hit. Only the wall files carry a real split;
+ * everything else is "both". The calculator quotes the hard (outside) side.
+ */
+export type RaidSide = "soft" | "hard";
+
 export interface RaidItem {
   name: string;
-  side: "soft" | "hard" | "both";
+  side: RaidSide | "both";
   category: RaidCategory;
   damage: number;
   quantity: number;
