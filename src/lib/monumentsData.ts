@@ -8,7 +8,7 @@ export type Monument = {
     cardsNeeded: MonumentCard[];
     cardsFound: MonumentCard[];
     utilities: MonumentIcon[];
-    vehicles: MonumentIcon[];
+    vehicles: { name: string; count: number; respawn?: string; }[];
     cctv: string;
     bpFrags: MonumentIcon[];
     advBp: MonumentIcon[];
@@ -43,6 +43,12 @@ export type Monument = {
       count?: number;
       respawn?: string;
       text?: string;
+      variants?: { name: string; chance: string }[];
+    }[];
+    scientists?: {
+      name: string;
+      count?: number;
+      respawn?: string;
     }[];
     puzzle?: {
       bring: { name: string; count: number }[];
@@ -65,6 +71,8 @@ export type Monument = {
 const IMAGE_MAP: Record<string, string> = {
   "recycler": "/images/items/recycler.png",
   "bike": "/images/recycle/motorbike.webp",
+  "bicycle": "/images/recycle/motorbike.webp",
+  "motorbike": "/images/recycle/motorbike.webp",
   "green keycard": "/images/items/green.keycard.png",
   "blue keycard": "/images/items/blue.keycard.png",
   "red keycard": "/images/items/red.keycard.png",
@@ -126,29 +134,50 @@ const IMAGE_MAP: Record<string, string> = {
   "minecart": "/images/items/minecart.webp",
   "normal crate food": "/images/items/normal.crate.food.webp",
   "normal crate medical": "/images/items/normal.crate.medical.webp",
+  "normal crate - cave": "/images/thumbnails/radtown-crate-mine.webp",
   "oil barrel": "/images/items/oil.barrel.webp",
   "road signs": "/images/items/road.signs.webp",
   "rowboat": "/images/items/rowboat.png",
   "satellite crate": "/images/items/satellite.crate.webp",
   "scientist drybox": "/images/items/scientist.drybox.webp",
   "scientist": "/images/items/scientist.png",
+  "airfield scientist": "/images/thumbnails/airfield-scientist.webp",
   "small oil refinery": "/images/items/small.oil.refinery.png",
   "sulfur node": "/images/items/sulfur.node.webp",
   "supermarket freezer": "/images/items/supermarket.freezer.webp",
   "supply drop": "/images/items/supply.drop.webp",
+  "sofa": "/images/thumbnails/sofa.webp",
+  "telephone": "/images/thumbnails/telephone.webp",
+  "basic blueprint fragment": "/images/recycle/basicblueprintfragment.webp",
+  "underwater lab - normal crate 1": "/images/thumbnails/radtown-underwater-labs-crate-normal.webp",
+  "underwater lab - normal crate 2": "/images/thumbnails/radtown-underwater-labs-crate-normal-2.webp",
+  "underwater lab - tier 3 components": "/images/thumbnails/radtown-underwater-labs-tech-parts-2.webp",
+  "underwater lab - ammunition crate": "/images/thumbnails/radtown-underwater-labs-crate-ammunition.webp",
+  "underwater lab - food crate 1": "/images/thumbnails/radtown-underwater-labs-crate-food-1.webp",
+  "underwater lab - fuel crate": "/images/thumbnails/radtown-underwater-labs-crate-fuel.webp",
+  "arctic research base scientist": "/images/thumbnails/arctic-research-base-scientist.webp",
   "tier 2 components": "/images/items/tier.2.components.webp",
   "tier 3 components": "/images/items/tier.3.components.webp",
   "tools crate": "/images/items/tools.crate.webp",
   "underwater advanced crate": "/images/items/underwater.advanced.crate.webp",
   "underwater lab crate 1": "/images/items/underwater.lab.crate.1.webp",
+  "underwater lab medical crate": "/images/items/underwater.lab.crate.1.webp",
+  "underwater lab tools crate": "/images/items/underwater.advanced.crate.webp",
   "underwater lab crate 2": "/images/items/underwater.lab.crate.2.webp",
   "vehicle parts advanced": "/images/items/vehicle.parts.advanced.webp",
   "vehicle parts": "/images/items/vehicle.parts.webp",
   "yellow loot barrel": "/images/items/yellow.loot.barrel.webp",
+  "sulfur ore": "/images/recycle/sulfur.ore.webp",
+  "metal ore": "/images/recycle/metal.ore.webp",
+  "high quality metal ore": "/images/recycle/hq.metal.ore.webp",
+  "hqm ore": "/images/recycle/hq.metal.ore.webp",
+  "stones": "/images/recycle/stones.webp",
+  "stone": "/images/recycle/stones.webp",
+  "portable boom box": "/images/recycle/fun.boomboxportable.webp"
 };
 
 export const getImagePath = (name: string): string | null => {
-  const cleanName = name.replace(/\s*x\d+$/, '').toLowerCase();
+  const cleanName = name.replace(/\s*x\d+$/, '').replace(/\s*\(.*\)$/, '').toLowerCase();
   return IMAGE_MAP[cleanName] || null;
 }
 
@@ -178,22 +207,9 @@ export const monumentsData: Monument[] = [
   {
     "id": "01",
     "name": "Abandoned Supermarket",
-    "puzzle": {
-      "bring": [
-        { "name": "Green keycard", "count": 1 },
-        { "name": "Electric Fuse", "count": 1 }
-      ],
-      "activate": [
-        { "name": "Switch", "count": 1 }
-      ],
-      "rewards": [
-        { "name": "Military Tunnel Scientist", "count": 11 },
-        { "name": "Elite Crate", "count": 3 }
-      ],
-      "resetTime": "~30m"
-    },
+    "puzzle": undefined,
     "subtitle": null,
-    "tier": "T1",
+    "tier": "T1/T2/T3",
     "cardsNeeded": [],
     "cardsFound": [
       {
@@ -204,20 +220,49 @@ export const monumentsData: Monument[] = [
     ],
     "utilities": [
       {
+        "name": "Light Switch",
+        "count": 2
+      },
+      {
+        "name": "Zipline Target Point",
+        "count": 2
+      },
+      {
+        "name": "Telephone",
+        "count": 1
+      },
+      {
+        "name": "Hobo Barrel",
+        "count": 1
+      },
+      {
         "name": "Recycler",
         "count": 1
       }
     ],
+    "collectibles": [
+      {
+        "name": "Green keycard",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
     "vehicles": [
       {
-        "name": "Bike",
-        "count": 1
+        "name": "Bicycle",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Motorbike",
+        "count": 1,
+        "respawn": "Never / Puzzle"
       }
     ],
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "",
+    "guide": undefined,
     "features": {
       "isSafezone": false,
       "hasTunnelEntrance": false,
@@ -229,6 +274,60 @@ export const monumentsData: Monument[] = [
         "max": 0
       }
     },
+    "spawns": [
+      {
+        "name": "Crate (Random)",
+        "count": 5,
+        "respawn": "30-36m",
+        "variants": [
+          { "name": "Basic Crate", "chance": "50%" },
+          { "name": "Normal Crate", "chance": "45%" },
+          { "name": "Military Crate", "chance": "5%" }
+        ]
+      },
+      {
+        "name": "Crate (Random)",
+        "count": 5,
+        "respawn": "30-36m",
+        "variants": [
+          { "name": "Normal Crate", "chance": "95%" },
+          { "name": "Military Crate", "chance": "5%" }
+        ]
+      },
+      {
+        "name": "Crate (Random)",
+        "count": 5,
+        "respawn": "30-36m",
+        "variants": [
+          { "name": "Normal Crate", "chance": "90%" },
+          { "name": "Military Crate", "chance": "10%" }
+        ]
+      },
+      {
+        "name": "Foodbox",
+        "count": 5,
+        "respawn": "30-36m"
+      },
+      {
+        "name": "Loot Barrel (Random)",
+        "count": 3,
+        "respawn": "30-36m",
+        "variants": [
+          { "name": "Yellow Loot Barrel", "chance": "50%" },
+          { "name": "Blue Loot Barrel", "chance": "50%" }
+        ]
+      },
+      {
+        "name": "Vehicle Parts",
+        "count": 2,
+        "respawn": "30-36m"
+      },
+      {
+        "name": "Military Crate",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
     "lootDetails": {
       "militaryCrates": 0,
       "regularCrates": 0,
@@ -237,89 +336,19 @@ export const monumentsData: Monument[] = [
     }
   },
   {
-    "id": "02",
+    "id": "airfield",
     "name": "Airfield",
-    "puzzle": {
-      "bring": [
-        { "name": "Green keycard", "count": 1 },
-        { "name": "Electric Fuse", "count": 1 }
-      ],
-      "activate": [
-        { "name": "Switch", "count": 1 }
-      ],
-      "rewards": [
-        { "name": "Military Tunnel Scientist", "count": 11 },
-        { "name": "Elite Crate", "count": 3 }
-      ],
-      "resetTime": "~30m"
-    },
     "subtitle": null,
-    "tier": "T2",
-    "cardsNeeded": [
-      {
-        "type": "green",
-        "name": "green keycard",
-        "logic": ""
-      },
-      {
-        "type": "blue",
-        "name": "blue keycard",
-        "logic": ""
-      }
-    ],
-    "cardsFound": [
-      {
-        "type": "red",
-        "name": "red keycard",
-        "logic": ""
-      }
-    ],
-    "utilities": [
-      {
-        "name": "Recycler x2",
-        "count": 2
-      },
-      {
-        "name": "Research Table",
-        "count": 1
-      },
-      {
-        "name": "Repair Bench",
-        "count": 1
-      },
-      {
-        "name": "Oil Refinery",
-        "count": 1
-      },
-      {
-        "name": "Diesel Barrel x3",
-        "count": 3
-      }
-    ],
-    "vehicles": [
-      {
-        "name": "Bike",
-        "count": 1
-      }
-    ],
-    "cctv": "/rust/camera-codes#airfield",
-    "bpFrags": [
-      {
-        "name": "Blueprint fragments",
-        "count": 2
-      }
-    ],
-    "advBp": [],
-    "guide": "https://youtu.be/Xr7AvpLUnRo?si=pirr7aQDd9ik2HrV",
+    "tier": "2",
     "features": {
       "isSafezone": false,
-      "hasTunnelEntrance": false,
-      "hasChinookDropZone": false,
+      "hasTunnelEntrance": true,
+      "hasChinookDropZone": true,
       "allowsPatrolHeliCrash": true,
-      "scientists": 0,
+      "scientists": 3,
       "radiation": {
-        "median": 0,
-        "max": 0
+        "median": 11,
+        "max": 11
       }
     },
     "lootDetails": {
@@ -327,7 +356,123 @@ export const monumentsData: Monument[] = [
       "regularCrates": 0,
       "basicCrates": 0,
       "barrels": 0
-    }
+    },
+    "spawns": [
+      {
+        "name": "Crate (Random)",
+        "variants": [
+          { "name": "Normal Crate", "chance": "60%" },
+          { "name": "Military Crate", "chance": "40%" }
+        ],
+        "count": 18,
+        "respawn": "30-36m"
+      },
+      {
+        "name": "Crate (Random)",
+        "variants": [
+          { "name": "Normal Crate", "chance": "60%" },
+          { "name": "Military Crate", "chance": "40%" }
+        ],
+        "count": 8,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Oil Barrel",
+        "count": 6,
+        "respawn": "15-20m"
+      },
+      {
+        "name": "Loot Barrel (Random)",
+        "variants": [
+          { "name": "Yellow Loot Barrel", "chance": "50%" },
+          { "name": "Blue Loot Barrel", "chance": "50%" }
+        ],
+        "count": 5,
+        "respawn": "15-20m"
+      },
+      {
+        "name": "Normal Crate - Cave",
+        "count": 3,
+        "respawn": "30-36m"
+      },
+      {
+        "name": "Node (Random)",
+        "variants": [
+          { "name": "Stone Node", "chance": "45.5%" },
+          { "name": "Metal Node", "chance": "27.3%" },
+          { "name": "Sulfur Node", "chance": "27.3%" }
+        ],
+        "count": 5,
+        "respawn": "30-36m"
+      }
+    ],
+    "scientists": [
+      {
+        "name": "Airfield Scientist",
+        "count": 3,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "collectibles": [
+      {
+        "name": "Diesel Fuel",
+        "count": 3,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Basic Blueprint Fragment",
+        "count": 2,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Red Keycard",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "vehicles": [
+      {
+        "name": "Motorbike",
+        "count": 3,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "utilities": [
+      { "name": "Light Switch", "count": 16 },
+      { "name": "Heat Source", "count": 5 },
+      { "name": "Zipline Target Point", "count": 4 },
+      { "name": "Sofa", "count": 3 },
+      { "name": "Green Recycler", "count": 2 },
+      { "name": "Telephone", "count": 1 },
+      { "name": "Repair Bench", "count": 1 },
+      { "name": "Research Table", "count": 1 },
+      { "name": "Small Oil Refinery", "count": 1 },
+      { "name": "Elevator", "count": 1 }
+    ],
+    "cctv": "AIRFIELDHELIPAD",
+    "puzzle": {
+      "bring": [
+        { "name": "Electric Fuse", "count": 2 },
+        { "name": "Green Keycard", "count": 1 },
+        { "name": "Blue Keycard", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Timer", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Airfield Scientist", "count": 3 },
+        { "name": "Red Keycard", "count": 1 },
+        { "name": "Basic Blueprint Fragment", "count": 2 },
+        { "name": "Diesel Fuel", "count": 3 },
+        { "name": "Normal Crate", "count": 7 },
+        { "name": "Yellow Loot Barrel", "count": 1 }
+      ],
+      "resetTime": "~30m"
+    },
+    "cardsNeeded": [],
+    "cardsFound": [],
+    "bpFrags": [],
+    "advBp": []
   },
   {
     "id": "03",
@@ -881,46 +1026,73 @@ export const monumentsData: Monument[] = [
   {
     "id": "09",
     "name": "Abandoned Military Base",
-    "puzzle": {
-      "bring": [
-        { "name": "Green keycard", "count": 1 },
-        { "name": "Electric Fuse", "count": 1 }
-      ],
-      "activate": [
-        { "name": "Switch", "count": 1 }
-      ],
-      "rewards": [
-        { "name": "Military Tunnel Scientist", "count": 11 },
-        { "name": "Elite Crate", "count": 3 }
-      ],
-      "resetTime": "~30m"
-    },
+    "puzzle": undefined,
     "subtitle": null,
-    "tier": "T2",
+    "tier": "T1/T2/T3",
     "cardsNeeded": [],
     "cardsFound": [],
-    "utilities": [],
+    "utilities": [
+      {
+        "name": "Portable Boom Box",
+        "count": 1
+      }
+    ],
     "vehicles": [
       {
         "name": "MLRS",
         "count": 1
       }
     ],
-    "cctv": "",
+    "cctv": "COMPOUND****",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/CBZ16qttIO4?si=TYEnKGH-tJuf86-n",
+    "guide": undefined,
     "features": {
       "isSafezone": false,
       "hasTunnelEntrance": false,
       "hasChinookDropZone": false,
-      "allowsPatrolHeliCrash": true,
-      "scientists": 0,
+      "allowsPatrolHeliCrash": false,
+      "scientists": 6,
       "radiation": {
         "median": 0,
         "max": 0
       }
     },
+    "spawns": [
+      {
+        "name": "Crate (Random)",
+        "count": 7,
+        "respawn": "20-30m",
+        "variants": [
+          { "name": "Normal Crate", "chance": "60%" },
+          { "name": "Military Crate", "chance": "40%" }
+        ]
+      },
+      {
+        "name": "Food Crate (Random)",
+        "count": 4,
+        "respawn": "20-30m",
+        "variants": [
+          { "name": "Underwater Lab Crate 1", "chance": "50%" },
+          { "name": "Underwater Lab Crate 2", "chance": "50%" }
+        ]
+      },
+      {
+        "name": "Oil Barrel",
+        "count": 2,
+        "respawn": "20-30m"
+      },
+      {
+        "name": "Underwater Lab Medical Crate",
+        "count": 1,
+        "respawn": "20-30m"
+      },
+      {
+        "name": "Underwater Lab Tools Crate",
+        "count": 1,
+        "respawn": "20-30m"
+      }
+    ],
     "lootDetails": {
       "militaryCrates": 0,
       "regularCrates": 0,
@@ -929,68 +1101,19 @@ export const monumentsData: Monument[] = [
     }
   },
   {
-    "id": "10",
+    "id": "arctic-research-base",
     "name": "Arctic Research Base",
-    "puzzle": {
-      "bring": [
-        { "name": "Green keycard", "count": 1 },
-        { "name": "Electric Fuse", "count": 1 }
-      ],
-      "activate": [
-        { "name": "Switch", "count": 1 }
-      ],
-      "rewards": [
-        { "name": "Military Tunnel Scientist", "count": 11 },
-        { "name": "Elite Crate", "count": 3 }
-      ],
-      "resetTime": "~30m"
-    },
     "subtitle": null,
-    "tier": "T3",
-    "cardsNeeded": [
-      {
-        "type": "blue",
-        "name": "blue keycard",
-        "logic": ""
-      }
-    ],
-    "cardsFound": [
-      {
-        "type": "red",
-        "name": "red keycard",
-        "logic": ""
-      }
-    ],
-    "utilities": [
-      {
-        "name": "Recycler",
-        "count": 1
-      }
-    ],
-    "vehicles": [
-      {
-        "name": "Snowmobile",
-        "count": 1
-      }
-    ],
-    "cctv": "",
-    "bpFrags": [
-      {
-        "name": "Blueprint fragments",
-        "count": 2
-      }
-    ],
-    "advBp": [],
-    "guide": "https://youtu.be/JeZNxXn6KQg?si=sKrxRNYVY2ntzjLr",
+    "tier": "1/2/3",
     "features": {
       "isSafezone": false,
       "hasTunnelEntrance": false,
       "hasChinookDropZone": false,
       "allowsPatrolHeliCrash": true,
-      "scientists": 0,
+      "scientists": 10,
       "radiation": {
-        "median": 0,
-        "max": 0
+        "median": 3,
+        "max": 11
       }
     },
     "lootDetails": {
@@ -998,7 +1121,126 @@ export const monumentsData: Monument[] = [
       "regularCrates": 0,
       "basicCrates": 0,
       "barrels": 0
-    }
+    },
+    "spawns": [
+      {
+        "name": "Loot Barrel (Random)",
+        "variants": [
+          { "name": "Blue Loot Barrel", "chance": "60%" },
+          { "name": "Yellow Loot Barrel", "chance": "40%" }
+        ],
+        "count": 14,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Underwater Lab Crate (Random)",
+        "variants": [
+          { "name": "Underwater Lab - Normal Crate 1", "chance": "50%" },
+          { "name": "Underwater Lab - Normal Crate 2", "chance": "50%" }
+        ],
+        "count": 6,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Loot Barrel (Random)",
+        "variants": [
+          { "name": "Yellow Loot Barrel", "chance": "50%" },
+          { "name": "Blue Loot Barrel", "chance": "50%" }
+        ],
+        "count": 5,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Barrel (Random)",
+        "variants": [
+          { "name": "Oil Barrel", "chance": "88.2%" },
+          { "name": "Yellow Loot Barrel", "chance": "5.9%" },
+          { "name": "Blue Loot Barrel", "chance": "5.9%" }
+        ],
+        "count": 5,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Underwater Lab Tech/Ammo (Random)",
+        "variants": [
+          { "name": "Underwater Lab - Tier 3 Components", "chance": "50%" },
+          { "name": "Underwater Lab - Ammunition Crate", "chance": "50%" }
+        ],
+        "count": 5,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Underwater Lab - Food Crate 1",
+        "count": 4,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Underwater Lab - Fuel Crate",
+        "count": 4,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Crate (Random)",
+        "variants": [
+          { "name": "Normal Crate", "chance": "50%" },
+          { "name": "Military Crate", "chance": "50%" }
+        ],
+        "count": 4,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "scientists": [
+      {
+        "name": "Arctic Research Base Scientist",
+        "count": 10,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "collectibles": [
+      {
+        "name": "Basic Blueprint Fragment",
+        "count": 2,
+        "respawn": "Never / Puzzle"
+      },
+      {
+        "name": "Red Keycard",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "vehicles": [
+      {
+        "name": "Snowmobile",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
+    "utilities": [
+      { "name": "Heat Source", "count": 25 },
+      { "name": "Light Switch", "count": 11 },
+      { "name": "Zipline Target Point", "count": 2 },
+      { "name": "Sofa", "count": 1 },
+      { "name": "Toilet", "count": 1 },
+      { "name": "Green Recycler", "count": 1 }
+    ],
+    "cctv": "",
+    "puzzle": {
+      "bring": [
+        { "name": "Blue Keycard", "count": 2 }
+      ],
+      "activate": [],
+      "rewards": [
+        { "name": "Red Keycard", "count": 1 },
+        { "name": "Basic Blueprint Fragment", "count": 2 },
+        { "name": "Military Crate / Normal Crate", "count": 4 },
+        { "name": "Snowmobile", "count": 1 }
+      ],
+      "resetTime": "~30m / ~0m"
+    },
+    "cardsNeeded": [],
+    "cardsFound": [],
+    "bpFrags": [],
+    "advBp": []
   },
   {
     "id": "11",
@@ -1360,20 +1602,7 @@ export const monumentsData: Monument[] = [
   {
     "id": "17",
     "name": "Abandoned Cabins",
-    "puzzle": {
-      "bring": [
-        { "name": "Green keycard", "count": 1 },
-        { "name": "Electric Fuse", "count": 1 }
-      ],
-      "activate": [
-        { "name": "Switch", "count": 1 }
-      ],
-      "rewards": [
-        { "name": "Military Tunnel Scientist", "count": 11 },
-        { "name": "Elite Crate", "count": 3 }
-      ],
-      "resetTime": "~30m"
-    },
+    "puzzle": undefined,
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -1386,11 +1615,52 @@ export const monumentsData: Monument[] = [
     ],
     "utilities": [
       {
-        "name": "Research Table",
+        "name": "Sofa",
+        "count": 1
+      },
+      {
+        "name": "Metal Shop Front",
+        "count": 1
+      },
+      {
+        "name": "Poker Table",
         "count": 1
       }
     ],
     "vehicles": [],
+    "spawns": [
+      {
+        "name": "Normal Crate",
+        "count": 2,
+        "respawn": "15-20m"
+      },
+      {
+        "name": "Normal Crate (Random)",
+        "count": 2,
+        "respawn": "28-30m",
+        "variants": [
+          { "name": "Normal Crate Medical", "chance": "33.3%" },
+          { "name": "Normal Crate", "chance": "33.3%" },
+          { "name": "Normal Crate Food", "chance": "33.3%" }
+        ]
+      },
+      {
+        "name": "Sulfur Node (Random)",
+        "count": 15,
+        "respawn": "30-33m",
+        "variants": [
+          { "name": "Sulfur Ore", "chance": "90%" },
+          { "name": "Sulfur Node", "chance": "10%" }
+        ]
+      }
+    ],
+    "collectibles": [
+      {
+        "name": "Green keycard",
+        "count": 1,
+        "respawn": "Never / Puzzle"
+      }
+    ],
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
@@ -1399,14 +1669,10 @@ export const monumentsData: Monument[] = [
       "isSafezone": false,
       "hasTunnelEntrance": false,
       "hasChinookDropZone": false,
-      "allowsPatrolHeliCrash": true,
-      "scientists": 0,
-      "radiation": {
-        "median": 0,
-        "max": 0
-      }
+      "allowsPatrolHeliCrash": true
     },
     "lootDetails": {
+      "eliteCrates": 0,
       "militaryCrates": 0,
       "regularCrates": 0,
       "basicCrates": 0,
