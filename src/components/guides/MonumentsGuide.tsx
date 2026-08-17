@@ -8,62 +8,13 @@ import { useQueryStates, parseAsString, parseAsStringLiteral } from 'nuqs'
 import { useTooltip } from '../useTooltip'
 import {
   monumentsData,
-  TIER_FILTERS,
+  getImagePath,
+  getDisplayName,
   type MonumentCard,
-  type TierFilter,
+  TIER_FILTERS,
+  type TierFilter
 } from '@/lib/monumentsData'
 
-const getImagePath = (name: string): string | null => {
-  const cleanName = name.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
-  const map: Record<string, string> = {
-    'green keycard': '/images/recycle/green.keycard.webp',
-    'blue keycard': '/images/recycle/blue.keycard.webp',
-    'red keycard': '/images/recycle/red.keycard.webp',
-    'Recycler': '/images/recycle/recycler.webp',
-    'Oil Refinery': '/images/recycle/small.oil.refinery.webp',
-    'Diesel Barrel': '/images/recycle/diesel_barrel.webp',
-    'Barbecue': '/images/recycle/bbq.webp',
-    'Minicopter': '/images/recycle/minicopter.webp',
-    'Scrap Transport Helicopter': '/images/recycle/scrap.transport.helicopter.webp',
-    'RHIB': '/images/recycle/rhib.webp',
-    'Motor Rowboat': '/images/recycle/rowboat.webp',
-    'Attack Helicopter': '/images/recycle/attack.helicopter.webp',
-    'Duo Submarine': '/images/recycle/duo.submarine.webp',
-    'Solo Submarine': '/images/recycle/solo-submarine.webp',
-    'Hot Air Balloon': '/images/recycle/hot.air.balloon.webp',
-    'Horse': '/images/recycle/horse.webp',
-    'Computer Station': '/images/recycle/computerstation.webp',
-    'Repair Bench': '/images/recycle/repair.table.webp',
-    'Research Table': '/images/recycle/research.table.webp',
-    'Workbench Level 1': '/images/recycle/workbench1.webp',
-    'Vending Machine': '/images/recycle/vending.machine.webp',
-    'Blueprint fragments': '/images/recycle/basic.blueprint.fragment.webp',
-    'Advanced blueprint fragments': '/images/recycle/advanced.blueprint.fragment.webp',
-    'Bike': '/images/recycle/motorbike.webp',
-    'Snowmobile': '/images/recycle/snowmobile.webp',
-    'Patrol Boat': '/images/recycle/rhib.webp',
-    'Pump Jack': '/images/recycle/pump.jack.webp',
-    'Mining Quarry': '/images/recycle/mining.quarry.webp',
-    'MLRS': '/images/recycle/mlrs.webp',
-    'Modular Car Lift': '/images/recycle/modularcarlift.webp',
-    'Ridable Horse': '/images/recycle/horse.webp',
-    'Bradley APC': '/images/bradley.apc.png',
-  }
-  return map[cleanName] || null
-}
-
-const getDisplayName = (name: string): string => {
-  const cleanName = name.replace(/\s*x\d+$/, '')
-  const displayMap: Record<string, string> = {
-    'Bike': 'Motorbike',
-    'Ridable Horse': 'Horse',
-    'Patrol Boat': 'RHIB',
-    'green keycard': 'Green Keycard',
-    'blue keycard': 'Blue Keycard',
-    'red keycard': 'Red Keycard'
-  }
-  return displayMap[cleanName] || cleanName
-}
 
 // Fallback generic icons for items missing PNGs
 const GenericIcon = ({ type }: { type: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' }) => {
@@ -144,7 +95,7 @@ function MonumentsView({
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [search, filter])
 
-  const renderItemIcon = (rawName: string, count: number = 1, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
+  const renderItemIcon = (rawName: string, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
     const name = rawName.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
     const imgPath = getImagePath(name)
     
@@ -165,11 +116,6 @@ function MonumentsView({
           <div>
             <GenericIcon type={typeHint} />
           </div>
-        )}
-        {count > 1 && (
-          <span className="absolute -bottom-1 -right-1 bg-rust text-white text-[9px] font-bold font-mono px-1 rounded border border-black/50 shadow-md z-10">
-            x{count}
-          </span>
         )}
       </div>
     )
@@ -353,8 +299,8 @@ function MonumentsView({
                         <div className="text-right">
                           <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Blueprints</h3>
                           <div className="flex flex-wrap gap-2 justify-end items-center">
-                            {m.bpFrags.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
-                            {m.advBp.map((b) => renderItemIcon(b.name, b.count, 'bp'))}
+                            {m.bpFrags.map((b) => renderItemIcon(b.name, 'bp'))}
+                            {m.advBp.map((b) => renderItemIcon(b.name, 'bp'))}
                           </div>
                         </div>
                       )}
@@ -367,21 +313,27 @@ function MonumentsView({
                         {m.utilities.length === 0 && m.vehicles.length === 0 && (
                           <span className="text-white/60 text-xs font-light italic">Barren</span>
                         )}
-                        {m.utilities.map((u) => renderItemIcon(u.name, u.count, 'utility'))}
-                        {m.vehicles.map((v) => renderItemIcon(v.name, v.count, 'vehicle'))}
+                        {m.utilities.map((u) => renderItemIcon(u.name, 'utility'))}
+                        {m.vehicles.map((v) => renderItemIcon(v.name, 'vehicle'))}
                       </div>
                     </div>
 
                     {/* Footer / Actions */}
-                    <div className="pt-3">
+                    <div className="pt-3 grid grid-cols-2 gap-2">
+                      <Link 
+                        href={`/guides/monuments/${m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-')}`}
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rust text-white hover:bg-rust-hover cursor-pointer transition-all font-display tracking-wider uppercase text-xs shadow-[0_0_10px_var(--rust-glow)]"
+                      >
+                        <span>View Details</span>
+                      </Link>
                       <button 
-                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 text-white/50 border border-white/10 hover:bg-rust/20 hover:text-rust hover:border-rust/50 cursor-pointer transition-all font-display tracking-wider uppercase text-xs backdrop-blur-sm"
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white/80 cursor-pointer transition-all font-display tracking-wider uppercase text-xs backdrop-blur-sm"
                         data-tip="Video guide coming soon"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
                           <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                         </svg>
-                        <span>Video Guide <span className="opacity-70 ml-1 font-mono text-[9px]">(SOON)</span></span>
+                        <span>Video <span className="opacity-70 ml-0.5 font-mono text-[9px]">(SOON)</span></span>
                       </button>
                     </div>
 

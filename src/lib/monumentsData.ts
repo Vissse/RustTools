@@ -12,7 +12,44 @@ export type Monument = {
     cctv: string;
     bpFrags: MonumentIcon[];
     advBp: MonumentIcon[];
-    guide: string;
+    guide?: string;
+    description?: string;
+    strategy?: string;
+    features?: {
+      isSafezone?: boolean;
+      hasTunnelEntrance?: boolean;
+      hasChinookDropZone?: boolean;
+      allowsPatrolHeliCrash?: boolean;
+      scientists?: number;
+      radiation?: {
+        median?: number;
+        max?: number;
+      };
+    };
+    lootDetails?: {
+      eliteCrates?: number;
+      militaryCrates?: number;
+      regularCrates?: number;
+      basicCrates?: number;
+      barrels?: number;
+    };
+    collectibles?: {
+      name: string;
+      count: number;
+      respawn: string;
+    }[];
+    spawns?: {
+      name: string;
+      count?: number;
+      respawn?: string;
+      text?: string;
+    }[];
+    puzzle?: {
+      bring: { name: string; count: number }[];
+      activate: { name: string; count: number }[];
+      rewards: { name: string; count?: number; text?: string }[];
+      resetTime: string;
+    };
 };
 /**
  * Accepted values of the guide's `?tier=` search param, in the order the filter
@@ -24,6 +61,44 @@ export type Monument = {
  * every distinct `tier` in the data below must appear here or it becomes
  * unfilterable. Verified complete as of 2026-08-16.
  */
+
+export const getImagePath = (name: string): string | null => {
+  const cleanName = name.replace(/\s*x\d+$/, '')
+  const map: Record<string, string> = {
+    'green keycard': '/images/recycle/green.keycard.webp',
+    'blue keycard': '/images/recycle/blue.keycard.webp',
+    'red keycard': '/images/recycle/red.keycard.webp',
+    'recycler': '/images/recycle/recycler.webp',
+    'oil refinery': '/images/recycle/small.oil.refinery.webp',
+    'research table': '/images/recycle/research.table.webp',
+    'hobo barrel': '/images/recycle/hobobarrel.webp',
+    'toilet': '/images/recycle/toilet.webp',
+    'repair bench': '/images/recycle/repairbench.webp',
+    'elevator': '/images/recycle/elevator.webp',
+    'electric fuse': '/images/recycle/fuse.webp',
+    'switch': '/images/recycle/electric.switch.webp',
+    'timer': '/images/recycle/electric.timer.webp',
+    'elite crate': 'https://rustlabs.com/img/items180/crate_elite.png',
+    'military crate': 'https://rustlabs.com/img/items180/crate_normal.png',
+    'normal crate': 'https://rustlabs.com/img/items180/crate_normal_2.png',
+    'basic crate': 'https://rustlabs.com/img/items180/crate_basic.png',
+    'loot barrel': 'https://rustlabs.com/img/items180/loot_barrel_1.png',
+    'diesel fuel': '/images/recycle/diesel_barrel.webp',
+    'advanced blueprint fragment': '/images/recycle/advanced.blueprint.fragment.webp',
+    'stone node': 'https://rustlabs.com/img/items180/stone.ore.png',
+    'roadsign': 'https://rustlabs.com/img/items180/roadsigns.png'
+  }
+  return map[cleanName.toLowerCase()] || null
+}
+
+export const getDisplayName = (name: string): string => {
+  const cleanName = name.replace(/\s*x\d+$/, '')
+  return cleanName.toLowerCase() === 'green keycard' ? 'Green Keycard' :
+         cleanName.toLowerCase() === 'blue keycard' ? 'Blue Keycard' :
+         cleanName.toLowerCase() === 'red keycard' ? 'Red Keycard' :
+         cleanName
+}
+
 export const TIER_FILTERS = [
   'All',
   'T1',
@@ -38,10 +113,24 @@ export const TIER_FILTERS = [
 
 export type TierFilter = (typeof TIER_FILTERS)[number];
 
-export const monumentsData = [
+export const monumentsData: Monument[] = [
   {
     "id": "01",
     "name": "Abandoned Supermarket",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -67,11 +156,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "02",
     "name": "Airfield",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -129,11 +249,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/Xr7AvpLUnRo?si=pirr7aQDd9ik2HrV"
+    "guide": "https://youtu.be/Xr7AvpLUnRo?si=pirr7aQDd9ik2HrV",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "03",
     "name": "Giant Excavator Pit",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Resources",
     "cardsNeeded": [],
@@ -148,11 +299,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/H7eMgAUkR-U?si=YeRhSWSGFhDL-F3M"
+    "guide": "https://youtu.be/H7eMgAUkR-U?si=YeRhSWSGFhDL-F3M",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "04",
     "name": "Launch Site",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T3",
     "cardsNeeded": [
@@ -200,56 +382,175 @@ export const monumentsData = [
         "count": 2
       }
     ],
-    "guide": "https://youtu.be/AGtTjNOAE0s?si=CNFNSS3eoGrB1B5Y"
+    "guide": "https://youtu.be/AGtTjNOAE0s?si=CNFNSS3eoGrB1B5Y",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
-    "id": "05",
-    "name": "Military Tunnel",
-    "subtitle": null,
-    "tier": "T3",
-    "cardsNeeded": [
-      {
-        "type": "blue",
-        "name": "blue keycard",
-        "logic": ""
+      "id": "05",
+      "name": "Military Tunnel",
+      "puzzle": {
+          "bring": [
+              {
+                  "name": "Electric Fuse",
+                  "count": 1
+              },
+              {
+                  "name": "Green keycard",
+                  "count": 1
+              },
+              {
+                  "name": "Blue keycard",
+                  "count": 1
+              },
+              {
+                  "name": "Red keycard",
+                  "count": 1
+              }
+          ],
+          "activate": [
+              {
+                  "name": "Timer",
+                  "count": 2
+              },
+              {
+                  "name": "Switch",
+                  "count": 1
+              }
+          ],
+          "rewards": [
+              {
+                  "name": "Military Tunnel Scientist",
+                  "count": 11
+              },
+              {
+                  "name": "Advanced Blueprint Fragment",
+                  "count": 2
+              },
+              {
+                  "name": "Diesel Fuel",
+                  "count": 2
+              },
+              {
+                  "name": "Elite Crate",
+                  "count": 3
+              },
+              {
+                  "name": "Military Crate",
+                  "text": "50%",
+                  "count": 5
+              },
+              {
+                  "name": "Normal Crate",
+                  "text": "50%",
+                  "count": 5
+              }
+          ],
+          "resetTime": "~30m"
       },
-      {
-        "type": "red",
-        "name": "red keycard",
-        "logic": ""
-      }
-    ],
-    "cardsFound": [
-      {
-        "type": "green",
-        "name": "green keycard",
-        "logic": ""
-      }
-    ],
-    "utilities": [
-      {
-        "name": "Recycler",
-        "count": 1
+      "subtitle": null,
+      "tier": "T3",
+      "cardsNeeded": [],
+      "cardsFound": [],
+      "utilities": [
+          {
+              "name": "Hobo Barrel",
+              "count": 2
+          },
+          {
+              "name": "Toilet",
+              "count": 1
+          },
+          {
+              "name": "Elevator",
+              "count": 1
+          },
+          {
+              "name": "Recycler",
+              "count": 1
+          }
+      ],
+      "vehicles": [],
+      "spawns": [
+          {
+              "name": "Stone Node",
+              "count": 7,
+              "respawn": "30-36m",
+              "text": "45% / Metal 27% / Sulfur 27%"
+          },
+          {
+              "name": "Roadsign",
+              "count": 4,
+              "respawn": "Never / Puzzle"
+          }
+      ],
+      "collectibles": [
+          {
+              "name": "Diesel Fuel",
+              "count": 3,
+              "respawn": "Never / Puzzle"
+          },
+          {
+              "name": "Advanced Blueprint Fragment",
+              "count": 2,
+              "respawn": "Never / Puzzle"
+          }
+      ],
+      "guide": "",
+      "cctv": "",
+      "bpFrags": [],
+      "advBp": [],
+      "features": {
+          "isSafezone": false,
+          "hasTunnelEntrance": true,
+          "hasChinookDropZone": false,
+          "allowsPatrolHeliCrash": true,
+          "scientists": 33,
+          "radiation": {
+              "median": 11,
+              "max": 26
+          }
       },
-      {
-        "name": "Diesel Barrel x3",
-        "count": 3
+      "lootDetails": {
+          "eliteCrates": 6,
+          "militaryCrates": 10,
+          "regularCrates": 2,
+          "basicCrates": 0,
+          "barrels": 14
       }
-    ],
-    "vehicles": [],
-    "cctv": "",
-    "bpFrags": [],
-    "advBp": [
-      {
-        "name": "Advanced blueprint fragments",
-        "count": 2
-      }
-    ],
-    "guide": "https://youtu.be/Ga3SVYUivv0?si=PafefWqu4EKNImba"
   },
   {
     "id": "06",
     "name": "Power Plant",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -311,11 +612,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/FzJb9Vf_OGc?si=kPB1HnCRUxZmjRVf"
+    "guide": "https://youtu.be/FzJb9Vf_OGc?si=kPB1HnCRUxZmjRVf",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "07",
     "name": "Train Yard",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -373,11 +705,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/a30ETOIV4Ss?si=wZTBmv0QNjo_I-i8"
+    "guide": "https://youtu.be/a30ETOIV4Ss?si=wZTBmv0QNjo_I-i8",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "08",
     "name": "Water Treatment Plant",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -435,11 +798,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/GLZaepYwJdo?si=VPfsU_4HwoqJ7-m1"
+    "guide": "https://youtu.be/GLZaepYwJdo?si=VPfsU_4HwoqJ7-m1",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "09",
     "name": "Abandoned Military Base",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [],
@@ -454,11 +848,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/CBZ16qttIO4?si=TYEnKGH-tJuf86-n"
+    "guide": "https://youtu.be/CBZ16qttIO4?si=TYEnKGH-tJuf86-n",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "10",
     "name": "Arctic Research Base",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T3",
     "cardsNeeded": [
@@ -495,11 +920,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/JeZNxXn6KQg?si=sKrxRNYVY2ntzjLr"
+    "guide": "https://youtu.be/JeZNxXn6KQg?si=sKrxRNYVY2ntzjLr",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "11",
     "name": "Missile Silo",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T3",
     "cardsNeeded": [
@@ -525,11 +981,42 @@ export const monumentsData = [
         "count": 2
       }
     ],
-    "guide": "https://youtu.be/lUPephY1j8U?si=wdM8CwrEuMfSLm_8"
+    "guide": "https://youtu.be/lUPephY1j8U?si=wdM8CwrEuMfSLm_8",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "12",
     "name": "Sewer Branch",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -565,11 +1052,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/FICzFsiiA5k?si=NbnwFjPp4qBeA2Bn"
+    "guide": "https://youtu.be/FICzFsiiA5k?si=NbnwFjPp4qBeA2Bn",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "13",
     "name": "The Dome",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -614,11 +1132,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/81X1T1mbJxc?si=i3bB81LJ414aTELb"
+    "guide": "https://youtu.be/81X1T1mbJxc?si=i3bB81LJ414aTELb",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "14",
     "name": "Jungle Ruins",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -628,11 +1177,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "15",
     "name": "Quarries",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Resources",
     "cardsNeeded": [],
@@ -647,11 +1227,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "16",
     "name": "Water Wells",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Vendor",
     "cardsNeeded": [],
@@ -666,11 +1277,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "17",
     "name": "Abandoned Cabins",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -691,11 +1333,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "18",
     "name": "Jungle Ziggurat",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -710,11 +1383,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "19",
     "name": "Junkyard",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -744,11 +1448,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/Wmkm5LwZ2rU?si=r_SjxayqDwU1_eIX"
+    "guide": "https://youtu.be/Wmkm5LwZ2rU?si=r_SjxayqDwU1_eIX",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "20",
     "name": "Satellite Dish",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T2",
     "cardsNeeded": [
@@ -789,11 +1524,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/kYaHqiU_uRc?si=hunTjgwXZ9doUr6A"
+    "guide": "https://youtu.be/kYaHqiU_uRc?si=hunTjgwXZ9doUr6A",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "21",
     "name": "Bandit Camp",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -841,11 +1607,42 @@ export const monumentsData = [
     "cctv": "/rust/camera-codes#bandit-camp",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/IP_JtslXipY?si=xVRws8M9bubk9JxU"
+    "guide": "https://youtu.be/IP_JtslXipY?si=xVRws8M9bubk9JxU",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "22",
     "name": "Outpost",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -884,11 +1681,42 @@ export const monumentsData = [
     "cctv": "/rust/camera-codes#outpost",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/djkTqITluyo?si=BFNLNf2xJYWFnWTs"
+    "guide": "https://youtu.be/djkTqITluyo?si=BFNLNf2xJYWFnWTs",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "23",
     "name": "Apartment Complex",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": "Rent rooms and shops",
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -911,11 +1739,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://www.youtube.com/watch?v=Lb0jzj2QUZk"
+    "guide": "https://www.youtube.com/watch?v=Lb0jzj2QUZk",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "24",
     "name": "Fishing Villages",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -947,11 +1806,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/eUs4ddtVQYE?si=AYAFP2dQQV2a4mW7"
+    "guide": "https://youtu.be/eUs4ddtVQYE?si=AYAFP2dQQV2a4mW7",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "25",
     "name": "Stables",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -971,11 +1861,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": "https://youtu.be/KC0mXozXrv0?si=XjA79lGRivL-RaeW"
+    "guide": "https://youtu.be/KC0mXozXrv0?si=XjA79lGRivL-RaeW",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "26",
     "name": "Ferry Terminal",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [
@@ -1024,11 +1945,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/2nvEJuNZZKg?si=UmFtNp9ga_SWeWBx"
+    "guide": "https://youtu.be/2nvEJuNZZKg?si=UmFtNp9ga_SWeWBx",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "27",
     "name": "Harbor Large",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [
@@ -1064,11 +2016,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/iMYODoGRNss?si=OVO9bh6Y473Wadmv"
+    "guide": "https://youtu.be/iMYODoGRNss?si=OVO9bh6Y473Wadmv",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "28",
     "name": "Harbor Small",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [
@@ -1104,11 +2087,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/iMYODoGRNss?si=OVO9bh6Y473Wadmv"
+    "guide": "https://youtu.be/iMYODoGRNss?si=OVO9bh6Y473Wadmv",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "29",
     "name": "Lighthouse",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -1129,11 +2143,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "30",
     "name": "Large Oil Rig",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Ocean",
     "cardsNeeded": [
@@ -1187,11 +2232,42 @@ export const monumentsData = [
         "count": 2
       }
     ],
-    "guide": "https://youtu.be/GN4khDsR6z4?si=qFODYv6Q86xAvJIQ"
+    "guide": "https://youtu.be/GN4khDsR6z4?si=qFODYv6Q86xAvJIQ",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "31",
     "name": "Oil Rig",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Ocean",
     "cardsNeeded": [
@@ -1231,11 +2307,42 @@ export const monumentsData = [
         "count": 2
       }
     ],
-    "guide": "https://youtu.be/2lzGW8X5NcY?si=u-1WvsUxcdinPqGl"
+    "guide": "https://youtu.be/2lzGW8X5NcY?si=u-1WvsUxcdinPqGl",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "32",
     "name": "Mining Outpost",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -1259,11 +2366,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "33",
     "name": "Oxum's Gas Station",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [],
@@ -1289,11 +2427,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "34",
     "name": "Underwater Lab",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Ocean",
     "cardsNeeded": [
@@ -1340,11 +2509,42 @@ export const monumentsData = [
         "count": 2
       }
     ],
-    "guide": "https://youtu.be/Yj38XRHpD_o?si=eQ6NF0uLcKcX_pjp"
+    "guide": "https://youtu.be/Yj38XRHpD_o?si=eQ6NF0uLcKcX_pjp",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "35",
     "name": "Rad Town",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "T1",
     "cardsNeeded": [
@@ -1380,11 +2580,42 @@ export const monumentsData = [
       }
     ],
     "advBp": [],
-    "guide": "https://youtu.be/QRQBytskSUU?si=UO-baHobz1mowujn"
+    "guide": "https://youtu.be/QRQBytskSUU?si=UO-baHobz1mowujn",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "36",
     "name": "Floating Cities",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Safe Zone",
     "cardsNeeded": [],
@@ -1415,11 +2646,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "37",
     "name": "Ghost Ships",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Deep Sea",
     "cardsNeeded": [],
@@ -1439,11 +2701,42 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   },
   {
     "id": "38",
     "name": "Islands",
+    "puzzle": {
+      "bring": [
+        { "name": "Green keycard", "count": 1 },
+        { "name": "Electric Fuse", "count": 1 }
+      ],
+      "activate": [
+        { "name": "Switch", "count": 1 }
+      ],
+      "rewards": [
+        { "name": "Military Tunnel Scientist", "count": 11 },
+        { "name": "Elite Crate", "count": 3 }
+      ],
+      "resetTime": "~30m"
+    },
     "subtitle": null,
     "tier": "Deep Sea",
     "cardsNeeded": [],
@@ -1463,7 +2756,24 @@ export const monumentsData = [
     "cctv": "",
     "bpFrags": [],
     "advBp": [],
-    "guide": ""
+    "guide": "",
+    "features": {
+      "isSafezone": false,
+      "hasTunnelEntrance": false,
+      "hasChinookDropZone": false,
+      "allowsPatrolHeliCrash": true,
+      "scientists": 0,
+      "radiation": {
+        "median": 0,
+        "max": 0
+      }
+    },
+    "lootDetails": {
+      "militaryCrates": 0,
+      "regularCrates": 0,
+      "basicCrates": 0,
+      "barrels": 0
+    }
   }
 ];
 
