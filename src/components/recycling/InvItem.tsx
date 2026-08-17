@@ -46,7 +46,7 @@ export const InvItem = memo(function InvItem({
         </button>
         <div className="w-px min-w-px h-2.5 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] mx-1 shrink-0" />
         <QtyInput
-          className="w-[26px] min-w-[26px] bg-transparent border-0 text-[#757575] text-[13px] font-bold text-center outline-none p-0 shadow-none transition-[color] duration-200 shrink-0 group-[.active]/inv:text-white [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
+          className="w-[26px] min-w-[26px] bg-transparent border-0 text-[#757575] text-[13px] font-bold text-center outline-none p-0 shadow-none transition-[color] duration-200 shrink-0 group-[.active]/inv:text-text-bright [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
           value={count}
           ariaLabel={`${name} quantity`}
           onChange={(n) => onSet(id, n)}

@@ -111,7 +111,7 @@ export function ContactCards() {
             
             <button 
               onClick={() => setIsBugFormOpen(false)}
-              className="absolute top-4 right-4 text-text-dim hover:text-white transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors cursor-pointer"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
@@ -136,7 +136,7 @@ export function ContactCards() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-display font-bold text-white uppercase tracking-wide mb-2">Report Submitted</h3>
+                  <h3 className="text-xl font-display font-bold text-text-bright uppercase tracking-wide mb-2">Report Submitted</h3>
                   <p className="text-text-dim text-center">Thank you! We'll look into it shortly.</p>
                 </div>
               ) : (
@@ -151,7 +151,7 @@ export function ContactCards() {
                       id="email" 
                       required
                       placeholder="so we can get back to you"
-                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-white/20"
+                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-text-bright/20"
                     />
                   </div>
 
@@ -187,7 +187,7 @@ export function ContactCards() {
                         value={customIssueType}
                         onChange={(e) => setCustomIssueType(e.target.value)}
                         required
-                        className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-white/20 animate-in fade-in slide-in-from-top-2 mt-1"
+                        className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-text-bright/20 animate-in fade-in slide-in-from-top-2 mt-1"
                       />
                     )}
                   </div>
@@ -200,7 +200,7 @@ export function ContactCards() {
                       id="description" 
                       required
                       placeholder="What happened? What did you expect to happen?"
-                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-white/20 min-h-[120px] resize-y"
+                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-text-bright/20 min-h-[120px] resize-y"
                     />
                   </div>
 
@@ -254,11 +254,11 @@ export function ContactCards() {
                   <button 
                     type="submit" 
                     disabled={bugFormState === 'submitting'}
-                    className="w-full bg-rust hover:bg-rust-hover text-white font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_var(--rust-glow)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+                    className="w-full bg-rust hover:bg-rust-hover text-text-bright font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_var(--rust-glow)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
                   >
                     {bugFormState === 'submitting' ? (
                       <span className="flex items-center gap-2">
-                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-5 w-5 text-text-bright" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -281,7 +281,7 @@ export function ContactCards() {
             
             <button 
               onClick={() => setIsEmailFormOpen(false)}
-              className="absolute top-4 right-4 text-text-dim hover:text-white transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors cursor-pointer"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
@@ -306,7 +306,7 @@ export function ContactCards() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-display font-bold text-white uppercase tracking-wide mb-2">Message Sent</h3>
+                  <h3 className="text-xl font-display font-bold text-text-bright uppercase tracking-wide mb-2">Message Sent</h3>
                   <p className="text-text-dim text-center">Thank you! We will get back to you soon.</p>
                 </div>
               ) : (
@@ -314,39 +314,39 @@ export function ContactCards() {
                   
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="general-email" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
-                      Email <span className="text-white/70">*</span>
+                      Email <span className="text-text-bright/70">*</span>
                     </label>
                     <input 
                       type="email" 
                       id="general-email" 
                       required
                       placeholder="your@email.com"
-                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-white/20"
+                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="subject" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
-                      Subject <span className="text-white/70">*</span>
+                      Subject <span className="text-text-bright/70">*</span>
                     </label>
                     <input 
                       type="text" 
                       id="subject" 
                       required
                       placeholder="What is this regarding?"
-                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-white/20"
+                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5 mb-2">
                     <label htmlFor="message" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
-                      Message <span className="text-white/70">*</span>
+                      Message <span className="text-text-bright/70">*</span>
                     </label>
                     <textarea 
                       id="message" 
                       required
                       placeholder="How can we help you?"
-                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-white/20 min-h-[120px] resize-y"
+                      className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20 min-h-[120px] resize-y"
                     />
                   </div>
 
@@ -383,7 +383,7 @@ export function ContactCards() {
                               <button 
                                 type="button" 
                                 onClick={() => handleRemoveEmailFile(idx)}
-                                className="text-text-dim hover:text-white transition-colors p-1 flex-shrink-0 cursor-pointer"
+                                className="text-text-dim hover:text-text-bright transition-colors p-1 flex-shrink-0 cursor-pointer"
                                 aria-label="Remove file"
                               >
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -400,11 +400,11 @@ export function ContactCards() {
                   <button 
                     type="submit" 
                     disabled={emailFormState === 'submitting'}
-                    className="w-full bg-white/10 hover:bg-white/20 text-white font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none border border-white/5"
+                    className="w-full bg-white/10 hover:bg-white/20 text-text-bright font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none border border-white/5"
                   >
                     {emailFormState === 'submitting' ? (
                       <span className="flex items-center gap-2">
-                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-5 w-5 text-text-bright" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>

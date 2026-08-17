@@ -1124,7 +1124,7 @@ export function ShopCalculator() {
                 >
                   {isActive && (
                     <div
-                      className="absolute -top-2 -right-2 bg-rust group-[.is-sell]/card:bg-metal text-white font-ui text-[10px] font-extrabold px-[7px] py-[3px] rounded-xl shadow-[0_4px_8px_rgba(0,0,0,0.6)] animate-[shopPopIn_0.3s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] z-10"
+                      className="absolute -top-2 -right-2 bg-rust group-[.is-sell]/card:bg-metal text-text-bright font-ui text-[10px] font-extrabold px-[7px] py-[3px] rounded-xl shadow-[0_4px_8px_rgba(0,0,0,0.6)] animate-[shopPopIn_0.3s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] z-10"
                       key={cartQty}
                     >
                       {cartQty}x
@@ -1135,7 +1135,7 @@ export function ShopCalculator() {
                   <div className="relative flex justify-center items-center mb-2.5 w-16 h-16">
                     <Img src={item.img} alt={item.name} className="w-14 h-14 object-contain [filter:drop-shadow(0_4px_6px_rgba(0,0,0,0.5))] transition-transform duration-300 group-hover/card:scale-110" />
                     {item.qty > 1 && (
-                      <div className="absolute -bottom-1 -right-1 bg-black border border-white/10 text-white font-ui text-[10px] font-extrabold px-1 py-0.5 rounded z-10 shadow-[0_2px_4px_rgba(0,0,0,0.5)]">x{item.qty}</div>
+                      <div className="absolute -bottom-1 -right-1 bg-black border border-white/10 text-text-bright font-ui text-[10px] font-extrabold px-1 py-0.5 rounded z-10 shadow-[0_2px_4px_rgba(0,0,0,0.5)]">x{item.qty}</div>
                     )}
                   </div>
 

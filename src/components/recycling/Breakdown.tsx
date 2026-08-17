@@ -73,7 +73,7 @@ export function Breakdown({ rows, onSet }: BreakdownProps) {
                 <div className="flex items-center gap-4">
                   {/* Compact qty field */}
                   <QtyInput
-                    className="bg-white/4 border border-white/8 rounded text-[15px] font-bold text-white text-center outline-none px-1 py-1.5 transition-all duration-200 font-ui w-14 hover:bg-white/8 hover:border-white/20 focus:bg-white/8 focus:border-white/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
+                    className="bg-white/4 border border-white/8 rounded text-[15px] font-bold text-text-bright text-center outline-none px-1 py-1.5 transition-all duration-200 font-ui w-14 hover:bg-white/8 hover:border-white/20 focus:bg-white/8 focus:border-white/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                     value={row.count}
                     ariaLabel={`${row.name} quantity`}
                     deferZero

@@ -109,7 +109,7 @@ export function CupboardCalculator() {
                 />
                 <input
                   type="number"
-                  className="flex-1 bg-transparent border-0 text-text-bright font-display tracking-wider outline-none text-right p-0 placeholder:text-white/15 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 text-[18px]"
+                  className="flex-1 bg-transparent border-0 text-text-bright font-display tracking-wider outline-none text-right p-0 placeholder:text-text-bright/15 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 text-[18px]"
                   min="0"
                   placeholder="0"
                   value={inputs[r.key]}

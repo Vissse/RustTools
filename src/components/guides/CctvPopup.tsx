@@ -39,7 +39,7 @@ export function CctvPopup({ monumentName, onClose }: CctvPopupProps) {
         <div className="p-6 border-b border-border relative overflow-hidden bg-white/[0.02]">
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 text-text-dim hover:text-white transition-colors"
+            className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 6 6 18"></path>
@@ -78,9 +78,9 @@ export function CctvPopup({ monumentName, onClose }: CctvPopupProps) {
                     {code}
                   </span>
                   
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 text-text-dim group-hover:bg-rust group-hover:text-white transition-all">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 text-text-dim group-hover:bg-rust group-hover:text-text-bright transition-all">
                     {copiedCode === code ? (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-bright">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     ) : (

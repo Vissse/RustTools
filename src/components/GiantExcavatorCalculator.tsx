@@ -75,7 +75,7 @@ export function GiantExcavatorCalculator() {
               <input
                 type="number"
                 min="0"
-                className="w-11 bg-transparent border-0 text-white text-[18px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
+                className="w-11 bg-transparent border-0 text-text-bright text-[18px] font-bold text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                 value={diesel ?? ""}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -129,7 +129,7 @@ export function GiantExcavatorCalculator() {
                       </div>
 
                       <div className="flex flex-col items-end">
-                        <span className="font-display text-2xl font-semibold text-white leading-none">
+                        <span className="font-display text-2xl font-semibold text-text-bright leading-none">
                           {total.toLocaleString()}
                         </span>
                         <span className="font-ui text-[11px] text-[#666] font-semibold mt-1 tracking-wider">

@@ -17,7 +17,7 @@ export function ResCard({ kind, label, value }: ResCardProps) {
         className="w-10 h-10 object-contain"
       />
       <div className="flex flex-col leading-[1.1]">
-        <span className="text-2xl font-bold font-ui text-white">
+        <span className="text-2xl font-bold font-ui text-text-bright">
           {value.toLocaleString("en-US").replace(/,/g, " ")}
         </span>
         <span className="text-[10px] font-bold text-[#888] uppercase tracking-[0.05em] mt-1">

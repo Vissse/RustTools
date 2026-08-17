@@ -54,7 +54,7 @@ export function SupportCards() {
 
       {/* Popup Notification */}
       {showPopup && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#151515] border border-rust/30 text-white px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(255,87,34,0.15)] flex items-center gap-3 animate-in slide-in-from-bottom-5 fade-in duration-300">
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#151515] border border-rust/30 text-text-bright px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(255,87,34,0.15)] flex items-center gap-3 animate-in slide-in-from-bottom-5 fade-in duration-300">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rust">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             <line x1="12" y1="9" x2="12" y2="13"/>

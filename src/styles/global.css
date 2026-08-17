@@ -426,7 +426,7 @@ html {
 }
 
 .minimal-box-btn.active .minimal-box-name {
-  color: #fff;
+  color: var(--text-bright);
   text-shadow: 0 0 8px rgba(206, 66, 43, 0.4);
 }
 
@@ -485,7 +485,7 @@ html {
 }
 
 .filter-pure-text.active {
-  color: #fff;
+  color: var(--text-bright);
 }
 
 /* --- ZDE JE TVŮJ NOVÝ FADE EFEKT PRO AKTIVNÍ ČÁRU --- */
@@ -641,5 +641,52 @@ html {
         }
 
 
+
+/* ════════════════════════════════════════════════════════════════════════
+   MONUMENT CARD HOVER HINT (MonumentsGuide)
+   A monument card hides its keycards, blueprints and detail link behind a
+   hover-only drawer, and nothing at rest says so. The first card therefore
+   performs the gesture on a loop: a ghost cursor glides in, the drawer opens
+   under it, then both retreat. A pulsing outline draws the eye there first.
+   Both stop the moment the user moves the real pointer (handled in JS).
+   The 4s cycle is shared — the drawer open/close timings in the component
+   are offsets into this same timeline, so the cursor and the card stay in
+   step. Changing one duration means changing the other.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Ghost cursor: enters past the card's top-left corner, glides to the centre by
+   25% (when the drawer opens), holds through the reveal, retreats at 70%. The
+   start offset overshoots the corner on purpose — the card clips its overflow,
+   so the cursor reads as arriving from outside rather than fading in on top. */
+@keyframes monumentHintCursor {
+  0%   { opacity: 0; transform: translate(-200px, -210px) scale(0.9); }
+  12%  { opacity: 1; }
+  25%  { opacity: 1; transform: translate(0, 0) scale(1); }
+  30%  { transform: translate(0, 0) scale(0.86); } /* small press, reads as "here" */
+  36%  { transform: translate(0, 0) scale(1); }
+  62%  { opacity: 1; transform: translate(0, 0) scale(1); }
+  78%  { opacity: 0; transform: translate(-200px, -210px) scale(0.9); }
+  100% { opacity: 0; transform: translate(-200px, -210px) scale(0.9); }
+}
+.monument-hint-cursor {
+  animation: monumentHintCursor 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Breathing rust outline on the card being demonstrated. Lives on its own
+   overlay element so it never fights the card's own hover box-shadow. */
+@keyframes monumentHintRing {
+  0%, 100% { opacity: 0.25; box-shadow: 0 0 0 0 rgba(206, 66, 43, 0); }
+  50%      { opacity: 1;    box-shadow: 0 0 22px 2px rgba(206, 66, 43, 0.35); }
+}
+.monument-hint-ring {
+  animation: monumentHintRing 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monument-hint-cursor,
+  .monument-hint-ring {
+    animation: none;
+  }
+}
 
 } /* end @layer components */

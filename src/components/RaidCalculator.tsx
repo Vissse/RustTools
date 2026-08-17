@@ -322,7 +322,7 @@ export function RaidCalculator() {
                 onClick={() => setSelectedStructure(name)}
               >
                 <Img src={data.img} alt={name} className="w-[50px] h-[50px] object-contain [filter:drop-shadow(0_4px_6px_rgba(0,0,0,0.4))_grayscale(40%)_opacity(0.7)] transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:[filter:drop-shadow(0_6px_8px_rgba(0,0,0,0.6))_grayscale(0%)_opacity(1)] group-hover/box:scale-[1.08] group-[.active]/box:[filter:drop-shadow(0_8px_16px_rgba(206,66,43,0.4))_grayscale(0%)_opacity(1)] group-[.active]/box:scale-[1.15]" />
-                <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-white group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">{name}</span>
+                <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">{name}</span>
               </button>
             ))}
           </div>
@@ -351,7 +351,7 @@ export function RaidCalculator() {
                 <input
                   type="number"
                   min="1"
-                  className="w-11 bg-transparent border-0 text-white text-xl font-bold text-center outline-none font-display tracking-wider [text-shadow:0_2px_8px_rgba(0,0,0,0.8)] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
+                  className="w-11 bg-transparent border-0 text-text-bright text-xl font-bold text-center outline-none font-display tracking-wider [text-shadow:0_2px_8px_rgba(0,0,0,0.8)] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                   value={structureCount ?? 1}
                   onChange={(e) => {
                     const val = e.target.value
@@ -374,7 +374,7 @@ export function RaidCalculator() {
               </div>
             </>
           ) : (
-            <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-white/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50">
+            <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50">
               NO STRUCTURE SELECTED
             </div>
           )}
@@ -394,7 +394,7 @@ export function RaidCalculator() {
             {FILTER_CATEGORIES.map((cat, idx) => (
               <Fragment key={cat}>
                 <button
-                  className={`bg-transparent border-0 pb-1.5 text-text-dim text-base font-semibold font-display uppercase tracking-[0.15em] cursor-pointer transition-[color] duration-300 relative outline-none whitespace-nowrap shrink-0 hover:text-[#c4c4c4] after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-0.5 after:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] after:transition-[width] after:duration-300 after:rounded-[2px] ${activeFilters.has(cat) ? 'text-white after:w-full' : 'after:w-0'}`}
+                  className={`bg-transparent border-0 pb-1.5 text-text-dim text-base font-semibold font-display uppercase tracking-[0.15em] cursor-pointer transition-[color] duration-300 relative outline-none whitespace-nowrap shrink-0 hover:text-[#c4c4c4] after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-0.5 after:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] after:transition-[width] after:duration-300 after:rounded-[2px] ${activeFilters.has(cat) ? 'text-text-bright after:w-full' : 'after:w-0'}`}
                   onClick={() => toggleFilter(cat)}
                 >
                   {cat}
@@ -428,7 +428,7 @@ export function RaidCalculator() {
                   onClick={() => toggleExplosive(e.name)}
                 >
                   <Img src={e.img} alt={e.name} className="w-[50px] h-[50px] object-contain [filter:drop-shadow(0_4px_6px_rgba(0,0,0,0.4))_grayscale(40%)_opacity(0.7)] transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:[filter:drop-shadow(0_6px_8px_rgba(0,0,0,0.6))_grayscale(0%)_opacity(1)] group-hover/box:scale-[1.08] group-[.active]/box:[filter:drop-shadow(0_8px_16px_rgba(206,66,43,0.4))_grayscale(0%)_opacity(1)] group-[.active]/box:scale-[1.15]" />
-                  <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-white group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">{e.short}</span>
+                  <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">{e.short}</span>
                 </button>
                 )
               })}
@@ -436,13 +436,13 @@ export function RaidCalculator() {
           )}
 
           {isLoadingData ? (
-            <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-white/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
+            <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
               LOADING DATA...
             </div>
           ) : (
             !explosiveActive &&
             toolGroups.length === 0 && (
-              <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-white/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
+              <div className="w-full h-[150px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
                 {selectedStructure
                   ? 'NO TOOLS IN THE SELECTED CATEGORIES'
                   : 'SELECT A TARGET AND A RAIDING TOOL CATEGORY'}
@@ -528,7 +528,7 @@ export function RaidCalculator() {
                 <div>
                   <div className="sec-label">STRUCTURAL INTEGRITY</div>
                   <div className="flex gap-2.5 items-baseline mt-4 mb-2">
-                    <span className="text-[42px] font-extrabold text-white leading-none">
+                    <span className="text-[42px] font-extrabold text-text-bright leading-none">
                       {Math.round(result.dmgDone).toLocaleString()}
                     </span>
                     <span className="text-sm text-[#555] font-semibold tracking-[0.02em]">

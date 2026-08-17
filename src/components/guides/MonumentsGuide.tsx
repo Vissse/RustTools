@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { useState, useMemo, Suspense } from 'react'
 import { useQueryStates, parseAsString, parseAsStringLiteral } from 'nuqs'
 import { useTooltip } from '../useTooltip'
+import { useCardHoverHint } from './useCardHoverHint'
+import { CardHintOverlay } from './CardHintOverlay'
 import {
   monumentsData,
   getImagePath,
@@ -87,6 +89,11 @@ function MonumentsView({
   const [selectedCctvMonument, setSelectedCctvMonument] = useState<string | null>(null)
   const tooltip = useTooltip()
 
+  // A card's content only exists on hover, which does not exist on a phone. On a
+  // touch device tapping the card expands it instead of navigating, and the
+  // in-drawer "View Details" button becomes the single way to the detail page.
+  const [openId, setOpenId] = useState<string | null>(null)
+
   const filteredMonuments = useMemo(() => {
     return monumentsData.filter(m => {
       const matchSearch = m.name.toLowerCase().includes(search.toLowerCase())
@@ -94,6 +101,13 @@ function MonumentsView({
       return matchSearch && matchFilter
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [search, filter])
+
+  // Only the interactive pass — the Suspense fallback renders this same view
+  // read-only and is torn down on hydration, so a loop started there would be
+  // orphaned. Nothing to demonstrate on an already-narrowed or empty grid.
+  const { hintOn, hintOpen, isTouch, gridRef, stopHint } = useCardHoverHint(
+    !!onSearch && search === '' && filter === 'All' && filteredMonuments.length > 0,
+  )
 
   const renderItemIcon = (rawName: string, typeHint: 'utility' | 'vehicle' | 'bp' | 'computer' | 'repair' = 'utility') => {
     const name = rawName.replace(/\s*x\d+$/, '') // Strip trailing " x2", " x3", etc.
@@ -108,7 +122,7 @@ function MonumentsView({
       <div 
         key={name} 
         data-tip={getDisplayName(name)}
-        className="relative group flex items-center justify-center w-11 h-11 transition-all"
+        className="relative group flex items-center justify-center w-11 h-11 transition-all pointer-events-auto"
       >
         {imgPath ? (
           <Image src={imgPath} alt={name} width={40} height={40} className="object-contain drop-shadow-md" />
@@ -127,7 +141,7 @@ function MonumentsView({
       <div 
         key={idx} 
         data-tip={getDisplayName(card.name) + (card.logic ? ` (${card.logic})` : '')}
-        className="relative group flex items-center justify-center w-14 h-14 transition-all"
+        className="relative group flex items-center justify-center w-14 h-14 transition-all pointer-events-auto"
       >
         {imgPath && (
           <Image src={imgPath} alt={card.name} width={40} height={40} className="object-contain drop-shadow-md" />
@@ -194,7 +208,7 @@ function MonumentsView({
             onClick={() => onFilter?.(t)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
               filter === t
-                ? 'bg-rust text-white shadow-[0_0_15px_rgba(207,87,31,0.4)] border border-rust'
+                ? 'bg-rust text-text-bright shadow-[0_0_15px_rgba(207,87,31,0.4)] border border-rust'
                 : 'bg-surface text-text-dim hover:text-text-bright hover:bg-white/5 border border-white/5 shadow-sm'
             }`}
           >
@@ -207,16 +221,41 @@ function MonumentsView({
       </div>
 
       {/* Grid Layout */}
-      <div key={filter + search} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-        {filteredMonuments.map((m, idx) => (
-          <article 
-            key={m.id} 
-            className="group relative flex flex-col bg-surface border border-transparent rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.8)] hover:border-rust/40 hover:shadow-[0_12px_40px_rgba(207,87,31,0.25)] transition-all duration-500 animate-fade-in-up h-[480px]"
+      <div ref={gridRef} key={filter + search} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+        {filteredMonuments.map((m, idx) => {
+          const slug = m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-')
+          // Open without a real hover: the auto-demo on load, or a tap on touch.
+          // Every hover style below is mirrored on `data-open` so all three
+          // paths look identical and reuse the same transitions.
+          const isHinted = hintOn && idx === 0
+          const isOpen = (isHinted && hintOpen) || openId === m.id
+          return (
+          <article
+            key={m.id}
+            onPointerEnter={stopHint}
+            data-open={isOpen}
+            data-hint={isHinted}
+            className="group relative flex flex-col bg-surface border border-transparent rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.8)] hover:border-rust/40 data-[open=true]:border-rust/40 hover:shadow-[0_12px_40px_rgba(207,87,31,0.25)] data-[open=true]:shadow-[0_12px_40px_rgba(207,87,31,0.25)] transition-all duration-500 animate-fade-in-up h-[480px] data-[open=true]:h-auto data-[open=true]:min-h-[480px]"
             style={{ animationDelay: `${(idx % 15) * 50}ms`, animationFillMode: 'both' }}
           >
+            {/* Card-wide click target to the detail page. Kept as a sibling
+                overlay rather than a wrapper, because the card contains buttons
+                and a link and an <a> may not nest interactive content. On touch
+                it toggles the drawer instead — there is no hover to open it. */}
+            <Link
+              href={`/guides/monuments/${slug}`}
+              aria-label={`View ${m.name} details`}
+              onClick={(e) => {
+                if (!isTouch) return
+                e.preventDefault()
+                setOpenId(openId === m.id ? null : m.id)
+              }}
+              className="absolute inset-0 z-10"
+            />
+
             {/* Full Background Image */}
-            <div 
-              className="absolute inset-0 opacity-70 group-hover:opacity-40 transition-all duration-700 ease-out group-hover:scale-110 group-hover:blur-[6px] transform origin-center"
+            <div
+              className="absolute inset-0 opacity-70 group-hover:opacity-40 group-data-[open=true]:opacity-40 transition-all duration-700 ease-out group-hover:scale-110 group-data-[open=true]:scale-110 group-hover:blur-[6px] group-data-[open=true]:blur-[6px] group-data-[hint=true]:grayscale transform origin-center"
               style={{
                 backgroundImage: `url(/images/monuments/${m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '.')}.webp)`,
                 backgroundSize: 'cover',
@@ -224,15 +263,21 @@ function MonumentsView({
               }}
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
-            
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100 group-data-[open=true]:opacity-100" />
+
+            {/* Hover hint, first card only — a breathing outline to pull the
+                eye here, and a ghost cursor that acts out the hover so the
+                drawer's existence is impossible to miss. Both are inert to the
+                pointer and unmount permanently on the first real interaction. */}
+            {isHinted && <CardHintOverlay isTouch={isTouch} />}
+
             {/* Absolute Action Buttons */}
-            <div className="absolute top-4 right-4 z-30 flex flex-col gap-2 transition-all duration-500 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+            <div className="absolute top-4 right-4 z-30 flex flex-col gap-2 transition-all duration-500 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-y-0">
               
               {/* Map Button */}
               <button 
                 data-tip="Monument Map" 
-                className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 text-white/80 shadow-lg cursor-pointer group/map"
+                className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-text-bright transition-all duration-300 hover:scale-110 active:scale-95 text-text-bright/80 shadow-lg cursor-pointer group/map"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/map:scale-110 transition-transform duration-300">
                   <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
@@ -246,7 +291,7 @@ function MonumentsView({
                 <button 
                   onClick={() => setSelectedCctvMonument(m.name)}
                   data-tip="CCTV Cameras" 
-                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-white transition-all duration-300 hover:scale-110 active:scale-95 text-white/80 shadow-lg cursor-pointer group/cctv"
+                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-rust hover:border-rust hover:text-text-bright transition-all duration-300 hover:scale-110 active:scale-95 text-text-bright/80 shadow-lg cursor-pointer group/cctv"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/cctv:rotate-12 transition-transform duration-300">
                     <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97"></path>
@@ -259,22 +304,24 @@ function MonumentsView({
               )}
             </div>
 
-            {/* Content Container pushed to bottom */}
-            <div className="relative z-20 h-full flex flex-col justify-end p-6">
-              
+            {/* Content Container pushed to bottom. Transparent to the pointer so
+                the card-wide link underneath stays clickable; the few genuinely
+                interactive descendants opt back in with pointer-events-auto. */}
+            <div className="relative z-20 h-full flex flex-col justify-end p-6 pointer-events-none">
+
               {/* Permanent Header (Title) */}
-              <div className="shrink-0 mb-4 group-hover:translate-y-[-8px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
+              <div className="shrink-0 mb-4 group-hover:translate-y-[-8px] group-data-[open=true]:translate-y-[-8px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
                 <div className="flex items-center gap-2 mb-2 drop-shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-rust shadow-[0_0_8px_rgba(206,66,43,0.6)]"></span>
-                  <span className="text-[10px] font-medium tracking-widest text-white/90 uppercase">{m.tier}</span>
+                  <span className="text-[10px] font-medium tracking-widest text-text-bright/90 uppercase">{m.tier}</span>
                 </div>
-                <h2 className="text-3xl font-bold text-white font-display uppercase tracking-wide leading-tight drop-shadow-xl">
+                <h2 className="text-3xl font-bold text-text-bright font-display uppercase tracking-wide leading-tight drop-shadow-xl">
                   {m.name}
                 </h2>
               </div>
 
               {/* Expandable Drawer (Grid trick) */}
-              <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
+              <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-data-[open=true]:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
                 <div className="overflow-hidden">
                   
                   {/* Drawer Content */}
@@ -289,7 +336,7 @@ function MonumentsView({
                             m.cardsNeeded.map((c, i) => renderKeycard(c, i))
                           ) : (
                             <div className="flex items-center h-11" data-tip="Cardless">
-                              <span className="text-white/60 text-xs font-light italic">Cardless</span>
+                              <span className="text-text-bright/60 text-xs font-light italic">Cardless</span>
                             </div>
                           )}
                         </div>
@@ -311,7 +358,7 @@ function MonumentsView({
                       <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Facilities & Transport</h3>
                       <div className="flex flex-wrap gap-2">
                         {m.utilities.length === 0 && m.vehicles.length === 0 && (
-                          <span className="text-white/60 text-xs font-light italic">Barren</span>
+                          <span className="text-text-bright/60 text-xs font-light italic">Barren</span>
                         )}
                         {m.utilities.map((u) => renderItemIcon(u.name, 'utility'))}
                         {m.vehicles.map((v) => renderItemIcon(v.name, 'vehicle'))}
@@ -320,14 +367,14 @@ function MonumentsView({
 
                     {/* Footer / Actions */}
                     <div className="pt-3 grid grid-cols-2 gap-2">
-                      <Link 
-                        href={`/guides/monuments/${m.name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-')}`}
-                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rust text-white hover:bg-rust-hover cursor-pointer transition-all font-display tracking-wider uppercase text-xs shadow-[0_0_10px_var(--rust-glow)]"
+                      <Link
+                        href={`/guides/monuments/${slug}`}
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rust text-text-bright hover:bg-rust-hover cursor-pointer transition-all font-display tracking-wider uppercase text-xs shadow-[0_0_10px_var(--rust-glow)] pointer-events-auto"
                       >
                         <span>View Details</span>
                       </Link>
-                      <button 
-                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white/80 cursor-pointer transition-all font-display tracking-wider uppercase text-xs backdrop-blur-sm"
+                      <button
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 text-text-bright/50 border border-white/10 hover:bg-white/10 hover:text-text-bright/80 cursor-pointer transition-all font-display tracking-wider uppercase text-xs backdrop-blur-sm pointer-events-auto"
                         data-tip="Video guide coming soon"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
@@ -343,7 +390,8 @@ function MonumentsView({
 
             </div>
           </article>
-        ))}
+          )
+        })}
       </div>
 
       {filteredMonuments.length === 0 && (

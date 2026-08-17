@@ -28,14 +28,14 @@ export function RandomDropList({ randomTotals }: RandomDropListProps) {
             <div className="flex items-center gap-4 font-ui shrink-0">
               <div className="text-right">
                 <div className="flex items-center justify-end gap-1.5">
-                  <span className="text-[15px] font-bold text-white">~{Math.round(rt.avg * 10) / 10}</span>
+                  <span className="text-[15px] font-bold text-text-bright">~{Math.round(rt.avg * 10) / 10}</span>
                   <span className="text-[10px] text-rust uppercase tracking-wider font-bold">Avg</span>
                 </div>
                 <div className="text-[10px] text-text-dim mt-0.5 tracking-wide flex items-center justify-end gap-1">
                   <span>Range:</span>
-                  <span className="text-white/60 font-semibold">{rt.min}</span>
+                  <span className="text-text-bright/60 font-semibold">{rt.min}</span>
                   <span>-</span>
-                  <span className="text-white/60 font-semibold">{rt.max}</span>
+                  <span className="text-text-bright/60 font-semibold">{rt.max}</span>
                 </div>
               </div>
             </div>

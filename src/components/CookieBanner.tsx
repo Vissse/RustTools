@@ -57,12 +57,12 @@ export function CookieBanner() {
           </h3>
         </div>
         <p className="text-sm text-text-dim mb-6 leading-relaxed">
-          We use cookieless analytics to respect your privacy, but we still ask for your consent to track anonymous usage data to improve the site. Read our <Link href="/privacy" className="text-rust hover:text-white transition-colors hover:underline">Privacy Policy</Link>.
+          We use cookieless analytics to respect your privacy, but we still ask for your consent to track anonymous usage data to improve the site. Read our <Link href="/privacy" className="text-rust hover:text-text-bright transition-colors hover:underline">Privacy Policy</Link>.
         </p>
         <div className="flex items-center gap-3">
           <button 
             onClick={handleAccept}
-            className="flex-1 bg-rust hover:bg-rust-hover text-white font-bold py-2.5 px-4 rounded-lg transition-all hover:-translate-y-1 hover:shadow-[0_8px_16px_var(--rust-glow)] active:scale-95 text-sm font-display tracking-wider uppercase shadow-[0_0_10px_var(--rust-glow)] cursor-pointer"
+            className="flex-1 bg-rust hover:bg-rust-hover text-text-bright font-bold py-2.5 px-4 rounded-lg transition-all hover:-translate-y-1 hover:shadow-[0_8px_16px_var(--rust-glow)] active:scale-95 text-sm font-display tracking-wider uppercase shadow-[0_0_10px_var(--rust-glow)] cursor-pointer"
           >
             Accept
           </button>
