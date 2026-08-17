@@ -62,33 +62,61 @@ export type Monument = {
  * unfilterable. Verified complete as of 2026-08-16.
  */
 
+const IMAGE_MAP: Record<string, string> = {
+  "recycler": "/images/recycle/recycler.webp",
+  "bike": "/images/recycle/motorbike.webp",
+  "green keycard": "/images/recycle/green.keycard.webp",
+  "blue keycard": "/images/recycle/blue.keycard.webp",
+  "red keycard": "/images/recycle/red.keycard.webp",
+  "electric fuse": "/images/recycle/fuse.webp",
+  "switch": "/images/recycle/electric.andswitch.webp",
+  "military tunnel scientist": "/images/scientist.png",
+  "elite crate": "/images/crate_elite.png",
+  "military crate": "/images/crate_normal.png",
+  "normal crate": "/images/crate_normal_2.png",
+  "basic crate": "/images/crate_basic.png",
+  "loot barrel": "/images/loot_barrel_1.png",
+  "stone node": "/images/stone.ore.png",
+  "roadsign": "/images/roadsigns.png",
+  "research table": "/images/recycle/research.table.webp",
+  "repair bench": "/images/recycle/box.repair.bench.webp",
+  "oil refinery": "/images/small.oil.refinery.png",
+  "diesel barrel": "/images/diesel_barrel.png",
+  "diesel fuel": "/images/diesel_barrel.png",
+  "blueprint fragments": "/images/recycle/basicblueprintfragment.webp",
+  "advanced blueprint fragments": "/images/recycle/advancedblueprintfragment.webp",
+  "advanced blueprint fragment": "/images/recycle/advancedblueprintfragment.webp",
+  "bradley apc": "/images/bradley.apc.png",
+  "hobo barrel": "/images/recycle/hobobarrel.webp",
+  "toilet": "/images/recycle/toilet.webp",
+  "elevator": "/images/recycle/elevator.webp",
+  "timer": "/images/recycle/electric.timer.webp",
+  "pump jack": "/images/recycle/mining.pumpjack.webp",
+  "mlrs": "/images/recycle/mlrs.webp",
+  "snowmobile": "/images/recycle/snowmobile.webp",
+  "mining quarry": "/images/recycle/mining.quarry.webp",
+  "vending machine": "/images/recycle/vending.machine.webp",
+  "modular car lift": "/images/recycle/modularcarlift.webp",
+  "workbench level 1": "/images/recycle/workbench1.webp",
+  "workbench level 2": "/images/recycle/workbench2.webp",
+  "workbench level 3": "/images/recycle/workbench3.webp",
+  "attack helicopter": "/images/attack.helicopter.png",
+  "scrap transport helicopter": "/images/recycle/scrap.transport.helicopter.webp",
+  "minicopter": "/images/minicopter.png",
+  "hot air balloon": "/images/hot.air.balloon.png",
+  "barbecue": "/images/bbq.png",
+  "motor rowboat": "/images/rowboat.png",
+  "rhib": "/images/recycle/rhib.webp",
+  "patrol boat": "/images/rhib.png",
+  "solo submarine": "/images/recycle/solo-submarine.webp",
+  "duo submarine": "/images/recycle/submarine.duo.webp",
+  "ridable horse": "/images/horse.png",
+  "computer station": "/images/recycle/computerstation.webp"
+};
+
 export const getImagePath = (name: string): string | null => {
-  const cleanName = name.replace(/\s*x\d+$/, '')
-  const map: Record<string, string> = {
-    'green keycard': '/images/recycle/green.keycard.webp',
-    'blue keycard': '/images/recycle/blue.keycard.webp',
-    'red keycard': '/images/recycle/red.keycard.webp',
-    'recycler': '/images/recycle/recycler.webp',
-    'oil refinery': '/images/recycle/small.oil.refinery.webp',
-    'research table': '/images/recycle/research.table.webp',
-    'hobo barrel': '/images/recycle/hobobarrel.webp',
-    'toilet': '/images/recycle/toilet.webp',
-    'repair bench': '/images/recycle/repairbench.webp',
-    'elevator': '/images/recycle/elevator.webp',
-    'electric fuse': '/images/recycle/fuse.webp',
-    'switch': '/images/recycle/electric.switch.webp',
-    'timer': '/images/recycle/electric.timer.webp',
-    'elite crate': 'https://rustlabs.com/img/items180/crate_elite.png',
-    'military crate': 'https://rustlabs.com/img/items180/crate_normal.png',
-    'normal crate': 'https://rustlabs.com/img/items180/crate_normal_2.png',
-    'basic crate': 'https://rustlabs.com/img/items180/crate_basic.png',
-    'loot barrel': 'https://rustlabs.com/img/items180/loot_barrel_1.png',
-    'diesel fuel': '/images/recycle/diesel_barrel.webp',
-    'advanced blueprint fragment': '/images/recycle/advanced.blueprint.fragment.webp',
-    'stone node': 'https://rustlabs.com/img/items180/stone.ore.png',
-    'roadsign': 'https://rustlabs.com/img/items180/roadsigns.png'
-  }
-  return map[cleanName.toLowerCase()] || null
+  const cleanName = name.replace(/\s*x\d+$/, '').toLowerCase();
+  return IMAGE_MAP[cleanName] || null;
 }
 
 export const getDisplayName = (name: string): string => {

@@ -139,7 +139,8 @@ const slug = (name) =>
 // Load every structure's rows up front.
 const rowsByStructure = new Map();
 for (const name of Object.keys(STRUCTURES)) {
-  const mod = await import(join(DATA_DIR, slug(name)));
+  const { pathToFileURL } = await import('node:url');
+  const mod = await import(pathToFileURL(join(DATA_DIR, slug(name))).href);
   const exported = Object.values(mod).find(Array.isArray);
   if (!exported || exported.length === 0) {
     fail(`${name}: ${slug(name)} exports no non-empty RaidItem[]`);
