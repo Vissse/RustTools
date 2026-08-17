@@ -38,6 +38,7 @@ src/
     Img.tsx              next/image wrapper; dims to 0.3 opacity on load failure
     recycling/RecycleImg small WebP variant of Img for item icons
     guides/GuideComponents.tsx   Reveal / Step / Tip / ReqCard — reuse these in guides
+    guides/useCardHoverHint.ts   + CardHintOverlay.tsx — the guide-card hover hint (§5)
     useTooltip.ts        delegated hover tooltips
   lib/
     seo.ts               SITE_URL, seoMetadata(), ROUTES, all JSON-LD builders
@@ -122,6 +123,35 @@ in CSS on purpose: `.sec-label`, `.filter-row`/`.filter-pure-text`/
 Fonts are self-hosted variable Teko + Inter, preloaded in
 [app/layout.tsx](app/layout.tsx) with `font-display: block` to avoid a FOUT
 reflow. Don't add a webfont or a CDN font link.
+
+### Guide cards: mirror every hover state on `data-open`
+
+The monuments/skinning/salvaging grids are `<article className="group">` cards
+whose real content lives in a `grid-rows-[0fr] → group-hover:grid-rows-[1fr]`
+drawer. Two consequences bind any change to these cards:
+
+- **`hover:` is desktop-only.** Tailwind v4 wraps the variant in
+  `@media (hover: hover)`, so a card that only reveals on hover reveals nothing
+  on a phone. Monuments handles this with tap-to-expand; if you add a card grid,
+  handle it too.
+- **Every `group-hover:` class needs a `group-data-[open=true]:` twin.** The
+  drawer is opened by three separate paths — a real hover, a tap on touch, and
+  the hover hint below — and the last two drive `data-open` on the `<article>`.
+  Add a hover style without its twin and the card animates inconsistently
+  depending on how it was opened.
+
+`useCardHoverHint()` + `<CardHintOverlay>` are the shared hint: the first card
+in a grid loops a self-demo (pulsing rust outline, dimming wash, ghost cursor
+gliding in from the top-left) so users discover the drawer exists. Wire it as
+`gridRef` on the grid, `stopHint` on **every** card's `onPointerEnter`, `hintOn`
+to render the overlay on card 0, `hintOpen` into that card's `data-open`. It
+stops permanently on the first card hover — deliberately *not* on window
+`pointermove`, which fired on any stray movement and meant it was never seen.
+
+Its keyframes (`monumentHintCursor`, `monumentHintRing`) are in global.css and
+share a 4s cycle with the JS timings in the hook — the drawer opens as the
+cursor lands (25% / 1000ms) and closes as it leaves (70% / 2800ms). **Change one
+duration and you must change the other**, or the cursor and card fall out of sync.
 
 ## 6. Data: sources of truth
 
@@ -266,6 +296,13 @@ publishes 404s to the sitemap and to structured data (see §12).
   that's still intended before changing it.
 - Three near-identical accent reds (`#ce422b`, `#cc422c`, `#cd412b`) and
   hardcoded greys are scattered through components instead of tokens.
+- **`bg-surface` and `bg-rust-hover` are not theme tokens** — there is no
+  `--color-surface` or `--color-rust-hover` in `@theme`, so every
+  `bg-surface`/`from-surface`/`via-surface` on the guide cards and the
+  `hover:bg-rust-hover` on their buttons silently resolve to nothing. The real
+  token is `panel`. Used in all three guide-card grids.
+- The monument card's Map button (MonumentsGuide.tsx) renders but has no
+  `onClick` — dead UI.
 
 ## 13. Scope and communication
 
