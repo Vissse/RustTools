@@ -4,6 +4,11 @@ export type { Monument, MonumentCard, MonumentIcon } from '../../types';
 
 
 const IMAGE_MAP: Record<string, string> = {
+  'diesel fuel (collectable)': '/images/items/diesel-collectable.webp',
+  'chair': '/images/recycle/chair.webp',
+  'junkyard shredder': '/images/items/junkyard.shredder.webp',
+  'shreddable pickuptruck': '/images/items/shreddable.pickuptruck.webp',
+  'crate basic jungle': '/images/items/basic.jungle.crate.webp',
   "advanced blueprint fragment": "/images/recycle/advancedblueprintfragment.webp",
   "advanced blueprint fragments": "/images/recycle/advancedblueprintfragment.webp",
   "airfield scientist": "/images/thumbnails/airfield-scientist.webp",

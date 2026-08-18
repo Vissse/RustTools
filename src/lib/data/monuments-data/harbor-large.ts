@@ -3,74 +3,46 @@ import type { Monument } from '../../types';
 export const HarborLargeMonument: Monument = {
   "id": "27",
   "name": "Harbor Large",
+  "subtitle": "Oceanside",
+  "tier": "T1/T2",
+  "cardsNeeded": [],
+  "cardsFound": [],
   "puzzle": {
     "bring": [
-      {
-        "name": "Green keycard",
-        "count": 1
-      },
-      {
-        "name": "Electric Fuse",
-        "count": 1
-      }
+      { "name": "Electric Fuse", "count": 1 },
+      { "name": "Green Keycard", "count": 1 }
     ],
     "activate": [
-      {
-        "name": "Switch",
-        "count": 1
-      }
+      { "name": "Switch", "count": 1 }
     ],
     "rewards": [
-      {
-        "name": "Military Tunnel Scientist",
-        "count": 11
-      },
-      {
-        "name": "Elite Crate",
-        "count": 3
-      }
+      { "name": "Blue Keycard", "count": 1 },
+      { "name": "Basic Blueprint Fragment", "count": 1 },
+      { "name": "Normal Crate", "count": 2 }
     ],
     "resetTime": "~30m"
   },
-  "subtitle": null,
-  "tier": "T1",
-  "cardsNeeded": [
-    {
-      "type": "green",
-      "name": "green keycard",
-      "logic": ""
-    }
-  ],
-  "cardsFound": [
-    {
-      "type": "blue",
-      "name": "blue keycard",
-      "logic": ""
-    }
+  "collectibles": [
+    { "name": "Blue Keycard", "count": 1, "respawn": "Never / Puzzle" },
+    { "name": "Basic Blueprint Fragment", "count": 1, "respawn": "Never / Puzzle" }
   ],
   "utilities": [
-    {
-      "name": "Recycler",
-      "count": 1
-    },
-    {
-      "name": "Oil Refinery",
-      "count": 1
-    }
+    { "name": "Light Switch", "count": 4 },
+    { "name": "Zipline Target Point", "count": 3 },
+    { "name": "Sofa", "count": 2 },
+    { "name": "Telephone", "count": 1 },
+    { "name": "Hobo Barrel", "count": 1 },
+    { "name": "Small Oil Refinery", "count": 1 },
+    { "name": "Elevator", "count": 1 },
+    { "name": "Green Recycler", "count": 1 }
   ],
   "vehicles": [],
   "cctv": "",
-  "bpFrags": [
-    {
-      "name": "Blueprint fragments",
-      "count": 1
-    }
-  ],
+  "bpFrags": [],
   "advBp": [],
-  "guide": "https://youtu.be/iMYODoGRNss?si=OVO9bh6Y473Wadmv",
   "features": {
     "isSafezone": false,
-    "hasTunnelEntrance": false,
+    "hasTunnelEntrance": true,
     "hasChinookDropZone": false,
     "allowsPatrolHeliCrash": true,
     "scientists": 0,
@@ -84,5 +56,46 @@ export const HarborLargeMonument: Monument = {
     "regularCrates": 0,
     "basicCrates": 0,
     "barrels": 0
-  }
+  },
+  "spawns": [
+    {
+      "name": "loot barrel",
+      "count": 35,
+      "respawn": "30-36m",
+      "variants": [
+        { "name": "yellow loot barrel", "chance": "50%" },
+        { "name": "blue loot barrel", "chance": "50%" }
+      ]
+    },
+    {
+      "name": "military crate",
+      "count": 11,
+      "respawn": "30-36m",
+      "onlyInTier": "2",
+      "variants": [
+        { "name": "military crate", "chance": "50%" },
+        { "name": "normal crate", "chance": "50%" }
+      ]
+    },
+    {
+      "name": "oil barrel",
+      "count": 10,
+      "respawn": "30-36m"
+    },
+    {
+      "name": "normal crate",
+      "count": 9,
+      "respawn": "30-36m",
+      "onlyInTier": "1",
+      "variants": [
+        { "name": "normal crate", "chance": "90%" },
+        { "name": "military crate", "chance": "10%" }
+      ]
+    },
+    {
+      "name": "normal crate",
+      "count": 2,
+      "respawn": "Never / Puzzle"
+    }
+  ]
 };
