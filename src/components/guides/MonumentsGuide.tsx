@@ -12,10 +12,10 @@ import {
   monumentsData,
   getImagePath,
   getDisplayName,
-  type MonumentCard,
   TIER_FILTERS,
   type TierFilter
-} from '@/lib/monumentsData'
+} from '@/lib/data/monuments-data'
+import type { MonumentCard } from '@/lib/types'
 
 
 // Fallback generic icons for items missing PNGs
@@ -313,7 +313,7 @@ function MonumentsView({
               <div className="shrink-0 mb-4 group-hover:translate-y-[-8px] group-data-[open=true]:translate-y-[-8px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
                 <div className="flex items-center gap-2 mb-2 drop-shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-rust shadow-[0_0_8px_rgba(206,66,43,0.6)]"></span>
-                  <span className="text-[10px] font-medium tracking-widest text-text-bright/90 uppercase">{m.tier}</span>
+                  <span className="text-[10px] font-medium tracking-widest text-text-bright/90 uppercase">{m.tier.split('/').map((t: string) => t.match(/^\d+$/) ? `T${t}` : t).join('/')}</span>
                 </div>
                 <h2 className="text-3xl font-bold text-text-bright font-display uppercase tracking-wide leading-tight drop-shadow-xl">
                   {m.name}
@@ -333,7 +333,7 @@ function MonumentsView({
                         <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Access Required</h3>
                         <div className="flex flex-wrap gap-2 items-center">
                           {m.cardsNeeded.length > 0 ? (
-                            m.cardsNeeded.map((c, i) => renderKeycard(c, i))
+                            m.cardsNeeded.map((c: any, i: number) => renderKeycard(c, i))
                           ) : (
                             <div className="flex items-center h-11" data-tip="Cardless">
                               <span className="text-text-bright/60 text-xs font-light italic">Cardless</span>
@@ -346,8 +346,8 @@ function MonumentsView({
                         <div className="text-right">
                           <h3 className="text-gray-300 text-[10px] font-display uppercase tracking-widest mb-3">Blueprints</h3>
                           <div className="flex flex-wrap gap-2 justify-end items-center">
-                            {m.bpFrags.map((b) => renderItemIcon(b.name, 'bp'))}
-                            {m.advBp.map((b) => renderItemIcon(b.name, 'bp'))}
+                            {m.bpFrags.map((b: any) => renderItemIcon(b.name, 'bp'))}
+                            {m.advBp.map((b: any) => renderItemIcon(b.name, 'bp'))}
                           </div>
                         </div>
                       )}
@@ -360,8 +360,8 @@ function MonumentsView({
                         {m.utilities.length === 0 && m.vehicles.length === 0 && (
                           <span className="text-text-bright/60 text-xs font-light italic">Barren</span>
                         )}
-                        {m.utilities.map((u) => renderItemIcon(u.name, 'utility'))}
-                        {m.vehicles.map((v) => renderItemIcon(v.name, 'vehicle'))}
+                        {m.utilities.filter((u: any) => !m.variants || !u.onlyInVariant || u.onlyInVariant === m.variants[0]).map((u: any) => renderItemIcon(u.name, 'utility'))}
+                        {m.vehicles.map((v: any) => renderItemIcon(v.name, 'vehicle'))}
                       </div>
                     </div>
 

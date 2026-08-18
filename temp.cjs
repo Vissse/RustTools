@@ -146,7 +146,9 @@ const IMAGE_MAP: Record<string, string> = {
   "sulfur node": "/images/items/sulfur.node.webp",
   "supermarket freezer": "/images/items/supermarket.freezer.webp",
   "supply drop": "/images/items/supply.drop.webp",
-  "sofa": "/images/thumbnails/sofa.webp",
+  "sofa": "/images/items/sofa.webp",
+  "poker table": "/images/items/poker.table.webp",
+  "metal shop front": "/images/items/metal.shop.front.webp",
   "telephone": "/images/thumbnails/telephone.webp",
   "basic blueprint fragment": "/images/recycle/basicblueprintfragment.webp",
   "underwater lab - normal crate 1": "/images/thumbnails/radtown-underwater-labs-crate-normal.webp",
@@ -176,12 +178,12 @@ const IMAGE_MAP: Record<string, string> = {
   "portable boom box": "/images/recycle/fun.boomboxportable.webp"
 };
 
-export const getImagePath = (name: string): string | null => {
+const getImagePath = (name) => {
   const cleanName = name.replace(/\s*x\d+$/, '').replace(/\s*\(.*\)$/, '').toLowerCase();
   return IMAGE_MAP[cleanName] || null;
 }
 
-export const getDisplayName = (name: string): string => {
+const getDisplayName = (name) => {
   const cleanName = name.replace(/\s*x\d+$/, '')
   return cleanName.toLowerCase() === 'green keycard' ? 'Green Keycard' :
          cleanName.toLowerCase() === 'blue keycard' ? 'Blue Keycard' :
@@ -189,21 +191,11 @@ export const getDisplayName = (name: string): string => {
          cleanName
 }
 
-export const TIER_FILTERS = [
-  'All',
-  'T1',
-  'T2',
-  'T3',
-  'Safe Zone',
-  'Resources',
-  'Vendor',
-  'Deep Sea',
-  'Ocean',
-] as const;
+const TIER_FILTERS = []
 
 export type TierFilter = (typeof TIER_FILTERS)[number];
 
-export const monumentsData: Monument[] = [
+exports.monumentsData =  [
   {
     "id": "01",
     "name": "Abandoned Supermarket",

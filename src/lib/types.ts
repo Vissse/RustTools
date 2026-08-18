@@ -146,3 +146,70 @@ export interface SalvagingData {
   time: string;
   conditionLoss: string;
 }
+export type MonumentCard = { type: string; name: string; logic: string; };
+export type MonumentIcon = { name: string; count: number; };
+export type Monument = {
+    id: string;
+    name: string;
+    subtitle: string | null;
+    tier: string;
+    cardsNeeded: MonumentCard[];
+    cardsFound: MonumentCard[];
+    variants?: string[];
+    utilities: (MonumentIcon & { onlyInVariant?: string })[];
+    vehicles: { name: string; count: number; respawn?: string; }[];
+    cctv: string;
+    bpFrags: MonumentIcon[];
+    advBp: MonumentIcon[];
+    guide?: string;
+    description?: string;
+    strategy?: string;
+    features?: {
+      isSafezone?: boolean;
+      hasTunnelEntrance?: boolean;
+      hasChinookDropZone?: boolean;
+      allowsPatrolHeliCrash?: boolean;
+      scientists?: number;
+      radiation?: {
+        median?: number;
+        max?: number;
+      };
+    };
+    lootDetails?: {
+      eliteCrates?: number;
+      militaryCrates?: number;
+      regularCrates?: number;
+      basicCrates?: number;
+      barrels?: number;
+    };
+    collectibles?: {
+      name: string;
+      count: number;
+      respawn?: string;
+    }[];
+    scientists?: {
+      name: string;
+      count: number;
+      respawn?: string;
+    }[];
+    puzzle?: {
+      bring?: { name: string; count: number; text?: string; }[];
+      activate?: { name: string; count: number; text?: string; }[];
+      rewards?: { name: string; count: number; text?: string; }[];
+      resetTime?: string;
+    };
+    mining?: {
+      input: { name: string; count: number; };
+      time: string;
+      outputs: { name: string; count: number; chance?: string; }[];
+    }[];
+    spawns?: {
+      name: string;
+      count?: number;
+      respawn?: string;
+      text?: string;
+      onlyInTier?: string;
+      onlyInVariant?: string;
+      variants?: { name: string; chance: string; }[];
+    }[];
+};

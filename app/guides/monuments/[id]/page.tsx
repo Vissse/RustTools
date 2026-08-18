@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { monumentsData, getImagePath, getDisplayName } from '@/lib/monumentsData'
+import { monumentsData, getImagePath, getDisplayName } from '@/lib/data/monuments-data'
+import { MonumentSpawns } from '@/components/guides/MonumentSpawns'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -76,7 +77,7 @@ export default async function MonumentPage(props: Props) {
                   </span>
                 )}
                 <span className="px-2.5 py-1 rounded bg-rust/20 border border-rust text-rust text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(207,87,31,0.5)]">
-                  {monument.tier}
+                  {monument.tier.split('/').map((t) => t.match(/^\d+$/) ? `T${t}` : t).join('/')}
                 </span>
                 {monument.cardsNeeded.length === 0 && (!monument.puzzle?.bring || !monument.puzzle.bring.some(item => item.name.toLowerCase().includes('keycard'))) && (
                   <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest">
@@ -177,9 +178,6 @@ export default async function MonumentPage(props: Props) {
                         return (
                           <div key={`bring-${idx}`} className="relative" title={item.name}>
                             {imgPath && <img src={imgPath} alt={item.name} className="w-10 h-10 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]" />}
-                            {item.count > 1 && (
-                              <span className="absolute -bottom-1 -right-1 text-white font-bold text-[10px] bg-black/80 px-1 rounded">×{item.count}</span>
-                            )}
                           </div>
                         )
                       })
@@ -270,212 +268,9 @@ export default async function MonumentPage(props: Props) {
               <span className="w-1 h-6 bg-rust rounded-full"></span>
               Loot Potential
             </h2>
-            {(() => {
-              const renderItemCard = (item: any, key: React.Key) => {
-                const imgPath = getImagePath(item.icon) || '';
-                const displayName = item.label || getDisplayName(item.icon);
-                
-                return (
-                  <div key={key} className="group relative flex flex-col bg-panel border border-white/5 rounded-2xl overflow-hidden shadow-xl hover:border-rust/40 hover:shadow-[0_8px_30px_rgba(207,87,31,0.25)] transition-all duration-500 aspect-square shrink-0 flex-1 min-w-[140px] max-w-[220px]">
-                    
-                    {/* Image Container */}
-                    <div className="absolute inset-0 flex items-center justify-center p-4 pb-12 transition-all duration-500 group-hover:scale-110 group-hover:blur-[2px] group-hover:opacity-30">
-                      {imgPath ? (
-                        <img src={imgPath} alt={displayName} className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]" />
-                      ) : (
-                        <span className="text-white/20 text-4xl">?</span>
-                      )}
-                    </div>
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Text Container */}
-                    <div className="relative z-20 h-full flex flex-col justify-end p-4 text-center">
-                      <div className="shrink-0 group-hover:translate-y-[-4px] transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
-                        <span className="text-2xl font-bold text-white drop-shadow-md font-display tracking-wider">
-                          {item.chance ? item.chance : `×${item.count || 1}`}
-                        </span>
-                      </div>
-                      
-                      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.2,1,0.2,1)]">
-                        <div className="overflow-hidden">
-                          <div className="pt-2 border-t border-rust/30 mt-2 flex flex-col">
-                            <span className="text-xs font-display uppercase tracking-widest text-rust leading-tight block mb-1">{displayName}</span>
-                            {item.respawn && (
-                              <span className="text-[10px] text-white/70 font-sans leading-tight"><strong className="text-white/40 uppercase tracking-widest text-[9px] mr-1">Respawn:</strong> {item.respawn}</span>
-                            )}
-                            {item.text && (
-                              <span className="text-[10px] text-white/70 font-sans leading-tight mt-0.5">{item.text}</span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              };
-
-              const renderCardGroup = (items: any[]) => {
-                if (items.length === 0) return null;
-                
-                const guaranteed = items.filter(c => !c.variants || c.variants.length === 0);
-                const randomized = items.filter(c => c.variants && c.variants.length > 0);
-
-                return (
-                  <div className="flex flex-wrap items-end gap-x-10 gap-y-8 w-full">
-                    {guaranteed.map((c, i) => renderItemCard(c, `g-${i}`))}
-                    
-                    {randomized.map((group, groupIdx) => {
-                      const groupCards = group.variants!.map((v: any) => ({
-                        ...group,
-                        label: getDisplayName(v.name),
-                        icon: v.name,
-                        chance: v.chance,
-                        variants: undefined
-                      }));
-
-                      return (
-                        <div key={`random-group-${groupIdx}`} className="relative flex flex-wrap gap-6 pt-10 w-full xl:w-auto mt-2 xl:mt-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-rust/5 before:to-transparent before:opacity-0 before:pointer-events-none before:rounded-2xl">
-                          <div className="absolute top-1 left-1 right-2 flex items-center gap-3">
-                            <span className="text-xs font-display uppercase tracking-[0.2em] text-rust drop-shadow-md flex items-center">
-                              RANDOMIZED
-                              <span className="ml-2.5 px-1.5 py-0.5 rounded border border-rust/20 bg-rust/10 text-white font-sans font-bold text-[10px] tracking-widest drop-shadow-sm">×{group.count} SPAWNS</span>
-                            </span>
-                            <div className="h-px bg-gradient-to-r from-rust/50 to-transparent flex-1 opacity-70" />
-                          </div>
-                          
-                          {groupCards.map((crate: any, idx: number) => renderItemCard(crate, `rg-${groupIdx}-c-${idx}`))}
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              };
-
-              const legacyCrates = monument.lootDetails ? [
-                { key: "eliteCrates", label: "Elite Crate", icon: "elite crate" },
-                { key: "militaryCrates", label: "Military Crate", icon: "military crate" },
-                { key: "regularCrates", label: "Normal Crate", icon: "normal crate" },
-                { key: "basicCrates", label: "Basic Crate", icon: "basic crate" },
-                { key: "barrels", label: "Loot Barrel", icon: "loot barrel" },
-              ].map(({ key, label, icon }) => {
-                const count = monument.lootDetails![key as keyof typeof monument.lootDetails];
-                return count ? { label, count, icon, respawn: undefined, text: undefined, variants: undefined } : null;
-              }).filter((c): c is NonNullable<typeof c> => c !== null) : [];
-
-              const spawnCrates = (monument.spawns || [])
-                .filter(s => s.name.toLowerCase().includes("crate") || s.name.toLowerCase().includes("barrel"))
-                .map(s => ({
-                  label: getDisplayName(s.name),
-                  count: s.count || 1,
-                  icon: s.name,
-                  respawn: s.respawn,
-                  text: s.text,
-                  variants: s.variants
-                }));
-
-              const allCrates = [...legacyCrates, ...spawnCrates];
-              const utilities = (monument.utilities || []).map(u => ({
-                label: getDisplayName(u.name),
-                count: u.count || 1,
-                icon: u.name,
-                variants: undefined
-              }));
-              const collectables = (monument.collectibles || []).map(c => ({
-                label: getDisplayName(c.name),
-                count: c.count || 1,
-                icon: c.name,
-                respawn: c.respawn,
-                variants: undefined
-              }));
-
-              const vehicles = (monument.vehicles || []).map(v => ({
-                label: getDisplayName(v.name),
-                count: v.count || 1,
-                icon: v.name,
-                respawn: v.respawn,
-                variants: undefined
-              }));
-
-              const scientists = (monument.scientists || []).map(s => ({
-                label: getDisplayName(s.name),
-                count: s.count || 1,
-                icon: s.name,
-                respawn: s.respawn,
-                variants: undefined
-              }));
-
-              const otherSpawns = (monument.spawns || [])
-                .filter(s => !s.name.toLowerCase().includes("crate") && !s.name.toLowerCase().includes("barrel"))
-                .map(s => ({
-                  label: getDisplayName(s.name),
-                  count: s.count || 1,
-                  icon: s.name,
-                  respawn: s.respawn,
-                  text: s.text,
-                  variants: s.variants
-                }));
-
-              return (
-                <div className="flex flex-col gap-12 w-full">
-                  {allCrates.length > 0 ? renderCardGroup(allCrates) : (
-                    <p className="text-text-dim italic">Specific crate counts are currently being verified for this monument.</p>
-                  )}
-                  
-                  {utilities.length > 0 && (
-                    <section>
-                      <h2 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-3">
-                        <span className="w-1 h-6 bg-rust rounded-full"></span>
-                        Usable Entities
-                      </h2>
-                      {renderCardGroup(utilities)}
-                    </section>
-                  )}
-
-                  {scientists.length > 0 && (
-                    <section>
-                      <h2 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-3">
-                        <span className="w-1 h-6 bg-rust rounded-full"></span>
-                        Scientist
-                      </h2>
-                      {renderCardGroup(scientists)}
-                    </section>
-                  )}
-
-                  {collectables.length > 0 && (
-                    <section>
-                      <h2 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-3">
-                        <span className="w-1 h-6 bg-rust rounded-full"></span>
-                        Collectable
-                      </h2>
-                      {renderCardGroup(collectables)}
-                    </section>
-                  )}
-
-                  {vehicles.length > 0 && (
-                    <section>
-                      <h2 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-3">
-                        <span className="w-1 h-6 bg-rust rounded-full"></span>
-                        Vehicle
-                      </h2>
-                      {renderCardGroup(vehicles)}
-                    </section>
-                  )}
-
-                  {otherSpawns.length > 0 && (
-                    <section>
-                      <h2 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-3">
-                        <span className="w-1 h-6 bg-rust rounded-full"></span>
-                        Spawn
-                      </h2>
-                      {renderCardGroup(otherSpawns)}
-                    </section>
-                  )}
-                </div>
-              );
-            })()}
+            <MonumentSpawns monument={monument} />
           </section>
+
 
           {/* Map Placeholder */}
           <section className="bg-panel border border-white/5 p-8 rounded-2xl shadow-xl">
