@@ -110,6 +110,8 @@ export const ROUTES: {
   { path: "/giant-excavator", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides", priority: 0.8, changeFrequency: "weekly" },
   { path: "/guides/farming", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/world", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/world/monuments", priority: 0.8, changeFrequency: "monthly" },
 ];
 
 /** schema.org structured data describing the site, rendered in the root layout. */

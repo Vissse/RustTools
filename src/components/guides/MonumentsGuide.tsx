@@ -163,11 +163,11 @@ function MonumentsView({
           Home
         </Link>
         <span>/</span>
-        <Link href="/guides" className="hover:text-text-bright transition-colors">
-          Guides
+        <Link href="/world" className="hover:text-text-bright transition-colors">
+          World
         </Link>
         <span>/</span>
-        <span className="text-rust font-medium">Monument Puzzles</span>
+        <span className="text-rust font-medium">Monuments</span>
       </div>
 
       {/* Hero Section */}
@@ -175,10 +175,10 @@ function MonumentsView({
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-text-bright leading-none font-display uppercase">
-              The Ultimate <span className="text-rust">Monuments</span> Guide
+              ALL <span className="text-rust">MONUMENTS</span>
             </h1>
             <p className="text-2xl text-rust font-light tracking-wide max-w-3xl leading-relaxed font-display uppercase">
-              Explore loot, access routes, and facilities
+              Explore loot, keycards, puzzles, and facilities
             </p>
           </div>
           
@@ -243,7 +243,7 @@ function MonumentsView({
                 and a link and an <a> may not nest interactive content. On touch
                 it toggles the drawer instead — there is no hover to open it. */}
             <Link
-              href={`/guides/monuments/${slug}`}
+              href={`/world/monuments/${slug}`}
               aria-label={`View ${m.name} details`}
               onClick={(e) => {
                 if (!isTouch) return
@@ -368,7 +368,7 @@ function MonumentsView({
                     {/* Footer / Actions */}
                     <div className="pt-3 grid grid-cols-2 gap-2">
                       <Link
-                        href={`/guides/monuments/${slug}`}
+                        href={`/world/monuments/${slug}`}
                         className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rust text-text-bright hover:bg-rust-hover cursor-pointer transition-all font-display tracking-wider uppercase text-xs shadow-[0_0_10px_var(--rust-glow)] pointer-events-auto"
                       >
                         <span>View Details</span>
@@ -413,7 +413,7 @@ function MonumentsView({
  * Search + tier filter in the URL (`?q=oil&tier=T3`) so a filtered view is
  * shareable. `history: 'replace'` keeps typing out of the back-button stack, and
  * `clearOnDefault` drops params at their default so an untouched page stays on a
- * clean `/guides/monuments`.
+ * clean `/world/monuments`.
  */
 function MonumentsWithUrlState() {
   const [{ q, tier }, setView] = useQueryStates(

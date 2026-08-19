@@ -26,6 +26,9 @@ const GUIDE_ITEMS = [
   { href: "/guides/missions", label: "Missions Guide" },
   { href: "/guides/binds", label: "Console Binds" },
 ];
+const WORLD_ITEMS = [
+  { href: "/world/monuments", label: "Monuments" },
+];
 
 const DropArrow = () => (
   <svg
@@ -177,7 +180,16 @@ export function Navbar() {
 
         <span className="w-px h-6 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.15),transparent)] self-center mx-1 max-[1200px]:hidden" />
 
-        <SoonItem label="World" />
+        <NavDropdown
+          href="/world"
+          label="World"
+          section="world"
+          items={WORLD_ITEMS}
+          expanded={openSection === "world"}
+          isActive={isActive}
+          onTitleClick={handleSectionClick}
+          onItemClick={close}
+        />
 
         <span className="w-px h-6 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.15),transparent)] self-center mx-1 max-[1200px]:hidden" />
 
