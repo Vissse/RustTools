@@ -27,14 +27,6 @@ const GUIDES = [
     status: 'published',
   },
   {
-    id: 'monuments',
-    title: 'Monument Puzzles',
-    description:
-      'Step-by-step walkthroughs for every keycard puzzle and monument puzzle in the game.',
-    path: '/guides/monuments',
-    status: 'published',
-  },
-  {
     id: 'skinning',
     title: 'Skinning Guide',
     description:

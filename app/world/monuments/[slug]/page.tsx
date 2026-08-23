@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { monumentsData, getImagePath, getDisplayName } from '@/lib/data/monuments-data'
+import { getImagePath, getDisplayName } from '@/lib/data/monuments-data'
 import { MonumentSpawns } from '@/components/guides/MonumentSpawns'
 import { seoMetadata, breadcrumbJsonLd } from '@/lib/seo'
 import { JsonLd } from '@/components/JsonLd'

@@ -20,7 +20,6 @@ const CALC_ITEMS = [
 const GUIDE_ITEMS = [
   { href: "/guides/farming", label: "Farming" },
   { href: "/guides/base-building", label: "Base Building" },
-  { href: "/guides/monuments", label: "Monument Puzzles" },
   { href: "/guides/skinning", label: "Skinning Guide" },
   { href: "/guides/salvaging", label: "Salvaging Guide" },
   { href: "/guides/missions", label: "Missions Guide" },
@@ -28,6 +27,29 @@ const GUIDE_ITEMS = [
 ];
 const WORLD_ITEMS = [
   { href: "/world/monuments", label: "Monuments" },
+  { href: "#", label: "Vehicles", soon: true },
+  { href: "#", label: "Resources", soon: true },
+  { href: "#", label: "Recyclers", soon: true },
+  { href: "#", label: "Loot Containers", soon: true },
+  { href: "#", label: "Missions", soon: true },
+  { href: "#", label: "NPCs", soon: true },
+  { href: "#", label: "Seasonal Events", soon: true },
+];
+const ITEM_CATEGORIES = [
+  { href: "#", label: "Weapons", soon: true },
+  { href: "#", label: "Ammo", soon: true },
+  { href: "#", label: "Clothes", soon: true },
+  { href: "#", label: "Fun", soon: true },
+  { href: "#", label: "Food", soon: true },
+  { href: "#", label: "Electrical", soon: true },
+  { href: "#", label: "Resources", soon: true },
+  { href: "#", label: "Items", soon: true },
+  { href: "#", label: "Medical", soon: true },
+  { href: "#", label: "Tools", soon: true },
+  { href: "#", label: "Traps", soon: true },
+  { href: "#", label: "Components", soon: true },
+  { href: "#", label: "Misc", soon: true },
+  { href: "#", label: "Construction", soon: true },
 ];
 
 const DropArrow = () => (
@@ -72,7 +94,7 @@ interface NavDropdownProps {
   href: string;
   label: string;
   section: string;
-  items: { href: string; label: string }[];
+  items: { href: string; label: string; soon?: boolean }[];
   expanded: boolean;
   isActive: (href: string) => boolean;
   onTitleClick: (e: MouseEvent, section: string) => void;
@@ -102,16 +124,29 @@ function NavDropdown({
         <DropArrow />
       </Link>
       <div className="absolute top-[calc(100%+5px)] left-0 min-w-[260px] bg-[rgba(19,18,16,0.97)] backdrop-blur-[12px] border border-white/5 border-t-0 rounded-md p-2 flex flex-col gap-1 shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 invisible -translate-y-[15px] scale-[0.98] origin-top transition-all duration-[250ms] z-[100] pointer-events-none before:content-[''] before:absolute before:top-0 before:inset-x-0 before:h-0.5 before:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] before:z-10 before:pointer-events-none before:rounded-t-md group-hover/dd:opacity-100 group-hover/dd:visible group-hover/dd:translate-y-0 group-hover/dd:scale-100 group-hover/dd:pointer-events-auto max-[1200px]:static max-[1200px]:opacity-100 max-[1200px]:visible max-[1200px]:translate-y-0 max-[1200px]:scale-100 max-[1200px]:pointer-events-auto max-[1200px]:min-w-0 max-[1200px]:bg-transparent max-[1200px]:backdrop-blur-none max-[1200px]:border-0 max-[1200px]:rounded-none max-[1200px]:shadow-none max-[1200px]:p-0 max-[1200px]:pb-2 max-[1200px]:pl-4 max-[1200px]:gap-0.5 max-[1200px]:hidden group-[.expanded]/dd:max-[1200px]:flex">
-        {items.map((it) => (
-          <Link
-            key={it.href}
-            href={it.href}
-            className={`font-display text-base font-medium tracking-[0.1em] no-underline uppercase px-3.5 py-2.5 rounded relative block whitespace-nowrap transition-all duration-200 ${isActive(it.href) ? "text-rust bg-[rgba(206,66,43,0.08)] pl-[18px] before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-[linear-gradient(to_bottom,transparent_0%,var(--rust)_30%,var(--rust)_70%,transparent_100%)] before:rounded-[2px]" : "text-text-dim bg-transparent hover:bg-white/[0.03] hover:text-text-bright hover:pl-5"}`}
-            onClick={onItemClick}
-          >
-            {it.label}
-          </Link>
-        ))}
+        {items.map((it) => 
+          it.soon ? (
+            <span
+              key={it.label}
+              className="font-display text-base font-medium tracking-[0.1em] uppercase px-3.5 py-2.5 rounded relative whitespace-nowrap transition-all duration-200 text-text-dim opacity-[0.55] cursor-default flex items-center justify-between"
+              title="Coming soon"
+            >
+              {it.label}
+              <span className="ml-2 flex-none text-[9px] font-bold tracking-[0.1em] px-1.5 py-0.5 rounded-[3px] border border-white/10 bg-white/5 text-text-dim leading-none">
+                SOON
+              </span>
+            </span>
+          ) : (
+            <Link
+              key={it.href}
+              href={it.href}
+              className={`font-display text-base font-medium tracking-[0.1em] no-underline uppercase px-3.5 py-2.5 rounded relative block whitespace-nowrap transition-all duration-200 ${isActive(it.href) ? "text-rust bg-[rgba(206,66,43,0.08)] pl-[18px] before:content-[''] before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-[linear-gradient(to_bottom,transparent_0%,var(--rust)_30%,var(--rust)_70%,transparent_100%)] before:rounded-[2px]" : "text-text-dim bg-transparent hover:bg-white/[0.03] hover:text-text-bright hover:pl-5"}`}
+              onClick={onItemClick}
+            >
+              {it.label}
+            </Link>
+          )
+        )}
       </div>
     </div>
   );
@@ -221,7 +256,16 @@ export function Navbar() {
       </Link>
 
       <div className="flex gap-5 flex-1 max-[1200px]:order-4 max-[1200px]:flex-[1_1_100%] max-[1200px]:flex-col max-[1200px]:gap-0 max-[1200px]:hidden group-[.open]:max-[1200px]:flex justify-end max-[1200px]:justify-start">
-        <SoonItem label="Items" />
+        <NavDropdown
+          href="/items"
+          label="Items"
+          section="items"
+          items={ITEM_CATEGORIES}
+          expanded={openSection === "items"}
+          isActive={isActive}
+          onTitleClick={handleSectionClick}
+          onItemClick={close}
+        />
 
         <span className="w-px h-6 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.15),transparent)] self-center mx-1 max-[1200px]:hidden" />
 
