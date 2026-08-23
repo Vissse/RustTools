@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ContactEvent, trackContact } from '@/lib/analytics';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -11,19 +12,22 @@ const ISSUE_TYPES = [
   { id: 'other', label: 'Other' },
 ];
 
-/** POSTs the form payload and returns the message to show on failure, or null. */
-async function submitContact(payload: Record<string, unknown>): Promise<string | null> {
+/** `error` is null on success. `status` is 0 when the request never landed. */
+type SubmitResult = { error: string | null; status: number };
+
+async function submitContact(payload: Record<string, unknown>): Promise<SubmitResult> {
   try {
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (res.ok) return null;
+    if (res.ok) return { error: null, status: res.status };
     const body = await res.json().catch(() => null);
-    return typeof body?.error === 'string' ? body.error : 'Something went wrong. Please try again.';
+    const error = typeof body?.error === 'string' ? body.error : 'Something went wrong. Please try again.';
+    return { error, status: res.status };
   } catch {
-    return 'Could not reach the server. Check your connection and try again.';
+    return { error: 'Could not reach the server. Check your connection and try again.', status: 0 };
   }
 }
 
@@ -76,7 +80,9 @@ export function ContactCards() {
     setBugError('');
 
     const label = ISSUE_TYPES.find((t) => t.id === issueType)?.label ?? issueType;
-    const error = await submitContact({
+    trackContact(ContactEvent.submitted, { form: 'bug', issueType, attachments: files.length });
+
+    const { error, status } = await submitContact({
       type: 'bug',
       email: form.get('email'),
       issueType: issueType === 'other' ? customIssueType : label,
@@ -85,10 +91,12 @@ export function ContactCards() {
     });
 
     if (error) {
+      trackContact(ContactEvent.failed, { form: 'bug', status });
       setBugError(error);
       setBugFormState('error');
       return;
     }
+    trackContact(ContactEvent.succeeded, { form: 'bug', issueType });
     setBugFormState('success');
     setTimeout(closeBugForm, 2000);
   };
@@ -111,7 +119,9 @@ export function ContactCards() {
     setEmailFormState('submitting');
     setEmailError('');
 
-    const error = await submitContact({
+    trackContact(ContactEvent.submitted, { form: 'general', attachments: emailFiles.length });
+
+    const { error, status } = await submitContact({
       type: 'general',
       email: form.get('general-email'),
       subject: form.get('subject'),
@@ -120,10 +130,12 @@ export function ContactCards() {
     });
 
     if (error) {
+      trackContact(ContactEvent.failed, { form: 'general', status });
       setEmailError(error);
       setEmailFormState('error');
       return;
     }
+    trackContact(ContactEvent.succeeded, { form: 'general' });
     setEmailFormState('success');
     setTimeout(closeEmailForm, 2000);
   };
@@ -142,7 +154,10 @@ export function ContactCards() {
 
         {/* Bug Report */}
         <button 
-          onClick={() => setIsBugFormOpen(true)}
+          onClick={() => {
+            trackContact(ContactEvent.opened, { form: 'bug' });
+            setIsBugFormOpen(true);
+          }}
           className="group flex flex-col items-center justify-center gap-4 p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-rust/50 hover:bg-white/[0.04] transition-all duration-300 text-left"
         >
           <div className="w-16 h-16 rounded-full bg-rust/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_var(--rust-glow)]">
@@ -156,7 +171,10 @@ export function ContactCards() {
 
         {/* Email */}
         <button 
-          onClick={() => setIsEmailFormOpen(true)}
+          onClick={() => {
+            trackContact(ContactEvent.opened, { form: 'general' });
+            setIsEmailFormOpen(true);
+          }}
           className="group flex flex-col items-center justify-center gap-4 p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/30 hover:bg-white/[0.04] transition-all duration-300 text-left cursor-pointer"
         >
           <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]">

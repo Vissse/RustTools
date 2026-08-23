@@ -242,10 +242,13 @@ routes follow its shape:
 - Missing credentials must **disable** the feature, not crash it: the route
   returns `503` when `SMTP_PASS` is unset, mirroring the PostHog gate (§11), so
   local dev and preview deploys still build and run.
-- `export const preferredRegion = 'fra1'` on the contact route is load-bearing.
-  WebGlobe enables GeoIP protection on outgoing mail and permits only
-  PL/CZ/SK/AT/HU/DE — Vercel's default `iad1` (Washington DC) gets the SMTP login
-  rejected. If mail silently stops sending, check the function's region first.
+- `"regions": ["fra1"]` in [vercel.json](vercel.json) is load-bearing. WebGlobe
+  enables GeoIP protection on outgoing mail and permits only PL/CZ/SK/AT/HU/DE,
+  so Vercel's default `iad1` (Washington DC) gets
+  `550 Sending mail from your country (us) is not allowed`. Don't reach for the
+  Next.js `preferredRegion` export — it only applies to the Edge runtime and is
+  silently ignored for `runtime = 'nodejs'`. Hobby plan allows exactly one
+  region. If mail stops sending, check the function's region first.
 - `from` must be the authenticated mailbox and the visitor's address goes in
   `replyTo`. Putting a visitor address in `from` fails SPF/DMARC and gets the
   domain flagged.

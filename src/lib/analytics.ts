@@ -45,6 +45,18 @@ export const Feature = {
 
 export type FeatureName = (typeof Feature)[keyof typeof Feature];
 
+/** Contact form funnel — same reason as `Feature`: one spelling, in one place.
+ *  Open → submit → succeed/fail makes drop-off and error rate visible. */
+export const ContactEvent = {
+  opened: "contact_form_opened",
+  submitted: "contact_form_submitted",
+  succeeded: "contact_form_succeeded",
+  failed: "contact_form_failed",
+} as const;
+
+export type ContactEventName =
+  (typeof ContactEvent)[keyof typeof ContactEvent];
+
 /**
  * Initialize PostHog once, at app startup. No-op when no key is configured.
  * Dynamically imports posthog-js so the library stays out of the entry bundle
@@ -80,6 +92,21 @@ export function trackFeature(
 ): void {
   if (!enabled || !posthog) return;
   posthog.capture("feature_used", { feature, ...props });
+}
+
+/**
+ * Record a step of the contact form funnel.
+ *
+ * `props` must stay non-identifying: the form type, an error code, a count.
+ * The visitor's email address, subject and message are **never** sent here —
+ * they belong in the email and the (operator-only) Vercel log, not in analytics.
+ */
+export function trackContact(
+  event: ContactEventName,
+  props?: Record<string, unknown>,
+): void {
+  if (!enabled || !posthog) return;
+  posthog.capture(event, props);
 }
 
 /**
