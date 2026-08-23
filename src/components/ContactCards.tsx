@@ -65,42 +65,50 @@ export function ContactCards() {
 
   return (
     <>
-      <div className="max-w-4xl animate-fade-in-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Discord */}
-        <a href="#" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center gap-4 p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#5865F2]/50 hover:bg-white/[0.04] transition-all duration-300">
-          <div className="w-16 h-16 rounded-full bg-[#5865F2]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(88,101,242,0.15)]">
-            <span className="text-[#5865F2] text-2xl font-bold">D</span>
+      {/* Authors - BIG */}
+      <h3 className="text-sm font-display text-text-dim uppercase tracking-widest mb-4">Authors</h3>
+      <div className="max-w-4xl animate-fade-in-up grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <a href="https://github.com/Vissse" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 p-6 rounded-xl bg-panel border border-white/5 hover:border-rust/40 hover:bg-white/[0.04] transition-all duration-300 relative overflow-hidden">
+          <img src="https://github.com/Vissse.png" alt="Vissse" className="w-16 h-16 rounded-full group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]" />
+          <div className="flex flex-col">
+            <span className="font-display text-3xl uppercase tracking-wider text-text-bright font-bold leading-none">Vissse</span>
+            <span className="text-sm text-text-dim mt-1">Creator & Developer</span>
           </div>
-          <h2 className="text-xl font-display font-bold text-text-bright uppercase tracking-wide">Discord</h2>
-          <p className="text-sm text-text-dim text-center">Fastest way to get help, report bugs, and chat with the community. (Soon)</p>
+        </a>
+        <a href="https://github.com/7abar1n" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 p-6 rounded-xl bg-panel border border-white/5 hover:border-rust/40 hover:bg-white/[0.04] transition-all duration-300 relative overflow-hidden">
+          <img src="https://github.com/7abar1n.png" alt="7abar1n" className="w-16 h-16 rounded-full group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] bg-white/10" />
+          <div className="flex flex-col">
+            <span className="font-display text-3xl uppercase tracking-wider text-text-bright font-bold leading-none">7abar1n</span>
+            <span className="text-sm text-text-dim mt-1">Creator & Developer</span>
+          </div>
+        </a>
+      </div>
+
+      {/* Links - SMALL */}
+      <h3 className="text-sm font-display text-text-dim uppercase tracking-widest mb-4">Contact & Support</h3>
+      <div className="max-w-4xl animate-fade-in-up flex flex-wrap items-center gap-4">
+        {/* Discord */}
+        <a href="#" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2.5 py-2 px-4 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#5865F2]/40 hover:bg-white/[0.06] transition-all duration-300">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-[#5865F2]">
+            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+          </svg>
+          <span className="font-display uppercase tracking-wider text-text-bright text-sm font-bold mt-0.5">Discord</span>
         </a>
 
         {/* Bug Report */}
-        <button 
-          onClick={() => setIsBugFormOpen(true)}
-          className="group flex flex-col items-center justify-center gap-4 p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-rust/50 hover:bg-white/[0.04] transition-all duration-300 text-left"
-        >
-          <div className="w-16 h-16 rounded-full bg-rust/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_var(--rust-glow)]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rust">
-              <path d="M8 2v4"/><path d="M16 2v4"/><rect width="16" height="14" x="4" y="8" rx="2"/><path d="M12 11v6"/><path d="M8 14h8"/>
-            </svg>
-          </div>
-          <h2 className="text-xl font-display font-bold text-text-bright uppercase tracking-wide">Report a Bug</h2>
-          <p className="text-sm text-text-dim text-center">Did something break? Let us know so we can fix it ASAP.</p>
+        <button onClick={() => setIsBugFormOpen(true)} className="group flex items-center gap-2.5 py-2 px-4 rounded-full bg-white/[0.03] border border-white/5 hover:border-rust/40 hover:bg-white/[0.06] transition-all duration-300 cursor-pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rust">
+            <path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M17.47 9c1.93-.2 3.53-1.9 3.53-4"/>
+          </svg>
+          <span className="font-display uppercase tracking-wider text-text-bright text-sm font-bold mt-0.5">Report a Bug</span>
         </button>
 
         {/* Email */}
-        <button 
-          onClick={() => setIsEmailFormOpen(true)}
-          className="group flex flex-col items-center justify-center gap-4 p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/30 hover:bg-white/[0.04] transition-all duration-300 text-left cursor-pointer"
-        >
-          <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-bright">
-              <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-          </div>
-          <h2 className="text-xl font-display font-bold text-text-bright uppercase tracking-wide">Email Us</h2>
-          <p className="text-sm text-text-dim text-center">For business inquiries or general questions.</p>
+        <button onClick={() => setIsEmailFormOpen(true)} className="group flex items-center gap-2.5 py-2 px-4 rounded-full bg-white/[0.03] border border-white/5 hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 cursor-pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-bright">
+            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <span className="font-display uppercase tracking-wider text-text-bright text-sm font-bold mt-0.5">Email Us</span>
         </button>
       </div>
 
