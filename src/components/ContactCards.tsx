@@ -2,16 +2,59 @@
 
 import { useState } from 'react';
 
+type FormState = 'idle' | 'submitting' | 'success' | 'error';
+
+const ISSUE_TYPES = [
+  { id: 'bug', label: 'Bug / Glitch' },
+  { id: 'calculation', label: 'Wrong Calculation' },
+  { id: 'feature', label: 'Feature Request' },
+  { id: 'other', label: 'Other' },
+];
+
+/** POSTs the form payload and returns the message to show on failure, or null. */
+async function submitContact(payload: Record<string, unknown>): Promise<string | null> {
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) return null;
+    const body = await res.json().catch(() => null);
+    return typeof body?.error === 'string' ? body.error : 'Something went wrong. Please try again.';
+  } catch {
+    return 'Could not reach the server. Check your connection and try again.';
+  }
+}
+
 export function ContactCards() {
   const [isBugFormOpen, setIsBugFormOpen] = useState(false);
-  const [bugFormState, setBugFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [bugFormState, setBugFormState] = useState<FormState>('idle');
+  const [bugError, setBugError] = useState('');
   const [issueType, setIssueType] = useState('bug');
   const [customIssueType, setCustomIssueType] = useState('');
   const [files, setFiles] = useState<File[]>([]);
 
   const [isEmailFormOpen, setIsEmailFormOpen] = useState(false);
-  const [emailFormState, setEmailFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [emailFormState, setEmailFormState] = useState<FormState>('idle');
+  const [emailError, setEmailError] = useState('');
   const [emailFiles, setEmailFiles] = useState<File[]>([]);
+
+  const closeBugForm = () => {
+    setIsBugFormOpen(false);
+    setBugFormState('idle');
+    setBugError('');
+    setIssueType('bug');
+    setCustomIssueType('');
+    setFiles([]);
+  };
+
+  const closeEmailForm = () => {
+    setIsEmailFormOpen(false);
+    setEmailFormState('idle');
+    setEmailError('');
+    setEmailFiles([]);
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -26,17 +69,28 @@ export function ContactCards() {
     setFiles((prev) => prev.filter((_, i) => i !== indexToRemove));
   };
 
-  const handleBugSubmit = (e: React.FormEvent) => {
+  const handleBugSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = new FormData(e.currentTarget);
     setBugFormState('submitting');
-    // Simulate network request
-    setTimeout(() => {
-      setBugFormState('success');
-      setTimeout(() => {
-        setIsBugFormOpen(false);
-        setBugFormState('idle');
-      }, 2000);
-    }, 1000);
+    setBugError('');
+
+    const label = ISSUE_TYPES.find((t) => t.id === issueType)?.label ?? issueType;
+    const error = await submitContact({
+      type: 'bug',
+      email: form.get('email'),
+      issueType: issueType === 'other' ? customIssueType : label,
+      description: form.get('description'),
+      attachmentNames: files.map((f) => f.name),
+    });
+
+    if (error) {
+      setBugError(error);
+      setBugFormState('error');
+      return;
+    }
+    setBugFormState('success');
+    setTimeout(closeBugForm, 2000);
   };
 
   const handleEmailFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,16 +105,27 @@ export function ContactCards() {
     setEmailFiles((prev) => prev.filter((_, i) => i !== indexToRemove));
   };
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = new FormData(e.currentTarget);
     setEmailFormState('submitting');
-    setTimeout(() => {
-      setEmailFormState('success');
-      setTimeout(() => {
-        setIsEmailFormOpen(false);
-        setEmailFormState('idle');
-      }, 2000);
-    }, 1000);
+    setEmailError('');
+
+    const error = await submitContact({
+      type: 'general',
+      email: form.get('general-email'),
+      subject: form.get('subject'),
+      message: form.get('message'),
+      attachmentNames: emailFiles.map((f) => f.name),
+    });
+
+    if (error) {
+      setEmailError(error);
+      setEmailFormState('error');
+      return;
+    }
+    setEmailFormState('success');
+    setTimeout(closeEmailForm, 2000);
   };
 
   return (
@@ -109,8 +174,8 @@ export function ContactCards() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
           <div className="bg-[#151515] border border-white/10 rounded-xl w-full max-w-[500px] shadow-2xl relative flex flex-col animate-in zoom-in-95 duration-300">
             
-            <button 
-              onClick={() => setIsBugFormOpen(false)}
+            <button
+              onClick={closeBugForm}
               className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors cursor-pointer"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -146,9 +211,10 @@ export function ContactCards() {
                     <label htmlFor="email" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
                       Email <span className="text-rust">*</span>
                     </label>
-                    <input 
-                      type="email" 
-                      id="email" 
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
                       required
                       placeholder="so we can get back to you"
                       className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-text-bright/20"
@@ -160,12 +226,7 @@ export function ContactCards() {
                       Issue Type <span className="text-rust">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-2">
-                      {[
-                        { id: 'bug', label: 'Bug / Glitch' },
-                        { id: 'calculation', label: 'Wrong Calculation' },
-                        { id: 'feature', label: 'Feature Request' },
-                        { id: 'other', label: 'Other' },
-                      ].map(type => (
+                      {ISSUE_TYPES.map(type => (
                         <button
                           key={type.id}
                           type="button"
@@ -196,8 +257,9 @@ export function ContactCards() {
                     <label htmlFor="description" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
                       Description <span className="text-rust">*</span>
                     </label>
-                    <textarea 
-                      id="description" 
+                    <textarea
+                      id="description"
+                      name="description"
                       required
                       placeholder="What happened? What did you expect to happen?"
                       className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-rust/60 transition-colors placeholder:text-text-bright/20 min-h-[120px] resize-y"
@@ -228,6 +290,9 @@ export function ContactCards() {
                           {files.length === 0 ? 'No files selected' : `${files.length} file(s) selected`}
                         </span>
                       </div>
+                      <p className="text-xs text-text-dim/60 leading-snug">
+                        File uploads aren’t live yet — we’ll include the filenames in your report and ask you to send them in our reply.
+                      </p>
 
                       {files.length > 0 && (
                         <div className="flex flex-col gap-1.5 mt-1 border-t border-white/5 pt-3">
@@ -251,8 +316,14 @@ export function ContactCards() {
                     </div>
                   </div>
 
-                  <button 
-                    type="submit" 
+                  {bugFormState === 'error' && (
+                    <p role="alert" className="text-sm text-rust bg-rust/10 border border-rust/30 rounded-lg px-4 py-3 animate-in fade-in">
+                      {bugError}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
                     disabled={bugFormState === 'submitting'}
                     className="w-full bg-rust hover:bg-rust-hover text-text-bright font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_var(--rust-glow)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
                   >
@@ -279,8 +350,8 @@ export function ContactCards() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
           <div className="bg-[#151515] border border-white/10 rounded-xl w-full max-w-[500px] shadow-2xl relative flex flex-col animate-in zoom-in-95 duration-300">
             
-            <button 
-              onClick={() => setIsEmailFormOpen(false)}
+            <button
+              onClick={closeEmailForm}
               className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors cursor-pointer"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -316,9 +387,10 @@ export function ContactCards() {
                     <label htmlFor="general-email" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
                       Email <span className="text-text-bright/70">*</span>
                     </label>
-                    <input 
-                      type="email" 
-                      id="general-email" 
+                    <input
+                      type="email"
+                      id="general-email"
+                      name="general-email"
                       required
                       placeholder="your@email.com"
                       className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20"
@@ -329,9 +401,10 @@ export function ContactCards() {
                     <label htmlFor="subject" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
                       Subject <span className="text-text-bright/70">*</span>
                     </label>
-                    <input 
-                      type="text" 
-                      id="subject" 
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
                       required
                       placeholder="What is this regarding?"
                       className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20"
@@ -342,8 +415,9 @@ export function ContactCards() {
                     <label htmlFor="message" className="text-xs font-ui uppercase font-bold text-text-dim tracking-wider">
                       Message <span className="text-text-bright/70">*</span>
                     </label>
-                    <textarea 
-                      id="message" 
+                    <textarea
+                      id="message"
+                      name="message"
                       required
                       placeholder="How can we help you?"
                       className="w-full bg-black/40 border border-white/5 rounded-lg px-4 py-3 text-sm text-text-bright outline-none focus:border-white/30 transition-colors placeholder:text-text-bright/20 min-h-[120px] resize-y"
@@ -374,6 +448,9 @@ export function ContactCards() {
                           {emailFiles.length === 0 ? 'No files selected' : `${emailFiles.length} file(s) selected`}
                         </span>
                       </div>
+                      <p className="text-xs text-text-dim/60 leading-snug">
+                        File uploads aren’t live yet — we’ll include the filenames in your message and ask you to send them in our reply.
+                      </p>
 
                       {emailFiles.length > 0 && (
                         <div className="flex flex-col gap-1.5 mt-1 border-t border-white/5 pt-3">
@@ -397,8 +474,14 @@ export function ContactCards() {
                     </div>
                   </div>
 
-                  <button 
-                    type="submit" 
+                  {emailFormState === 'error' && (
+                    <p role="alert" className="text-sm text-rust bg-rust/10 border border-rust/30 rounded-lg px-4 py-3 animate-in fade-in">
+                      {emailError}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
                     disabled={emailFormState === 'submitting'}
                     className="w-full bg-white/10 hover:bg-white/20 text-text-bright font-display font-bold uppercase tracking-wider text-lg py-3 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none border border-white/5"
                   >
