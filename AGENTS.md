@@ -228,6 +228,33 @@ publishes 404s to the sitemap and to structured data (see §12).
   ```
 - Size the Suspense fallback so the page doesn't jump when the calculator swaps in.
 
+### API routes and server-only secrets
+
+The site is otherwise fully prerendered; the one server endpoint is
+[app/api/contact/route.ts](app/api/contact/route.ts), which relays the two
+`/contact` modal forms to the WebGlobe mailbox over SMTP via `nodemailer`. New
+routes follow its shape:
+
+- Secrets are **un-prefixed** env vars (`SMTP_PASS`, not `NEXT_PUBLIC_*`) set in
+  Vercel → Settings → Environment Variables and in `.env.local` for dev.
+  **`.env` is tracked in git** — never put a real credential there. Document new
+  keys in [.env.example](.env.example).
+- Missing credentials must **disable** the feature, not crash it: the route
+  returns `503` when `SMTP_PASS` is unset, mirroring the PostHog gate (§11), so
+  local dev and preview deploys still build and run.
+- `"regions": ["fra1"]` in [vercel.json](vercel.json) is load-bearing. WebGlobe
+  enables GeoIP protection on outgoing mail and permits only PL/CZ/SK/AT/HU/DE,
+  so Vercel's default `iad1` (Washington DC) gets
+  `550 Sending mail from your country (us) is not allowed`. Don't reach for the
+  Next.js `preferredRegion` export — it only applies to the Edge runtime and is
+  silently ignored for `runtime = 'nodejs'`. Hobby plan allows exactly one
+  region. If mail stops sending, check the function's region first.
+- `from` must be the authenticated mailbox and the visitor's address goes in
+  `replyTo`. Putting a visitor address in `from` fails SPF/DMARC and gets the
+  domain flagged.
+- Validate and length-cap every field by hand (no `zod` — the dependency list is
+  deliberately small) and strip CR/LF from anything that lands in a mail header.
+
 ## 10. Calculator conventions
 
 - **Shareable state goes in the URL via `nuqs`**; genuinely local UI state (an
