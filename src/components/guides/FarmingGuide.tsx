@@ -239,7 +239,7 @@ export function FarmingGuide() {
               walls.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
-              <div className="bg-panel p-8 border-l-[4px] border-l-[#8b9264] border border-border relative overflow-hidden">
+              <div className="bg-panel p-8 border-l-[4px] border-l-rust border border-border relative overflow-hidden">
                 <h4 className="text-text-bright font-bold mb-2 text-xl font-display tracking-wide uppercase">
                   Forest & Desert
                 </h4>
@@ -247,7 +247,7 @@ export function FarmingGuide() {
                   Turn the heater on only at night to prevent freezing.
                 </p>
               </div>
-              <div className="bg-panel p-8 border-l-[4px] border-l-[#8bafc8] border border-border relative overflow-hidden">
+              <div className="bg-panel p-8 border-l-[4px] border-l-rust border border-border relative overflow-hidden">
                 <h4 className="text-text-bright font-bold mb-2 text-xl font-display tracking-wide uppercase">
                   Winter Biome
                 </h4>

@@ -9,12 +9,29 @@ export const metadata: Metadata = seoMetadata({
 
 const UPDATES = [
   {
+    date: 'September 2026',
+    title: 'Contact & Support, World Map',
+    changes: [
+      'Added a Contact & Support section with dedicated Bug Report and Email Us forms.',
+      'Bug reports now capture an issue type and description for faster triage.',
+      'Added dynamic Monument pages with utilities, vehicles, and loot details.',
+      'Added a World overview page linking out to every monument.',
+      'Unified the Contact & Support button colors and hover states.',
+      'Added a "Coming Soon" notice on the Discord button until the server launches.'
+    ]
+  },
+  {
     date: 'August 2026',
     title: 'Recycling Calculator Overhaul',
     changes: [
       'Added dynamic breakdown of recycling yields.',
       'Improved layout for better mobile responsiveness.',
-      'Added support for Safe Zone recycling penalties.'
+      'Added support for Safe Zone recycling penalties.',
+      'Added a CCTV popup showing monument camera codes.',
+      'Added guides for Missions, Salvaging, and Skinning.',
+      'Added shareable links for Missions and Monuments pages.',
+      'Added a cookie consent banner.',
+      'General SEO improvements across all pages.'
     ]
   },
   {
@@ -22,7 +39,12 @@ const UPDATES = [
     title: 'Initial Release',
     changes: [
       'Launched Raid, Furnace, and basic Recycling calculators.',
-      'Dark mode and immersive Rust theme introduced.'
+      'Dark mode and immersive Rust theme introduced.',
+      'Added Decay and Shop calculators.',
+      'Added Skinning and Salvaging calculators.',
+      'Added guides for Base Building, Farming, and Monuments.',
+      'Added shareable URLs for calculator presets.',
+      'Migrated the site to Next.js for faster page loads.'
     ]
   }
 ]
