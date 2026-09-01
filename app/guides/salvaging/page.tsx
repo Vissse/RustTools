@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SalvagingGuide } from '@/components/guides/SalvagingGuide'
-import { seoMetadata } from '@/lib/seo'
+import { seoMetadata, breadcrumbJsonLd } from '@/lib/seo'
+import { JsonLd } from '@/components/JsonLd'
 
 export const metadata: Metadata = seoMetadata({
   title: 'Rust Salvaging Guide — Heli & Bradley Yields',
@@ -9,6 +10,18 @@ export const metadata: Metadata = seoMetadata({
   path: '/guides/salvaging',
 })
 
+// Same as the skinning guide: yields sit behind a tool picker and never reach
+// the HTML. The published table lives at /reference/salvage-yields.
 export default function Page() {
-  return <SalvagingGuide />
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Guides', path: '/guides' },
+          { name: 'Salvaging', path: '/guides/salvaging' },
+        ])}
+      />
+      <SalvagingGuide />
+    </>
+  )
 }

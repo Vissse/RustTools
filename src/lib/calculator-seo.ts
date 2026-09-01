@@ -88,9 +88,12 @@ export const GIANT_EXCAVATOR_SEO: CalcMeta = {
     'Calculate Giant Excavator output and diesel fuel consumption in Rust.',
 }
 
+// These two live under /guides/, not at the top level. The paths used to read
+// "/salvaging" and "/skinning", which published two 404s to the sitemap and to
+// the ItemList on /calculators.
 export const SALVAGING_SEO: CalcMeta = {
   name: 'Rust Salvaging Calculator',
-  path: '/salvaging',
+  path: '/guides/salvaging',
   crumb: 'Salvaging Calculator',
   description:
     'Calculate what a destroyed Bradley APC or Patrol Helicopter returns when salvaged in Rust.',
@@ -98,7 +101,7 @@ export const SALVAGING_SEO: CalcMeta = {
 
 export const SKINNING_SEO: CalcMeta = {
   name: 'Rust Skinning Calculator',
-  path: '/skinning',
+  path: '/guides/skinning',
   crumb: 'Skinning Calculator',
   description:
     'See how much meat, fat, leather and bone you get from skinning each animal in Rust.',

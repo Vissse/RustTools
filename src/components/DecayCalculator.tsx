@@ -4,46 +4,10 @@ import { useMemo, useEffect, useRef } from "react";
 import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
-
-const MATERIALS = [
-  {
-    id: "twig",
-    name: "Twig",
-    hp: 10,
-    decayHours: 1,
-    img: "/images/twig-wall.png",
-  },
-  {
-    id: "wood",
-    name: "Wood",
-    hp: 250,
-    decayHours: 3,
-    img: "/images/wood-wall.png",
-  },
-  {
-    id: "stone",
-    name: "Stone",
-    hp: 500,
-    decayHours: 5,
-    img: "/images/stone-wall.png",
-  },
-  {
-    id: "metal",
-    name: "Metal",
-    hp: 1000,
-    decayHours: 8,
-    img: "/images/metal-wall.png",
-  },
-  {
-    id: "armored",
-    name: "Armored",
-    hp: 2000,
-    decayHours: 12,
-    img: "/images/armored-wall.png",
-  },
-];
-
-const MATERIAL_IDS = MATERIALS.map((m) => m.id);
+import {
+  DECAY_MATERIALS as MATERIALS,
+  DECAY_MATERIAL_IDS as MATERIAL_IDS,
+} from "../lib/data/decay-data";
 
 export function DecayCalculator() {
   // Material + remaining HP live in the URL (?mat=&hp=) so a decay timer can be

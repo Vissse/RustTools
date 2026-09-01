@@ -17,6 +17,10 @@ export const metadata: Metadata = seoMetadata({
 // pre-rendered HTML for this route is the fallback below — which is why the
 // breadcrumb and <h1> live in CalcShell, outside the boundary, where a crawler
 // still sees them. The fallback is sized so the page doesn't jump on swap-in.
+//
+// The page deliberately carries no prose: the written reference and the full
+// raid cost table live at /reference/raid-costs, and the FAQ and Dataset schema
+// go with them (schema is only emitted where the content is visible).
 export default function Page() {
   return (
     <>

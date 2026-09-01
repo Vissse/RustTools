@@ -80,7 +80,7 @@ const CALCULATORS: Calculator[] = [
     id: 'skinning',
     title: 'Skinning',
     description: 'Calculate animal harvesting yields with different tools.',
-    path: '/skinning',
+    path: '/guides/skinning',
     status: 'published',
   },
   {
@@ -88,7 +88,7 @@ const CALCULATORS: Calculator[] = [
     title: 'Salvaging',
     description:
       'Calculate resources gained from salvaging various components.',
-    path: '/salvaging',
+    path: '/guides/salvaging',
     status: 'published',
   },
 ]

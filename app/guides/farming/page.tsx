@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
 import { FarmingGuide } from '@/components/guides/FarmingGuide'
 import { JsonLd } from '@/components/JsonLd'
-import { breadcrumbJsonLd, seoMetadata, SITE_URL, SITE_NAME } from '@/lib/seo'
+import {
+  breadcrumbJsonLd,
+  seoMetadata,
+  SITE_URL,
+  SITE_NAME,
+  DATA_VERIFIED_ISO,
+} from '@/lib/seo'
 
 const TITLE = 'Rust Farming Guide — Seeds, Genetics, and Breeding'
 const DESCRIPTION =
@@ -26,6 +32,11 @@ const article = {
   author: { '@type': 'Organization', name: SITE_NAME },
   publisher: { '@id': `${SITE_URL}/#organization` },
   about: { '@type': 'VideoGame', name: 'Rust' },
+  inLanguage: 'en',
+  // An undated guide to a game that patches monthly is the kind of source an
+  // answer engine is right to discount. This is the date the guide's numbers
+  // were last checked against Rust, not the last time the file was touched.
+  dateModified: DATA_VERIFIED_ISO,
 }
 
 export default function Page() {

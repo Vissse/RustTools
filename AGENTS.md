@@ -205,6 +205,9 @@ Don't create a duplicate route for a page that's already there.
    [calculator-seo.ts](src/lib/calculator-seo.ts) and push it into
    `CALCULATOR_SEO_INDEX` (it feeds the ItemList on `/calculators`). Its `crumb`
    **must match** the breadcrumb CalcShell renders.
+7. If the calculator has game data worth publishing, a `ReferenceContent` entry
+   in [reference-content.ts](src/lib/reference-content.ts) and a page under
+   `app/reference/` — **not** copy on the calculator page itself. See §9.1.
 
 **Every `path` you write in `seo.ts` and `calculator-seo.ts` must correspond to a
 real folder under `app/`.** Nothing validates this today, and a mismatch silently
@@ -227,6 +230,73 @@ publishes 404s to the sitemap and to structured data (see §12).
   </CalcShell>
   ```
 - Size the Suspense fallback so the page doesn't jump when the calculator swaps in.
+
+### 9.1 Calculators are tools; `/reference/*` carries the prose
+
+The shape above gets the `<h1>` into the prerendered HTML but nothing else — the
+calculator's *answers* live inside the boundary and never ship, leaving each
+calculator page with about eight words of unique body text. That is fine for
+Google (it renders JS) and useless for the retrieval pipelines behind AI answer
+engines (largely don't). **A page that can only compute an answer cannot be
+cited; a page that contains one can.**
+
+**The fix is a separate page, not copy bolted under the tool.** The calculator
+pages stay pure tools and carry no prose — don't add any. Each one's written
+counterpart lives at `/reference/<topic>`
+([ReferencePage.tsx](src/components/reference/ReferencePage.tsx) over the
+existing `ContentPageShell`), with the lede, quick answers, data table and FAQ:
+
+```tsx
+// app/reference/recycler-yields/page.tsx
+import { RECYCLING_CONTENT as content } from '@/lib/reference-content'
+
+<JsonLd data={referencePageJsonLd({ slug: content.slug, crumb: content.crumb,
+                                    faq: content.faq, dataset: content.dataset })} />
+<ReferencePage content={content}>
+  <RecyclerYieldTable />        {/* server component, real <table> */}
+</ReferencePage>
+```
+
+Adding one: a `ReferenceContent` entry in `reference-content.ts` (push it into
+`REFERENCE_INDEX`, which drives the hub and llms.txt), a page under
+`app/reference/`, a `ROUTES` entry, and a `REFERENCE_ITEMS` entry in the Navbar.
+
+Five rules bind anything added here:
+
+- **Derive every number from the data set.** `reference-content.ts` interpolates
+  counts and figures from the same modules the calculators import; nothing is
+  typed by hand. A sentence that contradicts the table below it is worse than no
+  sentence — it produces a confident, wrong citation. Same rule as §6, enforced
+  harder because this copy is quotable.
+- **The `faq` array goes to both the component and `faqJsonLd`,** and `FAQPage` /
+  `Dataset` are emitted **only** on the reference page. Never on a calculator —
+  schema for content a visitor can't see is a guidelines violation.
+- **No `Reveal` wrapper.** It renders `opacity-0` until an IntersectionObserver
+  fires. `animate-fade-in-up` is fine — it ends visible.
+- **Real `<table>`, via [DataTable](src/components/reference/DataTable.tsx).** The
+  calculators build results as flex `<div>`s, which carry no column association
+  once stripped to text. Use `<caption>` and `<th scope>`.
+- **Cross-link, don't duplicate.** `content.tool` renders the one link back to
+  the calculator. `/reference/animal-yields` is the flat table; `/guides/skinning`
+  is the card explorer — different questions, so they don't compete.
+
+If the data genuinely can't support a table (`/reference/base-upkeep` depends on
+a specific base, `/reference/vendor-prices` is hundreds of vendor rows), omit
+`children` **and** the `dataset` — the facts list carries the fixed numbers.
+**If a structure's data contradicts itself, leave the row out and say so on the
+page** — `buildRaidReference()` withholds Metal Barricade and Strengthened Glass
+Window for exactly this reason (§12).
+
+`DATA_VERIFIED_ISO` / `DATA_VERIFIED_LABEL` in `seo.ts` are the one place the
+"verified against Rust in …" date lives. It drives the visible provenance line,
+`dateModified` in structured data, and `<lastmod>` in the sitemap. **Bump it when
+the data is actually re-checked, never automatically** — the sitemap used to
+stamp `new Date()`, which claimed all 50+ URLs changed on every deploy.
+
+`/llms.txt` ([app/llms.txt/route.ts](app/llms.txt/route.ts)) is the curated map
+of the site for language models, and `robots.ts` names the AI crawlers
+explicitly so a future `Disallow` under `*` can't silently remove the site from
+answer engines. Both derive their counts from the data.
 
 ### API routes and server-only secrets
 
@@ -313,14 +383,23 @@ routes follow its shape:
 
 ## 12. Known issues — don't replicate, do fix if asked
 
-- **`/salvaging` and `/skinning` 404.** `ROUTES` in `seo.ts` and
-  `calculator-seo.ts` both point at these paths, but the pages actually live at
-  `/guides/salvaging` and `/guides/skinning`. The sitemap and the `/calculators`
-  structured data currently advertise two dead URLs.
-- **`ROUTES` is missing real pages:** `/guides/missions`, `/guides/salvaging`,
-  `/guides/skinning` are indexable but absent from the sitemap.
-- `/guides/monuments` is `index: false` despite having full content — verify
-  that's still intended before changing it.
+- **Two structures' raid data contradicts itself**, and `verify:raid` already
+  flags both as `[known-bad]`. Strengthened Glass Window's seven explosive
+  quantities all resolve exactly at **500 HP** while `structures.ts` records
+  250 — the HP is very likely the wrong number. Metal Barricade's quantities
+  disagree among *themselves* (Explosive 5.56 implies ~600 HP, C4 and Satchel
+  imply 500), so it needs checking in-game. Until they're resolved,
+  `buildRaidReference()` withholds both from the published raid table and the
+  page says which and why. Fix the data, don't paper over it.
+- `/world` is `index: false` and is a one-card shell over `/world/monuments` —
+  either give it content or fold it away.
+- `/genetics` is a three-word placeholder (`GENETICS CALCULATOR INCOMING`). It is
+  now `index: false`, out of `ROUTES`, and no longer emits a `WebApplication`
+  node claiming to be a working tool. Restore all three when it's built.
+- `/items/**` (1,080 pages) is name-only and correctly `index: false`
+  throughout. Flip that and add it to `ROUTES` once the per-item data lands.
+- `FarmingGuide.tsx` still ships four `<ImagePlaceholder>` blocks and a literal
+  `[Link: How to place correctly]` (line ~109) into the HTML of an indexed page.
 - Three near-identical accent reds (`#ce422b`, `#cc422c`, `#cd412b`) and
   hardcoded greys are scattered through components instead of tokens.
 - **`bg-surface` and `bg-rust-hover` are not theme tokens** — there is no

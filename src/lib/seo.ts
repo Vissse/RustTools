@@ -14,6 +14,24 @@ export const SITE_URL = "https://www.rust-tools.eu";
 export const SITE_NAME = "RustTools";
 
 /**
+ * The date the game data on this site was last checked against Rust.
+ *
+ * Answer engines weight recency heavily for game data, because a balance patch
+ * invalidates every number on the page. This is the one place that date is
+ * written: it drives the visible "verified" line under each tool, `dateModified`
+ * in structured data, and `<lastmod>` in the sitemap.
+ *
+ * It is a hand-maintained claim, not a build timestamp — bump it when the data
+ * is actually re-checked (see AGENTS.md §6), never automatically. Stamping every
+ * URL with the deploy time, which the sitemap used to do, tells a crawler the
+ * whole site changed on a CSS tweak and is treated as noise.
+ */
+export const DATA_VERIFIED_ISO = "2026-08-01";
+
+/** Human-readable form of DATA_VERIFIED_ISO, for the visible provenance line. */
+export const DATA_VERIFIED_LABEL = "August 2026";
+
+/**
  * Default share image: the 1200×630 PNG rendered by app/opengraph-image.tsx.
  *
  * Next only wires that file convention into the segment it lives in (verified
@@ -87,9 +105,15 @@ export function seoMetadata({
  * Every crawlable route, with sitemap priority and how often the page's content
  * realistically changes. Single source of truth for sitemap.xml.
  *
- * Pages deliberately absent: the three placeholder guides (noindex until they
- * have content), /privacy, /contact and /changelog (no search intent), and
+ * Pages deliberately absent: the placeholder guides and /genetics (noindex until
+ * they have content), /world (noindex — it is a one-card shell over
+ * /world/monuments), /privacy, /contact and /changelog (no search intent), and
  * /app. A sitemap listing pages you don't want ranked wastes crawl budget.
+ *
+ * Every `path` must be a real folder under `app/`. `/salvaging` and `/skinning`
+ * used to be listed here and 404'd — the pages live under `/guides/`. Publishing
+ * dead URLs in a sitemap is worse than omitting them: an answer engine that
+ * fetches one and gets a 404 discounts the whole host.
  */
 export const ROUTES: {
   path: string;
@@ -104,14 +128,25 @@ export const ROUTES: {
   { path: "/furnace", priority: 0.8, changeFrequency: "monthly" },
   { path: "/decay", priority: 0.8, changeFrequency: "monthly" },
   { path: "/shops", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/genetics", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/salvaging", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/skinning", priority: 0.7, changeFrequency: "monthly" },
   { path: "/giant-excavator", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides", priority: 0.8, changeFrequency: "weekly" },
   { path: "/guides/farming", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/world", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/guides/missions", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/guides/skinning", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/guides/salvaging", priority: 0.7, changeFrequency: "monthly" },
   { path: "/world/monuments", priority: 0.8, changeFrequency: "monthly" },
+  // The written reference pages. These carry the site's actual prose and data
+  // tables, so they rank above most of the calculators they back.
+  { path: "/reference", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/reference/raid-costs", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/reference/recycler-yields", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/reference/smelting-times", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/reference/decay-times", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/reference/base-upkeep", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/reference/excavator-yields", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/reference/vendor-prices", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/reference/animal-yields", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/reference/salvage-yields", priority: 0.7, changeFrequency: "monthly" },
 ];
 
 /** schema.org structured data describing the site, rendered in the root layout. */
@@ -180,6 +215,38 @@ export function faqJsonLd(entries: { q: string; a: string }[]) {
 }
 
 /**
+ * An ordered list of pages, for a hub that links to them.
+ *
+ * The value is in what it says about the page's role: a hub carrying an ItemList
+ * is a directory of N specific things, not another article that happens to
+ * mention them. Retrieval systems use that to pick the hub when a question is
+ * "what monuments are there" and a leaf page when it is about one of them.
+ */
+export function itemListJsonLd({
+  name,
+  description,
+  items,
+}: {
+  name: string;
+  description: string;
+  items: { name: string; path: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    description,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: `${SITE_URL}${item.path}`,
+    })),
+  };
+}
+
+/**
  * A single calculator, described as a free web application. This is what makes
  * a tool eligible for the richer "free / web-based" treatment on queries like
  * "rust raid calculator" rather than being read as a generic article.
@@ -207,6 +274,50 @@ export function calculatorJsonLd({
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@type": "VideoGame", name: "Rust" },
+    dateModified: DATA_VERIFIED_ISO,
+  };
+}
+
+/**
+ * The reference table a calculator page renders, described as a Dataset.
+ *
+ * This is the node that makes the page's numbers addressable rather than
+ * decorative: it names what the table measures, what it covers, and when it was
+ * last checked, so a retrieval system can tell "a page that mentions raid costs"
+ * apart from "a page that *contains* the raid cost table". `variableMeasured`
+ * carries the column names, which is what a model matches a question against.
+ */
+export function datasetJsonLd({
+  name,
+  description,
+  path,
+  anchor,
+  variables,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  /** Fragment id of the heading the table sits under, e.g. "reference". */
+  anchor: string;
+  /** Column / measured-property names, in table order. */
+  variables: readonly string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": `${SITE_URL}${path}#dataset`,
+    name,
+    description,
+    url: `${SITE_URL}${path}#${anchor}`,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    isAccessibleForFree: true,
+    creator: { "@id": `${SITE_URL}/#organization` },
+    about: { "@type": "VideoGame", name: "Rust" },
+    variableMeasured: variables.map((v) => ({
+      "@type": "PropertyValue",
+      name: v,
+    })),
+    dateModified: DATA_VERIFIED_ISO,
   };
 }
 
@@ -214,8 +325,9 @@ export function calculatorJsonLd({
  * The full structured-data set for a calculator route: the breadcrumb trail
  * that matches the visible one in CalcShell, plus the WebApplication node.
  *
- * Deliberately no FAQPage — schema is only emitted for content a visitor can
- * actually see on the page, and the calculators carry no FAQ copy.
+ * Deliberately no FAQPage and no Dataset — schema is only emitted for content a
+ * visitor can actually see, and the calculators carry no copy. Their written
+ * counterparts live under /reference/, and the schema lives there with them.
  */
 export function calculatorPageJsonLd({
   name,
@@ -234,5 +346,43 @@ export function calculatorPageJsonLd({
       { name: crumb, path },
     ]),
     calculatorJsonLd({ name, description, path }),
+  ];
+}
+
+/**
+ * The full structured-data set for a /reference/* page: breadcrumb, the FAQ it
+ * visibly renders, and — where it publishes one — the Dataset describing its
+ * table. Together these say what the page *is*: a dated, sourced reference whose
+ * numbers are on the page, rather than a tool that could produce them.
+ */
+export function referencePageJsonLd({
+  slug,
+  crumb,
+  faq,
+  dataset,
+}: {
+  slug: string;
+  crumb: string;
+  faq: { q: string; a: string }[];
+  dataset?: { name: string; description: string; variables: readonly string[] };
+}) {
+  const path = `/reference/${slug}`;
+  return [
+    breadcrumbJsonLd([
+      { name: "Reference", path: "/reference" },
+      { name: crumb, path },
+    ]),
+    faqJsonLd(faq),
+    ...(dataset
+      ? [
+          datasetJsonLd({
+            name: dataset.name,
+            description: dataset.description,
+            path,
+            anchor: "table",
+            variables: dataset.variables,
+          }),
+        ]
+      : []),
   ];
 }

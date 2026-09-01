@@ -5,33 +5,12 @@ import { useQueryState, parseAsInteger } from "nuqs";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
-// Data podle Rust tabulky (odstraněny barvy)
-const RATES = [
-  {
-    id: "hqm",
-    name: "High Quality Metal Ore",
-    yieldPerBarrel: 100,
-    img: "/images/hq.metal.ore.png",
-  },
-  {
-    id: "sulfur",
-    name: "Sulfur Ore",
-    yieldPerBarrel: 2000,
-    img: "/images/sulfur.ore.png",
-  },
-  {
-    id: "stone",
-    name: "Stones",
-    yieldPerBarrel: 10000,
-    img: "/images/stones.png",
-  },
-  {
-    id: "metal",
-    name: "Metal Fragments",
-    yieldPerBarrel: 5000,
-    img: "/images/metal.fragments.png",
-  },
-];
+// Rates + run length live in the data module so the static table on the page is
+// built from the same source (see src/lib/data/excavator-data.ts).
+import {
+  EXCAVATOR_RATES as RATES,
+  MINUTES_PER_BARREL,
+} from "../lib/data/excavator-data";
 
 export function GiantExcavatorCalculator() {
   // Diesel count lives in the URL (?b=) so a yield estimate can be shared.
@@ -43,7 +22,7 @@ export function GiantExcavatorCalculator() {
 
   const timeString = useMemo(() => {
     if (safeDiesel === 0) return "0 MIN";
-    const totalMinutes = safeDiesel * 2;
+    const totalMinutes = safeDiesel * MINUTES_PER_BARREL;
     const hours = Math.floor(totalMinutes / 60);
     const mins = totalMinutes % 60;
 

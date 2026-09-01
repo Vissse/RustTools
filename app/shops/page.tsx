@@ -13,10 +13,8 @@ export const metadata: Metadata = seoMetadata({
   path: '/shops',
 })
 
-// The calculator reads search params, so it renders on the client and the
-// pre-rendered HTML for this route is the fallback below — which is why the
-// breadcrumb and <h1> live in CalcShell, outside the boundary, where a crawler
-// still sees them. The fallback is sized so the page doesn't jump on swap-in.
+// See app/raid/page.tsx: tool only, no prose. The written reference lives at
+// /reference/vendor-prices.
 export default function Page() {
   return (
     <>

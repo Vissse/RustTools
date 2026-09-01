@@ -28,6 +28,20 @@ const FOOTER_CATEGORIES = [
       { to: "/shops", label: "Shops" },
     ],
   },
+  // The /reference/* pages are deliberately kept out of the header. They still
+  // need a real internal link from somewhere: a page reachable only via
+  // sitemap.xml is crawled less and accumulates no link equity, which would
+  // defeat the point of publishing them. Linking the hub is enough — it links
+  // the remaining six.
+  {
+    title: "Reference",
+    links: [
+      { to: "/reference/raid-costs", label: "Raid Costs" },
+      { to: "/reference/recycler-yields", label: "Recycler Yields" },
+      { to: "/reference/animal-yields", label: "Animal Yields" },
+      { to: "/reference", label: "All Reference" },
+    ],
+  },
   {
     title: "Community & Legal",
     links: [

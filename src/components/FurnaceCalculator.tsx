@@ -5,66 +5,10 @@ import { useQueryStates, parseAsStringLiteral, parseAsInteger } from "nuqs";
 import { Img } from "./Img";
 import { Feature, useFeatureUsed } from "../lib/analytics";
 
-// 1. Importy vygenerovaných dat
-import { Barbeque as BarbequeData } from "../lib/data/smelting-data/smelting-data-barbeque";
-import { Campfire as CampfireData } from "../lib/data/smelting-data/smelting-data-campfire";
-import { Furnace as FurnaceData } from "../lib/data/smelting-data/smelting-data-furnace";
-import { LargeFurnace as LargeFurnaceData } from "../lib/data/smelting-data/smelting-data-large-furnace";
-import { SmallOilRefinery as OilRefineryData } from "../lib/data/smelting-data/smelting-data-small-oil-refinery";
-import { SmallStoneFireplace as StoneFireplaceData } from "../lib/data/smelting-data/smelting-data-small-stone-fireplace";
-
-export interface SmeltingProcess {
-  inputItem: string;
-  woodRequired: number;
-  outputItem: string;
-  outputQuantity: string | number;
-  timeSeconds: number;
-}
-
-const SMELTERS = [
-  {
-    id: "furnace",
-    name: "Furnace",
-    slots: 3,
-    img: "/images/furnace.png",
-    data: FurnaceData,
-  },
-  {
-    id: "large-furnace",
-    name: "Large Furnace",
-    slots: 15,
-    img: "/images/furnace.large.png",
-    data: LargeFurnaceData,
-  },
-  {
-    id: "small-oil-refinery",
-    name: "Oil Refinery",
-    slots: 1,
-    img: "/images/small.oil.refinery.png",
-    data: OilRefineryData,
-  },
-  {
-    id: "campfire",
-    name: "Camp Fire",
-    slots: 1,
-    img: "/images/campfire.png",
-    data: CampfireData,
-  },
-  {
-    id: "barbeque",
-    name: "Barbeque",
-    slots: 1,
-    img: "/images/bbq.png",
-    data: BarbequeData,
-  },
-  {
-    id: "small-stone-fireplace",
-    name: "Stone Fireplace",
-    slots: 1,
-    img: "/images/fireplace.stone.png",
-    data: StoneFireplaceData,
-  },
-];
+// Smelter list + per-smelter process data. Lives in the data module so the
+// static smelting table on the page is built from the same source (see
+// src/lib/data/smelting-data/index.ts).
+import { SMELTERS } from "../lib/data/smelting-data";
 
 function getImageFromName(name: string) {
   const map: Record<string, string> = {
