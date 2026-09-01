@@ -289,7 +289,7 @@ function MissionBoard({
  * Board state in the URL (`?q=fish&giver=fishing_village`) so a filtered view is
  * shareable. `history: 'replace'` keeps typing out of the back-button stack, and
  * `clearOnDefault` drops params at their default so an untouched board stays on
- * a clean `/guides/missions`.
+ * a clean `/world/missions`.
  */
 function MissionBoardWithUrlState() {
   const [{ q, giver }, setBoard] = useQueryStates(
@@ -389,10 +389,10 @@ export function MissionsGuide() {
         </Link>
         <span>/</span>
         <Link
-          href="/guides"
+          href="/world"
           className="hover:text-text-bright transition-colors"
         >
-          Guides
+          World
         </Link>
         <span>/</span>
         <span className="text-rust font-medium">Missions</span>

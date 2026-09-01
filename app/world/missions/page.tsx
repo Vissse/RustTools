@@ -8,7 +8,7 @@ export const metadata: Metadata = seoMetadata({
   title: 'Rust Missions Guide — Jobs, Locations & Rewards',
   description:
     'Find every listed Rust mission, where it starts, what it requires, and what you receive when the work is done.',
-  path: '/guides/missions',
+  path: '/world/missions',
 })
 
 export default function Page() {
@@ -16,8 +16,8 @@ export default function Page() {
     <>
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Guides', path: '/guides' },
-          { name: 'Missions', path: '/guides/missions' },
+          { name: 'World', path: '/world' },
+          { name: 'Missions', path: '/world/missions' },
         ])}
       />
       {/* The same Q&A is rendered visibly at the bottom of the guide. */}

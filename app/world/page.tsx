@@ -24,6 +24,46 @@ export default function WorldPage() {
       label: 'Monuments',
       description: 'All 38 monuments — loot, puzzles, keycards, scientists and more.',
     },
+    {
+      href: '/world/vehicles',
+      label: 'Vehicles',
+      description: 'Every vehicle in Rust — air, land, siege weapons and water.',
+    },
+    {
+      href: '/world/loot-containers',
+      label: 'Loot Containers',
+      description: 'Every loot container in Rust — crates, barrels, bags, presents and more.',
+    },
+    {
+      href: '/world/npcs',
+      label: 'NPCs',
+      description: 'Every NPC in Rust — scientists, vendors, and animals.',
+    },
+    {
+      href: '/world/resources',
+      label: 'Resources',
+      description: 'Every gatherable resource node and collectable in Rust.',
+    },
+    {
+      href: '/world/missions',
+      label: 'Missions',
+      description: 'Every listed Rust mission — where it starts, what it requires, and what it pays.',
+    },
+    {
+      href: '/world/seasonal-events',
+      label: 'Seasonal Events',
+      description: 'Every seasonal event in Rust — Easter, Halloween, Christmas and the Rust Birthday.',
+    },
+    {
+      href: '/world/monument-blockers',
+      label: 'Monument Blockers',
+      description: 'Every monument blocker prop in Rust.',
+    },
+    {
+      href: '/world/recyclers',
+      label: 'Recyclers',
+      description: 'Every recycler in Rust — Green, Red, Yellow and the powered variant.',
+    },
   ]
 
   return (

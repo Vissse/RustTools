@@ -19,21 +19,21 @@ const CALC_ITEMS = [
 ];
 const GUIDE_ITEMS = [
   { href: "/guides/farming", label: "Farming" },
-  { href: "/guides/base-building", label: "Base Building" },
+  { href: "#", label: "Base Building", soon: true },
   { href: "/guides/skinning", label: "Skinning Guide" },
   { href: "/guides/salvaging", label: "Salvaging Guide" },
-  { href: "/guides/missions", label: "Missions Guide" },
-  { href: "/guides/binds", label: "Console Binds" },
+  { href: "#", label: "Console Binds", soon: true },
 ];
 const WORLD_ITEMS = [
   { href: "/world/monuments", label: "Monuments" },
-  { href: "#", label: "Vehicles", soon: true },
-  { href: "#", label: "Resources", soon: true },
-  { href: "#", label: "Recyclers", soon: true },
-  { href: "#", label: "Loot Containers", soon: true },
-  { href: "#", label: "Missions", soon: true },
-  { href: "#", label: "NPCs", soon: true },
-  { href: "#", label: "Seasonal Events", soon: true },
+  { href: "/world/vehicles", label: "Vehicles" },
+  { href: "/world/resources", label: "Resources" },
+  { href: "/world/recyclers", label: "Recyclers" },
+  { href: "/world/loot-containers", label: "Loot Containers" },
+  { href: "/world/missions", label: "Missions" },
+  { href: "/world/npcs", label: "NPCs" },
+  { href: "/world/seasonal-events", label: "Seasonal Events" },
+  { href: "/world/monument-blockers", label: "Monument Blockers" },
 ];
 const ITEM_CATEGORIES = [
   { href: "/items/weapons", label: "Weapons" },

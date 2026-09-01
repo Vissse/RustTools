@@ -24,7 +24,7 @@ const GUIDES = [
     description:
       'Discover the most effective base footprints, honeycombing, pixel gaps, and unraidable bunker designs.',
     path: '/guides/base-building',
-    status: 'published',
+    status: 'coming_soon',
   },
   {
     id: 'skinning',
@@ -40,14 +40,6 @@ const GUIDES = [
     description:
       'Detailed yield rates for harvesting destroyed vehicles, loot drops, and other scrap metal entities.',
     path: '/guides/salvaging',
-    status: 'published',
-  },
-  {
-    id: 'missions',
-    title: 'Missions Guide',
-    description:
-      'Find every listed Rust mission, where it starts, what it requires, and what you receive when the work is done.',
-    path: '/guides/missions',
     status: 'published',
   },
 ]
