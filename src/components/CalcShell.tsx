@@ -78,15 +78,15 @@ export function CalcShell({
           + the [data-variant="…"] rules; now applied inline by variant). */}
       <div
         className={`w-full max-w-[1400px] relative z-[1] overflow-hidden rounded-2xl bg-[rgba(19,18,16,0.65)] backdrop-blur-[20px] border border-white/[0.06] shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_-1px_0_rgba(255,255,255,0.03)] transition-all duration-300 p-6 max-md:p-3 before:content-[''] before:absolute before:top-0 before:inset-x-0 before:h-0.5 before:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] before:opacity-80 animate-fade-in-up ${
-          variant === 'raid'
-            ? 'max-h-screen max-[1280px]:max-h-none max-[1280px]:overflow-visible'
-            : 'h-[85vh] flex flex-col max-md:h-auto max-md:max-h-none'
+          variant === 'raid' ? 'overflow-visible' : 'h-[85vh] flex flex-col max-md:h-auto max-md:max-h-none'
         }`}
       >
         <div
           className={
+            // Raid: two columns — Target Structure + Explosives/Other Methods
+            // on the left, Results on the right — not three parallel panes.
             variant === 'raid'
-              ? 'relative z-[1] grid grid-cols-3 max-[1024px]:grid-cols-1 min-[1025px]:max-[1280px]:grid-cols-2'
+              ? 'relative z-[1] grid grid-cols-2 gap-6 max-[1024px]:grid-cols-1'
               : variant === 'recycling'
                 ? 'relative z-[1] flex flex-1 overflow-hidden max-md:flex-col-reverse max-md:overflow-visible'
                 : 'relative z-[1] flex flex-1 overflow-hidden max-md:flex-col max-md:overflow-visible'
