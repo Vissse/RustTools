@@ -54,6 +54,48 @@ const COMBO_MODES = ["cheapest", "fastest"] as const;
 
 const isStructureName = (v: string): v is StructureName => v in STRUCTURES;
 
+// Groups for the structure picker popup. Not part of the raid data itself
+// (STRUCTURES has no notion of "category") — this is purely a presentation
+// grouping, so a structure missing here just falls into "Other" rather than
+// breaking the picker.
+const STRUCTURE_CATEGORY_ORDER = [
+  "Walls",
+  "Doors",
+  "Gates",
+  "Windows",
+  "Hatches",
+  "Other",
+] as const;
+
+const STRUCTURE_CATEGORIES: Record<string, (typeof STRUCTURE_CATEGORY_ORDER)[number]> = {
+  "Wooden Wall": "Walls",
+  "Stone Wall": "Walls",
+  "Metal Wall": "Walls",
+  "Armored Wall": "Walls",
+  "High External Wooden Wall": "Walls",
+  "High External Stone Wall": "Walls",
+  "Wooden Door": "Doors",
+  "Sheet Metal Door": "Doors",
+  "Armored Door": "Doors",
+  "Wood Double Door": "Doors",
+  "Sheet Metal Double Door": "Doors",
+  "Armored Double Door": "Doors",
+  "Garage Door": "Doors",
+  "High External Wooden Gate": "Gates",
+  "High External Stone Gate": "Gates",
+  "Metal Window Bars": "Windows",
+  "Wooden Window Bars": "Windows",
+  "Reinforced Glass Window": "Windows",
+  "Strengthened Glass Window": "Windows",
+  "Metal Horizontal Embrasure": "Windows",
+  "Metal Vertical Embrasure": "Windows",
+  "Ladder Hatch": "Hatches",
+  "Armored Ladder Hatch": "Hatches",
+  "Metal Shop Front": "Other",
+  "Metal Barricade": "Other",
+  "Tool Cupboard": "Other",
+};
+
 export function RaidCalculator() {
   // The whole raid setup lives in the URL so a combo can be shared with a link:
   //   ?s=Sheet+Metal+Door&e=C4,Rocket&n=20&d=true&m=fastest&f=Melee
@@ -91,14 +133,27 @@ export function RaidCalculator() {
     [query.f],
   );
 
-  const visibleStructures = useMemo(
-    () => Object.entries(STRUCTURES).sort(([a], [b]) => a.localeCompare(b)),
-    [],
-  );
-
   // The full structure grid lives in a popup instead of inline — 26 icon
   // tiles don't need to sit on the page once a target is picked.
   const [structureModalOpen, setStructureModalOpen] = useState(false);
+  const [structureSearch, setStructureSearch] = useState("");
+
+  // Grouped by category (Walls, Doors, ...) instead of one flat alphabetical
+  // grid, and filtered by the popup's search box. Empty groups are dropped
+  // rather than shown with a heading and nothing under it.
+  const structureGroups = useMemo(() => {
+    const q = structureSearch.trim().toLowerCase();
+    const filtered = Object.entries(STRUCTURES)
+      .filter(([name]) => !q || name.toLowerCase().includes(q))
+      .sort(([a], [b]) => a.localeCompare(b));
+
+    return STRUCTURE_CATEGORY_ORDER.map((category) => ({
+      category,
+      structures: filtered.filter(
+        ([name]) => (STRUCTURE_CATEGORIES[name] ?? "Other") === category,
+      ),
+    })).filter((g) => g.structures.length > 0);
+  }, [structureSearch]);
 
   const setSelectedStructure = (name: string) => setQuery({ s: name });
   const setStructureCount = (
@@ -481,31 +536,52 @@ export function RaidCalculator() {
                 </button>
 
                 <div className="p-6 md:p-8 overflow-y-auto">
-                  <h2 className="font-display text-2xl font-bold uppercase text-text-bright tracking-wide mb-6">
-                    Select Target Structure
-                  </h2>
+                  <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
+                    <h2 className="font-display text-2xl font-bold uppercase text-text-bright tracking-wide">
+                      Select Target Structure
+                    </h2>
 
-                  <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
-                    {visibleStructures.map(([name, data]) => (
-                      <button
-                        key={name}
-                        className={`group/box border border-transparent rounded-lg px-1.5 py-3 flex flex-col items-center gap-2.5 cursor-pointer transition-all duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:border-white/10 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.4)]${selectedStructure === name ? " active bg-[linear-gradient(180deg,rgba(206,66,43,0.08)_0%,rgba(206,66,43,0.01)_100%)]" : ""}`}
-                        onClick={() => {
-                          setSelectedStructure(name);
-                          setStructureModalOpen(false);
-                        }}
-                      >
-                        <Img
-                          src={data.img}
-                          alt={name}
-                          className="w-14 h-14 object-contain transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:scale-[1.08] group-[.active]/box:scale-[1.15]"
-                        />
-                        <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-250 group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">
-                          {name}
-                        </span>
-                      </button>
-                    ))}
+                    <input
+                      type="text"
+                      placeholder="Search…"
+                      value={structureSearch}
+                      onChange={(e) => setStructureSearch(e.target.value)}
+                      className="bg-white/3 border border-white/10 rounded-md px-3 py-2 text-sm text-text-bright placeholder:text-text-dim outline-none transition-colors duration-200 focus:border-rust/40 w-full sm:w-56"
+                    />
                   </div>
+
+                  {structureGroups.length === 0 ? (
+                    <div className="font-display text-xs font-normal tracking-[0.12em] text-text-muted border border-border bg-black/20 p-4 text-center leading-[1.8] uppercase">
+                      NO MATCHING STRUCTURES
+                    </div>
+                  ) : (
+                    structureGroups.map(({ category, structures }) => (
+                      <div key={category} className="mb-6 last:mb-0">
+                        <div className="sec-label mb-3">{category}</div>
+                        <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
+                          {structures.map(([name, data]) => (
+                            <button
+                              key={name}
+                              className={`group/box border border-transparent rounded-lg px-1.5 py-3 flex flex-col items-center gap-2.5 cursor-pointer transition-all duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:border-white/10 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.4)]${selectedStructure === name ? " active bg-[linear-gradient(180deg,rgba(206,66,43,0.08)_0%,rgba(206,66,43,0.01)_100%)]" : ""}`}
+                              onClick={() => {
+                                setSelectedStructure(name);
+                                setStructureModalOpen(false);
+                              }}
+                            >
+                              <Img
+                                src={data.img}
+                                alt={name}
+                                className="w-14 h-14 object-contain transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:scale-[1.08] group-[.active]/box:scale-[1.15]"
+                              />
+                              <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-250 group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">
+                                {name}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>,
