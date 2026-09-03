@@ -92,6 +92,12 @@ export function CalcShell({
                 : 'relative z-[1] flex flex-1 overflow-hidden max-md:flex-col max-md:overflow-visible'
           }
         >
+          {/* Minimal vertical divider between the two raid columns — sits in
+              the grid gap via absolute positioning, so it doesn't care how
+              tall either column's content actually is. */}
+          {variant === 'raid' && (
+            <div className="hidden min-[1025px]:block absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.1),transparent)]" />
+          )}
           {children}
         </div>
       </div>

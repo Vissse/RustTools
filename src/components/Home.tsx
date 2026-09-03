@@ -10,7 +10,7 @@ export function Home() {
           YOUR <span className="text-rust">WIPE</span>
         </h1>
         
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 animate-fade-in-up">
+        <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-12 md:gap-20 animate-fade-in-up">
           <Link
             href="/calculators"
             className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
@@ -19,10 +19,24 @@ export function Home() {
           </Link>
 
           <Link
+            href="/world"
+            className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
+          >
+            World
+          </Link>
+
+          <Link
             href="/guides"
             className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
           >
             Guides
+          </Link>
+
+          <Link
+            href="/items"
+            className="text-2xl md:text-5xl text-text-dim font-display uppercase tracking-[0.2em] hover:text-rust transition-colors"
+          >
+            Items
           </Link>
         </div>
       </div>

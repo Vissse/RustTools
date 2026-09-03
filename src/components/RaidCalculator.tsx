@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useMemo, useState, useEffect, useRef, Fragment } from 'react'
-import type { CSSProperties } from 'react'
-import { createPortal } from 'react-dom'
+import { useMemo, useState, useEffect, useRef, Fragment } from "react";
+import type { CSSProperties } from "react";
+import { createPortal } from "react-dom";
 import {
   useQueryStates,
   parseAsString,
@@ -10,8 +10,8 @@ import {
   parseAsBoolean,
   parseAsStringLiteral,
   parseAsArrayOf,
-} from 'nuqs'
-import { Img } from './Img'
+} from "nuqs";
+import { Img } from "./Img";
 import {
   buildDamageMap,
   EXPLOSIVES,
@@ -20,39 +20,39 @@ import {
   rowsForQuotedSide,
   STRUCTURES,
   type StructureName,
-} from '../lib/data/raid-data'
+} from "../lib/data/raid-data";
 import {
   bestCombo,
   comboTotal,
   damageAgainst,
   type ComboMode,
-} from '../lib/raid-solver'
-import { Feature, useFeatureUsed } from '../lib/analytics'
-import type { RaidCategory, RaidItem } from '../lib/types'
+} from "../lib/raid-solver";
+import { Feature, useFeatureUsed } from "../lib/analytics";
+import type { RaidCategory, RaidItem } from "../lib/types";
 
 // Explosives always drive the solver (bestCombo) and are the primary path.
 // Everything else here is a secondary, non-optimized method: just quantity +
 // time straight from the per-structure data, grouped under one "Other Methods"
 // disclosure instead of competing with Explosives as equal-weight tabs.
 const CATEGORY_MAP: Record<string, RaidCategory> = {
-  'Siege Weapons': 'siege weapons',
-  Melee: 'melee',
-  'Throwing Attacks': 'throw',
-  Guns: 'guns',
-  Torpedos: 'torpedo',
-}
+  "Siege Weapons": "siege weapons",
+  Melee: "melee",
+  "Throwing Attacks": "throw",
+  Guns: "guns",
+  Torpedos: "torpedo",
+};
 
 const OTHER_METHOD_CATEGORIES = [
-  'Siege Weapons',
-  'Melee',
-  'Throwing Attacks',
-  'Guns',
-  'Torpedos',
-]
+  "Siege Weapons",
+  "Melee",
+  "Throwing Attacks",
+  "Guns",
+  "Torpedos",
+];
 
-const COMBO_MODES = ['cheapest', 'fastest'] as const
+const COMBO_MODES = ["cheapest", "fastest"] as const;
 
-const isStructureName = (v: string): v is StructureName => v in STRUCTURES
+const isStructureName = (v: string): v is StructureName => v in STRUCTURES;
 
 export function RaidCalculator() {
   // The whole raid setup lives in the URL so a combo can be shared with a link:
@@ -67,83 +67,86 @@ export function RaidCalculator() {
       e: parseAsArrayOf(parseAsString).withDefault([]),
       n: parseAsInteger,
       d: parseAsBoolean.withDefault(false),
-      m: parseAsStringLiteral(COMBO_MODES).withDefault('cheapest'),
+      m: parseAsStringLiteral(COMBO_MODES).withDefault("cheapest"),
       f: parseAsArrayOf(parseAsString).withDefault([]),
     },
-    { history: 'replace' },
-  )
+    { history: "replace" },
+  );
 
   const selectedStructure: StructureName | null =
-    query.s && isStructureName(query.s) ? query.s : null
-  const structureCount = query.n
-  const discountActive = query.d
-  const comboMode: ComboMode = query.m
+    query.s && isStructureName(query.s) ? query.s : null;
+  const structureCount = query.n;
+  const discountActive = query.d;
+  const comboMode: ComboMode = query.m;
 
   const selectedExplosives = useMemo(
-    () => new Set(query.e.filter((name) => EXPLOSIVES.some((x) => x.name === name))),
+    () =>
+      new Set(
+        query.e.filter((name) => EXPLOSIVES.some((x) => x.name === name)),
+      ),
     [query.e],
-  )
+  );
   const activeFilters = useMemo(
     () => new Set(query.f.filter((c) => OTHER_METHOD_CATEGORIES.includes(c))),
     [query.f],
-  )
+  );
 
   const visibleStructures = useMemo(
     () => Object.entries(STRUCTURES).sort(([a], [b]) => a.localeCompare(b)),
     [],
-  )
+  );
 
   // The full structure grid lives in a popup instead of inline — 26 icon
   // tiles don't need to sit on the page once a target is picked.
-  const [structureModalOpen, setStructureModalOpen] = useState(false)
+  const [structureModalOpen, setStructureModalOpen] = useState(false);
 
-  const setSelectedStructure = (name: string) => setQuery({ s: name })
+  const setSelectedStructure = (name: string) => setQuery({ s: name });
   const setStructureCount = (
     n: number | null | ((prev: number | null) => number | null),
-  ) => setQuery((prev) => ({ n: typeof n === 'function' ? n(prev.n) : n }))
+  ) => setQuery((prev) => ({ n: typeof n === "function" ? n(prev.n) : n }));
 
   const totalHp = useMemo(
     () =>
       selectedStructure
         ? STRUCTURES[selectedStructure].hp *
-          (typeof structureCount === 'number' && structureCount > 0
+          (typeof structureCount === "number" && structureCount > 0
             ? structureCount
             : 1)
         : 0,
     [selectedStructure, structureCount],
-  )
+  );
 
   // The category tabs wrap onto multiple rows on narrow screens; when they do,
   // the vertical dividers between them would dangle at row edges. Detect the
   // wrap and hide the dividers via the `is-wrapped` class. We compute the width
   // a single row WOULD need (tabs + gaps + dividers) rather than reading the
   // current layout, so toggling the class can't feed back into the measurement.
-  const filterRowRef = useRef<HTMLDivElement>(null)
-  const [filtersWrapped, setFiltersWrapped] = useState(false)
+  const filterRowRef = useRef<HTMLDivElement>(null);
+  const [filtersWrapped, setFiltersWrapped] = useState(false);
 
   useEffect(() => {
-    const el = filterRowRef.current
-    if (!el) return
-    const GAP = 12 // .filter-row gap
-    const DIVIDER = 1 // .filter-separator width
+    const el = filterRowRef.current;
+    if (!el) return;
+    const GAP = 12; // .filter-row gap
+    const DIVIDER = 1; // .filter-separator width
     const measure = () => {
-      const tabs = el.querySelectorAll<HTMLElement>('.filter-pure-text')
-      if (!tabs.length) return
-      let needed = 0
+      const tabs = el.querySelectorAll<HTMLElement>(".filter-pure-text");
+      if (!tabs.length) return;
+      let needed = 0;
       // Sub-pixel widths: offsetWidth rounds down, which made `needed`
       // underestimate the row and fire the wrap detection a frame late.
-      tabs.forEach((t) => (needed += t.getBoundingClientRect().width))
+      tabs.forEach((t) => (needed += t.getBoundingClientRect().width));
       // (n-1) dividers, each flanked by a gap on both sides.
-      needed += (tabs.length - 1) * (DIVIDER + GAP * 2)
+      needed += (tabs.length - 1) * (DIVIDER + GAP * 2);
       // Hide the dividers a couple px BEFORE the true wrap point so they never
       // dangle at a row edge during the transition as the panel narrows.
-      setFiltersWrapped(needed > el.clientWidth - 2)
-    }
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
+      setFiltersWrapped(needed > el.clientWidth - 2);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   // --- ASYNCHRONNÍ DATA (Gecko/Firefox optimalizace) ---
   // The loaded rows are stored WITH the structure they belong to. Tracking them
@@ -151,50 +154,50 @@ export function RaidCalculator() {
   // loading flag was already false — harmless when it only drove the tool list,
   // but the solver now reads this data, so a stale frame would be a wrong combo.
   const [loaded, setLoaded] = useState<{
-    structure: StructureName
-    rows: RaidItem[]
-  } | null>(null)
-  const [loadFailed, setLoadFailed] = useState(false)
+    structure: StructureName;
+    rows: RaidItem[];
+  } | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
 
   useEffect(() => {
     if (!selectedStructure) {
-      setLoadFailed(false)
-      return
+      setLoadFailed(false);
+      return;
     }
 
-    let isMounted = true
-    setLoadFailed(false)
+    let isMounted = true;
+    setLoadFailed(false);
 
     loadRaidDataForStructure(selectedStructure)
       .then((rows) => {
-        if (isMounted) setLoaded({ structure: selectedStructure, rows })
+        if (isMounted) setLoaded({ structure: selectedStructure, rows });
       })
       .catch((error) => {
-        console.error('Chyba při načítání dat pro strukturu:', error)
-        if (isMounted) setLoadFailed(true)
-      })
+        console.error("Chyba při načítání dat pro strukturu:", error);
+        if (isMounted) setLoadFailed(true);
+      });
 
     return () => {
-      isMounted = false
-    }
-  }, [selectedStructure])
+      isMounted = false;
+    };
+  }, [selectedStructure]);
 
   // Rows are only usable if they are THIS structure's rows.
   const rows =
-    loaded && loaded.structure === selectedStructure ? loaded.rows : null
-  const isLoadingData = selectedStructure !== null && !rows && !loadFailed
+    loaded && loaded.structure === selectedStructure ? loaded.rows : null;
+  const isLoadingData = selectedStructure !== null && !rows && !loadFailed;
 
   const sidedRows = useMemo(
     () => (rows ? rowsForQuotedSide(rows) : null),
-    [rows]
-  )
+    [rows],
+  );
 
   // Per-explosive damage for this structure, from the same rows the tool lists
   // render. Explosives with no row for this structure are absent from the map.
   const damageMap = useMemo(
     () => (sidedRows ? buildDamageMap(sidedRows) : null),
-    [sidedRows]
-  )
+    [sidedRows],
+  );
 
   // Selected explosives split by whether this structure's data covers them. The
   // URL keeps every selection (so a shared link survives switching structures and
@@ -202,60 +205,61 @@ export function RaidCalculator() {
   const usableExplosives = useMemo(
     () =>
       EXPLOSIVES.filter(
-        (e) => selectedExplosives.has(e.name) && damageMap?.has(e.name)
+        (e) => selectedExplosives.has(e.name) && damageMap?.has(e.name),
       ),
-    [selectedExplosives, damageMap]
-  )
+    [selectedExplosives, damageMap],
+  );
   const ignoredExplosives = useMemo(
     () =>
       damageMap
         ? [...selectedExplosives].filter(
-            (name) => !damageMap.has(name as (typeof EXPLOSIVES)[number]['name'])
+            (name) =>
+              !damageMap.has(name as (typeof EXPLOSIVES)[number]["name"]),
           )
         : [],
-    [selectedExplosives, damageMap]
-  )
+    [selectedExplosives, damageMap],
+  );
 
-  const ready = selectedStructure !== null && selectedExplosives.size > 0
+  const ready = selectedStructure !== null && selectedExplosives.size > 0;
 
   const result = useMemo(() => {
     if (!selectedStructure || !damageMap || usableExplosives.length === 0)
-      return null
+      return null;
 
     const safeCount =
-      typeof structureCount === 'number' && structureCount > 0
+      typeof structureCount === "number" && structureCount > 0
         ? structureCount
-        : 1
+        : 1;
 
     // Raids happen door-by-door: solve the cheapest combo for ONE structure,
     // then scale that combo by the count. This keeps the per-door combo stable
     // regardless of count (20 vs 21 doors) instead of pooling all HP into one
     // giant knapsack.
-    const singleHp = STRUCTURES[selectedStructure].hp
-    const totalHp = singleHp * safeCount
+    const singleHp = STRUCTURES[selectedStructure].hp;
+    const totalHp = singleHp * safeCount;
     const perDoorCombo = bestCombo(
       singleHp,
       damageMap,
       usableExplosives,
-      comboMode
-    )
+      comboMode,
+    );
     const combo = perDoorCombo.map((c) => ({
       ...c,
       qty: c.qty * safeCount,
       totalSulfur: c.totalSulfur * safeCount,
       totalMetal: c.totalMetal * safeCount,
       totalCharcoal: c.totalCharcoal * safeCount,
-    }))
+    }));
 
     const totalDmg = combo.reduce(
       (s, c) => s + damageAgainst(c.exp, damageMap) * c.qty,
-      0
-    )
-    const dmgDone = Math.min(totalDmg, totalHp)
-    const pct = Math.min(100, (dmgDone / totalHp) * 100)
-    const destroyed = totalDmg >= totalHp
+      0,
+    );
+    const dmgDone = Math.min(totalDmg, totalHp);
+    const pct = Math.min(100, (dmgDone / totalHp) * 100);
+    const destroyed = totalDmg >= totalHp;
 
-    const baseCharcoal = comboTotal(combo, 'totalCharcoal')
+    const baseCharcoal = comboTotal(combo, "totalCharcoal");
 
     return {
       totalHp,
@@ -263,13 +267,13 @@ export function RaidCalculator() {
       dmgDone,
       pct,
       destroyed,
-      totalSulfur: comboTotal(combo, 'totalSulfur'),
-      totalMetal: comboTotal(combo, 'totalMetal'),
+      totalSulfur: comboTotal(combo, "totalSulfur"),
+      totalMetal: comboTotal(combo, "totalMetal"),
       totalCharcoal: discountActive
         ? Math.round(baseCharcoal * (2 / 3))
         : baseCharcoal,
       segCount: Math.min(20, safeCount * 4),
-    }
+    };
   }, [
     selectedStructure,
     damageMap,
@@ -277,44 +281,44 @@ export function RaidCalculator() {
     structureCount,
     discountActive,
     comboMode,
-  ])
+  ]);
 
   // Explosives are always the primary, always-visible path now — no tab gates it.
   // sidedRows already dropped the other face's duplicate rows, so a tool appears
   // once and the quoted numbers match the explosive solver's side.
   const toolGroups = useMemo(() => {
-    if (!selectedStructure || !sidedRows) return []
+    if (!selectedStructure || !sidedRows) return [];
 
     const safeCount =
-      typeof structureCount === 'number' && structureCount > 0
+      typeof structureCount === "number" && structureCount > 0
         ? structureCount
-        : 1
+        : 1;
 
     return OTHER_METHOD_CATEGORIES.filter((label) => activeFilters.has(label))
       .map((label) => {
-        const category = CATEGORY_MAP[label]
+        const category = CATEGORY_MAP[label];
         const tools = sidedRows
           .filter((it) => it.category === category)
           .map((it) => ({ ...it, total: it.quantity * safeCount }))
-          .sort((a, b) => a.total - b.total)
-        return { label, tools }
+          .sort((a, b) => a.total - b.total);
+        return { label, tools };
       })
-      .filter((g) => g.tools.length > 0)
-  }, [selectedStructure, structureCount, activeFilters, sidedRows])
+      .filter((g) => g.tools.length > 0);
+  }, [selectedStructure, structureCount, activeFilters, sidedRows]);
 
-  const solverShown = ready && !isLoadingData && !loadFailed && result !== null
+  const solverShown = ready && !isLoadingData && !loadFailed && result !== null;
 
   useFeatureUsed(
     Feature.raid,
-    `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`
-  )
+    `${selectedStructure}|${selectedExplosives.size}|${structureCount}|${activeFilters.size}`,
+  );
 
   function toggleExplosive(name: string) {
     setQuery((prev) => ({
       e: prev.e.includes(name)
         ? prev.e.filter((x) => x !== name)
         : [...prev.e, name],
-    }))
+    }));
   }
 
   function toggleFilter(cat: string) {
@@ -322,7 +326,7 @@ export function RaidCalculator() {
       f: prev.f.includes(cat)
         ? prev.f.filter((x) => x !== cat)
         : [...prev.f, cat],
-    }))
+    }));
   }
 
   return (
@@ -336,7 +340,9 @@ export function RaidCalculator() {
             of inline, so the page only ever shows the current pick. */}
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <div className="sec-label leading-2 flex-1 mb-0!">TARGET STRUCTURE</div>
+            <div className="sec-label leading-2 flex-1 mb-0!">
+              TARGET STRUCTURE
+            </div>
             <button
               className="shrink-0 text-[11px] font-bold uppercase tracking-wider text-text-dim hover:text-rust transition-colors cursor-pointer"
               onClick={() => setStructureModalOpen(true)}
@@ -352,38 +358,41 @@ export function RaidCalculator() {
                   src={STRUCTURES[selectedStructure].img}
                   alt={selectedStructure}
                   className="w-20 h-20 object-contain shrink-0 drop-shadow-[0px_8px_16px_rgba(0,0,0,0.7)]"
-                  onError={(e) => (e.currentTarget.style.opacity = '0.3')}
+                  onError={(e) => (e.currentTarget.style.opacity = "0.3")}
                 />
                 <div className="flex flex-col gap-2.5">
                   <span className="text-text-bright font-bold font-display uppercase tracking-wide text-base">
                     {selectedStructure}
                   </span>
-                  <div className="inline-flex items-center self-start bg-white/2 border border-white/6 rounded-md px-1 py-1 gap-1">
+                  <div className="inline-flex items-center self-start gap-1">
                     <button
-                      className="bg-transparent text-[#757575] text-base font-light cursor-pointer flex items-center justify-center w-6 h-6 rounded transition-colors duration-200 select-none hover:text-rust hover:bg-white/5 active:scale-[0.9]"
+                      className="bg-transparent text-[#757575] text-base font-light cursor-pointer flex items-center justify-center w-5 h-5 transition-all duration-200 select-none p-0 shrink-0 hover:text-rust hover:scale-[1.15] active:scale-[0.95]"
                       onClick={() =>
                         setStructureCount((c) => Math.max(1, (c ?? 1) - 1))
                       }
                     >
                       −
                     </button>
+                    <div className="w-px min-w-px h-2.5 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] mx-1 shrink-0" />
                     <input
                       type="number"
                       min="1"
-                      className="w-8 bg-transparent border-0 text-text-bright text-sm font-bold text-center leading-none outline-none font-display tracking-wider [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
+                      className="w-8 bg-transparent border-0 text-text-bright text-[13px] font-bold text-center leading-none outline-none p-0 shrink-0 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0"
                       value={structureCount ?? 1}
                       onChange={(e) => {
-                        const val = e.target.value
-                        if (val === '') {
-                          setStructureCount(null)
+                        const val = e.target.value;
+                        if (val === "") {
+                          setStructureCount(null);
                         } else {
-                          const parsed = parseInt(val, 10)
-                          if (!isNaN(parsed) && parsed > 0) setStructureCount(parsed)
+                          const parsed = parseInt(val, 10);
+                          if (!isNaN(parsed) && parsed > 0)
+                            setStructureCount(parsed);
                         }
                       }}
                     />
+                    <div className="w-px min-w-px h-2.5 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] mx-1 shrink-0" />
                     <button
-                      className="bg-transparent text-[#757575] text-base font-light cursor-pointer flex items-center justify-center w-6 h-6 rounded transition-colors duration-200 select-none hover:text-rust hover:bg-white/5 active:scale-[0.9]"
+                      className="bg-transparent text-[#757575] text-base font-light cursor-pointer flex items-center justify-center w-5 h-5 transition-all duration-200 select-none p-0 shrink-0 hover:text-rust hover:scale-[1.15] active:scale-[0.95]"
                       onClick={() => setStructureCount((c) => (c ?? 1) + 1)}
                     >
                       +
@@ -412,7 +421,11 @@ export function RaidCalculator() {
                 </div>
                 <div
                   className="relative w-full h-0.5 mt-2"
-                  style={{ '--hp-pct': `${solverShown && result ? result.pct : 100}%` } as CSSProperties}
+                  style={
+                    {
+                      "--hp-pct": `${solverShown && result ? result.pct : 100}%`,
+                    } as CSSProperties
+                  }
                 >
                   <div className="absolute top-0 left-0 h-full w-[var(--hp-pct,0%)] bg-[linear-gradient(to_right,#cc422c_0%,#cc422c_20%,transparent_100%)] [transition:width_0.8s_cubic-bezier(0.22,1,0.36,1)] rounded-[2px] z-[2]" />
                   <div className="absolute top-0 left-0 h-full w-[var(--hp-pct,0%)] bg-[linear-gradient(to_right,#cc422c_0%,#cc422c_20%,transparent_100%)] [transition:width_0.8s_cubic-bezier(0.22,1,0.36,1)] blur-[5px] opacity-80 z-[1]" />
@@ -438,7 +451,7 @@ export function RaidCalculator() {
             fixed` — without the portal this popup gets trapped and clipped
             inside the card instead of covering the viewport. */}
         {structureModalOpen &&
-          typeof document !== 'undefined' &&
+          typeof document !== "undefined" &&
           createPortal(
             <div
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300"
@@ -452,7 +465,16 @@ export function RaidCalculator() {
                   onClick={() => setStructureModalOpen(false)}
                   className="absolute top-4 right-4 text-text-dim hover:text-text-bright transition-colors cursor-pointer z-10"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M18 6 6 18" />
                     <path d="m6 6 12 12" />
                   </svg>
@@ -467,14 +489,18 @@ export function RaidCalculator() {
                     {visibleStructures.map(([name, data]) => (
                       <button
                         key={name}
-                        className={`group/box flex flex-col items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.4)]${selectedStructure === name ? ' bg-[linear-gradient(180deg,rgba(206,66,43,0.12)_0%,rgba(206,66,43,0.01)_100%)] border-rust/40' : ' bg-white/[0.015] border-white/5 hover:bg-white/3 hover:border-white/10'}`}
+                        className={`group/box border border-transparent rounded-lg px-1.5 py-3 flex flex-col items-center gap-2.5 cursor-pointer transition-all duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:border-white/10 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.4)]${selectedStructure === name ? " active bg-[linear-gradient(180deg,rgba(206,66,43,0.08)_0%,rgba(206,66,43,0.01)_100%)]" : ""}`}
                         onClick={() => {
-                          setSelectedStructure(name)
-                          setStructureModalOpen(false)
+                          setSelectedStructure(name);
+                          setStructureModalOpen(false);
                         }}
                       >
-                        <Img src={data.img} alt={name} className="w-14 h-14 object-contain transition-transform duration-300 group-hover/box:scale-110" />
-                        <span className="text-[11px] font-semibold text-text-dim text-center leading-[1.2] uppercase tracking-wider transition-colors duration-300 group-hover/box:text-text-bright">
+                        <Img
+                          src={data.img}
+                          alt={name}
+                          className="w-14 h-14 object-contain transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:scale-[1.08] group-[.active]/box:scale-[1.15]"
+                        />
+                        <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-250 group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">
                           {name}
                         </span>
                       </button>
@@ -494,24 +520,30 @@ export function RaidCalculator() {
               // Disabled, not hidden: hiding would reflow the grid every time
               // the target changes. While data is loading nothing is known yet,
               // so leave everything enabled rather than flickering.
-              const noData = damageMap !== null && !damageMap.has(e.name)
+              const noData = damageMap !== null && !damageMap.has(e.name);
               return (
-              <button
-                key={e.name}
-                disabled={noData}
-                aria-disabled={noData}
-                title={
-                  noData
-                    ? `No data for ${e.name} on ${selectedStructure}`
-                    : undefined
-                }
-                className={`group/box border border-transparent rounded-lg px-1.5 py-3 flex flex-col items-center gap-2.5 cursor-pointer transition-all duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:border-white/10 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.4)]${selectedExplosives.has(e.name) ? ' active bg-[linear-gradient(180deg,rgba(206,66,43,0.12)_0%,rgba(206,66,43,0.01)_100%)] border-[rgba(206,66,43,0.4)] shadow-[0_8px_24px_rgba(206,66,43,0.15),inset_0_1px_0_rgba(206,66,43,0.2)] -translate-y-0.5' : ''}${noData ? ' opacity-30 cursor-not-allowed pointer-events-none grayscale' : ''}`}
-                onClick={() => toggleExplosive(e.name)}
-              >
-                <Img src={e.img} alt={e.name} className="w-[50px] h-[50px] object-contain transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:scale-[1.08] group-[.active]/box:scale-[1.15]" />
-                <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">{e.short}</span>
-              </button>
-              )
+                <button
+                  key={e.name}
+                  disabled={noData}
+                  aria-disabled={noData}
+                  title={
+                    noData
+                      ? `No data for ${e.name} on ${selectedStructure}`
+                      : undefined
+                  }
+                  className={`group/box border border-transparent rounded-lg px-1.5 py-3 flex flex-col items-center gap-2.5 cursor-pointer transition-all duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] relative overflow-hidden hover:bg-white/3 hover:border-white/10 hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.4)]${selectedExplosives.has(e.name) ? " active bg-[linear-gradient(180deg,rgba(206,66,43,0.08)_0%,rgba(206,66,43,0.01)_100%)]" : ""}${noData ? " opacity-30 cursor-not-allowed pointer-events-none grayscale" : ""}`}
+                  onClick={() => toggleExplosive(e.name)}
+                >
+                  <Img
+                    src={e.img}
+                    alt={e.name}
+                    className="w-[50px] h-[50px] object-contain transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover/box:scale-[1.08] group-[.active]/box:scale-[1.15]"
+                  />
+                  <span className="text-[11px] font-semibold text-[#888] uppercase text-center leading-[1.2] tracking-wider transition-[color] duration-[250ms] group-hover/box:text-[#ccc] group-[.active]/box:text-text-bright group-[.active]/box:[text-shadow:0_0_8px_rgba(206,66,43,0.4)]">
+                    {e.short}
+                  </span>
+                </button>
+              );
             })}
           </div>
 
@@ -523,63 +555,70 @@ export function RaidCalculator() {
 
           <div>
             {/* Sub-category tabs with fade separators */}
-              <div
-                ref={filterRowRef}
-                className={`group/filters flex items-center [justify-content:safe_center] flex-wrap gap-3 mb-4 border-b border-white/5 pb-2 w-full${filtersWrapped ? ' is-wrapped' : ''}`}
-              >
-                {OTHER_METHOD_CATEGORIES.map((cat, idx) => (
-                  <Fragment key={cat}>
-                    <button
-                      className={`bg-transparent border-0 pb-1.5 text-text-dim text-sm font-semibold font-display uppercase tracking-[0.15em] cursor-pointer transition-[color] duration-300 relative outline-none whitespace-nowrap shrink-0 hover:text-[#c4c4c4] after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-0.5 after:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] after:transition-[width] after:duration-300 after:rounded-[2px] ${activeFilters.has(cat) ? 'text-text-bright after:w-full' : 'after:w-0'}`}
-                      onClick={() => toggleFilter(cat)}
-                    >
-                      {cat}
-                    </button>
-                    {/* Separator between tabs, not after the last */}
-                    {idx < OTHER_METHOD_CATEGORIES.length - 1 && (
-                      <div className="w-px h-3 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] shrink-0 group-[.is-wrapped]/filters:hidden" />
-                    )}
-                  </Fragment>
+            <div
+              ref={filterRowRef}
+              className={`group/filters flex items-center [justify-content:safe_center] flex-wrap gap-3 mb-4 border-b border-white/5 pb-2 w-full${filtersWrapped ? " is-wrapped" : ""}`}
+            >
+              {OTHER_METHOD_CATEGORIES.map((cat, idx) => (
+                <Fragment key={cat}>
+                  <button
+                    className={`bg-transparent border-0 pb-1.5 text-text-dim text-sm font-semibold font-display uppercase tracking-[0.15em] cursor-pointer transition-[color] duration-300 relative outline-none whitespace-nowrap shrink-0 hover:text-[#c4c4c4] after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-0.5 after:bg-[linear-gradient(90deg,transparent_0%,var(--rust)_15%,var(--rust)_85%,transparent_100%)] after:transition-[width] after:duration-300 after:rounded-[2px] ${activeFilters.has(cat) ? "text-text-bright after:w-full" : "after:w-0"}`}
+                    onClick={() => toggleFilter(cat)}
+                  >
+                    {cat}
+                  </button>
+                  {/* Separator between tabs, not after the last */}
+                  {idx < OTHER_METHOD_CATEGORIES.length - 1 && (
+                    <div className="w-px h-3 bg-[linear-gradient(to_bottom,transparent,#4a4a4a,transparent)] shrink-0 group-[.is-wrapped]/filters:hidden" />
+                  )}
+                </Fragment>
+              ))}
+            </div>
+
+            {isLoadingData ? (
+              <div className="w-full h-[100px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
+                LOADING DATA...
+              </div>
+            ) : (
+              toolGroups.length === 0 && (
+                <div className="w-full h-[100px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
+                  {!selectedStructure
+                    ? "SELECT A TARGET FIRST"
+                    : activeFilters.size === 0
+                      ? "PICK A CATEGORY ABOVE"
+                      : "NO TOOLS IN THE SELECTED CATEGORIES"}
+                </div>
+              )
+            )}
+
+            {toolGroups.length > 0 && !isLoadingData && (
+              <div className="max-h-[230px] overflow-y-auto pr-2 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_96%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_96%,rgba(0,0,0,0)_100%)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-white/2 [&::-webkit-scrollbar-track]:rounded [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-[#cc422c] min-[1025px]:max-h-[380px]">
+                {toolGroups.map((group) => (
+                  <div key={group.label} className="mb-[18px] last:mb-0">
+                    <div className="text-[10px] font-bold text-[#757575] uppercase tracking-[0.08em] pb-1.5 mb-1.5 border-b border-white/5">
+                      {group.label.toUpperCase()}
+                    </div>
+                    {group.tools.map((tool) => (
+                      <div
+                        className="flex items-center gap-3 px-1 py-[7px] border-b border-white/3 transition-[background] duration-200 hover:bg-white/2"
+                        key={tool.name}
+                      >
+                        <span className="flex-1 min-w-0 text-[#a5b4c0] text-xs font-semibold tracking-[0.02em]">
+                          {tool.name}
+                        </span>
+                        <span className="shrink-0 text-[#757575] text-[11px] font-semibold tabular-nums whitespace-nowrap">
+                          {tool.time}
+                        </span>
+                        <span className="shrink-0 text-[#cc422c] text-[15px] font-extrabold tabular-nums min-w-12 text-right">
+                          {tool.total.toLocaleString()}
+                          <span className="text-[11px] ml-0.5">x</span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 ))}
               </div>
-
-              {isLoadingData ? (
-                <div className="w-full h-[100px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
-                  LOADING DATA...
-                </div>
-              ) : (
-                toolGroups.length === 0 && (
-                  <div className="w-full h-[100px] border border-dashed border-white/10 rounded-xl bg-white/1 flex items-center justify-center font-display text-sm tracking-[0.15em] text-text-bright/30 uppercase text-center shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] opacity-50 py-4 text-xs">
-                    {!selectedStructure
-                      ? 'SELECT A TARGET FIRST'
-                      : activeFilters.size === 0
-                        ? 'PICK A CATEGORY ABOVE'
-                        : 'NO TOOLS IN THE SELECTED CATEGORIES'}
-                  </div>
-                )
-              )}
-
-              {toolGroups.length > 0 && !isLoadingData && (
-                <div className="max-h-[230px] overflow-y-auto pr-2 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_96%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_96%,rgba(0,0,0,0)_100%)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-white/2 [&::-webkit-scrollbar-track]:rounded [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-[#cc422c] min-[1025px]:max-h-[380px]">
-                  {toolGroups.map((group) => (
-                    <div key={group.label} className="mb-[18px] last:mb-0">
-                      <div className="text-[10px] font-bold text-[#757575] uppercase tracking-[0.08em] pb-1.5 mb-1.5 border-b border-white/5">
-                        {group.label.toUpperCase()}
-                      </div>
-                      {group.tools.map((tool) => (
-                        <div className="flex items-center gap-3 px-1 py-[7px] border-b border-white/3 transition-[background] duration-200 hover:bg-white/2" key={tool.name}>
-                          <span className="flex-1 min-w-0 text-[#a5b4c0] text-xs font-semibold tracking-[0.02em]">{tool.name}</span>
-                          <span className="shrink-0 text-[#757575] text-[11px] font-semibold tabular-nums whitespace-nowrap">{tool.time}</span>
-                          <span className="shrink-0 text-[#cc422c] text-[15px] font-extrabold tabular-nums min-w-12 text-right">
-                            {tool.total.toLocaleString()}
-                            <span className="text-[11px] ml-0.5">x</span>
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
+            )}
           </div>
         </div>
       </div>
@@ -629,7 +668,7 @@ export function RaidCalculator() {
                     show a number that doesn't add up. */}
                 {ignoredExplosives.length > 0 && (
                   <div className="font-display text-[11px] font-normal tracking-widest text-text-muted border border-border bg-black/20 px-3 py-2 text-center uppercase leading-[1.6]">
-                    NO DATA FOR {ignoredExplosives.join(', ')} ON{' '}
+                    NO DATA FOR {ignoredExplosives.join(", ")} ON{" "}
                     {selectedStructure} — EXCLUDED
                   </div>
                 )}
@@ -642,22 +681,27 @@ export function RaidCalculator() {
                   <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-3">
                     {/* Optimisation mode: cheapest sulfur vs fewest explosives */}
                     <div
-                      className={`group/sw flex items-center gap-2.5${comboMode === 'fastest' ? ' active' : ''}`}
+                      className={`group/sw flex items-center gap-2.5${comboMode === "fastest" ? " active" : ""}`}
                     >
-                      <span className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${comboMode === 'cheapest' ? 'text-[#cc422c]' : 'text-[#757575]'}`}>
+                      <span
+                        className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${comboMode === "cheapest" ? "text-[#cc422c]" : "text-[#757575]"}`}
+                      >
                         CHEAPEST
                       </span>
                       <div
                         className="relative w-9 h-5 bg-[#121212] border border-white/10 rounded-[10px] cursor-pointer shrink-0 transition-all duration-300 group-[.active]/sw:border-[rgba(204,66,44,0.5)]"
                         onClick={() =>
                           setQuery({
-                            m: comboMode === 'cheapest' ? 'fastest' : 'cheapest',
+                            m:
+                              comboMode === "cheapest" ? "fastest" : "cheapest",
                           })
                         }
                       >
                         <div className="absolute w-3 h-3 bg-[#555] rounded-full top-[3px] left-[3px] [transition:all_0.3s_cubic-bezier(0.4,0,0.2,1)] group-[.active]/sw:bg-[#cc422c] group-[.active]/sw:left-[19px]" />
                       </div>
-                      <span className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${comboMode === 'fastest' ? 'text-[#cc422c]' : 'text-[#757575]'}`}>
+                      <span
+                        className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${comboMode === "fastest" ? "text-[#cc422c]" : "text-[#757575]"}`}
+                      >
                         FASTEST
                       </span>
                     </div>
@@ -668,9 +712,11 @@ export function RaidCalculator() {
                         Workbench and Mixing Table give the same charcoal discount, so
                         this is just "no bench" vs "bench", not a choice between the two. */}
                     <div
-                      className={`group/sw flex items-center gap-2.5${discountActive ? ' active' : ''}`}
+                      className={`group/sw flex items-center gap-2.5${discountActive ? " active" : ""}`}
                     >
-                      <span className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${!discountActive ? 'text-[#cc422c]' : 'text-[#757575]'}`}>
+                      <span
+                        className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${!discountActive ? "text-[#cc422c]" : "text-[#757575]"}`}
+                      >
                         NO BENCH
                       </span>
                       <div
@@ -679,7 +725,9 @@ export function RaidCalculator() {
                       >
                         <div className="absolute w-3 h-3 bg-[#555] rounded-full top-[3px] left-[3px] [transition:all_0.3s_cubic-bezier(0.4,0,0.2,1)] group-[.active]/sw:bg-[#cc422c] group-[.active]/sw:left-[19px]" />
                       </div>
-                      <span className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${discountActive ? 'text-[#cc422c]' : 'text-[#757575]'}`}>
+                      <span
+                        className={`text-[11px] font-bold tracking-wider transition-[color] duration-200 ${discountActive ? "text-[#cc422c]" : "text-[#757575]"}`}
+                      >
                         WORKBENCH / TABLE
                       </span>
                     </div>
@@ -698,22 +746,38 @@ export function RaidCalculator() {
                       NO COMBINATION FOUND
                     </div>
                   ) : (
-                    result.combo.map((c) => (
-                      <div className="flex items-center px-1 py-3 mb-4 last:mb-0 @max-[520px]:flex-wrap" key={c.exp.name}>
-                        {/* Explosive icon */}
-                        <Img
-                          src={c.exp.img}
-                          alt={c.exp.name}
-                          className="w-10 h-10 object-contain shrink-0"
-                        />
+                    result.combo.map((c, idx) => (
+                      <div
+                        className="flex items-center px-1 py-3 @max-[520px]:flex-wrap"
+                        key={c.exp.name}
+                      >
+                        {/* Left group (icon + name/qty) carries the row divider —
+                            it ends where this group does, roughly at the vertical
+                            separator, instead of running under the resources too. */}
+                        <div className="relative flex items-center self-stretch flex-1 min-w-0">
+                          {/* Explosive icon */}
+                          <Img
+                            src={c.exp.img}
+                            alt={c.exp.name}
+                            className="w-10 h-10 object-contain shrink-0"
+                          />
 
-                        {/* Name + qty needed — same top/bottom layout as Target Structure */}
-                        <div className="flex flex-col gap-0.5 flex-1 min-w-0 ml-4">
-                          <span className="text-text-bright font-bold tracking-[0.02em] uppercase">{c.exp.name}</span>
-                          <span className="text-[#cc422c] font-extrabold text-lg leading-none">
-                            {c.qty}
-                            <span className="text-sm ml-1 text-[#cc422c]">x</span>
-                          </span>
+                          {/* Name + qty needed — same top/bottom layout as Target Structure */}
+                          <div className="flex flex-col gap-0.5 flex-1 min-w-0 ml-4">
+                            <span className="text-text-bright font-bold tracking-[0.02em] uppercase">
+                              {c.exp.name}
+                            </span>
+                            <span className="text-[#cc422c] font-extrabold text-lg leading-none">
+                              {c.qty}
+                              <span className="text-sm ml-1 text-[#cc422c]">
+                                x
+                              </span>
+                            </span>
+                          </div>
+
+                          {idx < result.combo.length - 1 && (
+                            <div className="absolute left-0 right-0 -bottom-3 h-px bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0.15)_60%,transparent_100%)]" />
+                          )}
                         </div>
 
                         {/* Separator */}
@@ -723,7 +787,11 @@ export function RaidCalculator() {
                         <div className="flex items-start flex-wrap justify-end gap-x-4 gap-y-1.5 min-w-0 shrink-0 ml-auto @max-[520px]:basis-full @max-[520px]:mt-2.5">
                           {c.totalSulfur > 0 && (
                             <div className="flex flex-col items-center gap-1">
-                              <Img src={RESOURCE_ICONS.sulfur} alt="Sulfur" className="w-6 h-6" />
+                              <Img
+                                src={RESOURCE_ICONS.sulfur}
+                                alt="Sulfur"
+                                className="w-6 h-6"
+                              />
                               <span className="font-bold text-[15px] text-text-bright">
                                 {c.totalSulfur.toLocaleString()}
                               </span>
@@ -731,7 +799,11 @@ export function RaidCalculator() {
                           )}
                           {c.totalMetal > 0 && (
                             <div className="flex flex-col items-center gap-1">
-                              <Img src={RESOURCE_ICONS.metal} alt="Metal" className="w-6 h-6" />
+                              <Img
+                                src={RESOURCE_ICONS.metal}
+                                alt="Metal"
+                                className="w-6 h-6"
+                              />
                               <span className="font-bold text-[15px] text-text-bright">
                                 {c.totalMetal.toLocaleString()}
                               </span>
@@ -739,7 +811,11 @@ export function RaidCalculator() {
                           )}
                           {c.totalCharcoal > 0 && (
                             <div className="flex flex-col items-center gap-1">
-                              <Img src={RESOURCE_ICONS.coal} alt="Coal" className="w-6 h-6" />
+                              <Img
+                                src={RESOURCE_ICONS.coal}
+                                alt="Coal"
+                                className="w-6 h-6"
+                              />
                               <span className="font-bold text-[15px] text-text-bright">
                                 {(discountActive
                                   ? Math.round(c.totalCharcoal * (2 / 3))
@@ -759,41 +835,61 @@ export function RaidCalculator() {
                     craft — so it's visually the heaviest card on the page,
                     not just another row under the per-explosive breakdown. */}
                 <div>
-                  <div className="sec-label mb-3 mt-2">TOTAL RESOURCES NEEDED</div>
+                  <div className="sec-label mb-3 mt-2">
+                    TOTAL RESOURCES NEEDED
+                  </div>
 
-                  <div className="flex items-center justify-center py-2 mb-4 last:mb-0 flex-wrap gap-x-6 gap-y-3">
+                  <div className="flex items-center justify-center py-8 mb-4 last:mb-0 flex-wrap gap-x-12 gap-y-6">
                     {/* Resources */}
-                    <div className="flex gap-x-4 gap-y-2 items-center flex-wrap min-w-0">
+                    <div className="flex gap-x-10 gap-y-4 items-center justify-center flex-wrap min-w-0">
                       {/* Sulfur */}
-                      <div className="flex items-center gap-2">
-                        <Img src={RESOURCE_ICONS.sulfur} alt="Sulfur" className="w-[22px] h-[22px] shrink-0" />
+                      <div className="flex items-center gap-3">
+                        <Img
+                          src={RESOURCE_ICONS.sulfur}
+                          alt="Sulfur"
+                          className="w-10 h-10 shrink-0"
+                        />
                         <div className="flex flex-col">
-                          <span className="text-xl font-extrabold leading-none whitespace-nowrap text-text-bright">
+                          <span className="text-4xl font-extrabold leading-none whitespace-nowrap text-text-bright">
                             {result.totalSulfur.toLocaleString()}
                           </span>
-                          <span className="text-[10px] text-[#8b8c89] font-bold tracking-wider mt-0.5 whitespace-nowrap">SULFUR</span>
+                          <span className="text-xs text-[#8b8c89] font-bold tracking-wider mt-1 whitespace-nowrap">
+                            SULFUR
+                          </span>
                         </div>
                       </div>
 
                       {/* Metal */}
-                      <div className="flex items-center gap-2">
-                        <Img src={RESOURCE_ICONS.metal} alt="Metal" className="w-[22px] h-[22px] shrink-0" />
+                      <div className="flex items-center gap-3">
+                        <Img
+                          src={RESOURCE_ICONS.metal}
+                          alt="Metal"
+                          className="w-10 h-10shrink-0"
+                        />
                         <div className="flex flex-col">
-                          <span className="text-xl font-extrabold leading-none whitespace-nowrap text-text-bright">
+                          <span className="text-4xl font-extrabold leading-none whitespace-nowrap text-text-bright">
                             {result.totalMetal.toLocaleString()}
                           </span>
-                          <span className="text-[10px] text-[#8b8c89] font-bold tracking-wider mt-0.5 whitespace-nowrap">METAL</span>
+                          <span className="text-xs text-[#8b8c89] font-bold tracking-wider mt-1 whitespace-nowrap">
+                            METAL
+                          </span>
                         </div>
                       </div>
 
                       {/* Coal */}
-                      <div className="flex items-center gap-2">
-                        <Img src={RESOURCE_ICONS.coal} alt="Coal" className="w-[22px] h-[22px] shrink-0" />
+                      <div className="flex items-center gap-3">
+                        <Img
+                          src={RESOURCE_ICONS.coal}
+                          alt="Coal"
+                          className="w-10 h-10 shrink-0"
+                        />
                         <div className="flex flex-col">
-                          <span className="text-xl font-extrabold leading-none whitespace-nowrap text-text-bright">
+                          <span className="text-4xl font-extrabold leading-none whitespace-nowrap text-text-bright">
                             {result.totalCharcoal.toLocaleString()}
                           </span>
-                          <span className="text-[10px] text-[#8b8c89] font-bold tracking-wider mt-0.5 whitespace-nowrap">COAL</span>
+                          <span className="text-xs text-[#8b8c89] font-bold tracking-wider mt-1 whitespace-nowrap">
+                            COAL
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -805,5 +901,5 @@ export function RaidCalculator() {
         )}
       </div>
     </>
-  )
+  );
 }
