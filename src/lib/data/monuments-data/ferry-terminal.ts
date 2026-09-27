@@ -36,8 +36,7 @@ export const FerryTerminalMonument: Monument = {
     { "name": "Modular Car Lift", "count": 1 },
     { "name": "Hobo Barrel", "count": 2 },
     { "name": "Telephone", "count": 1 },
-    { "name": "Elevator", "count": 1 },
-    { "name": "Heat Source", "count": 1 }
+    { "name": "Elevator", "count": 1 }
   ],
   "vehicles": [],
   "cctv": "/rust/camera-codes#ferry-terminal",

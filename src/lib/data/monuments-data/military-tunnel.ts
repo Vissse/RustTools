@@ -72,10 +72,6 @@ export const MilitaryTunnelMonument: Monument = {
       "count": 2
     },
     {
-      "name": "Toilet",
-      "count": 1
-    },
-    {
       "name": "Elevator",
       "count": 1
     },

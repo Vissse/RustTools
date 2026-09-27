@@ -135,14 +135,6 @@ export const AirfieldMonument: Monument = {
       "count": 16
     },
     {
-      "name": "Heat Source",
-      "count": 5
-    },
-    {
-      "name": "Zipline Target Point",
-      "count": 4
-    },
-    {
       "name": "Sofa",
       "count": 3
     },

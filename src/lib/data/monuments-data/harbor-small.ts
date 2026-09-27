@@ -28,8 +28,6 @@ export const HarborSmallMonument: Monument = {
   ],
   "utilities": [
     { "name": "Light Switch", "count": 6 },
-    { "name": "Zipline Target Point", "count": 5 },
-    { "name": "Zipline Launch Point", "count": 3 },
     { "name": "Telephone", "count": 1 },
     { "name": "Small Oil Refinery", "count": 1 },
     { "name": "Sofa", "count": 1 },

@@ -8,10 +8,7 @@ export const JungleRuinsMonument: Monument = {
   "variants": ["A", "B", "C", "D", "E"],
   "cardsNeeded": [],
   "cardsFound": [],
-  "utilities": [
-    { "name": "Zipline Launch Point", "count": 1, "onlyInVariant": "E" },
-    { "name": "Zipline Target Point", "count": 1, "onlyInVariant": "E" }
-  ],
+  "utilities": [],
   "vehicles": [],
   "cctv": "",
   "bpFrags": [],

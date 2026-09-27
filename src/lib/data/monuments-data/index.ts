@@ -95,6 +95,7 @@ const IMAGE_MAP: Record<string, string> = {
   "supermarket freezer": "/images/items/supermarket.freezer.webp",
   "supply drop": "/images/items/supply.drop.webp",
   "supply drop signal computer": "/images/recycle/computerstation.webp",
+  "light switch": "/images/items/light.switch.webp",
   "switch": "/images/items/switch.webp",
   "telephone": "/images/items/telephone.webp",
   "tier 2 components": "/images/items/tier.2.components.webp",

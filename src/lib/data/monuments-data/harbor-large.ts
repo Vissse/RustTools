@@ -28,7 +28,6 @@ export const HarborLargeMonument: Monument = {
   ],
   "utilities": [
     { "name": "Light Switch", "count": 4 },
-    { "name": "Zipline Target Point", "count": 3 },
     { "name": "Sofa", "count": 2 },
     { "name": "Telephone", "count": 1 },
     { "name": "Hobo Barrel", "count": 1 },

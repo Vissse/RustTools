@@ -8,7 +8,6 @@ export const GiantExcavatorPitMonument: Monument = {
   "cardsNeeded": [],
   "cardsFound": [],
   "utilities": [
-    { "name": "Zipline Target Point", "count": 3 },
     { "name": "Sofa", "count": 1 },
     { "name": "Elevator", "count": 1 },
     { "name": "Green Recycler", "count": 1 },

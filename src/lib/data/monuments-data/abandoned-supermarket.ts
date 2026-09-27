@@ -19,10 +19,6 @@ export const AbandonedSupermarketMonument: Monument = {
       "count": 2
     },
     {
-      "name": "Zipline Target Point",
-      "count": 2
-    },
-    {
       "name": "Telephone",
       "count": 1
     },

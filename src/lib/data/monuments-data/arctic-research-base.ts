@@ -156,23 +156,11 @@ export const ArcticResearchBaseMonument: Monument = {
   ],
   "utilities": [
     {
-      "name": "Heat Source",
-      "count": 25
-    },
-    {
       "name": "Light Switch",
       "count": 11
     },
     {
-      "name": "Zipline Target Point",
-      "count": 2
-    },
-    {
       "name": "Sofa",
-      "count": 1
-    },
-    {
-      "name": "Toilet",
       "count": 1
     },
     {
